@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'home_view_model.dart';
+import '../../../models/home_view.dart';
 
 class AppBarGroup extends StatefulWidget with PreferredSizeWidget {
 AppBarGroup({required this.homeViewModel});

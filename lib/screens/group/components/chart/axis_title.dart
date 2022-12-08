@@ -20,46 +20,94 @@ SideTitles get bottomTitles {
     getTitlesWidget: (value, meta) {
       switch (value.toInt()) {
         case 0:
-          return Text(
-            DateFormat.E()
-                .format(DateTime.now().subtract(const Duration(days: 6)))[0],
-            style: textStyle(),
+          return Column(
+            children: [
+              const SizedBox(
+                height: kDefaultPadding * 0.25,
+              ),
+              Text(
+                DateFormat.E().format(
+                    DateTime.now().subtract(const Duration(days: 6)))[0],
+                style: textStyle(),
+              ),
+            ],
           );
         case 1:
-          return Text(
-            DateFormat.E()
-                .format(DateTime.now().subtract(const Duration(days: 5)))[0],
-            style: textStyle(),
+          return Column(
+            children: [
+              const SizedBox(
+                height: kDefaultPadding * 0.25,
+              ),
+              Text(
+                DateFormat.E()
+                    .format(DateTime.now().subtract(const Duration(days: 5)))[0],
+                style: textStyle(),
+              ),
+            ],
           );
         case 2:
-          return Text(
-            DateFormat.E()
-                .format(DateTime.now().subtract(const Duration(days: 4)))[0],
-            style: textStyle(),
+          return Column(
+            children: [
+              const SizedBox(
+                height: kDefaultPadding * 0.25,
+              ),
+              Text(
+                DateFormat.E()
+                    .format(DateTime.now().subtract(const Duration(days: 4)))[0],
+                style: textStyle(),
+              ),
+            ],
           );
         case 3:
-          return Text(
-            DateFormat.E()
-                .format(DateTime.now().subtract(const Duration(days: 3)))[0],
-            style: textStyle(),
+          return Column(
+            children: [
+              const SizedBox(
+                height: kDefaultPadding * 0.25,
+              ),
+              Text(
+                DateFormat.E()
+                    .format(DateTime.now().subtract(const Duration(days: 3)))[0],
+                style: textStyle(),
+              ),
+            ],
           );
         case 4:
-          return Text(
-            DateFormat.E()
-                .format(DateTime.now().subtract(const Duration(days: 2)))[0],
-            style: textStyle(),
+          return Column(
+            children: [
+              const SizedBox(
+                height: kDefaultPadding * 0.25,
+              ),
+              Text(
+                DateFormat.E()
+                    .format(DateTime.now().subtract(const Duration(days: 2)))[0],
+                style: textStyle(),
+              ),
+            ],
           );
         case 5:
-          return Text(
-            DateFormat.E()
-                .format(DateTime.now().subtract(const Duration(days: 1)))[0],
-            style: textStyle(),
+          return Column(
+            children: [
+              const SizedBox(
+                height: kDefaultPadding * 0.25,
+              ),
+              Text(
+                DateFormat.E()
+                    .format(DateTime.now().subtract(const Duration(days: 1)))[0],
+                style: textStyle(),
+              ),
+            ],
           );
         case 6:
-          return Text(
-            DateFormat.E()
-                .format(DateTime.now())[0],
-            style: textStyle(),
+          return Column(
+            children: [
+              const SizedBox(
+                height: kDefaultPadding * 0.25,
+              ),
+              Text(
+                DateFormat.E().format(DateTime.now())[0],
+                style: textStyle(),
+              ),
+            ],
           );
       }
       return const Text('');

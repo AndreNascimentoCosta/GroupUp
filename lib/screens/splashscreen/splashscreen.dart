@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:groupup/screens/groups/components/home_view_model.dart';
+import 'package:groupup/models/dropdown.dart';
+import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/groups_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -26,7 +27,12 @@ class StartState extends State<SplashScreen> {
 
   route() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => GroupsScreen(homeViewModel: HomeViewModel(),)));
+        context,
+        MaterialPageRoute(
+            builder: (context) => GroupsScreen(
+                  homeViewModel: HomeViewModel(),
+                  dropDownModel: DropDownModel(),
+                )));
   }
 
   @override

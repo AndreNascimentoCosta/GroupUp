@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar_edit.dart';
-import 'package:groupup/screens/groups/components/home_view_model.dart';
+import 'package:groupup/models/home_view.dart';
 
 import '../profile/components/body_profile.dart';
 import 'components/body_groups.dart';
 
 class GroupsScreen extends StatefulWidget {
-  GroupsScreen({required this.homeViewModel});
+  GroupsScreen({required this.homeViewModel, required this.dropDownModel});
 
   int selectedIndex = 0;
   final HomeViewModel homeViewModel;
+  final DropDownModel dropDownModel;
 
   @override
   State<GroupsScreen> createState() => _GroupsScreenState();
@@ -19,6 +21,7 @@ class GroupsScreen extends StatefulWidget {
 
 class _GroupsScreenState extends State<GroupsScreen> {
   final HomeViewModel homeViewModel = HomeViewModel();
+  final DropDownModel dropDownModel = DropDownModel();
   final pageController = PageController();
 
   @override
@@ -29,7 +32,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
       body: PageView(
         controller: pageController,
         children: [
-          Body(homeViewModel: homeViewModel),
+          Body(homeViewModel: homeViewModel, dropDownModel: dropDownModel,),
           BodyProfile(),
         ],
       ),

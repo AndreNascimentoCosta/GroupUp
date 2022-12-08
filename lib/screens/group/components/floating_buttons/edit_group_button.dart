@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/screens/groups/components/home_view_model.dart';
+import 'package:groupup/models/home_view.dart';
 
-import '../../../constants.dart';
+import '../../../../constants.dart';
 
 class EditGroupButton extends StatefulWidget {
   const EditGroupButton({required this.homeViewModel});

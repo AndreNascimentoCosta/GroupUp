@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/group/individual_group_screen.dart';
-import 'package:groupup/screens/groups/components/home_view_model.dart';
+import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/components/stats_group.dart';
 
 class GroupsCard extends StatefulWidget {
@@ -10,12 +11,14 @@ class GroupsCard extends StatefulWidget {
       {Key? key,
       required this.groupModel,
       required this.press,
-      required this.homeViewModel})
+      required this.homeViewModel,
+      required this.dropDownModel})
       : super(key: key);
 
   final GroupModel groupModel;
   final VoidCallback press;
   final HomeViewModel homeViewModel;
+  final DropDownModel dropDownModel;
 
   @override
   State<GroupsCard> createState() => _GroupsCardState();
@@ -31,7 +34,11 @@ class _GroupsCardState extends State<GroupsCard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => IndividualGroupScreen(homeViewModel: widget.homeViewModel, groupModel: widget.groupModel,),
+            builder: (context) => IndividualGroupScreen(
+              homeViewModel: widget.homeViewModel,
+              groupModel: widget.groupModel,
+              dropDownModel: widget.dropDownModel,
+            ),
           ),
         );
       }),
@@ -79,7 +86,11 @@ class _GroupsCardState extends State<GroupsCard> {
                 ),
               ),
             ),
-            StatsGroup(groupModel: widget.groupModel, press: widget.press, homeViewModel: widget.homeViewModel,),
+            StatsGroup(
+              groupModel: widget.groupModel,
+              press: widget.press,
+              homeViewModel: widget.homeViewModel,
+            ),
           ],
         ),
       ),

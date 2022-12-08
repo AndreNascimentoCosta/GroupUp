@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/screens/groups/components/home_view_model.dart';
+import 'package:groupup/models/home_view.dart';
 
-import '../../../constants.dart';
+import '../../../../constants.dart';
 
 class AddInputGroupButton extends StatefulWidget {
   const AddInputGroupButton({required this.homeViewModel});

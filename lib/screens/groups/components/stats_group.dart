@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/models/group.dart';
-import 'package:groupup/screens/groups/components/home_view_model.dart';
+import 'package:groupup/models/home_view.dart';
 
 import '../../../constants.dart';
 

@@ -13,47 +13,58 @@ class ChartLabel extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Container(
-                height: 10,
-                width: 10,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: kPrimaryColor,
+          Flexible(
+            child: Row(
+              children: [
+                Container(
+                  height: 10,
+                  width: 10,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: kPrimaryColor,
+                  ),
                 ),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Text(
-                'H. C.',
-                style: TextStyle(
-                  fontFamily: 'Montserrat-Medium',
-                  fontSize: 14,
-                  color: kPrimaryColor,
+                const SizedBox(
+                  width: 5,
                 ),
-              ),
-            ],
+                const Text(
+                  'H. C.',
+                  style: TextStyle(
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 14,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              ],
+            ),
           ),
-          Row(
-            children: const [
-              CircleAvatar(
-                backgroundColor: kSecondaryColor,
-                radius: 5,
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Text(
-                'Me',
-                style: TextStyle(
-                  fontFamily: 'Montserrat-Medium',
-                  fontSize: 14,
-                  color: kSecondaryColor,
+          Flexible(
+            child: Row(
+              children: [
+                Container(
+                  height: 10,
+                  width: 10,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: kSecondaryColor,
+                      width: 1,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  width: 5,
+                ),
+                const Text(
+                  'Me',
+                  style: TextStyle(
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: 14,
+                    color: kSecondaryColor,
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/models/group.dart';
-import 'package:groupup/screens/group/individual_group_screen.dart';
-import 'package:groupup/screens/groups/components/home_view_model.dart';
+import 'package:groupup/models/home_view.dart';
+import 'package:groupup/screens/group_settings/group_settings_screen.dart';
 import 'package:groupup/screens/groups/groups_screen.dart';
 
 class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
   const AppBarIndividualGroup(
-      {required this.homeViewModel, required this.groupModel});
+      {required this.homeViewModel,
+      required this.groupModel,
+      required this.dropDownModel});
 
   final HomeViewModel homeViewModel;
   final GroupModel groupModel;
+  final DropDownModel dropDownModel;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +44,7 @@ class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
                 MaterialPageRoute(
                   builder: (context) => GroupsScreen(
                     homeViewModel: homeViewModel,
+                    dropDownModel: dropDownModel,
                   ),
                 ),
               );
@@ -61,7 +66,14 @@ class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
                   child: FloatingActionButton(
                     heroTag: 'btn2',
                     backgroundColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const GroupSettings(),
+                        ),
+                      );
+                    },
                     child: const ImageIcon(
                       AssetImage(
                         'assets/icons/settings.png',
