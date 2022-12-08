@@ -41,6 +41,7 @@ class StatsGroup extends StatelessWidget {
                               groupModel.rankIcon,
                             ),
                             size: kDefaultPadding,
+                            color: Colors.black,
                           ),
                           const SizedBox(
                             height: kDefaultPadding * 0.25,
@@ -50,6 +51,7 @@ class StatsGroup extends StatelessWidget {
                               groupModel.daysGoneIcon,
                             ),
                             size: kDefaultPadding,
+                            color: Colors.black,
                           ),
                           const SizedBox(
                             height: kDefaultPadding * 0.25,
@@ -59,6 +61,7 @@ class StatsGroup extends StatelessWidget {
                               groupModel.daysLeftIcon,
                             ),
                             size: kDefaultPadding,
+                            color: Colors.black,
                           ),
                         ],
                       ),
@@ -74,6 +77,7 @@ class StatsGroup extends StatelessWidget {
                           style: const TextStyle(
                             fontFamily: 'Montserrat-Medium',
                             fontSize: 16,
+                            color: Colors.black
                           ),
                         ),
                         const SizedBox(

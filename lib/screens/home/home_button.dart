@@ -30,7 +30,7 @@ class HomeButton extends StatelessWidget {
           ),
           const Spacer(),
           Image.asset(
-            isGreen ? 'assets/arrow_enter.png' : 'assets/plus_home.png',
+            isGreen ? 'assets/icons/arrow_right.png' : 'assets/icons/plus_home.png',
             height: isGreen ? 26.0 : 32.67,
             width: isGreen ? 15.0 : 32.67,
           ),

@@ -3,6 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/models/individual_group.dart';
 import 'package:groupup/models/home_view.dart';
+import 'package:groupup/screens/group_settings/styles/button_style.dart';
 
 class IndividualValue extends StatelessWidget {
   const IndividualValue(
@@ -37,9 +38,9 @@ class IndividualValue extends StatelessWidget {
                     const SizedBox(
                       width: kDefaultPadding / 2,
                     ),
-                    IconButton(
+                    ButtonCommonStyle(
                       onPressed: dropDownModel.switchEdit,
-                      icon: ValueListenableBuilder(
+                      child: ValueListenableBuilder(
                           valueListenable: dropDownModel.isOpened,
                           builder: ((context, value, child) {
                             return ImageIcon(
@@ -49,6 +50,7 @@ class IndividualValue extends StatelessWidget {
                                     : 'assets/icons/arrow_down.png',
                               ),
                               size: kDefaultPadding * 2,
+                              color: Colors.black,
                             );
                           })),
                     ),

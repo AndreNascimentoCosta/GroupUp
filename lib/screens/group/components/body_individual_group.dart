@@ -6,10 +6,9 @@ import 'package:groupup/screens/group/components/individual_group_card.dart';
 import 'package:groupup/models/home_view.dart';
 
 class BodyIndividualGroup extends StatelessWidget {
-  BodyIndividualGroup({required this.homeViewModel, required this.dropDownModel});
+  BodyIndividualGroup({required this.homeViewModel,});
 
   final HomeViewModel homeViewModel;
-  final DropDownModel dropDownModel;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,6 @@ class BodyIndividualGroup extends StatelessWidget {
         itemBuilder: (context, index) => IndividualGroupCard(
           individualGroup: individualGroupData[index],
           homeViewModel: homeViewModel,
-          dropDownModel: dropDownModel,
         ),
       ),
     );

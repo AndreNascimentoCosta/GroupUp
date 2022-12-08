@@ -25,6 +25,7 @@ class _EditGroupButtonState extends State<EditGroupButton> {
               if (widget.homeViewModel.isEditing.value) {
                 return FloatingActionButton(
                   heroTag: 'btn5',
+                  highlightElevation: 0,
                   onPressed: widget.homeViewModel.switchEdit,
                   backgroundColor: kPrimaryColor,
                   elevation: 0,
@@ -40,6 +41,7 @@ class _EditGroupButtonState extends State<EditGroupButton> {
                 heroTag: 'btn4',
                 onPressed: widget.homeViewModel.switchEdit,
                 backgroundColor: kPrimaryColor,
+                highlightElevation: 0,
                 elevation: 0,
                 child: const ImageIcon(
                   AssetImage(

@@ -24,6 +24,7 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
             builder: ((context, value, child) {
               return FloatingActionButton(
                 heroTag: 'btn3',
+                highlightElevation: 0,
                 onPressed: () {},
                 backgroundColor: widget.homeViewModel.isEditing.value
                     ? const Color(0x5946E297)

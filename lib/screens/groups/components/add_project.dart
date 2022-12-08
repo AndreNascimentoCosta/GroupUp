@@ -11,6 +11,7 @@ class AddProject extends StatelessWidget {
       child: FloatingActionButton(
         onPressed: () {},
         backgroundColor: kPrimaryColor,
+        highlightElevation: 0,
         elevation: 0,
         child: const ImageIcon(
           AssetImage(

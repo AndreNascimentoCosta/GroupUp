@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/screens/group/components/chart/text_style.dart';
+import 'package:groupup/screens/group/components/chart/text_style_chart.dart';
 import 'package:intl/intl.dart';
 
 class LineTitles {
@@ -20,94 +20,115 @@ SideTitles get bottomTitles {
     getTitlesWidget: (value, meta) {
       switch (value.toInt()) {
         case 0:
-          return Column(
-            children: [
-              const SizedBox(
-                height: kDefaultPadding * 0.25,
-              ),
-              Text(
-                DateFormat.E().format(
-                    DateTime.now().subtract(const Duration(days: 6)))[0],
-                style: textStyle(),
-              ),
-            ],
+          return SizedBox(
+            height: 30,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: kDefaultPadding * 0.25,
+                ),
+                Text(
+                  DateFormat.E().format(
+                      DateTime.now().subtract(const Duration(days: 6)))[0],
+                  style: textStyleChart(),
+                ),
+              ],
+            ),
           );
         case 1:
-          return Column(
-            children: [
-              const SizedBox(
-                height: kDefaultPadding * 0.25,
-              ),
-              Text(
-                DateFormat.E()
-                    .format(DateTime.now().subtract(const Duration(days: 5)))[0],
-                style: textStyle(),
-              ),
-            ],
+          return SizedBox(
+            height: 30,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: kDefaultPadding * 0.25,
+                ),
+                Text(
+                  DateFormat.E()
+                      .format(DateTime.now().subtract(const Duration(days: 5)))[0],
+                  style: textStyleChart(),
+                ),
+              ],
+            ),
           );
         case 2:
-          return Column(
-            children: [
-              const SizedBox(
-                height: kDefaultPadding * 0.25,
-              ),
-              Text(
-                DateFormat.E()
-                    .format(DateTime.now().subtract(const Duration(days: 4)))[0],
-                style: textStyle(),
-              ),
-            ],
+          return SizedBox(
+            height: 30,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: kDefaultPadding * 0.25,
+                ),
+                Text(
+                  DateFormat.E()
+                      .format(DateTime.now().subtract(const Duration(days: 4)))[0],
+                  style: textStyleChart(),
+                ),
+              ],
+            ),
           );
         case 3:
-          return Column(
-            children: [
-              const SizedBox(
-                height: kDefaultPadding * 0.25,
-              ),
-              Text(
-                DateFormat.E()
-                    .format(DateTime.now().subtract(const Duration(days: 3)))[0],
-                style: textStyle(),
-              ),
-            ],
+          return SizedBox(
+            height: 30,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: kDefaultPadding * 0.25,
+                ),
+                Text(
+                  DateFormat.E()
+                      .format(DateTime.now().subtract(const Duration(days: 3)))[0],
+                  style: textStyleChart(),
+                ),
+              ],
+            ),
           );
         case 4:
-          return Column(
-            children: [
-              const SizedBox(
-                height: kDefaultPadding * 0.25,
-              ),
-              Text(
-                DateFormat.E()
-                    .format(DateTime.now().subtract(const Duration(days: 2)))[0],
-                style: textStyle(),
-              ),
-            ],
+          return SizedBox(
+            height: 30,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: kDefaultPadding * 0.25,
+                ),
+                Text(
+                  DateFormat.E()
+                      .format(DateTime.now().subtract(const Duration(days: 2)))[0],
+                  style: textStyleChart(),
+                ),
+              ],
+            ),
           );
         case 5:
-          return Column(
-            children: [
-              const SizedBox(
-                height: kDefaultPadding * 0.25,
-              ),
-              Text(
-                DateFormat.E()
-                    .format(DateTime.now().subtract(const Duration(days: 1)))[0],
-                style: textStyle(),
-              ),
-            ],
+          return SizedBox(
+            height: 30,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: kDefaultPadding * 0.25,
+                ),
+                Text(
+                  DateFormat.E()
+                      .format(DateTime.now().subtract(const Duration(days: 1)))[0],
+                  style: textStyleChart(),
+                ),
+              ],
+            ),
           );
         case 6:
-          return Column(
-            children: [
-              const SizedBox(
-                height: kDefaultPadding * 0.25,
-              ),
-              Text(
-                DateFormat.E().format(DateTime.now())[0],
-                style: textStyle(),
-              ),
-            ],
+          return SizedBox(
+            height: 30,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: kDefaultPadding * 0.25,
+                ),
+                Text(
+                  DateFormat.E().format(DateTime.now())[0],
+                  style: textStyleChart(),
+                ),
+              ],
+            ),
           );
       }
       return const Text('');
@@ -122,9 +143,8 @@ SideTitles get leftTitles {
     getTitlesWidget: (value, meta) {
       return Text(
         value.round().toString(),
-        style: textStyle(),
+        style: textStyleChart(),
       );
     },
-    reservedSize: kDefaultPadding * 1.5,
   );
 }

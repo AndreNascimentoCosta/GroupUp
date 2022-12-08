@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/models/individual_group.dart';
-import 'package:groupup/screens/group/components/chart/chart.dart';
 import 'package:groupup/screens/group/components/chart/label.dart';
 import 'package:groupup/screens/group/components/individual_value.dart';
 import 'package:groupup/models/home_view.dart';
 
 class IndividualGroupCard extends StatefulWidget {
   const IndividualGroupCard(
-      {Key? key, required this.individualGroup, required this.homeViewModel, required this.dropDownModel})
+      {Key? key, required this.individualGroup, required this.homeViewModel,})
       : super(key: key);
 
   final IndividualGroup individualGroup;
   final HomeViewModel homeViewModel;
-  final DropDownModel dropDownModel;
 
   @override
   State<IndividualGroupCard> createState() => _IndividualGroupCardState();
@@ -22,6 +20,7 @@ class IndividualGroupCard extends StatefulWidget {
 
 class _IndividualGroupCardState extends State<IndividualGroupCard> {
   bool isChecked = false;
+  final DropDownModel dropDownModel = DropDownModel();
 
   @override
   Widget build(BuildContext context) {
@@ -86,11 +85,11 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
               IndividualValue(
                   homeViewModel: widget.homeViewModel,
                   individualGroup: widget.individualGroup,
-                  dropDownModel: widget.dropDownModel,),
+                  dropDownModel: dropDownModel,),
             ],
           ),
           ValueListenableBuilder(
-            valueListenable: widget.dropDownModel.isOpened,
+            valueListenable: dropDownModel.isOpened,
             builder: (context, value, child) {
               return AnimatedContainer(
                 height: value ? kDefaultPadding : 0,
@@ -105,11 +104,11 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
             },
           ),
           ValueListenableBuilder(
-              valueListenable: widget.dropDownModel.isOpened,
+              valueListenable: dropDownModel.isOpened,
               builder: (context, value, child) {
                 return AnimatedContainer(
                   height: value ? 100 : 0,
-                  duration: const Duration(milliseconds: 150),
+                  duration: const Duration(milliseconds: 70),
                   child: Visibility(
                     visible: value,
                     child: Row(

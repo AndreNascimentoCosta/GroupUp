@@ -4,6 +4,7 @@ import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/group/individual_group_screen.dart';
 import 'package:groupup/models/home_view.dart';
+import 'package:groupup/screens/group_settings/styles/button_style.dart';
 import 'package:groupup/screens/groups/components/stats_group.dart';
 
 class GroupsCard extends StatefulWidget {
@@ -11,14 +12,12 @@ class GroupsCard extends StatefulWidget {
       {Key? key,
       required this.groupModel,
       required this.press,
-      required this.homeViewModel,
-      required this.dropDownModel})
+      required this.homeViewModel,})
       : super(key: key);
 
   final GroupModel groupModel;
   final VoidCallback press;
   final HomeViewModel homeViewModel;
-  final DropDownModel dropDownModel;
 
   @override
   State<GroupsCard> createState() => _GroupsCardState();
@@ -29,15 +28,14 @@ class _GroupsCardState extends State<GroupsCard> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: (() {
+    return ButtonCommonStyle(
+      onPressed: (() {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => IndividualGroupScreen(
               homeViewModel: widget.homeViewModel,
               groupModel: widget.groupModel,
-              dropDownModel: widget.dropDownModel,
             ),
           ),
         );
@@ -82,6 +80,7 @@ class _GroupsCardState extends State<GroupsCard> {
                   style: const TextStyle(
                     fontSize: kDefaultPadding,
                     fontFamily: 'Montserrat-Medium',
+                    color: Colors.black,
                   ),
                 ),
               ),

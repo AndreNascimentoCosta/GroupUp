@@ -9,11 +9,10 @@ import '../profile/components/body_profile.dart';
 import 'components/body_groups.dart';
 
 class GroupsScreen extends StatefulWidget {
-  GroupsScreen({required this.homeViewModel, required this.dropDownModel});
+  GroupsScreen({required this.homeViewModel,});
 
   int selectedIndex = 0;
   final HomeViewModel homeViewModel;
-  final DropDownModel dropDownModel;
 
   @override
   State<GroupsScreen> createState() => _GroupsScreenState();
@@ -21,7 +20,6 @@ class GroupsScreen extends StatefulWidget {
 
 class _GroupsScreenState extends State<GroupsScreen> {
   final HomeViewModel homeViewModel = HomeViewModel();
-  final DropDownModel dropDownModel = DropDownModel();
   final pageController = PageController();
 
   @override
@@ -32,7 +30,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
       body: PageView(
         controller: pageController,
         children: [
-          Body(homeViewModel: homeViewModel, dropDownModel: dropDownModel,),
+          Body(homeViewModel: homeViewModel,),
           BodyProfile(),
         ],
       ),

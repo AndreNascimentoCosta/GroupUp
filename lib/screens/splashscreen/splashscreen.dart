@@ -31,7 +31,6 @@ class StartState extends State<SplashScreen> {
         MaterialPageRoute(
             builder: (context) => GroupsScreen(
                   homeViewModel: HomeViewModel(),
-                  dropDownModel: DropDownModel(),
                 )));
   }
 

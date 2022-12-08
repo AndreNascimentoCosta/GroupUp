@@ -9,10 +9,9 @@ import 'package:groupup/models/home_view.dart';
 import '../groups_screen.dart';
 
 class Body extends StatelessWidget {
-  Body({required this.homeViewModel, required this.dropDownModel});
+  Body({required this.homeViewModel,});
 
   final HomeViewModel homeViewModel;
-  final DropDownModel dropDownModel;
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +34,12 @@ class Body extends StatelessWidget {
         itemCount: groupsData.length,
         itemBuilder: (context, index) => GroupsCard(
           homeViewModel: homeViewModel,
-          dropDownModel: dropDownModel,
           groupModel: groupsData[index],
           press: () => Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => GroupsScreen(
                 homeViewModel: homeViewModel,
-                dropDownModel: dropDownModel,
               ),
             ),
           ),

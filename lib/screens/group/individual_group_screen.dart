@@ -13,12 +13,10 @@ class IndividualGroupScreen extends StatefulWidget {
   const IndividualGroupScreen({
     required this.homeViewModel,
     required this.groupModel,
-    required this.dropDownModel
   });
 
   final HomeViewModel homeViewModel;
   final GroupModel groupModel;
-  final DropDownModel dropDownModel;
 
   @override
   State<IndividualGroupScreen> createState() => _IndividualGroupScreenState();
@@ -32,8 +30,8 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
       appBar: AppBarIndividualGroup(
         homeViewModel: widget.homeViewModel,
         groupModel: widget.groupModel,
-        dropDownModel: widget.dropDownModel,
       ),
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           TopBarBodyIndividualGroup(
@@ -44,7 +42,6 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
           ),
           BodyIndividualGroup(
             homeViewModel: widget.homeViewModel,
-            dropDownModel: widget.dropDownModel,
           )
         ],
       ),

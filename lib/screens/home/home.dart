@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/screens/group_settings/styles/button_style.dart';
 import 'package:groupup/screens/home/home_button.dart';
 
 class Home extends StatelessWidget {
@@ -42,14 +43,14 @@ class Home extends StatelessWidget {
                 height: 30,
               ),
               Image.asset(
-                'assets/targetteam.png',
+                'assets/icons/targetteam.png',
                 height: 380,
                 fit: BoxFit.fitHeight,
               ),
               const SizedBox(
                 height: 40,
               ),
-              MaterialButton(
+              ButtonCommonStyle(
                   onPressed: () {},
                   child: HomeButton(
                     isGreen: true,
@@ -58,8 +59,11 @@ class Home extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              HomeButton(
-                isGreen: false,
+              ButtonCommonStyle(
+                onPressed: (){},
+                child: HomeButton(
+                  isGreen: false,
+                ),
               ),
             ],
           ),

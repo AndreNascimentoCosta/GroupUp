@@ -9,12 +9,10 @@ import 'package:groupup/screens/groups/groups_screen.dart';
 class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
   const AppBarIndividualGroup(
       {required this.homeViewModel,
-      required this.groupModel,
-      required this.dropDownModel});
+      required this.groupModel,});
 
   final HomeViewModel homeViewModel;
   final GroupModel groupModel;
-  final DropDownModel dropDownModel;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +42,6 @@ class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
                 MaterialPageRoute(
                   builder: (context) => GroupsScreen(
                     homeViewModel: homeViewModel,
-                    dropDownModel: dropDownModel,
                   ),
                 ),
               );
@@ -70,7 +67,7 @@ class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const GroupSettings(),
+                          builder: (context) => GroupSettings(homeViewModel: homeViewModel,),
                         ),
                       );
                     },

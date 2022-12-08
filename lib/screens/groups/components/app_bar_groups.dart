@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/screens/group_settings/styles/button_style.dart';
 
 import '../../../models/home_view.dart';
 
@@ -35,20 +36,24 @@ class _AppBarGroupState extends State<AppBarGroup> {
       ),
       centerTitle: false,
       actions: [
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: IconButton(
-            onPressed: () {
-              widget.homeViewModel.switchEdit();
-            },
-            iconSize: 40,
-            padding: const EdgeInsets.only(right: 20),
-            icon: const Text(
-              'Edit',
-              style: TextStyle(
-                fontFamily: 'Montserrat-SemiBold',
-                fontSize: 18,
-                color: Colors.black,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 7,),
+          child: Align(
+            widthFactor: 1.5,
+            alignment: Alignment.bottomLeft,
+            child: ButtonCommonStyle(
+              onPressed: () {
+                widget.homeViewModel.switchEdit();
+              },
+              padding: const EdgeInsets.only(bottom: 10, right: 80),
+              child: const Text(
+                'Edit',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: 'Montserrat-SemiBold',
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),
