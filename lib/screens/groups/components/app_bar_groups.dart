@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/screens/group_settings/styles/button_style.dart';
+import 'package:groupup/styles/button_style.dart';
 
 import '../../../models/home_view.dart';
 

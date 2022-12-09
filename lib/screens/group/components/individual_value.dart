@@ -3,7 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/models/individual_group.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/group_settings/styles/button_style.dart';
+import 'package:groupup/styles/button_style.dart';
 
 class IndividualValue extends StatelessWidget {
   const IndividualValue(

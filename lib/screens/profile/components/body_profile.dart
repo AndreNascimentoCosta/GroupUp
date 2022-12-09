@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/styles/button_style.dart';
 import 'package:groupup/screens/profile/components/appbarprofile.dart';
+import 'package:groupup/screens/profile/models/body_button.dart';
 
 import 'edit_profile_button.dart';
 
@@ -45,95 +47,34 @@ class BodyProfile extends StatelessWidget {
             const SizedBox(
               height: kDefaultPadding * 1.25,
             ),
-            MaterialButton(
+            ButtonCommonStyle(
               onPressed: () {},
               child: EditProfile(),
             ),
             const SizedBox(
               height: kDefaultPadding * 2.5,
             ),
-            InkWell(
-              onTap: () {},
-              child: Row(
-                children: const [
-                  Text(
-                    'Balance',
-                    style: TextStyle(
-                      fontFamily: 'Montserrat-Medium',
-                      fontSize: 18,
-                    ),
-                  ),
-                  Spacer(),
-                  Padding(
-                    padding: EdgeInsets.only(right: kDefaultPadding),
-                    child: Text(
-                      '\$ 14.60',
-                      style: TextStyle(
-                        fontFamily: 'Montserrat-Medium',
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  ImageIcon(
-                    AssetImage(
-                      'assets/icons/arrow_right.png',
-                    ),
-                    size: kDefaultPadding,
-                    color: Color(0xFFC3C3C3),
-                  ),
-                ],
-              ),
+            BodyButtonModel(
+              onPressed: () {},
+              text: 'Balance',
+              secondaryText: '\$ 14.60',
             ),
             const SizedBox(
               height: kDefaultPadding * 2,
             ),
-            InkWell(
-              onTap: () {},
-              child: Row(
-                children: const [
-                  Text(
-                    'Refund requests',
-                    style: TextStyle(
-                      fontFamily: 'Montserrat-Medium',
-                      fontSize: 18,
-                    ),
-                  ),
-                  Spacer(),
-                  ImageIcon(
-                    AssetImage(
-                      'assets/icons/arrow_right.png',
-                    ),
-                    size: kDefaultPadding,
-                    color: Color(0xFFC3C3C3),
-                  ),
-                ],
-              ),
+            BodyButtonModel(
+              onPressed: () {},
+              text: 'Refund requests',
+              secondaryText: '',
             ),
             const SizedBox(
               height: kDefaultPadding * 2,
             ),
-            InkWell(
-              onTap: () {},
-              child: Row(
-                children: const [
-                  Text(
-                    'Created groups',
-                    style: TextStyle(
-                      fontFamily: 'Montserrat-Medium',
-                      fontSize: 18,
-                    ),
-                  ),
-                  Spacer(),
-                  ImageIcon(
-                    AssetImage(
-                      'assets/icons/arrow_right.png',
-                    ),
-                    size: kDefaultPadding,
-                    color: Color(0xFFC3C3C3),
-                  ),
-                ],
-              ),
-            ),
+            BodyButtonModel(
+              onPressed: () {},
+              text: 'Created groups',
+              secondaryText: '',
+            )
           ],
         ),
       ),

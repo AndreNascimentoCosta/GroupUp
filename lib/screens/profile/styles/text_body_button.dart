@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-TextStyle textStyleSettings() {
+TextStyle textStyleBodyButton() {
   return const TextStyle(
     fontFamily: 'Montserrat-Medium',
     fontSize: 18,

@@ -12,8 +12,8 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: BodyProfile(),
-      floatingActionButton: AddProject(),
+      body: const BodyProfile(),
+      floatingActionButton: const AddProject(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: SizedBox(
         height: 80,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/screens/group_settings/components/share_button.dart';
 import 'package:groupup/screens/group_settings/components/switch_button.dart';
-import 'package:groupup/screens/group_settings/styles/button_style.dart';
+import 'package:groupup/styles/button_style.dart';
 import 'package:groupup/screens/group_settings/styles/text_style.dart';
 
 class BodySettings extends StatelessWidget {

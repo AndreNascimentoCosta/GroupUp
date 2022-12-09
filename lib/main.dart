@@ -3,7 +3,7 @@ import 'package:groupup/screens/splashscreen/splashscreen.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: SplashScreen(),
     ),
   );
