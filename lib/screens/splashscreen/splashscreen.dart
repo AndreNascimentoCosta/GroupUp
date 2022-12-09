@@ -29,8 +29,8 @@ class StartState extends State<SplashScreen> {
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => Home(
-                  
+            builder: (context) => GroupsScreen(
+                  homeViewModel: HomeViewModel(),
                 )));
   }
 

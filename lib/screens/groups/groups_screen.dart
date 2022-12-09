@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar_edit.dart';
 import 'package:groupup/models/home_view.dart';
-
 import '../profile/components/body_profile.dart';
 import 'components/body_groups.dart';
 
@@ -31,7 +29,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
         controller: pageController,
         children: [
           Body(homeViewModel: homeViewModel,),
-          BodyProfile(),
+          const BodyProfile(),
         ],
       ),
       floatingActionButton: ValueListenableBuilder(
@@ -49,7 +47,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
           valueListenable: homeViewModel.isEditing,
           builder: (context, value, child) {
             return homeViewModel.isEditing.value
-                ? BottomNavyBarEdit()
+                ? const BottomNavyBarEdit()
                 : BottomNavyBar(
                     pageController: pageController,
                   );

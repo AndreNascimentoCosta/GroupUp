@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/styles/button_style.dart';
-
 import '../../../models/home_view.dart';
 
 class AppBarGroup extends StatefulWidget with PreferredSizeWidget {
