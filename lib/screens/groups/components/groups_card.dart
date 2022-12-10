@@ -4,8 +4,9 @@ import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/group/individual_group_screen.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/screens/groups/components/checkbox.dart';
+import 'package:groupup/screens/groups/components/models/checkbox.dart';
 import 'package:groupup/screens/groups/components/stats_group.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 class GroupsCard extends StatefulWidget {
   const GroupsCard({
@@ -31,23 +32,21 @@ class _GroupsCardState extends State<GroupsCard> {
   Widget build(BuildContext context) {
     return ButtonCommonStyle(
       onPressed: () {
-        widget.homeViewModel.isEditing.value
-            ? CheckBoxGroup(
-                onChanged: (bool? value) {
-                  setState(() {
-                    isChecked = value!;
-                  });
-                },
-              )
-            : Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => IndividualGroupScreen(
-                    homeViewModel: widget.homeViewModel,
-                    groupModel: widget.groupModel,
-                  ),
-                ),
-              );
+        if (widget.homeViewModel.isEditing.value) {
+          setState(() {
+            isChecked = !isChecked;
+          });
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => IndividualGroupScreen(
+                homeViewModel: widget.homeViewModel,
+                groupModel: widget.groupModel,
+              ),
+            ),
+          );
+        }
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -77,13 +76,9 @@ class _GroupsCardState extends State<GroupsCard> {
                 padding: const EdgeInsets.only(
                   left: kDefaultPadding,
                 ),
-                child: Text(
-                  widget.groupModel.title,
-                  style: const TextStyle(
-                    fontSize: kDefaultPadding,
-                    fontFamily: 'Montserrat-Medium',
-                    color: Colors.black,
-                  ),
+                child: StandardTextStyle(
+                  text: widget.groupModel.title,
+                  fontSize: 20,
                 ),
               ),
             ),

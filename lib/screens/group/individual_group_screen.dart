@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/group/components/floating_buttons/edit_group_button.dart';
 import 'package:groupup/screens/group/components/app_bar_individual_group.dart';
@@ -52,7 +51,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
           const SizedBox(
             height: kDefaultPadding,
           ),
-          AddInputGroupButton(homeViewModel: widget.homeViewModel,),
+          AddInputGroupButton(homeViewModel: widget.homeViewModel, groupModel: widget.groupModel,),
         ],
       ),
     );

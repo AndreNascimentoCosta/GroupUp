@@ -3,6 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/styles/button_style.dart';
 import 'package:groupup/screens/profile/components/appbarprofile.dart';
 import 'package:groupup/screens/profile/models/body_button.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 import 'edit_profile_button.dart';
 
@@ -36,13 +37,11 @@ class BodyProfile extends StatelessWidget {
             const SizedBox(
               height: kDefaultPadding,
             ),
-            const Text(
-              'Angus MacGyver',
+            StandardTextStyle(
+              text: 'Angus MacGyver',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'Montserrat-SemiBold',
-                fontSize: 24,
-              ),
+              fontFamily: 'Montserrat-SemiBold',
+              fontSize: 24,
             ),
             const SizedBox(
               height: kDefaultPadding * 1.25,

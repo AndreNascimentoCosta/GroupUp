@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/styles/button_style.dart';
 import 'package:groupup/screens/groups/groups_screen.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
   const AppBarGroupSettings({
@@ -32,12 +32,10 @@ class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const Text(
-                  'Group settings',
-                  style: TextStyle(
-                    fontFamily: 'Montserrat-Bold',
-                    fontSize: 24,
-                  ),
+                child: StandardTextStyle(
+                  text: 'Group settings',
+                  fontFamily: 'Montserrat-Bold',
+                  fontSize: 24,
                 ),
               ),
               Padding(

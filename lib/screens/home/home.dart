@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/styles/button_style.dart';
 import 'package:groupup/screens/home/home_button.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -18,26 +19,21 @@ class Home extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Text(
-                'GroupUp',
+              StandardTextStyle(
+                text: 'GroupUp',
                 textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontFamily: 'Montserrat-Bold',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 36.0,
-                ),
+                fontFamily: 'Montserrat-Bold',
+                fontWeight: FontWeight.bold,
+                fontSize: 36,
               ),
               const SizedBox(
                 height: 10,
               ),
-              const Text(
-                'Create or join a group and start setting your goals!',
+              StandardTextStyle(
+                text: 'Create or join a group and start setting your goals!',
                 textAlign: TextAlign.left,
-                style: TextStyle(
-                  letterSpacing: 1.0,
-                  fontFamily: 'Montserrat-Medium',
-                  fontSize: 18.0,
-                ),
+                letterSpacing: 1,
+                fontSize: 18,
               ),
               const SizedBox(
                 height: 30,
@@ -51,16 +47,16 @@ class Home extends StatelessWidget {
                 height: 40,
               ),
               ButtonCommonStyle(
-                  onPressed: () {},
-                  child: HomeButton(
-                    isGreen: true,
-                  ),
+                onPressed: () {},
+                child: HomeButton(
+                  isGreen: true,
                 ),
+              ),
               const SizedBox(
                 height: 20,
               ),
               ButtonCommonStyle(
-                onPressed: (){},
+                onPressed: () {},
                 child: HomeButton(
                   isGreen: false,
                 ),

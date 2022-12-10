@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/styles/standard_text.dart';
 import '../../../constants.dart';
 
 class BottomNavyBarEdit extends StatefulWidget {
@@ -25,78 +26,60 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
           _selectedIndex = value;
         });
       },
-      items: const [
+      items: [
         BottomNavigationBarItem(
           icon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: Text(
-              'Archive',
-              style: TextStyle(
-                fontFamily: 'Montserrat-Semibold',
-                fontSize: 18,
-                color: kGroupEditColor,
-              ),
+            padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
+            child: StandardTextStyle(
+              text: 'Archive',
+              fontSize: 18,
+              color: kGroupEditColor,
             ),
           ),
           activeIcon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: Text(
-              'Archive',
-              style: TextStyle(
-                fontFamily: 'Montserrat-Semibold',
-                fontSize: 18,
-                color: kPrimaryColor,
-              ),
+            padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
+            child: StandardTextStyle(
+              text: 'Archive',
+              fontSize: 18,
+              color: kPrimaryColor,
             ),
           ),
           label: '',
         ),
         BottomNavigationBarItem(
           icon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: Text(
-              'Pin',
-              style: TextStyle(
-                fontFamily: 'Montserrat-Semibold',
-                fontSize: 18,
-                color: kGroupEditColor,
-              ),
+            padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
+            child: StandardTextStyle(
+              text: 'Pin',
+              fontSize: 18,
+              color: kGroupEditColor,
             ),
           ),
           activeIcon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: Text(
-              'Pin',
-              style: TextStyle(
-                fontFamily: 'Montserrat-Semibold',
-                fontSize: 18,
-                color: kPrimaryColor,
-              ),
+            padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
+            child: StandardTextStyle(
+              text: 'Pin',
+              fontSize: 18,
+              color: kPrimaryColor,
             ),
           ),
           label: '',
         ),
         BottomNavigationBarItem(
           icon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: Text(
-              'Delete',
-              style: TextStyle(
-                fontFamily: 'Montserrat-Semibold',
-                fontSize: 18,
-                color: kGroupEditColor,
-              ),
+            padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
+            child: StandardTextStyle(
+              text: 'Delete',
+              fontSize: 18,
+              color: kGroupEditColor,
             ),
           ),
           activeIcon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: Text(
-              'Delete',
-              style: TextStyle(
-                fontFamily: 'Montserrat-Semibold',
-                fontSize: 18,
-                color: kPrimaryColor,
-              ),
+            padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
+            child: StandardTextStyle(
+              text: 'Delete',
+              fontSize: 18,
+              color: kPrimaryColor,
             ),
           ),
           label: '',

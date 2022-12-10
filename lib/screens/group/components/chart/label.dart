@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 class ChartLabel extends StatelessWidget {
   const ChartLabel({super.key});
@@ -27,13 +28,10 @@ class ChartLabel extends StatelessWidget {
                 const SizedBox(
                   width: 5,
                 ),
-                const Text(
-                  'H. C.',
-                  style: TextStyle(
-                    fontFamily: 'Montserrat-Medium',
-                    fontSize: 14,
-                    color: kPrimaryColor,
-                  ),
+                StandardTextStyle(
+                  text: 'H. C.',
+                  fontSize: 14,
+                  color: kPrimaryColor,
                 ),
               ],
             ),
@@ -55,13 +53,10 @@ class ChartLabel extends StatelessWidget {
                 const SizedBox(
                   width: 5,
                 ),
-                const Text(
-                  'Me',
-                  style: TextStyle(
-                    fontFamily: 'Montserrat-Medium',
-                    fontSize: 14,
-                    color: kSecondaryColor,
-                  ),
+                StandardTextStyle(
+                  text: 'Me',
+                  fontSize: 14,
+                  color: kSecondaryColor,
                 ),
               ],
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
-
+import 'package:groupup/styles/standard_text.dart';
 import '../../../constants.dart';
 
 class StatsGroup extends StatelessWidget {
@@ -71,38 +71,28 @@ class StatsGroup extends StatelessWidget {
                     width: 20,
                     child: Column(
                       children: [
-                        Text(
-                          groupModel.rank,
+                        StandardTextStyle(
+                          text: groupModel.rank,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontFamily: 'Montserrat-Medium',
-                            fontSize: 16,
-                            color: Colors.black
-                          ),
+                          fontSize: 16,
                         ),
                         const SizedBox(
                           height: kDefaultPadding * 0.25,
                         ),
-                        Text(
-                          groupModel.daysGone,
+                        StandardTextStyle(
+                          text: groupModel.daysGone,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontFamily: 'Montserrat-Medium',
-                            fontSize: 16,
-                            color: Colors.red,
-                          ),
+                          fontSize: 16,
+                          color: Colors.red,
                         ),
                         const SizedBox(
                           height: kDefaultPadding * 0.25,
                         ),
-                        Text(
-                          groupModel.daysLeft,
+                        StandardTextStyle(
+                          text: groupModel.daysLeft,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontFamily: 'Montserrat-Medium',
-                            fontSize: 16,
-                            color: kPrimaryColor,
-                          ),
+                          fontSize: 16,
+                          color: kPrimaryColor,
                         ),
                       ],
                     ),

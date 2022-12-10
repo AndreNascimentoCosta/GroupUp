@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/screens/profile/styles/text_body_button.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 class EditProfile extends StatelessWidget {
   EditProfile({super.key});
@@ -19,10 +19,7 @@ class EditProfile extends StatelessWidget {
         borderRadius: BorderRadius.circular(kDefaultPadding * 0.25),
       ),
       alignment: Alignment.center,
-      child: Text(
-        'Edit profile',
-        style: textStyleBodyButton(),
-      ),
-    );
+      child: StandardTextStyle(text: 'Edit profile', fontSize: 18),
+      );
   }
 }

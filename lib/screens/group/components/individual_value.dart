@@ -4,6 +4,7 @@ import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/models/individual_group.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/styles/button_style.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 class IndividualValue extends StatelessWidget {
   const IndividualValue(
@@ -28,12 +29,9 @@ class IndividualValue extends StatelessWidget {
               child: FittedBox(
                 child: Row(
                   children: [
-                    Text(
-                      individualGroup.value,
-                      style: const TextStyle(
-                        fontSize: kDefaultPadding,
-                        fontFamily: 'Montserrat-Medium',
-                      ),
+                    StandardTextStyle(
+                      text: individualGroup.value,
+                      fontSize: 20,
                     ),
                     const SizedBox(
                       width: kDefaultPadding / 2,

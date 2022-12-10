@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
   const AppBarProfile({super.key});
@@ -9,13 +10,10 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
       elevation: 0,
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
-      title: const Text(
-        'angusmac_41',
-        style: TextStyle(
-          fontFamily: 'Montserrat-Bold',
-          fontSize: 20,
-          color: Colors.black,
-        ),
+      title: StandardTextStyle(
+        text: 'angusmac_41',
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 20,
       ),
       centerTitle: false,
       actions: [
@@ -31,6 +29,7 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
       ],
     );
   }
+
   @override
   Size get preferredSize => const Size.fromHeight(55);
 }

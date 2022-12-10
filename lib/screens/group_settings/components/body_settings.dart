@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/screens/group_settings/components/share_button.dart';
-import 'package:groupup/screens/group_settings/components/switch_button.dart';
+import 'package:groupup/screens/group_settings/models/other_setting_option.dart';
+import 'package:groupup/screens/group_settings/models/switch_button.dart';
 import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/screens/group_settings/styles/text_style.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 class BodySettings extends StatelessWidget {
   BodySettings({super.key});
@@ -24,9 +24,9 @@ class BodySettings extends StatelessWidget {
             children: [
               SizedBox(
                 width: 250,
-                child: Text(
-                  'Everyone can edit group picture',
-                  style: textStyleSettings(),
+                child: StandardTextStyle(
+                  text: 'Everyone can edit group picture',
+                  fontSize: 18,
                 ),
               ),
               const Spacer(),
@@ -40,9 +40,9 @@ class BodySettings extends StatelessWidget {
             children: [
               SizedBox(
                 width: 250,
-                child: Text(
-                  'Allow refund request',
-                  style: textStyleSettings(),
+                child: StandardTextStyle(
+                  text: 'Allow refund request',
+                  fontSize: 18,
                 ),
               ),
               const Spacer(),
@@ -56,19 +56,19 @@ class BodySettings extends StatelessWidget {
             children: [
               SizedBox(
                 width: 250,
-                child: Text(
-                  'Number of participants',
-                  style: textStyleSettings(),
+                child: StandardTextStyle(
+                  text: 'Number of participants',
+                  fontSize: 18,
                 ),
               ),
               const Spacer(),
               ButtonCommonStyle(
                 child: SizedBox(
                   width: 60,
-                  child: Text(
-                    '10',
+                  child: StandardTextStyle(
+                    text: '10',
                     textAlign: TextAlign.center,
-                    style: textStyleSettings(),
+                    fontSize: 18,
                   ),
                 ),
                 onPressed: () {},
@@ -82,9 +82,9 @@ class BodySettings extends StatelessWidget {
             children: [
               SizedBox(
                 width: 150,
-                child: Text(
-                  'Group code',
-                  style: textStyleSettings(),
+                child: StandardTextStyle(
+                  text: 'Group code',
+                  fontSize: 18,
                 ),
               ),
               const Spacer(),
@@ -94,37 +94,19 @@ class BodySettings extends StatelessWidget {
           const SizedBox(
             height: 50,
           ),
-          ButtonCommonStyle(
-            onPressed: (){},
-            child: Text(
-              'Request refund',
-              style: textStyleSettings(),
-            ),
-          ),
+          OtherSettingOption(onPressed: () {}, text: 'Request refund'),
           const SizedBox(
             height: 20,
           ),
-          ButtonCommonStyle(
-            onPressed: (){},
-            child: Text(
-              'Exit group',
-              style: textStyleSettings(),
-            ),
-          ),
+          OtherSettingOption(onPressed: () {}, text: 'Exit group'),
           const SizedBox(
             height: 20,
           ),
-          ButtonCommonStyle(
-            onPressed: (){},
-            child: const Text(
-              'Delete group',
-              style: TextStyle(
-                fontFamily: 'Montserrat-Medium',
-                fontSize: 18,
-                color: Colors.red,
-              ),
-            ),
-          ),
+          OtherSettingOption(
+            onPressed: () {},
+            text: 'Delete group',
+            color: Colors.red,
+          )
         ],
       ),
     );

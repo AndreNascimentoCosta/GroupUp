@@ -5,11 +5,14 @@ import 'package:groupup/models/individual_group.dart';
 import 'package:groupup/screens/group/components/chart/label.dart';
 import 'package:groupup/screens/group/components/individual_value.dart';
 import 'package:groupup/models/home_view.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 class IndividualGroupCard extends StatefulWidget {
-  const IndividualGroupCard(
-      {Key? key, required this.individualGroup, required this.homeViewModel,})
-      : super(key: key);
+  const IndividualGroupCard({
+    Key? key,
+    required this.individualGroup,
+    required this.homeViewModel,
+  }) : super(key: key);
 
   final IndividualGroup individualGroup;
   final HomeViewModel homeViewModel;
@@ -52,12 +55,9 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                 padding: const EdgeInsets.only(
                   left: kDefaultPadding / 2,
                 ),
-                child: Text(
-                  widget.individualGroup.rank,
-                  style: const TextStyle(
-                    fontFamily: 'Montserrat-Medium',
-                    fontSize: kDefaultPadding,
-                  ),
+                child: StandardTextStyle(
+                  text: widget.individualGroup.rank,
+                  fontSize: 20,
                 ),
               ),
               const SizedBox(
@@ -72,20 +72,18 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                   padding: const EdgeInsets.only(
                     left: kDefaultPadding,
                   ),
-                  child: Text(
-                    widget.individualGroup.name,
+                  child: StandardTextStyle(
+                    text: widget.individualGroup.name,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: kDefaultPadding,
-                      fontFamily: 'Montserrat-Medium',
-                    ),
+                    fontSize: 20,
                   ),
                 ),
               ),
               IndividualValue(
-                  homeViewModel: widget.homeViewModel,
-                  individualGroup: widget.individualGroup,
-                  dropDownModel: dropDownModel,),
+                homeViewModel: widget.homeViewModel,
+                individualGroup: widget.individualGroup,
+                dropDownModel: dropDownModel,
+              ),
             ],
           ),
           ValueListenableBuilder(

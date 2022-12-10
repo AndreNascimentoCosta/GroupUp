@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/screens/profile/styles/text_body_button.dart';
+import 'package:groupup/styles/standard_text.dart';
 
 class BodyButtonModel extends StatelessWidget {
   BodyButtonModel({required this.text, required this.secondaryText, required this.onPressed});
@@ -16,17 +16,11 @@ class BodyButtonModel extends StatelessWidget {
       onPressed: onPressed,
       child: Row(
                 children: [
-                  Text(
-                    text,
-                    style: textStyleBodyButton()
-                  ),
+                  StandardTextStyle(text: text, fontSize: 18),
                   const Spacer(),
                   Padding(
                     padding: const EdgeInsets.only(right: kDefaultPadding),
-                    child: Text(
-                      secondaryText,
-                      style: textStyleBodyButton()
-                    ),
+                    child: StandardTextStyle(text: secondaryText, fontSize: 18),
                   ),
                   const ImageIcon(
                     AssetImage(

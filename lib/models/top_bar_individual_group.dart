@@ -1,5 +1,6 @@
 class TopBarIndividualGroupModel {
-  final String title, objective, reward, objectiveIcon, rewardIcon, startDate, endDate;
+  final String title, objective, reward, objectiveIcon, rewardIcon;
+  final DateTime startDate, endDate;
   
   TopBarIndividualGroupModel({
     required this.title,
