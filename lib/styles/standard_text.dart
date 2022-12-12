@@ -24,7 +24,7 @@ class StandardTextStyle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      Characters(text).replaceAll(Characters(''), Characters('\u{200B}')).toString(),
       textAlign: textAlign,
       overflow: overflow,
       style: TextStyle(

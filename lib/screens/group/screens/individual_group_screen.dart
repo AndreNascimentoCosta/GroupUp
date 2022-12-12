@@ -9,10 +9,9 @@ import 'package:groupup/screens/group/components/floating_buttons/add_input_grou
 import 'package:groupup/models/home_view.dart';
 
 class IndividualGroupScreen extends StatefulWidget {
-  const IndividualGroupScreen({
-    required this.homeViewModel,
-    required this.groupModel,
-  });
+  const IndividualGroupScreen(
+      {required this.homeViewModel,
+      required this.groupModel,});
 
   final HomeViewModel homeViewModel;
   final GroupModel groupModel;
@@ -34,24 +33,30 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
       body: Column(
         children: [
           TopBarBodyIndividualGroup(
-            topBarIndividualGroup: widget.groupModel.topBarIndividualGroupModel,
+            generalGroupInfoModel: widget.groupModel.generalGroupInfoModel,
           ),
           const SizedBox(
             height: kDefaultPadding,
           ),
           BodyIndividualGroup(
             homeViewModel: widget.homeViewModel,
+            groupModel: widget.groupModel,
           )
         ],
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          EditGroupButton(homeViewModel: widget.homeViewModel,),
+          EditGroupButton(
+            homeViewModel: widget.homeViewModel,
+          ),
           const SizedBox(
             height: kDefaultPadding,
           ),
-          AddInputGroupButton(homeViewModel: widget.homeViewModel, groupModel: widget.groupModel,),
+          AddInputGroupScreenButton(
+            homeViewModel: widget.homeViewModel,
+            groupModel: widget.groupModel,
+          ),
         ],
       ),
     );

@@ -19,7 +19,14 @@ class EditProfile extends StatelessWidget {
         borderRadius: BorderRadius.circular(kDefaultPadding * 0.25),
       ),
       alignment: Alignment.center,
-      child: StandardTextStyle(text: 'Edit profile', fontSize: 18),
-      );
+      child: const Text(
+        'Edit Profile',
+        style: TextStyle(
+          fontFamily: 'Montserrat-SemiBold',
+          fontSize: 18,
+          color: Colors.black
+        ),
+      ),
+    );
   }
 }

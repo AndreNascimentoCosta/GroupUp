@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/models/top_bar_individual_group.dart';
+import 'package:groupup/models/general_group_info.dart';
 import 'package:groupup/styles/standard_text.dart';
 
 class ObjectiveRewardModel extends StatelessWidget {
-  ObjectiveRewardModel({required this.topBarIndividualGroup, required this.icon, required this.text});
+  ObjectiveRewardModel(
+      {required this.generalGroupInfoModel,
+      required this.icon,
+      required this.text});
 
-  final TopBarIndividualGroupModel topBarIndividualGroup;
+  final GeneralGroupInfoModel generalGroupInfoModel;
   String icon;
   String text;
 
@@ -22,7 +25,14 @@ class ObjectiveRewardModel extends StatelessWidget {
         const SizedBox(
           height: kDefaultPadding / 2,
         ),
-        StandardTextStyle(text: text),
+        SizedBox(
+          width: 65,
+          child: StandardTextStyle(
+            text: text,
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ],
     );
   }

@@ -1,8 +1,8 @@
-class TopBarIndividualGroupModel {
+class GeneralGroupInfoModel {
   final String title, objective, reward, objectiveIcon, rewardIcon;
   final DateTime startDate, endDate;
   
-  TopBarIndividualGroupModel({
+  GeneralGroupInfoModel({
     required this.title,
     required this.objective,
     required this.reward,

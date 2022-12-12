@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/screens/edit_profile/screens/edit_profile_screen.dart';
 import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/screens/profile/components/appbarprofile.dart';
+import 'package:groupup/screens/profile/components/app_bar_profile.dart';
 import 'package:groupup/screens/profile/models/body_button.dart';
 import 'package:groupup/styles/standard_text.dart';
 
@@ -47,7 +48,9 @@ class BodyProfile extends StatelessWidget {
               height: kDefaultPadding * 1.25,
             ),
             ButtonCommonStyle(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfileScreen(),));
+              },
               child: EditProfile(),
             ),
             const SizedBox(

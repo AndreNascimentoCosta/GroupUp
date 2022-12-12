@@ -3,9 +3,10 @@ import 'package:groupup/models/home_view.dart';
 import '../../../../constants.dart';
 
 class EditGroupButton extends StatefulWidget {
-  const EditGroupButton({required this.homeViewModel});
+  EditGroupButton({required this.homeViewModel, this.backgroundColor = kPrimaryColor});
 
   final HomeViewModel homeViewModel;
+  Color backgroundColor;
 
   @override
   State<EditGroupButton> createState() => _EditGroupButtonState();
@@ -26,7 +27,7 @@ class _EditGroupButtonState extends State<EditGroupButton> {
                   heroTag: 'btn5',
                   highlightElevation: 0,
                   onPressed: widget.homeViewModel.switchEdit,
-                  backgroundColor: kPrimaryColor,
+                  backgroundColor: widget.backgroundColor,
                   elevation: 0,
                   child: const ImageIcon(
                     AssetImage(
@@ -39,7 +40,7 @@ class _EditGroupButtonState extends State<EditGroupButton> {
               return FloatingActionButton(
                 heroTag: 'btn4',
                 onPressed: widget.homeViewModel.switchEdit,
-                backgroundColor: kPrimaryColor,
+                backgroundColor: widget.backgroundColor,
                 highlightElevation: 0,
                 elevation: 0,
                 child: const ImageIcon(

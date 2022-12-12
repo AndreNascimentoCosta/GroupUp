@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/screens/groups/components/models/icon_bottom_navy_bar.dart';
+import 'package:groupup/screens/groups/models/icon_bottom_navy_bar.dart';
 import '../../../constants.dart';
 
 class BottomNavyBar extends StatefulWidget {

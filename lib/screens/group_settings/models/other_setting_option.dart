@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/screens/group_settings/styles/text_body.dart';
 import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/styles/standard_text.dart';
 
 class OtherSettingOption extends StatelessWidget {
   OtherSettingOption(
@@ -15,7 +15,7 @@ class OtherSettingOption extends StatelessWidget {
     return ButtonCommonStyle(
       onPressed: onPressed,
       color: color,
-      child: StandardTextStyle(text: text, fontSize: 18,)
+      child: TextBodySettings(text: text, color: color,),
     );
   }
 }

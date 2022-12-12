@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/group.dart';
-import 'package:groupup/screens/group/individual_group_screen.dart';
+import 'package:groupup/models/individual_group.dart';
+import 'package:groupup/screens/group/screens/individual_group_screen.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/screens/groups/components/models/checkbox.dart';
+import 'package:groupup/screens/groups/models/checkbox.dart';
 import 'package:groupup/screens/groups/components/stats_group.dart';
 import 'package:groupup/styles/standard_text.dart';
 

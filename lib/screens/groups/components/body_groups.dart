@@ -4,10 +4,10 @@ import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/groups/components/app_bar_groups.dart';
 import 'package:groupup/screens/groups/components/groups_card.dart';
 import 'package:groupup/models/home_view.dart';
-import '../groups_screen.dart';
+import '../screens/groups_screen.dart';
 
 class Body extends StatelessWidget {
-  Body({required this.homeViewModel,});
+  Body({required this.homeViewModel});
 
   final HomeViewModel homeViewModel;
 

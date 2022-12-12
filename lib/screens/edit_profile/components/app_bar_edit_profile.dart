@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/models/home_view.dart';
+import 'package:groupup/screens/edit_profile/screens/edit_profile_screen.dart';
 import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/styles/standard_text.dart';
 
-class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
-  const AppBarGroupSettings({
-    required this.homeViewModel,
-  });
-
-  final HomeViewModel homeViewModel;
+class AppBarEditProfile extends StatelessWidget with PreferredSizeWidget {
+  const AppBarEditProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +28,7 @@ class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
                 ),
                 alignment: AlignmentDirectional.center,
                 child: StandardTextStyle(
-                  text: 'Group settings',
+                  text: 'Edit profile',
                   fontFamily: 'Montserrat-Bold',
                   fontSize: 24,
                 ),
@@ -52,9 +47,7 @@ class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
                     Navigator.pop(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => GroupsScreen(
-                          homeViewModel: homeViewModel,
-                        ),
+                        builder: (context) => const EditProfileScreen(),
                       ),
                     );
                   },

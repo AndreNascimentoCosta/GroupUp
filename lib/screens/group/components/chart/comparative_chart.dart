@@ -1,10 +1,15 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/models/user_data.dart';
 import 'package:groupup/screens/group/components/chart/axis_title.dart';
 
-class Chart extends StatelessWidget {
-  const Chart({super.key});
+class ComparativeChart extends StatelessWidget {
+  const ComparativeChart(
+      {required this.userData1, required this.userData2});
+
+  final List<UserData> userData1;
+  final List<UserData> userData2;
 
   @override
   Widget build(BuildContext context) {
@@ -29,34 +34,31 @@ class Chart extends StatelessWidget {
         ),
         lineBarsData: <LineChartBarData>[
           LineChartBarData(
-            spots: const [
-              FlSpot(0, 0),
-              FlSpot(1, 3),
-              FlSpot(2, 6),
-              FlSpot(3, 2),
-              FlSpot(4, 8),
-              FlSpot(5, 12),
-              FlSpot(6, 5),
-            ],
-            color: kSecondaryColor,
-            barWidth: 1,
-            dotData: FlDotData(getDotPainter: (p0, p1, p2, p3) {
-              return FlDotCirclePainter(
-                color: Colors.white,
-                strokeColor: kSecondaryColor,
-              );
-            },)
-          ),
+              spots: List.generate(7, (index) {
+                var data = 0.0;
+                if (userData1.length > index) {
+                  data = userData1[index].value;
+                }
+                return FlSpot(index.toDouble(), data);
+              }),
+              color: kSecondaryColor,
+              barWidth: 1,
+              dotData: FlDotData(
+                getDotPainter: (p0, p1, p2, p3) {
+                  return FlDotCirclePainter(
+                    color: Colors.white,
+                    strokeColor: kSecondaryColor,
+                  );
+                },
+              )),
           LineChartBarData(
-              spots: const [
-                FlSpot(0, 0),
-                FlSpot(1, 5),
-                FlSpot(2, 4),
-                FlSpot(3, 2),
-                FlSpot(4, 12),
-                FlSpot(5, 9),
-                FlSpot(6, 3),
-              ],
+              spots: List.generate(7, (index) {
+                var data = 0.0;
+                if (userData2.length > index) {
+                  data = userData2[index].value;
+                }
+                return FlSpot(index.toDouble(), data);
+              }),
               color: kPrimaryColor,
               barWidth: 1,
               dotData: FlDotData(

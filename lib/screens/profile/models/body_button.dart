@@ -4,7 +4,10 @@ import 'package:groupup/styles/button_style.dart';
 import 'package:groupup/styles/standard_text.dart';
 
 class BodyButtonModel extends StatelessWidget {
-  BodyButtonModel({required this.text, required this.secondaryText, required this.onPressed});
+  BodyButtonModel(
+      {required this.text,
+      required this.secondaryText,
+      required this.onPressed});
 
   String text;
   String secondaryText;
@@ -15,22 +18,30 @@ class BodyButtonModel extends StatelessWidget {
     return ButtonCommonStyle(
       onPressed: onPressed,
       child: Row(
-                children: [
-                  StandardTextStyle(text: text, fontSize: 18),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(right: kDefaultPadding),
-                    child: StandardTextStyle(text: secondaryText, fontSize: 18),
-                  ),
-                  const ImageIcon(
-                    AssetImage(
-                      'assets/icons/arrow_right.png',
-                    ),
-                    size: kDefaultPadding,
-                    color: Color(0xFFC3C3C3),
-                  ),
-                ],
+        children: [
+          StandardTextStyle(text: text, fontSize: 18),
+          const Spacer(),
+          Padding(
+            padding: const EdgeInsets.only(right: kDefaultPadding),
+            child: Text(
+              secondaryText,
+              style: const TextStyle(
+                fontFamily: 'Montserrat-Medium',
+                fontSize: 18,
+                color: Colors.black,
               ),
+            ),
+            // StandardTextStyle(text: secondaryText, fontSize: 18),
+          ),
+          const ImageIcon(
+            AssetImage(
+              'assets/icons/arrow_right.png',
+            ),
+            size: kDefaultPadding,
+            color: Color(0xFFC3C3C3),
+          ),
+        ],
+      ),
     );
   }
 }

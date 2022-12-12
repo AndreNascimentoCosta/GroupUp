@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/add_input/add_input_individual_group.dart';
+import 'package:groupup/screens/add_input/models/calendar.dart';
+import 'package:groupup/screens/add_input/models/add_input_group_button.dart';
 import 'package:groupup/screens/group/components/app_bar_individual_group.dart';
 import 'package:groupup/screens/group/components/top_bar_body_individual_group.dart';
 
@@ -27,16 +28,15 @@ class _AddInputScreenState extends State<AddInputScreen> {
       ),
       body: Column(
         children: [
-          TopBarBodyIndividualGroup(
-            topBarIndividualGroup: widget.groupModel.topBarIndividualGroupModel,
-          ),
-          const SizedBox(
-            height: kDefaultPadding,
-          ),
           Calendar(
             groupModel: widget.groupModel,
+            individualGroup: widget.groupModel.individualGroup.first,
           )
         ],
+      ),
+      floatingActionButton: AddInputGroupButton(
+        homeViewModel: widget.homeViewModel,
+        groupModel: widget.groupModel,
       ),
     );
   }

@@ -3,8 +3,8 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/screens/group_settings/components/share_button.dart';
 import 'package:groupup/screens/group_settings/models/other_setting_option.dart';
 import 'package:groupup/screens/group_settings/models/switch_button.dart';
+import 'package:groupup/screens/group_settings/styles/text_body.dart';
 import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/styles/standard_text.dart';
 
 class BodySettings extends StatelessWidget {
   BodySettings({super.key});
@@ -24,10 +24,7 @@ class BodySettings extends StatelessWidget {
             children: [
               SizedBox(
                 width: 250,
-                child: StandardTextStyle(
-                  text: 'Everyone can edit group picture',
-                  fontSize: 18,
-                ),
+                child: TextBodySettings(text: 'Everyone can edit group picture'),
               ),
               const Spacer(),
               const SwitchButton(),
@@ -40,10 +37,7 @@ class BodySettings extends StatelessWidget {
             children: [
               SizedBox(
                 width: 250,
-                child: StandardTextStyle(
-                  text: 'Allow refund request',
-                  fontSize: 18,
-                ),
+                child: TextBodySettings(text: 'Allow refund request'),
               ),
               const Spacer(),
               const SwitchButton(),
@@ -56,20 +50,13 @@ class BodySettings extends StatelessWidget {
             children: [
               SizedBox(
                 width: 250,
-                child: StandardTextStyle(
-                  text: 'Number of participants',
-                  fontSize: 18,
-                ),
+                child: TextBodySettings(text: 'Number of participants'),
               ),
               const Spacer(),
               ButtonCommonStyle(
                 child: SizedBox(
                   width: 60,
-                  child: StandardTextStyle(
-                    text: '10',
-                    textAlign: TextAlign.center,
-                    fontSize: 18,
-                  ),
+                  child: TextBodySettings(text: '10', textAlign: TextAlign.center),
                 ),
                 onPressed: () {},
               ),
@@ -82,13 +69,10 @@ class BodySettings extends StatelessWidget {
             children: [
               SizedBox(
                 width: 150,
-                child: StandardTextStyle(
-                  text: 'Group code',
-                  fontSize: 18,
-                ),
+                child: TextBodySettings(text: 'Group code'),
               ),
               const Spacer(),
-              const ShareButton(),
+              // const ShareButton(),
             ],
           ),
           const SizedBox(

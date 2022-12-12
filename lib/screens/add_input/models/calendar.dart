@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/group.dart';
+import 'package:groupup/models/individual_group.dart';
 import 'package:groupup/screens/add_input/models/back.dart';
+import 'package:groupup/screens/add_input/models/bottom_calendar.dart';
 import 'package:groupup/screens/add_input/models/box_decoration.dart';
 import 'package:groupup/screens/add_input/models/forth.dart';
 import 'package:groupup/screens/add_input/styles/text.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class Calendar extends StatefulWidget {
-  const Calendar({required this.groupModel});
+  const Calendar({required this.groupModel, required this.individualGroup});
 
   final GroupModel groupModel;
+  final IndividualGroup individualGroup;
 
   @override
   State<Calendar> createState() => _CalendarState();
@@ -22,20 +25,25 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding, vertical: kDefaultPadding),
+      padding: const EdgeInsets.symmetric(
+          horizontal: kDefaultPadding, vertical: kDefaultPadding / 2),
       child: Card(
-        elevation: 5,
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+        elevation: 2,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10))),
         color: Colors.white,
         child: Column(
           children: [
             TableCalendar(
               locale: 'en_Us',
-              rowHeight: 50,
-              rangeStartDay: widget.groupModel.topBarIndividualGroupModel.startDate,
-              rangeEndDay: widget.groupModel.topBarIndividualGroupModel.endDate,
+              rowHeight: 40,
+              rangeStartDay:
+                  widget.groupModel.generalGroupInfoModel.startDate,
+              rangeEndDay:
+                  widget.groupModel.generalGroupInfoModel.endDate,
               calendarStyle: CalendarStyle(
-                tablePadding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                tablePadding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 defaultTextStyle: textStyle(),
                 weekendTextStyle: textStyle(),
                 holidayTextStyle: textStyle(),
@@ -64,12 +72,16 @@ class _CalendarState extends State<Calendar> {
                 leftChevronIcon: back(),
                 rightChevronIcon: forth(),
               ),
-              availableGestures: AvailableGestures.all,
               focusedDay: today,
               firstDay: DateTime.utc(2022),
               lastDay: DateTime.utc(2050),
             ),
-            SizedBox(height: 50,)
+            const SizedBox(
+              height: 10,
+            ),
+            BottomCalendar(
+              individualGroup: widget.individualGroup,
+            ),
           ],
         ),
       ),

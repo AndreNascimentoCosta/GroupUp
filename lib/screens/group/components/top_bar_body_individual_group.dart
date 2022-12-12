@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/models/top_bar_individual_group.dart';
-import 'package:groupup/screens/group/components/models/objective_reward.dart';
-import 'package:groupup/screens/group/components/models/start_end.dart';
-import 'package:groupup/screens/group/components/models/start_end_date.dart';
+import 'package:groupup/models/general_group_info.dart';
+import 'package:groupup/screens/group/models/objective_reward.dart';
+import 'package:groupup/screens/group/models/start_end.dart';
+import 'package:groupup/screens/group/models/start_end_date.dart';
 import 'package:groupup/styles/standard_text.dart';
 
 class TopBarBodyIndividualGroup extends StatelessWidget {
-  const TopBarBodyIndividualGroup({required this.topBarIndividualGroup});
+  const TopBarBodyIndividualGroup({required this.generalGroupInfoModel});
 
-  final TopBarIndividualGroupModel topBarIndividualGroup;
+  final GeneralGroupInfoModel generalGroupInfoModel;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class TopBarBodyIndividualGroup extends StatelessWidget {
               bottom: kDefaultPadding,
             ),
             child: StandardTextStyle(
-              text: 'RunForestRun',
+              text: generalGroupInfoModel.title,
               fontFamily: 'Montserrat-Bold',
               fontSize: 34,
             ),
@@ -36,9 +36,9 @@ class TopBarBodyIndividualGroup extends StatelessWidget {
                   width: kDefaultPadding * 1.5,
                 ),
                 ObjectiveRewardModel(
-                  topBarIndividualGroup: topBarIndividualGroup,
-                  icon: topBarIndividualGroup.objectiveIcon,
-                  text: topBarIndividualGroup.objective,
+                  generalGroupInfoModel: generalGroupInfoModel,
+                  icon: generalGroupInfoModel.objectiveIcon,
+                  text: generalGroupInfoModel.objective,
                 ),
                 const VerticalDivider(
                   width: kDefaultPadding * 2.25,
@@ -46,9 +46,9 @@ class TopBarBodyIndividualGroup extends StatelessWidget {
                   color: kSecondaryColor,
                 ),
                 ObjectiveRewardModel(
-                  topBarIndividualGroup: topBarIndividualGroup,
-                  icon: topBarIndividualGroup.rewardIcon,
-                  text: topBarIndividualGroup.reward,
+                  generalGroupInfoModel: generalGroupInfoModel,
+                  icon: generalGroupInfoModel.rewardIcon,
+                  text: generalGroupInfoModel.reward,
                 ),
                 const VerticalDivider(
                   width: kDefaultPadding * 2.25,
@@ -59,7 +59,7 @@ class TopBarBodyIndividualGroup extends StatelessWidget {
                 const SizedBox(
                   width: kDefaultPadding / 1.5,
                 ),
-                StartEndDateModel(topBarIndividualGroup: topBarIndividualGroup,),
+                StartEndDateModel(generalGroupInfoModel: generalGroupInfoModel,),
                 const SizedBox(
                   width: kDefaultPadding * 1.5,
                 ),

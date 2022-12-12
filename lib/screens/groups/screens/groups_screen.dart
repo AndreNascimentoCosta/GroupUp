@@ -3,11 +3,13 @@ import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar_edit.dart';
 import 'package:groupup/models/home_view.dart';
-import '../profile/components/body_profile.dart';
-import 'components/body_groups.dart';
+import '../../profile/components/body_profile.dart';
+import '../components/body_groups.dart';
 
 class GroupsScreen extends StatefulWidget {
-  GroupsScreen({required this.homeViewModel,});
+  GroupsScreen({
+    required this.homeViewModel,
+  });
 
   int selectedIndex = 0;
   final HomeViewModel homeViewModel;
@@ -28,7 +30,9 @@ class _GroupsScreenState extends State<GroupsScreen> {
       body: PageView(
         controller: pageController,
         children: [
-          Body(homeViewModel: homeViewModel,),
+          Body(
+            homeViewModel: homeViewModel,
+          ),
           const BodyProfile(),
         ],
       ),

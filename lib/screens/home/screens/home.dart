@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/screens/home/home_button.dart';
+import 'package:groupup/screens/home/components/home_button.dart';
 import 'package:groupup/styles/standard_text.dart';
 
 class Home extends StatelessWidget {

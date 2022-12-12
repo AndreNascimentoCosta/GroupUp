@@ -8,6 +8,7 @@ class StartEndModel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         StandardTextStyle(text: 'Start'),
         const SizedBox(
