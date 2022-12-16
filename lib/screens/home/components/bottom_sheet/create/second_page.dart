@@ -9,8 +9,8 @@ import 'package:groupup/styles/switch_button.dart';
 import 'package:groupup/screens/home/models/date_switch.dart';
 import 'package:groupup/screens/home/models/text_field.dart';
 
-class SecondPageJoin extends StatefulWidget {
-  const SecondPageJoin({
+class SecondPageCreate extends StatefulWidget {
+  const SecondPageCreate({
     required this.controller,
     required this.count,
   });
@@ -19,10 +19,10 @@ class SecondPageJoin extends StatefulWidget {
   final int count;
 
   @override
-  State<SecondPageJoin> createState() => _SecondPageJoinState();
+  State<SecondPageCreate> createState() => _SecondPageCreateState();
 }
 
-class _SecondPageJoinState extends State<SecondPageJoin> {
+class _SecondPageCreateState extends State<SecondPageCreate> {
   final SwitchModel switchModel = SwitchModel();
   @override
   Widget build(BuildContext context) {

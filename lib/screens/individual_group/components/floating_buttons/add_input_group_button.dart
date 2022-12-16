@@ -4,8 +4,8 @@ import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/add_input/screens/add_input_screen.dart';
 import '../../../../constants.dart';
 
-class AddInputGroupScreenButton extends StatefulWidget {
-  const AddInputGroupScreenButton({
+class CalendarScreenButton extends StatefulWidget {
+  const CalendarScreenButton({
     required this.homeViewModel,
     required this.groupModel,
     this.backgroundColor = kPrimaryColor,
@@ -18,10 +18,10 @@ class AddInputGroupScreenButton extends StatefulWidget {
   final String icon;
 
   @override
-  State<AddInputGroupScreenButton> createState() => _AddInputGroupScreenButtonState();
+  State<CalendarScreenButton> createState() => _CalendarScreenButtonState();
 }
 
-class _AddInputGroupScreenButtonState extends State<AddInputGroupScreenButton> {
+class _CalendarScreenButtonState extends State<CalendarScreenButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

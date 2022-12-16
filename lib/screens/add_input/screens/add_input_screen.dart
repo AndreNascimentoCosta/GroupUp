@@ -3,7 +3,7 @@ import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/add_input/models/calendar.dart';
 import 'package:groupup/screens/add_input/models/add_input_group_button.dart';
-import 'package:groupup/screens/group/components/app_bar_individual_group.dart';
+import 'package:groupup/screens/individual_group/components/app_bar_individual_group.dart';
 
 class AddInputScreen extends StatefulWidget {
   const AddInputScreen({required this.groupModel, required this.homeViewModel});

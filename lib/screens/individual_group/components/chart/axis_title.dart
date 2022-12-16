@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/screens/group/components/chart/case.dart';
+import 'package:groupup/screens/individual_group/components/chart/case.dart';
 import 'package:groupup/styles/text.dart';
 
 class LineTitles {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/groups/components/app_bar.dart';
-import 'package:groupup/screens/groups/components/card.dart';
+import 'package:groupup/screens/groups/components/group_card.dart';
 import 'package:groupup/models/home_view.dart';
 import '../screens/groups_screen.dart';
 

@@ -23,7 +23,7 @@ class _BottomNavyBarState extends State<BottomNavyBar> {
       unselectedItemColor: kSecondaryColor,
       onTap: (value) => setState(() {
         widget.pageController.jumpToPage(value);
-      }),
+      },),
       items: const [
         BottomNavigationBarItem(
           icon: Padding(

@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/group_settings/components/share_button.dart';
-import 'package:groupup/screens/group_settings/models/other_setting_option.dart';
+import 'package:groupup/models/group.dart';
+import 'package:groupup/screens/individual_group_settings/components/number_participants.dart';
+import 'package:groupup/screens/individual_group_settings/components/share_button.dart';
+import 'package:groupup/screens/individual_group_settings/models/other_setting_option.dart';
 import 'package:groupup/styles/switch_button.dart';
 import 'package:groupup/styles/button.dart';
 import 'package:groupup/styles/text.dart';
+import 'package:share_plus/share_plus.dart';
 
 class BodySettings extends StatelessWidget {
-  const BodySettings({super.key});
+  const BodySettings({required this.groupModel});
+
+  final GroupModel groupModel;
 
   @override
   Widget build(BuildContext context) {
@@ -50,20 +55,45 @@ class BodySettings extends StatelessWidget {
               const SizedBox(
                 width: 250,
                 child: StandardTextStyle(
-                    text: 'Number of participants', fontSize: TextSize.lBody),
+                    text: 'Maximum number of participants', fontSize: TextSize.lBody),
               ),
               const Spacer(),
               ButtonCommonStyle(
-                child: const SizedBox(
+                child: SizedBox(
                   width: 60,
                   child: StandardTextStyle(
-                      text: '10', fontSize: 18, textAlign: TextAlign.center),
+                      text: (groupModel.userInformation.length + 1).toString(), fontSize: 18, textAlign: TextAlign.center),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(Insets.m),
+                        ),
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.of(context).viewInsets,
+                            child: Wrap(
+                              children: <Widget>[
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    SizedBox(
+                                      height: 200,
+                                      child: MaxNumberParticipants(groupModel: groupModel,),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          );
+                        });
+                },
               ),
             ],
           ),
-          const SizedBox(height: 300),
+          const SizedBox(height: 290),
           Row(
             children: [
               const SizedBox(
@@ -73,7 +103,9 @@ class BodySettings extends StatelessWidget {
               ),
               const Spacer(),
               ShareButton(
-                onPressed: () {},
+                onPressed: () async {
+                  await Share.share('846264');
+                },
               ),
             ],
           ),

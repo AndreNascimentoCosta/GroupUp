@@ -3,22 +3,21 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/first_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/second_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/third_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/join/first_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/join/second_page.dart';
 import 'package:groupup/screens/home/models/next_button.dart';
 import 'package:groupup/styles/button.dart';
 import 'package:groupup/styles/text.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class CreatePageView extends StatefulWidget {
-  const CreatePageView({super.key});
+class JoinPageView extends StatefulWidget {
+  const JoinPageView({super.key});
 
   @override
-  State<CreatePageView> createState() => _CreatePageViewState();
+  State<JoinPageView> createState() => _JoinPageViewState();
 }
 
-class _CreatePageViewState extends State<CreatePageView> {
+class _JoinPageViewState extends State<JoinPageView> {
   int pageIndex = 0;
   final controller = PageController(initialPage: 0);
   final itemCount = 3;
@@ -51,26 +50,12 @@ class _CreatePageViewState extends State<CreatePageView> {
                       : null,
                 ),
               ),
-              const StandardTextStyle(
-                text: 'Create a group',
+              StandardTextStyle(
+                text: pageIndex == 0 ?
+                'Join a group' : 'Sign in or Sign up',
                 fontFamily: 'Montserrat-SemiBold',
                 fontSize: 28,
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: kDefaultPadding),
-                child: Align(
-                    alignment: AlignmentDirectional.centerEnd,
-                    child: SmoothPageIndicator(
-                        controller: controller,
-                        count: itemCount,
-                        effect: const WormEffect(
-                          dotHeight: 10,
-                          dotWidth: 10,
-                          dotColor: Color(0xFFD9D9D9),
-                          activeDotColor: Color(0xFF868686),
-                          type: WormType.thin,
-                        ))),
-              )
             ],
           ),
         ),
@@ -83,8 +68,8 @@ class _CreatePageViewState extends State<CreatePageView> {
               });
             },
             children: [
-              FirsPageCreate(controller: controller, count: itemCount),
-              SecondPageCreate(controller: controller, count: itemCount),
+              FirsPageJoin(controller: controller, count: itemCount),
+              SecondPageJoin(controller: controller, count: itemCount),
               const ThirdPageCreate(),
             ],
           ),

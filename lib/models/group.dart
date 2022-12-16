@@ -41,6 +41,7 @@ List groupsData = [
       rewardIcon: "assets/icons/reward.png",
       startDate: DateTime(2022, 10, 01),
       endDate: DateTime(2022, 12, 31),
+      groupCode: '5SYU65',
     ),
     meUserInformation:
       UserInformation(
@@ -424,6 +425,7 @@ List groupsData = [
       rewardIcon: "assets/icons/reward.png",
       startDate: DateTime(2022, 10, 01),
       endDate: DateTime(2022, 12, 31),
+      groupCode: '5SYU65',
     ),
     meUserInformation:
       UserInformation(
@@ -807,6 +809,7 @@ List groupsData = [
       rewardIcon: "assets/icons/reward.png",
       startDate: DateTime(2022, 09, 20),
       endDate: DateTime(2022, 12, 31),
+      groupCode: '5SYU65',
     ),
     meUserInformation:
       UserInformation(
@@ -1187,6 +1190,7 @@ List groupsData = [
       rewardIcon: "assets/icons/reward.png",
       startDate: DateTime(2022, 10, 15),
       endDate: DateTime(2022, 12, 31),
+      groupCode: '5SYU65',
     ),
     meUserInformation:
       UserInformation(
@@ -1567,6 +1571,7 @@ List groupsData = [
       rewardIcon: "assets/icons/reward.png",
       startDate: DateTime(2022, 10, 01),
       endDate: DateTime(2022, 12, 31),
+      groupCode: '5SYU65',
     ),
     meUserInformation: 
       UserInformation(
@@ -1947,6 +1952,7 @@ List groupsData = [
       rewardIcon: "assets/icons/reward.png",
       startDate: DateTime(2022, 09, 15),
       endDate: DateTime(2022, 12, 31),
+      groupCode: '5SYU65',
     ),
     meUserInformation: 
       UserInformation(
@@ -2327,6 +2333,7 @@ List groupsData = [
       rewardIcon: "assets/icons/reward.png",
       startDate: DateTime(2022, 09, 20),
       endDate: DateTime(2022, 12, 31),
+      groupCode: '5SYU65',
     ),
     meUserInformation: 
       UserInformation(
@@ -2707,6 +2714,7 @@ List groupsData = [
       rewardIcon: "assets/icons/reward.png",
       startDate: DateTime(2022, 10, 15),
       endDate: DateTime(2022, 12, 31),
+      groupCode: '5SYU65',
     ),
     meUserInformation: 
       UserInformation(

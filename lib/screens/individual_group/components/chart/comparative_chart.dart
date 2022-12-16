@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/user_input_data.dart';
-import 'package:groupup/screens/group/components/chart/axis_title.dart';
+import 'package:groupup/screens/individual_group/components/chart/axis_title.dart';
 
 class ComparativeChart extends StatelessWidget {
   const ComparativeChart(

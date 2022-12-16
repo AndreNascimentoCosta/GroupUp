@@ -43,7 +43,6 @@ class _AppBarGroupState extends State<AppBarGroup> {
           padding: const EdgeInsets.only(
               bottom: kDefaultPadding / 2, right: kDefaultPadding / 1.25),
           child: Align(
-            widthFactor: 1.5,
             alignment: Alignment.bottomRight,
             child: Row(
               children: [
@@ -55,16 +54,20 @@ class _AppBarGroupState extends State<AppBarGroup> {
                         child: ButtonCommonStyle(
                           onPressed: () {
                             setState(() {
-                              if(selectItems.length == groupsData.length) {
-                              selectItems.clear();
-                            } else {
-                              for(int index = 0; index < groupsData.length; index++) {
-                                selectItems.add(groupsData[index]);
+                              if (selectItems.length == groupsData.length) {
+                                selectItems.clear();
+                              } else {
+                                for (int index = 0;
+                                    index < groupsData.length;
+                                    index++) {
+                                  selectItems.add(groupsData[index]);
+                                }
                               }
-                            }
                             });
                           },
-                          padding: const EdgeInsets.only(bottom: kDefaultPadding / 2, right: kDefaultPadding * 4),
+                          padding: const EdgeInsets.only(
+                              bottom: kDefaultPadding / 2,
+                              right: kDefaultPadding * 4),
                           child: const StandardTextStyle(
                             text: 'Select all',
                             fontSize: TextSize.lBody,
@@ -77,11 +80,21 @@ class _AppBarGroupState extends State<AppBarGroup> {
                   onPressed: () {
                     widget.homeViewModel.switchEdit();
                   },
-                  padding: const EdgeInsets.only(bottom: kDefaultPadding / 2, right: kDefaultPadding * 4),
-                  child: const StandardTextStyle(
-                    text: 'Edit',
-                    fontSize: TextSize.lBody,
-                  ),
+                  padding: const EdgeInsets.only(
+                      bottom: kDefaultPadding / 2, right: kDefaultPadding * 4),
+                  child: ValueListenableBuilder(
+                      valueListenable: widget.homeViewModel.isEditing,
+                      builder: ((context, value, child) {
+                        return !value
+                            ? const StandardTextStyle(
+                                text: 'Edit',
+                                fontSize: TextSize.lBody,
+                              )
+                            : const StandardTextStyle(
+                                text: 'Done',
+                                fontSize: TextSize.lBody,
+                              );
+                      })),
                 ),
               ],
             ),

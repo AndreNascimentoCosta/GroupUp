@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/group.dart';
-import 'package:groupup/screens/group/components/individual_group_card.dart';
+import 'package:groupup/screens/individual_group/components/individual_group_card.dart';
 import 'package:groupup/models/home_view.dart';
 
 class BodyIndividualGroup extends StatelessWidget {

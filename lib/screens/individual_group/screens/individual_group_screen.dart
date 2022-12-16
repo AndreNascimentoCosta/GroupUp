@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/group.dart';
-import 'package:groupup/screens/group/components/floating_buttons/edit_group_button.dart';
-import 'package:groupup/screens/group/components/app_bar_individual_group.dart';
-import 'package:groupup/screens/group/components/body_individual_group.dart';
-import 'package:groupup/screens/group/components/top_bar_body_individual_group.dart';
-import 'package:groupup/screens/group/components/floating_buttons/add_input_group_button.dart';
+import 'package:groupup/screens/individual_group/components/floating_buttons/edit_group_button.dart';
+import 'package:groupup/screens/individual_group/components/app_bar_individual_group.dart';
+import 'package:groupup/screens/individual_group/components/body_individual_group.dart';
+import 'package:groupup/screens/individual_group/components/top_bar_body_individual_group.dart';
+import 'package:groupup/screens/individual_group/components/floating_buttons/add_input_group_button.dart';
 import 'package:groupup/models/home_view.dart';
 
 class IndividualGroupScreen extends StatefulWidget {
@@ -50,7 +50,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
             homeViewModel: widget.homeViewModel,
           ),
           const SizedBox(height: kDefaultPadding),
-          AddInputGroupScreenButton(
+          CalendarScreenButton(
             homeViewModel: widget.homeViewModel,
             groupModel: widget.groupModel,
           ),

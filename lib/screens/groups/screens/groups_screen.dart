@@ -28,6 +28,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
       backgroundColor: Colors.white,
       // appBar: AppBarGroup(homeViewModel: homeViewModel),
       body: PageView(
+        scrollDirection: Axis.vertical,
         controller: pageController,
         children: [
           Body(

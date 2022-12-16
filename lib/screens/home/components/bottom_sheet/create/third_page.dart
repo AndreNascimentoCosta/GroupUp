@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/group_settings/components/share_button.dart';
+import 'package:groupup/screens/individual_group_settings/components/share_button.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:share_plus/share_plus.dart';
 
-class ThirdPageJoin extends StatelessWidget {
-  const ThirdPageJoin({super.key});
+class ThirdPageCreate extends StatelessWidget {
+  const ThirdPageCreate({super.key});
 
   @override
   Widget build(BuildContext context) {

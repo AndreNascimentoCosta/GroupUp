@@ -1,6 +1,7 @@
 class GeneralGroupInfoModel {
   final String title, objective, reward, objectiveIcon, rewardIcon;
-  final DateTime startDate, endDate;
+  DateTime startDate, endDate;
+  final String groupCode;
   
   GeneralGroupInfoModel({
     required this.title,
@@ -10,5 +11,6 @@ class GeneralGroupInfoModel {
     required this.rewardIcon,
     required this.startDate,
     required this.endDate,
+    required this.groupCode,
   });
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/home_button.dart';
 import 'package:groupup/screens/home/models/create_group_button.dart';
-import 'package:groupup/styles/button.dart';
+import 'package:groupup/screens/home/models/join_group_button.dart';
 import 'package:groupup/styles/text.dart';
 
 class Home extends StatelessWidget {
@@ -42,12 +41,7 @@ class Home extends StatelessWidget {
                   fit: BoxFit.fitHeight,
                 ),
                 const SizedBox(height: Insets.l * 2),
-                ButtonCommonStyle(
-                  onPressed: () {},
-                  child: const HomeButton(
-                    isGreen: true,
-                  ),
-                ),
+                const JoinGroupButton(),
                 const SizedBox(height: Insets.l),
                 const CreateGroupButton(),
               ],

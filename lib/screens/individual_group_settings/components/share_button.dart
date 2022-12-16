@@ -22,8 +22,9 @@ class ShareButton extends StatelessWidget {
           color: Colors.white,
           boxShadow: const [
             BoxShadow(
-              spreadRadius: 1,
-              blurRadius: 2,
+              spreadRadius: 0.25,
+              blurRadius: 1,
+              offset: Offset(0, 1.25),
               color: kSecondaryColor
             )
           ]

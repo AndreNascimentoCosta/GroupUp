@@ -4,17 +4,17 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/models/dropdown.dart';
 import 'package:groupup/screens/home/models/text_field.dart';
 
-class FirsPageJoin extends StatefulWidget {
-  const FirsPageJoin({required this.controller, required this.count});
+class FirsPageCreate extends StatefulWidget {
+  const FirsPageCreate({required this.controller, required this.count});
 
   final PageController controller;
   final int count;
 
   @override
-  State<FirsPageJoin> createState() => _FirsPageJoinState();
+  State<FirsPageCreate> createState() => _FirsPageCreateState();
 }
 
-class _FirsPageJoinState extends State<FirsPageJoin> {
+class _FirsPageCreateState extends State<FirsPageCreate> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

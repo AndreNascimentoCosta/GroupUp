@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
 import '../../../../constants.dart';
@@ -34,18 +35,32 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
               heroTag: 'btn3',
               highlightElevation: 0,
               onPressed: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => AddInputScreen(
-                //         groupModel: widget.groupModel,
-                //         homeViewModel: widget.homeViewModel,
-                //       ),
-                //     ));
+                showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(Insets.m),
+                        ),
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.of(context).viewInsets,
+                            child: Wrap(
+                              children: <Widget>[
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: const [
+                                    SizedBox(
+                                      height: 200,
+                                      child: SizedBox(),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          );
+                        });
               },
-              backgroundColor: widget.homeViewModel.isEditing.value
-                  ? const Color(0x5946E297)
-                  : widget.backgroundColor,
+              backgroundColor: widget.backgroundColor,
               elevation: 0,
               child: ImageIcon(
                 AssetImage(
