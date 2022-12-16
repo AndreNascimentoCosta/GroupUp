@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/dropdown.dart';
-import 'package:groupup/models/individual_group.dart';
+import 'package:groupup/models/user_information.dart';
 import 'package:groupup/screens/group/components/chart/comparative_chart.dart';
 import 'package:groupup/screens/group/components/chart/label.dart';
 import 'package:groupup/screens/group/components/individual_value.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/styles/standard_text.dart';
+import 'package:groupup/styles/button.dart';
+import 'package:groupup/styles/ellipsis_text.dart';
+import 'package:groupup/styles/text.dart';
 
 class IndividualGroupCard extends StatefulWidget {
   const IndividualGroupCard({
@@ -17,8 +18,8 @@ class IndividualGroupCard extends StatefulWidget {
     required this.homeViewModel,
   }) : super(key: key);
 
-  final IndividualGroup individualGroup;
-  final IndividualGroup meIndividualGroup;
+  final UserInformation individualGroup;
+  final UserInformation meIndividualGroup;
   final HomeViewModel homeViewModel;
 
   @override
@@ -62,32 +63,25 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                     left: kDefaultPadding / 2,
                   ),
                   child: StandardTextStyle(
-                    text: widget.individualGroup.rank,
-                    fontSize: 20,
-                  ),
+                      text: widget.individualGroup.rank, fontSize: 20),
                 ),
-                const SizedBox(
-                  width: kDefaultPadding,
-                ),
+                const SizedBox(width: kDefaultPadding),
                 CircleAvatar(
-                  radius: 25,
-                  backgroundImage: AssetImage(widget.individualGroup.image),
-                ),
+                    radius: 25,
+                    backgroundImage: AssetImage(widget.individualGroup.image)),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(
                       left: kDefaultPadding,
                     ),
-                    child: StandardTextStyle(
+                    child: StandardEllipsisTextStyle(
                       text: widget.individualGroup.name,
                       overflow: TextOverflow.ellipsis,
                       fontSize: 20,
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: kDefaultPadding,
-                ),
+                const SizedBox(width: kDefaultPadding),
                 IndividualValue(
                   homeViewModel: widget.homeViewModel,
                   individualGroup: widget.individualGroup,
@@ -129,8 +123,8 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                         SizedBox(
                           width: 250,
                           child: ComparativeChart(
-                            userData1: widget.meIndividualGroup.userData,
-                            userData2: widget.individualGroup.userData,
+                            userData1: widget.meIndividualGroup.userInputData,
+                            userData2: widget.individualGroup.userInputData,
                           ),
                         ),
                         const SizedBox(

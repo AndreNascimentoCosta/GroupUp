@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
-import 'package:groupup/models/individual_group.dart';
+import 'package:groupup/models/user_information.dart';
 import 'package:groupup/screens/add_input/models/back.dart';
 import 'package:groupup/screens/add_input/models/bottom_calendar.dart';
 import 'package:groupup/screens/add_input/models/box_decoration.dart';
@@ -13,7 +14,7 @@ class Calendar extends StatefulWidget {
   const Calendar({required this.groupModel, required this.individualGroup});
 
   final GroupModel groupModel;
-  final IndividualGroup individualGroup;
+  final UserInformation individualGroup;
 
   @override
   State<Calendar> createState() => _CalendarState();
@@ -30,17 +31,15 @@ class _CalendarState extends State<Calendar> {
       child: Card(
         elevation: 2,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))),
+            borderRadius: BorderRadius.all(Radius.circular(Insets.s))),
         color: Colors.white,
         child: Column(
           children: [
             TableCalendar(
               locale: 'en_Us',
               rowHeight: 40,
-              rangeStartDay:
-                  widget.groupModel.generalGroupInfoModel.startDate,
-              rangeEndDay:
-                  widget.groupModel.generalGroupInfoModel.endDate,
+              rangeStartDay: widget.groupModel.generalGroupInfoModel.startDate,
+              rangeEndDay: widget.groupModel.generalGroupInfoModel.endDate,
               calendarStyle: CalendarStyle(
                 tablePadding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -52,7 +51,7 @@ class _CalendarState extends State<Calendar> {
                 rangeEndDecoration: boxDecoration(),
                 todayDecoration: BoxDecoration(
                     border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(Insets.xs),
                     boxShadow: const [
                       BoxShadow(
                         color: Color(0X9946E297),
@@ -63,7 +62,7 @@ class _CalendarState extends State<Calendar> {
                 withinRangeTextStyle: const TextStyle(
                   color: Colors.white,
                   fontFamily: 'Montserrat-Medium',
-                  fontSize: 16,
+                  fontSize: TextSize.mBody,
                 ),
               ),
               headerStyle: HeaderStyle(
@@ -76,9 +75,7 @@ class _CalendarState extends State<Calendar> {
               firstDay: DateTime.utc(2022),
               lastDay: DateTime.utc(2050),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: Insets.s),
             BottomCalendar(
               individualGroup: widget.individualGroup,
             ),

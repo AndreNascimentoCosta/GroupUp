@@ -1,15 +1,15 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/models/user_data.dart';
+import 'package:groupup/models/user_input_data.dart';
 import 'package:groupup/screens/group/components/chart/axis_title.dart';
 
 class ComparativeChart extends StatelessWidget {
   const ComparativeChart(
       {required this.userData1, required this.userData2});
 
-  final List<UserData> userData1;
-  final List<UserData> userData2;
+  final List<UserInputData> userData1;
+  final List<UserInputData> userData2;
 
   @override
   Widget build(BuildContext context) {

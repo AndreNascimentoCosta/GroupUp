@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class IconBottonNavyBarModel extends StatelessWidget {
-  IconBottonNavyBarModel({required this.imageIcon});
+  const IconBottonNavyBarModel({required this.imageIcon});
 
-  String imageIcon;
+  final String imageIcon;
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/groups/screens/groups_screen.dart';
+import 'package:groupup/screens/home/screens/home.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -28,9 +27,7 @@ class StartState extends State<SplashScreen> {
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => GroupsScreen(
-                  homeViewModel: HomeViewModel(),
-                )));
+            builder: (context) => Home()));
   }
 
   @override
@@ -38,8 +35,8 @@ class StartState extends State<SplashScreen> {
     return Center(
       child: Image.asset(
         'assets/images/SplashScreen.png',
-        height: 932,
-        width: 430,
+        height: double.infinity,
+        width: double.infinity,
       ),
     );
   }

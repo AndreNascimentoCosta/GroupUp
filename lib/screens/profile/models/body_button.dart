@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/styles/standard_text.dart';
+import 'package:groupup/design-system.dart';
+import 'package:groupup/styles/button.dart';
+import 'package:groupup/styles/text.dart';
 
 class BodyButtonModel extends StatelessWidget {
-  BodyButtonModel(
+  const BodyButtonModel(
       {required this.text,
       required this.secondaryText,
       required this.onPressed});
 
-  String text;
-  String secondaryText;
-  void Function() onPressed;
+  final String text;
+  final String secondaryText;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class BodyButtonModel extends StatelessWidget {
       onPressed: onPressed,
       child: Row(
         children: [
-          StandardTextStyle(text: text, fontSize: 18),
+          StandardTextStyle(text: text, fontSize: TextSize.lBody),
           const Spacer(),
           Padding(
             padding: const EdgeInsets.only(right: kDefaultPadding),
@@ -27,7 +28,7 @@ class BodyButtonModel extends StatelessWidget {
               secondaryText,
               style: const TextStyle(
                 fontFamily: 'Montserrat-Medium',
-                fontSize: 18,
+                fontSize: TextSize.lBody,
                 color: Colors.black,
               ),
             ),
@@ -38,7 +39,7 @@ class BodyButtonModel extends StatelessWidget {
               'assets/icons/arrow_right.png',
             ),
             size: kDefaultPadding,
-            color: Color(0xFFC3C3C3),
+            color: kSecondaryColor,
           ),
         ],
       ),

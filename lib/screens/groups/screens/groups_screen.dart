@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
-import 'package:groupup/screens/groups/components/bottom_navy_bar_edit.dart';
+import 'package:groupup/screens/groups/components/edit_bottom_navy_bar.dart';
 import 'package:groupup/models/home_view.dart';
-import '../../profile/components/body_profile.dart';
-import '../components/body_groups.dart';
+import '../../profile/components/body.dart';
+import '../components/body.dart';
 
 class GroupsScreen extends StatefulWidget {
-  GroupsScreen({
+  const GroupsScreen({
     required this.homeViewModel,
   });
 
-  int selectedIndex = 0;
+  final int selectedIndex = 0;
   final HomeViewModel homeViewModel;
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/design-system.dart';
 
 class ProfilePicture extends StatelessWidget {
   const ProfilePicture({super.key});
@@ -21,7 +22,7 @@ class ProfilePicture extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 90, left: 90),
+              padding: const EdgeInsets.only(top: kDefaultPadding * 4.5, left: kDefaultPadding * 4.5),
               child: Container(
                 height: 50,
                 width: 50,
@@ -30,7 +31,7 @@ class ProfilePicture extends StatelessWidget {
                     color: Colors.white,
                     width: 4,
                   ),
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(Insets.xl),
                   color: kPrimaryColor,
                 ),
                 child: const ImageIcon(

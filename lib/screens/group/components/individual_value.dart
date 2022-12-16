@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/dropdown.dart';
-import 'package:groupup/models/individual_group.dart';
+import 'package:groupup/models/user_information.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/styles/standard_text.dart';
+import 'package:groupup/styles/button.dart';
+import 'package:groupup/styles/text.dart';
 
 class IndividualValue extends StatelessWidget {
   const IndividualValue(
@@ -13,7 +13,7 @@ class IndividualValue extends StatelessWidget {
       required this.dropDownModel});
 
   final HomeViewModel homeViewModel;
-  final IndividualGroup individualGroup;
+  final UserInformation individualGroup;
   final DropDownModel dropDownModel;
 
   @override
@@ -30,12 +30,8 @@ class IndividualValue extends StatelessWidget {
                 child: Row(
                   children: [
                     StandardTextStyle(
-                      text: individualGroup.value,
-                      fontSize: 20,
-                    ),
-                    const SizedBox(
-                      width: kDefaultPadding / 2,
-                    ),
+                        text: individualGroup.value, fontSize: 20),
+                    const SizedBox(width: kDefaultPadding / 2),
                     ButtonCommonStyle(
                       onPressed: dropDownModel.switchEdit,
                       child: ValueListenableBuilder(

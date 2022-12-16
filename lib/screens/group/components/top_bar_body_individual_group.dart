@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/general_group_info.dart';
+import 'package:groupup/screens/group/components/alert_dialog.dart';
+import 'package:groupup/screens/group/components/date_alert_dialog.dart';
 import 'package:groupup/screens/group/models/objective_reward.dart';
-import 'package:groupup/screens/group/models/start_end.dart';
 import 'package:groupup/screens/group/models/start_end_date.dart';
-import 'package:groupup/styles/standard_text.dart';
+import 'package:groupup/styles/text.dart';
 
 class TopBarBodyIndividualGroup extends StatelessWidget {
   const TopBarBodyIndividualGroup({required this.generalGroupInfoModel});
@@ -36,6 +37,18 @@ class TopBarBodyIndividualGroup extends StatelessWidget {
                   width: kDefaultPadding * 1.5,
                 ),
                 ObjectiveRewardModel(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: ((context) {
+                        return AlertDialogModel(
+                          generalGroupInfoModel: generalGroupInfoModel,
+                          title: 'Objective',
+                          hint: generalGroupInfoModel.objective,
+                        );
+                      }),
+                    );
+                  },
                   generalGroupInfoModel: generalGroupInfoModel,
                   icon: generalGroupInfoModel.objectiveIcon,
                   text: generalGroupInfoModel.objective,
@@ -46,6 +59,17 @@ class TopBarBodyIndividualGroup extends StatelessWidget {
                   color: kSecondaryColor,
                 ),
                 ObjectiveRewardModel(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: ((context) {
+                          return AlertDialogModel(
+                            generalGroupInfoModel: generalGroupInfoModel,
+                            title: 'Reward',
+                            hint: generalGroupInfoModel.reward,
+                          );
+                        }));
+                  },
                   generalGroupInfoModel: generalGroupInfoModel,
                   icon: generalGroupInfoModel.rewardIcon,
                   text: generalGroupInfoModel.reward,
@@ -55,11 +79,19 @@ class TopBarBodyIndividualGroup extends StatelessWidget {
                   thickness: 1,
                   color: kSecondaryColor,
                 ),
-                StartEndModel(),
-                const SizedBox(
-                  width: kDefaultPadding / 1.5,
+                StartEndDateModel(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: ((context) {
+                          return DateAlertDialogModel(
+                            generalGroupInfoModel: generalGroupInfoModel,
+                            title: 'Date',
+                          );
+                        }));
+                  },
+                  generalGroupInfoModel: generalGroupInfoModel,
                 ),
-                StartEndDateModel(generalGroupInfoModel: generalGroupInfoModel,),
                 const SizedBox(
                   width: kDefaultPadding * 1.5,
                 ),

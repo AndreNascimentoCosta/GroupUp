@@ -19,11 +19,11 @@ class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
       automaticallyImplyLeading: false,
       centerTitle: true,
       flexibleSpace: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            alignment: AlignmentDirectional.topCenter,
+            alignment: AlignmentDirectional.center,
             image: AssetImage(
-              'assets/images/runforest_hq.png',
+              groupModel.image,
             ),
             fit: BoxFit.cover,
             opacity: 0.9,

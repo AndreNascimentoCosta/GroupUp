@@ -20,7 +20,7 @@ class _GroupSettingsState extends State<GroupSettings> {
       appBar: AppBarGroupSettings(
         homeViewModel: widget.homeViewModel,
       ),
-      body: BodySettings(),
+      body: const BodySettings(),
     );
   }
 }

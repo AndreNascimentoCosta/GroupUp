@@ -3,10 +3,10 @@ import 'package:groupup/models/home_view.dart';
 import '../../../../constants.dart';
 
 class EditGroupButton extends StatefulWidget {
-  EditGroupButton({required this.homeViewModel, this.backgroundColor = kPrimaryColor});
+  const EditGroupButton({required this.homeViewModel, this.backgroundColor = kPrimaryColor});
 
   final HomeViewModel homeViewModel;
-  Color backgroundColor;
+  final Color backgroundColor;
 
   @override
   State<EditGroupButton> createState() => _EditGroupButtonState();

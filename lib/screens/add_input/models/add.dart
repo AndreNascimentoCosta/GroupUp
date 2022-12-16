@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/styles/button_style.dart';
+import 'package:groupup/design-system.dart';
+import 'package:groupup/styles/button.dart';
 
 class Add extends StatelessWidget {
   const Add({super.key});
@@ -15,7 +16,7 @@ class Add extends StatelessWidget {
         width: 50,
         decoration: BoxDecoration(
             border: Border.all(color: kPrimaryColor),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Insets.s),
             color: kPrimaryColor,
             boxShadow: const [
               BoxShadow(

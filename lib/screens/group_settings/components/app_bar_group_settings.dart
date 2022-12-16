@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/styles/button_style.dart';
+import 'package:groupup/styles/button.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
-import 'package:groupup/styles/standard_text.dart';
+import 'package:groupup/styles/text.dart';
 
 class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
   const AppBarGroupSettings({
@@ -32,10 +33,10 @@ class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: StandardTextStyle(
+                child: const StandardTextStyle(
                   text: 'Group settings',
                   fontFamily: 'Montserrat-Bold',
-                  fontSize: 24,
+                  fontSize: TextSize.subTitle,
                 ),
               ),
               Padding(

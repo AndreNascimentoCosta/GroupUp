@@ -5,7 +5,7 @@ import 'package:groupup/screens/add_input/screens/add_input_screen.dart';
 import '../../../../constants.dart';
 
 class AddInputGroupScreenButton extends StatefulWidget {
-  AddInputGroupScreenButton({
+  const AddInputGroupScreenButton({
     required this.homeViewModel,
     required this.groupModel,
     this.backgroundColor = kPrimaryColor,
@@ -14,8 +14,8 @@ class AddInputGroupScreenButton extends StatefulWidget {
 
   final HomeViewModel homeViewModel;
   final GroupModel groupModel;
-  Color backgroundColor;
-  String icon;
+  final Color backgroundColor;
+  final String icon;
 
   @override
   State<AddInputGroupScreenButton> createState() => _AddInputGroupScreenButtonState();

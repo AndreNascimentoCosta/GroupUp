@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/models/individual_group.dart';
+import 'package:groupup/models/user_information.dart';
 import 'package:groupup/screens/group/components/chart/comparative_chart.dart';
 
 class BottomCalendar extends StatelessWidget {
   const BottomCalendar({required this.individualGroup});
 
-  final IndividualGroup individualGroup;
+  final UserInformation individualGroup;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class BottomCalendar extends StatelessWidget {
           right: kDefaultPadding / 2,
           bottom: kDefaultPadding / 2,
         ),
-        child: ComparativeChart(userData1: individualGroup.userData, userData2: individualGroup.userData,),
+        child: ComparativeChart(userData1: individualGroup.userInputData, userData2: individualGroup.userInputData,),
       ),
     );
   }

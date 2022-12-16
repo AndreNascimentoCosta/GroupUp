@@ -3,7 +3,7 @@ import 'package:groupup/screens/groups/models/icon_bottom_navy_bar.dart';
 import '../../../constants.dart';
 
 class BottomNavyBar extends StatefulWidget {
-  BottomNavyBar({required this.pageController});
+  const BottomNavyBar({required this.pageController});
 
   final PageController pageController;
 
@@ -24,16 +24,16 @@ class _BottomNavyBarState extends State<BottomNavyBar> {
       onTap: (value) => setState(() {
         widget.pageController.jumpToPage(value);
       }),
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Padding(
-            padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
+            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
             child: IconBottonNavyBarModel(
               imageIcon: 'assets/icons/home.png',
             ),
           ),
           activeIcon: Padding(
-            padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
+            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
             child: IconBottonNavyBarModel(
               imageIcon: 'assets/icons/home_selected.png',
             ),
@@ -42,13 +42,13 @@ class _BottomNavyBarState extends State<BottomNavyBar> {
         ),
         BottomNavigationBarItem(
           icon: Padding(
-            padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
+            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
             child: IconBottonNavyBarModel(
               imageIcon: 'assets/icons/profile.png',
             ),
           ),
           activeIcon: Padding(
-            padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
+            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
             child: IconBottonNavyBarModel(
               imageIcon: 'assets/icons/profile_selected.png',
             ),

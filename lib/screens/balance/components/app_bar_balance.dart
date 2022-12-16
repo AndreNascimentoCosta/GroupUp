@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile_screen.dart';
-import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/styles/standard_text.dart';
+import 'package:groupup/styles/button.dart';
+import 'package:groupup/styles/text.dart';
 
 class AppBarBalance extends StatelessWidget with PreferredSizeWidget {
   const AppBarBalance({super.key});
@@ -27,10 +28,10 @@ class AppBarBalance extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: StandardTextStyle(
+                child: const StandardTextStyle(
                   text: 'Balance',
                   fontFamily: 'Montserrat-Bold',
-                  fontSize: 24,
+                  fontSize: TextSize.subTitle,
                 ),
               ),
               Padding(

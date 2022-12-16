@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/styles/button_style.dart';
-import 'package:groupup/screens/home/components/home_button.dart';
-import 'package:groupup/styles/standard_text.dart';
+import 'package:groupup/constants.dart';
+import 'package:groupup/design-system.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/home_button.dart';
+import 'package:groupup/screens/home/models/create_group_button.dart';
+import 'package:groupup/styles/button.dart';
+import 'package:groupup/styles/text.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -10,59 +13,46 @@ class Home extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(
-            right: 30,
-            left: 30,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              StandardTextStyle(
-                text: 'GroupUp',
-                textAlign: TextAlign.left,
-                fontFamily: 'Montserrat-Bold',
-                fontWeight: FontWeight.bold,
-                fontSize: 36,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              StandardTextStyle(
-                text: 'Create or join a group and start setting your goals!',
-                textAlign: TextAlign.left,
-                letterSpacing: 1,
-                fontSize: 18,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Image.asset(
-                'assets/icons/targetteam.png',
-                height: 380,
-                fit: BoxFit.fitHeight,
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              ButtonCommonStyle(
-                onPressed: () {},
-                child: HomeButton(
-                  isGreen: true,
+              right: kDefaultPadding * 1.5, left: kDefaultPadding * 1.5),
+          child: ListView(children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: Insets.l),
+                const StandardTextStyle(
+                  text: 'GroupUp',
+                  textAlign: TextAlign.left,
+                  fontFamily: 'Montserrat-Bold',
+                  fontWeight: FontWeight.bold,
+                  fontSize: TextSize.title,
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ButtonCommonStyle(
-                onPressed: () {},
-                child: HomeButton(
-                  isGreen: false,
+                const SizedBox(height: Insets.s),
+                const Text(
+                  'Create or join a group and start setting your goals!',
+                  style: TextStyle(
+                    fontFamily: 'Montserrat-Medium',
+                    fontSize: TextSize.lBody,
+                    letterSpacing: 1
+                  ),
                 ),
-              ),
-            ],
-          ),
+                const SizedBox(height: Insets.l * 1.5),
+                Image.asset(
+                  'assets/icons/targetteam.png',
+                  height: 380,
+                  fit: BoxFit.fitHeight,
+                ),
+                const SizedBox(height: Insets.l * 2),
+                ButtonCommonStyle(
+                  onPressed: () {},
+                  child: const HomeButton(
+                    isGreen: true,
+                  ),
+                ),
+                const SizedBox(height: Insets.l),
+                const CreateGroupButton(),
+              ],
+            ),
+          ]),
         ),
       ),
     );

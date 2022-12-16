@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/group/components/individual_group_card.dart';
 import 'package:groupup/models/home_view.dart';
 
 class BodyIndividualGroup extends StatelessWidget {
-  BodyIndividualGroup({required this.homeViewModel, required this.groupModel});
+  const BodyIndividualGroup({required this.homeViewModel, required this.groupModel});
 
   final HomeViewModel homeViewModel;
   final GroupModel groupModel;
 
   @override
   Widget build(BuildContext context) {
-    final DropDownModel dropDownModel  = DropDownModel();
 
     return Expanded(
       child: ListView.separated(
@@ -27,11 +25,11 @@ class BodyIndividualGroup extends StatelessWidget {
           thickness: 0.5,
           color: kSecondaryColor,
         ),
-        itemCount: groupModel.individualGroup.length,
+        itemCount: groupModel.userInformation.length,
         itemBuilder: (context, index) => IndividualGroupCard(
-          individualGroup: groupModel.individualGroup[index],
+          individualGroup: groupModel.userInformation[index],
           homeViewModel: homeViewModel,
-          meIndividualGroup: groupModel.meIndividualGroup,
+          meIndividualGroup: groupModel.meUserInformation,
         ),
       ),
     );

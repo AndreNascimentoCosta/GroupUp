@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/add_input/screens/add_input_screen.dart';
 import '../../../../constants.dart';
 
 class AddInputGroupButton extends StatefulWidget {
-  AddInputGroupButton({
+  const AddInputGroupButton({
     required this.homeViewModel,
     required this.groupModel,
     this.backgroundColor = kPrimaryColor,
@@ -14,8 +13,8 @@ class AddInputGroupButton extends StatefulWidget {
 
   final HomeViewModel homeViewModel;
   final GroupModel groupModel;
-  Color backgroundColor;
-  String icon;
+  final Color backgroundColor;
+  final String icon;
 
   @override
   State<AddInputGroupButton> createState() => _AddInputGroupButtonState();

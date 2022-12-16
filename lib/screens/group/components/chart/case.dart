@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/styles/standard_text.dart';
+import 'package:groupup/styles/text.dart';
 import 'package:intl/intl.dart';
 
 class CaseChart extends StatelessWidget {
-  CaseChart({required this.days});
+  const CaseChart({required this.days});
 
-  int days;
+  final int days;
 
   @override
   Widget build(BuildContext context) {
