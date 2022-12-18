@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/switch.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/body_switch.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/date_time.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/profile_picture_add.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up_phone/sign_up_page_view.dart';
 import 'package:groupup/styles/button.dart';
-import 'package:groupup/styles/switch_button.dart';
-import 'package:groupup/screens/home/models/date_switch.dart';
-import 'package:groupup/screens/home/models/text_field.dart';
+import 'package:groupup/styles/text.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class SecondPageJoin extends StatefulWidget {
   const SecondPageJoin({
     required this.controller,
-    required this.count,
   });
 
   final PageController controller;
-  final int count;
 
   @override
   State<SecondPageJoin> createState() => _SecondPageJoinState();
@@ -41,8 +34,9 @@ class _SecondPageJoinState extends State<SecondPageJoin> {
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: kDefaultPadding),
+              const SizedBox(height: Insets.l * 1.5),
               SignInWithAppleButton(
                 onPressed: () {},
                 text: 'Continue with Apple',
@@ -51,21 +45,87 @@ class _SecondPageJoinState extends State<SecondPageJoin> {
                 style: SignInWithAppleButtonStyle.whiteOutlined,
                 borderRadius: BorderRadius.circular(Insets.l),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: Insets.l * 1.25),
               ButtonCommonStyle(
                 onPressed: () {},
                 child: Container(
                   height: 50,
-                  width: MediaQuery.of(context).size.width,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(Insets.l),
-                    color: Colors.transparent,
                   ),
-                  child: Text('Continue with Google'),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        Image.network(
+                          'http://pngimg.com/uploads/google/google_PNG19635.png',
+                          height: 35,
+                          width: 31,
+                        ),
+                        const Expanded(
+                          child: StandardTextStyle(
+                            text: 'Continue with Google',
+                            fontSize: 18.92,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(width: 28),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              const SizedBox(height: Insets.xs),
+              const SizedBox(height: Insets.l * 1.25),
+              ButtonCommonStyle(
+                onPressed: () {
+                  showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(Insets.m),
+                      ),
+                      builder: (context) {
+                        return Padding(
+                          padding: MediaQuery.of(context).viewInsets,
+                          child: Wrap(
+                            children: <Widget>[
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: const [
+                                  SizedBox(
+                                      height: 400, child: SignUpPhonePageView()),
+                                ],
+                              )
+                            ],
+                          ),
+                        );
+                      });
+                },
+                child: Container(
+                  height: 50,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(Insets.l),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: const [
+                        Expanded(
+                          child: StandardTextStyle(
+                            text: 'Continue with phone number',
+                            fontSize: 18.92,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

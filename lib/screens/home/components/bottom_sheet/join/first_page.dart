@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/models/dropdown.dart';
 import 'package:groupup/screens/home/models/text_field.dart';
 
 class FirsPageJoin extends StatefulWidget {
-  const FirsPageJoin({required this.controller, required this.count});
+  const FirsPageJoin({required this.controller});
 
   final PageController controller;
-  final int count;
 
   @override
   State<FirsPageJoin> createState() => _FirsPageJoinState();

@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/join/first_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/join/second_page.dart';
+import 'package:groupup/models/home_view.dart';
+import 'package:groupup/screens/groups/screens/groups_screen.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up_phone/first_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up_phone/second_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up_phone/third_page.dart';
 import 'package:groupup/screens/home/models/next_button.dart';
 import 'package:groupup/styles/button.dart';
 import 'package:groupup/styles/text.dart';
 
-class JoinPageView extends StatefulWidget {
-  const JoinPageView({super.key});
+class SignUpPhonePageView extends StatefulWidget {
+  const SignUpPhonePageView({super.key});
 
   @override
-  State<JoinPageView> createState() => _JoinPageViewState();
+  State<SignUpPhonePageView> createState() => _SignUpPhonePageViewState();
 }
 
-class _JoinPageViewState extends State<JoinPageView> {
+class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
   int pageIndex = 0;
   final controller = PageController(initialPage: 0);
   final itemCount = 3;
@@ -49,7 +51,8 @@ class _JoinPageViewState extends State<JoinPageView> {
                 ),
               ),
               StandardTextStyle(
-                text: pageIndex == 0 ? 'Join a group' : pageIndex == 1 ? 'Sign in or Sign up' : 'Sign up',
+                textAlign: TextAlign.center,
+                text: pageIndex < 2 ? 'Sign up' : 'Verification code',
                 fontFamily: 'Montserrat-SemiBold',
                 fontSize: 28,
               ),
@@ -65,23 +68,30 @@ class _JoinPageViewState extends State<JoinPageView> {
               });
             },
             children: [
-              FirsPageJoin(controller: controller),
-              SecondPageJoin(controller: controller),
+              FirstPageSignUpPhone(controller: controller),
+              Center(child: SecondPageSignUpPhone(controller: controller)),
+              ThirdPageSignUpPhone(controller: controller),
             ],
           ),
         ),
-        pageIndex == 1
-            ? const SizedBox()
-            : NextButton(
+        pageIndex != 2
+            ? NextButton(
                 onPressed: () {
                   controller.nextPage(
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.ease);
                 },
+              )
+            : NextButton(
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: ((context) =>
+                              GroupsScreen(homeViewModel: HomeViewModel()))),
+                      (route) => false);
+                },
               ),
-        pageIndex == 1
-            ? const SizedBox(height: 0)
-            : const SizedBox(height: Insets.l * 1.5)
+        const SizedBox(height: Insets.l * 1.5)
       ],
     );
   }
