@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
 
 class TextFieldModel extends StatefulWidget {
-  const TextFieldModel(
-      {required this.hint, required this.maxLength, this.border, this.hintColor, this. hintSize});
+  const TextFieldModel({
+    required this.hint,
+    required this.maxLength,
+    this.border,
+    this.hintColor,
+    this.hintSize,
+    this.keyboardType = TextInputType.text,
+    this.autofillHints,
+    this.textInputAction,
+  });
 
   final String hint;
   final int maxLength;
   final InputBorder? border;
   final Color? hintColor;
   final double? hintSize;
+  final TextInputType keyboardType;
+  final Iterable<String>? autofillHints;
+  final TextInputAction? textInputAction;
 
   @override
   State<TextFieldModel> createState() => _TextFieldModelState();
@@ -33,27 +43,13 @@ class _TextFieldModelState extends State<TextFieldModel> {
       child: SizedBox(
         height: 100,
         width: 220,
-        child: TextField(
+        child: TextFormField(
             style: const TextStyle(
               fontFamily: 'Montserrat-Medium',
             ),
-            // buildCounter: (context,
-            //     {required currentLength, required isFocused, maxLength}) {
-            //   return isFocused
-            //       ? Padding(
-            //           padding: const EdgeInsets.only(
-            //               right: kDefaultPadding * 0.75),
-            //           child: Text(
-            //             (maxLength! - currentLength).toString(),
-            //             style: const TextStyle(
-            //               fontFamily: 'Montserrat-Medium',
-            //               fontSize: 12,
-            //             ),
-            //           ),
-            //         )
-            //       : null;
-            // },
-            keyboardType: TextInputType.text,
+            keyboardType: widget.keyboardType,
+            autofillHints: widget.autofillHints,
+            textInputAction: widget.textInputAction,
             controller: nameController,
             maxLength: widget.maxLength,
             cursorColor: Colors.black,

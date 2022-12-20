@@ -18,26 +18,28 @@ class Body extends StatelessWidget {
       appBar: AppBarGroup(
         homeViewModel: homeViewModel,
       ),
-      body: ListView.separated(
-        padding: const EdgeInsets.only(
-          top: kDefaultPadding / 2,
-        ),
-        separatorBuilder: (context, index) => const Divider(
-          indent: kDefaultPadding,
-          endIndent: kDefaultPadding,
-          height: kDefaultPadding,
-          thickness: 0.5,
-          color: kSecondaryColor,
-        ),
-        itemCount: groupsData.length,
-        itemBuilder: (context, index) => GroupsCard(
-          homeViewModel: homeViewModel,
-          groupModel: groupsData[index],
-          press: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => GroupsScreen(
-                homeViewModel: homeViewModel,
+      body: Scrollbar(
+        child: ListView.separated(
+          padding: const EdgeInsets.only(
+            top: kDefaultPadding / 2,
+          ),
+          separatorBuilder: (context, index) => const Divider(
+            indent: kDefaultPadding,
+            endIndent: kDefaultPadding,
+            height: kDefaultPadding,
+            thickness: 0.5,
+            color: kSecondaryColor,
+          ),
+          itemCount: groupsData.length,
+          itemBuilder: (context, index) => GroupsCard(
+            homeViewModel: homeViewModel,
+            groupModel: groupsData[index],
+            press: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => GroupsScreen(
+                  homeViewModel: homeViewModel,
+                ),
               ),
             ),
           ),

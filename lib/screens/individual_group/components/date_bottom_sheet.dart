@@ -24,8 +24,11 @@ class DateBottomSheet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: Insets.l),
-          StandardTextStyle(text: title, fontSize: TextSize.subTitle),
-          const SizedBox(height: Insets.l * 1.5),
+          StandardTextStyle(
+              text: title,
+              textAlign: TextAlign.center,
+              fontSize: TextSize.subTitle),
+          const SizedBox(height: Insets.l),
           Row(
             children: [
               const SizedBox(
@@ -61,6 +64,7 @@ class DateBottomSheet extends StatelessWidget {
               )
             ],
           ),
+          const SizedBox(height: Insets.xs),
           TextButton(
             onPressed: (() {
               Navigator.pop(context);

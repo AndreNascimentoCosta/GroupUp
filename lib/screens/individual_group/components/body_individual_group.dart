@@ -14,22 +14,24 @@ class BodyIndividualGroup extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Expanded(
-      child: ListView.separated(
-        padding: const EdgeInsets.only(
-          top: kDefaultPadding / 2,
-        ),
-        separatorBuilder: (context, index) => const Divider(
-          indent: kDefaultPadding,
-          endIndent: kDefaultPadding,
-          height: 20,
-          thickness: 0.5,
-          color: kSecondaryColor,
-        ),
-        itemCount: groupModel.userInformation.length,
-        itemBuilder: (context, index) => IndividualGroupCard(
-          individualGroup: groupModel.userInformation[index],
-          homeViewModel: homeViewModel,
-          meIndividualGroup: groupModel.meUserInformation,
+      child: Scrollbar(
+        child: ListView.separated(
+          padding: const EdgeInsets.only(
+            top: kDefaultPadding / 2,
+          ),
+          separatorBuilder: (context, index) => const Divider(
+            indent: kDefaultPadding,
+            endIndent: kDefaultPadding,
+            height: 20,
+            thickness: 0.5,
+            color: kSecondaryColor,
+          ),
+          itemCount: groupModel.userInformation.length,
+          itemBuilder: (context, index) => IndividualGroupCard(
+            individualGroup: groupModel.userInformation[index],
+            homeViewModel: homeViewModel,
+            meIndividualGroup: groupModel.meUserInformation,
+          ),
         ),
       ),
     );

@@ -140,7 +140,7 @@ class TopBarBodyIndividualGroup extends StatelessWidget {
                                       child: DateBottomSheet(
                                         generalGroupInfoModel:
                                             generalGroupInfoModel,
-                                        title: 'Date',
+                                        title: 'Dates',
                                       ),
                                     ),
                                   ],

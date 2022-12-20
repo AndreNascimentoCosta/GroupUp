@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
+import 'package:groupup/screens/add_input/components/add_input.dart';
 import '../../../../constants.dart';
 
 class AddInputGroupButton extends StatefulWidget {
@@ -50,8 +51,8 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: const [
                                     SizedBox(
-                                      height: 200,
-                                      child: SizedBox(),
+                                      height: 220,
+                                      child: AddInput(),
                                     ),
                                   ],
                                 )

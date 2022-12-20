@@ -25,7 +25,10 @@ class TopBarBottomSheet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: Insets.l),
-          StandardTextStyle(text: title, fontSize: TextSize.subTitle),
+          StandardTextStyle(
+              text: title,
+              textAlign: TextAlign.center,
+              fontSize: TextSize.subTitle),
           const SizedBox(height: Insets.l * 1.5),
           SizedBox(
             height: 60,

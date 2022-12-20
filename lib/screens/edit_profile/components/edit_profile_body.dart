@@ -38,6 +38,7 @@ class EditProfileBody extends StatelessWidget {
                 TextFieldModel(
                     hint: 'Name',
                     maxLength: 30,
+                    textInputAction: TextInputAction.next,
                     border: UnderlineInputBorder(
                         borderSide: BorderSide(
                       color: kSecondaryColor,
@@ -63,6 +64,7 @@ class EditProfileBody extends StatelessWidget {
                 TextFieldModel(
                     hint: 'Username',
                     maxLength: 20,
+                    textInputAction: TextInputAction.next,
                     border: UnderlineInputBorder(
                         borderSide:
                             BorderSide(color: kSecondaryColor, width: 0.5))),
@@ -88,6 +90,8 @@ class EditProfileBody extends StatelessWidget {
                 Spacer(),
                 TextFieldModel(
                   hint: 'E-mail',
+                  keyboardType: TextInputType.emailAddress,
+                  autofillHints: [AutofillHints.email],
                   maxLength: TextField.noMaxLength,
                   border: InputBorder.none,
                 ),

@@ -36,60 +36,67 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
         children: [
-          ButtonCommonStyle(
-            onPressed: dropDownModel.switchEdit,
-            child: Row(
-              children: [
-                ValueListenableBuilder(
-                  valueListenable: widget.homeViewModel.isEditing,
-                  builder: (context, value, child) {
-                    return AnimatedContainer(
-                      width: value ? 50 : 0,
-                      duration: const Duration(milliseconds: 50),
-                      child: Visibility(
-                        visible: value,
-                        child: const ImageIcon(
-                          AssetImage(
-                            'assets/icons/remove_participant.png',
+          ValueListenableBuilder(
+              valueListenable: widget.homeViewModel.isEditing,
+              builder: (context, value, child) {
+                return ButtonCommonStyle(
+                  onPressed: widget.homeViewModel.isEditing.value
+                      ? (){}
+                      : dropDownModel.switchEdit,
+                  child: Row(
+                    children: [
+                      ValueListenableBuilder(
+                        valueListenable: widget.homeViewModel.isEditing,
+                        builder: (context, value, child) {
+                          return AnimatedContainer(
+                            width: value ? 50 : 0,
+                            duration: const Duration(milliseconds: 50),
+                            child: Visibility(
+                              visible: value,
+                              child: const ImageIcon(
+                                AssetImage(
+                                  'assets/icons/remove_participant.png',
+                                ),
+                                color: Colors.red,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: kDefaultPadding / 2,
+                        ),
+                        child: StandardTextStyle(
+                            text: widget.individualGroup.rank, fontSize: 20),
+                      ),
+                      const SizedBox(width: kDefaultPadding),
+                      CircleAvatar(
+                          radius: 25,
+                          backgroundImage:
+                              AssetImage(widget.individualGroup.image)),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: kDefaultPadding,
                           ),
-                          color: Colors.red,
+                          child: StandardEllipsisTextStyle(
+                            text: widget.individualGroup.name,
+                            overflow: TextOverflow.ellipsis,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                    );
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: kDefaultPadding / 2,
+                      const SizedBox(width: kDefaultPadding),
+                      IndividualValue(
+                        homeViewModel: widget.homeViewModel,
+                        individualGroup: widget.individualGroup,
+                        dropDownModel: dropDownModel,
+                      ),
+                    ],
                   ),
-                  child: StandardTextStyle(
-                      text: widget.individualGroup.rank, fontSize: 20),
-                ),
-                const SizedBox(width: kDefaultPadding),
-                CircleAvatar(
-                    radius: 25,
-                    backgroundImage: AssetImage(widget.individualGroup.image)),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: kDefaultPadding,
-                    ),
-                    child: StandardEllipsisTextStyle(
-                      text: widget.individualGroup.name,
-                      overflow: TextOverflow.ellipsis,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: kDefaultPadding),
-                IndividualValue(
-                  homeViewModel: widget.homeViewModel,
-                  individualGroup: widget.individualGroup,
-                  dropDownModel: dropDownModel,
-                ),
-              ],
-            ),
-          ),
+                );
+              }),
           ValueListenableBuilder(
             valueListenable: dropDownModel.isOpened,
             builder: (context, value, child) {

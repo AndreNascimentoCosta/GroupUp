@@ -18,14 +18,14 @@ class ShareButton extends StatelessWidget {
         width: 120,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white),
-          borderRadius: BorderRadius.circular(Insets.s),
+          borderRadius: BorderRadius.circular(Insets.m),
           color: Colors.white,
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
-              spreadRadius: 0.25,
-              blurRadius: 1,
-              offset: Offset(0, 1.25),
-              color: kSecondaryColor
+              spreadRadius: 0,
+              blurRadius: 5,
+              offset: const Offset(1.5, 2.5),
+              color: kSecondaryColor.withOpacity(0.3)
             )
           ]
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/balance/components/app_bar_balance.dart';
 import 'package:groupup/screens/balance/components/groups_balance.dart';
 import 'package:groupup/screens/balance/components/search_bar.dart';
@@ -14,7 +15,9 @@ class BalanceScreen extends StatelessWidget {
       body: Column(
         children: const [
           TopBarBalance(),
+          SizedBox(height: Insets.s),
           SearchBar(),
+          SizedBox(height: Insets.s),
           GroupsBalance(),
         ],
       ),

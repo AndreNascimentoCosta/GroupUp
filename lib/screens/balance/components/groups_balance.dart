@@ -11,19 +11,21 @@ class GroupsBalance extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-        child: ListView.separated(
-          padding: const EdgeInsets.only(
-            top: kDefaultPadding / 2,
+        child: Scrollbar(
+          child: ListView.separated(
+            padding: const EdgeInsets.only(
+              top: kDefaultPadding / 2,
+            ),
+            separatorBuilder: (context, index) => const Padding(
+              padding: EdgeInsets.only(top: kDefaultPadding),
+            ),
+            itemCount: groupsData.length,
+            itemBuilder: (context, index) {
+              return SingleGroupBalance(
+              groupModel: groupsData[index],
+            );
+            },
           ),
-          separatorBuilder: (context, index) => const Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding),
-          ),
-          itemCount: groupsData.length,
-          itemBuilder: (context, index) {
-            return SingleGroupBalance(
-            groupModel: groupsData[index],
-          );
-          },
         ),
       ),
     );

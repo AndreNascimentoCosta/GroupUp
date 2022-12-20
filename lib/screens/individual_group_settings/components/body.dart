@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
+import 'package:groupup/screens/individual_group_settings/components/exit_group.dart';
 import 'package:groupup/screens/individual_group_settings/components/number_participants.dart';
 import 'package:groupup/screens/individual_group_settings/components/share_button.dart';
 import 'package:groupup/screens/individual_group_settings/models/other_setting_option.dart';
@@ -55,40 +56,45 @@ class BodySettings extends StatelessWidget {
               const SizedBox(
                 width: 250,
                 child: StandardTextStyle(
-                    text: 'Maximum number of participants', fontSize: TextSize.lBody),
+                    text: 'Maximum number of participants',
+                    fontSize: TextSize.lBody),
               ),
               const Spacer(),
               ButtonCommonStyle(
                 child: SizedBox(
                   width: 60,
                   child: StandardTextStyle(
-                      text: (groupModel.userInformation.length + 1).toString(), fontSize: 18, textAlign: TextAlign.center),
+                      text: (groupModel.userInformation.length + 1).toString(),
+                      fontSize: 18,
+                      textAlign: TextAlign.center),
                 ),
                 onPressed: () {
                   showModalBottomSheet(
-                        isScrollControlled: true,
-                        context: context,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(Insets.m),
-                        ),
-                        builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.of(context).viewInsets,
-                            child: Wrap(
-                              children: <Widget>[
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    SizedBox(
-                                      height: 200,
-                                      child: MaxNumberParticipants(groupModel: groupModel,),
+                      isScrollControlled: true,
+                      context: context,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(Insets.m),
+                      ),
+                      builder: (context) {
+                        return Padding(
+                          padding: MediaQuery.of(context).viewInsets,
+                          child: Wrap(
+                            children: <Widget>[
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(
+                                    height: 200,
+                                    child: MaxNumberParticipants(
+                                      groupModel: groupModel,
                                     ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
-                        });
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        );
+                      });
                 },
               ),
             ],
@@ -109,16 +115,35 @@ class BodySettings extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: Insets.xl * 2),
-          OtherSettingOption(onPressed: () {}, text: 'Request refund'),
-          const SizedBox(height: Insets.l),
-          OtherSettingOption(onPressed: () {}, text: 'Exit group'),
+          const SizedBox(height: Insets.l * 4),
+          OtherSettingOption(
+              onPressed: () {
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(Insets.m),
+                    ),
+                    builder: (context) {
+                      return Padding(
+                        padding: MediaQuery.of(context).viewInsets,
+                        child: Wrap(
+                          children: <Widget>[
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                SizedBox(height: 150, child: ExitGroup()),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                    });
+              },
+              text: 'Exit group'),
           const SizedBox(height: Insets.l),
           OtherSettingOption(
-            onPressed: () {},
-            text: 'Delete group',
-            color: Colors.red,
-          )
+              onPressed: () {}, text: 'Delete group', color: Colors.red)
         ],
       ),
     );

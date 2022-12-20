@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
-import 'package:groupup/styles/text.dart';
 
 class MaxNumberParticipants extends StatelessWidget {
   const MaxNumberParticipants({required this.groupModel});
@@ -25,9 +25,28 @@ class MaxNumberParticipants extends StatelessWidget {
             ),
           ),
           const SizedBox(width: Insets.l * 2),
-          StandardTextStyle(
-            text: (groupModel.userInformation.length + 1).toString(),
-            fontSize: TextSize.subTitle,
+          // TextFieldModel(hint: (groupModel.userInformation.length + 1).toString(), maxLength: 2),
+          SizedBox(
+            width: 35,
+            child: TextField(
+              keyboardType: TextInputType.number,
+              style: const TextStyle(
+                  fontFamily: 'Montserrat-Medium',
+                  fontSize: TextSize.subTitle,
+                  color: Colors.black),
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(2),
+                FilteringTextInputFormatter.digitsOnly,
+              ],
+              decoration: InputDecoration(
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  hintText: (groupModel.userInformation.length + 1).toString(),
+                  hintStyle: const TextStyle(
+                      fontFamily: 'Montserrat-Medium',
+                      fontSize: TextSize.subTitle,
+                      color: Colors.black)),
+            ),
           ),
           const SizedBox(width: Insets.l * 2),
           FloatingActionButton(

@@ -15,19 +15,20 @@ class SearchBar extends StatelessWidget {
       ],
       child: GestureDetector(
         child: SizedBox(
-          height: 100,
+          height: 40,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: kDefaultPadding, horizontal: kDefaultPadding),
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: TextField(
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.search),
                 hintText: 'Search',
+                contentPadding: const EdgeInsets.symmetric(vertical: 0),
                 hintStyle: const TextStyle(
                   fontFamily: 'Montserrat-Medium',
                   fontSize: TextSize.lBody,
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(Insets.l),
+                  borderRadius: BorderRadius.circular(Insets.m),
                   borderSide: const BorderSide(color: kSecondaryColor),
                 )
               ),
