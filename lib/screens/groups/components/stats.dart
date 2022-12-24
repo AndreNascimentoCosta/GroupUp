@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/styles/text.dart';
 import '../../../constants.dart';
 
 class StatsGroup extends StatelessWidget {
@@ -36,31 +37,28 @@ class StatsGroup extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        ImageIcon(
-                          AssetImage(
-                            groupModel.rankIcon,
-                          ),
-                          size: kDefaultPadding,
+                        SvgPicture.asset(
+                          groupModel.rankIcon,
+                          height: Insets.l,
+                          width: Insets.l,
                           color: Colors.black,
                         ),
                         const SizedBox(
                           height: kDefaultPadding * 0.25,
                         ),
-                        ImageIcon(
-                          AssetImage(
-                            groupModel.daysGoneIcon,
-                          ),
-                          size: kDefaultPadding,
+                        SvgPicture.asset(
+                          groupModel.daysGoneIcon,
+                          height: Insets.l,
+                          width: Insets.l,
                           color: Colors.black,
                         ),
                         const SizedBox(
                           height: kDefaultPadding * 0.25,
                         ),
-                        ImageIcon(
-                          AssetImage(
-                            groupModel.daysLeftIcon,
-                          ),
-                          size: kDefaultPadding,
+                        SvgPicture.asset(
+                          groupModel.daysLeftIcon,
+                          height: Insets.l,
+                          width: Insets.l,
                           color: Colors.black,
                         ),
                       ],
@@ -71,27 +69,24 @@ class StatsGroup extends StatelessWidget {
                   width: Insets.l,
                   child: Column(
                     children: [
-                      StandardTextStyle(
+                      MediumBody(
                         text: groupModel.rank,
                         textAlign: TextAlign.center,
-                        fontSize: TextSize.mBody,
                       ),
                       const SizedBox(
                         height: kDefaultPadding * 0.25,
                       ),
-                      StandardTextStyle(
+                      MediumBody(
                         text: groupModel.daysGone,
                         textAlign: TextAlign.center,
-                        fontSize: TextSize.mBody,
                         color: Colors.red,
                       ),
                       const SizedBox(
                         height: kDefaultPadding * 0.25,
                       ),
-                      StandardTextStyle(
+                      MediumBody(
                         text: groupModel.daysLeft,
                         textAlign: TextAlign.center,
-                        fontSize: TextSize.mBody,
                         color: kPrimaryColor,
                       ),
                     ],

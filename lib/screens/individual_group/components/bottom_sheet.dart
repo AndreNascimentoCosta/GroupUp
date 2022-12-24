@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/header.dart';
+import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/general_group_info.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
-import 'package:groupup/styles/text.dart';
 
-class TopBarBottomSheet extends StatelessWidget {
-  const TopBarBottomSheet({
+class HeaderBottomSheet extends StatelessWidget {
+  const HeaderBottomSheet({
     required this.generalGroupInfoModel,
     required this.title,
     required this.hint,
@@ -25,10 +26,11 @@ class TopBarBottomSheet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: Insets.l),
-          StandardTextStyle(
-              text: title,
-              textAlign: TextAlign.center,
-              fontSize: TextSize.subTitle),
+          Header(
+            text: title,
+            textAlign: TextAlign.center,
+            fontFamily: 'Montserrat-Medium',
+          ),
           const SizedBox(height: Insets.l * 1.5),
           SizedBox(
             height: 60,
@@ -44,9 +46,8 @@ class TopBarBottomSheet extends StatelessWidget {
             onPressed: (() {
               Navigator.pop(context);
             }),
-            child: const StandardTextStyle(
+            child: const MediumBody(
               text: 'OK',
-              fontSize: TextSize.mBody,
               color: kPrimaryColor,
             ),
           ),

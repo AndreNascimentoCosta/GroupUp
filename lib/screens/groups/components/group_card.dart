@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/models/group.dart';
-import 'package:groupup/screens/individual_group/screens/individual_group_screen.dart';
+import 'package:groupup/screens/individual_group/screens/individual_group.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/styles/button.dart';
-import 'package:groupup/screens/groups/models/checkbox.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/screens/groups/components/checkbox.dart';
 import 'package:groupup/screens/groups/components/stats.dart';
-import 'package:groupup/styles/ellipsis_text.dart';
 
 class GroupsCard extends StatefulWidget {
   const GroupsCard({
@@ -76,9 +76,10 @@ class _GroupsCardState extends State<GroupsCard> {
                 padding: const EdgeInsets.only(
                   left: kDefaultPadding,
                 ),
-                child: StandardEllipsisTextStyle(
-                  text: widget.groupModel.title,
-                  fontSize: 20,
+                child: ExtraLargeBody(
+                  text: Characters(widget.groupModel.title)
+                      .replaceAll(Characters(''), Characters('\u{200B}'))
+                      .toString(),
                 ),
               ),
             ),

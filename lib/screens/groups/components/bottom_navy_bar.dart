@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/screens/groups/models/icon_bottom_navy_bar.dart';
+import 'package:groupup/screens/groups/components/icon_bottom_navy_bar.dart';
 import '../../../constants.dart';
 
 class BottomNavyBar extends StatefulWidget {
@@ -29,13 +29,13 @@ class _BottomNavyBarState extends State<BottomNavyBar> {
           icon: Padding(
             padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
             child: IconBottonNavyBarModel(
-              imageIcon: 'assets/icons/home.png',
+              imageIcon: 'assets/icons/home.svg',
             ),
           ),
           activeIcon: Padding(
             padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
             child: IconBottonNavyBarModel(
-              imageIcon: 'assets/icons/home_selected.png',
+              imageIcon: 'assets/icons/home_selected.svg',
             ),
           ),
           label: '',
@@ -44,13 +44,13 @@ class _BottomNavyBarState extends State<BottomNavyBar> {
           icon: Padding(
             padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
             child: IconBottonNavyBarModel(
-              imageIcon: 'assets/icons/profile.png',
+              imageIcon: 'assets/icons/profile.svg',
             ),
           ),
           activeIcon: Padding(
             padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
             child: IconBottonNavyBarModel(
-              imageIcon: 'assets/icons/profile_selected.png',
+              imageIcon: 'assets/icons/profile_selected.svg',
             ),
           ),
           label: '',

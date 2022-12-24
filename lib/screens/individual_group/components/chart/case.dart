@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/styles/text.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/design-system.dart';
 import 'package:intl/intl.dart';
 
 class CaseChart extends StatelessWidget {
@@ -17,10 +18,11 @@ class CaseChart extends StatelessWidget {
           const SizedBox(
             height: kDefaultPadding * 0.25,
           ),
-          StandardTextStyle(
+          StaticText(
             text: DateFormat.E()
                 .format(DateTime.now().subtract(Duration(days: days)))[0],
             color: kSecondaryColor,
+            fontSize: TextSize.xsBody,
           ),
         ],
       ),

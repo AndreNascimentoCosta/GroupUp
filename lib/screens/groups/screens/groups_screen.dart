@@ -28,8 +28,8 @@ class _GroupsScreenState extends State<GroupsScreen> {
       backgroundColor: Colors.white,
       // appBar: AppBarGroup(homeViewModel: homeViewModel),
       body: PageView(
-        scrollDirection: Axis.vertical,
         controller: pageController,
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           Body(
             homeViewModel: homeViewModel,
@@ -47,7 +47,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: SizedBox(
-        height: 80,
+        height: MediaQuery.of(context).size.height * 0.095,
         child: ValueListenableBuilder(
           valueListenable: homeViewModel.isEditing,
           builder: (context, value, child) {

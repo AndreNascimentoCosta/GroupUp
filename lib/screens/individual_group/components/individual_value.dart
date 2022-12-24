@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/models/dropdown.dart';
 import 'package:groupup/models/user_information.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/styles/button.dart';
-import 'package:groupup/styles/text.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 
 class IndividualValue extends StatelessWidget {
   const IndividualValue(
@@ -26,30 +26,30 @@ class IndividualValue extends StatelessWidget {
             duration: const Duration(milliseconds: 50),
             child: Visibility(
               visible: !value,
-              child: FittedBox(
-                child: Row(
-                  children: [
-                    StandardTextStyle(
-                        text: individualGroup.value, fontSize: 20),
-                    const SizedBox(width: kDefaultPadding / 2),
-                    ButtonCommonStyle(
-                      onPressed: dropDownModel.switchEdit,
-                      child: ValueListenableBuilder(
-                          valueListenable: dropDownModel.isOpened,
-                          builder: ((context, value, child) {
-                            return ImageIcon(
-                              AssetImage(
-                                dropDownModel.isOpened.value
-                                    ? 'assets/icons/minus.png'
-                                    : 'assets/icons/arrow_down.png',
-                              ),
-                              size: kDefaultPadding * 2,
-                              color: Colors.black,
-                            );
-                          })),
-                    ),
-                  ],
-                ),
+              child: Row(
+                children: [
+                  const Spacer(),
+                  ExtraLargeBody(
+                    text: individualGroup.value,
+                  ),
+                  const SizedBox(width: kDefaultPadding / 2),
+                  ButtonCommonStyle(
+                    onPressed: dropDownModel.switchEdit,
+                    child: ValueListenableBuilder(
+                        valueListenable: dropDownModel.isOpened,
+                        builder: ((context, value, child) {
+                          return ImageIcon(
+                            AssetImage(
+                              dropDownModel.isOpened.value
+                                  ? 'assets/icons/minus.png'
+                                  : 'assets/icons/arrow_down.png',
+                            ),
+                            size: kDefaultPadding * 2,
+                            color: Colors.black,
+                          );
+                        })),
+                  ),
+                ],
               ),
             ),
           );

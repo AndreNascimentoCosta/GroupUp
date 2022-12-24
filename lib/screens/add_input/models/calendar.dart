@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/user_information.dart';
-import 'package:groupup/screens/add_input/models/back.dart';
 import 'package:groupup/screens/add_input/models/bottom_calendar.dart';
 import 'package:groupup/screens/add_input/models/box_decoration.dart';
-import 'package:groupup/screens/add_input/models/forth.dart';
 import 'package:groupup/screens/add_input/styles/text.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -68,8 +67,16 @@ class _CalendarState extends State<Calendar> {
               headerStyle: HeaderStyle(
                 formatButtonVisible: false,
                 titleCentered: true,
-                leftChevronIcon: back(),
-                rightChevronIcon: forth(),
+                leftChevronIcon: SvgPicture.asset(
+                  'assets/icons/arrow_left.svg',
+                  height: Insets.l,
+                  width: Insets.l,
+                ),
+                rightChevronIcon: SvgPicture.asset(
+                  'assets/icons/arrow_right.svg',
+                  height: Insets.l,
+                  width: Insets.l,
+                ),
               ),
               focusedDay: today,
               firstDay: DateTime.utc(2022),

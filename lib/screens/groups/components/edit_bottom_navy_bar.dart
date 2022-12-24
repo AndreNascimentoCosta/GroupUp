@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/design-system.dart';
-import 'package:groupup/styles/text.dart';
+import 'package:groupup/core/widgets/texts/large_body.dart';
 import '../../../constants.dart';
 
 class BottomNavyBarEdit extends StatefulWidget {
@@ -31,17 +30,15 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
         BottomNavigationBarItem(
           icon: Padding(
             padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: StandardTextStyle(
+            child: LargeBody(
               text: 'Pin',
-              fontSize: TextSize.lBody,
               color: kGroupEditColor,
             ),
           ),
           activeIcon: Padding(
             padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: StandardTextStyle(
+            child: LargeBody(
               text: 'Pin',
-              fontSize: TextSize.lBody,
               color: kPrimaryColor,
             ),
           ),
@@ -50,17 +47,15 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
         BottomNavigationBarItem(
           icon: Padding(
             padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: StandardTextStyle(
+            child: LargeBody(
               text: 'Delete',
-              fontSize: TextSize.lBody,
               color: kGroupEditColor,
             ),
           ),
           activeIcon: Padding(
             padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: StandardTextStyle(
+            child: LargeBody(
               text: 'Delete',
-              fontSize: TextSize.lBody,
               color: kPrimaryColor,
             ),
           ),

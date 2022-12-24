@@ -1,10 +1,10 @@
 import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
-import 'package:groupup/styles/button.dart';
-import 'package:groupup/styles/text.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 import '../../../models/home_view.dart';
 
 class AppBarGroup extends StatefulWidget with PreferredSizeWidget {
@@ -32,7 +32,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
       elevation: 0,
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
-      title: const StandardTextStyle(
+      title: const StaticText(
         text: 'Groups',
         fontFamily: 'Montserrat-Bold',
         fontSize: TextSize.title,
@@ -68,7 +68,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
                           padding: const EdgeInsets.only(
                               bottom: kDefaultPadding / 2,
                               right: kDefaultPadding * 4),
-                          child: const StandardTextStyle(
+                          child: const StaticText(
                             text: 'Select all',
                             fontSize: TextSize.lBody,
                           ),
@@ -86,11 +86,11 @@ class _AppBarGroupState extends State<AppBarGroup> {
                       valueListenable: widget.homeViewModel.isEditing,
                       builder: ((context, value, child) {
                         return !value
-                            ? const StandardTextStyle(
+                            ? const StaticText(
                                 text: 'Edit',
                                 fontSize: TextSize.lBody,
                               )
-                            : const StandardTextStyle(
+                            : const StaticText(
                                 text: 'Done',
                                 fontSize: TextSize.lBody,
                               );

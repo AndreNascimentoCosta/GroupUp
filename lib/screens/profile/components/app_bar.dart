@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/profile/components/others_profile.dart';
-import 'package:groupup/styles/button.dart';
-import 'package:groupup/styles/text.dart';
+import 'package:groupup/screens/profile/components/other_options.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 
 class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
   const AppBarProfile({super.key});
@@ -14,11 +15,7 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
       elevation: 0,
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
-      title: const StandardTextStyle(
-        text: 'angusmac_41',
-        fontFamily: 'Montserrat-Bold',
-        fontSize: 20,
-      ),
+      title: const LargeBody(text: 'angusmac_41', fontFamily: 'Montserrat-SemiBold'),
       centerTitle: false,
       actions: [
         Align(
@@ -39,7 +36,7 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
                             Column(
                               mainAxisSize: MainAxisSize.min,
                               children: const [
-                                SizedBox(height: 140, child: OthersProfile()),
+                                SizedBox(height: 140, child: OtherOptionsProfile()),
                               ],
                             )
                           ],
@@ -47,10 +44,10 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
                       );
                     });
               },
-              child: const Padding(
-                padding: EdgeInsets.only(right: kDefaultPadding),
-                child: ImageIcon(
-                  AssetImage('assets/icons/ellipsis.png'),
+              child: Padding(
+                padding: const EdgeInsets.only(right: kDefaultPadding),
+                child: SvgPicture.asset(
+                    'assets/icons/ellipsis.svg',
                   color: Colors.black,
                 ),
               )),

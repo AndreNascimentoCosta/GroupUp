@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/header.dart';
+import 'package:groupup/core/widgets/texts/large_body.dart';
+import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/general_group_info.dart';
 import 'package:groupup/styles/end_date_picker.dart';
 import 'package:groupup/styles/start_date_picker.dart';
-import 'package:groupup/styles/text.dart';
 
 class DateBottomSheet extends StatelessWidget {
   const DateBottomSheet({
@@ -24,17 +26,15 @@ class DateBottomSheet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: Insets.l),
-          StandardTextStyle(
-              text: title,
-              textAlign: TextAlign.center,
-              fontSize: TextSize.subTitle),
+          Header(
+            text: title,
+            textAlign: TextAlign.center,
+            fontFamily: 'Montserrat-Medium',
+          ),
           const SizedBox(height: Insets.l),
           Row(
             children: [
-              const SizedBox(
-                  width: 45,
-                  child: StandardTextStyle(
-                      text: 'Start', fontSize: TextSize.lBody)),
+              const SizedBox(width: 45, child: LargeBody(text: 'Start')),
               const SizedBox(width: Insets.l),
               Expanded(
                 child: Padding(
@@ -49,10 +49,7 @@ class DateBottomSheet extends StatelessWidget {
           const SizedBox(height: Insets.l),
           Row(
             children: [
-              const SizedBox(
-                  width: 45,
-                  child:
-                      StandardTextStyle(text: 'End', fontSize: TextSize.lBody)),
+              const SizedBox(width: 45, child: LargeBody(text: 'End')),
               const SizedBox(width: Insets.l),
               Expanded(
                 child: Padding(
@@ -69,11 +66,7 @@ class DateBottomSheet extends StatelessWidget {
             onPressed: (() {
               Navigator.pop(context);
             }),
-            child: const StandardTextStyle(
-              text: 'OK',
-              fontSize: TextSize.mBody,
-              color: kPrimaryColor,
-            ),
+            child: const MediumBody(text: 'OK', color: kPrimaryColor),
           ),
         ],
       ),

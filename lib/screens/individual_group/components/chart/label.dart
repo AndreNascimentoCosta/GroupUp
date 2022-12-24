@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/styles/text.dart';
+import 'package:groupup/models/user_information.dart';
 
 class ChartLabel extends StatelessWidget {
-  const ChartLabel({super.key});
+  const ChartLabel({required this.individualGroup});
+
+  final UserInformation individualGroup;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +32,12 @@ class ChartLabel extends StatelessWidget {
                 const SizedBox(
                   width: Insets.s,
                 ),
-                const StandardTextStyle(
-                  text: 'H. C.',
-                  fontSize: TextSize.sBody,
+                StaticText(
+                  text: individualGroup.name.isNotEmpty
+                      ? "${individualGroup.name.trim().split(RegExp(' +')).map((s) => s[0]).take(2).join(". ")}."
+                      : '',
                   color: kPrimaryColor,
+                  fontSize: TextSize.sBody,
                 ),
               ],
             ),
@@ -54,10 +59,10 @@ class ChartLabel extends StatelessWidget {
                 const SizedBox(
                   width: Insets.s,
                 ),
-                const StandardTextStyle(
+                const StaticText(
                   text: 'Me',
-                  fontSize: TextSize.sBody,
                   color: kSecondaryColor,
+                  fontSize: TextSize.sBody,
                 ),
               ],
             ),

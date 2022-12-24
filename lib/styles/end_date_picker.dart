@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/general_group_info.dart';
-import 'package:groupup/styles/button.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 
 class EndDatePicker extends StatefulWidget {
   const EndDatePicker({required this.generalGroupInfoModel});
@@ -55,9 +56,10 @@ class _EndDatePickerState extends State<EndDatePicker> {
         child: Row(
           children: [
             const SizedBox(width: Insets.s),
-            const ImageIcon(
-              AssetImage('assets/icons/date_switch.png'),
-              size: 20,
+            SvgPicture.asset(
+                'assets/icons/date_switch.svg',
+              height: Insets.l,
+              width: Insets.l,
               color: kSecondaryColor,
             ),
             const SizedBox(width: Insets.l * 2),

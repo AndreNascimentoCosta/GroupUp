@@ -14,4 +14,5 @@ class TextSize {
   static const double lBody = 18.0;
   static const double mBody = 16.0;
   static const double sBody = 14.0;
+  static const double xsBody = 12.0;
 }

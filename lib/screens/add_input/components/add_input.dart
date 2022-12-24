@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/header.dart';
+import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:intl/intl.dart';
@@ -42,27 +43,26 @@ class _AddInputState extends State<AddInput> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: Insets.l),
-              const StandardTextStyle(
-                  text: 'Data',
-                  textAlign: TextAlign.center,
-                  fontSize: TextSize.subTitle),
+              const Header(
+                text: 'Data',
+                textAlign: TextAlign.center,
+                fontFamily: 'MontSerrat-Medium',
+              ),
               const SizedBox(height: Insets.l),
               Row(
                 children: [
-                  const StandardTextStyle(
-                      text: 'Date:', fontSize: TextSize.lBody),
+                  const LargeBody(text: 'Date:'),
                   const SizedBox(width: Insets.l),
-                  StandardTextStyle(
-                      text: currentDate,
-                      fontSize: TextSize.lBody,
-                      color: kSecondaryColor),
+                  LargeBody(
+                    text: currentDate,
+                    color: kSecondaryColor,
+                  ),
                 ],
               ),
               const SizedBox(height: Insets.l),
               Row(
                 children: [
-                  const StandardTextStyle(
-                      text: 'Add data:', fontSize: TextSize.lBody),
+                  const LargeBody(text: 'Add data:'),
                   const SizedBox(width: Insets.l),
                   SizedBox(
                     width: 200,

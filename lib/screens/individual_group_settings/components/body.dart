@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/individual_group_settings/components/exit_group.dart';
 import 'package:groupup/screens/individual_group_settings/components/number_participants.dart';
-import 'package:groupup/screens/individual_group_settings/components/share_button.dart';
-import 'package:groupup/screens/individual_group_settings/models/other_setting_option.dart';
-import 'package:groupup/styles/switch_button.dart';
-import 'package:groupup/styles/button.dart';
-import 'package:groupup/styles/text.dart';
+import 'package:groupup/core/widgets/buttons/share_button.dart';
+import 'package:groupup/screens/individual_group_settings/components/other_options.dart';
+import 'package:groupup/core/widgets/buttons/switch_button.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:share_plus/share_plus.dart';
 
 class BodySettings extends StatelessWidget {
@@ -30,10 +30,11 @@ class BodySettings extends StatelessWidget {
           Row(
             children: const [
               SizedBox(
-                width: 250,
-                child: StandardTextStyle(
-                    text: 'Everyone can edit group picture', fontSize: 18),
-              ),
+                  width: 250,
+                  child: LargeBody(
+                    text: 'Everyone can edit group picture',
+                    maxLines: 2,
+                  )),
               Spacer(),
               SwitchButton(),
             ],
@@ -43,8 +44,7 @@ class BodySettings extends StatelessWidget {
             children: const [
               SizedBox(
                 width: 250,
-                child: StandardTextStyle(
-                    text: 'Allow refund request', fontSize: TextSize.lBody),
+                child: LargeBody(text: 'Allow refund request'),
               ),
               Spacer(),
               SwitchButton(),
@@ -55,18 +55,19 @@ class BodySettings extends StatelessWidget {
             children: [
               const SizedBox(
                 width: 250,
-                child: StandardTextStyle(
-                    text: 'Maximum number of participants',
-                    fontSize: TextSize.lBody),
+                child: LargeBody(
+                  text: 'Maximum number of participants',
+                  maxLines: 2,
+                ),
               ),
               const Spacer(),
               ButtonCommonStyle(
                 child: SizedBox(
                   width: 60,
-                  child: StandardTextStyle(
-                      text: (groupModel.userInformation.length + 1).toString(),
-                      fontSize: 18,
-                      textAlign: TextAlign.center),
+                  child: LargeBody(
+                    text: (groupModel.userInformation.length + 1).toString(),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 onPressed: () {
                   showModalBottomSheet(
@@ -99,13 +100,12 @@ class BodySettings extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 290),
+          const Spacer(),
           Row(
             children: [
               const SizedBox(
                 width: 150,
-                child: StandardTextStyle(
-                    text: 'Group code', fontSize: TextSize.lBody),
+                child: LargeBody(text: 'Group code'),
               ),
               const Spacer(),
               ShareButton(
@@ -115,8 +115,8 @@ class BodySettings extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: Insets.l * 4),
-          OtherSettingOption(
+          SizedBox(height: MediaQuery.of(context).size.height * 0.125),
+          OtherOptions(
               onPressed: () {
                 showModalBottomSheet(
                     isScrollControlled: true,
@@ -142,8 +142,9 @@ class BodySettings extends StatelessWidget {
               },
               text: 'Exit group'),
           const SizedBox(height: Insets.l),
-          OtherSettingOption(
-              onPressed: () {}, text: 'Delete group', color: Colors.red)
+          OtherOptions(
+              onPressed: () {}, text: 'Delete group', color: Colors.red),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         ],
       ),
     );

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/design-system.dart';
-import 'package:groupup/styles/button.dart';
-import 'package:groupup/styles/text.dart';
+import 'package:groupup/core/widgets/texts/large_body.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 
 class ExitGroup extends StatefulWidget {
   const ExitGroup({super.key});
@@ -21,8 +20,7 @@ class _ExitGroupState extends State<ExitGroup> {
         children: [
           const SizedBox(height: kDefaultPadding),
           CheckboxListTile(
-              title: const StandardTextStyle(
-                  text: 'Request refund', fontSize: TextSize.lBody),
+              title: const LargeBody(text: 'Request refund'),
               activeColor: kPrimaryColor,
               checkboxShape: const CircleBorder(),
               value: checkedValue,
@@ -34,9 +32,8 @@ class _ExitGroupState extends State<ExitGroup> {
           const SizedBox(height: kDefaultPadding),
           ButtonCommonStyle(
             onPressed: () {},
-            child: const StandardTextStyle(
+            child: const LargeBody(
               text: 'Exit group',
-              fontSize: TextSize.lBody,
               color: Colors.red,
             ),
           )

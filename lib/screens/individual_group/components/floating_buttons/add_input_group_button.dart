@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/add_input/screens/add_input_screen.dart';
@@ -9,7 +11,7 @@ class CalendarScreenButton extends StatefulWidget {
     required this.homeViewModel,
     required this.groupModel,
     this.backgroundColor = kPrimaryColor,
-    this.icon = 'assets/icons/plus_home.png',
+    this.icon = 'assets/icons/plus.svg',
   });
 
   final HomeViewModel homeViewModel;
@@ -48,11 +50,10 @@ class _CalendarScreenButtonState extends State<CalendarScreenButton> {
                   ? const Color(0x5946E297)
                   : widget.backgroundColor,
               elevation: 0,
-              child: ImageIcon(
-                AssetImage(
+              child: SvgPicture.asset(
                   widget.icon,
-                ),
-                size: 30,
+                height: Insets.l * 1.5,
+                width: Insets.l * 1.5,
               ),
             );
           }),

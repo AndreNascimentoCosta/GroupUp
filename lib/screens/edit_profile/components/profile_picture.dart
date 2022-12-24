@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 
@@ -10,15 +11,14 @@ class ProfilePicture extends StatelessWidget {
     return Stack(
           alignment: AlignmentDirectional.topCenter,
           children: [
-            const CircleAvatar(
+            CircleAvatar(
               radius: 70,
-              backgroundColor: Color(0XFFE1E1E1),
-              child: ImageIcon(
-                AssetImage(
-                  'assets/icons/profile_picture.png',
-                ),
+              backgroundColor: const Color(0XFFE1E1E1),
+              child: SvgPicture.asset(
+                  'assets/icons/profile_picture.svg',
                 color: Colors.white,
-                size: 60,
+                height: Insets.l * 3,
+                width: Insets.l * 3,
               ),
             ),
             Padding(
@@ -36,10 +36,10 @@ class ProfilePicture extends StatelessWidget {
                 ),
                 child: const ImageIcon(
                   AssetImage(
-                    'assets/icons/plus_edit.png',
+                    'assets/icons/plus_profile_2.png',
                   ),
                   color: Colors.white,
-                  size: 10,
+                  size: 30,
                 ),
               ),
             ),

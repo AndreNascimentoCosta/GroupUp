@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/large_body.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/models/create_group_button.dart';
-import 'package:groupup/screens/home/models/join_group_button.dart';
-import 'package:groupup/styles/text.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/button.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/join/button.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -18,26 +20,21 @@ class Home extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: Insets.l),
-                const StandardTextStyle(
+                const StaticText(
                   text: 'GroupUp',
-                  textAlign: TextAlign.left,
+                  fontSize: 36,
                   fontFamily: 'Montserrat-Bold',
-                  fontWeight: FontWeight.bold,
-                  fontSize: TextSize.title,
                 ),
                 const SizedBox(height: Insets.s),
-                const Text(
-                  'Create or join a group and start setting your goals!',
-                  style: TextStyle(
-                    fontFamily: 'Montserrat-Medium',
-                    fontSize: TextSize.lBody,
-                    letterSpacing: 1
-                  ),
+                const LargeBody(
+                  text: 'Create or join a group and start setting your goals!',
+                  maxLines: 2,
+                  letterSpacing: 1,
                 ),
                 const SizedBox(height: Insets.l * 1.5),
-                Image.asset(
-                  'assets/icons/targetteam.png',
-                  height: 380,
+                SvgPicture.asset(
+                  'assets/images/target_team.svg',
+                  height: MediaQuery.of(context).size.height * 0.45,
                   fit: BoxFit.fitHeight,
                 ),
                 const SizedBox(height: Insets.l * 2),

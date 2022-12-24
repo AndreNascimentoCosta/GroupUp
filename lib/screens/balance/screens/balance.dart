@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/balance/components/app_bar_balance.dart';
-import 'package:groupup/screens/balance/components/groups_balance.dart';
+import 'package:groupup/screens/balance/components/app_bar.dart';
+import 'package:groupup/screens/balance/components/body.dart';
 import 'package:groupup/screens/balance/components/search_bar.dart';
-import 'package:groupup/screens/balance/components/top_bar_balance.dart';
+import 'package:groupup/screens/balance/components/header.dart';
 
 class BalanceScreen extends StatelessWidget {
   const BalanceScreen({super.key});
@@ -14,7 +14,7 @@ class BalanceScreen extends StatelessWidget {
       appBar: const AppBarBalance(),
       body: Column(
         children: const [
-          TopBarBalance(),
+          HeaderBalance(),
           SizedBox(height: Insets.s),
           SearchBar(),
           SizedBox(height: Insets.s),

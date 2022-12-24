@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:groupup/screens/add_input/models/single_data.dart';
@@ -26,17 +27,14 @@ class DataHistoryBottomSheet extends StatelessWidget {
           Row(
             children: const [
               SizedBox(
-                  width: 100,
-                  child: StandardTextStyle(
-                    text: 'Dates',
-                    fontSize: TextSize.lBody,
-                  )),
+                width: 100,
+                child: LargeBody(text: 'Dates'),
+              ),
               SizedBox(width: Insets.l),
               Expanded(
-                child: StandardTextStyle(
+                child: LargeBody(
                   text: 'Values',
                   textAlign: TextAlign.center,
-                  fontSize: TextSize.lBody,
                 ),
               ),
             ],
@@ -53,7 +51,8 @@ class DataHistoryBottomSheet extends StatelessWidget {
                 itemBuilder: ((context, index) {
                   int itemCount = userInputData.length;
                   int reversedIndex = itemCount - 1 - index;
-                  return SingleData(userInputData: userInputData[reversedIndex]);
+                  return SingleData(
+                      userInputData: userInputData[reversedIndex]);
                 })),
           )
         ],

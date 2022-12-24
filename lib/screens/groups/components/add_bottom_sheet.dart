@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/home_button.dart';
-import 'package:groupup/screens/home/models/create_group_button.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/button.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/join/button.dart';
 
 class AddBottomSheet extends StatelessWidget {
   const AddBottomSheet({super.key});
@@ -14,7 +14,7 @@ class AddBottomSheet extends StatelessWidget {
       child: Column(
         children: const [
           SizedBox(height: Insets.l * 2.75),
-          HomeButton(isGreen: true),
+          JoinGroupButton(),
           SizedBox(height: Insets.l * 1.5),
           CreateGroupButton(),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/groups/components/add_bottom_sheet.dart';
 import '../../../constants.dart';
@@ -23,8 +24,11 @@ class AddProject extends StatelessWidget {
                   children: <Widget>[
                     Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        SizedBox(height: 300, child: AddBottomSheet()),
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.35,
+                          child: const AddBottomSheet(),
+                        ),
                       ],
                     )
                   ],
@@ -35,11 +39,10 @@ class AddProject extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       highlightElevation: 0,
       elevation: 0,
-      child: const ImageIcon(
-        AssetImage(
-          'assets/icons/plus_home.png',
-        ),
-        size: 30,
+      child: SvgPicture.asset(
+        'assets/icons/plus.svg',
+        height: Insets.l * 1.5,
+        width: Insets.l * 1.5,
       ),
     );
   }

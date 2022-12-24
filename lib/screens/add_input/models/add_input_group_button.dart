@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
@@ -10,7 +12,7 @@ class AddInputGroupButton extends StatefulWidget {
     required this.homeViewModel,
     required this.groupModel,
     this.backgroundColor = kPrimaryColor,
-    this.icon = 'assets/icons/plus_home.png',
+    this.icon = 'assets/icons/plus.svg',
   });
 
   final HomeViewModel homeViewModel;
@@ -37,37 +39,24 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
               highlightElevation: 0,
               onPressed: () {
                 showModalBottomSheet(
-                        isScrollControlled: true,
-                        context: context,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(Insets.m),
-                        ),
-                        builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.of(context).viewInsets,
-                            child: Wrap(
-                              children: <Widget>[
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: const [
-                                    SizedBox(
-                                      height: 220,
-                                      child: AddInput(),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
-                        });
+                    isScrollControlled: true,
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(Insets.m),
+                    ),
+                    builder: (context) {
+                      return const BuilderBottomSheet(
+                        height: 220,
+                        child: AddInput(),
+                      );
+                    });
               },
               backgroundColor: widget.backgroundColor,
               elevation: 0,
-              child: ImageIcon(
-                AssetImage(
-                  widget.icon,
-                ),
-                size: 30,
+              child: SvgPicture.asset(
+                widget.icon,
+                height: Insets.l * 1.5,
+                width: Insets.l * 1.5,
               ),
             );
           }),

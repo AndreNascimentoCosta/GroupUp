@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
@@ -35,31 +36,20 @@ class _DataHistoryButtonState extends State<DataHistoryButton> {
               highlightElevation: 0,
               onPressed: () {
                 showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(Insets.m),
-                    ),
-                    builder: (context) {
-                      return Padding(
-                        padding: MediaQuery.of(context).viewInsets,
-                        child: Wrap(
-                          children: <Widget>[
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(
-                                    height: 500,
-                                    child: DataHistoryBottomSheet(
-                                      userInputData: widget.groupModel
-                                          .meUserInformation.userInputData,
-                                    )),
-                              ],
-                            )
-                          ],
-                        ),
-                      );
-                    });
+                  isScrollControlled: true,
+                  context: context,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(Insets.m),
+                  ),
+                  builder: (context) {
+                    return BuilderBottomSheet(
+                        height: 500,
+                        child: DataHistoryBottomSheet(
+                          userInputData:
+                              widget.groupModel.meUserInformation.userInputData,
+                        ));
+                  },
+                );
               },
               backgroundColor: widget.backgroundColor,
               elevation: 0,

@@ -1,8 +1,9 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/chart/case.dart';
-import 'package:groupup/styles/text.dart';
 
 class LineTitles {
   static getTitleData() => FlTitlesData(
@@ -44,7 +45,11 @@ SideTitles get leftTitles {
     interval: 5,
     showTitles: true,
     getTitlesWidget: (value, meta) {
-      return StandardTextStyle(text: value.round().toString(), color: kSecondaryColor);
+      return StaticText(
+        text: value.round().toString(),
+        color: kSecondaryColor,
+        fontSize: TextSize.xsBody,
+      );
     },
   );
 }

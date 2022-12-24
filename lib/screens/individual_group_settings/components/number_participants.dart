@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
@@ -19,9 +20,11 @@ class MaxNumberParticipants extends StatelessWidget {
             onPressed: () {},
             backgroundColor: kPrimaryColor,
             elevation: 0,
-            child: const ImageIcon(
-              AssetImage('assets/icons/minus_participant.png'),
-              size: 30,
+            child: SvgPicture.asset(
+              'assets/icons/minus.svg',
+              height: Insets.xs,
+              width: Insets.xs,
+              color: Colors.white,
             ),
           ),
           const SizedBox(width: Insets.l * 2),
@@ -53,9 +56,11 @@ class MaxNumberParticipants extends StatelessWidget {
             onPressed: () {},
             backgroundColor: kPrimaryColor,
             elevation: 0,
-            child: const ImageIcon(
-              AssetImage('assets/icons/add_participant.png'),
-              size: 30,
+            child: SvgPicture.asset(
+                'assets/icons/plus.svg',
+              height: Insets.l * 1.5,
+              width: Insets.l * 1.5,
+              color: Colors.white,
             ),
           ),
         ],
