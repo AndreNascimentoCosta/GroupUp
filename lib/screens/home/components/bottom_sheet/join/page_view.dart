@@ -1,9 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/join/pages/first_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/join/pages/second_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/first_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/styles/text.dart';
@@ -20,6 +21,16 @@ class _JoinPageViewState extends State<JoinPageView> {
   final controller = PageController(initialPage: 0);
   final itemCount = 3;
   bool isPageTwo = false;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user != null && mounted) {
+        Navigator.pop(context);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +60,11 @@ class _JoinPageViewState extends State<JoinPageView> {
                 ),
               ),
               StandardTextStyle(
-                text: pageIndex == 0 ? 'Join a group' : pageIndex == 1 ? 'Sign in or Sign up' : 'Sign up',
+                text: pageIndex == 0
+                    ? 'Join a group'
+                    : pageIndex == 1
+                        ? 'Sign in or Sign up'
+                        : 'Sign up',
                 fontFamily: 'Montserrat-SemiBold',
                 fontSize: 28,
               ),
@@ -66,7 +81,7 @@ class _JoinPageViewState extends State<JoinPageView> {
             },
             children: [
               FirsPageJoin(controller: controller),
-              SecondPageJoin(controller: controller),
+              FirsPageSignUp(controller: controller),
             ],
           ),
         ),

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.groupup">
    <application
-        android:label="groupup"
+        android:label="GroupUp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

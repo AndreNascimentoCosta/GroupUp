@@ -36,7 +36,7 @@ class IndividualCardBalance extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             LargeBody(
-              text: groupModel.title.replaceAll(RegExp('#'), ''),
+              text: groupModel.projectName.replaceAll(RegExp('#'), ''),
               fontFamily: 'Montserrat-SemiBold',
             ),
             const SizedBox(height: Insets.s),

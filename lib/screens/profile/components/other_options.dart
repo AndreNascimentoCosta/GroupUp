@@ -1,12 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/screens/home.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 
 class OtherOptionsProfile extends StatelessWidget {
   const OtherOptionsProfile({super.key});
+
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +30,8 @@ class OtherOptionsProfile extends StatelessWidget {
           const SizedBox(height: Insets.l * 1.5),
           ButtonCommonStyle(
             onPressed: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: ((context) => Home())),
-                  (route) => false);
+              Navigator.pop(context);
+              _signOut();
             },
             child: const LargeBody(
               text: 'Log out',

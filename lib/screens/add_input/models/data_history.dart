@@ -46,7 +46,7 @@ class _DataHistoryButtonState extends State<DataHistoryButton> {
                         height: 500,
                         child: DataHistoryBottomSheet(
                           userInputData:
-                              widget.groupModel.meUserInformation.userInputData,
+                              widget.groupModel.meParticipant.inputData,
                         ));
                   },
                 );

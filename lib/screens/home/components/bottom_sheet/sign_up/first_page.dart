@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/switch.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up_phone/page_view.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/page_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/styles/text.dart';
+import 'package:provider/provider.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
-class SecondPageJoin extends StatefulWidget {
-  const SecondPageJoin({
+class FirsPageSignUp extends StatefulWidget {
+  const FirsPageSignUp({
     required this.controller,
   });
 
   final PageController controller;
 
   @override
-  State<SecondPageJoin> createState() => _SecondPageJoinState();
+  State<FirsPageSignUp> createState() => _FirsPageSignUpState();
 }
 
-class _SecondPageJoinState extends State<SecondPageJoin> {
+class _FirsPageSignUpState extends State<FirsPageSignUp> {
   final SwitchModel switchModel = SwitchModel();
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,10 @@ class _SecondPageJoinState extends State<SecondPageJoin> {
             children: [
               const SizedBox(height: Insets.l * 1.5),
               SignInWithAppleButton(
-                onPressed: () {},
+                onPressed: () {
+                  final provider = context.read<AuthProvider>();
+                  provider.appleLogin();
+                },
                 text: 'Continue with Apple',
                 height: 50,
                 iconAlignment: IconAlignment.left,
@@ -47,7 +52,10 @@ class _SecondPageJoinState extends State<SecondPageJoin> {
               ),
               const SizedBox(height: Insets.l * 1.25),
               ButtonCommonStyle(
-                onPressed: () {},
+                onPressed: () {
+                  final provider = context.read<AuthProvider>();
+                  provider.googleLogin();
+                },
                 child: Container(
                   height: 50,
                   width: double.infinity,
@@ -59,8 +67,8 @@ class _SecondPageJoinState extends State<SecondPageJoin> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Row(
                       children: [
-                        Image.network(
-                          'http://pngimg.com/uploads/google/google_PNG19635.png',
+                        Image.asset(
+                          'assets/icons/google_icon.png',
                           height: 35,
                           width: 31,
                         ),
@@ -95,7 +103,8 @@ class _SecondPageJoinState extends State<SecondPageJoin> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: const [
                                   SizedBox(
-                                      height: 400, child: SignUpPhonePageView()),
+                                      height: 400,
+                                      child: SignUpPhonePageView()),
                                 ],
                               )
                             ],

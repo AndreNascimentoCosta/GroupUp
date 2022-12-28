@@ -36,7 +36,7 @@ class IndividualRefundRequest extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             LargeBody(
-              text: Characters(groupModel.title.replaceAll(RegExp('#'), '')).
+              text: Characters(groupModel.projectName.replaceAll(RegExp('#'), '')).
                       replaceAll(Characters(''), Characters('\u{200B}')).toString(),
               overflow: TextOverflow.ellipsis,
               fontFamily: 'Montserrat-SemiBold',

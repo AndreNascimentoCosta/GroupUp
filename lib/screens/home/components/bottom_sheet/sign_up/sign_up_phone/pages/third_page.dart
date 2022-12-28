@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up_phone/otp_field.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/otp_field.dart';
 import 'package:groupup/styles/text.dart';
 
 class ThirdPageSignUpPhone extends StatefulWidget {

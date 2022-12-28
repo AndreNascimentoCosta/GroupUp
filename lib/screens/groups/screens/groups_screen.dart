@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
 import 'package:groupup/screens/groups/components/edit_bottom_navy_bar.dart';
@@ -21,6 +22,7 @@ class GroupsScreen extends StatefulWidget {
 class _GroupsScreenState extends State<GroupsScreen> {
   final HomeViewModel homeViewModel = HomeViewModel();
   final pageController = PageController();
+  final List<GroupModel> groupsData = [];
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +35,9 @@ class _GroupsScreenState extends State<GroupsScreen> {
         children: [
           Body(
             homeViewModel: homeViewModel,
+            groupsData: groupsData,
           ),
-          const BodyProfile(),
+          BodyProfile(),
         ],
       ),
       floatingActionButton: ValueListenableBuilder(

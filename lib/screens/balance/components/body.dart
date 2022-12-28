@@ -4,7 +4,9 @@ import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/balance/components/individual_card.dart';
 
 class GroupsBalance extends StatelessWidget {
-  const GroupsBalance({super.key});
+  const GroupsBalance({required this.groupsData});
+
+  final List<GroupModel> groupsData;
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/home_button.dart';

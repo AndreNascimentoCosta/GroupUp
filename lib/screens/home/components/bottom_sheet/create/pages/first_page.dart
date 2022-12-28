@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/components/dropdown.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 
 class FirsPageCreate extends StatefulWidget {
@@ -14,6 +13,10 @@ class FirsPageCreate extends StatefulWidget {
 }
 
 class _FirsPageCreateState extends State<FirsPageCreate> {
+  final controllerProjectName = TextEditingController();
+  final controllerObjective = TextEditingController();
+  final controllerReward = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -28,37 +31,33 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(height: MediaQuery.of(context).size.height * 0.035),
-            const TextFieldModelHome(
+            TextFieldModelHome(
+              controller: controllerProjectName,
               header: 'Project name',
               textInputAction: TextInputAction.next,
               hint: 'Enter project name',
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding,
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.035),
-            const TextFieldModelHome(
+            TextFieldModelHome(
+              controller: controllerObjective,
               header: 'Objective',
               hint: 'Enter objective',
               textInputAction: TextInputAction.next,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding,
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.035),
-            Row(
-              children: const [
-                SizedBox(
-                    width: 250,
-                    child: TextFieldModelHome(
-                      header: 'Reward',
-                      hint: 'Enter reward',
-                      padding: EdgeInsets.symmetric(
-                        horizontal: kDefaultPadding,
-                      ),
-                    )),
-                DropDown(),
-              ],
+            TextFieldModelHome(
+              controller: controllerReward,
+              header: 'Reward',
+              hint: 'Enter reward',
+              padding: const EdgeInsets.symmetric(
+                horizontal: kDefaultPadding,
+              ),
             ),
           ],
         ),

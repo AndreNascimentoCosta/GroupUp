@@ -13,6 +13,9 @@ class FirstPageSignUpPhone extends StatefulWidget {
 }
 
 class _FirstPageSignUpPhoneState extends State<FirstPageSignUpPhone> {
+  final controllerName = TextEditingController();
+  final controllerUsername = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,29 +28,31 @@ class _FirstPageSignUpPhoneState extends State<FirstPageSignUpPhone> {
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: const [
-            SizedBox(height: Insets.l * 1.5),
+          children: [
+            const SizedBox(height: Insets.l * 1.5),
             TextFieldModelHome(
+              controller: controllerName,
               header: 'Name',
               hint: 'Enter your name',
-              autoFillHints: [AutofillHints.name],
+              autoFillHints: const [AutofillHints.name],
               keyboardType: TextInputType.name,
               textInputAction: TextInputAction.next,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding,
               ),
             ),
-            SizedBox(height: Insets.l * 1.5),
+            const SizedBox(height: Insets.l * 1.5),
             TextFieldModelHome(
+              controller: controllerUsername,
               header: 'Username',
               hint: 'Enter username',
               keyboardType: TextInputType.name,
               textInputAction: TextInputAction.done,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding,
               ),
             ),
-            SizedBox(height: Insets.l * 1.5),
+            const SizedBox(height: Insets.l * 1.5),
           ],
         ),
       ),

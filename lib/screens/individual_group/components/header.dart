@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
@@ -41,7 +42,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                     ),
                   ),
                   generalGroupInfoModel: generalGroupInfoModel,
-                  icon: generalGroupInfoModel.objectiveIcon,
+                  icon: SvgPicture.asset('assets/icons/objective.svg').toString(),
                   text: generalGroupInfoModel.objective,
                 ),
                 VerticalDivider(
@@ -59,7 +60,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                     ),
                   ),
                   generalGroupInfoModel: generalGroupInfoModel,
-                  icon: generalGroupInfoModel.rewardIcon,
+                  icon: SvgPicture.asset('assets/icons/reward.svg').toString(),
                   text: generalGroupInfoModel.reward,
                 ),
                 const VerticalDivider(

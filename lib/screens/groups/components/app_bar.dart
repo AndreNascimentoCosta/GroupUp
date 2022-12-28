@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/models/group.dart';
 import '../../../models/home_view.dart';
 
 class AppBarGroup extends StatefulWidget with PreferredSizeWidget {
-  AppBarGroup({required this.homeViewModel});
+  AppBarGroup({required this.homeViewModel, required this.groupsData});
 
   final HomeViewModel homeViewModel;
+  final List<GroupModel> groupsData;
 
   @override
   State<AppBarGroup> createState() => _AppBarGroupState();
@@ -54,13 +55,14 @@ class _AppBarGroupState extends State<AppBarGroup> {
                         child: ButtonCommonStyle(
                           onPressed: () {
                             setState(() {
-                              if (selectItems.length == groupsData.length) {
+                              if (selectItems.length ==
+                                  widget.groupsData.length) {
                                 selectItems.clear();
                               } else {
                                 for (int index = 0;
-                                    index < groupsData.length;
+                                    index < widget.groupsData.length;
                                     index++) {
-                                  selectItems.add(groupsData[index]);
+                                  selectItems.add(widget.groupsData[index]);
                                 }
                               }
                             });
@@ -76,26 +78,33 @@ class _AppBarGroupState extends State<AppBarGroup> {
                       );
                     }),
                 const SizedBox(width: Insets.l),
-                ButtonCommonStyle(
-                  onPressed: () {
-                    widget.homeViewModel.switchEdit();
-                  },
-                  padding: const EdgeInsets.only(
-                      bottom: kDefaultPadding / 2, right: kDefaultPadding * 4),
-                  child: ValueListenableBuilder(
-                      valueListenable: widget.homeViewModel.isEditing,
-                      builder: ((context, value, child) {
-                        return !value
-                            ? const StaticText(
-                                text: 'Edit',
-                                fontSize: TextSize.lBody,
-                              )
-                            : const StaticText(
-                                text: 'Done',
-                                fontSize: TextSize.lBody,
-                              );
-                      })),
-                ),
+                widget.groupsData.isEmpty
+                    ? const StaticText(
+                        text: 'Edit',
+                        fontSize: TextSize.lBody,
+                        color: kSecondaryColor,
+                      )
+                    : ButtonCommonStyle(
+                        onPressed: () {
+                          widget.homeViewModel.switchEdit();
+                        },
+                        padding: const EdgeInsets.only(
+                            bottom: kDefaultPadding / 2,
+                            right: kDefaultPadding * 4),
+                        child: ValueListenableBuilder(
+                            valueListenable: widget.homeViewModel.isEditing,
+                            builder: ((context, value, child) {
+                              return !value
+                                  ? const StaticText(
+                                      text: 'Edit',
+                                      fontSize: TextSize.lBody,
+                                    )
+                                  : const StaticText(
+                                      text: 'Done',
+                                      fontSize: TextSize.lBody,
+                                    );
+                            })),
+                      ),
               ],
             ),
           ),

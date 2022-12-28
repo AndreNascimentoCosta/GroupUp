@@ -5,8 +5,7 @@ import 'package:groupup/screens/individual_group_settings/components/app_bar.dar
 import 'package:groupup/screens/individual_group_settings/components/body.dart';
 
 class GroupSettings extends StatefulWidget {
-  const GroupSettings(
-      {required this.homeViewModel, required this.groupModel});
+  const GroupSettings({required this.homeViewModel, required this.groupModel});
 
   final HomeViewModel homeViewModel;
   final GroupModel groupModel;
@@ -22,7 +21,9 @@ class _GroupSettingsState extends State<GroupSettings> {
       appBar: AppBarGroupSettings(
         homeViewModel: widget.homeViewModel,
       ),
-      body: BodySettings(groupModel: widget.groupModel,),
+      body: BodySettings(
+        groupModel: widget.groupModel,
+      ),
     );
   }
 }

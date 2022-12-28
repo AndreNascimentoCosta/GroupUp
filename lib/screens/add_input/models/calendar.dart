@@ -3,17 +3,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
-import 'package:groupup/models/user_information.dart';
+import 'package:groupup/models/participant.dart';
 import 'package:groupup/screens/add_input/models/bottom_calendar.dart';
 import 'package:groupup/screens/add_input/models/box_decoration.dart';
 import 'package:groupup/screens/add_input/styles/text.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class Calendar extends StatefulWidget {
-  const Calendar({required this.groupModel, required this.individualGroup});
+  const Calendar({required this.groupModel, required this.participant});
 
   final GroupModel groupModel;
-  final UserInformation individualGroup;
+  final Participant participant;
 
   @override
   State<Calendar> createState() => _CalendarState();
@@ -84,7 +84,7 @@ class _CalendarState extends State<Calendar> {
             ),
             const SizedBox(height: Insets.s),
             BottomCalendar(
-              individualGroup: widget.individualGroup,
+              participant: widget.participant,
             ),
           ],
         ),

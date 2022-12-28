@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/models/group.dart';
+import 'package:groupup/models/participant.dart';
 import 'package:groupup/screens/individual_group/screens/individual_group.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -12,13 +13,13 @@ class GroupsCard extends StatefulWidget {
   const GroupsCard({
     Key? key,
     required this.groupModel,
-    required this.press,
     required this.homeViewModel,
+    required this.participant
   }) : super(key: key);
 
   final GroupModel groupModel;
-  final VoidCallback press;
   final HomeViewModel homeViewModel;
+  final Participant participant;
 
   @override
   State<GroupsCard> createState() => _GroupsCardState();
@@ -43,6 +44,7 @@ class _GroupsCardState extends State<GroupsCard> {
               builder: (context) => IndividualGroupScreen(
                 homeViewModel: widget.homeViewModel,
                 groupModel: widget.groupModel,
+                participant: widget.participant,
               ),
             ),
           );
@@ -77,7 +79,7 @@ class _GroupsCardState extends State<GroupsCard> {
                   left: kDefaultPadding,
                 ),
                 child: ExtraLargeBody(
-                  text: Characters(widget.groupModel.title)
+                  text: Characters(widget.groupModel.projectName)
                       .replaceAll(Characters(''), Characters('\u{200B}'))
                       .toString(),
                 ),
@@ -85,7 +87,6 @@ class _GroupsCardState extends State<GroupsCard> {
             ),
             StatsGroup(
               groupModel: widget.groupModel,
-              press: widget.press,
               homeViewModel: widget.homeViewModel,
             ),
           ],

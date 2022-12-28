@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
+import 'package:groupup/models/participant.dart';
 import 'package:groupup/screens/add_input/models/calendar.dart';
 import 'package:groupup/screens/add_input/models/add_input_group_button.dart';
 import 'package:groupup/screens/add_input/models/data_history.dart';
 import 'package:groupup/screens/individual_group/components/app_bar.dart';
 
 class AddInputScreen extends StatefulWidget {
-  const AddInputScreen({required this.groupModel, required this.homeViewModel});
+  const AddInputScreen({
+    required this.groupModel,
+    required this.homeViewModel,
+    required this.participant,
+  });
 
   final GroupModel groupModel;
   final HomeViewModel homeViewModel;
+  final Participant participant;
 
   @override
   State<AddInputScreen> createState() => _AddInputScreenState();
@@ -30,7 +36,7 @@ class _AddInputScreenState extends State<AddInputScreen> {
         children: [
           Calendar(
             groupModel: widget.groupModel,
-            individualGroup: widget.groupModel.userInformation.first,
+            participant: widget.participant,
           )
         ],
       ),

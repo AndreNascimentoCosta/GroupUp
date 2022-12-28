@@ -28,9 +28,9 @@ class BodyIndividualGroup extends StatelessWidget {
           ),
           itemCount: groupModel.userInformation.length,
           itemBuilder: (context, index) => IndividualGroupCard(
-            individualGroup: groupModel.userInformation[index],
+            participant: groupModel.participant[index],
             homeViewModel: homeViewModel,
-            meIndividualGroup: groupModel.meUserInformation,
+            meParticipant: groupModel.meParticipant,
           ),
         ),
       ),

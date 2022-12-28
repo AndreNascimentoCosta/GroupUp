@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
-import 'package:groupup/models/dropdown.dart';
-import 'package:groupup/models/user_information.dart';
+import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/models/user_input_data.dart';
 
 class IndividualValue extends StatelessWidget {
   const IndividualValue(
       {required this.homeViewModel,
-      required this.individualGroup,
+      required this.userInputData,
       required this.dropDownModel});
 
   final HomeViewModel homeViewModel;
-  final UserInformation individualGroup;
+  final UserInputData userInputData;
   final DropDownModel dropDownModel;
 
   @override
@@ -30,7 +30,7 @@ class IndividualValue extends StatelessWidget {
                 children: [
                   const Spacer(),
                   ExtraLargeBody(
-                    text: individualGroup.value,
+                    text: userInputData.value.toString(),
                   ),
                   const SizedBox(width: kDefaultPadding / 2),
                   ButtonCommonStyle(

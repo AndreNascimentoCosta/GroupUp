@@ -4,19 +4,19 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/user_information.dart';
+import 'package:groupup/models/participant.dart';
 
 class MakeAdmin extends StatelessWidget {
-  const MakeAdmin({required this.individualGroup});
+  const MakeAdmin({required this.participant});
 
-  final UserInformation individualGroup;
+  final Participant participant;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const SizedBox(height: Insets.s),
-        MediumBody(text: individualGroup.name, color: kSecondaryColor),
+        MediumBody(text: participant.name, color: kSecondaryColor),
         const Divider(height: Insets.l, color: kSecondaryColor, thickness: 0.5),
         const SizedBox(height: Insets.s),
         Align(

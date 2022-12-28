@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/user_information.dart';
+import 'package:groupup/models/participant.dart';
 
 class ChartLabel extends StatelessWidget {
-  const ChartLabel({required this.individualGroup});
+  const ChartLabel({required this.participant});
 
-  final UserInformation individualGroup;
+  final Participant participant;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +33,8 @@ class ChartLabel extends StatelessWidget {
                   width: Insets.s,
                 ),
                 StaticText(
-                  text: individualGroup.name.isNotEmpty
-                      ? "${individualGroup.name.trim().split(RegExp(' +')).map((s) => s[0]).take(2).join(". ")}."
+                  text: participant.name.isNotEmpty
+                      ? "${participant.name.trim().split(RegExp(' +')).map((s) => s[0]).take(2).join(". ")}."
                       : '',
                   color: kPrimaryColor,
                   fontSize: TextSize.sBody,

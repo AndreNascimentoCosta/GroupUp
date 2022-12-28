@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/design-system.dart';
+import 'package:groupup/models/group.dart';
 import 'package:groupup/screens/balance/screens/balance.dart';
 import 'package:groupup/screens/created_groups/screens/created_groups_screen.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
@@ -14,7 +15,7 @@ import 'package:groupup/screens/profile/components/body_button.dart';
 import 'edit_profile_button.dart';
 
 class BodyProfile extends StatelessWidget {
-  const BodyProfile({super.key});
+  BodyProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,7 @@ class BodyProfile extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const BalanceScreen(),
+                        builder: (context) => BalanceScreen(groupsData: groupsData,),
                       ));
                 },
                 text: 'Balance',
@@ -72,7 +73,7 @@ class BodyProfile extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const RefundRequestsScreen(),
+                        builder: (context) => RefundRequestsScreen(groupsData: groupsData,),
                       ));
                 },
                 text: 'Refund requests',
@@ -83,7 +84,7 @@ class BodyProfile extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const CreatedGroupsScreen(),
+                        builder: (context) => CreatedGroupsScreen(groupsData: groupsData,),
                       ));
                 },
                 text: 'Created groups',
@@ -93,4 +94,7 @@ class BodyProfile extends StatelessWidget {
       ),
     );
   }
+
+  final List<GroupModel> groupsData = [];
+
 }

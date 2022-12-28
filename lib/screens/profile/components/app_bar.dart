@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
@@ -15,12 +16,14 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
       elevation: 0,
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
-      title: const LargeBody(text: 'angusmac_41', fontFamily: 'Montserrat-SemiBold'),
+      title: const LargeBody(
+          text: 'angusmac_41', fontFamily: 'Montserrat-SemiBold'),
       centerTitle: false,
       actions: [
         Align(
           alignment: Alignment.center,
-          child: ButtonCommonStyle(
+          child: 
+          ButtonCommonStyle(
               onPressed: () {
                 showModalBottomSheet(
                     isScrollControlled: true,
@@ -36,7 +39,8 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
                             Column(
                               mainAxisSize: MainAxisSize.min,
                               children: const [
-                                SizedBox(height: 140, child: OtherOptionsProfile()),
+                                SizedBox(
+                                    height: 140, child: OtherOptionsProfile()),
                               ],
                             )
                           ],
@@ -46,9 +50,13 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
               },
               child: Padding(
                 padding: const EdgeInsets.only(right: kDefaultPadding),
-                child: SvgPicture.asset(
+                child: SizedBox(
+                  height: Insets.xl,
+                  width: Insets.xl,
+                  child: SvgPicture.asset(
                     'assets/icons/ellipsis.svg',
-                  color: Colors.black,
+                    color: Colors.black,
+                  ),
                 ),
               )),
         ),

@@ -26,7 +26,7 @@ class IndividualCreatedGroup extends StatelessWidget {
                 left: kDefaultPadding,
               ),
               child: ExtraLargeBody(
-                text: groupModel.title,
+                text: groupModel.projectName,
                 overflow: TextOverflow.ellipsis,
               ),
             ),

@@ -5,6 +5,7 @@ import 'package:groupup/styles/text.dart';
 
 class TextFieldModelHome extends StatefulWidget {
   const TextFieldModelHome({
+    required this.controller,
     required this.header,
     required this.hint,
     required this.padding,
@@ -14,6 +15,7 @@ class TextFieldModelHome extends StatefulWidget {
     this.autoFocus = false,
   });
 
+  final TextEditingController controller;
   final String header;
   final String hint;
   final EdgeInsetsGeometry padding;
@@ -27,13 +29,12 @@ class TextFieldModelHome extends StatefulWidget {
 }
 
 class _TextFieldModelHomeState extends State<TextFieldModelHome> {
-  final nameController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
 
-    nameController.addListener(() {
+    widget.controller.addListener(() {
       setState(() {});
     });
   }
@@ -51,7 +52,7 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
           ),
           const SizedBox(height: 5),
           TextField(
-            controller: nameController,
+            controller: widget.controller,
             keyboardType: widget.keyboardType,
             textInputAction: widget.textInputAction,
             autofillHints: widget.autoFillHints,
@@ -65,7 +66,7 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
                   borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
                   borderSide: BorderSide(color: kPrimaryColor),
                 ),
-                suffixIcon: nameController.text.isEmpty
+                suffixIcon: widget.controller.text.isEmpty
                     ? null
                     : IconButton(
                         icon: const Icon(
@@ -73,7 +74,7 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
                           color: Colors.black,
                         ),
                         onPressed: () {
-                          nameController.clear();
+                          widget.controller.clear();
                         },
                       ),
                 contentPadding:

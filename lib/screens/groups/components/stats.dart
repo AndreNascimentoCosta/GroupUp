@@ -10,12 +10,10 @@ class StatsGroup extends StatelessWidget {
   const StatsGroup(
       {Key? key,
       required this.groupModel,
-      required this.press,
       required this.homeViewModel})
       : super(key: key);
 
   final GroupModel groupModel;
-  final VoidCallback press;
   final HomeViewModel homeViewModel;
 
   @override
@@ -38,7 +36,7 @@ class StatsGroup extends StatelessWidget {
                     child: Column(
                       children: [
                         SvgPicture.asset(
-                          groupModel.rankIcon,
+                          'assets/icons/rank.svg',
                           height: Insets.l,
                           width: Insets.l,
                           color: Colors.black,
@@ -47,7 +45,7 @@ class StatsGroup extends StatelessWidget {
                           height: kDefaultPadding * 0.25,
                         ),
                         SvgPicture.asset(
-                          groupModel.daysGoneIcon,
+                          'assets/icons/daysgone.svg',
                           height: Insets.l,
                           width: Insets.l,
                           color: Colors.black,
@@ -56,7 +54,7 @@ class StatsGroup extends StatelessWidget {
                           height: kDefaultPadding * 0.25,
                         ),
                         SvgPicture.asset(
-                          groupModel.daysLeftIcon,
+                          'assets/icons/daysleft.svg',
                           height: Insets.l,
                           width: Insets.l,
                           color: Colors.black,

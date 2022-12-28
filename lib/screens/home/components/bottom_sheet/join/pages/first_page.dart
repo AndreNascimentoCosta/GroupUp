@@ -12,6 +12,8 @@ class FirsPageJoin extends StatefulWidget {
 }
 
 class _FirsPageJoinState extends State<FirsPageJoin> {
+  final controllerGroupCode = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,12 +23,13 @@ class _FirsPageJoinState extends State<FirsPageJoin> {
           currentFocus.unfocus();
         }
       },
-      child: const Center(
+      child: Center(
         child: SingleChildScrollView(
           child: TextFieldModelHome(
+            controller: controllerGroupCode,
             header: 'Group code',
             hint: 'Enter group code',
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: kDefaultPadding,
             ),
           ),

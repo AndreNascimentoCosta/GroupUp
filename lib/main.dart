@@ -1,10 +1,23 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
 import 'package:groupup/screens/splashscreen/splashscreen.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(
-    const MaterialApp(
-      home: SplashScreen(),
+    MultiProvider(
+      providers: [
+        ListenableProvider(
+          create: ((context) => AuthProvider()),
+        )
+      ],
+      child: const MaterialApp(
+        home: SplashScreen(),
+      ),
     ),
   );
 }

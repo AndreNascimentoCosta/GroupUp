@@ -24,6 +24,8 @@ class SecondPageCreate extends StatefulWidget {
 
 class _SecondPageCreateState extends State<SecondPageCreate> {
   final SwitchModel switchModel = SwitchModel();
+  final controllerNumberParticipants = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -46,7 +48,7 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.only(top: kDefaultPadding * 1.25, left: 240),
+                        const EdgeInsets.only(top: kDefaultPadding * 1.25, left: 260),
                     child: Tooltip(
                         preferBelow: false,
                         showDuration: const Duration(seconds: 3),
@@ -58,10 +60,11 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                           size: MediaQuery.of(context).size.height * 0.035,
                         )),
                   ),
-                  const TextFieldModelHome(
+                  TextFieldModelHome(
+                    controller: controllerNumberParticipants,
                     header: 'Number of participants',
                     hint: 'Enter a number',
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: kDefaultPadding,
                       right: kDefaultPadding * 5,
                     ),

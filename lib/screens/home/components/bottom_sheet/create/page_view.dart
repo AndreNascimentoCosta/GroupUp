@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
+import 'package:groupup/models/group_card_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/first_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/second_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/third_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/first_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/styles/text.dart';
@@ -87,10 +89,11 @@ class _CreatePageViewState extends State<CreatePageView> {
               FirsPageCreate(controller: controller, count: itemCount),
               SecondPageCreate(controller: controller, count: itemCount),
               const ThirdPageCreate(),
+              FirsPageSignUp(controller: controller),
             ],
           ),
         ),
-        pageIndex != 2
+        pageIndex != 3
             ? NextButton(
                 onPressed: () {
                   controller.nextPage(
