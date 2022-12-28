@@ -27,16 +27,17 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> phoneLogin() async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
+    FirebaseAuth auth = FirebaseAuth.instance;
 
-    _auth.verifyPhoneNumber(
+    auth.verifyPhoneNumber(
       phoneNumber: phoneController.text,
       timeout: const Duration(seconds: 60),
       verificationCompleted: (credential) async {
-        await _auth.signInWithCredential(credential);
+        await auth.signInWithCredential(credential);
       },
       verificationFailed: (FirebaseAuthException e) {
         if (e.code == 'invalid-phone-number') {
+          // ignore: avoid_print
           print('The provided phone number is not valid.');
         }
       },
@@ -46,7 +47,7 @@ class AuthProvider extends ChangeNotifier {
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
             verificationId: verificationId, smsCode: smsCode);
 
-        await _auth.signInWithCredential(credential);
+        await auth.signInWithCredential(credential);
       },
       codeAutoRetrievalTimeout: ((verificationId) {
         this.verificationId = verificationId;

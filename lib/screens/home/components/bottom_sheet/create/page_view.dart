@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group_card_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/first_page.dart';

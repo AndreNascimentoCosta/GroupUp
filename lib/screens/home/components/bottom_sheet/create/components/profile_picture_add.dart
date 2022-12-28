@@ -29,6 +29,7 @@ class _ProfilePictureAddState extends State<ProfilePictureAdd> {
         this.image = imageTemporary;
       });
     } on PlatformException catch (e) {
+      // ignore: avoid_print
       print('Failed to pick image: $e');
     }
   }
@@ -38,57 +39,57 @@ class _ProfilePictureAddState extends State<ProfilePictureAdd> {
     return ButtonCommonStyle(
       onPressed: () {
         showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Insets.m),
-            ),
-            builder: (context) {
-              return Padding(
-                padding: MediaQuery.of(context).viewInsets,
-                child: Wrap(
-                  children: <Widget>[
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.4,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: kDefaultPadding * 1.5),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  ButtonCommonStyle(
-                                    onPressed: () {
-                                      pickImage(ImageSource.gallery);
-                                    },
-                                    child: const LargeBody(
-                                      text: 'Choose from gallery',
-                                      textAlign: TextAlign.center,
-                                    ),
+          isScrollControlled: true,
+          context: context,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Insets.m),
+          ),
+          builder: (context) {
+            return Padding(
+              padding: MediaQuery.of(context).viewInsets,
+              child: Wrap(
+                children: <Widget>[
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: kDefaultPadding * 1.5),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                ButtonCommonStyle(
+                                  onPressed: () {
+                                    pickImage(ImageSource.gallery);
+                                  },
+                                  child: const LargeBody(
+                                    text: 'Choose from gallery',
+                                    textAlign: TextAlign.center,
                                   ),
-                                  const SizedBox(height: Insets.l * 1.5),
-                                  ButtonCommonStyle(
-                                    onPressed: () {
-                                      pickImage(ImageSource.camera);
-                                    },
-                                    child: const LargeBody(
-                                      text: 'Take photo',
-                                      textAlign: TextAlign.center,
-                                      color: Colors.red,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )),
-                      ],
-                    )
-                  ],
-                ),
-              );
-            });
+                                ),
+                                const SizedBox(height: Insets.l * 1.5),
+                                ButtonCommonStyle(
+                                  onPressed: () {
+                                    pickImage(ImageSource.camera);
+                                  },
+                                  child: const LargeBody(
+                                    text: 'Take photo',
+                                    textAlign: TextAlign.center,
+                                  ),
+                                )
+                              ],
+                            ),
+                          )),
+                    ],
+                  )
+                ],
+              ),
+            );
+          },
+        );
       },
       child: Stack(
         alignment: AlignmentDirectional.topCenter,
@@ -98,13 +99,13 @@ class _ProfilePictureAddState extends State<ProfilePictureAdd> {
             backgroundColor: const Color(0XFFE1E1E1),
             child: image != null
                 ? ClipOval(
-                  child: Image.file(
+                    child: Image.file(
                       image!,
                       fit: BoxFit.cover,
                       height: 120,
                       width: 120,
                     ),
-                )
+                  )
                 : SvgPicture.asset(
                     'assets/icons/profile_picture.svg',
                     color: Colors.white,

@@ -41,6 +41,5 @@ class ProfilePictureBottomSheet extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
