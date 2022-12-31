@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class ButtonCommonStyle extends StatelessWidget {
   const ButtonCommonStyle({
     required this.child,
-    required this.onPressed,
+    this.onPressed,
     this.color = Colors.black,
-    this.padding
+    this.padding,
   });
 
   final Widget child;
-  final void Function() onPressed;
+  final void Function()? onPressed;
   final Color color;
   final EdgeInsetsGeometry? padding;
 
@@ -19,10 +19,8 @@ class ButtonCommonStyle extends StatelessWidget {
     return CupertinoButton(
       minSize: 0,
       padding: EdgeInsets.zero,
+      onPressed: onPressed,
       child: child,
-      onPressed: () {
-        onPressed();
-      },
     );
   }
 }

@@ -16,13 +16,14 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
       title: const LargeBody(
-          text: 'angusmac_41', fontFamily: 'Montserrat-SemiBold'),
+        text: 'angusmac_41',
+        fontFamily: 'Montserrat-SemiBold',
+      ),
       centerTitle: false,
       actions: [
         Align(
           alignment: Alignment.center,
-          child: 
-          ButtonCommonStyle(
+          child: ButtonCommonStyle(
               onPressed: () {
                 showModalBottomSheet(
                     isScrollControlled: true,

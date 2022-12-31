@@ -5,9 +5,9 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/styles/text.dart';
 
 class NextButton extends StatelessWidget {
-  const NextButton({required this.onPressed});
+  const NextButton({this.onPressed});
 
-  final void Function() onPressed;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +15,8 @@ class NextButton extends StatelessWidget {
       height: 50,
       width: 140,
       decoration: BoxDecoration(
-        border: Border.all(color: kPrimaryColor),
         borderRadius: BorderRadius.circular(Insets.s),
-        color: kPrimaryColor,
+        color: onPressed == null ? kSecondaryColor : kPrimaryColor,
       ),
       child: ButtonCommonStyle(
         onPressed: onPressed,

@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/body_switch.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_time.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_time_switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/profile_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_switch.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
+import 'package:provider/provider.dart';
 
 class SecondPageCreate extends StatefulWidget {
   const SecondPageCreate({
     required this.controller,
-    required this.count,
   });
 
   final PageController controller;
-  final int count;
 
   @override
   State<SecondPageCreate> createState() => _SecondPageCreateState();
@@ -24,16 +25,17 @@ class SecondPageCreate extends StatefulWidget {
 
 class _SecondPageCreateState extends State<SecondPageCreate> {
   final SwitchModel switchModel = SwitchModel();
-  final controllerNumberParticipants = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
         }
+
+        Form.of(context)?.validate();
       },
       child: Scrollbar(
         child: SingleChildScrollView(
@@ -47,8 +49,8 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                 alignment: AlignmentDirectional.center,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.only(top: kDefaultPadding * 1.25, left: 260),
+                    padding: const EdgeInsets.only(
+                        top: kDefaultPadding * 1.25, left: 260),
                     child: Tooltip(
                         preferBelow: false,
                         showDuration: const Duration(seconds: 3),
@@ -61,13 +63,26 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                         )),
                   ),
                   TextFieldModelHome(
-                    controller: controllerNumberParticipants,
-                    header: 'Number of participants',
+                    controller:
+                        createGroupProvider.controllerNumberParticipants,
+                    header: 'Limit of participants',
                     hint: 'Enter a number',
+                    validator: (value) {
+                      if (value!.isNotEmpty && int.tryParse(value)! > 50) {
+                        return 'Number of participants cannot exceed 50';
+                      } else {
+                        return null;
+                      }
+                    },
                     padding: const EdgeInsets.only(
                       left: kDefaultPadding,
                       right: kDefaultPadding * 5,
                     ),
+                    keyboardType:
+                        const TextInputType.numberWithOptions(signed: true),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
                   ),
                 ],
               ),
@@ -75,22 +90,40 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
               BodySwitch(
                   text: 'Dates',
                   switchType: DateSwitch(switchModel: switchModel)),
+              const SizedBox(height: Insets.xs),
               ValueListenableBuilder(
                   valueListenable: switchModel.isSwitched,
                   builder: ((context, value, child) {
                     return AnimatedContainer(
-                        height: value ? 45 : 0,
+                        height: value ? 70 : 0,
                         duration: const Duration(milliseconds: 50),
                         child: Visibility(
                           visible: value,
                           child: const DateTimeSwicth(),
                         ));
                   })),
-              const BodySwitch(
-                  text: 'Everyone can edit group picture',
-                  switchType: SwitchButton()),
-              const BodySwitch(
-                  text: 'Allow refund request', switchType: SwitchButton()),
+              BodySwitch(
+                text: 'Everyone can edit group picture',
+                switchType: SwitchButton(
+                  onChanged: (value) {
+                    final createGroupProvider =
+                        Provider.of<CreateGroupProvider>(context,
+                            listen: false);
+                    createGroupProvider.newGroup.allowEditImage = value;
+                  },
+                ),
+              ),
+              BodySwitch(
+                text: 'Allow refund request',
+                switchType: SwitchButton(
+                  onChanged: (value) {
+                    final createGroupProvider =
+                        Provider.of<CreateGroupProvider>(context,
+                            listen: false);
+                    createGroupProvider.newGroup.allowRefundRequest = value;
+                  },
+                ),
+              ),
             ],
           ),
         ),

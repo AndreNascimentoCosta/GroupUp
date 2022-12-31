@@ -28,26 +28,26 @@ class BodySettings extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
-            children: const [
-              SizedBox(
+            children: [
+              const SizedBox(
                   width: 250,
                   child: LargeBody(
                     text: 'Everyone can edit group picture',
                     maxLines: 2,
                   )),
-              Spacer(),
-              SwitchButton(),
+              const Spacer(),
+              SwitchButton(onChanged: (value){},),
             ],
           ),
           const SizedBox(height: kDefaultPadding * 1.5),
           Row(
-            children: const [
-              SizedBox(
+            children: [
+              const SizedBox(
                 width: 250,
                 child: LargeBody(text: 'Allow refund request'),
               ),
-              Spacer(),
-              SwitchButton(),
+              const Spacer(),
+              SwitchButton(onChanged: (value){},),
             ],
           ),
           const SizedBox(height: kDefaultPadding * 1.5),

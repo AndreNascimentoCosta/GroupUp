@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/groups/screens/groups_screen.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/first_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/second_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/third_page.dart';
@@ -11,6 +10,7 @@ import 'package:groupup/screens/home/components/bottom_sheet/sign_up/first_page.
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/styles/text.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CreatePageView extends StatefulWidget {
@@ -21,13 +21,9 @@ class CreatePageView extends StatefulWidget {
 }
 
 class _CreatePageViewState extends State<CreatePageView> {
-  int pageIndex = 0;
-  final controller = PageController(initialPage: 0);
-  final itemCount = 3;
-  bool isPageTwo = false;
-
   @override
   Widget build(BuildContext context) {
+    final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return Column(
       children: [
         Padding(
@@ -39,16 +35,20 @@ class _CreatePageViewState extends State<CreatePageView> {
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: Align(
                   alignment: AlignmentDirectional.centerStart,
-                  child: pageIndex != 0
+                  child: createGroupProvider.pageIndex != 0
                       ? ButtonCommonStyle(
                           onPressed: () {
-                            controller.previousPage(
+                            createGroupProvider.controller.previousPage(
                                 duration: const Duration(milliseconds: 300),
                                 curve: Curves.ease);
                           },
-                          child: SvgPicture.asset(
-                            'assets/icons/arrow_left.svg',
-                            color: const Color(0xFF868686),
+                          child: SizedBox(
+                            height: Insets.xl,
+                            width: Insets.xl,
+                            child: SvgPicture.asset(
+                              'assets/icons/arrow_left.svg',
+                              color: const Color(0xFF868686),
+                            ),
                           ))
                       : null,
                 ),
@@ -63,8 +63,8 @@ class _CreatePageViewState extends State<CreatePageView> {
                 child: Align(
                     alignment: AlignmentDirectional.centerEnd,
                     child: SmoothPageIndicator(
-                        controller: controller,
-                        count: itemCount,
+                        controller: createGroupProvider.controller,
+                        count: createGroupProvider.itemCount,
                         effect: const WormEffect(
                           dotHeight: 10,
                           dotWidth: 10,
@@ -78,37 +78,20 @@ class _CreatePageViewState extends State<CreatePageView> {
         ),
         Expanded(
           child: PageView(
-            controller: controller,
-            onPageChanged: (int index) {
-              setState(() {
-                pageIndex = index;
-              });
-            },
+            physics: const NeverScrollableScrollPhysics(),
+            controller: createGroupProvider.controller,
+            onPageChanged: createGroupProvider.updateIndex,
             children: [
-              FirsPageCreate(controller: controller, count: itemCount),
-              SecondPageCreate(controller: controller, count: itemCount),
+              FirsPageCreate(controller: createGroupProvider.controller),
+              SecondPageCreate(controller: createGroupProvider.controller),
               const ThirdPageCreate(),
-              FirsPageSignUp(controller: controller),
+              FirsPageSignUp(controller: createGroupProvider.controller),
             ],
           ),
         ),
-        pageIndex != 3
-            ? NextButton(
-                onPressed: () {
-                  controller.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.ease);
-                },
-              )
-            : NextButton(
-                onPressed: () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                          builder: ((context) =>
-                              GroupsScreen(homeViewModel: HomeViewModel()))),
-                      (route) => false);
-                },
-              ),
+        NextButton(
+          onPressed: createGroupProvider.nextPressed(context),
+        ),
         const SizedBox(height: Insets.l * 1.5),
       ],
     );

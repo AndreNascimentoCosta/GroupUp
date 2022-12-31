@@ -17,7 +17,6 @@ class SecondPageSignUpPhone extends StatefulWidget {
 class _SecondPageSignUpPhoneState extends State<SecondPageSignUpPhone> {
   @override
   Widget build(BuildContext context) {
-    //QUERO VER SE DEU BOA
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);

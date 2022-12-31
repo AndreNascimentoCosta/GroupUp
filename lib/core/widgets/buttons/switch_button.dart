@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SwitchButton extends StatefulWidget {
-  const SwitchButton({super.key});
+  const SwitchButton({required this.onChanged});
+
+  final void Function(bool) onChanged;
 
   @override
   State<SwitchButton> createState() => _SwitchButtonState();
@@ -18,6 +20,7 @@ class _SwitchButtonState extends State<SwitchButton> {
         setState(() {
           this.value = value;
         });
+        widget.onChanged(false);
       },
     );
   }

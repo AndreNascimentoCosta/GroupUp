@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/styles/text.dart';
 
@@ -13,6 +15,9 @@ class TextFieldModelHome extends StatefulWidget {
     this.textInputAction,
     this.autoFillHints,
     this.autoFocus = false,
+    this.inputFormatters,
+    this.validator,
+    this.prefixIcon,
   });
 
   final TextEditingController controller;
@@ -23,18 +28,23 @@ class TextFieldModelHome extends StatefulWidget {
   final TextInputAction? textInputAction;
   final Iterable<String>? autoFillHints;
   final bool autoFocus;
+  final List<TextInputFormatter>? inputFormatters;
+  final String? Function(String?)? validator;
+  final Widget? prefixIcon;
 
   @override
   State<TextFieldModelHome> createState() => _TextFieldModelHomeState();
 }
 
 class _TextFieldModelHomeState extends State<TextFieldModelHome> {
+  final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
 
     widget.controller.addListener(() {
+      if (!mounted) return;
       setState(() {});
     });
   }
@@ -51,12 +61,15 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
             fontSize: TextSize.lBody,
           ),
           const SizedBox(height: 5),
-          TextField(
+          TextFormField(
             controller: widget.controller,
             keyboardType: widget.keyboardType,
             textInputAction: widget.textInputAction,
+            inputFormatters: widget.inputFormatters,
             autofillHints: widget.autoFillHints,
             autofocus: widget.autoFocus,
+            autovalidateMode: AutovalidateMode.always,
+            validator: widget.validator,
             decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
@@ -66,10 +79,15 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
                   borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
                   borderSide: BorderSide(color: kPrimaryColor),
                 ),
+                prefixIcon: widget.prefixIcon,
+                prefixIconConstraints: const BoxConstraints(
+                  minWidth: 40,
+                  minHeight: 40,
+                ),
                 suffixIcon: widget.controller.text.isEmpty
                     ? null
-                    : IconButton(
-                        icon: const Icon(
+                    : ButtonCommonStyle(
+                        child: const Icon(
                           Icons.close,
                           color: Colors.black,
                         ),

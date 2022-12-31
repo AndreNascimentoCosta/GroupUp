@@ -1,7 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/constants.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
 import 'package:groupup/screens/splashscreen/splashscreen.dart';
+import 'package:groupup/styles/theme.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -13,10 +16,11 @@ Future<void> main() async {
       providers: [
         ListenableProvider(
           create: ((context) => AuthProvider()),
-        )
+        ),
       ],
-      child: const MaterialApp(
-        home: SplashScreen(),
+      child: MaterialApp(
+        theme: themeData,
+        home: const SplashScreen(),
       ),
     ),
   );
