@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/design-system.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
+import 'package:provider/provider.dart';
 
 class OTPField extends StatelessWidget {
   const OTPField({this.autofocus = false});
@@ -9,10 +11,12 @@ class OTPField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
     return SizedBox(
       height: 58,
       width: 50,
       child: TextFormField(
+        controller: phoneProvider.otpCode,
         onChanged: ((value) {
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();

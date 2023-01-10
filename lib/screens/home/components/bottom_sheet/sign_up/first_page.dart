@@ -11,10 +11,9 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class FirsPageSignUp extends StatefulWidget {
   const FirsPageSignUp({
-    required this.controller,
-  });
+    Key? key,
+  }) : super(key: key);
 
-  final PageController controller;
 
   @override
   State<FirsPageSignUp> createState() => _FirsPageSignUpState();
@@ -33,7 +32,8 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
       },
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+          padding:
+              const EdgeInsets.symmetric(horizontal: kDefaultPadding * 1.5),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -41,8 +41,10 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
               const SizedBox(height: Insets.l * 1.5),
               SignInWithAppleButton(
                 onPressed: () {
+                  Provider.of<AuthProvider>(context, listen: false).loading == true;
                   final provider = context.read<AuthProvider>();
                   provider.appleLogin();
+                  Navigator.pop(context);
                 },
                 text: 'Continue with Apple',
                 height: 50,
@@ -53,8 +55,10 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
               const SizedBox(height: Insets.l * 1.25),
               ButtonCommonStyle(
                 onPressed: () {
+                  Provider.of<AuthProvider>(context, listen: false).loading == true;
                   final provider = context.read<AuthProvider>();
                   provider.googleLogin();
+                  Navigator.pop(context);
                 },
                 child: Container(
                   height: 50,
@@ -88,6 +92,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
               const SizedBox(height: Insets.l * 1.25),
               ButtonCommonStyle(
                 onPressed: () {
+                  Navigator.pop(context);
                   showModalBottomSheet(
                       isScrollControlled: true,
                       context: context,

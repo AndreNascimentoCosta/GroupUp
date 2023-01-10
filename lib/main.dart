@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/join/join_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
 import 'package:groupup/screens/splashscreen/splashscreen.dart';
 import 'package:groupup/styles/theme.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +18,18 @@ Future<void> main() async {
         ListenableProvider(
           create: ((context) => AuthProvider()),
         ),
+        ListenableProvider(
+          create: ((context) => CreateGroupProvider()),
+        ),
+        ListenableProvider(
+          create: ((context) => JoinGroupProvider()),
+        ),
+        ListenableProvider(
+          create: ((context) => PhoneAuthenProvider()),
+        )
       ],
       child: MaterialApp(
+        title: 'GroupUp',
         theme: themeData,
         home: const SplashScreen(),
       ),

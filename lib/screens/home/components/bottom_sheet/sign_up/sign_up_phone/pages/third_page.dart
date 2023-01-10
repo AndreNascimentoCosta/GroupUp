@@ -5,7 +5,9 @@ import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_pho
 import 'package:groupup/styles/text.dart';
 
 class ThirdPageSignUpPhone extends StatefulWidget {
-  const ThirdPageSignUpPhone({required this.controller});
+  const ThirdPageSignUpPhone({
+    required this.controller,
+  });
 
   final PageController controller;
 
@@ -38,7 +40,9 @@ class _ThirdPageSignUpPhoneState extends State<ThirdPageSignUpPhone> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
-                  OTPField(autofocus: true,),
+                  OTPField(
+                    autofocus: true,
+                  ),
                   OTPField(),
                   OTPField(),
                   OTPField(),

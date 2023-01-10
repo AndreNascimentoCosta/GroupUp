@@ -18,6 +18,7 @@ class TextFieldModelHome extends StatefulWidget {
     this.inputFormatters,
     this.validator,
     this.prefixIcon,
+    this.autovalidateMode = AutovalidateMode.always,
   });
 
   final TextEditingController controller;
@@ -31,6 +32,7 @@ class TextFieldModelHome extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
   final Widget? prefixIcon;
+  final AutovalidateMode autovalidateMode;
 
   @override
   State<TextFieldModelHome> createState() => _TextFieldModelHomeState();
@@ -68,7 +70,7 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
             inputFormatters: widget.inputFormatters,
             autofillHints: widget.autoFillHints,
             autofocus: widget.autoFocus,
-            autovalidateMode: AutovalidateMode.always,
+            autovalidateMode: widget.autovalidateMode,
             validator: widget.validator,
             decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(

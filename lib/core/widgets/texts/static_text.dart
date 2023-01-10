@@ -10,6 +10,7 @@ class StaticText extends StatelessWidget {
     this.fontSize = 12,
     this.fontWeight,
     this.color = Colors.black,
+    this.maxLines = 1,
   });
 
   final String text;
@@ -20,6 +21,7 @@ class StaticText extends StatelessWidget {
   final double fontSize;
   final FontWeight? fontWeight;
   final Color color;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class StaticText extends StatelessWidget {
       text,
       textAlign: textAlign,
       overflow: overflow,
+      maxLines: maxLines,
       style: TextStyle(
         letterSpacing: letterSpacing,
         fontFamily: fontFamily,

@@ -7,7 +7,9 @@ import 'package:groupup/screens/home/components/bottom_sheet/create/create_group
 import 'package:provider/provider.dart';
 
 class DateTimeSwicth extends StatefulWidget {
-  const DateTimeSwicth({Key? key}) : super(key: key);
+  const DateTimeSwicth({required this.onChanged});
+
+  final void Function(DateTime?, DateTime?) onChanged;
 
   @override
   State<DateTimeSwicth> createState() => _DateTimeSwicthState();
@@ -101,6 +103,7 @@ class _DateTimeSwicthState extends State<DateTimeSwicth> {
               ),
               onTap: () async {
                 startDate = await pickDate();
+                widget.onChanged(startDate, endDate);
                 createGroupProvider.controllerStartDate.text = _displayText(startDate);
                 setState(() {});
               },
@@ -148,6 +151,7 @@ class _DateTimeSwicthState extends State<DateTimeSwicth> {
               ),
               onTap: () async {
                 endDate = await pickDate();
+                widget.onChanged(startDate, endDate);
                 createGroupProvider.controllerEndDate.text = _displayText(endDate);
                 setState(() {});
               },

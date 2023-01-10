@@ -7,7 +7,9 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePictureAdd extends StatefulWidget {
   const ProfilePictureAdd({super.key});
@@ -20,11 +22,16 @@ class _ProfilePictureAddState extends State<ProfilePictureAdd> {
   File? image;
 
   Future pickImage(ImageSource source) async {
+    Navigator.pop(context);
     try {
-      final image = await ImagePicker().pickImage(source: source);
+      final image = await ImagePicker().pickImage(source: source, imageQuality: 15);
       if (image == null) return;
 
       final imageTemporary = File(image.path);
+
+      if (!mounted) return;
+      Provider.of<CreateGroupProvider>(context, listen: false).image =
+          imageTemporary;
       setState(() {
         this.image = imageTemporary;
       });
@@ -53,10 +60,10 @@ class _ProfilePictureAddState extends State<ProfilePictureAdd> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.15,
+                          height: MediaQuery.of(context).size.height * 0.185,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                                vertical: kDefaultPadding * 1.5),
+                                vertical: kDefaultPadding * 1.75),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -70,7 +77,7 @@ class _ProfilePictureAddState extends State<ProfilePictureAdd> {
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
-                                const SizedBox(height: Insets.l * 1.5),
+                                const SizedBox(height: Insets.l * 1.75),
                                 ButtonCommonStyle(
                                   onPressed: () {
                                     pickImage(ImageSource.camera);

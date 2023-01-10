@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import '../../../constants.dart';
 
@@ -14,54 +16,67 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      backgroundColor: Colors.white,
-      selectedFontSize: 0,
-      unselectedFontSize: 0,
-      currentIndex: _selectedIndex,
-      selectedItemColor: kPrimaryColor,
-      unselectedItemColor: kSecondaryColor,
-      onTap: (value) {
-        setState(() {
-          _selectedIndex = value;
-        });
-      },
-      items: const [
-        BottomNavigationBarItem(
-          icon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: LargeBody(
-              text: 'Pin',
-              color: kGroupEditColor,
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance.collection('groups').snapshots(),
+      builder: ((context, snapshot) {
+        return BottomNavigationBar(
+          backgroundColor: Colors.white,
+          selectedFontSize: 0,
+          unselectedFontSize: 0,
+          currentIndex: _selectedIndex,
+          selectedItemColor: kPrimaryColor,
+          unselectedItemColor: kSecondaryColor,
+          onTap: (value) {
+            setState(() {
+              _selectedIndex = value;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: ButtonCommonStyle(
+                onPressed: () {},
+                child: const Padding(
+                  padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+                  child: LargeBody(
+                    text: 'Pin',
+                    color: kGroupEditColor,
+                  ),
+                ),
+              ),
+              activeIcon: const Padding(
+                padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+                child: LargeBody(
+                  text: 'Pin',
+                  color: kPrimaryColor,
+                ),
+              ),
+              label: '',
             ),
-          ),
-          activeIcon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: LargeBody(
-              text: 'Pin',
-              color: kPrimaryColor,
+            BottomNavigationBarItem(
+              icon: ButtonCommonStyle(
+                onPressed: () {
+
+                },
+                child: const Padding(
+                  padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+                  child: LargeBody(
+                    text: 'Delete',
+                    color: kGroupEditColor,
+                  ),
+                ),
+              ),
+              activeIcon: const Padding(
+                padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+                child: LargeBody(
+                  text: 'Delete',
+                  color: kPrimaryColor,
+                ),
+              ),
+              label: '',
             ),
-          ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: LargeBody(
-              text: 'Delete',
-              color: kGroupEditColor,
-            ),
-          ),
-          activeIcon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
-            child: LargeBody(
-              text: 'Delete',
-              color: kPrimaryColor,
-            ),
-          ),
-          label: '',
-        ),
-      ],
+          ],
+        );
+      }),
     );
   }
 }

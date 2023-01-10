@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/design-system.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/join/join_group_provider.dart';
 import 'package:groupup/screens/home/components/home_button.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/join/page_view.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/join/join_page_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:provider/provider.dart';
 
 class JoinGroupButton extends StatelessWidget {
   const JoinGroupButton({super.key});
@@ -11,6 +13,7 @@ class JoinGroupButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonCommonStyle(
       onPressed: () {
+        Provider.of<JoinGroupProvider>(context, listen: false).clean();
         showModalBottomSheet(
             isScrollControlled: true,
             context: context,

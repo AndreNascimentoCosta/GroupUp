@@ -1,17 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/button.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/join/button.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/first_page.dart';
+import 'package:groupup/screens/home/components/continue_button.dart';
+import 'package:provider/provider.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,29 +40,92 @@ class Home extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        const SizedBox(height: Insets.l),
+                        const SizedBox(height: Insets.l * 2),
                         const StaticText(
                           text: 'GroupUp',
-                          fontSize: 36,
-                          fontFamily: 'Montserrat-Bold',
+                          textAlign: TextAlign.center,
+                          fontSize: 34,
+                          fontFamily: 'Montserrat-SemiBold',
                         ),
-                        const SizedBox(height: Insets.s),
-                        const LargeBody(
-                          text:
-                              'Create or join a group and start setting your goals!',
-                          maxLines: 2,
-                          letterSpacing: 1,
-                        ),
-                        const SizedBox(height: Insets.l * 1.5),
-                        SvgPicture.asset(
-                          'assets/images/target_team.svg',
-                          height: MediaQuery.of(context).size.height * 0.45,
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.1),
+                        Image.asset(
+                          'assets/images/target2.png',
+                          height: MediaQuery.of(context).size.height * 0.35,
                           fit: BoxFit.fitHeight,
                         ),
-                        const SizedBox(height: Insets.l * 2),
-                        const JoinGroupButton(),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.05),
+                        RichText(
+                          textAlign: TextAlign.center,
+                          text: const TextSpan(
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 28,
+                              fontFamily: 'Montserrat-Medium',
+                            ),
+                            children: [
+                              TextSpan(
+                                text: 'Create',
+                                style: TextStyle(
+                                  fontFamily: 'Montserrat-Bold',
+                                ),
+                              ),
+                              TextSpan(
+                                text: ' or',
+                              ),
+                              TextSpan(
+                                text: ' Join',
+                                style: TextStyle(
+                                  fontFamily: 'Montserrat-Bold',
+                                ),
+                              ),
+                              TextSpan(
+                                text: ' a group then',
+                              ),
+                              TextSpan(
+                                text: ' Challenge!',
+                                style: TextStyle(
+                                  fontFamily: 'Montserrat-Bold',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.065),
+                        ButtonCommonStyle(
+                          onPressed: () {
+                            showModalBottomSheet(
+                              isScrollControlled: true,
+                              context: context,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(Insets.m),
+                              ),
+                              builder: (context) {
+                                return Padding(
+                                  padding: MediaQuery.of(context).viewInsets,
+                                  child: Wrap(
+                                    children: <Widget>[
+                                      Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: const [
+                                          SizedBox(
+                                              height: 280,
+                                              child: FirsPageSignUp()),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: Provider.of<AuthProvider>(context).loading
+                              ? const CircularProgressIndicator(color: kPrimaryColor)
+                              : const ContinueButton(),
+                        ),
                         const SizedBox(height: Insets.l),
-                        const CreateGroupButton(),
                       ],
                     ),
                   ],

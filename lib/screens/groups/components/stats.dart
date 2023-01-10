@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
+import 'package:groupup/models/show_group.dart';
 import '../../../constants.dart';
 
 class StatsGroup extends StatelessWidget {
   const StatsGroup(
-      {Key? key,
-      required this.groupModel,
-      required this.homeViewModel})
+      {Key? key, required this.showGroup, required this.homeViewModel})
       : super(key: key);
 
-  final GroupModel groupModel;
+  final ShowGroupModel showGroup;
   final HomeViewModel homeViewModel;
 
   @override
@@ -68,14 +66,14 @@ class StatsGroup extends StatelessWidget {
                   child: Column(
                     children: [
                       MediumBody(
-                        text: groupModel.rank,
+                        text: showGroup.rank,
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(
                         height: kDefaultPadding * 0.25,
                       ),
                       MediumBody(
-                        text: groupModel.daysGone,
+                        text: showGroup.daysGone,
                         textAlign: TextAlign.center,
                         color: Colors.red,
                       ),
@@ -83,7 +81,7 @@ class StatsGroup extends StatelessWidget {
                         height: kDefaultPadding * 0.25,
                       ),
                       MediumBody(
-                        text: groupModel.daysLeft,
+                        text: showGroup.daysLeft,
                         textAlign: TextAlign.center,
                         color: kPrimaryColor,
                       ),

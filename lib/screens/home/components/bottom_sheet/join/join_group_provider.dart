@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/models/join_group_model.dart';
+import 'package:groupup/models/participant.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class JoinGroupProvider extends ChangeNotifier {
   final controllerGroupCode = TextEditingController();
@@ -8,29 +11,53 @@ class JoinGroupProvider extends ChangeNotifier {
   final controller = PageController();
   int pageIndex = 0;
 
-  final joinGroup = JoinGroupModel(
-    groupCode: '',
-  );
-
   JoinGroupProvider() {
     controllerGroupCode.addListener(notifyListeners);
   }
 
-  void Function()? nextPressed(BuildContext context) {
+  void Function()? nextPressedJoin(BuildContext context) {
     // Index 0
     final joinGroupText = controllerGroupCode.text;
 
-    if (pageIndex == 0 &&
-        (joinGroupText.length < 3)) {
+    if ((joinGroupText.isEmpty)) {
+      return null;
     } else {
       return () => {
             FocusNode().unfocus(),
-            controller.nextPage(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.ease,
-            ),
+            joinGroup(context),
+            clean(),
+            Navigator.pop(context),
+            Navigator.pop(context),
           };
     }
+  }
+
+  Future<void> joinGroup(BuildContext context) async {
+    final user = Provider.of<AuthProvider>(context, listen: false).user;
+    final groups = await FirebaseFirestore.instance
+        .collection('groups')
+        .where('groupCode', isEqualTo: controllerGroupCode.text.toUpperCase())
+        .get();
+    if (groups.docs.isEmpty) {
+      return;
+    }
+    FirebaseFirestore.instance
+        .collection('groups')
+        .doc(groups.docs.first.id)
+        .update({
+      'participants': FieldValue.arrayUnion([user.uid]),
+      'participantsData': FieldValue.arrayUnion(
+        [
+          Participant(
+            uid: user.uid,
+            name: user.displayName ?? '',
+            profilePicture: '',
+            inputData: [],
+            isAdmin: false,
+          ).toMap()
+        ],
+      )
+    });
   }
 
   void updateIndex(int index) {
@@ -38,11 +65,9 @@ class JoinGroupProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> createGroup() async {
-    joinGroup.groupCode = controllerGroupCode.text;
-    final Map<String, dynamic> groupMap = {
-      'groupCode': joinGroup.groupCode,
-    };
-    FirebaseFirestore.instance.collection('groups').doc().set(groupMap);
+  void clean() {
+    controllerGroupCode.clear();
+    updateIndex(0);
+    notifyListeners();
   }
 }

@@ -36,7 +36,9 @@ class BodySettings extends StatelessWidget {
                     maxLines: 2,
                   )),
               const Spacer(),
-              SwitchButton(onChanged: (value){},),
+              SwitchButton(
+                onChanged: (value) {},
+              ),
             ],
           ),
           const SizedBox(height: kDefaultPadding * 1.5),
@@ -47,7 +49,9 @@ class BodySettings extends StatelessWidget {
                 child: LargeBody(text: 'Allow refund request'),
               ),
               const Spacer(),
-              SwitchButton(onChanged: (value){},),
+              SwitchButton(
+                onChanged: (value) {},
+              ),
             ],
           ),
           const SizedBox(height: kDefaultPadding * 1.5),
@@ -109,6 +113,7 @@ class BodySettings extends StatelessWidget {
               ),
               const Spacer(),
               ShareButton(
+                text: 'Share',
                 onPressed: () async {
                   await Share.share('846264');
                 },
@@ -144,7 +149,7 @@ class BodySettings extends StatelessWidget {
           const SizedBox(height: Insets.l),
           OtherOptions(
               onPressed: () {}, text: 'Delete group', color: Colors.red),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         ],
       ),
     );

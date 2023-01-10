@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group.dart';
 import 'package:groupup/models/home_view.dart';
+import 'package:groupup/models/show_group.dart';
 import 'package:groupup/screens/individual_group_settings/screens/group_settings.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:photo_view/photo_view.dart';
@@ -11,10 +12,12 @@ class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
   const AppBarIndividualGroup({
     required this.homeViewModel,
     required this.groupModel,
+    required this.showGroup,
   });
 
   final HomeViewModel homeViewModel;
   final GroupModel groupModel;
+  final ShowGroupModel showGroup;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
           return ClipRect(
             child: PhotoView(
               filterQuality: FilterQuality.high,
-              imageProvider: AssetImage(groupModel.image),
+              imageProvider: AssetImage(showGroup.image),
               minScale: PhotoViewComputedScale.covered,
               maxScale: PhotoViewComputedScale.covered * 2,
               disableGestures: value ? false : true,

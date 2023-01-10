@@ -5,26 +5,43 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/styles/text.dart';
 
 class NextButton extends StatelessWidget {
-  const NextButton({this.onPressed});
+  const NextButton({
+    this.onPressed,
+    this.text = 'Next',
+    this.borderColor = kPrimaryColor,
+    this.color = kPrimaryColor,
+    this.textColor = Colors.white,
+    this.height = 50,
+    this.width = 140,
+  });
 
   final void Function()? onPressed;
+  final String text;
+  final Color borderColor;
+  final Color color;
+  final Color textColor;
+  final double height;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      width: 140,
+      height: height,
+      width: width,
       decoration: BoxDecoration(
+        border: Border.all(
+          color: onPressed == null ? kSecondaryColor : borderColor,
+        ),
         borderRadius: BorderRadius.circular(Insets.s),
-        color: onPressed == null ? kSecondaryColor : kPrimaryColor,
+        color: onPressed == null ? kSecondaryColor : color,
       ),
       child: ButtonCommonStyle(
         onPressed: onPressed,
-        child: const StandardTextStyle(
-          text: 'Next',
+        child: StandardTextStyle(
+          text: text,
           fontFamily: 'Montserrat-SemiBold',
           fontSize: TextSize.lBody,
-          color: Colors.white,
+          color: textColor,
         ),
       ),
     );

@@ -3,7 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:groupup/styles/text.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 class ThirdPageCreate extends StatelessWidget {
@@ -11,6 +13,14 @@ class ThirdPageCreate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final createGroupProvider = Provider.of<CreateGroupProvider>(context);
+    if (createGroupProvider.isCreatingGroup) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: kPrimaryColor,
+        ),
+      );
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
@@ -42,8 +52,9 @@ class ThirdPageCreate extends StatelessWidget {
               ),
               const Spacer(),
               ShareButton(
+                text: createGroupProvider.newGroup.groupCode,
                 onPressed: () async {
-                  await Share.share('846264');
+                  await Share.share(createGroupProvider.newGroup.groupCode);
                 },
               ),
             ],

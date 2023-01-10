@@ -4,15 +4,20 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
 import 'package:groupup/models/general_group_info.dart';
+import 'package:groupup/models/show_group.dart';
 import 'package:groupup/screens/individual_group/components/bottom_sheet.dart';
 import 'package:groupup/screens/individual_group/components/date_bottom_sheet.dart';
 import 'package:groupup/screens/individual_group/components/objective_reward.dart';
 import 'package:groupup/screens/individual_group/components/start_end_date.dart';
 
 class HeaderIndividualGroup extends StatelessWidget {
-  const HeaderIndividualGroup({required this.generalGroupInfoModel});
+  const HeaderIndividualGroup({
+    required this.generalGroupInfoModel,
+    required this.showGroup,
+  });
 
   final GeneralGroupInfoModel generalGroupInfoModel;
+  final ShowGroupModel showGroup;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class HeaderIndividualGroup extends StatelessWidget {
               top: kDefaultPadding / 2.5,
               bottom: kDefaultPadding,
             ),
-            child: GroupTitle(text: generalGroupInfoModel.title),
+            child: GroupTitle(text: showGroup.projectName),
           ),
           IntrinsicHeight(
             child: Row(
@@ -42,7 +47,8 @@ class HeaderIndividualGroup extends StatelessWidget {
                     ),
                   ),
                   generalGroupInfoModel: generalGroupInfoModel,
-                  icon: SvgPicture.asset('assets/icons/objective.svg').toString(),
+                  icon:
+                      SvgPicture.asset('assets/icons/objective.svg').toString(),
                   text: generalGroupInfoModel.objective,
                 ),
                 VerticalDivider(
@@ -77,6 +83,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                     ),
                   ),
                   generalGroupInfoModel: generalGroupInfoModel,
+                  showGroup: showGroup,
                 ),
                 const SizedBox(
                   width: kDefaultPadding * 1.5,

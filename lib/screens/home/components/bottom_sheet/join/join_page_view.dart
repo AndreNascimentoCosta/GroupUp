@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/first_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/second_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/third_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/join/join_group_provider.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/join/pages/first_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 
-class SignUpPhonePageView extends StatefulWidget {
-  const SignUpPhonePageView({Key? key}) : super(key: key);
-
+class JoinPageView extends StatefulWidget {
+  const JoinPageView({super.key});
 
   @override
-  State<SignUpPhonePageView> createState() => _SignUpPhonePageViewState();
+  State<JoinPageView> createState() => _JoinPageViewState();
 }
 
-class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
+class _JoinPageViewState extends State<JoinPageView> {
   @override
   Widget build(BuildContext context) {
-    final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
+    final joinGroupProvider = Provider.of<JoinGroupProvider>(context);
     return SafeArea(
       child: Column(
         children: [
@@ -34,10 +31,10 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: Align(
                     alignment: AlignmentDirectional.centerStart,
-                    child: phoneProvider.pageIndex != 0
+                    child: joinGroupProvider.pageIndex != 0
                         ? ButtonCommonStyle(
                             onPressed: () {
-                              phoneProvider.controller.previousPage(
+                              joinGroupProvider.controller.previousPage(
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.ease);
                             },
@@ -49,10 +46,11 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                   ),
                 ),
                 StandardTextStyle(
-                  textAlign: TextAlign.center,
-                  text: phoneProvider.pageIndex < 2
-                      ? 'Sign up'
-                      : 'Verification code',
+                  text: joinGroupProvider.pageIndex == 0
+                      ? 'Join a group'
+                      : joinGroupProvider.pageIndex == 1
+                          ? 'Sign in or Sign up'
+                          : 'Sign up',
                   fontFamily: 'Montserrat-SemiBold',
                   fontSize: 28,
                 ),
@@ -61,29 +59,21 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
           ),
           Expanded(
             child: PageView(
-              controller: phoneProvider.controller,
+              controller: joinGroupProvider.controller,
               onPageChanged: (int index) {
                 setState(() {
-                  phoneProvider.pageIndex = index;
+                  joinGroupProvider.pageIndex = index;
                 });
               },
               children: [
-                // FirstPageSignUpPhone(controller: phoneProvider.controller),
-                Center(
-                    child: SecondPageSignUpPhone(
-                        controller: phoneProvider.controller)),
-                ThirdPageSignUpPhone(
-                  controller: phoneProvider.controller,
-                ),
+                FirsPageJoin(controller: joinGroupProvider.controller),
               ],
             ),
           ),
-          NextButton(
-            onPressed: () {
-              phoneProvider.nextPressedPhone(context);
-            },
-          ),
-          const SizedBox(height: kDefaultPadding / 4)
+          NextButton(onPressed: joinGroupProvider.nextPressedJoin(context)),
+          joinGroupProvider.pageIndex == 1
+              ? const SizedBox(height: 0)
+              : const SizedBox(height: kDefaultPadding / 4)
         ],
       ),
     );

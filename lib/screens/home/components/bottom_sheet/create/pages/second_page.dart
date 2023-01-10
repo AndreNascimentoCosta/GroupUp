@@ -92,16 +92,26 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                   switchType: DateSwitch(switchModel: switchModel)),
               const SizedBox(height: Insets.xs),
               ValueListenableBuilder(
-                  valueListenable: switchModel.isSwitched,
-                  builder: ((context, value, child) {
-                    return AnimatedContainer(
-                        height: value ? 70 : 0,
-                        duration: const Duration(milliseconds: 50),
-                        child: Visibility(
-                          visible: value,
-                          child: const DateTimeSwicth(),
-                        ));
-                  })),
+                valueListenable: switchModel.isSwitched,
+                builder: ((context, value, child) {
+                  return AnimatedContainer(
+                    height: value ? 70 : 0,
+                    duration: const Duration(milliseconds: 50),
+                    child: Visibility(
+                      visible: value,
+                      child: DateTimeSwicth(
+                        onChanged: (startDate, endDate) {
+                          final createGroupProvider =
+                              Provider.of<CreateGroupProvider>(context,
+                                  listen: false);
+                          createGroupProvider.newGroup.startDate = startDate;
+                          createGroupProvider.newGroup.endDate = endDate;
+                        },
+                      ),
+                    ),
+                  );
+                }),
+              ),
               BodySwitch(
                 text: 'Everyone can edit group picture',
                 switchType: SwitchButton(

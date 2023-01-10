@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/models/group.dart';
+import 'package:groupup/models/show_group.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
 import 'package:groupup/screens/groups/components/edit_bottom_navy_bar.dart';
@@ -22,7 +24,7 @@ class GroupsScreen extends StatefulWidget {
 class _GroupsScreenState extends State<GroupsScreen> {
   final HomeViewModel homeViewModel = HomeViewModel();
   final pageController = PageController();
-  final List<GroupModel> groupsData = [];
+  final List<ShowGroupModel> showGroup = [];
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
         children: [
           Body(
             homeViewModel: homeViewModel,
-            groupsData: groupsData,
+            showGroup: showGroup,
           ),
           BodyProfile(),
         ],

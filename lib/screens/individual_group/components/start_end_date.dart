@@ -4,16 +4,19 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/general_group_info.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/models/show_group.dart';
 import 'package:intl/intl.dart';
 
 class StartEndDateButton extends StatelessWidget {
   const StartEndDateButton({
     required this.generalGroupInfoModel,
     required this.builder,
+    required this.showGroup,
   });
 
   final GeneralGroupInfoModel generalGroupInfoModel;
   final Widget builder;
+  final ShowGroupModel showGroup;
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +48,11 @@ class StartEndDateButton extends StatelessWidget {
             children: [
               StaticText(
                   text: DateFormat('dd/MM/yyyy')
-                      .format(generalGroupInfoModel.startDate)),
+                      .format(showGroup.startDate!)),
               const SizedBox(height: kDefaultPadding / 2),
               StaticText(
                   text: DateFormat('dd/MM/yyyy')
-                      .format(generalGroupInfoModel.endDate)),
+                      .format(showGroup.endDate!)),
             ],
           ),
         ],

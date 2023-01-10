@@ -1,7 +1,12 @@
 import 'package:groupup/models/user_input_data.dart';
 
 class Participant {
-  final String name, profilePicture, rank;
+  final String name, profilePicture, uid;
+  final bool isAdmin;
+
+  String get rank {
+    return '';
+  }
 
   final List<UserInputData> inputData;
 
@@ -17,26 +22,29 @@ class Participant {
   }
 
   Participant({
+    required this.uid,
     required this.name,
     required this.profilePicture,
-    required this.rank,
     required this.inputData,
+    required this.isAdmin,
   });
 
   factory Participant.fromMap(map) {
     return Participant(
-        name: map['name'],
-        profilePicture: map['profilePicture'],
-        rank: map['rank'],
-        inputData: map['groups']);
+      uid: map['uid'],
+      name: map['name'],
+      profilePicture: map['profilePicture'],
+      inputData: map['groups'],
+      isAdmin: map['isAdmin'],
+    );
   }
 
   Map<String, dynamic> toMap() {
     return {
+      'uid': uid,
       'name': name,
       'profilePicture': profilePicture,
-      'rank': rank,
-      'inputData': inputData,
+      'isAdmin': isAdmin,
     };
   }
 }

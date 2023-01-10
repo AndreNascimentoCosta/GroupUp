@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 
@@ -15,8 +16,10 @@ class SecondPageSignUpPhone extends StatefulWidget {
 }
 
 class _SecondPageSignUpPhoneState extends State<SecondPageSignUpPhone> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final phoneProvide = Provider.of<PhoneAuthenProvider>(context);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -41,7 +44,8 @@ class _SecondPageSignUpPhoneState extends State<SecondPageSignUpPhone> {
                   ),
                   const SizedBox(height: 5),
                   TextField(
-                    controller: context.watch<AuthProvider>().phoneController,
+                    controller:
+                        phoneProvide.phoneController,
                     keyboardType: TextInputType.phone,
                     autofillHints: const [AutofillHints.telephoneNumber],
                     autofocus: true,
@@ -57,7 +61,7 @@ class _SecondPageSignUpPhoneState extends State<SecondPageSignUpPhone> {
                           borderSide: BorderSide(color: kPrimaryColor),
                         ),
                         suffixIcon: context
-                                .watch<AuthProvider>()
+                                .watch<PhoneAuthenProvider>()
                                 .phoneController
                                 .text
                                 .isEmpty
@@ -69,7 +73,7 @@ class _SecondPageSignUpPhoneState extends State<SecondPageSignUpPhone> {
                                 ),
                                 onPressed: () {
                                   context
-                                      .watch<AuthProvider>()
+                                      .watch<PhoneAuthenProvider>()
                                       .phoneController
                                       .clear();
                                 },

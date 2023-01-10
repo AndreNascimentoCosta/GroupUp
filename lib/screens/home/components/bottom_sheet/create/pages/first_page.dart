@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class FirsPageCreate extends StatefulWidget {
@@ -18,6 +21,7 @@ class FirsPageCreate extends StatefulWidget {
 class _FirsPageCreateState extends State<FirsPageCreate> {
   @override
   Widget build(BuildContext context) {
+    var format = NumberFormat.simpleCurrency(locale: Platform.localeName);
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return GestureDetector(
       onTap: () {
@@ -68,13 +72,20 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
             TextFieldModelHome(
               controller: createGroupProvider.controllerReward,
               textInputAction: TextInputAction.done,
-              prefixIcon: const SizedBox(
+              validator: (value) {
+                if (value!.isNotEmpty && (double.tryParse(value) ?? 0) <= 0.0) {
+                  return 'Reward must be greater than 0';
+                } else {
+                  return null;
+                }
+              },
+              prefixIcon: SizedBox(
                 height: 20,
                 width: 0,
                 child: Align(
                   alignment: Alignment.center,
                   child: MediumBody(
-                    text: 'R\$',
+                    text: format.currencySymbol,
                   ),
                 ),
               ),
