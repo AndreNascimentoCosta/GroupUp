@@ -64,7 +64,7 @@ class EditProfileBody extends StatelessWidget {
             ),
           ),
           Container(
-            height: 50,
+            height: 48,
             width: 400,
             decoration: const BoxDecoration(
                 border: Border(

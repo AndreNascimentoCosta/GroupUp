@@ -68,7 +68,7 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                 });
               },
               children: [
-                // FirstPageSignUpPhone(controller: phoneProvider.controller),
+                FirstPageSignUpPhone(controller: phoneProvider.controller),
                 Center(
                     child: SecondPageSignUpPhone(
                         controller: phoneProvider.controller)),

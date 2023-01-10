@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/constants.dart';
 
 class TextFieldModel extends StatefulWidget {
   const TextFieldModel({
@@ -56,7 +57,7 @@ class _TextFieldModelState extends State<TextFieldModel> {
             decoration: InputDecoration(
               enabledBorder: widget.border,
               focusedBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black)),
+                  borderSide: BorderSide(color: kPrimaryColor)),
               hintText: widget.hint,
               counterText: "",
               suffixIcon: nameController.text.isEmpty
