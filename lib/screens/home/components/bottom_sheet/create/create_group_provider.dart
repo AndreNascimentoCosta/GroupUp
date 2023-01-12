@@ -182,10 +182,14 @@ class CreateGroupProvider extends ChangeNotifier {
     newGroup.maxParticipants =
         int.tryParse(controllerNumberParticipants.text) ?? 0;
 
+    final userId = FirebaseAuth.instance.currentUser!.uid;
     final user = Provider.of<AuthProvider>(context, listen: false).user;
+    if (user == null) {
+      return;
+    }
     final userParticipant = Participant(
-      uid: user.uid,
-      name: user.displayName ?? '',
+      uid: userId,
+      name: user.name,
       profilePicture: '',
       inputData: [],
       isAdmin: true,
@@ -193,13 +197,12 @@ class CreateGroupProvider extends ChangeNotifier {
 
     final groupCode = await generateGroupCode();
     newGroup.groupCode = groupCode;
-    newGroup.participants.add(user.uid);
+    newGroup.participants.add(userId);
     newGroup.participantsData.add(userParticipant);
 
     final image = this.image;
     if (image != null) {
       try {
-        final userId = user.uid;
         final fileExtension = image.path.split('.').last;
         final result = await FirebaseStorage.instance
             .ref()

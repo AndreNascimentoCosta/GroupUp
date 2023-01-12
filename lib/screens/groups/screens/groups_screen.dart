@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/models/group.dart';
 import 'package:groupup/models/show_group.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
@@ -39,7 +37,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
             homeViewModel: homeViewModel,
             showGroup: showGroup,
           ),
-          BodyProfile(),
+          const BodyProfile(),
         ],
       ),
       floatingActionButton: ValueListenableBuilder(

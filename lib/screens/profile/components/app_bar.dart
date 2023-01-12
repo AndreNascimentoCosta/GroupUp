@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/profile/components/other_options.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -15,9 +16,10 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
       elevation: 0,
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
-      title: const LargeBody(
-        text: 'angusmac_41',
+      title: const StaticText(
+        text: 'Profile',
         fontFamily: 'Montserrat-SemiBold',
+        fontSize: TextSize.subTitle,
       ),
       centerTitle: false,
       actions: [

@@ -13,7 +13,6 @@ import 'package:provider/provider.dart';
 class SignUpPhonePageView extends StatefulWidget {
   const SignUpPhonePageView({Key? key}) : super(key: key);
 
-
   @override
   State<SignUpPhonePageView> createState() => _SignUpPhonePageViewState();
 }
@@ -62,26 +61,16 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
           Expanded(
             child: PageView(
               controller: phoneProvider.controller,
-              onPageChanged: (int index) {
-                setState(() {
-                  phoneProvider.pageIndex = index;
-                });
-              },
+              onPageChanged: phoneProvider.updateIndex,
               children: [
                 FirstPageSignUpPhone(controller: phoneProvider.controller),
-                Center(
-                    child: SecondPageSignUpPhone(
-                        controller: phoneProvider.controller)),
-                ThirdPageSignUpPhone(
-                  controller: phoneProvider.controller,
-                ),
+                SecondPageSignUpPhone(controller: phoneProvider.controller),
+                ThirdPageSignUpPhone(controller: phoneProvider.controller),
               ],
             ),
           ),
           NextButton(
-            onPressed: () {
-              phoneProvider.nextPressedPhone(context);
-            },
+            onPressed: phoneProvider.nextPressedPhone(context),
           ),
           const SizedBox(height: kDefaultPadding / 4)
         ],

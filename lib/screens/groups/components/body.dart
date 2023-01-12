@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/show_group.dart';
@@ -20,6 +21,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBarGroup(
@@ -32,7 +34,7 @@ class Body extends StatelessWidget {
               .collection('groups')
               .where(
                 'participants',
-                arrayContains: Provider.of<AuthProvider>(context).user.uid,
+                arrayContains: userId,
               )
               .snapshots(),
           builder: (context, snapshot) {

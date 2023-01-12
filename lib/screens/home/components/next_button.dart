@@ -30,7 +30,7 @@ class NextButton extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         border: Border.all(
-          color: onPressed == null ? kSecondaryColor : borderColor,
+          color: onPressed == null ? Colors.transparent : borderColor,
         ),
         borderRadius: BorderRadius.circular(Insets.s),
         color: onPressed == null ? kSecondaryColor : color,

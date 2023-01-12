@@ -33,6 +33,7 @@ class JoinGroupProvider extends ChangeNotifier {
   }
 
   Future<void> joinGroup(BuildContext context) async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
     final user = Provider.of<AuthProvider>(context, listen: false).user;
     final groups = await FirebaseFirestore.instance
         .collection('groups')
@@ -41,23 +42,28 @@ class JoinGroupProvider extends ChangeNotifier {
     if (groups.docs.isEmpty) {
       return;
     }
+    if (user == null) {
+      return;
+    }
     FirebaseFirestore.instance
         .collection('groups')
         .doc(groups.docs.first.id)
-        .update({
-      'participants': FieldValue.arrayUnion([user.uid]),
-      'participantsData': FieldValue.arrayUnion(
-        [
-          Participant(
-            uid: user.uid,
-            name: user.displayName ?? '',
-            profilePicture: '',
-            inputData: [],
-            isAdmin: false,
-          ).toMap()
-        ],
-      )
-    });
+        .update(
+      {
+        'participants': FieldValue.arrayUnion([userId]),
+        'participantsData': FieldValue.arrayUnion(
+          [
+            Participant(
+              uid: userId,
+              name: user.name,
+              profilePicture: '',
+              inputData: [],
+              isAdmin: false,
+            ).toMap()
+          ],
+        )
+      },
+    );
   }
 
   void updateIndex(int index) {

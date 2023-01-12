@@ -5,6 +5,7 @@ import 'package:groupup/models/switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/page_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -13,7 +14,6 @@ class FirsPageSignUp extends StatefulWidget {
   const FirsPageSignUp({
     Key? key,
   }) : super(key: key);
-
 
   @override
   State<FirsPageSignUp> createState() => _FirsPageSignUpState();
@@ -41,7 +41,8 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
               const SizedBox(height: Insets.l * 1.5),
               SignInWithAppleButton(
                 onPressed: () {
-                  Provider.of<AuthProvider>(context, listen: false).loading == true;
+                  Provider.of<AuthProvider>(context, listen: false).loading ==
+                      true;
                   final provider = context.read<AuthProvider>();
                   provider.appleLogin();
                   Navigator.pop(context);
@@ -55,7 +56,8 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
               const SizedBox(height: Insets.l * 1.25),
               ButtonCommonStyle(
                 onPressed: () {
-                  Provider.of<AuthProvider>(context, listen: false).loading == true;
+                  Provider.of<AuthProvider>(context, listen: false).loading ==
+                      true;
                   final provider = context.read<AuthProvider>();
                   provider.googleLogin();
                   Navigator.pop(context);
@@ -93,6 +95,8 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
               ButtonCommonStyle(
                 onPressed: () {
                   Navigator.pop(context);
+                  Provider.of<PhoneAuthenProvider>(context, listen: false)
+                      .clean();
                   showModalBottomSheet(
                       isScrollControlled: true,
                       context: context,

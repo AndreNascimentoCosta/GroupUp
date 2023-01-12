@@ -5,7 +5,7 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/models/switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/body_switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_time_switch.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/components/profile_picture_add.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/components/group_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
@@ -43,7 +43,7 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: Insets.l),
-              const ProfilePictureAdd(),
+              const GroupPictureAdd(),
               const SizedBox(height: Insets.s),
               Stack(
                 alignment: AlignmentDirectional.center,

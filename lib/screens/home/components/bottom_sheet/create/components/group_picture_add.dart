@@ -11,20 +11,21 @@ import 'package:groupup/screens/home/components/bottom_sheet/create/create_group
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-class ProfilePictureAdd extends StatefulWidget {
-  const ProfilePictureAdd({super.key});
+class GroupPictureAdd extends StatefulWidget {
+  const GroupPictureAdd({super.key});
 
   @override
-  State<ProfilePictureAdd> createState() => _ProfilePictureAddState();
+  State<GroupPictureAdd> createState() => _GroupPictureAddState();
 }
 
-class _ProfilePictureAddState extends State<ProfilePictureAdd> {
+class _GroupPictureAddState extends State<GroupPictureAdd> {
   File? image;
 
   Future pickImage(ImageSource source) async {
     Navigator.pop(context);
     try {
-      final image = await ImagePicker().pickImage(source: source, imageQuality: 15);
+      final image =
+          await ImagePicker().pickImage(source: source, imageQuality: 15);
       if (image == null) return;
 
       final imageTemporary = File(image.path);
@@ -114,7 +115,7 @@ class _ProfilePictureAddState extends State<ProfilePictureAdd> {
                     ),
                   )
                 : SvgPicture.asset(
-                    'assets/icons/profile_picture.svg',
+                    'assets/icons/profile_picture_add.svg',
                     color: Colors.white,
                     height: Insets.l * 2,
                     width: Insets.l * 2,
@@ -122,26 +123,28 @@ class _ProfilePictureAddState extends State<ProfilePictureAdd> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.075,
-              left: MediaQuery.of(context).size.height * 0.075,
+              top: MediaQuery.of(context).size.height * 0.081,
+              left: MediaQuery.of(context).size.height * 0.081,
             ),
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.0475,
-              width: MediaQuery.of(context).size.height * 0.0475,
+              height: MediaQuery.of(context).size.height * 0.04,
+              width: MediaQuery.of(context).size.height * 0.04,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.white,
+                  color: Colors.transparent,
                   width: 4,
                 ),
                 borderRadius: BorderRadius.circular(Insets.xl),
                 color: kPrimaryColor,
               ),
-              child: ImageIcon(
-                const AssetImage(
-                  'assets/icons/plus_profile.png',
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.04,
+                width: MediaQuery.of(context).size.height * 0.04,
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                  size: MediaQuery.of(context).size.height * 0.032,
                 ),
-                color: Colors.white,
-                size: MediaQuery.of(context).size.height * 0.035,
               ),
             ),
           ),

@@ -5,9 +5,13 @@ import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_pho
 import 'package:provider/provider.dart';
 
 class OTPField extends StatelessWidget {
-  const OTPField({this.autofocus = false});
+  const OTPField({
+    required this.controller,
+    this.autofocus = false,
+  });
 
   final bool autofocus;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +20,21 @@ class OTPField extends StatelessWidget {
       height: 58,
       width: 50,
       child: TextFormField(
-        controller: phoneProvider.otpCode,
-        onChanged: ((value) {
+        controller: controller,
+        onChanged: (value) {
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();
+          } else {
+            phoneProvider.onPaste(value);
+            FocusScope.of(context).unfocus();
           }
-        }),
-        onTap: () {},
+        },
         autofillHints: const [AutofillHints.oneTimeCode],
         style: const TextStyle(
           fontFamily: 'Montserrat-SemiBold',
           fontSize: TextSize.lBody,
         ),
-        autofocus: autofocus,
+        autofocus: true,
         decoration: InputDecoration(
           filled: true,
           fillColor: const Color(0XFFE1E1E1),
@@ -52,8 +58,9 @@ class OTPField extends StatelessWidget {
         keyboardType: TextInputType.number,
         textAlign: TextAlign.center,
         inputFormatters: [
-          LengthLimitingTextInputFormatter(1),
+          LengthLimitingTextInputFormatter(controller.text.isEmpty ? 6 : 1),
           FilteringTextInputFormatter.digitsOnly,
+          
         ],
       ),
     );

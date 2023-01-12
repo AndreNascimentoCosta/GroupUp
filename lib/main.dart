@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/core/providers/storage.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/join/join_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
@@ -26,7 +27,10 @@ Future<void> main() async {
         ),
         ListenableProvider(
           create: ((context) => PhoneAuthenProvider()),
-        )
+        ),
+        ListenableProvider(
+          create: ((context) => StorageProvider()),
+        ),
       ],
       child: MaterialApp(
         title: 'GroupUp',

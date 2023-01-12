@@ -1,6 +1,6 @@
 import 'package:groupup/models/create_group_model.dart';
 import 'package:groupup/models/participant.dart';
-import 'package:groupup/models/user_information.dart';
+import 'package:groupup/models/user_data.dart';
 import 'package:groupup/models/general_group_info.dart';
 
 class GroupModel {
@@ -11,7 +11,7 @@ class GroupModel {
       daysLeft;
 
   final GeneralGroupInfoModel generalGroupInfoModel;
-  final List<UserInformation> userInformation;
+  final List<UserDataModel> userInformation;
   final List<Participant> participant;
   final Participant meParticipant;
   final CreateGroupModel createGroupModel;

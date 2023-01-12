@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/otp_field.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
 import 'package:groupup/styles/text.dart';
+import 'package:provider/provider.dart';
 
 class ThirdPageSignUpPhone extends StatefulWidget {
   const ThirdPageSignUpPhone({
@@ -18,6 +20,7 @@ class ThirdPageSignUpPhone extends StatefulWidget {
 class _ThirdPageSignUpPhoneState extends State<ThirdPageSignUpPhone> {
   @override
   Widget build(BuildContext context) {
+    final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -32,20 +35,23 @@ class _ThirdPageSignUpPhoneState extends State<ThirdPageSignUpPhone> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: Insets.l * 1.5),
-              const StandardTextStyle(
-                  text: 'Code is sent to +47 99613-6762',
+              StandardTextStyle(
+                  text: 'Code is sent to ${phoneProvider.phoneController}}',
                   fontSize: TextSize.mBody,
                   color: kSecondaryColor),
               const SizedBox(height: Insets.l * 1.5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   OTPField(
+                    controller: phoneProvider.otpCode1,
                     autofocus: true,
                   ),
-                  OTPField(),
-                  OTPField(),
-                  OTPField(),
+                  OTPField(controller: phoneProvider.otpCode2),
+                  OTPField(controller: phoneProvider.otpCode3),
+                  OTPField(controller: phoneProvider.otpCode4),
+                  OTPField(controller: phoneProvider.otpCode5),
+                  OTPField(controller: phoneProvider.otpCode6),
                 ],
               ),
               const SizedBox(height: Insets.l * 2),
