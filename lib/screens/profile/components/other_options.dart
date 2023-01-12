@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/storage.dart';
@@ -6,6 +7,7 @@ import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/profile/components/alert_dialog_delete.dart';
 import 'package:provider/provider.dart';
 
 class OtherOptionsProfile extends StatelessWidget {
@@ -25,6 +27,18 @@ class OtherOptionsProfile extends StatelessWidget {
             child: const LargeBody(
               text: 'Terms of service',
               textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(height: Insets.l * 1.5),
+          ButtonCommonStyle(
+            onPressed: () {
+              Navigator.pop(context);
+              confirmDelete(context);
+            },
+            child: const LargeBody(
+              text: 'Delete account',
+              textAlign: TextAlign.center,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: Insets.l * 1.5),

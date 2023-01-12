@@ -42,7 +42,7 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: const [
                                 SizedBox(
-                                    height: 140, child: OtherOptionsProfile()),
+                                    height: 190, child: OtherOptionsProfile()),
                               ],
                             )
                           ],
