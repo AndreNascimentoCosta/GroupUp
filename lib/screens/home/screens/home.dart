@@ -36,6 +36,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.only(
                     right: kDefaultPadding * 1.5, left: kDefaultPadding * 1.5),
                 child: ListView(
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,

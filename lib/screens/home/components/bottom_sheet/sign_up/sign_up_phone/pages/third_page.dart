@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/otp_field.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +21,8 @@ class _ThirdPageSignUpPhoneState extends State<ThirdPageSignUpPhone> {
   @override
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
+    final phoneControllerText = phoneProvider.phoneController.text;
+    
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -36,7 +38,7 @@ class _ThirdPageSignUpPhoneState extends State<ThirdPageSignUpPhone> {
             children: [
               const SizedBox(height: Insets.l * 1.5),
               StandardTextStyle(
-                  text: 'Code is sent to ${phoneProvider.phoneController}}',
+                  text: 'Code is sent to $phoneControllerText',
                   fontSize: TextSize.mBody,
                   color: kSecondaryColor),
               const SizedBox(height: Insets.l * 1.5),

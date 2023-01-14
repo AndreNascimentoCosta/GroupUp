@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class SecondPageSignUpPhone extends StatefulWidget {
   const SecondPageSignUpPhone({required this.controller});
@@ -17,8 +21,7 @@ class SecondPageSignUpPhone extends StatefulWidget {
 class _SecondPageSignUpPhoneState extends State<SecondPageSignUpPhone> {
   @override
   Widget build(BuildContext context) {
-    final phoneProvider =
-        Provider.of<PhoneAuthenProvider>(context, listen: false);
+    final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -43,46 +46,20 @@ class _SecondPageSignUpPhoneState extends State<SecondPageSignUpPhone> {
                       fontSize: TextSize.lBody,
                     ),
                     const SizedBox(height: 5),
-                    TextField(
-                      controller: phoneProvider.phoneController,
-                      autofocus: true,
-                      keyboardType: TextInputType.phone,
+                    InternationalPhoneNumberInput(
                       autofillHints: const [AutofillHints.telephoneNumber],
-                      decoration: InputDecoration(
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(Insets.s)),
-                            borderSide: BorderSide(color: kSecondaryColor),
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(Insets.s)),
-                            borderSide: BorderSide(color: kPrimaryColor),
-                          ),
-                          suffixIcon: phoneProvider.phoneController.text.isEmpty
-                              ? null
-                              : IconButton(
-                                  icon: const Icon(
-                                    Icons.close,
-                                    color: Colors.black,
-                                  ),
-                                  onPressed: () {
-                                    phoneProvider.phoneController.clear();
-                                  },
-                                ),
-                          contentPadding: const EdgeInsets.symmetric(
-                              horizontal: kDefaultPadding / 2),
-                          hintText: 'Enter your phone number',
-                          hintStyle: const TextStyle(
-                            fontFamily: 'Montserrat-Medium',
-                            fontSize: TextSize.mBody,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(Insets.m),
-                            borderSide:
-                                const BorderSide(color: kSecondaryColor),
-                          )),
-                    ),
+                      autoFocus: true,
+                      initialValue: PhoneNumber(
+                        isoCode: Platform.localeName.split('_')[1],
+                      ),
+                      selectorConfig: const SelectorConfig(
+                        selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                      ),
+                      onInputChanged: (phoneNumber) {
+                        phoneProvider.phoneController.text =
+                            phoneNumber.phoneNumber ?? '';
+                      },
+                    )
                   ],
                 ),
               ),
@@ -93,4 +70,5 @@ class _SecondPageSignUpPhoneState extends State<SecondPageSignUpPhone> {
       ),
     );
   }
+  
 }

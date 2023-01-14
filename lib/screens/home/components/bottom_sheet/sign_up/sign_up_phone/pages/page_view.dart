@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/first_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/second_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/third_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
@@ -39,6 +39,7 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                               phoneProvider.controller.previousPage(
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.ease);
+                              FocusScope.of(context).unfocus();
                             },
                             child: SvgPicture.asset(
                               'assets/icons/arrow_left.svg',

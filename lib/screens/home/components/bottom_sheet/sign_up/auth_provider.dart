@@ -7,7 +7,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/user_data.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -67,6 +67,34 @@ class AuthProvider extends ChangeNotifier {
       email: user.email ?? '',
       profilePicture: user.photoURL ?? '',
       phoneNumber: '',
+      balance: 0.0,
+    );
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .set(userData.toMap());
+  }
+
+  Future<void> updatePhoneUserData({
+    required String name,
+    required String phoneNumber,
+  }) async {
+    final user = _auth.currentUser;
+    if (user == null) return;
+
+    final previousDoc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .get();
+
+    if (previousDoc.exists) return;
+
+    final userData = UserDataModel(
+      id: user.uid,
+      name: name,
+      email: '',
+      profilePicture: user.photoURL ?? '',
+      phoneNumber: phoneNumber,
       balance: 0.0,
     );
     await FirebaseFirestore.instance
@@ -155,10 +183,10 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> phoneLogin(BuildContext context) async {
-    final phoneAuth = Provider.of<PhoneAuthenProvider>(context, listen: false);
-
+    final phoneProvider =
+        Provider.of<PhoneAuthenProvider>(context, listen: false);
     await _auth.verifyPhoneNumber(
-      phoneNumber: phoneAuth.phoneController.text,
+      phoneNumber: phoneProvider.phoneController.text,
       timeout: const Duration(seconds: 60),
       verificationCompleted: (credential) async {
         await _auth.signInWithCredential(credential);
@@ -167,11 +195,11 @@ class AuthProvider extends ChangeNotifier {
         if (e.code == 'invalid-phone-number') {
           _error(context, 'Invalid phone number');
         } else {
-          _error(context, 'Something went wrong');
+          _error(context, e.toString());
         }
       },
       codeSent: (String verificationId, int? resendToken) async {
-        phoneAuth.controller.nextPage(
+        phoneProvider.controller.nextPage(
           duration: const Duration(milliseconds: 300),
           curve: Curves.ease,
         );
@@ -183,10 +211,18 @@ class AuthProvider extends ChangeNotifier {
     );
   }
 
-  Future<void> verifyOTP(String otp) async {
+  Future<void> verifyOTP(BuildContext context) async {
+    final phoneProvider =
+        Provider.of<PhoneAuthenProvider>(context, listen: false);
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: verificationId, smsCode: otp);
+        verificationId: verificationId, smsCode: phoneProvider.otpCode);
     await _auth.signInWithCredential(credential);
+    await updatePhoneUserData(
+      name: phoneProvider.nameController.text,
+      phoneNumber: phoneProvider.phoneController.text,
+    );
+    await getUser();
+    notifyListeners();
   }
 
   Future<void> signOut() async {

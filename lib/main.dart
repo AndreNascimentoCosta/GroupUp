@@ -4,7 +4,7 @@ import 'package:groupup/core/providers/storage.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/join/join_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
 import 'package:groupup/screens/splashscreen/splashscreen.dart';
 import 'package:groupup/styles/theme.dart';
 import 'package:provider/provider.dart';

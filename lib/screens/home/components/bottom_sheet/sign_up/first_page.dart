@@ -5,7 +5,7 @@ import 'package:groupup/models/switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/page_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';

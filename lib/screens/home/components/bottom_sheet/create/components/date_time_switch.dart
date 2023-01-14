@@ -71,11 +71,12 @@ class _DateTimeSwicthState extends State<DateTimeSwicth> {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-      child: Row(
+      child: 
+      Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 100,
+            height: 70,
             width: 160,
             child: TextFormField(
               controller: createGroupProvider.controllerStartDate,
@@ -123,7 +124,7 @@ class _DateTimeSwicthState extends State<DateTimeSwicth> {
           ),
           const SizedBox(width: Insets.s),
           SizedBox(
-            height: 100,
+            height: 70,
             width: 160,
             child: TextFormField(
               controller: createGroupProvider.controllerEndDate,

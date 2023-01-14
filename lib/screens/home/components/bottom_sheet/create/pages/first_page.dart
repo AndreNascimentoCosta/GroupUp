@@ -1,14 +1,14 @@
-import 'dart:io';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
-import 'package:intl/intl.dart';
+import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
+import 'package:currency_picker/currency_picker.dart';
 
 class FirsPageCreate extends StatefulWidget {
   const FirsPageCreate({required this.controller});
@@ -20,9 +20,9 @@ class FirsPageCreate extends StatefulWidget {
 }
 
 class _FirsPageCreateState extends State<FirsPageCreate> {
+  String currency2 = '\$';
   @override
   Widget build(BuildContext context) {
-    var format = NumberFormat.simpleCurrency(locale: Platform.localeName);
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return GestureDetector(
       onTap: () {
@@ -70,41 +70,84 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.035),
-            TextFieldModelHome(
-              controller: createGroupProvider.controllerReward,
-              textInputAction: TextInputAction.done,
-              validator: (value) {
-                if (value!.isNotEmpty && (double.tryParse(value) ?? 0) <= 0.0) {
-                  return 'Reward must be greater than 0';
-                } else {
-                  return null;
-                }
-              },
-              prefixIcon: SizedBox(
-                height: 20,
-                width: 0,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: MediumBody(
-                    text: format.currencySymbol,
+            Padding(
+              padding: const EdgeInsets.only(left: kDefaultPadding),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      const StandardTextStyle(
+                        text: 'Currency',
+                        fontSize: TextSize.lBody,
+                      ),
+                      const SizedBox(height: Insets.xs),
+                      ButtonCommonStyle(
+                        onPressed: () {
+                          showCurrencyPicker(
+                            context: context,
+                            showFlag: true,
+                            showCurrencyName: true,
+                            showCurrencyCode: true,
+                            onSelect: (Currency currency) {
+                              setState(
+                                () {
+                                  currency2 = currency.symbol;
+                                },
+                              );
+                            },
+                          );
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 48,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: kDefaultPadding,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: kSecondaryColor,
+                            ),
+                            borderRadius: BorderRadius.circular(Insets.s),
+                          ),
+                          child: MediumBody(
+                            text: currency2,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                  Expanded(
+                    child: TextFieldModelHome(
+                      controller: createGroupProvider.controllerReward,
+                      textInputAction: TextInputAction.done,
+                      validator: (value) {
+                        if (value!.isNotEmpty &&
+                            (double.tryParse(value) ?? 0) <= 0.0) {
+                          return 'Reward must be greater than 0';
+                        } else {
+                          return null;
+                        }
+                      },
+                      header: 'Reward',
+                      hint: '0,00',
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: kDefaultPadding,
+                      ),
+                      keyboardType: const TextInputType.numberWithOptions(
+                        signed: true,
+                        decimal: true,
+                      ),
+                      inputFormatters: [
+                        ReplaceCommaFormatter(),
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r'^\d*\.?\d{0,2}'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              header: 'Reward',
-              hint: '0,00',
-              padding: const EdgeInsets.symmetric(
-                horizontal: kDefaultPadding,
-              ),
-              keyboardType: const TextInputType.numberWithOptions(
-                signed: true,
-                decimal: true,
-              ),
-              inputFormatters: [
-                ReplaceCommaFormatter(),
-                FilteringTextInputFormatter.allow(
-                  RegExp(r'^\d*\.?\d{0,2}'),
-                ),
-              ],
             ),
           ],
         ),

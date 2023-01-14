@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:provider/provider.dart';
 
 class PhoneAuthenProvider extends ChangeNotifier {
-  final phoneController = TextEditingController();
   String get otpCode {
     return otpCode1.text +
         otpCode2.text +
@@ -20,7 +22,12 @@ class PhoneAuthenProvider extends ChangeNotifier {
   final otpCode5 = TextEditingController();
   final otpCode6 = TextEditingController();
   final nameController = TextEditingController();
-  final usernameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final countryCode = PhoneNumber(isoCode: Platform.localeName.split('_')[1]);
+  // String get wholePhoneNumber {
+  //   return countryCode + phoneController.text;
+  // }
+
   final controller = PageController(initialPage: 0);
   int pageIndex = 0;
 
@@ -37,7 +44,6 @@ class PhoneAuthenProvider extends ChangeNotifier {
   }
 
   PhoneAuthenProvider() {
-    phoneController.addListener(notifyListeners);
     otpCode1.addListener(notifyListeners);
     otpCode2.addListener(notifyListeners);
     otpCode3.addListener(notifyListeners);
@@ -45,19 +51,14 @@ class PhoneAuthenProvider extends ChangeNotifier {
     otpCode5.addListener(notifyListeners);
     otpCode6.addListener(notifyListeners);
     nameController.addListener(notifyListeners);
-    usernameController.addListener(notifyListeners);
+    phoneController.addListener(notifyListeners);
   }
 
   void Function()? nextPressedPhone(BuildContext context) {
     // Index 0
-    final phoneControllerText = phoneController.text;
-    final nameControllerText = nameController.text;
-    final usernameControllerText = usernameController.text;
-
-    if (pageIndex == 0 && usernameControllerText.length < 3) {
+    if (pageIndex == 0 && nameController.text.length < 3) {
       return null;
-    } else if (pageIndex == 1 && nameControllerText.isEmpty ||
-        phoneControllerText.isEmpty) {
+    } else if (pageIndex == 1 && phoneController.text.isEmpty) {
       return null;
     } else {
       return () => {
@@ -74,13 +75,13 @@ class PhoneAuthenProvider extends ChangeNotifier {
                 FocusScope.of(context).unfocus(),
                 Provider.of<AuthProvider>(context, listen: false)
                     .phoneLogin(context),
+                print(phoneController.text),
               }
             else
               {
                 Provider.of<AuthProvider>(context, listen: false)
-                    .verifyOTP(otpCode),
+                    .verifyOTP(context),
                 FocusNode().unfocus(),
-                clean(),
                 Navigator.pop(context),
               }
           };
@@ -110,7 +111,6 @@ class PhoneAuthenProvider extends ChangeNotifier {
     otpCode5.clear();
     otpCode6.clear();
     nameController.clear();
-    usernameController.clear();
     updateIndex(0);
     notifyListeners();
   }

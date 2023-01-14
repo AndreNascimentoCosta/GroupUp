@@ -9,9 +9,11 @@ class TextFieldModelHome extends StatefulWidget {
   const TextFieldModelHome({
     required this.controller,
     required this.header,
-    required this.hint,
     required this.padding,
+    this.hint,
+    this.focusNode,
     this.keyboardType,
+    this.initialValue,
     this.textInputAction,
     this.autoFillHints,
     this.autoFocus = false,
@@ -21,11 +23,13 @@ class TextFieldModelHome extends StatefulWidget {
     this.autovalidateMode = AutovalidateMode.always,
   });
 
+  final FocusNode? focusNode;
   final TextEditingController controller;
   final String header;
-  final String hint;
+  final String? hint;
   final EdgeInsetsGeometry padding;
   final TextInputType? keyboardType;
+  final String? initialValue;
   final TextInputAction? textInputAction;
   final Iterable<String>? autoFillHints;
   final bool autoFocus;
@@ -62,9 +66,11 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
             text: widget.header,
             fontSize: TextSize.lBody,
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: Insets.xs),
           TextFormField(
+            focusNode: widget.focusNode,
             controller: widget.controller,
+            initialValue: widget.initialValue,
             keyboardType: widget.keyboardType,
             textInputAction: widget.textInputAction,
             inputFormatters: widget.inputFormatters,

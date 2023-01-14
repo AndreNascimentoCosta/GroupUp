@@ -25,7 +25,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
     Navigator.pop(context);
     try {
       final image =
-          await ImagePicker().pickImage(source: source, imageQuality: 15);
+          await ImagePicker().pickImage(source: source, imageQuality: 60);
       if (image == null) return;
 
       final imageTemporary = File(image.path);

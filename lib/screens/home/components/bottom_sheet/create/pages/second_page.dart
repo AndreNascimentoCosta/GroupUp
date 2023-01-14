@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/body_switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_time_switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/group_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
@@ -86,31 +86,25 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                   ),
                 ],
               ),
-              const SizedBox(height: Insets.xs),
-              BodySwitch(
-                  text: 'Dates',
-                  switchType: DateSwitch(switchModel: switchModel)),
-              const SizedBox(height: Insets.xs),
-              ValueListenableBuilder(
-                valueListenable: switchModel.isSwitched,
-                builder: ((context, value, child) {
-                  return AnimatedContainer(
-                    height: value ? 70 : 0,
-                    duration: const Duration(milliseconds: 50),
-                    child: Visibility(
-                      visible: value,
-                      child: DateTimeSwicth(
-                        onChanged: (startDate, endDate) {
-                          final createGroupProvider =
-                              Provider.of<CreateGroupProvider>(context,
-                                  listen: false);
-                          createGroupProvider.newGroup.startDate = startDate;
-                          createGroupProvider.newGroup.endDate = endDate;
-                        },
-                      ),
-                    ),
-                  );
-                }),
+              const SizedBox(height: Insets.xl),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                  child: StaticText(
+                    text: 'Date',
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+              const SizedBox(height: Insets.s),
+              DateTimeSwicth(
+                onChanged: (startDate, endDate) {
+                  final createGroupProvider =
+                      Provider.of<CreateGroupProvider>(context, listen: false);
+                  createGroupProvider.newGroup.startDate = startDate;
+                  createGroupProvider.newGroup.endDate = endDate;
+                },
               ),
               BodySwitch(
                 text: 'Everyone can edit group picture',

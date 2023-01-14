@@ -22,7 +22,7 @@ import 'package:provider/provider.dart';
 class CreateGroupProvider extends ChangeNotifier {
   final controllerProjectName = TextEditingController();
   final controllerObjective = TextEditingController();
-  final controllerReward = TextEditingController();
+  final controllerReward = TextEditingController(text: 'oiii');
   final controllerNumberParticipants = TextEditingController();
   final controllerStartDate = TextEditingController();
   final controllerEndDate = TextEditingController();
@@ -110,11 +110,10 @@ class CreateGroupProvider extends ChangeNotifier {
             (double.tryParse(rewardText) ?? 0) <= 0.0)) {
       return null;
     } else if (pageIndex == 1 &&
-        (noParticipantsText.isEmpty ||
+        (noParticipantsText.isEmpty &&
                 (int.tryParse(noParticipantsText) ?? 0) > 50 ||
-                dateSwitch.switchModel.isSwitched.value
-            ? startDateText.isNotEmpty && endDateText.isNotEmpty
-            : startDateText.isEmpty && endDateText.isEmpty)) {
+            startDateText.isEmpty ||
+            endDateText.isEmpty)) {
       return null;
     } else if (pageIndex == 2) {
       return () {
@@ -236,6 +235,7 @@ class CreateGroupProvider extends ChangeNotifier {
     newGroup.projectName = '';
     newGroup.objective = '';
     newGroup.reward = '';
+    newGroup.image = '';
     image = null;
     newGroup.maxParticipants = 0;
     newGroup.allowEditImage = false;
