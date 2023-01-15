@@ -6,18 +6,18 @@ import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_pho
 import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 
-class ThirdPageSignUpPhone extends StatefulWidget {
-  const ThirdPageSignUpPhone({
+class SecondPageSignUp extends StatefulWidget {
+  const SecondPageSignUp({
     required this.controller,
   });
 
   final PageController controller;
 
   @override
-  State<ThirdPageSignUpPhone> createState() => _ThirdPageSignUpPhoneState();
+  State<SecondPageSignUp> createState() => _SecondPageSignUpState();
 }
 
-class _ThirdPageSignUpPhoneState extends State<ThirdPageSignUpPhone> {
+class _SecondPageSignUpState extends State<SecondPageSignUp> {
   @override
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
@@ -36,12 +36,12 @@ class _ThirdPageSignUpPhoneState extends State<ThirdPageSignUpPhone> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: Insets.l * 1.5),
+              const SizedBox(height: Insets.l * 2),
               StandardTextStyle(
                   text: 'Code is sent to $phoneControllerText',
                   fontSize: TextSize.mBody,
                   color: kSecondaryColor),
-              const SizedBox(height: Insets.l * 1.5),
+              const SizedBox(height: Insets.l * 3),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -57,21 +57,21 @@ class _ThirdPageSignUpPhoneState extends State<ThirdPageSignUpPhone> {
                 ],
               ),
               const SizedBox(height: Insets.l * 2),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  StandardTextStyle(
-                      text: "Didn't receive a code?",
-                      fontSize: TextSize.mBody,
-                      color: kSecondaryColor),
-                  SizedBox(width: Insets.xs),
-                  StandardTextStyle(
-                      text: 'Request again',
-                      fontSize: TextSize.mBody,
-                      fontFamily: 'Montserrat-SemiBold',
-                      color: Colors.black),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: const [
+              //     StandardTextStyle(
+              //         text: "Didn't receive a code?",
+              //         fontSize: TextSize.mBody,
+              //         color: kSecondaryColor),
+              //     SizedBox(width: Insets.xs),
+              //     StandardTextStyle(
+              //         text: 'Request again',
+              //         fontSize: TextSize.mBody,
+              //         fontFamily: 'Montserrat-SemiBold',
+              //         color: Colors.black),
+              //   ],
+              // ),
             ],
           ),
         ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/models/general_group_info.dart';
+import 'package:groupup/models/show_group.dart';
 import 'package:intl/intl.dart';
 
 class ShowDates extends StatelessWidget {
   const ShowDates({
-    required this.generalGroupInfoModel,
+    required this.showGroup,
   });
 
-  final GeneralGroupInfoModel generalGroupInfoModel;
+  final ShowGroupModel showGroup;
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +28,14 @@ class ShowDates extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             StaticText(
-                text: DateFormat('dd/MM/yyyy')
-                    .format(generalGroupInfoModel.startDate)),
+              text: DateFormat('dd/MM/yyyy').format(
+                showGroup.startDate ?? DateTime.now(),
+              ),
+            ),
             const SizedBox(height: kDefaultPadding / 2),
             StaticText(
                 text: DateFormat('dd/MM/yyyy')
-                    .format(generalGroupInfoModel.endDate)),
+                    .format(showGroup.endDate ?? DateTime.now(),)),
           ],
         ),
       ],

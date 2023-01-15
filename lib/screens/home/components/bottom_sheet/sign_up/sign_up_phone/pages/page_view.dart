@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/first_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/second_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/third_page.dart';
@@ -40,11 +39,13 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.ease);
                               FocusScope.of(context).unfocus();
+                              phoneProvider.cleanOtp();
                             },
                             child: SvgPicture.asset(
                               'assets/icons/arrow_left.svg',
                               color: const Color(0xFF868686),
-                            ))
+                            ),
+                          )
                         : null,
                   ),
                 ),
@@ -64,9 +65,8 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
               controller: phoneProvider.controller,
               onPageChanged: phoneProvider.updateIndex,
               children: [
-                FirstPageSignUpPhone(controller: phoneProvider.controller),
-                SecondPageSignUpPhone(controller: phoneProvider.controller),
-                ThirdPageSignUpPhone(controller: phoneProvider.controller),
+                FirstPageSignUp(controller: phoneProvider.controller),
+                SecondPageSignUp(controller: phoneProvider.controller),
               ],
             ),
           ),

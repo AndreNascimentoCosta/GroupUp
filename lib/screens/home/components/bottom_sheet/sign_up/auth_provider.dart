@@ -103,6 +103,20 @@ class AuthProvider extends ChangeNotifier {
         .set(userData.toMap());
   }
 
+  Future<void> updateNameUserData({
+    required String name,
+  }) async {
+    final user = this.user;
+
+    if (user == null) return;
+    user.name = name;
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.id)
+        .set(user.toMap());
+  }
+
   Future<void> googleLogin() async {
     try {
       loading = true;
@@ -216,7 +230,18 @@ class AuthProvider extends ChangeNotifier {
         Provider.of<PhoneAuthenProvider>(context, listen: false);
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId, smsCode: phoneProvider.otpCode);
-    await _auth.signInWithCredential(credential);
+    final navigatorState = Navigator.of(context);
+    try {
+      await _auth.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-verification-code') {
+        _error(context, 'Invalid verification code');
+        return;
+      } else {
+        _error(context, 'Something went wrongx');
+      }
+    }
+    navigatorState.pop();
     await updatePhoneUserData(
       name: phoneProvider.nameController.text,
       phoneNumber: phoneProvider.phoneController.text,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/styles/text.dart';
 

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -159,7 +158,7 @@ class _BodyProfileState extends State<BodyProfile> {
                       ));
                 },
                 text: 'Balance',
-                secondaryText: '\$ 14.60'),
+                secondaryText: user?.balance.toString() ?? '0'),
             const SizedBox(height: kDefaultPadding * 2),
             BodyButtonModel(
                 onPressed: () {
@@ -177,12 +176,11 @@ class _BodyProfileState extends State<BodyProfile> {
             BodyButtonModel(
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CreatedGroupsScreen(
-                          groupsData: groupsData,
-                        ),
-                      ));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CreatedGroupsScreen(),
+                    ),
+                  );
                 },
                 text: 'Created groups',
                 secondaryText: '')

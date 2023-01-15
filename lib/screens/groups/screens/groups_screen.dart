@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/models/show_group.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
 import 'package:groupup/screens/groups/components/edit_bottom_navy_bar.dart';
 import 'package:groupup/models/home_view.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/groups/components/name_add.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
+import 'package:provider/provider.dart';
 import '../../profile/components/body.dart';
 import '../components/body.dart';
 
@@ -23,6 +28,50 @@ class _GroupsScreenState extends State<GroupsScreen> {
   final HomeViewModel homeViewModel = HomeViewModel();
   final pageController = PageController();
   final List<ShowGroupModel> showGroup = [];
+
+  @override
+  void initState() {
+    final user = Provider.of<AuthProvider>(context, listen: false).user;
+    final phoneProvider =
+        Provider.of<PhoneAuthenProvider>(context, listen: false);
+    super.initState();
+    if (user?.name.isEmpty ?? true) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) async {
+          phoneProvider.cleanName();
+          return showModalBottomSheet(
+            isScrollControlled: true,
+            isDismissible: false,
+            enableDrag: false,
+            context: context,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(Insets.m),
+            ),
+            builder: (context) {
+              return Padding(
+                padding: MediaQuery.of(context).viewInsets,
+                child: Wrap(
+                  children: <Widget>[
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          height: 280,
+                          child: NameAdd(
+                            controller: phoneProvider.controller,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              );
+            },
+          );
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

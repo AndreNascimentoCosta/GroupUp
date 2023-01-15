@@ -24,11 +24,14 @@ class OTPField extends StatelessWidget {
         onChanged: (value) {
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();
-          } else {
+          } else if (value.isNotEmpty) {
             phoneProvider.onPaste(value);
             FocusScope.of(context).unfocus();
+          } else {
+            FocusScope.of(context).previousFocus();
           }
         },
+        
         autofillHints: const [AutofillHints.oneTimeCode],
         style: const TextStyle(
           fontFamily: 'Montserrat-SemiBold',

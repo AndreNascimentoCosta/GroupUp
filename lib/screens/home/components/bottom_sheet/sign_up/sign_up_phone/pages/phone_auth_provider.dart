@@ -56,13 +56,23 @@ class PhoneAuthenProvider extends ChangeNotifier {
 
   void Function()? nextPressedPhone(BuildContext context) {
     // Index 0
-    if (pageIndex == 0 && nameController.text.length < 3) {
-      return null;
-    } else if (pageIndex == 1 && phoneController.text.isEmpty) {
+    if (pageIndex == 0 && phoneController.text.isEmpty) {
       return null;
     } else {
       return () => {
             if (pageIndex == 0)
+              {
+                Provider.of<AuthProvider>(context, listen: false)
+                    .phoneLogin(context),
+                FocusScope.of(context).unfocus(),
+              }
+            else if (pageIndex == 1)
+              {
+                FocusScope.of(context).unfocus(),
+                Provider.of<AuthProvider>(context, listen: false)
+                    .verifyOTP(context),
+              }
+            else
               {
                 controller.nextPage(
                   duration: const Duration(milliseconds: 300),
@@ -70,20 +80,23 @@ class PhoneAuthenProvider extends ChangeNotifier {
                 ),
                 FocusScope.of(context).unfocus(),
               }
-            else if (pageIndex == 1)
-              {
-                FocusScope.of(context).unfocus(),
-                Provider.of<AuthProvider>(context, listen: false)
-                    .phoneLogin(context),
-                print(phoneController.text),
-              }
-            else
-              {
-                Provider.of<AuthProvider>(context, listen: false)
-                    .verifyOTP(context),
-                FocusNode().unfocus(),
-                Navigator.pop(context),
-              }
+          };
+    }
+  }
+
+  void Function()? nextPressedName(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+    // Index 0
+    if (pageIndex == 0 && nameController.text.isEmpty) {
+      return null;
+    } else {
+      return () => {
+            authProvider.updateNameUserData(
+              name: nameController.text,
+            ),
+            authProvider.getUser(),
+            Navigator.pop(context),
+            notifyListeners(),
           };
     }
   }
@@ -99,6 +112,21 @@ class PhoneAuthenProvider extends ChangeNotifier {
 
   void updateIndex(int index) {
     pageIndex = index;
+    notifyListeners();
+  }
+
+  void cleanOtp() {
+    otpCode1.clear();
+    otpCode2.clear();
+    otpCode3.clear();
+    otpCode4.clear();
+    otpCode5.clear();
+    otpCode6.clear();
+    notifyListeners();
+  }
+
+  void cleanName() {
+    nameController.clear();
     notifyListeners();
   }
 

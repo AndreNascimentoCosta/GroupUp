@@ -3,22 +3,21 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-class SecondPageSignUpPhone extends StatefulWidget {
-  const SecondPageSignUpPhone({required this.controller});
+class FirstPageSignUp extends StatefulWidget {
+  const FirstPageSignUp({required this.controller});
 
   final PageController controller;
 
   @override
-  State<SecondPageSignUpPhone> createState() => _SecondPageSignUpPhoneState();
+  State<FirstPageSignUp> createState() => _FirstPageSignUpState();
 }
 
-class _SecondPageSignUpPhoneState extends State<SecondPageSignUpPhone> {
+class _FirstPageSignUpState extends State<FirstPageSignUp> {
   @override
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(context);

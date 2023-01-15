@@ -7,8 +7,6 @@ import 'package:groupup/screens/groups/components/app_bar.dart';
 import 'package:groupup/screens/groups/components/group_card.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/components/no_group.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
-import 'package:provider/provider.dart';
 
 class Body extends StatelessWidget {
   const Body({
