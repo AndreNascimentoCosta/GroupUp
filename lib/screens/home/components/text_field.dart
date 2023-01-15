@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/design-system.dart';
@@ -94,10 +95,12 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
                 ),
                 suffixIcon: widget.controller.text.isEmpty
                     ? null
-                    : ButtonCommonStyle(
-                        child: const Icon(
-                          Icons.close,
-                          color: Colors.black,
+                    : IconButton(
+                        icon: SvgPicture.asset(
+                          'assets/icons/clear.svg',
+                          height: 20,
+                          width: 20,
+                          color: kSecondaryColor,
                         ),
                         onPressed: () {
                           widget.controller.clear();

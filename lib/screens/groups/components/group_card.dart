@@ -37,7 +37,7 @@ class _GroupsCardState extends State<GroupsCard> {
             isChecked = !isChecked;
           });
         } else {
-          SizedBox();
+          const SizedBox();
         }
       },
       child: Padding(
@@ -72,7 +72,6 @@ class _GroupsCardState extends State<GroupsCard> {
                       'assets/icons/profile2.png',
                       height: 75,
                       width: 75,
-                      // fit: BoxFit.cover,
                     ),
             ),
             Expanded(
