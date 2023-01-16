@@ -10,6 +10,7 @@ class TextFieldModelHome extends StatefulWidget {
     required this.controller,
     required this.header,
     required this.padding,
+    this.keyUnique,
     this.hint,
     this.focusNode,
     this.keyboardType,
@@ -19,10 +20,12 @@ class TextFieldModelHome extends StatefulWidget {
     this.autoFocus = false,
     this.inputFormatters,
     this.validator,
+    this.submitted,
     this.prefixIcon,
     this.autovalidateMode = AutovalidateMode.always,
   });
 
+  final Key? keyUnique;
   final FocusNode? focusNode;
   final TextEditingController controller;
   final String header;
@@ -35,6 +38,7 @@ class TextFieldModelHome extends StatefulWidget {
   final bool autoFocus;
   final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
+  final void Function(String)? submitted;
   final Widget? prefixIcon;
   final AutovalidateMode autovalidateMode;
 
@@ -43,7 +47,6 @@ class TextFieldModelHome extends StatefulWidget {
 }
 
 class _TextFieldModelHomeState extends State<TextFieldModelHome> {
-  final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -68,6 +71,7 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
           ),
           const SizedBox(height: Insets.xs),
           TextFormField(
+            key: widget.keyUnique,
             focusNode: widget.focusNode,
             controller: widget.controller,
             initialValue: widget.initialValue,
@@ -78,6 +82,7 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
             autofocus: widget.autoFocus,
             autovalidateMode: widget.autovalidateMode,
             validator: widget.validator,
+            onFieldSubmitted: widget.submitted,
             decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(Insets.s)),

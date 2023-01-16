@@ -21,23 +21,30 @@ class FirsPageCreate extends StatefulWidget {
 
 class _FirsPageCreateState extends State<FirsPageCreate> {
   String currency2 = '\$';
+  final node1 = FocusNode();
+  final node2 = FocusNode();
+  final node3 = FocusNode();
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
-      },
+      // onTap: () {
+      //   FocusScopeNode currentFocus = FocusScope.of(context);
+      //   if (!currentFocus.hasPrimaryFocus) {
+      //     currentFocus.unfocus();
+      //   }
+      // },
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(height: MediaQuery.of(context).size.height * 0.035),
             TextFieldModelHome(
+              focusNode: node1,
               controller: createGroupProvider.controllerProjectName,
+              submitted: (String value) {
+                FocusScope.of(context).nextFocus();
+              },
               header: 'Project name',
               validator: (value) {
                 if (value!.isNotEmpty && value.length < 3) {
@@ -54,8 +61,12 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.035),
             TextFieldModelHome(
+              focusNode: node2,
               controller: createGroupProvider.controllerObjective,
               header: 'Objective',
+              submitted: (String value) {
+                FocusScope.of(context).nextFocus();
+              },
               validator: (value) {
                 if (value!.isNotEmpty && value.length < 3) {
                   return 'Objective must be at least 3 characters';
@@ -119,6 +130,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                   ),
                   Expanded(
                     child: TextFieldModelHome(
+                      focusNode: node3,
                       controller: createGroupProvider.controllerReward,
                       textInputAction: TextInputAction.done,
                       validator: (value) {

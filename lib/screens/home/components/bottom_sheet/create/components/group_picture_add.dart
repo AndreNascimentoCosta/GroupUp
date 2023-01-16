@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/storage.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
+import 'package:groupup/screens/edit_profile/components/profile_picture_add.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -102,24 +104,89 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
       child: Stack(
         alignment: AlignmentDirectional.topCenter,
         children: [
-          CircleAvatar(
-            radius: MediaQuery.of(context).size.height * 0.06,
-            backgroundColor: const Color(0XFFE1E1E1),
-            child: image != null
-                ? ClipOval(
-                    child: Image.file(
-                      image!,
-                      fit: BoxFit.cover,
-                      height: 120,
-                      width: 120,
+          Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              ProfilePictureAdd(
+                onPressedGallery: () {
+                  pickImage(ImageSource.gallery);
+                },
+                onPressedCamera: () {
+                  pickImage(ImageSource.camera);
+                },
+                child: Builder(
+                  builder: (context) {
+                    final storage = Provider.of<StorageProvider>(context);
+
+
+                    if (image != null) {
+                      return Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(Insets.l * 6),
+                            child: Image.file(
+                              image!,
+                              height: Insets.l * 6,
+                              width: Insets.l * 6,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Visibility(
+                            visible: storage.isLoading,
+                            child: Container(
+                              height: Insets.l * 6,
+                              width: Insets.l * 6,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(Insets.l * 6),
+                                ),
+                                color: Colors.black54,
+                              ),
+                              child: const Center(
+                                child: CircularProgressIndicator(
+                                  color: kPrimaryColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    }
+                    return SvgPicture.asset(
+                      'assets/icons/profile_picture_add.svg',
+                      color: Colors.white,
+                      height: Insets.l * 2.5,
+                      width: Insets.l * 2.5,
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: kDefaultPadding * 3.85, left: kDefaultPadding * 3.85),
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.transparent,
+                      width: 3,
                     ),
-                  )
-                : SvgPicture.asset(
-                    'assets/icons/profile_picture_add.svg',
-                    color: Colors.white,
-                    height: Insets.l * 2,
-                    width: Insets.l * 2,
+                    borderRadius: BorderRadius.circular(Insets.l),
+                    color: kPrimaryColor,
                   ),
+                  child: const SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           Padding(
             padding: EdgeInsets.only(
