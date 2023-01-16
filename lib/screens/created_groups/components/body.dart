@@ -1,31 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/models/show_group.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/created_groups/components/individual_card.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class BodyCreatedGroup extends StatelessWidget {
-  const BodyCreatedGroup({required this.showGroup});
+  const BodyCreatedGroup({required this.groups});
 
-  final List<ShowGroupModel> showGroup;
+  final List<GroupModel> groups;
 
   @override
   Widget build(BuildContext context) {
-    final userId = FirebaseAuth.instance.currentUser!.uid;
+    final user = Provider.of<AuthProvider>(context).user;
     return Expanded(
       child: Scrollbar(
         child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: FirebaseFirestore.instance.collection('groups').where(
-            'participantsData',
-            arrayContainsAny: [
-              {
-                'userId': userId,
-                'role': 'creator',
-              },
-            ],
-          ).snapshots(),
+          stream: FirebaseFirestore.instance
+              .collection('groups')
+              .where(
+                'participants',
+                arrayContains: user?.id,
+              )
+              .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasData == false) {
               return const Center(
@@ -53,7 +52,14 @@ class BodyCreatedGroup extends StatelessWidget {
               );
             } else {
               final groups = snapshot.data!.docs
-                  .map((e) => ShowGroupModel.fromJson(e.data()))
+                  .map((e) => GroupModel.fromMap(e.data()))
+                  .toList()
+                  .where(
+                    (element) => element.participantsData
+                        .where((element) => element.uid == user?.id)
+                        .first
+                        .isAdmin,
+                  )
                   .toList();
               return ListView.separated(
                 padding: const EdgeInsets.only(
@@ -68,7 +74,7 @@ class BodyCreatedGroup extends StatelessWidget {
                 ),
                 itemCount: groups.length,
                 itemBuilder: (context, index) => IndividualCreatedGroup(
-                  showGroup: groups[index],
+                  groups: groups.elementAt(index),
                 ),
               );
             }

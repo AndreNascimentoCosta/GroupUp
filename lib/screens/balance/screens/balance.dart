@@ -3,7 +3,6 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/balance/components/app_bar.dart';
 import 'package:groupup/screens/balance/components/body.dart';
-import 'package:groupup/screens/balance/components/search_bar.dart';
 import 'package:groupup/screens/balance/components/header.dart';
 
 class BalanceScreen extends StatelessWidget {
@@ -18,8 +17,6 @@ class BalanceScreen extends StatelessWidget {
       body: Column(
         children: [
           const HeaderBalance(),
-          const SizedBox(height: Insets.s),
-          const SearchBar(),
           const SizedBox(height: Insets.s),
           GroupsBalance(groupsData: groupsData,),
         ],

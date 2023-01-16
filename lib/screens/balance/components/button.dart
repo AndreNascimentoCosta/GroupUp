@@ -17,8 +17,8 @@ class Button extends StatelessWidget {
       onPressed: () {},
       child: Container(
         alignment: AlignmentDirectional.center,
-        height: 35,
-        width: 90,
+        height: MediaQuery.of(context).size.height * 0.05,
+        width: MediaQuery.of(context).size.width * 0.230,
         decoration: BoxDecoration(
           border: Border.all(color: buttonColor),
           borderRadius: BorderRadius.circular(Insets.l),

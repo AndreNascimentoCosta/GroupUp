@@ -7,8 +7,8 @@ class GroupModel {
   int maxParticipants;
   DateTime? startDate, endDate;
   bool allowEditImage, allowRefundRequest;
-  List<String> participants = [];
-  List<Participant> participantsData = [];
+  List<String> participants;
+  List<Participant> participantsData;
 
   String get rank {
     return '-'; // foda
@@ -40,6 +40,8 @@ class GroupModel {
     required this.allowEditImage,
     required this.allowRefundRequest,
     required this.image,
+    required this.participants,
+    required this.participantsData,
     this.startDate,
     this.endDate,
   });
@@ -51,6 +53,8 @@ class GroupModel {
       reward: '',
       groupCode: '',
       image: '',
+      participants: [],
+      participantsData: [],
       maxParticipants: 0,
       allowEditImage: false,
       allowRefundRequest: false,
@@ -72,6 +76,12 @@ class GroupModel {
       reward: map['reward'] ?? '',
       groupCode: map['groupCode'] ?? '',
       image: map['image'] ?? '',
+      participants: List<String>.from(map['participants'] ?? []),
+      participantsData: List<Participant>.from(
+        (map['participantsData'] ?? []).map(
+          (e) => Participant.fromMap(e),
+        ),
+      ),
       maxParticipants: map['noParticipants'] ?? 0,
       allowEditImage: map['allowEditImage'] ?? false,
       allowRefundRequest: map['allowRefundRequest'] ?? false,

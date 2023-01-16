@@ -5,7 +5,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/models/show_group.dart';
+import 'package:groupup/models/group_model.dart';
 import '../../../models/home_view.dart';
 
 class AppBarGroup extends StatefulWidget with PreferredSizeWidget {
@@ -59,8 +59,8 @@ class _AppBarGroupState extends State<AppBarGroup> {
                                 onPressed: () {
                                   setState(() {
                                     final groups = snapshot.data!.docs
-                                        .map((e) =>
-                                            ShowGroupModel.fromJson(e.data()))
+                                        .map(
+                                            (e) => GroupModel.fromMap(e.data()))
                                         .toList();
                                     if (selectItems.length == groups.length) {
                                       selectItems.clear();

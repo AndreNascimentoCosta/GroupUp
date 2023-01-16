@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/models/show_group.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
 import 'package:groupup/screens/groups/components/edit_bottom_navy_bar.dart';

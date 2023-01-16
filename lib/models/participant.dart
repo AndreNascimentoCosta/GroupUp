@@ -34,7 +34,11 @@ class Participant {
       uid: map['uid'],
       name: map['name'],
       profilePicture: map['profilePicture'],
-      inputData: map['groups'],
+      inputData: ((map['inputData'] ?? []) as List)
+          .map(
+            (e) => UserInputData.fromMap(e),
+          )
+          .toList(),
       isAdmin: map['isAdmin'],
     );
   }
@@ -45,6 +49,7 @@ class Participant {
       'name': name,
       'profilePicture': profilePicture,
       'isAdmin': isAdmin,
+      'inputData': inputData,
     };
   }
 }

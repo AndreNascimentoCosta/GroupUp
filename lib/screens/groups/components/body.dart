@@ -29,6 +29,7 @@ class Body extends StatelessWidget {
         child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
           stream: FirebaseFirestore.instance
               .collection('groups')
+              .orderBy('createdAt', descending: true)
               .where(
                 'participants',
                 arrayContains: userId,
@@ -41,7 +42,7 @@ class Body extends StatelessWidget {
               );
             }
             if (snapshot.data!.docs.isEmpty) {
-              return Column(children:  const [NoGroup()]);
+              return Column(children: const [NoGroup()]);
             } else {
               final groups = snapshot.data!.docs
                   .map((e) => GroupModel.fromMap(e.data()))
