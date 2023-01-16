@@ -4,17 +4,17 @@ import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/general_group_info.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/styles/end_date_picker.dart';
 import 'package:groupup/styles/start_date_picker.dart';
 
 class DateBottomSheet extends StatelessWidget {
   const DateBottomSheet({
-    required this.generalGroupInfoModel,
+    required this.groups,
     required this.title,
   });
 
-  final GeneralGroupInfoModel generalGroupInfoModel;
+  final GroupModel groups;
   final String title;
 
   @override
@@ -40,7 +40,7 @@ class DateBottomSheet extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: kDefaultPadding * 2.5),
                   child: StartDatePicker(
-                    generalGroupInfoModel: generalGroupInfoModel,
+                    groups: groups,
                   ),
                 ),
               )
@@ -55,7 +55,7 @@ class DateBottomSheet extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: kDefaultPadding * 2.5),
                   child: EndDatePicker(
-                    generalGroupInfoModel: generalGroupInfoModel,
+                    groups: groups,
                   ),
                 ),
               )

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/models/show_group.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/groups/components/app_bar.dart';
 import 'package:groupup/screens/groups/components/group_card.dart';
 import 'package:groupup/models/home_view.dart';
@@ -11,11 +11,11 @@ import 'package:groupup/screens/groups/components/no_group.dart';
 class Body extends StatelessWidget {
   const Body({
     required this.homeViewModel,
-    required this.showGroup,
+    required this.groups,
   });
 
   final HomeViewModel homeViewModel;
-  final List<ShowGroupModel> showGroup;
+  final List<GroupModel> groups;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,6 @@ class Body extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBarGroup(
         homeViewModel: homeViewModel,
-        showGroup: showGroup,
       ),
       body: Scrollbar(
         child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -45,7 +44,7 @@ class Body extends StatelessWidget {
               return Column(children:  const [NoGroup()]);
             } else {
               final groups = snapshot.data!.docs
-                  .map((e) => ShowGroupModel.fromJson(e.data()))
+                  .map((e) => GroupModel.fromMap(e.data()))
                   .toList();
               return ListView.separated(
                 padding: const EdgeInsets.only(
@@ -61,7 +60,7 @@ class Body extends StatelessWidget {
                 itemCount: groups.length,
                 itemBuilder: (context, index) => GroupsCard(
                   homeViewModel: homeViewModel,
-                  showGroup: groups[index],
+                  groups: groups[index],
                 ),
               );
             }

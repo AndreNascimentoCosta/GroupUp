@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/balance/components/app_bar.dart';
 import 'package:groupup/screens/balance/components/body.dart';
 import 'package:groupup/screens/balance/components/search_bar.dart';

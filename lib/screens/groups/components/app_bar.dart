@@ -9,10 +9,9 @@ import 'package:groupup/models/show_group.dart';
 import '../../../models/home_view.dart';
 
 class AppBarGroup extends StatefulWidget with PreferredSizeWidget {
-  AppBarGroup({required this.homeViewModel, required this.showGroup});
+  AppBarGroup({required this.homeViewModel});
 
   final HomeViewModel homeViewModel;
-  final List<ShowGroupModel> showGroup;
 
   @override
   State<AppBarGroup> createState() => _AppBarGroupState();

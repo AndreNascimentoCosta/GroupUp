@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/models/group.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/models/participant.dart';
-import 'package:groupup/models/show_group.dart';
 import 'package:groupup/screens/add_input/models/calendar.dart';
 import 'package:groupup/screens/add_input/models/add_input_group_button.dart';
 import 'package:groupup/screens/add_input/models/data_history.dart';
@@ -14,13 +13,13 @@ class AddInputScreen extends StatefulWidget {
     required this.groupModel,
     required this.homeViewModel,
     required this.participant,
-    required this.showGroup,
+    required this.groups,
   });
 
   final GroupModel groupModel;
   final HomeViewModel homeViewModel;
   final Participant participant;
-  final ShowGroupModel showGroup;
+  final GroupModel groups;
 
   @override
   State<AddInputScreen> createState() => _AddInputScreenState();
@@ -33,8 +32,7 @@ class _AddInputScreenState extends State<AddInputScreen> {
       backgroundColor: Colors.white,
       appBar: AppBarIndividualGroup(
         homeViewModel: widget.homeViewModel,
-        groupModel: widget.groupModel,
-        showGroup: widget.showGroup,
+        groups: widget.groups,
       ),
       body: Column(
         children: [

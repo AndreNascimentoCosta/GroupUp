@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/individual_group_settings/components/exit_group.dart';
 import 'package:groupup/screens/individual_group_settings/components/number_participants.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
@@ -12,9 +12,9 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:share_plus/share_plus.dart';
 
 class BodySettings extends StatelessWidget {
-  const BodySettings({required this.groupModel});
+  const BodySettings({required this.groups});
 
-  final GroupModel groupModel;
+  final GroupModel groups;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class BodySettings extends StatelessWidget {
                 child: SizedBox(
                   width: 60,
                   child: LargeBody(
-                    text: (groupModel.userInformation.length + 1).toString(),
+                    text: (groups.participants.length + 1).toString(),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -91,7 +91,7 @@ class BodySettings extends StatelessWidget {
                                   SizedBox(
                                     height: 200,
                                     child: MaxNumberParticipants(
-                                      groupModel: groupModel,
+                                      groups: groups,
                                     ),
                                   ),
                                 ],

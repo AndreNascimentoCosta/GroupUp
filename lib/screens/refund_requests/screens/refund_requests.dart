@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/models/group.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/refund_requests/components/app_bar.dart';
 import 'package:groupup/screens/refund_requests/components/body.dart';
 

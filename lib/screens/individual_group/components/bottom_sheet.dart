@@ -3,19 +3,18 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/general_group_info.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 
 class HeaderBottomSheet extends StatelessWidget {
   const HeaderBottomSheet({
-    required this.generalGroupInfoModel,
     required this.title,
     required this.hint,
+    required this.controller,
   });
 
-  final GeneralGroupInfoModel generalGroupInfoModel;
   final String title;
   final String hint;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +34,7 @@ class HeaderBottomSheet extends StatelessWidget {
           SizedBox(
             height: 60,
             child: TextFieldModel(
+              controller: controller,
               hint: hint,
               maxLength: TextField.noMaxLength,
               border: InputBorder.none,

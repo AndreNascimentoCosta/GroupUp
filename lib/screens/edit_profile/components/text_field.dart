@@ -6,7 +6,7 @@ class TextFieldModel extends StatelessWidget {
   const TextFieldModel({
     required this.hint,
     required this.maxLength,
-    this.controller,
+    required this.controller,
     this.border,
     this.hintColor,
     this.hintSize,
@@ -15,7 +15,7 @@ class TextFieldModel extends StatelessWidget {
     this.textInputAction,
   });
 
-  final TextEditingController? controller;
+  final TextEditingController controller;
   final String hint;
   final int maxLength;
   final InputBorder? border;
@@ -47,7 +47,7 @@ class TextFieldModel extends StatelessWidget {
                 borderSide: BorderSide(color: kPrimaryColor)),
             hintText: hint,
             counterText: "",
-            suffixIcon: controller!.text.isEmpty
+            suffixIcon: controller.text.isEmpty 
                 ? null
                 : IconButton(
                     icon: SvgPicture.asset(
@@ -57,7 +57,7 @@ class TextFieldModel extends StatelessWidget {
                       color: kSecondaryColor,
                     ),
                     onPressed: () {
-                      controller!.clear();
+                      controller.clear();
                     },
                   ),
             hintStyle: TextStyle(

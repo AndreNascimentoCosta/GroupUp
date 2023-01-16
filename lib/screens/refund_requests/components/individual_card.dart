@@ -3,7 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group.dart';
+import 'package:groupup/models/group_model.dart';
 
 class IndividualRefundRequest extends StatelessWidget {
   const IndividualRefundRequest({required this.groupModel});

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
-import 'package:groupup/models/general_group_info.dart';
-import 'package:groupup/models/show_group.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/individual_group/components/bottom_sheet.dart';
 import 'package:groupup/screens/individual_group/components/date_bottom_sheet.dart';
 import 'package:groupup/screens/individual_group/components/objective_reward.dart';
@@ -12,15 +10,15 @@ import 'package:groupup/screens/individual_group/components/start_end_date.dart'
 
 class HeaderIndividualGroup extends StatelessWidget {
   const HeaderIndividualGroup({
-    required this.generalGroupInfoModel,
-    required this.showGroup,
+    required this.groups,
   });
 
-  final GeneralGroupInfoModel generalGroupInfoModel;
-  final ShowGroupModel showGroup;
+  final GroupModel groups;
 
   @override
   Widget build(BuildContext context) {
+    final objectiveController = TextEditingController(text: groups.objective);
+    final rewardController = TextEditingController(text: groups.reward);
     return Container(
       color: Colors.white,
       height: 125,
@@ -31,7 +29,7 @@ class HeaderIndividualGroup extends StatelessWidget {
               top: kDefaultPadding / 2.5,
               bottom: kDefaultPadding,
             ),
-            child: GroupTitle(text: showGroup.projectName),
+            child: GroupTitle(text: groups.projectName),
           ),
           IntrinsicHeight(
             child: Row(
@@ -41,15 +39,14 @@ class HeaderIndividualGroup extends StatelessWidget {
                   builder: BuilderBottomSheet(
                     height: 200,
                     child: HeaderBottomSheet(
-                      generalGroupInfoModel: generalGroupInfoModel,
+                      controller: objectiveController,
                       title: 'Objective',
-                      hint: generalGroupInfoModel.objective,
+                      hint: groups.objective,
                     ),
                   ),
-                  generalGroupInfoModel: generalGroupInfoModel,
                   icon:
-                      SvgPicture.asset('assets/icons/objective.svg').toString(),
-                  text: generalGroupInfoModel.objective,
+                      'assets/icons/objective.svg',
+                  text: groups.objective,
                 ),
                 VerticalDivider(
                   width: MediaQuery.of(context).size.width * 0.115,
@@ -60,14 +57,13 @@ class HeaderIndividualGroup extends StatelessWidget {
                   builder: BuilderBottomSheet(
                     height: 200,
                     child: HeaderBottomSheet(
-                      generalGroupInfoModel: generalGroupInfoModel,
+                      controller: rewardController,
                       title: 'Reward',
-                      hint: generalGroupInfoModel.reward,
+                      hint: groups.reward,
                     ),
                   ),
-                  generalGroupInfoModel: generalGroupInfoModel,
-                  icon: SvgPicture.asset('assets/icons/reward.svg').toString(),
-                  text: generalGroupInfoModel.reward,
+                  icon: 'assets/icons/reward.svg',
+                  text: groups.reward,
                 ),
                 const VerticalDivider(
                   width: kDefaultPadding * 2.25,
@@ -78,12 +74,11 @@ class HeaderIndividualGroup extends StatelessWidget {
                   builder: BuilderBottomSheet(
                     height: 250,
                     child: DateBottomSheet(
-                      generalGroupInfoModel: generalGroupInfoModel,
+                      groups: groups,
                       title: 'Dates',
                     ),
                   ),
-                  generalGroupInfoModel: generalGroupInfoModel,
-                  showGroup: showGroup,
+                  groups: groups,
                 ),
                 const SizedBox(
                   width: kDefaultPadding * 1.5,

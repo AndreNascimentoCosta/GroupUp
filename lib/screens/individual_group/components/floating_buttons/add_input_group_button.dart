@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/models/participant.dart';
-import 'package:groupup/models/show_group.dart';
 import 'package:groupup/screens/add_input/screens/add_input_screen.dart';
 import '../../../../constants.dart';
 
@@ -13,7 +12,7 @@ class CalendarScreenButton extends StatefulWidget {
     required this.homeViewModel,
     required this.groupModel,
     required this.participant,
-    required this.showGroup,
+    required this.groups,
     this.backgroundColor = kPrimaryColor,
     this.icon = 'assets/icons/plus.svg',
   });
@@ -23,7 +22,7 @@ class CalendarScreenButton extends StatefulWidget {
   final Participant participant;
   final Color backgroundColor;
   final String icon;
-  final ShowGroupModel showGroup;
+  final GroupModel groups;
 
   @override
   State<CalendarScreenButton> createState() => _CalendarScreenButtonState();
@@ -50,7 +49,7 @@ class _CalendarScreenButtonState extends State<CalendarScreenButton> {
                         groupModel: widget.groupModel,
                         homeViewModel: widget.homeViewModel,
                         participant: widget.participant,
-                        showGroup: widget.showGroup,
+                        groups: widget.groups,
                       ),
                     ));
               },

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/create_group_model.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/models/switch.dart';
@@ -35,7 +35,7 @@ class CreateGroupProvider extends ChangeNotifier {
   final users = [];
   bool isCreatingGroup = false;
 
-  final newGroup = CreateGroupModel.empty();
+  final newGroup = GroupModel.empty();
 
   CreateGroupProvider() {
     controllerProjectName.addListener(notifyListeners);

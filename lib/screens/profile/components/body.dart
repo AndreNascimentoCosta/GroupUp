@@ -8,7 +8,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/storage.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/balance/screens/balance.dart';
 import 'package:groupup/screens/created_groups/screens/created_groups_screen.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';

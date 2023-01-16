@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/general_group_info.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 
 class EndDatePicker extends StatefulWidget {
-  const EndDatePicker({required this.generalGroupInfoModel});
+  const EndDatePicker({required this.groups});
 
-  final GeneralGroupInfoModel generalGroupInfoModel;
+  final GroupModel groups;
 
   @override
   State<EndDatePicker> createState() => _EndDatePickerState();
@@ -35,14 +35,14 @@ class _EndDatePickerState extends State<EndDatePicker> {
             );
           },
           context: context,
-          initialDate: widget.generalGroupInfoModel.endDate,
+          initialDate: widget.groups.endDate ?? DateTime.now(),
           firstDate: DateTime(2010),
           lastDate: DateTime(2050),
         );
         if (newDate == null) return;
 
         setState(() {
-          widget.generalGroupInfoModel.endDate = newDate;
+          widget.groups.endDate = newDate;
         });
       },
       child: Container(
@@ -64,7 +64,7 @@ class _EndDatePickerState extends State<EndDatePicker> {
             ),
             const SizedBox(width: Insets.l * 2),
             Text(
-              '${widget.generalGroupInfoModel.endDate.day}/${widget.generalGroupInfoModel.endDate.month}/${widget.generalGroupInfoModel.endDate.year}',
+              '${widget.groups.endDate?.day}/${widget.groups.endDate?.month}/${widget.groups.endDate?.year}',
               style: const TextStyle(
                 fontFamily: 'Montserrat-Medium',
                 fontSize: TextSize.mBody,

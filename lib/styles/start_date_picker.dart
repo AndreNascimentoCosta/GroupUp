@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/general_group_info.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 
 class StartDatePicker extends StatefulWidget {
-  const StartDatePicker({required this.generalGroupInfoModel});
+  const StartDatePicker({required this.groups});
 
-  final GeneralGroupInfoModel generalGroupInfoModel;
+  final GroupModel groups;
 
   @override
   State<StartDatePicker> createState() => _StartDatePickerState();
@@ -35,14 +35,14 @@ class _StartDatePickerState extends State<StartDatePicker> {
             );
           },
           context: context,
-          initialDate: widget.generalGroupInfoModel.startDate,
+          initialDate: widget.groups.startDate ?? DateTime.now(),
           firstDate: DateTime(2010),
           lastDate: DateTime(2050),
         );
         if (newDate == null) return;
 
         setState(() {
-          widget.generalGroupInfoModel.startDate = newDate;
+          widget.groups.startDate = newDate;
         });
       },
       child: Container(
@@ -64,7 +64,7 @@ class _StartDatePickerState extends State<StartDatePicker> {
             ),
             const SizedBox(width: Insets.l * 2),
             Text(
-              '${widget.generalGroupInfoModel.startDate.day}/${widget.generalGroupInfoModel.startDate.month}/${widget.generalGroupInfoModel.startDate.year}',
+              '${widget.groups.startDate?.day}/${widget.groups.startDate?.month}/${widget.groups.startDate?.year}',
               style: const TextStyle(
                 fontFamily: 'Montserrat-Medium',
                 fontSize: TextSize.mBody,

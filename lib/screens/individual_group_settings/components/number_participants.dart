@@ -3,12 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group.dart';
+import 'package:groupup/models/group_model.dart';
 
 class MaxNumberParticipants extends StatelessWidget {
-  const MaxNumberParticipants({required this.groupModel});
+  const MaxNumberParticipants({required this.groups});
 
-  final GroupModel groupModel;
+  final GroupModel groups;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class MaxNumberParticipants extends StatelessWidget {
               decoration: InputDecoration(
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
-                  hintText: (groupModel.userInformation.length + 1).toString(),
+                  hintText: (groups.participants.length + 1).toString(),
                   hintStyle: const TextStyle(
                       fontFamily: 'Montserrat-Medium',
                       fontSize: TextSize.subTitle,

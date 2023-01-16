@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/screens/add_input/models/bottom_calendar.dart';
 import 'package:groupup/screens/add_input/models/box_decoration.dart';
@@ -37,8 +37,8 @@ class _CalendarState extends State<Calendar> {
             TableCalendar(
               locale: 'en_Us',
               rowHeight: 40,
-              rangeStartDay: widget.groupModel.generalGroupInfoModel.startDate,
-              rangeEndDay: widget.groupModel.generalGroupInfoModel.endDate,
+              rangeStartDay: widget.groupModel.startDate,
+              rangeEndDay: widget.groupModel.endDate,
               calendarStyle: CalendarStyle(
                 tablePadding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding),
