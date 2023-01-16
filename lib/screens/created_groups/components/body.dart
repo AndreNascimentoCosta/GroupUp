@@ -21,8 +21,8 @@ class BodyCreatedGroup extends StatelessWidget {
             'participantsData',
             arrayContainsAny: [
               {
-                'uid': userId,
-                'isAdmin': true,
+                'userId': userId,
+                'role': 'creator',
               },
             ],
           ).snapshots(),

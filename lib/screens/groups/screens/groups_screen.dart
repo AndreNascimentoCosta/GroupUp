@@ -28,16 +28,26 @@ class _GroupsScreenState extends State<GroupsScreen> {
   final HomeViewModel homeViewModel = HomeViewModel();
   final pageController = PageController();
   final List<ShowGroupModel> showGroup = [];
+  var willShowNameBottomSheet = false;
 
   @override
   void initState() {
+    super.initState();
+    Provider.of<AuthProvider>(context, listen: false)
+        .addListener(askNameIfNeeded);
+  }
+
+  void askNameIfNeeded() {
+    if (!mounted) return;
     final user = Provider.of<AuthProvider>(context, listen: false).user;
     final phoneProvider =
         Provider.of<PhoneAuthenProvider>(context, listen: false);
-    super.initState();
     if (user?.name.isEmpty ?? true) {
+      if (willShowNameBottomSheet) return;
+      willShowNameBottomSheet = true;
       WidgetsBinding.instance.addPostFrameCallback(
         (_) async {
+          if (!mounted) return;
           phoneProvider.cleanName();
           return showModalBottomSheet(
             isScrollControlled: true,

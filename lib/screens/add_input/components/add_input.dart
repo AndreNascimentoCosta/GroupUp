@@ -26,7 +26,6 @@ class _AddInputState extends State<AddInput> {
   }
 
   String currentDate = DateFormat('dd/MM/yyyy').format(DateTime.now());
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
