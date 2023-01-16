@@ -3,6 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 
 final themeData = ThemeData(
+  splashColor: Colors.transparent,
   colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kSecondaryColor),
   pageTransitionsTheme: const PageTransitionsTheme(
     builders: {
