@@ -22,7 +22,6 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
     final phoneControllerText = phoneProvider.phoneController.text;
-    
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -41,37 +40,26 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                   text: 'Code is sent to $phoneControllerText',
                   fontSize: TextSize.mBody,
                   color: kSecondaryColor),
-              const SizedBox(height: Insets.l * 3),
+              const SizedBox(height: Insets.l * 2),
+              OTPField(
+                controller: phoneProvider.otpCode1,
+              ),
+              const SizedBox(height: Insets.l * 1.5),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OTPField(
-                    controller: phoneProvider.otpCode1,
-                    autofocus: true,
-                  ),
-                  OTPField(controller: phoneProvider.otpCode2),
-                  OTPField(controller: phoneProvider.otpCode3),
-                  OTPField(controller: phoneProvider.otpCode4),
-                  OTPField(controller: phoneProvider.otpCode5),
-                  OTPField(controller: phoneProvider.otpCode6),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  StandardTextStyle(
+                      text: "Didn't receive a code?",
+                      fontSize: TextSize.mBody,
+                      color: kSecondaryColor),
+                  SizedBox(width: Insets.xs),
+                  StandardTextStyle(
+                      text: 'Request again',
+                      fontSize: TextSize.mBody,
+                      fontFamily: 'Montserrat-SemiBold',
+                      color: Colors.black),
                 ],
               ),
-              const SizedBox(height: Insets.l * 2),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: const [
-              //     StandardTextStyle(
-              //         text: "Didn't receive a code?",
-              //         fontSize: TextSize.mBody,
-              //         color: kSecondaryColor),
-              //     SizedBox(width: Insets.xs),
-              //     StandardTextStyle(
-              //         text: 'Request again',
-              //         fontSize: TextSize.mBody,
-              //         fontFamily: 'Montserrat-SemiBold',
-              //         color: Colors.black),
-              //   ],
-              // ),
             ],
           ),
         ),

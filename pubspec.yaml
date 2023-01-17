@@ -58,6 +58,7 @@ dependencies:
   cached_network_image: ^3.2.3
   intl_phone_number_input: ^0.7.2
   currency_picker: ^2.0.14
+  pinput: ^2.2.21
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

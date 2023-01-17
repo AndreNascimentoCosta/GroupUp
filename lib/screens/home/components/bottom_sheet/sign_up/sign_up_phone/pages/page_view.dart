@@ -52,7 +52,7 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                 StandardTextStyle(
                   textAlign: TextAlign.center,
                   text: phoneProvider.pageIndex < 2
-                      ? 'Sign up'
+                      ? 'Continue'
                       : 'Verification code',
                   fontFamily: 'Montserrat-SemiBold',
                   fontSize: 28,

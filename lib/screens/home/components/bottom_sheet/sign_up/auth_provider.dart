@@ -154,7 +154,7 @@ class AuthProvider extends ChangeNotifier {
       await updateSocialUserData();
       await getUser();
       loading = false;
-    } on FirebaseAuthException catch (e) {
+    } on SignInWithAppleException catch (e) {
       loading = false;
     }
     notifyListeners();

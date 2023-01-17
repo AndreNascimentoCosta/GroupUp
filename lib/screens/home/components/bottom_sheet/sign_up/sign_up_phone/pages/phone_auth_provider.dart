@@ -64,11 +64,9 @@ class PhoneAuthenProvider extends ChangeNotifier {
               {
                 Provider.of<AuthProvider>(context, listen: false)
                     .phoneLogin(context),
-                FocusScope.of(context).unfocus(),
               }
             else if (pageIndex == 1)
               {
-                FocusScope.of(context).unfocus(),
                 Provider.of<AuthProvider>(context, listen: false)
                     .verifyOTP(context),
               }
