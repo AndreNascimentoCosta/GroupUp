@@ -11,6 +11,7 @@ class RefundRequestsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: const AppBarRefundRequests(),
       body: Column(
         children: [
