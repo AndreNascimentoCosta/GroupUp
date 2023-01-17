@@ -20,6 +20,7 @@ class BodyCreatedGroup extends StatelessWidget {
         child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
           stream: FirebaseFirestore.instance
               .collection('groups')
+              .orderBy('createdAt', descending: true)
               .where(
                 'participants',
                 arrayContains: user?.id,

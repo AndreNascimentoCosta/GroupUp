@@ -14,6 +14,7 @@ class CreateGroupButton extends StatelessWidget {
     return ButtonCommonStyle(
       onPressed: () {
         Provider.of<CreateGroupProvider>(context, listen: false).clean();
+        Navigator.of(context).pop();
         showModalBottomSheet(
             isScrollControlled: true,
             context: context,

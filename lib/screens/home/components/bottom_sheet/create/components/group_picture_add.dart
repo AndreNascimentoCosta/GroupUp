@@ -63,36 +63,37 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.185,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: kDefaultPadding * 1.75),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                ButtonCommonStyle(
-                                  onPressed: () {
-                                    pickImage(ImageSource.gallery);
-                                  },
-                                  child: const LargeBody(
-                                    text: 'Choose from gallery',
-                                    textAlign: TextAlign.center,
-                                  ),
+                        height: MediaQuery.of(context).size.height * 0.185,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: kDefaultPadding * 1.75),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ButtonCommonStyle(
+                                onPressed: () {
+                                  pickImage(ImageSource.gallery);
+                                },
+                                child: const LargeBody(
+                                  text: 'Choose from gallery',
+                                  textAlign: TextAlign.center,
                                 ),
-                                const SizedBox(height: Insets.l * 1.75),
-                                ButtonCommonStyle(
-                                  onPressed: () {
-                                    pickImage(ImageSource.camera);
-                                  },
-                                  child: const LargeBody(
-                                    text: 'Take photo',
-                                    textAlign: TextAlign.center,
-                                  ),
-                                )
-                              ],
-                            ),
-                          )),
+                              ),
+                              const SizedBox(height: Insets.l * 1.75),
+                              ButtonCommonStyle(
+                                onPressed: () {
+                                  pickImage(ImageSource.camera);
+                                },
+                                child: const LargeBody(
+                                  text: 'Take photo',
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   )
                 ],
@@ -117,7 +118,6 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                 child: Builder(
                   builder: (context) {
                     final storage = Provider.of<StorageProvider>(context);
-
 
                     if (image != null) {
                       return Stack(
