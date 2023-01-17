@@ -10,14 +10,10 @@ import 'package:groupup/models/home_view.dart';
 class IndividualGroupScreen extends StatefulWidget {
   const IndividualGroupScreen({
     required this.homeViewModel,
-    // required this.groupModel,
-    // required this.participant,
     required this.groups,
   });
 
   final HomeViewModel homeViewModel;
-  // final GroupModel groupModel;
-  // final Participant participant;
   final GroupModel groups;
 
   @override
@@ -41,6 +37,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
           ),
           const SizedBox(height: kDefaultPadding),
           BodyIndividualGroup(
+            group: widget.groups,
             homeViewModel: widget.homeViewModel,
           )
         ],

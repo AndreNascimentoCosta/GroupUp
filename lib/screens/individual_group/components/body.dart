@@ -2,34 +2,38 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/models/participant.dart';
 import 'package:groupup/screens/individual_group/components/individual_card.dart';
 import 'package:groupup/models/home_view.dart';
 
 class BodyIndividualGroup extends StatelessWidget {
-  const BodyIndividualGroup(
-      {required this.homeViewModel});
+  const BodyIndividualGroup({
+    required this.homeViewModel,
+    required this.group,
+  });
 
   final HomeViewModel homeViewModel;
+  final GroupModel group;
 
   @override
   Widget build(BuildContext context) {
-    final List<Participant> participant = [];
     return Expanded(
       child: Scrollbar(
-        child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-            builder: ((context, snapshot) {
-          if (snapshot.hasData == false) {
-            return const Center(
-              child: CircularProgressIndicator(color: kPrimaryColor),
-            );
-          }
-          if (snapshot.data!.docs.isEmpty) {
-            return const SizedBox();
-          } else {
-            final groups = snapshot.data!.docs
-                .map((e) => GroupModel.fromMap(e.data()))
-                .toList();
+        child: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+          future: FirebaseFirestore.instance
+              .collection('groups')
+              .doc(group.id)
+              .get(),
+          builder: ((context, snapshot) {
+            final docData = snapshot.data?.data();
+            final docId = snapshot.data?.id;
+            if (docData == null || docId == null) {
+              return const Center(
+                child: CircularProgressIndicator(color: kPrimaryColor),
+              );
+            }
+            final participants =
+                GroupModel.fromMap(docId, docData).participantsData;
+
             return ListView.separated(
               padding: const EdgeInsets.only(
                 top: kDefaultPadding / 2,
@@ -41,15 +45,15 @@ class BodyIndividualGroup extends StatelessWidget {
                 thickness: 0.5,
                 color: kSecondaryColor,
               ),
-              itemCount: groups.length,
+              itemCount: participants.length,
               itemBuilder: (context, index) => IndividualGroupCard(
-                participant: participant[index],
+                participant: participants[index],
                 homeViewModel: homeViewModel,
-                meParticipant: participant[index],
+                meParticipant: participants[index],
               ),
             );
-          }
-        })),
+          }),
+        ),
       ),
     );
   }

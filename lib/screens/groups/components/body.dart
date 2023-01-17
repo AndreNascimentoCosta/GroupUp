@@ -45,7 +45,7 @@ class Body extends StatelessWidget {
               return Column(children: const [NoGroup()]);
             } else {
               final groups = snapshot.data!.docs
-                  .map((e) => GroupModel.fromMap(e.data()))
+                  .map((e) => GroupModel.fromMap(e.id, e.data()))
                   .toList();
               return ListView.separated(
                 padding: const EdgeInsets.only(

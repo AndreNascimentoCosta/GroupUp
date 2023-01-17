@@ -59,8 +59,8 @@ class _AppBarGroupState extends State<AppBarGroup> {
                                 onPressed: () {
                                   setState(() {
                                     final groups = snapshot.data!.docs
-                                        .map(
-                                            (e) => GroupModel.fromMap(e.data()))
+                                        .map((e) =>
+                                            GroupModel.fromMap(e.id, e.data()))
                                         .toList();
                                     if (selectItems.length == groups.length) {
                                       selectItems.clear();

@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_data.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
@@ -40,13 +41,30 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> updateProfilePicture(String imageUrl) async {
-    final user = _auth.currentUser;
+    final user = _user;
     if (user == null) return;
 
     await FirebaseFirestore.instance
         .collection('users')
-        .doc(user.uid)
+        .doc(user.id)
         .update({'profilePicture': imageUrl});
+    final groups = await FirebaseFirestore.instance
+        .collection('groups')
+        .where('participants', arrayContains: user.id)
+        .get();
+    for (final group in groups.docs) {
+      final participantsData =
+          GroupModel.fromMap(group.id, group.data()).participantsData;
+      final userIndex =
+          participantsData.indexWhere((element) => element.uid == user.id);
+      participantsData[userIndex].profilePicture = imageUrl;
+      await FirebaseFirestore.instance
+          .collection('groups')
+          .doc(group.id)
+          .update(
+        {'participantsData': participantsData.map((e) => e.toMap()).toList()},
+      );
+    }
     await getUser();
   }
 

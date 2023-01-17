@@ -23,7 +23,7 @@ class IndividualValue extends StatelessWidget {
         builder: (context, value, child) {
           return AnimatedContainer(
             width: !value ? 90 : 0,
-            duration: const Duration(milliseconds: 50),
+            duration: const Duration(milliseconds: 10),
             child: Visibility(
               visible: !value,
               child: Row(
@@ -36,18 +36,19 @@ class IndividualValue extends StatelessWidget {
                   ButtonCommonStyle(
                     onPressed: dropDownModel.switchEdit,
                     child: ValueListenableBuilder(
-                        valueListenable: dropDownModel.isOpened,
-                        builder: ((context, value, child) {
-                          return ImageIcon(
-                            AssetImage(
-                              dropDownModel.isOpened.value
-                                  ? 'assets/icons/minus.png'
-                                  : 'assets/icons/arrow_down.png',
-                            ),
-                            size: kDefaultPadding * 2,
-                            color: Colors.black,
-                          );
-                        })),
+                      valueListenable: dropDownModel.isOpened,
+                      builder: ((context, value, child) {
+                        return ImageIcon(
+                          AssetImage(
+                            dropDownModel.isOpened.value
+                                ? 'assets/icons/minus.png'
+                                : 'assets/icons/arrow_down.png',
+                          ),
+                          size: kDefaultPadding * 2,
+                          color: Colors.black,
+                        );
+                      }),
+                    ),
                   ),
                 ],
               ),

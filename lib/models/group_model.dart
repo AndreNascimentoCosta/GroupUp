@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:groupup/models/participant.dart';
 
 class GroupModel {
+  String id;
   String projectName, objective, reward, groupCode;
   String image;
   int maxParticipants;
@@ -32,6 +33,7 @@ class GroupModel {
   }
 
   GroupModel({
+    required this.id,
     required this.projectName,
     required this.objective,
     required this.reward,
@@ -48,6 +50,7 @@ class GroupModel {
 
   factory GroupModel.empty() {
     return GroupModel(
+      id: '',
       projectName: '',
       objective: '',
       reward: '',
@@ -61,7 +64,7 @@ class GroupModel {
     );
   }
 
-  factory GroupModel.fromMap(Map<String, dynamic> map) {
+  factory GroupModel.fromMap(String id, Map<String, dynamic> map) {
     DateTime? startDate;
     DateTime? endDate;
     if (map['startDate'] is Timestamp) {
@@ -71,6 +74,7 @@ class GroupModel {
       endDate = (map['endDate'] as Timestamp).toDate();
     }
     return GroupModel(
+      id: id,
       projectName: map['projectName'] ?? '',
       objective: map['objective'] ?? '',
       reward: map['reward'] ?? '',

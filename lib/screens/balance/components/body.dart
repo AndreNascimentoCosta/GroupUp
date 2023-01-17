@@ -54,7 +54,7 @@ class GroupsBalance extends StatelessWidget {
               );
             } else {
               final groups = snapshot.data!.docs
-                  .map((e) => GroupModel.fromMap(e.data()))
+                  .map((e) => GroupModel.fromMap(e.id, e.data()))
                   .toList()
                   .where(
                     (element) => element.participantsData
