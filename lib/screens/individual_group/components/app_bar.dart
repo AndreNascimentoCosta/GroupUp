@@ -20,22 +20,24 @@ class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       centerTitle: true,
-      flexibleSpace: groups.image != '' ?
-      ClipRect(
-        child: Image.network(
-          groups.image,
-          fit: BoxFit.cover,
-        ),
-      ) : ClipRect(
-        child: SvgPicture.asset(
-          'assets/images/groupup_placeholder.svg',
-          fit: BoxFit.cover,
-        ),
-      ),
+      flexibleSpace: groups.image != ''
+          ? ClipRect(
+              child: Image.network(
+                groups.image,
+                fit: BoxFit.cover,
+              ),
+            )
+          : ClipRect(
+              child: SvgPicture.asset(
+                'assets/images/groupup_placeholder.svg',
+                fit: BoxFit.cover,
+              ),
+            ),
       title: Row(
         children: [
           FloatingActionButton(
             heroTag: 'btn1',
+            elevation: 0,
             backgroundColor: Colors.white,
             onPressed: () {
               Navigator.pop(
@@ -55,34 +57,28 @@ class AppBarIndividualGroup extends StatelessWidget with PreferredSizeWidget {
             ),
           ),
           const Spacer(),
-          ValueListenableBuilder(
-              valueListenable: homeViewModel.isEditing,
-              builder: (context, value, child) {
-                return Visibility(
-                  visible: !value,
-                  child: FloatingActionButton(
-                    heroTag: 'btn2',
-                    backgroundColor: Colors.white,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => GroupSettings(
-                            homeViewModel: homeViewModel,
-                            groups: groups,
-                          ),
-                        ),
-                      );
-                    },
-                    child: SvgPicture.asset(
-                      'assets/icons/settings.svg',
-                      height: Insets.l * 1.25,
-                      width: Insets.l * 1.25,
-                      color: Colors.black,
-                    ),
+          FloatingActionButton(
+            heroTag: 'btn2',
+            elevation: 0,
+            backgroundColor: Colors.white,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GroupSettings(
+                    homeViewModel: homeViewModel,
+                    groups: groups,
                   ),
-                );
-              })
+                ),
+              );
+            },
+            child: SvgPicture.asset(
+              'assets/icons/settings.svg',
+              height: Insets.l * 1.25,
+              width: Insets.l * 1.25,
+              color: Colors.black,
+            ),
+          ),
         ],
       ),
     );

@@ -203,10 +203,11 @@ class CreateGroupProvider extends ChangeNotifier {
     if (image != null) {
       try {
         final fileExtension = image.path.split('.').last;
+        final createdAt = Timestamp.now().nanoseconds;
         final result = await FirebaseStorage.instance
             .ref()
             .child(userId)
-            .child("profileImage.$fileExtension")
+            .child("groupImage$createdAt.$fileExtension")
             .putFile(image);
         final url = await result.ref.getDownloadURL();
         newGroup.image = url;
