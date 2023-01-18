@@ -123,23 +123,30 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                             width: Insets.l * 3,
                           ),
                     Expanded(
-                      child: Padding(
+                      child: authProvider.user != null ? authProvider.user!.id == widget.participant.uid ?
+                      const Padding(
+                        padding: EdgeInsets.only(
+                          left: kDefaultPadding,
+                        ),
+                        child: StaticText(
+                          text: 'Me',
+                          overflow: TextOverflow.ellipsis,
+                          fontSize: 20,
+                          fontFamily: 'Montserrat-SemiBold',
+                        ),
+                      ) : Padding(
                         padding: const EdgeInsets.only(
                           left: kDefaultPadding,
                         ),
                         child: StaticText(
-                          text: authProvider.user != null
-                              ? authProvider.user!.id == widget.participant.uid
-                                  ? 'Me'
-                                  : Characters(widget.participant.name)
+                          text: Characters(widget.participant.name)
                                       .replaceAll(Characters(''),
                                           Characters('\u{200B}'))
-                                      .toString()
-                              : '',
+                                      .toString(),
                           overflow: TextOverflow.ellipsis,
                           fontSize: 20,
                         ),
-                      ),
+                      ) : const StaticText(text: ''),
                     ),
                     const SizedBox(width: kDefaultPadding),
                     IndividualValue(

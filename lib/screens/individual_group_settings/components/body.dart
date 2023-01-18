@@ -20,6 +20,8 @@ class BodySettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final createGroupProvider =
+        Provider.of<CreateGroupProvider>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.only(
         top: kDefaultPadding,
@@ -39,7 +41,9 @@ class BodySettings extends StatelessWidget {
                   )),
               const Spacer(),
               SwitchButton(
-                onChanged: (value) {},
+                onChanged: (value) {
+                  createGroupProvider.updateAllowEditImage(value);
+                },
               ),
             ],
           ),
@@ -114,7 +118,7 @@ class BodySettings extends StatelessWidget {
                 child: LargeBody(text: 'Group code'),
               ),
               const Spacer(),
-               ShareButton(
+              ShareButton(
                 text: groups.groupCode,
                 onPressed: () async {
                   await Share.share(groups.groupCode);
@@ -150,7 +154,9 @@ class BodySettings extends StatelessWidget {
               text: 'Exit group'),
           const SizedBox(height: Insets.l),
           OtherOptions(
-              onPressed: () {}, text: 'Delete group', color: Colors.red),
+              onPressed: () {
+                createGroupProvider.confirmDeleteGroup(context, groups.id);
+              }, text: 'Delete group', color: Colors.red),
           SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         ],
       ),

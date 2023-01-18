@@ -22,7 +22,7 @@ class _SwitchButtonState extends State<SwitchButton> {
         setState(() {
           this.value = value;
         });
-        widget.onChanged(false);
+        widget.onChanged(value);
       },
     );
   }

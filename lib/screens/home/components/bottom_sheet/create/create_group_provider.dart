@@ -170,6 +170,22 @@ class CreateGroupProvider extends ChangeNotifier {
     }
   }
 
+  Future<bool> updateAllowEditImage(bool value) async {
+    final group = await FirebaseFirestore.instance
+        .collection('groups')
+        .doc(newGroup.id)
+        .get();
+    if (group.exists) {
+      final groupData = group.data();
+      if (groupData != null) {
+        final allowEditImage = groupData['allowEditImage'] as bool;
+        newGroup.allowEditImage = value;
+        return allowEditImage;
+      }
+    }
+    return false;
+  }
+
   Future<void> createGroup(BuildContext context) async {
     controller.jumpToPage(3);
     Navigator.pop(context);
@@ -223,6 +239,153 @@ class CreateGroupProvider extends ChangeNotifier {
         .set(newGroup.toMap());
     isCreatingGroup = false;
     notifyListeners();
+  }
+
+  // Future<void> exitGroup(String groupId) {
+  //   final userId = FirebaseAuth.instance.currentUser!.uid;
+  //   final group = FirebaseFirestore.instance
+  //       .collection('groups')
+  //       .doc(groupId);
+  //   if (group.id.isEmpty) {
+  //     return Future.value();
+  //   }
+  //   final participants = group.participants;
+  //   participants.remove(userId);
+  //   return FirebaseFirestore.instance
+  //       .collection('groups')
+  //       .doc(group.id)
+  //       .update({'participants': participants});
+  // }
+
+  Future<void> confirmDeleteGroup(BuildContext context, String groupId) async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+    final group = await FirebaseFirestore.instance
+        .collection('groups')
+        .doc(groupId)
+        .get();
+    if (group.exists) {
+      final groupData = group.data();
+      if (groupData != null) {
+        final participants = groupData['participants'] as List<dynamic>;
+        final participantsData = groupData['participantsData'] as List<dynamic>;
+        final index = participants.indexOf(userId);
+        if (index != -1) {
+          final participantData =
+              participantsData[index] as Map<String, dynamic>;
+          final isAdmin = participantData['isAdmin'] as bool;
+          if (isAdmin) {
+            showCupertinoDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: const StaticText(
+                    text: 'Confirm',
+                    textAlign: TextAlign.center,
+                    fontFamily: 'Montserrat-SemiBold',
+                    fontSize: TextSize.lBody,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  content: const StaticText(
+                    text: 'Are you sure you want to delete the \ngroup?',
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    fontSize: TextSize.mBody,
+                  ),
+                  actionsAlignment: MainAxisAlignment.center,
+                  contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
+                  actions: [
+                    NextButton(
+                      text: 'No',
+                      textColor: Colors.red,
+                      borderColor: Colors.transparent,
+                      onPressed: () => Navigator.of(context).pop(),
+                      color: Colors.transparent,
+                      height: 40,
+                      width: 140,
+                    ),
+                    NextButton(
+                      text: 'Yes',
+                      borderColor: kPrimaryColor,
+                      onPressed: () {
+                        deleteGroup(groupId);
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                      },
+                      height: 40,
+                      width: 140,
+                    ),
+                  ],
+                );
+              },
+            );
+          } else {
+            showCupertinoDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: const StaticText(
+                    text: "Permission denied",
+                    textAlign: TextAlign.center,
+                    fontFamily: 'Montserrat-SemiBold',
+                    fontSize: TextSize.lBody,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  content: const StaticText(
+                    text: 'Only the admin can delete the \ngroup',
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    fontSize: TextSize.mBody,
+                  ),
+                  actionsAlignment: MainAxisAlignment.center,
+                  contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
+                  actions: [
+                    NextButton(
+                      text: 'Ok',
+                      borderColor: Colors.transparent,
+                      onPressed: () => Navigator.of(context).pop(),
+                      height: 40,
+                      width: 140,
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+        }
+      }
+    }
+  }
+
+  Future<void> deleteGroup(String groupId) async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+    final group = await FirebaseFirestore.instance
+        .collection('groups')
+        .doc(groupId)
+        .get();
+    if (group.exists) {
+      final groupData = group.data();
+      if (groupData != null) {
+        final participants = groupData['participants'] as List<dynamic>;
+        final participantsData = groupData['participantsData'] as List<dynamic>;
+        final index = participants.indexOf(userId);
+        if (index != -1) {
+          final participantData =
+              participantsData[index] as Map<String, dynamic>;
+          final isAdmin = participantData['isAdmin'] as bool;
+          if (isAdmin) {
+            await FirebaseFirestore.instance
+                .collection('groups')
+                .doc(groupId)
+                .delete();
+          }
+        }
+      }
+    }
   }
 
   /// Call this every time when openning bottom sheet for creating group

@@ -11,36 +11,32 @@ class JoinGroupButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => JoinGroupProvider(),
-      lazy: true,
-      child: ButtonCommonStyle(
-        onPressed: () {
-          Provider.of<JoinGroupProvider>(context, listen: false).clean();
-          showModalBottomSheet(
-              isScrollControlled: true,
-              context: context,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Insets.m),
-              ),
-              builder: (context) {
-                return Padding(
-                  padding: MediaQuery.of(context).viewInsets,
-                  child: Wrap(
-                    children: <Widget>[
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          SizedBox(height: 400, child: JoinPageView()),
-                        ],
-                      )
-                    ],
-                  ),
-                );
-              });
-        },
-        child: const HomeButton(isGreen: true),
-      ),
+    return ButtonCommonStyle(
+      onPressed: () {
+        Provider.of<JoinGroupProvider>(context, listen: false).clean();
+        showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(Insets.m),
+            ),
+            builder: (context) {
+              return Padding(
+                padding: MediaQuery.of(context).viewInsets,
+                child: Wrap(
+                  children: <Widget>[
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        SizedBox(height: 400, child: JoinPageView()),
+                      ],
+                    )
+                  ],
+                ),
+              );
+            });
+      },
+      child: const HomeButton(isGreen: true),
     );
   }
 }
