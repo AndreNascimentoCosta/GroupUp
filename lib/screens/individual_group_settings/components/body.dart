@@ -3,12 +3,14 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:groupup/screens/individual_group_settings/components/exit_group.dart';
 import 'package:groupup/screens/individual_group_settings/components/number_participants.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
 import 'package:groupup/screens/individual_group_settings/components/other_options.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 class BodySettings extends StatelessWidget {
@@ -69,7 +71,7 @@ class BodySettings extends StatelessWidget {
                 child: SizedBox(
                   width: 60,
                   child: LargeBody(
-                    text: (groups.participants.length + 1).toString(),
+                    text: (groups.maxParticipants).toString(),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -112,10 +114,10 @@ class BodySettings extends StatelessWidget {
                 child: LargeBody(text: 'Group code'),
               ),
               const Spacer(),
-              ShareButton(
-                text: 'Share',
+               ShareButton(
+                text: groups.groupCode,
                 onPressed: () async {
-                  await Share.share('846264');
+                  await Share.share(groups.groupCode);
                 },
               ),
             ],

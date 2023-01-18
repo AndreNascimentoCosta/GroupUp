@@ -23,9 +23,6 @@ Future<void> main() async {
           create: ((context) => CreateGroupProvider()),
         ),
         ListenableProvider(
-          create: ((context) => JoinGroupProvider()),
-        ),
-        ListenableProvider(
           create: ((context) => PhoneAuthenProvider()),
         ),
         ListenableProvider(

@@ -68,6 +68,34 @@ class AuthProvider extends ChangeNotifier {
     await getUser();
   }
 
+  Future<void> updateProfileName(String nameController) async {
+    final user = _user;
+    if (user == null) return;
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.id)
+        .update({'name': nameController});
+    final groups = await FirebaseFirestore.instance
+        .collection('groups')
+        .where('participants', arrayContains: user.id)
+        .get();
+    for (final group in groups.docs) {
+      final participantsData =
+          GroupModel.fromMap(group.id, group.data()).participantsData;
+      final userIndex =
+          participantsData.indexWhere((element) => element.uid == user.id);
+      participantsData[userIndex].name = nameController;
+      await FirebaseFirestore.instance
+          .collection('groups')
+          .doc(group.id)
+          .update(
+        {'participantsData': participantsData.map((e) => e.toMap()).toList()},
+      );
+    }
+    await getUser();
+  }
+
   Future<void> updateSocialUserData() async {
     final user = _auth.currentUser;
     if (user == null) return;

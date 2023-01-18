@@ -154,10 +154,12 @@ class _EditProfileBodyState extends State<EditProfileBody> {
           const SizedBox(height: kDefaultPadding * 2),
           ButtonCommonStyle(
             onPressed: () {
-             Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const EditNameScreen()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const EditNameScreen(),
+                ),
+              );
             },
             child: Container(
               height: 50,

@@ -46,14 +46,7 @@ class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    Navigator.pop(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => GroupsScreen(
-                          homeViewModel: homeViewModel,
-                        ),
-                      ),
-                    );
+                    Navigator.pop(context);
                   },
                 ),
               ),

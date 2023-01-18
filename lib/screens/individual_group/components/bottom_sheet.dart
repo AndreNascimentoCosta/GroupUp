@@ -37,6 +37,7 @@ class HeaderBottomSheet extends StatelessWidget {
               controller: controller,
               hint: hint,
               maxLength: TextField.noMaxLength,
+              maxLines: 2,
               border: InputBorder.none,
               hintColor: Colors.black,
               hintSize: TextSize.lBody,

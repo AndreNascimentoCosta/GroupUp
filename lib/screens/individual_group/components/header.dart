@@ -41,7 +41,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                     child: HeaderBottomSheet(
                       controller: objectiveController,
                       title: 'Objective',
-                      hint: groups.objective,
+                      hint: '',
                     ),
                   ),
                   icon:
@@ -59,7 +59,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                     child: HeaderBottomSheet(
                       controller: rewardController,
                       title: 'Reward',
-                      hint: groups.reward,
+                      hint: '',
                     ),
                   ),
                   icon: 'assets/icons/reward.svg',

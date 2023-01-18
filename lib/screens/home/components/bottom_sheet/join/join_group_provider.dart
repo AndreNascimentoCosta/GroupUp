@@ -56,7 +56,7 @@ class JoinGroupProvider extends ChangeNotifier {
             Participant(
               uid: userId,
               name: user.name,
-              profilePicture: '',
+              profilePicture: user.profilePicture,
               inputData: [],
               isAdmin: false,
             ).toMap()

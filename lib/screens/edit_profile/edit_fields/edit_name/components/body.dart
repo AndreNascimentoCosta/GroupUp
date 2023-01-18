@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/edit_profile/edit_fields/edit_name/edit_name_provider.dart';
 import 'package:provider/provider.dart';
 
 class EditNameBody extends StatelessWidget {
@@ -9,8 +9,7 @@ class EditNameBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<AuthProvider>(context).user;
-    final nameController = TextEditingController(text: user?.name ?? '');
+    var nameController = Provider.of<EditNameProvider>(context).nameController;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,

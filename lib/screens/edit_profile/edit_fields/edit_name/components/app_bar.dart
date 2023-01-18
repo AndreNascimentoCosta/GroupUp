@@ -6,12 +6,16 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:provider/provider.dart';
+
+import '../edit_name_provider.dart';
 
 class AppBarEditName extends StatelessWidget with PreferredSizeWidget {
   const AppBarEditName({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final nameProvider = Provider.of<EditNameProvider>(context);
     return SafeArea(
       child: Row(
         children: [
@@ -39,15 +43,12 @@ class AppBarEditName extends StatelessWidget with PreferredSizeWidget {
                     'assets/icons/arrow_left.svg',
                     height: Insets.l * 1.25,
                     width: Insets.l * 1.25,
-                    color: Colors.black,
+                    color: nameProvider.back(context) == null
+                        ? kSecondaryColor
+                        : Colors.black,
                   ),
                   onPressed: () {
-                    Navigator.pop(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const EditProfileScreen(),
-                      ),
-                    );
+                    nameProvider.confirmDiscard(context);
                   },
                 ),
               ),
@@ -56,19 +57,15 @@ class AppBarEditName extends StatelessWidget with PreferredSizeWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: ButtonCommonStyle(
-                    child: const StaticText(
+                    onPressed: nameProvider.done(context),
+                    child: StaticText(
                       text: 'Done',
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
+                      color: nameProvider.done(context) == null
+                          ? kSecondaryColor
+                          : Colors.black,
                     ),
-                    onPressed: () {
-                      Navigator.pop(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const EditProfileScreen(),
-                        ),
-                      );
-                    },
                   ),
                 ),
               ),

@@ -7,6 +7,7 @@ class TextFieldModel extends StatelessWidget {
     required this.hint,
     required this.maxLength,
     required this.controller,
+    this.maxLines,
     this.border,
     this.hintColor,
     this.hintSize,
@@ -18,6 +19,7 @@ class TextFieldModel extends StatelessWidget {
   final TextEditingController controller;
   final String hint;
   final int maxLength;
+  final int? maxLines;
   final InputBorder? border;
   final Color? hintColor;
   final double? hintSize;
@@ -40,6 +42,7 @@ class TextFieldModel extends StatelessWidget {
           textInputAction: textInputAction,
           controller: controller,
           maxLength: maxLength,
+          maxLines: maxLines,
           cursorColor: Colors.black,
           decoration: InputDecoration(
             enabledBorder: border,
