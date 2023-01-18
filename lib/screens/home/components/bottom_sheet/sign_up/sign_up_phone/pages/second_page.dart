@@ -49,7 +49,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
               OTPField(
                 controller: phoneProvider.otpCode1,
               ),
-              const SizedBox(height: Insets.l * 1.5),
+              const SizedBox(height: Insets.l * 2),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

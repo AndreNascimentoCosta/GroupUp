@@ -71,6 +71,9 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
               ],
             ),
           ),
+          phoneProvider.pageIndex != 0
+              ? const SizedBox()
+              :
           NextButton(
             onPressed: phoneProvider.nextPressedPhone(context),
           ),

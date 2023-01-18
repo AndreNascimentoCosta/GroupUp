@@ -255,16 +255,18 @@ class AuthProvider extends ChangeNotifier {
       verificationFailed: (e) {
         if (e.code == 'invalid-phone-number') {
           _error(context, 'Invalid phone number');
+        } else if (e.code == 'too-many-requests') {
+          _error(context, 'Too many requests, try again \nlater');
         } else {
-          _error(context, e.toString());
+          _error(context, 'Something went wrong');
         }
       },
       codeSent: (String verificationId, int? resendToken) async {
         if (phoneProvider.pageIndex == 0) {
           phoneProvider.controller.nextPage(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.ease,
-        );
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.ease,
+          );
         }
         this.verificationId = verificationId;
         this.resendToken = resendToken;

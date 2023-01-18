@@ -74,25 +74,9 @@ class PhoneAuthenProvider extends ChangeNotifier {
       return null;
     } else {
       return () => {
-            if (pageIndex == 0)
-              {
-                Provider.of<AuthProvider>(context, listen: false)
+            Provider.of<AuthProvider>(context, listen: false)
                     .phoneLogin(context),
                 startTimer(),
-              }
-            else if (pageIndex == 1)
-              {
-                Provider.of<AuthProvider>(context, listen: false)
-                    .verifyOTP(context),
-              }
-            else
-              {
-                controller.nextPage(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.ease,
-                ),
-                FocusScope.of(context).unfocus(),
-              }
           };
     }
   }
@@ -113,15 +97,6 @@ class PhoneAuthenProvider extends ChangeNotifier {
           };
     }
   }
-
-  // final _instance = FirebaseFirestore.instance;
-
-  // Future<bool> userExists(String username) async =>
-  //     (await _instance
-  //             .collection("users")
-  //             .where("username", isEqualTo: username)
-  //             .get())
-  //         .docs.isNotEmpty;
 
   void updateIndex(int index) {
     pageIndex = index;
