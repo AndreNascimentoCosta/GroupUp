@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -24,10 +25,7 @@ class PhoneAuthenProvider extends ChangeNotifier {
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
   final countryCode = PhoneNumber(isoCode: Platform.localeName.split('_')[1]);
-  // String get wholePhoneNumber {
-  //   return countryCode + phoneController.text;
-  // }
-
+  int start = 30;
   final controller = PageController(initialPage: 0);
   int pageIndex = 0;
 
@@ -54,6 +52,22 @@ class PhoneAuthenProvider extends ChangeNotifier {
     phoneController.addListener(notifyListeners);
   }
 
+  void startTimer() {
+    const onesec = Duration(seconds: 1);
+    Timer _timer = Timer.periodic(
+      onesec,
+      (timer) {
+        if (start == 0) {
+          timer.cancel();
+          notifyListeners();
+        } else {
+          start--;
+          notifyListeners();
+        }
+      },
+    );
+  }
+
   void Function()? nextPressedPhone(BuildContext context) {
     // Index 0
     if (pageIndex == 0 && phoneController.text.isEmpty) {
@@ -64,6 +78,7 @@ class PhoneAuthenProvider extends ChangeNotifier {
               {
                 Provider.of<AuthProvider>(context, listen: false)
                     .phoneLogin(context),
+                startTimer(),
               }
             else if (pageIndex == 1)
               {

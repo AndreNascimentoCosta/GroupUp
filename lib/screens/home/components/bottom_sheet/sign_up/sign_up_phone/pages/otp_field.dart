@@ -39,9 +39,6 @@ class OTPField extends StatelessWidget {
       animationCurve: Curves.fastOutSlowIn,
       pinAnimationType: PinAnimationType.none,
       animationDuration: const Duration(milliseconds: 10),
-      onClipboardFound: (value) {
-        controller.text = value;
-      },
       onChanged: (value) {
         if (value.length == 6) {
           authProvider.verifyOTP(context);

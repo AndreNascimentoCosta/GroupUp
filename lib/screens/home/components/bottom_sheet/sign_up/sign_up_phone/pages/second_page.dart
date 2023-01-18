@@ -1,27 +1,32 @@
-import 'dart:io';
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/design-system.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/otp_field.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-class FirstPageSignUp extends StatefulWidget {
-  const FirstPageSignUp({required this.controller});
+class SecondPageSignUp extends StatefulWidget {
+  const SecondPageSignUp({
+    required this.controller,
+  });
 
   final PageController controller;
 
   @override
-  State<FirstPageSignUp> createState() => _FirstPageSignUpState();
+  State<SecondPageSignUp> createState() => _SecondPageSignUpState();
 }
 
-class _FirstPageSignUpState extends State<FirstPageSignUp> {
+class _SecondPageSignUpState extends State<SecondPageSignUp> {
   @override
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
-    final nodePhone = FocusNode();
+    final authProvider = Provider.of<AuthProvider>(context);
+    final phoneControllerText = phoneProvider.phoneController.text;
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -29,50 +34,52 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
           currentFocus.unfocus();
         }
       },
-      child: Center(
-        child: SingleChildScrollView(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kDefaultPadding,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const StandardTextStyle(
-                      text: 'Phone number',
-                      fontSize: TextSize.lBody,
-                    ),
-                    const SizedBox(height: 5),
-                    InternationalPhoneNumberInput(
-                      focusNode: nodePhone,
-                      onFieldSubmitted: (value) {
-                        FocusScope.of(context).nextFocus();
-                      },
-                      autofillHints: const [AutofillHints.telephoneNumber],
-                      autoFocus: true,
-                      initialValue: PhoneNumber(
-                        isoCode: Platform.localeName.split('_')[1],
-                      ),
-                      selectorConfig: const SelectorConfig(
-                        selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                      ),
-                      onInputChanged: (phoneNumber) {
-                        phoneProvider.phoneController.text =
-                            phoneNumber.phoneNumber ?? '';
-                      },
-                    )
-                  ],
-                ),
+              const SizedBox(height: Insets.l * 2),
+              StandardTextStyle(
+                  text: 'Code is sent to $phoneControllerText',
+                  fontSize: TextSize.mBody,
+                  color: kSecondaryColor),
+              const SizedBox(height: Insets.l * 2),
+              OTPField(
+                controller: phoneProvider.otpCode1,
               ),
-              const SizedBox(height: Insets.l),
+              const SizedBox(height: Insets.l * 1.5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const StandardTextStyle(
+                      text: "Didn't receive a code?",
+                      fontSize: TextSize.mBody,
+                      color: kSecondaryColor),
+                  const SizedBox(width: Insets.xs),
+                  ButtonCommonStyle(
+                    onPressed: () {
+                      phoneProvider.start != 0
+                          ? null
+                          : authProvider.phoneLogin(context);
+                    },
+                    child: StandardTextStyle(
+                        text: phoneProvider.start != 0
+                            ? 'Request again in ${phoneProvider.start} sec'
+                            : 'Request again',
+                        fontSize: TextSize.mBody,
+                        fontFamily: 'Montserrat-SemiBold',
+                        color: phoneProvider.start != 0
+                            ? kSecondaryColor
+                            : Colors.black),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
       ),
     );
   }
-  
 }

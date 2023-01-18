@@ -18,6 +18,7 @@ class AuthProvider extends ChangeNotifier {
   UserDataModel? get user => _user;
   final _auth = FirebaseAuth.instance;
   String verificationId = '';
+  int? resendToken;
   final googleSignIn = GoogleSignIn();
   bool loading = false;
 
@@ -259,12 +260,16 @@ class AuthProvider extends ChangeNotifier {
         }
       },
       codeSent: (String verificationId, int? resendToken) async {
-        phoneProvider.controller.nextPage(
+        if (phoneProvider.pageIndex == 0) {
+          phoneProvider.controller.nextPage(
           duration: const Duration(milliseconds: 300),
           curve: Curves.ease,
         );
+        }
         this.verificationId = verificationId;
+        this.resendToken = resendToken;
       },
+      forceResendingToken: resendToken,
       codeAutoRetrievalTimeout: ((verificationId) {
         this.verificationId = verificationId;
       }),

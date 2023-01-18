@@ -23,6 +23,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
   final SwitchModel switchModel = SwitchModel();
   @override
   Widget build(BuildContext context) {
+    final phoneProvider = Provider.of<PhoneAuthenProvider>(context, listen: false);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -95,7 +96,8 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
               ButtonCommonStyle(
                 onPressed: () {
                   Navigator.pop(context);
-                  Provider.of<PhoneAuthenProvider>(context, listen: false)
+                  phoneProvider.start = 30;
+                  phoneProvider
                       .clean();
                   showModalBottomSheet(
                       isScrollControlled: true,
