@@ -241,21 +241,114 @@ class CreateGroupProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Future<void> exitGroup(String groupId) {
-  //   final userId = FirebaseAuth.instance.currentUser!.uid;
-  //   final group = FirebaseFirestore.instance
-  //       .collection('groups')
-  //       .doc(groupId);
-  //   if (group.id.isEmpty) {
-  //     return Future.value();
-  //   }
-  //   final participants = group.participants;
-  //   participants.remove(userId);
-  //   return FirebaseFirestore.instance
-  //       .collection('groups')
-  //       .doc(group.id)
-  //       .update({'participants': participants});
-  // }
+  void confirmExitGroup(BuildContext context, String groupId) {
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const StaticText(
+            text: 'Confirm',
+            textAlign: TextAlign.center,
+            fontFamily: 'Montserrat-SemiBold',
+            fontSize: TextSize.lBody,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          content: const StaticText(
+            text: 'Are you sure you want to leave the \ngroup?',
+            maxLines: 2,
+            textAlign: TextAlign.center,
+            fontSize: TextSize.mBody,
+          ),
+          actionsAlignment: MainAxisAlignment.center,
+          contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
+          actions: [
+            NextButton(
+              text: 'No',
+              textColor: Colors.red,
+              borderColor: Colors.transparent,
+              onPressed: () => Navigator.of(context).pop(),
+              color: Colors.transparent,
+              height: 40,
+              width: 140,
+            ),
+            NextButton(
+              text: 'Yes',
+              borderColor: kPrimaryColor,
+              onPressed: () {
+                leaveGroup(context, groupId);
+                Navigator.pop(context);
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+              height: 40,
+              width: 140,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> leaveGroup(BuildContext context, String groupId) async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+    final group = await FirebaseFirestore.instance
+        .collection('groups')
+        .doc(groupId)
+        .get();
+    if (group.exists) {
+      final groupData = group.data();
+      if (groupData != null) {
+        final participants = groupData['participants'] as List<dynamic>;
+        final participantsData = groupData['participantsData'] as List<dynamic>;
+        final index = participants.indexOf(userId);
+        if (index != -1) {
+          final participantData =
+              participantsData[index] as Map<String, dynamic>;
+          final isAdmin = participantData['isAdmin'] as bool;
+          if (isAdmin) {
+            final newAdminId = participants.firstWhere(
+              (element) => element != userId,
+              orElse: () => '',
+            );
+            if (newAdminId != '') {
+              final newAdminIndex = participants.indexOf(newAdminId);
+              final newAdminData =
+                  participantsData[newAdminIndex] as Map<String, dynamic>;
+              final newAdmin = Participant.fromMap(newAdminData);
+              newAdmin.isAdmin = true;
+              participantsData[newAdminIndex] = newAdmin.toMap();
+              participants.remove(userId);
+              participantsData.removeAt(index);
+              await FirebaseFirestore.instance
+                  .collection('groups')
+                  .doc(groupId)
+                  .update({
+                'participants': participants,
+                'participantsData': participantsData,
+              });
+            } else {
+              await FirebaseFirestore.instance
+                  .collection('groups')
+                  .doc(groupId)
+                  .delete();
+            }
+          } else {
+            participants.remove(userId);
+            participantsData.removeAt(index);
+            await FirebaseFirestore.instance
+                .collection('groups')
+                .doc(groupId)
+                .update({
+              'participants': participants,
+              'participantsData': participantsData,
+            });
+          }
+        }
+      }
+    }
+  }
 
   Future<void> confirmDeleteGroup(BuildContext context, String groupId) async {
     final userId = FirebaseAuth.instance.currentUser!.uid;

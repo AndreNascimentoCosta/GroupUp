@@ -129,34 +129,16 @@ class BodySettings extends StatelessWidget {
           SizedBox(height: MediaQuery.of(context).size.height * 0.125),
           OtherOptions(
               onPressed: () {
-                showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(Insets.m),
-                    ),
-                    builder: (context) {
-                      return Padding(
-                        padding: MediaQuery.of(context).viewInsets,
-                        child: Wrap(
-                          children: <Widget>[
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                SizedBox(height: 150, child: ExitGroup()),
-                              ],
-                            )
-                          ],
-                        ),
-                      );
-                    });
+                createGroupProvider.confirmExitGroup(context, groups.id);
               },
               text: 'Exit group'),
           const SizedBox(height: Insets.l),
           OtherOptions(
               onPressed: () {
                 createGroupProvider.confirmDeleteGroup(context, groups.id);
-              }, text: 'Delete group', color: Colors.red),
+              },
+              text: 'Delete group',
+              color: Colors.red),
           SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         ],
       ),

@@ -2,7 +2,7 @@ import 'package:groupup/models/user_input_data.dart';
 
 class Participant {
   String name, profilePicture, uid;
-  final bool isAdmin;
+  bool isAdmin;
 
   String get rank {
     return '';
