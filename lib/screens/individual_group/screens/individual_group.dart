@@ -8,7 +8,7 @@ import 'package:groupup/screens/individual_group/components/header.dart';
 import 'package:groupup/models/home_view.dart';
 
 class IndividualGroupScreen extends StatelessWidget {
-  IndividualGroupScreen({
+  const IndividualGroupScreen({
     required this.homeViewModel,
   });
 

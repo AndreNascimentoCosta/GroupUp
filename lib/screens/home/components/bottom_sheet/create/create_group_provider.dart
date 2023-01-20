@@ -31,7 +31,6 @@ class CreateGroupProvider extends ChangeNotifier {
   File? image;
   final users = [];
   bool isCreatingGroup = false;
-  
 
   final newGroup = GroupModel.empty();
 
@@ -166,6 +165,24 @@ class CreateGroupProvider extends ChangeNotifier {
       return generateGroupCode();
     } else {
       return groupCode;
+    }
+  }
+
+  /// Update group image
+
+  Future<void> updateGroupImage(String imageFile, String groupId) async {
+    final group = await FirebaseFirestore.instance
+        .collection('groups')
+        .doc(groupId)
+        .get();
+    if (group.exists) {
+      final groupData = group.data();
+      if (groupData != null) {
+        await FirebaseFirestore.instance
+            .collection('groups')
+            .doc(groupId)
+            .update({'image': imageFile});
+      }
     }
   }
 

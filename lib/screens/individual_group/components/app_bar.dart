@@ -4,16 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/storage.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/group_picture_edit.dart';
 import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
 import 'package:groupup/screens/individual_group_settings/screens/group_settings.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-
-import '../../home/components/bottom_sheet/create/create_group_provider.dart';
 
 class AppBarIndividualGroup extends StatefulWidget with PreferredSizeWidget {
   const AppBarIndividualGroup({
@@ -30,23 +28,25 @@ class AppBarIndividualGroup extends StatefulWidget with PreferredSizeWidget {
 }
 
 class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
-  File? image;
-
   Future pickImage(ImageSource source) async {
     Navigator.pop(context);
+    final group =
+        Provider.of<IndividualGroupProvider>(context, listen: false).group;
+    final individualGroupProvider =
+        Provider.of<IndividualGroupProvider>(context, listen: false);
+    final storage = Provider.of<StorageProvider>(context, listen: false);
     try {
-      final image =
-          await ImagePicker().pickImage(source: source, imageQuality: 60);
+      final image = await ImagePicker().pickImage(
+        source: source,
+        imageQuality: 60,
+      );
       if (image == null) return;
+      if (group == null) return;
 
-      final imageTemporary = File(image.path);
-
+      storage.image = File(image.path);
       if (!mounted) return;
-      Provider.of<CreateGroupProvider>(context, listen: false).image =
-          imageTemporary;
-      setState(() {
-        this.image = imageTemporary;
-      });
+      await storage.uploadGroupImage(context, group.id);
+      individualGroupProvider.getGroup(group.id, reset: false);
     } on PlatformException catch (e) {
       // ignore: avoid_print
       print('Failed to pick image: $e');
@@ -67,6 +67,22 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
               child: Image.network(
                 group.image,
                 fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  final storage = Provider.of<StorageProvider>(context);
+                  final File? image = storage.image;
+                  if (loadingProgress == null) return child;
+                  if (image != null) {
+                    return Image.file(
+                      image,
+                      fit: BoxFit.cover,
+                    );
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: kPrimaryColor,
+                    ),
+                  );
+                },
               ),
             )
           : ClipRect(

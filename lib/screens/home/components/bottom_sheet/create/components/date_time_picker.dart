@@ -95,7 +95,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     width: Insets.l,
                   ),
                 ),
-                hintText: 'Start date',
+                hintText: startDate == null ? 'Start date' : _displayText(startDate),
                 hintStyle: const TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize: TextSize.mBody,
@@ -143,7 +143,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     width: Insets.l,
                   ),
                 ),
-                hintText: 'End date',
+                hintText: endDate == null ? 'End date' : _displayText(endDate),
                 hintStyle: const TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize: TextSize.mBody,

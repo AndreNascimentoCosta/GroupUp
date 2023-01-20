@@ -1,13 +1,16 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
 
 class StorageProvider extends ChangeNotifier {
   File? profilePicture;
+  File? image;
   bool isLoading = false;
 
   Future<void> uploadProfilePicture(BuildContext context) async {
@@ -28,6 +31,28 @@ class StorageProvider extends ChangeNotifier {
     await authProvider.updateProfilePicture(url);
     isLoading = false;
     this.profilePicture = null;
+    notifyListeners();
+  }
+
+  Future<void> uploadGroupImage(BuildContext context, String groupId) async {
+    final createGroupProvider = Provider.of<CreateGroupProvider>(context, listen: false);
+    isLoading = true;
+    notifyListeners();
+    final image = this.image;
+    if (image == null) return;
+    final fileExtension = image.path.split('.').last;
+    final groupCreatedAt = Timestamp.now().nanoseconds;
+    final ref = FirebaseStorage.instance
+        .ref()
+        .child(groupId)
+        .child('groupImage$groupCreatedAt.$fileExtension');
+
+    final result = await ref.putFile(image);
+
+    final url = await result.ref.getDownloadURL();
+    await createGroupProvider.updateGroupImage(url, groupId);
+    isLoading = false;
+    this.image = null;
     notifyListeners();
   }
 }

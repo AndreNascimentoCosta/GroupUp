@@ -5,9 +5,14 @@ import 'package:groupup/models/group_model.dart';
 class IndividualGroupProvider extends ChangeNotifier {
   GroupModel? group;
 
-  Future<void> getGroup(String groupId) async {
-    group = null;
-    notifyListeners();
+  Future<void> getGroup(
+    String groupId, {
+    bool reset = true,
+  }) async {
+    if (reset) {
+      group = null;
+      notifyListeners();
+    }
     final groupDocument = await FirebaseFirestore.instance
         .collection('groups')
         .doc(groupId)

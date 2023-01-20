@@ -9,6 +9,7 @@ import 'package:groupup/screens/individual_group_settings/components/body_conten
 import 'package:groupup/screens/individual_group_settings/components/other_options.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_dates/edit_group_dates.dart';
+import 'package:groupup/screens/individual_group_settings/edit_fields/edit_max_participants/edit_group_max_participants.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_objective/edit_group_objective.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/edit_group_name.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_reward/edit_group_reward.dart';
@@ -60,27 +61,50 @@ class BodySettings extends StatelessWidget {
                 },
                 child: const BodyContentArrow(name: 'Objective')),
             const SizedBox(height: kDefaultPadding * 1.5),
-            ButtonCommonStyle(onPressed: () {
-              Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return EditGroupRewardScreen(groups: groups);
-                      },
-                    ),
-                  );
-            }, child: const BodyContentArrow(name: 'Reward')),
+            ButtonCommonStyle(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return EditGroupRewardScreen(groups: groups);
+                    },
+                  ),
+                );
+              },
+              child: const BodyContentArrow(name: 'Reward'),
+            ),
             const SizedBox(height: kDefaultPadding * 1.5),
-            ButtonCommonStyle(onPressed: () {
-              Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return EditGroupDatesScreen(groups: groups);
-                      },
-                    ),
-                  );
-            }, child: const BodyContentArrow(name: 'Dates')),
+            ButtonCommonStyle(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return EditGroupDatesScreen(groups: groups);
+                    },
+                  ),
+                );
+              },
+              child: const BodyContentArrow(name: 'Dates'),
+            ),
+            const SizedBox(height: kDefaultPadding * 1.5),
+            ButtonCommonStyle(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return EditGroupMaxParticipantsScreen(groups: groups);
+                    },
+                  ),
+                );
+              },
+              child: const BodyContentArrow(
+                name: 'Maximum number of participants',
+                maxLine: 2,
+              ),
+            ),
             const SizedBox(height: kDefaultPadding * 1.5),
             BodyContentSwitch(
               groups: groups,
@@ -92,28 +116,6 @@ class BodySettings extends StatelessWidget {
               groups: groups,
               text: 'Allow refund request',
               boolValue: groups.allowRefundRequest,
-            ),
-            const SizedBox(height: kDefaultPadding * 1.5),
-            ButtonCommonStyle(
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 250,
-                    child: LargeBody(
-                      text: 'Maximum number of participants',
-                      maxLines: 2,
-                    ),
-                  ),
-                  const Spacer(),
-                  SizedBox(
-                    width: 60,
-                    child: LargeBody(
-                      text: (groups.maxParticipants).toString(),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
-              ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.1),
             Row(

@@ -4,9 +4,10 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 
 class BodyContentArrow extends StatelessWidget {
-  const BodyContentArrow({required this.name});
+  const BodyContentArrow({required this.name, this.maxLine = 1});
 
   final String name;
+  final int maxLine;
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,10 @@ class BodyContentArrow extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
-          width: 150,
+          width: 250,
           child: StaticText(
             text: name,
+            maxLines: maxLine,
             fontSize: TextSize.lBody,
           ),
         ),
