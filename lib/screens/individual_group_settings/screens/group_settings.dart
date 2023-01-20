@@ -4,7 +4,7 @@ import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group_settings/components/app_bar.dart';
 import 'package:groupup/screens/individual_group_settings/components/body.dart';
 
-class GroupSettings extends StatefulWidget {
+class GroupSettings extends StatelessWidget {
   const GroupSettings({
     required this.homeViewModel,
     required this.groups,
@@ -14,18 +14,13 @@ class GroupSettings extends StatefulWidget {
   final GroupModel groups;
 
   @override
-  State<GroupSettings> createState() => _GroupSettingsState();
-}
-
-class _GroupSettingsState extends State<GroupSettings> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarGroupSettings(
-        homeViewModel: widget.homeViewModel,
+        homeViewModel: homeViewModel,
       ),
       body: BodySettings(
-        groups: widget.groups,
+        groups: groups,
       ),
     );
   }

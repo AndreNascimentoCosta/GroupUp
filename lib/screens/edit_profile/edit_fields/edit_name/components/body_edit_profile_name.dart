@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
-import 'package:groupup/screens/edit_profile/edit_fields/edit_name/edit_name_provider.dart';
+import 'package:groupup/screens/edit_profile/edit_fields/edit_name/edit_profile_name_provider.dart';
 import 'package:provider/provider.dart';
 
-class EditNameBody extends StatelessWidget {
-  const EditNameBody({super.key});
+class EditProfileNameBody extends StatelessWidget {
+  const EditProfileNameBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var nameController = Provider.of<EditNameProvider>(context).nameController;
+    var editProfileNameController = Provider.of<EditProfileNameProvider>(context).profileNameController;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,
@@ -19,7 +19,7 @@ class EditNameBody extends StatelessWidget {
         height: 50,
         width: 400,
         child: TextFieldModel(
-          controller: nameController,
+          controller: editProfileNameController,
           hint: '',
           maxLength: 30,
           border: const UnderlineInputBorder(

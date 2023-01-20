@@ -7,38 +7,27 @@ import 'package:groupup/screens/individual_group/components/body.dart';
 import 'package:groupup/screens/individual_group/components/header.dart';
 import 'package:groupup/models/home_view.dart';
 
-class IndividualGroupScreen extends StatefulWidget {
-  const IndividualGroupScreen({
+class IndividualGroupScreen extends StatelessWidget {
+  IndividualGroupScreen({
     required this.homeViewModel,
-    required this.groups,
   });
 
   final HomeViewModel homeViewModel;
-  final GroupModel groups;
 
-  @override
-  State<IndividualGroupScreen> createState() => _IndividualGroupScreenState();
-}
-
-class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBarIndividualGroup(
-        homeViewModel: widget.homeViewModel,
-        groups: widget.groups,
+        homeViewModel: homeViewModel,
       ),
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          HeaderIndividualGroup(
-            groups: widget.groups,
-          ),
+          const HeaderIndividualGroup(),
           const SizedBox(height: kDefaultPadding),
           BodyIndividualGroup(
-            group: widget.groups,
-            homeViewModel: widget.homeViewModel,
+            homeViewModel: homeViewModel,
           )
         ],
       ),
@@ -46,7 +35,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           EditGroupButton(
-            homeViewModel: widget.homeViewModel,
+            homeViewModel: homeViewModel,
           ),
           const SizedBox(height: kDefaultPadding),
           // CalendarScreenButton(

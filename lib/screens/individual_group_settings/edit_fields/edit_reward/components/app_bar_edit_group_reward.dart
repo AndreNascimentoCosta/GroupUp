@@ -4,18 +4,19 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/models/group_model.dart';
+import 'package:groupup/screens/individual_group_settings/edit_fields/edit_reward/edit_group_reward_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../edit_name_provider.dart';
+class AppBarEditGroupReward extends StatelessWidget with PreferredSizeWidget {
+  const AppBarEditGroupReward({required this.groups});
 
-class AppBarEditName extends StatelessWidget with PreferredSizeWidget {
-  const AppBarEditName({super.key});
+  final GroupModel groups;
 
   @override
   Widget build(BuildContext context) {
-    final nameProvider = Provider.of<EditNameProvider>(context);
+    final editGroupRewardProvider = Provider.of<EditGroupRewardProvider>(context);
     return SafeArea(
       child: Row(
         children: [
@@ -34,22 +35,35 @@ class AppBarEditName extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const Header(text: 'Name'),
+                child: const Header(text: 'Group reward'),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: kDefaultPadding),
-                child: ButtonCommonStyle(
-                  child: SvgPicture.asset(
-                    'assets/icons/arrow_left.svg',
-                    height: Insets.l * 1.25,
-                    width: Insets.l * 1.25,
-                    color: nameProvider.back(context) == null
-                        ? kSecondaryColor
-                        : Colors.black,
+              ButtonCommonStyle(
+                onPressed: () {
+                  if (editGroupRewardProvider.groupRewardController.text == groups.reward) {
+                    Navigator.pop(context);
+                  } else {
+                    editGroupRewardProvider.confirmDiscard(context);
+                  }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: kDefaultPadding),
+                  child: GestureDetector(
+                    child: Container(
+                      color: Colors.transparent,
+                      width: Insets.l * 3,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/arrow_left.svg',
+                            height: Insets.l * 1.25,
+                            width: Insets.l * 1.25,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  onPressed: () {
-                    nameProvider.confirmDiscard(context);
-                  },
                 ),
               ),
               Positioned(
@@ -57,12 +71,12 @@ class AppBarEditName extends StatelessWidget with PreferredSizeWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: ButtonCommonStyle(
-                    onPressed: nameProvider.done(context),
+                    onPressed: editGroupRewardProvider.done(context, groups.id),
                     child: StaticText(
                       text: 'Done',
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
-                      color: nameProvider.done(context) == null
+                      color: editGroupRewardProvider.done(context, groups.id) == null
                           ? kSecondaryColor
                           : Colors.black,
                     ),

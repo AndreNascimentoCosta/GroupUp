@@ -32,7 +32,6 @@ class _AddInputScreenState extends State<AddInputScreen> {
       backgroundColor: Colors.white,
       appBar: AppBarIndividualGroup(
         homeViewModel: widget.homeViewModel,
-        groups: widget.groups,
       ),
       body: Column(
         children: [

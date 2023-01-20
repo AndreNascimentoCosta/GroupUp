@@ -73,9 +73,9 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSBonjourServices</key>
-<array>
-    <string>_dartobservatory._tcp</string>
-</array>
+	<array>
+		<string>_dartobservatory._tcp</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -83,5 +83,20 @@
 		<key>UISceneConfigurations</key>
 		<dict/>
 	</dict>
+	<key>FlutterDeepLinkingEnabled</key>
+	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLName</key>
+		<string>flutterbooksample.com</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+		<string>customscheme</string>
+		</array>
+		</dict>
+	</array>
 </dict>
 </plist>

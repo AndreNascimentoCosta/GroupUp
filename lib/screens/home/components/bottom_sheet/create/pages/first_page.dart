@@ -28,12 +28,12 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return GestureDetector(
-      // onTap: () {
-      //   FocusScopeNode currentFocus = FocusScope.of(context);
-      //   if (!currentFocus.hasPrimaryFocus) {
-      //     currentFocus.unfocus();
-      //   }
-      // },
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -49,10 +49,14 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               validator: (value) {
                 if (value!.isNotEmpty && value.length < 3) {
                   return 'Project name must be at least 3 characters';
-                } else {
+                } else if (value.length >= 20) {
+                  return 'Project name must be less than 20 characters';
+                }
+                else {
                   return null;
                 }
               },
+              maxLength: 20,
               textInputAction: TextInputAction.next,
               hint: 'Enter project name',
               padding: const EdgeInsets.symmetric(
@@ -70,10 +74,14 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               validator: (value) {
                 if (value!.isNotEmpty && value.length < 3) {
                   return 'Objective must be at least 3 characters';
-                } else {
+                } else if (value.length >= 30) {
+                  return 'Objective must be less than 30 characters';
+                }
+                else {
                   return null;
                 }
               },
+              maxLength: 30,
               hint: 'Enter objective',
               textInputAction: TextInputAction.next,
               padding: const EdgeInsets.symmetric(

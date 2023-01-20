@@ -6,16 +6,16 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
 import 'package:provider/provider.dart';
 
-class DateTimeSwicth extends StatefulWidget {
-  const DateTimeSwicth({required this.onChanged});
+class DateTimePicker extends StatefulWidget {
+  const DateTimePicker({required this.onChanged});
 
   final void Function(DateTime?, DateTime?) onChanged;
 
   @override
-  State<DateTimeSwicth> createState() => _DateTimeSwicthState();
+  State<DateTimePicker> createState() => _DateTimePickerState();
 }
 
-class _DateTimeSwicthState extends State<DateTimeSwicth> {
+class _DateTimePickerState extends State<DateTimePicker> {
   DateTime? startDate, endDate;
 
   String _displayText(DateTime? date) {
@@ -44,7 +44,7 @@ class _DateTimeSwicthState extends State<DateTimeSwicth> {
         );
       },
       initialDate: DateTime.now(),
-      firstDate: DateTime(1999),
+      firstDate: DateTime.now(),
       lastDate: DateTime(2999),
     );
   }
@@ -73,6 +73,7 @@ class _DateTimeSwicthState extends State<DateTimeSwicth> {
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: 
       Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(

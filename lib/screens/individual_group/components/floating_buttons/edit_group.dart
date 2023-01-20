@@ -5,7 +5,8 @@ import 'package:groupup/models/home_view.dart';
 import '../../../../constants.dart';
 
 class EditGroupButton extends StatefulWidget {
-  const EditGroupButton({required this.homeViewModel, this.backgroundColor = kPrimaryColor});
+  const EditGroupButton(
+      {required this.homeViewModel, this.backgroundColor = kPrimaryColor});
 
   final HomeViewModel homeViewModel;
   final Color backgroundColor;
@@ -32,7 +33,7 @@ class _EditGroupButtonState extends State<EditGroupButton> {
                   backgroundColor: widget.backgroundColor,
                   elevation: 0,
                   child: SvgPicture.asset(
-                      'assets/icons/exit.svg',
+                    'assets/icons/exit.svg',
                     height: Insets.xl,
                     width: Insets.xl,
                   ),
@@ -45,7 +46,7 @@ class _EditGroupButtonState extends State<EditGroupButton> {
                 highlightElevation: 0,
                 elevation: 0,
                 child: SvgPicture.asset(
-                    'assets/icons/edit.svg',
+                  'assets/icons/edit.svg',
                   height: Insets.xl,
                   width: Insets.xl,
                 ),

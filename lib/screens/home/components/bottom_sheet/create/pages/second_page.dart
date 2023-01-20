@@ -5,7 +5,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/body_switch.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_time_switch.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_time_picker.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/group_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
@@ -52,15 +52,16 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                     padding: const EdgeInsets.only(
                         top: kDefaultPadding * 1.25, left: 260),
                     child: Tooltip(
-                        preferBelow: false,
-                        showDuration: const Duration(seconds: 3),
-                        triggerMode: TooltipTriggerMode.tap,
-                        message: 'Maximum of 50 participants.',
-                        child: Icon(
-                          Icons.info,
-                          color: kSecondaryColor,
-                          size: MediaQuery.of(context).size.height * 0.035,
-                        )),
+                      preferBelow: false,
+                      showDuration: const Duration(seconds: 3),
+                      triggerMode: TooltipTriggerMode.tap,
+                      message: 'Maximum of 50 participants.',
+                      child: Icon(
+                        Icons.info,
+                        color: kSecondaryColor,
+                        size: MediaQuery.of(context).size.height * 0.035,
+                      ),
+                    ),
                   ),
                   TextFieldModelHome(
                     controller:
@@ -98,7 +99,7 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                 ),
               ),
               const SizedBox(height: Insets.s),
-              DateTimeSwicth(
+              DateTimePicker(
                 onChanged: (startDate, endDate) {
                   final createGroupProvider =
                       Provider.of<CreateGroupProvider>(context, listen: false);

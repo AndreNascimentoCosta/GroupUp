@@ -12,9 +12,7 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/models/participant.dart';
-import 'package:groupup/models/switch.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:provider/provider.dart';
@@ -31,9 +29,9 @@ class CreateGroupProvider extends ChangeNotifier {
   final itemCount = 3;
   int pageIndex = 0;
   File? image;
-  final DateSwitch dateSwitch = DateSwitch(switchModel: SwitchModel());
   final users = [];
   bool isCreatingGroup = false;
+  
 
   final newGroup = GroupModel.empty();
 
@@ -44,7 +42,6 @@ class CreateGroupProvider extends ChangeNotifier {
     controllerNumberParticipants.addListener(notifyListeners);
     controllerStartDate.addListener(notifyListeners);
     controllerEndDate.addListener(notifyListeners);
-    dateSwitch.switchModel.isSwitched.addListener(notifyListeners);
   }
 
   void _confirm(BuildContext context) {
@@ -106,6 +103,8 @@ class CreateGroupProvider extends ChangeNotifier {
     if (pageIndex == 0 &&
         (projectNameText.length < 3 ||
             objectiveText.length < 3 ||
+            projectNameText.length >= 20 ||
+            objectiveText.length >= 30 ||
             rewardText.isEmpty ||
             (double.tryParse(rewardText) ?? 0) <= 0.0)) {
       return null;
@@ -170,17 +169,45 @@ class CreateGroupProvider extends ChangeNotifier {
     }
   }
 
-  Future<bool> updateAllowEditImage(bool value) async {
+  Future<bool> updateAllowEditImage(bool value, String groupId) async {
     final group = await FirebaseFirestore.instance
         .collection('groups')
-        .doc(newGroup.id)
+        .doc(groupId)
         .get();
     if (group.exists) {
       final groupData = group.data();
       if (groupData != null) {
         final allowEditImage = groupData['allowEditImage'] as bool;
         newGroup.allowEditImage = value;
-        return allowEditImage;
+        if (allowEditImage != value) {
+          await FirebaseFirestore.instance
+              .collection('groups')
+              .doc(groupId)
+              .update({'allowEditImage': value});
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  Future<bool> updateAllowRefundRequest(bool value, String groupId) async {
+    final group = await FirebaseFirestore.instance
+        .collection('groups')
+        .doc(groupId)
+        .get();
+    if (group.exists) {
+      final groupData = group.data();
+      if (groupData != null) {
+        final allowRefundRequest = groupData['allowRefundRequest'] as bool;
+        newGroup.allowRefundRequest = value;
+        if (allowRefundRequest != value) {
+          await FirebaseFirestore.instance
+              .collection('groups')
+              .doc(groupId)
+              .update({'allowRefundRequest': value});
+          return true;
+        }
       }
     }
     return false;
@@ -205,7 +232,7 @@ class CreateGroupProvider extends ChangeNotifier {
     final userParticipant = Participant(
       uid: userId,
       name: user.name,
-      profilePicture: '',
+      profilePicture: user.profilePicture,
       inputData: [],
       isAdmin: true,
     );
@@ -493,6 +520,8 @@ class CreateGroupProvider extends ChangeNotifier {
     newGroup.objective = '';
     newGroup.reward = '';
     newGroup.image = '';
+    newGroup.participants = [];
+    newGroup.participantsData = [];
     image = null;
     newGroup.maxParticipants = 0;
     newGroup.allowEditImage = false;

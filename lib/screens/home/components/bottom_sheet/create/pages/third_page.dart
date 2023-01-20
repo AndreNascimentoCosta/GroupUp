@@ -54,7 +54,9 @@ class ThirdPageCreate extends StatelessWidget {
               ShareButton(
                 text: createGroupProvider.newGroup.groupCode,
                 onPressed: () async {
-                  await Share.share(createGroupProvider.newGroup.groupCode);
+                  await Share.share(
+                    'Join my group ${createGroupProvider.newGroup.projectName} on GroupUp! \nThe code is ${createGroupProvider.newGroup.groupCode}',
+                  );
                 },
               ),
             ],

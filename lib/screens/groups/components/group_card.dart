@@ -6,16 +6,18 @@ import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/groups/components/checkbox.dart';
 import 'package:groupup/screens/groups/components/stats.dart';
+import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
 import 'package:groupup/screens/individual_group/screens/individual_group.dart';
+import 'package:provider/provider.dart';
 
 class GroupsCard extends StatefulWidget {
   const GroupsCard({
     Key? key,
-    required this.groups,
+    required this.group,
     required this.homeViewModel,
   }) : super(key: key);
 
-  final GroupModel groups;
+  final GroupModel group;
   final HomeViewModel homeViewModel;
 
   @override
@@ -35,11 +37,14 @@ class _GroupsCardState extends State<GroupsCard> {
             isChecked = !isChecked;
           });
         } else {
+          Provider.of<IndividualGroupProvider>(context, listen: false).getGroup(
+            widget.group.id,
+          );
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => IndividualGroupScreen(
-                  groups: widget.groups, homeViewModel: widget.homeViewModel),
+              builder: (context) =>
+                  IndividualGroupScreen(homeViewModel: widget.homeViewModel),
             ),
           );
         }
@@ -65,9 +70,9 @@ class _GroupsCardState extends State<GroupsCard> {
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(37.5),
-              child: widget.groups.image.isNotEmpty
+              child: widget.group.image.isNotEmpty
                   ? Image.network(
-                      widget.groups.image,
+                      widget.group.image,
                       height: 75,
                       width: 75,
                       fit: BoxFit.cover,
@@ -84,7 +89,7 @@ class _GroupsCardState extends State<GroupsCard> {
                   left: kDefaultPadding,
                 ),
                 child: StaticText(
-                  text: Characters(widget.groups.projectName)
+                  text: Characters(widget.group.projectName)
                       .replaceAll(Characters(''), Characters('\u{200B}'))
                       .toString(),
                   overflow: TextOverflow.ellipsis,
@@ -93,7 +98,7 @@ class _GroupsCardState extends State<GroupsCard> {
               ),
             ),
             StatsGroup(
-              groups: widget.groups,
+              groups: widget.group,
               homeViewModel: widget.homeViewModel,
             ),
           ],

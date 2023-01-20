@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
-import 'package:groupup/models/group_model.dart';
-import 'package:groupup/screens/individual_group/components/bottom_sheet.dart';
-import 'package:groupup/screens/individual_group/components/date_bottom_sheet.dart';
+import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
 import 'package:groupup/screens/individual_group/components/objective_reward.dart';
 import 'package:groupup/screens/individual_group/components/start_end_date.dart';
+import 'package:provider/provider.dart';
 
 class HeaderIndividualGroup extends StatelessWidget {
-  const HeaderIndividualGroup({
-    required this.groups,
-  });
-
-  final GroupModel groups;
+  const HeaderIndividualGroup({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final objectiveController = TextEditingController(text: groups.objective);
-    final rewardController = TextEditingController(text: groups.reward);
+    final group = Provider.of<IndividualGroupProvider>(context).group;
+    if (group == null) {
+      return const CircularProgressIndicator(color: kPrimaryColor);
+    }
     return Container(
       color: Colors.white,
       height: 125,
@@ -29,24 +25,22 @@ class HeaderIndividualGroup extends StatelessWidget {
               top: kDefaultPadding / 2.5,
               bottom: kDefaultPadding,
             ),
-            child: GroupTitle(text: groups.projectName),
+            child: SizedBox(
+              width: 300,
+              child: GroupTitle(
+                text: group.projectName,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ),
           IntrinsicHeight(
             child: Row(
               children: [
                 SizedBox(width: MediaQuery.of(context).size.width * 0.075),
                 ObjectiveRewardModel(
-                  builder: BuilderBottomSheet(
-                    height: 200,
-                    child: HeaderBottomSheet(
-                      controller: objectiveController,
-                      title: 'Objective',
-                      hint: '',
-                    ),
-                  ),
-                  icon:
-                      'assets/icons/objective.svg',
-                  text: groups.objective,
+                  icon: 'assets/icons/objective.svg',
+                  text: group.objective,
                 ),
                 VerticalDivider(
                   width: MediaQuery.of(context).size.width * 0.115,
@@ -54,32 +48,15 @@ class HeaderIndividualGroup extends StatelessWidget {
                   color: kSecondaryColor,
                 ),
                 ObjectiveRewardModel(
-                  builder: BuilderBottomSheet(
-                    height: 200,
-                    child: HeaderBottomSheet(
-                      controller: rewardController,
-                      title: 'Reward',
-                      hint: '',
-                    ),
-                  ),
                   icon: 'assets/icons/reward.svg',
-                  text: groups.reward,
+                  text: group.reward,
                 ),
                 const VerticalDivider(
                   width: kDefaultPadding * 2.25,
                   thickness: 1,
                   color: kSecondaryColor,
                 ),
-                StartEndDateButton(
-                  builder: BuilderBottomSheet(
-                    height: 250,
-                    child: DateBottomSheet(
-                      groups: groups,
-                      title: 'Dates',
-                    ),
-                  ),
-                  groups: groups,
-                ),
+                StartEndDateButton(groups: group),
                 const SizedBox(
                   width: kDefaultPadding * 1.5,
                 ),

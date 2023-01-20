@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 
 final themeData = ThemeData(
+  appBarTheme: const AppBarTheme(
+    systemOverlayStyle: SystemUiOverlayStyle.dark,
+  ),
   splashColor: Colors.transparent,
   colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kSecondaryColor),
   pageTransitionsTheme: const PageTransitionsTheme(

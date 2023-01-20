@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
-import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
-import 'package:groupup/screens/individual_group_settings/components/exit_group.dart';
-import 'package:groupup/screens/individual_group_settings/components/number_participants.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
+import 'package:groupup/screens/individual_group_settings/components/body_content_arrow.dart';
+import 'package:groupup/screens/individual_group_settings/components/body_content_switch.dart';
 import 'package:groupup/screens/individual_group_settings/components/other_options.dart';
-import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/screens/individual_group_settings/edit_fields/edit_dates/edit_group_dates.dart';
+import 'package:groupup/screens/individual_group_settings/edit_fields/edit_objective/edit_group_objective.dart';
+import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/edit_group_name.dart';
+import 'package:groupup/screens/individual_group_settings/edit_fields/edit_reward/edit_group_reward.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -28,119 +30,124 @@ class BodySettings extends StatelessWidget {
         left: kDefaultPadding,
         right: kDefaultPadding,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            children: [
-              const SizedBox(
-                  width: 250,
-                  child: LargeBody(
-                    text: 'Everyone can edit group picture',
-                    maxLines: 2,
-                  )),
-              const Spacer(),
-              SwitchButton(
-                onChanged: (value) {
-                  createGroupProvider.updateAllowEditImage(value);
-                },
-              ),
-            ],
-          ),
-          const SizedBox(height: kDefaultPadding * 1.5),
-          Row(
-            children: [
-              const SizedBox(
-                width: 250,
-                child: LargeBody(text: 'Allow refund request'),
-              ),
-              const Spacer(),
-              SwitchButton(
-                onChanged: (value) {},
-              ),
-            ],
-          ),
-          const SizedBox(height: kDefaultPadding * 1.5),
-          Row(
-            children: [
-              const SizedBox(
-                width: 250,
-                child: LargeBody(
-                  text: 'Maximum number of participants',
-                  maxLines: 2,
-                ),
-              ),
-              const Spacer(),
-              ButtonCommonStyle(
-                child: SizedBox(
-                  width: 60,
-                  child: LargeBody(
-                    text: (groups.maxParticipants).toString(),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ButtonCommonStyle(
                 onPressed: () {
-                  showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(Insets.m),
-                      ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
                       builder: (context) {
-                        return Padding(
-                          padding: MediaQuery.of(context).viewInsets,
-                          child: Wrap(
-                            children: <Widget>[
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  SizedBox(
-                                    height: 200,
-                                    child: MaxNumberParticipants(
-                                      groups: groups,
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        );
-                      });
+                        return EditGroupNameScreen(groups: groups);
+                      },
+                    ),
+                  );
                 },
-              ),
-            ],
-          ),
-          const Spacer(),
-          Row(
-            children: [
-              const SizedBox(
-                width: 150,
-                child: LargeBody(text: 'Group code'),
-              ),
-              const Spacer(),
-              ShareButton(
-                text: groups.groupCode,
-                onPressed: () async {
-                  await Share.share(groups.groupCode);
+                child: const BodyContentArrow(name: 'Project name')),
+            const SizedBox(height: kDefaultPadding * 1.5),
+            ButtonCommonStyle(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return EditGroupObjectiveScreen(groups: groups);
+                      },
+                    ),
+                  );
                 },
+                child: const BodyContentArrow(name: 'Objective')),
+            const SizedBox(height: kDefaultPadding * 1.5),
+            ButtonCommonStyle(onPressed: () {
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return EditGroupRewardScreen(groups: groups);
+                      },
+                    ),
+                  );
+            }, child: const BodyContentArrow(name: 'Reward')),
+            const SizedBox(height: kDefaultPadding * 1.5),
+            ButtonCommonStyle(onPressed: () {
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return EditGroupDatesScreen(groups: groups);
+                      },
+                    ),
+                  );
+            }, child: const BodyContentArrow(name: 'Dates')),
+            const SizedBox(height: kDefaultPadding * 1.5),
+            BodyContentSwitch(
+              groups: groups,
+              text: 'Everyone can edit group picture',
+              boolValue: groups.allowEditImage,
+            ),
+            const SizedBox(height: kDefaultPadding * 1.5),
+            BodyContentSwitch(
+              groups: groups,
+              text: 'Allow refund request',
+              boolValue: groups.allowRefundRequest,
+            ),
+            const SizedBox(height: kDefaultPadding * 1.5),
+            ButtonCommonStyle(
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 250,
+                    child: LargeBody(
+                      text: 'Maximum number of participants',
+                      maxLines: 2,
+                    ),
+                  ),
+                  const Spacer(),
+                  SizedBox(
+                    width: 60,
+                    child: LargeBody(
+                      text: (groups.maxParticipants).toString(),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.125),
-          OtherOptions(
-              onPressed: () {
-                createGroupProvider.confirmExitGroup(context, groups.id);
-              },
-              text: 'Exit group'),
-          const SizedBox(height: Insets.l),
-          OtherOptions(
-              onPressed: () {
-                createGroupProvider.confirmDeleteGroup(context, groups.id);
-              },
-              text: 'Delete group',
-              color: Colors.red),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-        ],
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 150,
+                  child: LargeBody(text: 'Group code'),
+                ),
+                const Spacer(),
+                ShareButton(
+                  text: groups.groupCode,
+                  onPressed: () async {
+                    await Share.share(
+                        'Join my group ${groups.projectName} on GroupUp! \nThe code is ${groups.groupCode}');
+                  },
+                ),
+              ],
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.125),
+            OtherOptions(
+                onPressed: () {
+                  createGroupProvider.confirmExitGroup(context, groups.id);
+                },
+                text: 'Exit group'),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+            OtherOptions(
+                onPressed: () {
+                  createGroupProvider.confirmDeleteGroup(context, groups.id);
+                },
+                text: 'Delete group',
+                color: Colors.red),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          ],
+        ),
       ),
     );
   }

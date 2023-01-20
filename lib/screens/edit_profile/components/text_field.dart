@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 
@@ -8,6 +9,8 @@ class TextFieldModel extends StatelessWidget {
     required this.maxLength,
     required this.controller,
     this.maxLines,
+    this.validator,
+    this.inputFormatters,
     this.border,
     this.hintColor,
     this.hintSize,
@@ -20,6 +23,8 @@ class TextFieldModel extends StatelessWidget {
   final String hint;
   final int maxLength;
   final int? maxLines;
+  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
   final InputBorder? border;
   final Color? hintColor;
   final double? hintSize;
@@ -41,16 +46,24 @@ class TextFieldModel extends StatelessWidget {
           autofillHints: autofillHints,
           textInputAction: textInputAction,
           controller: controller,
+          autofocus: true,
           maxLength: maxLength,
           maxLines: maxLines,
+          validator: validator,
+          inputFormatters: inputFormatters,
+          autovalidateMode: AutovalidateMode.always,
           cursorColor: Colors.black,
           decoration: InputDecoration(
             enabledBorder: border,
             focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor)),
+            errorBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.red)),
+            focusedErrorBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.red)),
             hintText: hint,
             counterText: "",
-            suffixIcon: controller.text.isEmpty 
+            suffixIcon: controller.text.isEmpty
                 ? null
                 : IconButton(
                     icon: SvgPicture.asset(

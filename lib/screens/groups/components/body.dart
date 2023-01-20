@@ -61,7 +61,7 @@ class Body extends StatelessWidget {
                 itemCount: groups.length,
                 itemBuilder: (context, index) => GroupsCard(
                   homeViewModel: homeViewModel,
-                  groups: groups[index],
+                  group: groups[index],
                 ),
               );
             }
