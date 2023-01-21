@@ -3,7 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/user_input_data.dart';
-import 'package:groupup/screens/add_input/models/single_data.dart';
+import 'package:groupup/screens/individual_group/components/calendar_add_input/single_data.dart';
 import 'package:groupup/styles/text.dart';
 
 class DataHistoryBottomSheet extends StatelessWidget {

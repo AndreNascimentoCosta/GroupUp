@@ -4,6 +4,13 @@ import 'package:groupup/models/group_model.dart';
 
 class IndividualGroupProvider extends ChangeNotifier {
   GroupModel? group;
+  final pageController = PageController(initialPage: 0);
+  int pageIndex = 0;
+
+  void updateIndex(int index) {
+    pageIndex = index;
+    notifyListeners();
+  }
 
   Future<void> getGroup(
     String groupId, {

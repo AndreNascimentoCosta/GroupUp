@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group_model.dart';
-import 'package:groupup/models/participant.dart';
-import 'package:groupup/screens/add_input/models/bottom_calendar.dart';
-import 'package:groupup/screens/add_input/models/box_decoration.dart';
-import 'package:groupup/screens/add_input/styles/text.dart';
+import 'package:groupup/screens/individual_group/components/calendar_add_input/bottom_calendar.dart';
+import 'package:groupup/screens/individual_group/components/calendar_add_input/box_decoration.dart';
+import 'package:groupup/screens/individual_group/components/calendar_add_input/text.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class Calendar extends StatefulWidget {
-  const Calendar({required this.groupModel, required this.participant});
-
-  final GroupModel groupModel;
-  final Participant participant;
+  const Calendar({super.key});
 
   @override
   State<Calendar> createState() => _CalendarState();
@@ -24,21 +22,33 @@ class _CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
+    final group = Provider.of<IndividualGroupProvider>(context).group;
+    final user = Provider.of<AuthProvider>(context).user;
+    if (group == null) {
+      return const CircularProgressIndicator(color: kPrimaryColor);
+    }
+    final participant =
+        group.participantsData.firstWhere((element) => element.uid == user?.id);
     return Padding(
       padding: const EdgeInsets.symmetric(
           horizontal: kDefaultPadding, vertical: kDefaultPadding / 2),
       child: Card(
         elevation: 2,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(Insets.s))),
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              Insets.s,
+            ),
+          ),
+        ),
         color: Colors.white,
         child: Column(
           children: [
             TableCalendar(
               locale: 'en_Us',
               rowHeight: 40,
-              rangeStartDay: widget.groupModel.startDate,
-              rangeEndDay: widget.groupModel.endDate,
+              rangeStartDay: group.startDate,
+              rangeEndDay: group.endDate,
               calendarStyle: CalendarStyle(
                 tablePadding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -84,7 +94,7 @@ class _CalendarState extends State<Calendar> {
             ),
             const SizedBox(height: Insets.s),
             BottomCalendar(
-              participant: widget.participant,
+              participant: participant,
             ),
           ],
         ),

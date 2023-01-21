@@ -52,7 +52,7 @@ class IndividualCardBalance extends StatelessWidget {
             ),
             const SizedBox(height: Insets.s),
             const MediumBody(
-              text: 'Ongoing',
+              text: 'Ended',
               color: kSecondaryColor,
             ),
           ],
@@ -60,7 +60,10 @@ class IndividualCardBalance extends StatelessWidget {
         const Spacer(),
         const Padding(
           padding: EdgeInsets.only(right: kDefaultPadding),
-          child: LargeBody(text: '-'),
+          child: LargeBody(
+            text: '\$200.00',
+            color: Colors.green,
+          ),
         ),
       ],
     );

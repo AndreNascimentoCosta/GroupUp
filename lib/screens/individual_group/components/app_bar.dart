@@ -56,6 +56,8 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
   @override
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
+    final individualGroupProvider =
+        Provider.of<IndividualGroupProvider>(context);
     if (group == null) {
       return const CircularProgressIndicator(color: kPrimaryColor);
     }
@@ -102,9 +104,16 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                   heroTag: 'btn1',
                   elevation: 0,
                   backgroundColor: Colors.white,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                  onPressed: individualGroupProvider.pageIndex == 0
+                      ? () {
+                          Navigator.pop(context);
+                        }
+                      : () {
+                          individualGroupProvider.pageController.previousPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
                   child: SvgPicture.asset(
                     'assets/icons/arrow_left.svg',
                     height: Insets.l * 1.25,

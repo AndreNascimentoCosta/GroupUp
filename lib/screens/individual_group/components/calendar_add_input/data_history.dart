@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/screens/individual_group/components/calendar_add_input/data_history_bottom_sheet.dart';
+import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../../../constants.dart';
 
-class AddInputGroupButton extends StatefulWidget {
-  const AddInputGroupButton({
+class DataHistoryButton extends StatefulWidget {
+  const DataHistoryButton({
     required this.homeViewModel,
     this.backgroundColor = kPrimaryColor,
-    this.icon = 'assets/icons/plus.svg',
   });
 
   final HomeViewModel homeViewModel;
   final Color backgroundColor;
-  final String icon;
 
   @override
-  State<AddInputGroupButton> createState() => _AddInputGroupButtonState();
+  State<DataHistoryButton> createState() => _DataHistoryButtonState();
 }
 
-class _AddInputGroupButtonState extends State<AddInputGroupButton> {
+class _DataHistoryButtonState extends State<DataHistoryButton> {
   @override
   Widget build(BuildContext context) {
+    final group = Provider.of<IndividualGroupProvider>(context).group;
+    final user = Provider.of<AuthProvider>(context).user;
+    if (group == null) {
+      return const CircularProgressIndicator(color: kPrimaryColor);
+    }
     return SizedBox(
       height: 75,
       width: 75,
@@ -32,7 +37,7 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
           valueListenable: widget.homeViewModel.isEditing,
           builder: ((context, value, child) {
             return FloatingActionButton(
-              heroTag: 'btn3',
+              heroTag: 'btn6',
               highlightElevation: 0,
               onPressed: () {
                 showModalBottomSheet(
@@ -42,20 +47,19 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                     borderRadius: BorderRadius.circular(Insets.m),
                   ),
                   builder: (context) {
-                    return const BuilderBottomSheet(
-                      height: 220,
-                      child: AddInput(),
+                    return BuilderBottomSheet(
+                      height: 500,
+                      child: DataHistoryBottomSheet(
+                        userInputData:
+                            group.participantsData.firstWhere((element) => element.uid == user?.id).inputData,
+                      ),
                     );
                   },
                 );
               },
               backgroundColor: widget.backgroundColor,
               elevation: 0,
-              child: SvgPicture.asset(
-                widget.icon,
-                height: Insets.l * 1.5,
-                width: Insets.l * 1.5,
-              ),
+              child: const Icon(Icons.history, size: 30),
             );
           }),
         ),

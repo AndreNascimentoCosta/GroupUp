@@ -10,10 +10,9 @@ import 'package:provider/provider.dart';
 class HeaderBalance extends StatelessWidget {
   const HeaderBalance({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-  final user = Provider.of<AuthProvider>(context).user;
+    final user = Provider.of<AuthProvider>(context).user;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
@@ -28,7 +27,9 @@ class HeaderBalance extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.3,
                 child: GroupTitle(
-                  text: user?.balance.toString() ?? '0',
+                  text: Characters(user?.balance.toString() ?? '0')
+                      .replaceAll(Characters(''), Characters('\u{200B}'))
+                      .toString(),
                   fontFamily: 'Montserrat-SemiBold',
                 ),
               ),

@@ -30,6 +30,7 @@ class _GroupsCardState extends State<GroupsCard> {
 
   @override
   Widget build(BuildContext context) {
+    final individualGroupProvider = Provider.of<IndividualGroupProvider>(context);
     return ButtonCommonStyle(
       onPressed: () {
         if (widget.homeViewModel.isEditing.value) {
@@ -40,11 +41,13 @@ class _GroupsCardState extends State<GroupsCard> {
           Provider.of<IndividualGroupProvider>(context, listen: false).getGroup(
             widget.group.id,
           );
+          individualGroupProvider.updateIndex(0);
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  IndividualGroupScreen(homeViewModel: widget.homeViewModel),
+              builder: (context) {
+                return IndividualGroupScreen(homeViewModel: widget.homeViewModel);
+              },
             ),
           );
         }

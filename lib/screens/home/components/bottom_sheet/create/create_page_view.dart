@@ -94,9 +94,11 @@ class _CreatePageViewState extends State<CreatePageView> {
               ],
             ),
           ),
-          NextButton(
-            onPressed: createGroupProvider.nextPressed(context),
-          ),
+          createGroupProvider.isCreatingGroup
+              ? const SizedBox()
+              : NextButton(
+                  onPressed: createGroupProvider.nextPressed(context),
+                ),
           const SizedBox(height: kDefaultPadding / 4),
         ],
       ),
