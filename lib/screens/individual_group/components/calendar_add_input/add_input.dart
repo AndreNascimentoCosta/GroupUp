@@ -3,31 +3,20 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
+import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input_provider.dart';
+import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
-class AddInput extends StatefulWidget {
-  const AddInput({super.key});
+class AddInput extends StatelessWidget {
+  AddInput({super.key});
 
-  @override
-  State<AddInput> createState() => _AddInputState();
-}
+  final String currentDate = DateFormat('dd/MM/yyyy').format(DateTime.now());
 
-class _AddInputState extends State<AddInput> {
-  final nameController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-
-    nameController.addListener(() {
-      setState(() {});
-    });
-  }
-
-  String currentDate = DateFormat('dd/MM/yyyy').format(DateTime.now());
   @override
   Widget build(BuildContext context) {
+    final addInputProvider = Provider.of<AddInputProvider>(context);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -61,12 +50,12 @@ class _AddInputState extends State<AddInput> {
               const SizedBox(height: Insets.l),
               Row(
                 children: [
-                  const LargeBody(text: 'Add data:'),
+                  const LargeBody(text: 'Data:'),
                   const SizedBox(width: Insets.l),
                   SizedBox(
                     width: 200,
                     child: TextField(
-                      controller: nameController,
+                      controller: addInputProvider.inputController,
                       keyboardType: TextInputType.number,
                       style: const TextStyle(
                           fontFamily: 'Montserrat-Regular',
@@ -76,17 +65,18 @@ class _AddInputState extends State<AddInput> {
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         hintText: 'Enter data',
-                        suffixIcon: nameController.text.isEmpty
-                            ? null
-                            : IconButton(
-                                icon: const Icon(
-                                  Icons.close,
-                                  color: Colors.black,
-                                ),
-                                onPressed: () {
-                                  nameController.clear();
-                                },
-                              ),
+                        suffixIcon:
+                            addInputProvider.inputController.text.isEmpty
+                                ? null
+                                : IconButton(
+                                    icon: const Icon(
+                                      Icons.close,
+                                      color: Colors.black,
+                                    ),
+                                    onPressed: () {
+                                      addInputProvider.inputController.clear();
+                                    },
+                                  ),
                         hintStyle: const TextStyle(
                           fontFamily: 'Montserrat-Regular',
                           fontSize: TextSize.lBody,
@@ -97,9 +87,15 @@ class _AddInputState extends State<AddInput> {
                 ],
               ),
               TextButton(
-                onPressed: (() {
+                onPressed: () {
+                  final groupId = Provider.of<IndividualGroupProvider>(context,
+                          listen: false)
+                      .group
+                      ?.id;
                   Navigator.pop(context);
-                }),
+                  if (groupId == null) return;
+                  addInputProvider.addInput(context, groupId);
+                },
                 child: const StandardTextStyle(
                   text: 'OK',
                   fontSize: TextSize.mBody,

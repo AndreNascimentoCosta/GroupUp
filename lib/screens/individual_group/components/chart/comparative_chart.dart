@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:groupup/screens/individual_group/components/chart/axis_title.dart';
+import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
+import 'package:provider/provider.dart';
 
 class ComparativeChart extends StatelessWidget {
-  const ComparativeChart(
-      {required this.userData1, required this.userData2});
+  const ComparativeChart({required this.userData1, required this.userData2});
 
   final List<UserInputData> userData1;
   final List<UserInputData> userData2;
@@ -34,41 +35,43 @@ class ComparativeChart extends StatelessWidget {
         ),
         lineBarsData: <LineChartBarData>[
           LineChartBarData(
-              spots: List.generate(7, (index) {
-                var data = 0.0;
-                if (userData1.length > index) {
-                  data = userData1[index].value;
-                }
-                return FlSpot(index.toDouble(), data);
-              }),
-              color: kSecondaryColor,
-              barWidth: 1,
-              dotData: FlDotData(
-                getDotPainter: (p0, p1, p2, p3) {
-                  return FlDotCirclePainter(
-                    color: Colors.white,
-                    strokeColor: kSecondaryColor,
-                  );
-                },
-              )),
+            spots: List.generate(7, (index) {
+              var data = 0.0;
+              if (userData1.length > index) {
+                data = userData1[index].value;
+              }
+              return FlSpot(index.toDouble(), data);
+            }),
+            color: kSecondaryColor,
+            barWidth: 1,
+            dotData: FlDotData(
+              getDotPainter: (p0, p1, p2, p3) {
+                return FlDotCirclePainter(
+                  color: Colors.white,
+                  strokeColor: kSecondaryColor,
+                );
+              },
+            ),
+          ),
           LineChartBarData(
-              spots: List.generate(7, (index) {
-                var data = 0.0;
-                if (userData2.length > index) {
-                  data = userData2[index].value;
-                }
-                return FlSpot(index.toDouble(), data);
-              }),
-              color: kPrimaryColor,
-              barWidth: 1,
-              dotData: FlDotData(
-                getDotPainter: (p0, p1, p2, p3) {
-                  return FlDotCirclePainter(
-                    color: kPrimaryColor,
-                    strokeColor: kPrimaryColor,
-                  );
-                },
-              )),
+            spots: List.generate(7, (index) {
+              var data = 0.0;
+              if (userData2.length > index) {
+                data = userData2[index].value;
+              }
+              return FlSpot(index.toDouble(), data);
+            }),
+            color: kPrimaryColor,
+            barWidth: 1,
+            dotData: FlDotData(
+              getDotPainter: (p0, p1, p2, p3) {
+                return FlDotCirclePainter(
+                  color: kPrimaryColor,
+                  strokeColor: kPrimaryColor,
+                );
+              },
+            ),
+          ),
         ],
         gridData: FlGridData(
           show: true,

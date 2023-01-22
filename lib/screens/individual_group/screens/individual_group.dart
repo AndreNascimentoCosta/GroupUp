@@ -45,7 +45,9 @@ class IndividualGroupScreen extends StatelessWidget {
             ],
           ),
           Column(
-            children: const [Calendar()],
+            children: const [
+              Calendar(),
+            ],
           ),
         ],
       ),

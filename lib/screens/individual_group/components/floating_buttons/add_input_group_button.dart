@@ -4,6 +4,8 @@ import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
+import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../../../constants.dart';
 
 class AddInputGroupButton extends StatefulWidget {
@@ -42,9 +44,12 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                     borderRadius: BorderRadius.circular(Insets.m),
                   ),
                   builder: (context) {
-                    return const BuilderBottomSheet(
-                      height: 220,
-                      child: AddInput(),
+                    return ChangeNotifierProvider(
+                      create: (context) => AddInputProvider(),
+                      child: BuilderBottomSheet(
+                        height: 220,
+                        child: AddInput(),
+                      ),
                     );
                   },
                 );

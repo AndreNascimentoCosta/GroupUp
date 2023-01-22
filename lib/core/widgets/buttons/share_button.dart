@@ -19,7 +19,7 @@ class ShareButton extends StatelessWidget {
       onPressed: onPressed,
       child: Container(
         height: 50,
-        width: 130,
+        width: 150,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.white),
             borderRadius: BorderRadius.circular(Insets.m),
@@ -36,7 +36,7 @@ class ShareButton extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: Insets.s),
               child: SizedBox(
-                width: 80,
+                width: 100,
                 child: StandardTextStyle(
                   text: text,
                   textAlign: TextAlign.center,

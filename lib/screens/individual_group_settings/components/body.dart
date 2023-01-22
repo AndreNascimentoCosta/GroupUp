@@ -134,19 +134,14 @@ class BodySettings extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.125),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.175),
             OtherOptions(
-                onPressed: () {
-                  createGroupProvider.confirmExitGroup(context, groups.id);
-                },
-                text: 'Exit group'),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.025),
-            OtherOptions(
-                onPressed: () {
-                  createGroupProvider.confirmDeleteGroup(context, groups.id);
-                },
-                text: 'Delete group',
-                color: Colors.red),
+              onPressed: () {
+                createGroupProvider.confirmExitGroup(context, groups.id);
+              },
+              text: 'Exit group',
+              color: Colors.red,
+            ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           ],
         ),

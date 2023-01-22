@@ -7,6 +7,13 @@ class UserInputData {
     required this.value,
   });
 
+  Map<String, dynamic> toMap() {
+    return {
+      'date': date,
+      'value': value,
+    };
+  }
+
   factory UserInputData.fromMap(map) {
     return UserInputData(
       date: map['date'].toDate(),

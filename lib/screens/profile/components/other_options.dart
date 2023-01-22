@@ -1,14 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/providers/storage.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
 import 'package:groupup/screens/profile/components/alert_dialog_delete.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OtherOptionsProfile extends StatelessWidget {
   const OtherOptionsProfile({super.key});
@@ -26,6 +24,14 @@ class OtherOptionsProfile extends StatelessWidget {
             onPressed: () {},
             child: const LargeBody(
               text: 'Terms of service',
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(height: Insets.l * 1.5),
+          ButtonCommonStyle(
+            onPressed: () {},
+            child: const LargeBody(
+              text: 'Privacy policy',
               textAlign: TextAlign.center,
             ),
           ),
@@ -57,4 +63,13 @@ class OtherOptionsProfile extends StatelessWidget {
       ),
     );
   }
+  _launchURL() async {
+  const url = 'https://flutter.io';
+  final uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 }

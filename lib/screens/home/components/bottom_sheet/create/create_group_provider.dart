@@ -299,11 +299,25 @@ class CreateGroupProvider extends ChangeNotifier {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          content: const StaticText(
-            text: 'Are you sure you want to leave the \ngroup?',
-            maxLines: 2,
-            textAlign: TextAlign.center,
-            fontSize: TextSize.mBody,
+          content: ListView(
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const StaticText(
+                    text: 'Are you sure you want to leave the \ngroup?',
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    fontSize: TextSize.mBody,
+                  ),
+                  const SizedBox(width: 10),
+                  CheckboxListTile(
+                    value: true,
+                    onChanged: (value) {},
+                  ),
+                ],
+              ),
+            ],
           ),
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),

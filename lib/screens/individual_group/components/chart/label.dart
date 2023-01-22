@@ -3,6 +3,8 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/participant.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class ChartLabel extends StatelessWidget {
   const ChartLabel({required this.participant});
@@ -11,6 +13,7 @@ class ChartLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<AuthProvider>(context).user;
     return Padding(
       padding: const EdgeInsets.only(
         top: kDefaultPadding,
@@ -18,6 +21,7 @@ class ChartLabel extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          participant.name != user?.name ?
           Flexible(
             child: Row(
               children: [
@@ -41,7 +45,7 @@ class ChartLabel extends StatelessWidget {
                 ),
               ],
             ),
-          ),
+          ) : const SizedBox(),
           Flexible(
             child: Row(
               children: [

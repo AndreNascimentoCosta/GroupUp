@@ -8,7 +8,7 @@ class Participant {
     return '';
   }
 
-  final List<UserInputData> inputData;
+  List<UserInputData> inputData;
 
   UserInputData get sumData {
     double sum = 0;
@@ -49,7 +49,7 @@ class Participant {
       'name': name,
       'profilePicture': profilePicture,
       'isAdmin': isAdmin,
-      'inputData': inputData,
+      'inputData': inputData.map((e) => e.toMap()).toList(),
     };
   }
 }

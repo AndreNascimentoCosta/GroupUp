@@ -84,34 +84,34 @@ class _AppBarGroupState extends State<AppBarGroup> {
                             );
                           }),
                       const SizedBox(width: Insets.l),
-                      !snapshot.hasData
-                          ? const StaticText(
-                              text: 'Edit',
-                              fontSize: TextSize.lBody,
-                              color: kSecondaryColor,
-                            )
-                          : ButtonCommonStyle(
-                              onPressed: () {
-                                widget.homeViewModel.switchEdit();
-                              },
-                              padding: const EdgeInsets.only(
-                                  bottom: kDefaultPadding / 2,
-                                  right: kDefaultPadding * 4),
-                              child: ValueListenableBuilder(
-                                valueListenable: widget.homeViewModel.isEditing,
-                                builder: ((context, value, child) {
-                                  return !value
-                                      ? const StaticText(
-                                          text: 'Edit',
-                                          fontSize: TextSize.lBody,
-                                        )
-                                      : const StaticText(
-                                          text: 'Done',
-                                          fontSize: TextSize.lBody,
-                                        );
-                                }),
-                              ),
-                            ),
+                      // !snapshot.hasData
+                      //     ? const StaticText(
+                      //         text: 'Edit',
+                      //         fontSize: TextSize.lBody,
+                      //         color: kSecondaryColor,
+                      //       )
+                      //     : ButtonCommonStyle(
+                      //         onPressed: () {
+                      //           widget.homeViewModel.switchEdit();
+                      //         },
+                      //         padding: const EdgeInsets.only(
+                      //             bottom: kDefaultPadding / 2,
+                      //             right: kDefaultPadding * 4),
+                      //         child: ValueListenableBuilder(
+                      //           valueListenable: widget.homeViewModel.isEditing,
+                      //           builder: ((context, value, child) {
+                      //             return !value
+                      //                 ? const StaticText(
+                      //                     text: 'Edit',
+                      //                     fontSize: TextSize.lBody,
+                      //                   )
+                      //                 : const StaticText(
+                      //                     text: 'Done',
+                      //                     fontSize: TextSize.lBody,
+                      //                   );
+                      //           }),
+                      //         ),
+                      //       ),
                     ],
                   ),
                 ),
