@@ -137,7 +137,10 @@ class BodySettings extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.175),
             OtherOptions(
               onPressed: () {
-                createGroupProvider.confirmExitGroup(context, groups.id);
+                createGroupProvider.confirmExitGroup(
+                  context,
+                  groups.id,
+                );
               },
               text: 'Exit group',
               color: Colors.red,

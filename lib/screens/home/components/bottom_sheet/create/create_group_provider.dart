@@ -31,6 +31,7 @@ class CreateGroupProvider extends ChangeNotifier {
   File? image;
   final users = [];
   bool isCreatingGroup = false;
+  bool isRefundRequested = true;
 
   final newGroup = GroupModel.empty();
 
@@ -289,19 +290,20 @@ class CreateGroupProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: const StaticText(
-            text: 'Confirm',
-            textAlign: TextAlign.center,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: TextSize.lBody,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          content: ListView(
-            children: [
-              Column(
+        return SizedBox(
+          width: double.infinity,
+          child: AlertDialog(
+            title: const StaticText(
+              text: 'Confirm',
+              textAlign: TextAlign.center,
+              fontFamily: 'Montserrat-SemiBold',
+              fontSize: TextSize.lBody,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            content: SingleChildScrollView(
+              child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const StaticText(
@@ -310,40 +312,51 @@ class CreateGroupProvider extends ChangeNotifier {
                     textAlign: TextAlign.center,
                     fontSize: TextSize.mBody,
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: Insets.l),
                   CheckboxListTile(
-                    value: true,
-                    onChanged: (value) {},
+                    title: const StaticText(
+                      text: 'Request refund',
+                      fontSize: TextSize.mBody,
+                    ),
+                    activeColor: kPrimaryColor,
+                    value: isRefundRequested,
+                    onChanged: (value) {
+                      isRefundRequested = value ?? true;
+                      notifyListeners();
+                    },
                   ),
                 ],
               ),
+            ),
+            actionsAlignment: MainAxisAlignment.center,
+            contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
+            actions: [
+              NextButton(
+                text: 'No',
+                textColor: Colors.red,
+                borderColor: Colors.transparent,
+                onPressed: () {
+                  isRefundRequested = true;
+                  Navigator.of(context).pop();
+                },
+                color: Colors.transparent,
+                height: 40,
+                width: 140,
+              ),
+              NextButton(
+                text: 'Yes',
+                borderColor: kPrimaryColor,
+                onPressed: () {
+                  leaveGroup(context, groupId);
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                },
+                height: 40,
+                width: 140,
+              ),
             ],
           ),
-          actionsAlignment: MainAxisAlignment.center,
-          contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
-          actions: [
-            NextButton(
-              text: 'No',
-              textColor: Colors.red,
-              borderColor: Colors.transparent,
-              onPressed: () => Navigator.of(context).pop(),
-              color: Colors.transparent,
-              height: 40,
-              width: 140,
-            ),
-            NextButton(
-              text: 'Yes',
-              borderColor: kPrimaryColor,
-              onPressed: () {
-                leaveGroup(context, groupId);
-                Navigator.pop(context);
-                Navigator.pop(context);
-                Navigator.pop(context);
-              },
-              height: 40,
-              width: 140,
-            ),
-          ],
         );
       },
     );

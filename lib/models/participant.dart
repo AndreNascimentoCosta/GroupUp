@@ -5,7 +5,11 @@ class Participant {
   bool isAdmin;
 
   String get rank {
-    return '';
+    if (inputData.isEmpty) {
+      return '-';
+    }
+    int rank = 1;
+    return '${rank.toString()}º';
   }
 
   List<UserInputData> inputData;
