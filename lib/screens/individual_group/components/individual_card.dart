@@ -123,30 +123,33 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                             width: Insets.l * 3,
                           ),
                     Expanded(
-                      child: authProvider.user != null ? authProvider.user!.id == widget.participant.uid ?
-                      const Padding(
-                        padding: EdgeInsets.only(
-                          left: kDefaultPadding,
-                        ),
-                        child: StaticText(
-                          text: 'Me',
-                          overflow: TextOverflow.ellipsis,
-                          fontSize: 20,
-                          fontFamily: 'Montserrat-SemiBold',
-                        ),
-                      ) : Padding(
-                        padding: const EdgeInsets.only(
-                          left: kDefaultPadding,
-                        ),
-                        child: StaticText(
-                          text: Characters(widget.participant.name)
-                                      .replaceAll(Characters(''),
-                                          Characters('\u{200B}'))
-                                      .toString(),
-                          overflow: TextOverflow.ellipsis,
-                          fontSize: 20,
-                        ),
-                      ) : const StaticText(text: ''),
+                      child: authProvider.user != null
+                          ? authProvider.user!.id == widget.participant.uid
+                              ? const Padding(
+                                  padding: EdgeInsets.only(
+                                    left: kDefaultPadding,
+                                  ),
+                                  child: StaticText(
+                                    text: 'Me',
+                                    overflow: TextOverflow.ellipsis,
+                                    fontSize: 20,
+                                    fontFamily: 'Montserrat-SemiBold',
+                                  ),
+                                )
+                              : Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: kDefaultPadding,
+                                  ),
+                                  child: StaticText(
+                                    text: Characters(widget.participant.name)
+                                        .replaceAll(Characters(''),
+                                            Characters('\u{200B}'))
+                                        .toString(),
+                                    overflow: TextOverflow.ellipsis,
+                                    fontSize: 20,
+                                  ),
+                                )
+                          : const StaticText(text: ''),
                     ),
                     const SizedBox(width: kDefaultPadding),
                     IndividualValue(
@@ -175,37 +178,38 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
             },
           ),
           ValueListenableBuilder(
-              valueListenable: dropDownModel.isOpened,
-              builder: (context, value, child) {
-                return AnimatedContainer(
-                  height: value ? 100 : 0,
-                  duration: const Duration(milliseconds: 70),
-                  child: Visibility(
-                    visible: value,
-                    child: Row(
-                      children: [
-                        const SizedBox(
-                          width: kDefaultPadding,
+            valueListenable: dropDownModel.isOpened,
+            builder: (context, value, child) {
+              return AnimatedContainer(
+                height: value ? 100 : 0,
+                duration: const Duration(milliseconds: 70),
+                child: Visibility(
+                  visible: value,
+                  child: Row(
+                    children: [
+                      const SizedBox(
+                        width: kDefaultPadding,
+                      ),
+                      ChartLabel(
+                        participant: widget.participant,
+                      ),
+                      const Spacer(),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        child: ComparativeChart(
+                          userData1: widget.meParticipant.inputData,
+                          userData2: widget.participant.inputData,
                         ),
-                        ChartLabel(
-                          participant: widget.participant,
-                        ),
-                        const Spacer(),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.6,
-                          child: ComparativeChart(
-                            userData1: widget.meParticipant.inputData,
-                            userData2: widget.participant.inputData,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: kDefaultPadding,
-                        ),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(
+                        width: kDefaultPadding,
+                      ),
+                    ],
                   ),
-                );
-              }),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

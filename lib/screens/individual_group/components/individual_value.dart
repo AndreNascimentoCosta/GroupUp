@@ -33,22 +33,19 @@ class IndividualValue extends StatelessWidget {
                   text: userInputData.value.toString(),
                 ),
                 const SizedBox(width: kDefaultPadding / 2),
-                ButtonCommonStyle(
-                  onPressed: dropDownModel.switchEdit,
-                  child: ValueListenableBuilder(
-                    valueListenable: dropDownModel.isOpened,
-                    builder: ((context, value, child) {
-                      return ImageIcon(
-                        AssetImage(
-                          dropDownModel.isOpened.value
-                              ? 'assets/icons/minus.png'
-                              : 'assets/icons/arrow_down.png',
-                        ),
-                        size: kDefaultPadding * 2,
-                        color: Colors.black,
-                      );
-                    }),
-                  ),
+                ValueListenableBuilder(
+                  valueListenable: dropDownModel.isOpened,
+                  builder: ((context, value, child) {
+                    return ImageIcon(
+                      AssetImage(
+                        dropDownModel.isOpened.value
+                            ? 'assets/icons/minus.png'
+                            : 'assets/icons/arrow_down.png',
+                      ),
+                      size: kDefaultPadding * 2,
+                      color: Colors.black,
+                    );
+                  }),
                 ),
               ],
             ),
