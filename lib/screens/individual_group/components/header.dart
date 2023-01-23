@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
-import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/screens/individual_group/components/objective_reward.dart';
 import 'package:groupup/screens/individual_group/components/start_end_date.dart';
 import 'package:provider/provider.dart';

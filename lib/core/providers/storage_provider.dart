@@ -4,9 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 
 class StorageProvider extends ChangeNotifier {
   File? profilePicture;

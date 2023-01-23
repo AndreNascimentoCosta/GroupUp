@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/phone_auth_provider.dart';
+import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:groupup/styles/text.dart';

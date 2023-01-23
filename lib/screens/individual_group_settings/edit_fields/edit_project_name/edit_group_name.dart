@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/components/app_bar_edit_group_name.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/components/body_edit_group_name.dart';
-import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/edit_group_name_provider.dart';
+import 'package:groupup/core/providers/edit_group_name_provider.dart';
 import 'package:provider/provider.dart';
 
 class EditGroupNameScreen extends StatelessWidget {

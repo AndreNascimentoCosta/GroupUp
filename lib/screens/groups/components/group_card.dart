@@ -6,7 +6,7 @@ import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/groups/components/checkbox.dart';
 import 'package:groupup/screens/groups/components/stats.dart';
-import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/screens/individual_group/screens/individual_group.dart';
 import 'package:provider/provider.dart';
 

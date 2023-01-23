@@ -8,7 +8,7 @@ import 'package:groupup/screens/home/components/bottom_sheet/create/components/b
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_time_picker.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/group_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
 

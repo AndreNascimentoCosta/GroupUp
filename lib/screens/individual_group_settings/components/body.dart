@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
 import 'package:groupup/screens/individual_group_settings/components/body_content_arrow.dart';
 import 'package:groupup/screens/individual_group_settings/components/body_content_switch.dart';

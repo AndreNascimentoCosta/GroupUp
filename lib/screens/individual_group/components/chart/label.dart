@@ -3,7 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/participant.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
 class ChartLabel extends StatelessWidget {

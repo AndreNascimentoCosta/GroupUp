@@ -8,7 +8,7 @@ import 'package:groupup/screens/individual_group/components/app_bar.dart';
 import 'package:groupup/screens/individual_group/components/body.dart';
 import 'package:groupup/screens/individual_group/components/header.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 
 class IndividualGroupScreen extends StatelessWidget {

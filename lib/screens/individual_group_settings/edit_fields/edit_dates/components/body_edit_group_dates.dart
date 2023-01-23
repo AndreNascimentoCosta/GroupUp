@@ -3,7 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_time_picker.dart';
-import 'package:groupup/screens/individual_group_settings/edit_fields/edit_dates/edit_group_dates_provider.dart';
+import 'package:groupup/core/providers/edit_group_dates_provider.dart';
 import 'package:provider/provider.dart';
 
 class EditGroupDatesBody extends StatelessWidget {

@@ -4,7 +4,7 @@ import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input_provider.dart';
-import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_input_data.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:ntp/ntp.dart';
 import 'package:provider/provider.dart';
 

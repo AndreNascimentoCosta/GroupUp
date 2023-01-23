@@ -15,7 +15,7 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/individual_group/components/make_admin.dart';
 import 'package:provider/provider.dart';
 
-import '../../home/components/bottom_sheet/sign_up/auth_provider.dart';
+import '../../../core/providers/auth_provider.dart';
 
 class IndividualGroupCard extends StatefulWidget {
   const IndividualGroupCard({

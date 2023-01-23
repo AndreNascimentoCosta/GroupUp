@@ -5,10 +5,10 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
-import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/widgets/texts/static_text.dart';
+import '../widgets/texts/static_text.dart';
 
 class EditGroupNameProvider extends ChangeNotifier {
   final groupNameController = TextEditingController();

@@ -4,7 +4,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';

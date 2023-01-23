@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/first_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/second_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/third_page.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/join/join_group_provider.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
 

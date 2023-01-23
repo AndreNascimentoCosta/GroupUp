@@ -5,25 +5,22 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
-import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/widgets/texts/static_text.dart';
+import '../widgets/texts/static_text.dart';
 
-class EditGroupDatesProvider extends ChangeNotifier {
-  final controllerStartDate = TextEditingController();
-  final controllerEndDate = TextEditingController();
+class EditGroupObjectiveProvider extends ChangeNotifier {
+  final groupObjectiveController = TextEditingController();
 
-  EditGroupDatesProvider(String initialText) {
-    controllerStartDate.addListener(notifyListeners);
-    controllerStartDate.text = initialText;
-    controllerEndDate.addListener(notifyListeners);
-    controllerEndDate.text = initialText;
+  EditGroupObjectiveProvider(String initialText) {
+    groupObjectiveController.addListener(notifyListeners);
+    groupObjectiveController.text = initialText;
   }
 
   final newGroup = GroupModel.empty();
 
-  Future<void> editGroupDates(String groupId) async {
+  Future<String> editGroupObjective(String value, String groupId) async {
     final group = await FirebaseFirestore.instance
         .collection('groups')
         .doc(groupId)
@@ -31,42 +28,33 @@ class EditGroupDatesProvider extends ChangeNotifier {
     if (group.exists) {
       final groupData = group.data();
       if (groupData != null) {
-        final editGroupStartDate = groupData['startDate'].toDate();
-        final editGroupEndDate = groupData['endDate'].toDate();
-        newGroup.startDate ??= editGroupStartDate;
-        if (editGroupStartDate != newGroup.startDate) {
+        final editGroupObjective = groupData['objective'] as String;
+        newGroup.objective = value;
+        if (editGroupObjective != value) {
           await FirebaseFirestore.instance
               .collection('groups')
               .doc(groupId)
-              .update({'startDate': newGroup.startDate});
-        }
-        newGroup.endDate ??= editGroupEndDate;
-        if (editGroupEndDate != newGroup.endDate) {
-          await FirebaseFirestore.instance
-              .collection('groups')
-              .doc(groupId)
-              .update({'endDate': newGroup.endDate});
+              .update({'objective': value});
         }
       }
     }
+    return '';
   }
 
-  void Function()? done(
-      BuildContext context, DateTime? startDate, DateTime? endDate, String groupId) {
+  void Function()? done(BuildContext context, String groupObjective, String groupId) {
+    final groupObjectiveControllerText = groupObjectiveController.text;
 
-    if ((startDate == null && endDate == null)) {
+    if ((groupObjectiveControllerText.isEmpty || groupObjectiveControllerText == groupObjective)) {
       return null;
     } else {
       return () async {
-        {
-          final individualGroupProvider = Provider.of<IndividualGroupProvider>(
-            context,
-            listen: false,
-          );
-          Navigator.pop(context);
-          await editGroupDates(groupId);
-          individualGroupProvider.getGroup(groupId);
-        }
+        final individualGroupProvider = Provider.of<IndividualGroupProvider>(
+          context,
+          listen: false,
+        );
+        Navigator.pop(context);
+        await editGroupObjective(groupObjectiveController.text, groupId);
+        individualGroupProvider.getGroup(groupId);
       };
     }
   }

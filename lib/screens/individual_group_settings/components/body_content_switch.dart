@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:provider/provider.dart';
 
 class BodyContentSwitch extends StatelessWidget {

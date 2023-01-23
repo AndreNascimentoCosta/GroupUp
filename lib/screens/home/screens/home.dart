@@ -7,7 +7,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/first_page.dart';
 import 'package:groupup/screens/home/components/continue_button.dart';
 import 'package:provider/provider.dart';

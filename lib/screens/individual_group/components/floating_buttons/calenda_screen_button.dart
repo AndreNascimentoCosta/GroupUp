@@ -6,7 +6,7 @@ import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
 import 'package:provider/provider.dart';
 import '../../../../constants.dart';
-import '../individual_group_provider.dart';
+import '../../../../core/providers/individual_group_provider.dart';
 
 class CalendarScreenButton extends StatefulWidget {
   const CalendarScreenButton({

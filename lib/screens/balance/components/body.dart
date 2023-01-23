@@ -4,7 +4,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/balance/components/individual_card.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
 class GroupsBalance extends StatelessWidget {

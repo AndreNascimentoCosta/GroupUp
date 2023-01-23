@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/join/join_group_provider.dart';
+import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/join/pages/first_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';

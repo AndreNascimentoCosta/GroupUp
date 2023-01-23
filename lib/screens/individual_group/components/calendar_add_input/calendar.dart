@@ -5,8 +5,8 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/bottom_calendar.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/box_decoration.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/text.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
-import 'package:groupup/screens/individual_group/components/individual_group_provider.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 

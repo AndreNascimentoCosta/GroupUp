@@ -3,7 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
-import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/edit_group_name_provider.dart';
+import 'package:groupup/core/providers/edit_group_name_provider.dart';
 import 'package:provider/provider.dart';
 
 class EditGroupNameBody extends StatelessWidget {

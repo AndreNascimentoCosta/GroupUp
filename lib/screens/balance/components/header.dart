@@ -4,7 +4,7 @@ import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/balance/components/button.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/sign_up/auth_provider.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
 class HeaderBalance extends StatelessWidget {

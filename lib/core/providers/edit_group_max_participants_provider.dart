@@ -5,22 +5,22 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/widgets/texts/static_text.dart';
-import '../../../individual_group/components/individual_group_provider.dart';
+import '../widgets/texts/static_text.dart';
 
-class EditGroupRewardProvider extends ChangeNotifier {
-  final groupRewardController = TextEditingController();
+class EditGroupMaxParticipantsProvider extends ChangeNotifier {
+  final groupMaxParticipantsController = TextEditingController();
 
-  EditGroupRewardProvider(String initialText) {
-    groupRewardController.addListener(notifyListeners);
-    groupRewardController.text = initialText;
+  EditGroupMaxParticipantsProvider(String initialText) {
+    groupMaxParticipantsController.addListener(notifyListeners);
+    groupMaxParticipantsController.text = initialText;
   }
 
   final newGroup = GroupModel.empty();
 
-  Future<String> editGroupReward(String value, String groupId) async {
+  Future<String> editGroupObjective(int value, String groupId) async {
     final group = await FirebaseFirestore.instance
         .collection('groups')
         .doc(groupId)
@@ -28,35 +28,36 @@ class EditGroupRewardProvider extends ChangeNotifier {
     if (group.exists) {
       final groupData = group.data();
       if (groupData != null) {
-        final editGroupReward = groupData['reward'] as String;
-        newGroup.reward = value;
-        if (editGroupReward != value) {
+        final groupMaxParticipants = groupData['noParticipants'];
+        newGroup.maxParticipants = value;
+        if (groupMaxParticipants != value) {
           await FirebaseFirestore.instance
               .collection('groups')
               .doc(groupId)
-              .update({'reward': value});
+              .update({'noParticipants': value});
         }
       }
     }
     return '';
   }
 
-  void Function()? done(BuildContext context, String groupId) {
-    final nameText = groupRewardController.text;
+  void Function()? done(
+      BuildContext context, String groupMaxParticipants, String groupId) {
+    final groupObjectiveControllerText = groupMaxParticipantsController.text;
 
-    if ((nameText.isEmpty)) {
+    if ((groupObjectiveControllerText.isEmpty ||
+        groupObjectiveControllerText == groupMaxParticipants ||
+        (int.tryParse(groupObjectiveControllerText) ?? 0) > 50)) {
       return null;
     } else {
       return () async {
-        {
-          final individualGroupProvider = Provider.of<IndividualGroupProvider>(
-            context,
-            listen: false,
-          );
-          Navigator.pop(context);
-          await editGroupReward(groupRewardController.text, groupId);
-          individualGroupProvider.getGroup(groupId);
-        }
+        final individualGroupProvider = Provider.of<IndividualGroupProvider>(
+          context,
+          listen: false,
+        );
+        Navigator.pop(context);
+        await editGroupObjective(int.parse(groupMaxParticipantsController.text), groupId);
+        individualGroupProvider.getGroup(groupId);
       };
     }
   }

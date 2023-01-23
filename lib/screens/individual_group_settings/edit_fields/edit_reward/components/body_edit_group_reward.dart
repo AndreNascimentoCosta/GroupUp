@@ -8,7 +8,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/first_page.dart';
-import 'package:groupup/screens/individual_group_settings/edit_fields/edit_reward/edit_group_reward_provider.dart';
+import 'package:groupup/core/providers/edit_group_reward_provider.dart';
 import 'package:provider/provider.dart';
 
 class EditGroupRewardBody extends StatefulWidget {

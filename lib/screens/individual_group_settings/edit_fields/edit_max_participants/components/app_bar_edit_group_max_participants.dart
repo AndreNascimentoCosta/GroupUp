@@ -6,7 +6,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/screens/individual_group_settings/edit_fields/edit_max_participants/edit_group_max_participants_provider.dart';
+import 'package:groupup/core/providers/edit_group_max_participants_provider.dart';
 import 'package:provider/provider.dart';
 
 class AppBarEditGroupMaxParticipats extends StatelessWidget with PreferredSizeWidget {

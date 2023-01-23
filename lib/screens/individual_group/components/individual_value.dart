@@ -19,41 +19,42 @@ class IndividualValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: homeViewModel.isEditing,
-        builder: (context, value, child) {
-          return AnimatedContainer(
-            width: !value ? 90 : 0,
-            duration: const Duration(milliseconds: 10),
-            child: Visibility(
-              visible: !value,
-              child: Row(
-                children: [
-                  const Spacer(),
-                  ExtraLargeBody(
-                    text: userInputData.value.toString(),
+      valueListenable: homeViewModel.isEditing,
+      builder: (context, value, child) {
+        return AnimatedContainer(
+          width: !value ? 90 : 0,
+          duration: const Duration(milliseconds: 10),
+          child: Visibility(
+            visible: !value,
+            child: Row(
+              children: [
+                const Spacer(),
+                ExtraLargeBody(
+                  text: userInputData.value.toString(),
+                ),
+                const SizedBox(width: kDefaultPadding / 2),
+                ButtonCommonStyle(
+                  onPressed: dropDownModel.switchEdit,
+                  child: ValueListenableBuilder(
+                    valueListenable: dropDownModel.isOpened,
+                    builder: ((context, value, child) {
+                      return ImageIcon(
+                        AssetImage(
+                          dropDownModel.isOpened.value
+                              ? 'assets/icons/minus.png'
+                              : 'assets/icons/arrow_down.png',
+                        ),
+                        size: kDefaultPadding * 2,
+                        color: Colors.black,
+                      );
+                    }),
                   ),
-                  const SizedBox(width: kDefaultPadding / 2),
-                  ButtonCommonStyle(
-                    onPressed: dropDownModel.switchEdit,
-                    child: ValueListenableBuilder(
-                      valueListenable: dropDownModel.isOpened,
-                      builder: ((context, value, child) {
-                        return ImageIcon(
-                          AssetImage(
-                            dropDownModel.isOpened.value
-                                ? 'assets/icons/minus.png'
-                                : 'assets/icons/arrow_down.png',
-                          ),
-                          size: kDefaultPadding * 2,
-                          color: Colors.black,
-                        );
-                      }),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

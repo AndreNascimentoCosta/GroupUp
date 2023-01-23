@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/create_group_provider.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/home_button.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_page_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
