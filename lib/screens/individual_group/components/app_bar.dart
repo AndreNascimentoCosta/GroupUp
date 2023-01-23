@@ -13,6 +13,8 @@ import 'package:groupup/screens/individual_group_settings/screens/group_settings
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../../../core/providers/auth_provider.dart';
+
 class AppBarIndividualGroup extends StatefulWidget with PreferredSizeWidget {
   const AppBarIndividualGroup({
     required this.homeViewModel,
@@ -58,6 +60,7 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
+    final currentUserId = Provider.of<AuthProvider>(context).user?.id;
     if (group == null) {
       return const CircularProgressIndicator(color: kPrimaryColor);
     }
@@ -96,6 +99,10 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
       title: ValueListenableBuilder(
         valueListenable: widget.homeViewModel.isEditing,
         builder: ((context, value, child) {
+          final currentUserData =
+              individualGroupProvider.group!.participantsData.firstWhere(
+            (element) => element.uid == currentUserId,
+          );
           return Row(
             children: [
               Visibility(
@@ -123,49 +130,116 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                 ),
               ),
               const Spacer(),
-              !value
-                  ? FloatingActionButton(
-                      heroTag: 'btn2',
-                      elevation: 0,
-                      backgroundColor: Colors.white,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => GroupSettings(
-                              homeViewModel: widget.homeViewModel,
-                              groups: group,
+              !group.allowEditImage
+                  ? currentUserData.isAdmin
+                      ? !value
+                          ? FloatingActionButton(
+                              heroTag: 'btn2',
+                              elevation: 0,
+                              backgroundColor: Colors.white,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => GroupSettings(
+                                      homeViewModel: widget.homeViewModel,
+                                      groups: group,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: SvgPicture.asset(
+                                'assets/icons/settings.svg',
+                                height: Insets.l * 1.25,
+                                width: Insets.l * 1.25,
+                                color: Colors.black,
+                              ),
+                            )
+                          : GroupPictureEdit(
+                              onPressedGallery: () {
+                                pickImage(ImageSource.gallery);
+                              },
+                              onPressedCamera: () {
+                                pickImage(ImageSource.camera);
+                              },
+                              child: FloatingActionButton(
+                                heroTag: 'btn2',
+                                elevation: 0,
+                                backgroundColor: Colors.white,
+                                onPressed: null,
+                                child: SvgPicture.asset(
+                                  'assets/icons/edit.svg',
+                                  height: Insets.l * 1.25,
+                                  width: Insets.l * 1.25,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            )
+                      : FloatingActionButton(
+                          heroTag: 'btn2',
+                          elevation: 0,
+                          backgroundColor: Colors.white,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => GroupSettings(
+                                  homeViewModel: widget.homeViewModel,
+                                  groups: group,
+                                ),
+                              ),
+                            );
+                          },
+                          child: SvgPicture.asset(
+                            'assets/icons/settings.svg',
+                            height: Insets.l * 1.25,
+                            width: Insets.l * 1.25,
+                            color: Colors.black,
+                          ),
+                        )
+                  : !value
+                      ? FloatingActionButton(
+                          heroTag: 'btn2',
+                          elevation: 0,
+                          backgroundColor: Colors.white,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => GroupSettings(
+                                  homeViewModel: widget.homeViewModel,
+                                  groups: group,
+                                ),
+                              ),
+                            );
+                          },
+                          child: SvgPicture.asset(
+                            'assets/icons/settings.svg',
+                            height: Insets.l * 1.25,
+                            width: Insets.l * 1.25,
+                            color: Colors.black,
+                          ),
+                        )
+                      : GroupPictureEdit(
+                          onPressedGallery: () {
+                            pickImage(ImageSource.gallery);
+                          },
+                          onPressedCamera: () {
+                            pickImage(ImageSource.camera);
+                          },
+                          child: FloatingActionButton(
+                            heroTag: 'btn2',
+                            elevation: 0,
+                            backgroundColor: Colors.white,
+                            onPressed: null,
+                            child: SvgPicture.asset(
+                              'assets/icons/edit.svg',
+                              height: Insets.l * 1.25,
+                              width: Insets.l * 1.25,
+                              color: Colors.black,
                             ),
                           ),
-                        );
-                      },
-                      child: SvgPicture.asset(
-                        'assets/icons/settings.svg',
-                        height: Insets.l * 1.25,
-                        width: Insets.l * 1.25,
-                        color: Colors.black,
-                      ),
-                    )
-                  : GroupPictureEdit(
-                      onPressedGallery: () {
-                        pickImage(ImageSource.gallery);
-                      },
-                      onPressedCamera: () {
-                        pickImage(ImageSource.camera);
-                      },
-                      child: FloatingActionButton(
-                        heroTag: 'btn2',
-                        elevation: 0,
-                        backgroundColor: Colors.white,
-                        onPressed: null,
-                        child: SvgPicture.asset(
-                          'assets/icons/edit.svg',
-                          height: Insets.l * 1.25,
-                          width: Insets.l * 1.25,
-                          color: Colors.black,
                         ),
-                      ),
-                    ),
             ],
           );
         }),

@@ -11,8 +11,7 @@ class EditGroupDatesBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final groupDatesProvider =
-        Provider.of<EditGroupDatesProvider>(context);
+    final groupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,
@@ -22,15 +21,16 @@ class EditGroupDatesBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DateTimePicker(
-                onChanged: (startDate, endDate) {
-                  groupDatesProvider.newGroup.startDate = startDate;
-                  groupDatesProvider.newGroup.endDate = endDate;
-                },
-              ),
+              onChanged: (startDate, endDate) {
+                groupDatesProvider.newGroup.startDate = startDate;
+                groupDatesProvider.newGroup.endDate = endDate;
+              },
+            ),
             const SizedBox(height: Insets.s),
             const Padding(
               padding: EdgeInsets.only(left: kDefaultPadding),
-              child: StaticText(text: 'Change group name', fontSize: TextSize.mBody),
+              child: StaticText(
+                  text: 'Change group name', fontSize: TextSize.mBody),
             ),
           ],
         ),

@@ -16,8 +16,8 @@ import 'package:groupup/screens/individual_group_settings/edit_fields/edit_rewar
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-class BodySettings extends StatelessWidget {
-  const BodySettings({required this.groups});
+class BodyAdminSettings extends StatelessWidget {
+  const BodyAdminSettings({required this.groups});
 
   final GroupModel groups;
 
