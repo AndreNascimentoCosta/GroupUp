@@ -3,7 +3,6 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/models/user_input_data.dart';
 
 class IndividualValue extends StatelessWidget {
@@ -22,21 +21,27 @@ class IndividualValue extends StatelessWidget {
       valueListenable: homeViewModel.isEditing,
       builder: (context, value, child) {
         return AnimatedContainer(
-          width: !value ? 90 : 0,
+          width: !value ? 110 : 0,
           duration: const Duration(milliseconds: 10),
           child: Visibility(
             visible: !value,
             child: Row(
               children: [
                 const Spacer(),
-                ExtraLargeBody(
-                  text: userInputData.value.toString(),
+                SizedBox(
+                  width: 65,
+                  child: ExtraLargeBody(
+                    text: userInputData.value.toString(),
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-                const SizedBox(width: kDefaultPadding / 2),
+                const SizedBox(width: kDefaultPadding / 5),
                 ValueListenableBuilder(
                   valueListenable: dropDownModel.isOpened,
                   builder: ((context, value, child) {
-                    return ImageIcon(
+                    return 
+                    ImageIcon(
                       AssetImage(
                         dropDownModel.isOpened.value
                             ? 'assets/icons/minus.png'

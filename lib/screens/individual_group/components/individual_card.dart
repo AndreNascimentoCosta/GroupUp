@@ -171,11 +171,14 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                   )
                             : const StaticText(text: ''),
                       ),
-                      const SizedBox(width: kDefaultPadding),
-                      IndividualValue(
-                        homeViewModel: widget.homeViewModel,
-                        userInputData: widget.participant.sumData,
-                        dropDownModel: dropDownModel,
+                      const SizedBox(width: kDefaultPadding /4),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: IndividualValue(
+                          homeViewModel: widget.homeViewModel,
+                          userInputData: widget.participant.sumData,
+                          dropDownModel: dropDownModel,
+                        ),
                       ),
                     ],
                   ),
@@ -218,7 +221,6 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                           width: MediaQuery.of(context).size.width * 0.6,
                           child: ComparativeChart(
                             userData1: widget.meParticipant.inputData,
-                            userData2: widget.participant.inputData,
                           ),
                         ),
                         const SizedBox(

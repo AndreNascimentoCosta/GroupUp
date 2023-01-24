@@ -21,15 +21,32 @@ class OtherOptionsProfile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           ButtonCommonStyle(
-            onPressed: () {},
+            onPressed: () async {
+              final Uri emailLaunchUri = Uri(
+                scheme: 'mailto',
+                path: 'groupupapp@outlook.com',
+              );
+              launchUrl(emailLaunchUri);
+            },
             child: const LargeBody(
-              text: 'Terms of service',
+              text: 'Report a problem',
               textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: Insets.l * 1.5),
           ButtonCommonStyle(
-            onPressed: () {},
+            onPressed: () async {
+              final url = Uri.parse('http://groupup.rf.gd/privacy-policy.html');
+              if (await canLaunchUrl(url)) {
+                Navigator.pop(context);
+                await launchUrl(
+                  url,
+                  mode: LaunchMode.inAppWebView,
+                );
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
             child: const LargeBody(
               text: 'Privacy policy',
               textAlign: TextAlign.center,
@@ -63,13 +80,4 @@ class OtherOptionsProfile extends StatelessWidget {
       ),
     );
   }
-  _launchURL() async {
-  const url = 'https://flutter.io';
-  final uri = Uri.parse(url);
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
 }

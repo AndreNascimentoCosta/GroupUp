@@ -6,6 +6,8 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:ntp/ntp.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/providers/individual_group_provider.dart';
+
 class AddInputProvider extends ChangeNotifier {
   final TextEditingController inputController = TextEditingController();
 
@@ -15,6 +17,8 @@ class AddInputProvider extends ChangeNotifier {
 
   Future<void> addInput(BuildContext context, String groupId) async {
     final user = Provider.of<AuthProvider>(context, listen: false).user;
+    final individualGroupProvider =
+        Provider.of<IndividualGroupProvider>(context, listen: false);
     if (user == null) {
       return;
     }
@@ -60,6 +64,7 @@ class AddInputProvider extends ChangeNotifier {
                   participantsData.map((e) => e.toMap()).toList(),
             },
           );
+          individualGroupProvider.getGroup(groupId, reset: false);
         }
       }
     }

@@ -23,7 +23,7 @@ class BottomCalendar extends StatelessWidget {
           right: kDefaultPadding / 2,
           bottom: kDefaultPadding / 2,
         ),
-        child: ComparativeChart(userData1: participant.inputData, userData2: participant.inputData,),
+        child: ComparativeChart(userData1: participant.inputData),
       ),
     );
   }
