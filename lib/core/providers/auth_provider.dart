@@ -174,7 +174,7 @@ class AuthProvider extends ChangeNotifier {
       await updateSocialUserData();
       await getUser();
       loading = false;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       loading = false;
     }
     notifyListeners();
@@ -201,7 +201,7 @@ class AuthProvider extends ChangeNotifier {
       await updateSocialUserData();
       await getUser();
       loading = false;
-    } on SignInWithAppleException catch (e) {
+    } on SignInWithAppleException {
       loading = false;
     }
     notifyListeners();

@@ -1,18 +1,46 @@
+import 'package:flutter/material.dart';
 import 'package:groupup/models/user_input_data.dart';
+import 'package:provider/provider.dart';
+
+import '../core/providers/individual_group_provider.dart';
 
 class Participant {
   String name, profilePicture, uid;
   bool isAdmin;
 
-  String get rank {
+  String rank(BuildContext context) {
+    final individualGroupProvider = Provider.of<IndividualGroupProvider>(
+      context,
+      listen: false,
+    );
     if (inputData.isEmpty) {
       return '-';
     }
+    if (individualGroupProvider.group == null) return '-';
     int rank = 1;
+    for (var element in individualGroupProvider.group!.participantsData) {
+      if (element.sumData.value > sumData.value) {
+        rank++;
+      }
+    }
     return '${rank.toString()}º';
   }
 
   List<UserInputData> inputData;
+
+  bool get hasStory {
+    return inputData
+        .where(
+          (inputData) =>
+              inputData.date.isAfter(
+                DateTime.now().subtract(
+                  const Duration(days: 1),
+                ),
+              ) &&
+              inputData.image != null,
+        )
+        .isNotEmpty;
+  }
 
   UserInputData get sumData {
     double sum = 0;

@@ -2,19 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../../core/providers/edit_profile_name_provider.dart';
-
-class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
-  const AppBarEditProfileName({super.key});
+class AppBarReportParticipant extends StatelessWidget with PreferredSizeWidget {
+  const AppBarReportParticipant({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final nameProvider = Provider.of<EditProfileNameProvider>(context);
     return SafeArea(
       child: Row(
         children: [
@@ -33,13 +28,13 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const Header(text: 'Name'),
+                child: const Header(text: 'Report participant'),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
-                    nameProvider.confirmDiscard(context);
+                    Navigator.pop(context);
                   },
                   child: GestureDetector(
                     child: Container(
@@ -55,23 +50,6 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
                           ),
                         ],
                       ),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                right: kDefaultPadding,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: kDefaultPadding),
-                  child: ButtonCommonStyle(
-                    onPressed: nameProvider.done(context),
-                    child: StaticText(
-                      text: 'Done',
-                      fontSize: TextSize.lBody,
-                      fontFamily: 'Montserrat-SemiBold',
-                      color: nameProvider.done(context) == null
-                          ? kSecondaryColor
-                          : Colors.black,
                     ),
                   ),
                 ),

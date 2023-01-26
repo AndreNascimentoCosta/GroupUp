@@ -29,6 +29,9 @@ class IndividualGroupProvider extends ChangeNotifier {
     final docData = groupDocument.data();
     if (docData == null) return;
     group = GroupModel.fromMap(docId, docData);
+    group?.participantsData.sort(
+      (a, b) => a.sumData.value > b.sumData.value ? -1 : 1,
+    );
     notifyListeners();
   }
 }

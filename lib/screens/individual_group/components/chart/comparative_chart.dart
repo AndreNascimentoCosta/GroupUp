@@ -23,6 +23,7 @@ class ComparativeChart extends StatelessWidget {
       listen: false,
     );
     final currentUserId = Provider.of<AuthProvider>(context).user?.id;
+    if (individualGroupProvider.group == null) return Container();
     final currentUserData = individualGroupProvider.group!.participantsData
         .firstWhere((element) => element.uid == currentUserId);
     final greater = max(
@@ -130,7 +131,6 @@ class ComparativeChart extends StatelessWidget {
         ),
       );
     } else {
-      print('greater: ${greater.toDouble()}');
       return LineChart(
         LineChartData(
           minX: 0,

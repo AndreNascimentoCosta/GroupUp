@@ -6,17 +6,17 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/widgets/texts/static_text.dart';
+import '../widgets/texts/static_text.dart';
 
-class EditProfileNameProvider extends ChangeNotifier {
-  final profileNameController = TextEditingController();
+class ReportParticipantProvider extends ChangeNotifier {
+  final reportParticipantController = TextEditingController();
 
-  EditProfileNameProvider() {
-    profileNameController.addListener(notifyListeners);
+  ReportParticipantProvider() {
+    reportParticipantController.addListener(notifyListeners);
   }
 
   void Function()? done(BuildContext context) {
-    final nameText = profileNameController.text;
+    final nameText = reportParticipantController.text;
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
 
     if ((nameText.isEmpty)) {
@@ -24,7 +24,7 @@ class EditProfileNameProvider extends ChangeNotifier {
     } else {
       return () {
         {
-          authProvider.updateProfileName(profileNameController.text);
+          authProvider.updateProfileName(reportParticipantController.text);
           Navigator.pop(context);
         }
       };
@@ -35,6 +35,7 @@ class EditProfileNameProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext newContext) {
+        FocusScope.of(context).unfocus();
         return AlertDialog(
           title: const StaticText(
             text: 'Discard changes?',
@@ -69,7 +70,10 @@ class EditProfileNameProvider extends ChangeNotifier {
             NextButton(
               text: 'No, keep',
               borderColor: kPrimaryColor,
-              onPressed: () => Navigator.of(newContext).pop(),
+              onPressed: () {
+                Navigator.of(newContext).pop();
+                FocusScope.of(context).requestFocus();
+              },
               height: 40,
               width: 140,
             ),
@@ -80,7 +84,7 @@ class EditProfileNameProvider extends ChangeNotifier {
   }
 
   void Function()? back(BuildContext context) {
-    final nameText = profileNameController.text;
+    final nameText = reportParticipantController.text;
 
     if ((nameText.isEmpty)) {
       return null;

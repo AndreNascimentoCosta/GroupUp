@@ -24,30 +24,27 @@ class GroupSettings extends StatelessWidget {
       listen: false,
     );
     final currentUserId = Provider.of<AuthProvider>(context).user?.id;
-     if (individualGroupProvider.group != null) {
+    if (individualGroupProvider.group != null) {
       final currentUserData =
           individualGroupProvider.group!.participantsData.firstWhere(
         (element) => element.uid == currentUserId,
       );
       if (currentUserData.isAdmin) {
         return Scaffold(
-          appBar: AppBarGroupSettings(
-            homeViewModel: homeViewModel,
-          ),
+          appBar: const AppBarGroupSettings(),
           body: BodyAdminSettings(
             groups: groups,
           ),
         );
       } else {
         return Scaffold(
-          appBar: AppBarGroupSettings(
-            homeViewModel: homeViewModel,
-          ),
+          appBar: const AppBarGroupSettings(),
           body: BodyNotAdminSettings(
             groups: groups,
           ),
         );
       }
-    } return const Scaffold();
+    }
+    return const Scaffold();
   }
 }

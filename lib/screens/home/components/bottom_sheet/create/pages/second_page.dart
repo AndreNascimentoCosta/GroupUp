@@ -35,7 +35,7 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
           currentFocus.unfocus();
         }
 
-        Form.of(context)?.validate();
+        Form.of(context).validate();
       },
       child: Scrollbar(
         child: SingleChildScrollView(

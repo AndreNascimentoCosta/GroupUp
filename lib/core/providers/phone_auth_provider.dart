@@ -54,7 +54,7 @@ class PhoneAuthenProvider extends ChangeNotifier {
 
   void startTimer() {
     const onesec = Duration(seconds: 1);
-    Timer _timer = Timer.periodic(
+    Timer.periodic(
       onesec,
       (timer) {
         if (start == 0) {

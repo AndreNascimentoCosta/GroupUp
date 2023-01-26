@@ -36,9 +36,9 @@ class OtherOptionsProfile extends StatelessWidget {
           const SizedBox(height: Insets.l * 1.5),
           ButtonCommonStyle(
             onPressed: () async {
+              Navigator.pop(context);
               final url = Uri.parse('http://groupup.rf.gd/privacy-policy.html');
               if (await canLaunchUrl(url)) {
-                Navigator.pop(context);
                 await launchUrl(
                   url,
                   mode: LaunchMode.inAppWebView,

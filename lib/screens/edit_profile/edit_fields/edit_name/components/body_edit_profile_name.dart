@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
-import 'package:groupup/screens/edit_profile/edit_fields/edit_name/edit_profile_name_provider.dart';
+import 'package:groupup/core/providers/edit_profile_name_provider.dart';
 import 'package:provider/provider.dart';
 
 class EditProfileNameBody extends StatelessWidget {

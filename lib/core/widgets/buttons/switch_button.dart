@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 
+// ignore: must_be_immutable
 class SwitchButton extends StatefulWidget {
   SwitchButton({required this.onChanged, this.boolValue = false});
 
