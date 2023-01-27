@@ -22,6 +22,8 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
     final nodePhone = FocusNode();
+    PhoneNumber number =
+      PhoneNumber(isoCode: Platform.localeName.split('_').last);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -53,9 +55,7 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                       },
                       autofillHints: const [AutofillHints.telephoneNumber],
                       autoFocus: true,
-                      initialValue: PhoneNumber(
-                        isoCode: Platform.localeName.split('_')[1],
-                      ),
+                      initialValue: number,
                       selectorConfig: const SelectorConfig(
                         selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                       ),
