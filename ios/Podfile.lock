@@ -762,9 +762,6 @@ PODS:
   - image_picker_ios (0.0.1):
     - Flutter
   - leveldb-library (1.22.1)
-  - libphonenumber_plugin (0.0.1):
-    - Flutter
-    - PhoneNumberKit
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
     - Libuv-gRPC/Interface (= 0.0.10)
@@ -780,12 +777,6 @@ PODS:
     - Flutter
   - path_provider_ios (0.0.1):
     - Flutter
-  - PhoneNumberKit (3.3.4):
-    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.4)
-    - PhoneNumberKit/UIKit (= 3.3.4)
-  - PhoneNumberKit/PhoneNumberKitCore (3.3.4)
-  - PhoneNumberKit/UIKit (3.3.4):
-    - PhoneNumberKit/PhoneNumberKitCore
   - PromisesObjC (2.1.1)
   - Sentry/HybridSDK (7.31.5)
   - sentry_flutter (0.0.1):
@@ -815,7 +806,6 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
-  - libphonenumber_plugin (from `.symlinks/plugins/libphonenumber_plugin/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
@@ -851,7 +841,6 @@ SPEC REPOS:
     - leveldb-library
     - Libuv-gRPC
     - nanopb
-    - PhoneNumberKit
     - PromisesObjC
     - Sentry
 
@@ -872,8 +861,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_sign_in_ios/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
-  libphonenumber_plugin:
-    :path: ".symlinks/plugins/libphonenumber_plugin/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_ios:
@@ -923,12 +910,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
   image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
-  libphonenumber_plugin: e8a7d64a6624a7c25f2c4ab0b7ead2a8e341e35e
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
-  PhoneNumberKit: 441e8b26ec88d598e3591de9061eff18f5dd12e8
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   Sentry: 4c9babff9034785067c896fd580b1f7de44da020
   sentry_flutter: b10ae7a5ddcbc7f04648eeb2672b5747230172f1

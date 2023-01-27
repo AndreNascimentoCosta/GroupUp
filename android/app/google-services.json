@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:703700374903:android:fc348b09e55c72414cbd72",
+        "mobilesdk_app_id": "1:703700374903:android:be0b0b4f9a65f7024cbd72",
         "android_client_info": {
-          "package_name": "com.example.groupup"
+          "package_name": "com.andrecosta.groupup"
         }
       },
       "oauth_client": [
@@ -29,6 +29,13 @@
             {
               "client_id": "703700374903-j3oj9be36lilcggreksmiuaoafdi5bjl.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "703700374903-phon209a2g1su55bi32gqt126b2vg94n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.andrecosta.groupup"
+              }
             }
           ]
         }

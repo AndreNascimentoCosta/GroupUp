@@ -1,4 +1,4 @@
-package com.example.groupup
+package com.andrecosta.groupup
 
 import io.flutter.embedding.android.FlutterActivity
 
