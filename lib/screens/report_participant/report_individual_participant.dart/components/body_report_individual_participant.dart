@@ -24,12 +24,20 @@ class BodyReportIndividualParticipant extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 50,
+              height: 70,
               width: 400,
               child: TextFieldModel(
                 controller: reportParticipantController,
                 hint: '',
-                maxLength: 30,
+                maxLength: 100,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter a reason';
+                  } else if (value.length >= 100) {
+                    return 'Please enter a reason with less than 100 characters';
+                  }
+                  return null;
+                },
                 border: const UnderlineInputBorder(
                   borderSide: BorderSide(
                     color: kSecondaryColor,
