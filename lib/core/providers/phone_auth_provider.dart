@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:provider/provider.dart';
 
 class PhoneAuthenProvider extends ChangeNotifier {
@@ -24,7 +22,6 @@ class PhoneAuthenProvider extends ChangeNotifier {
   final otpCode6 = TextEditingController();
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
-  final countryCode = PhoneNumber(isoCode: Platform.localeName.split('_')[1]);
   int start = 30;
   final controller = PageController(initialPage: 0);
   int pageIndex = 0;

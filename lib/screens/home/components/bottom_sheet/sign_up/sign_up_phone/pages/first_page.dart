@@ -5,8 +5,8 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/styles/text.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class FirstPageSignUp extends StatefulWidget {
   const FirstPageSignUp({required this.controller});
@@ -22,8 +22,6 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
     final nodePhone = FocusNode();
-    PhoneNumber number =
-      PhoneNumber(isoCode: Platform.localeName.split('_').last);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -48,22 +46,20 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                       fontSize: TextSize.lBody,
                     ),
                     const SizedBox(height: 5),
-                    InternationalPhoneNumberInput(
+                    IntlPhoneField(
                       focusNode: nodePhone,
-                      onFieldSubmitted: (value) {
-                        FocusScope.of(context).nextFocus();
-                      },
-                      autofillHints: const [AutofillHints.telephoneNumber],
-                      autoFocus: true,
-                      initialValue: number,
-                      selectorConfig: const SelectorConfig(
-                        selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                      decoration: const InputDecoration(
+                        labelText: 'Phone Number',
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(),
+                        ),
                       ),
-                      onInputChanged: (phoneNumber) {
+                      initialCountryCode: Platform.localeName.split('_').last,
+                      onChanged: (phoneNumber) {
                         phoneProvider.phoneController.text =
-                            phoneNumber.phoneNumber ?? '';
+                            phoneNumber.completeNumber;
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -74,5 +70,4 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
       ),
     );
   }
-  
 }
