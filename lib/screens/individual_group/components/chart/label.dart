@@ -21,51 +21,58 @@ class ChartLabel extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          participant.name != user?.name ?
+          participant.uid != user?.id
+              ? Flexible(
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 10,
+                        width: 10,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: kPrimaryColor,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: Insets.s,
+                      ),
+                      StaticText(
+                        text: participant.name.isNotEmpty
+                            ? "${participant.name.trim().split(RegExp(' +')).map((s) => s[0]).take(2).join(". ")}."
+                            : '',
+                        color: kPrimaryColor,
+                        fontSize: TextSize.sBody,
+                      ),
+                    ],
+                  ),
+                )
+              : const SizedBox(),
           Flexible(
             child: Row(
               children: [
                 Container(
-                  height: 10,
-                  width: 10,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: kPrimaryColor,
-                  ),
-                ),
+                    height: 10,
+                    width: 10,
+                    decoration: participant.uid != user?.id
+                        ? BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: kSecondaryColor,
+                              width: 1,
+                            ),
+                          )
+                        : const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: kPrimaryColor,
+                          )),
                 const SizedBox(
                   width: Insets.s,
                 ),
                 StaticText(
-                  text: participant.name.isNotEmpty
-                      ? "${participant.name.trim().split(RegExp(' +')).map((s) => s[0]).take(2).join(". ")}."
-                      : '',
-                  color: kPrimaryColor,
-                  fontSize: TextSize.sBody,
-                ),
-              ],
-            ),
-          ) : const SizedBox(),
-          Flexible(
-            child: Row(
-              children: [
-                Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: kSecondaryColor,
-                      width: 1,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: Insets.s,
-                ),
-                const StaticText(
                   text: 'Me',
-                  color: kSecondaryColor,
+                  color: participant.uid != user?.id
+                      ? kSecondaryColor
+                      : kPrimaryColor,
                   fontSize: TextSize.sBody,
                 ),
               ],
