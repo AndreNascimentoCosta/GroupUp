@@ -60,7 +60,7 @@ dependencies:
   pinput: ^2.2.23
   url_launcher: ^6.1.8
   ntp: ^2.0.0
-  story_view: ^0.14.0
+  story: ^1.0.0+1
   sentry_flutter: ^6.18.3
   intl_phone_field: ^3.1.0
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
@@ -133,18 +134,24 @@ class _AddInputState extends State<AddInput> {
                   ),
                 ],
               ),
-              TextButton(
-                onPressed: () {
-                  addInputProvider.confirm(context, () {
-                    pickImage(ImageSource.gallery);
-                  }, () {
-                    pickImage(ImageSource.camera);
-                  }, group.id);
-                },
-                child: const StandardTextStyle(
-                  text: 'OK',
-                  fontSize: TextSize.mBody,
-                  color: kPrimaryColor,
+              Padding(
+                padding: const EdgeInsets.only(top: Insets.s),
+                child: ButtonCommonStyle(
+                  onPressed: () {
+                    addInputProvider.confirm(context, () {
+                      pickImage(ImageSource.gallery);
+                    }, () {
+                      pickImage(ImageSource.camera);
+                    }, group.id);
+                  },
+                  child: StandardTextStyle(
+                    text: 'OK',
+                    textAlign: TextAlign.center,
+                    fontSize: TextSize.mBody,
+                    color: addInputProvider.inputController.text.isEmpty
+                        ? kSecondaryColor
+                        : kPrimaryColor,
+                  ),
                 ),
               ),
             ],

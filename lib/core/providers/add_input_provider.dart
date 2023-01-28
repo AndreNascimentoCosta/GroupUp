@@ -32,6 +32,7 @@ class AddInputProvider extends ChangeNotifier {
     void Function() onPressedCamera,
     String groupId,
   ) {
+    if (inputController.text.isEmpty) return;
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
@@ -47,7 +48,7 @@ class AddInputProvider extends ChangeNotifier {
           ),
           content: const StaticText(
             text:
-                'Validate your data by adding \na media. If majority of the group \nagrees, your data will be considered valid.',
+                'Validate your data by adding \na media. If the majority of the group \nvalidates, your data will be \ntaking into account.',
             maxLines: 4,
             textAlign: TextAlign.center,
             fontSize: TextSize.mBody,

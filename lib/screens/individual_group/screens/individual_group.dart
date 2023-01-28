@@ -10,7 +10,6 @@ import 'package:groupup/screens/individual_group/components/header.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class IndividualGroupScreen extends StatelessWidget {
   const IndividualGroupScreen({
@@ -21,14 +20,6 @@ class IndividualGroupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    try {
-      throw Exception('Test');
-    } catch (exception, stackTrace) {
-      Sentry.captureException(
-        exception,
-        stackTrace: stackTrace,
-      );
-    }
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
     return Scaffold(

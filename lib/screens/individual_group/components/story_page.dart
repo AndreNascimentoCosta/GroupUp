@@ -16,7 +16,7 @@ class StoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoryWidget(
-      inputDatas: inputDatas,
+      inputDatas: inputDatas.where((element) => element.image != null).toList(),
       participant: participant,
     );
   }
