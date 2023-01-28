@@ -5,8 +5,8 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/groups/components/checkbox.dart';
-import 'package:groupup/screens/groups/components/stats_group.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/screens/groups/components/stats_group_ongoing.dart';
 import 'package:groupup/screens/individual_group/screens/individual_group.dart';
 import 'package:provider/provider.dart';
 
@@ -30,13 +30,16 @@ class _GroupsCardState extends State<GroupsCard> {
 
   @override
   Widget build(BuildContext context) {
-    final individualGroupProvider = Provider.of<IndividualGroupProvider>(context);
+    final individualGroupProvider =
+        Provider.of<IndividualGroupProvider>(context);
     return ButtonCommonStyle(
       onPressed: () {
         if (widget.homeViewModel.isEditing.value) {
-          setState(() {
-            isChecked = !isChecked;
-          });
+          setState(
+            () {
+              isChecked = !isChecked;
+            },
+          );
         } else {
           Provider.of<IndividualGroupProvider>(context, listen: false).getGroup(
             widget.group.id,
@@ -46,7 +49,8 @@ class _GroupsCardState extends State<GroupsCard> {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return IndividualGroupScreen(homeViewModel: widget.homeViewModel);
+                return IndividualGroupScreen(
+                    homeViewModel: widget.homeViewModel);
               },
             ),
           );

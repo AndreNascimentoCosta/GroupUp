@@ -41,14 +41,9 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
   Widget build(BuildContext context) {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
-    final currentUserId = Provider.of<AuthProvider>(context).user?.id;
     if (individualGroupProvider.group == null) {
       return const CircularProgressIndicator(color: kPrimaryColor);
     } else {
-      final currentUserData =
-          individualGroupProvider.group!.participantsData.firstWhere(
-        (element) => element.uid == currentUserId,
-      );
       final authProvider = Provider.of<AuthProvider>(context);
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -75,6 +70,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                   CupertinoPageRoute(
                                     builder: (context) => StoryPage(
                                       inputDatas: widget.participant.inputData,
+                                      participant: widget.participant,
                                     ),
                                     fullscreenDialog: true,
                                   ),

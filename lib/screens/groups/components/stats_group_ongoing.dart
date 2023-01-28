@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -21,8 +20,11 @@ class StatsGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final participantsData = groups.participantsData;
     final currentUserId = Provider.of<AuthProvider>(context).user?.id;
+    final currentUserRank = groups.participantsData
+                            .firstWhere(
+                                (element) => element.uid == currentUserId)
+                            .rank(context);
     return ValueListenableBuilder(
       valueListenable: homeViewModel.isEditing,
       builder: (context, value, child) {
@@ -73,10 +75,7 @@ class StatsGroup extends StatelessWidget {
                   child: Column(
                     children: [
                       MediumBody(
-                        text: participantsData
-                            .firstWhere(
-                                (element) => element.uid == currentUserId)
-                            .rank(context),
+                        text: currentUserRank,
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(
