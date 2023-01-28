@@ -65,7 +65,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                     },
                     child: StandardTextStyle(
                         text: phoneProvider.start != 0
-                            ? 'Request again in ${phoneProvider.start} sec'
+                            ? 'Request in ${phoneProvider.start} sec'
                             : 'Request again',
                         fontSize: TextSize.mBody,
                         fontFamily: 'Montserrat-SemiBold',
