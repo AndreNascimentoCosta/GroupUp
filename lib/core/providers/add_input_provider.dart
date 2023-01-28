@@ -28,8 +28,8 @@ class AddInputProvider extends ChangeNotifier {
 
   void confirm(
     BuildContext context,
-    void Function() onPressedCamera,
     void Function() onPressedGallery,
+    void Function() onPressedCamera,
     String groupId,
   ) {
     showCupertinoDialog(
