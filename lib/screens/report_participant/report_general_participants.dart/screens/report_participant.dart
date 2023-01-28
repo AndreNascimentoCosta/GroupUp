@@ -20,7 +20,7 @@ class ReportParticipant extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: StaticText(
                 text:
-                    'Info: If a participant is reported by majority, this person will be removed from the group without getting refunded.',
+                    'Info: If a participant is reported by majority, this person will be removed from the group without getting refunded. (This only works when there are at least 3 participants in the group.)',
                 maxLines: 3,
                 fontSize: TextSize.sBody),
           ),
