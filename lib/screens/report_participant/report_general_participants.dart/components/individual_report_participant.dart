@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/models/participant.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class IndividualParticipant extends StatelessWidget {
@@ -17,11 +19,15 @@ class IndividualParticipant extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: ButtonCommonStyle(
         onPressed: () {
+          final group = Provider.of<IndividualGroupProvider>(context, listen: false).group;
+          if (group == null) {
+            return;
+          }
           final Uri emailLaunchUri = Uri(
             scheme: 'mailto',
             path: 'groupupapp@outlook.com',
             query:
-                'subject=Report a problem&body=I would like to report ${participant.name} (${participant.uid}) for the following reason: ',
+                'subject=Report a problem&body=I would like to report ${participant.name} (${participant.uid}) from the group ${group.projectName} (${group.id}) for the following reason: ',
           );
           launchUrl(emailLaunchUri);
         },

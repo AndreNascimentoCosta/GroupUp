@@ -135,13 +135,6 @@ class _AddInputState extends State<AddInput> {
               ),
               TextButton(
                 onPressed: () {
-                  // final groupId = Provider.of<IndividualGroupProvider>(context,
-                  //         listen: false)
-                  //     .group
-                  //     ?.id;
-                  // Navigator.pop(context);
-                  // if (groupId == null) return;
-                  // addInputProvider.addInput(context, groupId);
                   addInputProvider.confirm(context, () {
                     pickImage(ImageSource.gallery);
                   }, () {

@@ -59,24 +59,6 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
               builder: (context, value, child) {
                 return Row(
                   children: [
-                    currentUserData.isAdmin
-                        ? ValueListenableBuilder(
-                            valueListenable: widget.homeViewModel.isEditing,
-                            builder: (context, value, child) {
-                              return AnimatedContainer(
-                                width: value ? 50 : 0,
-                                duration: const Duration(milliseconds: 50),
-                                child: Visibility(
-                                  visible: value,
-                                  child: SvgPicture.asset(
-                                    'assets/icons/minus.svg',
-                                    color: Colors.red,
-                                  ),
-                                ),
-                              );
-                            },
-                          )
-                        : const SizedBox(),
                     Padding(
                       padding: const EdgeInsets.only(
                         left: kDefaultPadding / 2,

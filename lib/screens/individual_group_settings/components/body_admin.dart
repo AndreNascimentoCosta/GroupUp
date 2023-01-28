@@ -13,6 +13,7 @@ import 'package:groupup/screens/individual_group_settings/edit_fields/edit_max_p
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_objective/edit_group_objective.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/edit_group_name.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_reward/edit_group_reward.dart';
+import 'package:groupup/screens/report_participant/report_general_participants.dart/screens/report_participant.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -36,30 +37,46 @@ class BodyAdminSettings extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ButtonCommonStyle(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return EditGroupNameScreen(groups: groups);
-                      },
-                    ),
-                  );
-                },
-                child: const BodyContentArrow(name: 'Project name')),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const ReportParticipant();
+                    },
+                  ),
+                );
+              },
+              child: const BodyContentArrow(name: 'Report a participant'),
+            ),
             const SizedBox(height: kDefaultPadding * 1.5),
             ButtonCommonStyle(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return EditGroupObjectiveScreen(groups: groups);
-                      },
-                    ),
-                  );
-                },
-                child: const BodyContentArrow(name: 'Objective')),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return EditGroupNameScreen(groups: groups);
+                    },
+                  ),
+                );
+              },
+              child: const BodyContentArrow(name: 'Project name'),
+            ),
+            const SizedBox(height: kDefaultPadding * 1.5),
+            ButtonCommonStyle(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return EditGroupObjectiveScreen(groups: groups);
+                    },
+                  ),
+                );
+              },
+              child: const BodyContentArrow(name: 'Objective'),
+            ),
             const SizedBox(height: kDefaultPadding * 1.5),
             ButtonCommonStyle(
               onPressed: () {
@@ -117,7 +134,7 @@ class BodyAdminSettings extends StatelessWidget {
               text: 'Allow refund request',
               boolValue: groups.allowRefundRequest,
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             Row(
               children: [
                 const SizedBox(
