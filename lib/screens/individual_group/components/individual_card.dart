@@ -122,11 +122,15 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                               ),
                             ),
                           )
-                        : SvgPicture.asset(
-                            'assets/icons/profile_picture_add.svg',
-                            color: Colors.white,
-                            height: Insets.l * 3,
-                            width: Insets.l * 3,
+                        : CircleAvatar(
+                            radius: Insets.l * 1.65,
+                            backgroundColor: const Color(0XFFE1E1E1),
+                            child: SvgPicture.asset(
+                              'assets/icons/profile_picture_add.svg',
+                              color: Colors.white,
+                              height: Insets.l * 1.65,
+                              width: Insets.l * 1.65,
+                            ),
                           ),
                     Expanded(
                       child: ButtonCommonStyle(

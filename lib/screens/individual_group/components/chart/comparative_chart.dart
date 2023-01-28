@@ -136,7 +136,7 @@ class ComparativeChart extends StatelessWidget {
           minX: 0,
           maxX: 6,
           minY: 0,
-          maxY: (greater / 10).round() * 10,
+          maxY: greater.toDouble(),
           titlesData: LineTitles.getTitleData(
             currentUserData,
             userData1,
@@ -233,7 +233,7 @@ class ComparativeChart extends StatelessWidget {
               );
             },
             drawVerticalLine: false,
-            horizontalInterval: (greater / 10).round() * 10 / 5,
+            horizontalInterval: greater / 5,
           ),
         ),
       );

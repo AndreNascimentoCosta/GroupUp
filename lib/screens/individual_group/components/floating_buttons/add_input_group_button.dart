@@ -4,7 +4,7 @@ import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
-import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input_provider.dart';
+import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../../../constants.dart';
 

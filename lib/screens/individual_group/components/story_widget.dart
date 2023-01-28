@@ -14,7 +14,7 @@ class StoryWidget extends StatelessWidget {
   final controller = StoryController();
 
   void addStoryItems() {
-    for (final inputData in inputDatas) {
+    for (final inputData in inputDatas.reversed) {
       final image = inputData.image;
       if (image == null) return;
       storyItems.add(

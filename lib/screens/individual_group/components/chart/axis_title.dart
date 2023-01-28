@@ -60,7 +60,7 @@ SideTitles leftTitles(Participant currentUserData,
         : 0,
     userData1.isNotEmpty ? userData1.map((e) => e.value).reduce(max) : 0,
   );
-  final value = ((greater / 10).round() * 10) / 5;
+  final value = greater / 5;
   return SideTitles(
     interval: value,
     showTitles: true,

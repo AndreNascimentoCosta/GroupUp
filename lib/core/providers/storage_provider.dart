@@ -34,6 +34,21 @@ class StorageProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<String?> addStoryMedia(BuildContext context, File image) async {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final createdAt = Timestamp.now().nanoseconds;
+    if (authProvider.user == null) return null;
+    final ref = FirebaseStorage.instance
+        .ref()
+        .child(authProvider.user!.id)
+        .child('story_${authProvider.user!.id}$createdAt.jpg');
+
+    final result = await ref.putFile(image);
+
+    final url = await result.ref.getDownloadURL();
+    return url;    
+  }
+
   Future<void> uploadGroupImage(BuildContext context, String groupId) async {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context, listen: false);
     isLoading = true;
