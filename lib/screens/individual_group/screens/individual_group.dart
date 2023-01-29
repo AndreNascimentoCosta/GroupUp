@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/screens/individual_group/components/floating_buttons/add_input_group_button.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/calendar.dart';
 import 'package:groupup/screens/individual_group/components/floating_buttons/calenda_screen_button.dart';

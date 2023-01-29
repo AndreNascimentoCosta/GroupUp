@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/participant.dart';
@@ -20,7 +22,17 @@ class StoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentUserName = Provider.of<AuthProvider>(context).user?.name;
+    final currentUser = Provider.of<AuthProvider>(context).user;
+    if (currentUser == null) {
+      return const SizedBox();
+    }
+    final group = Provider.of<IndividualGroupProvider>(
+      context,
+      listen: false,
+    ).group;
+    if (group == null) {
+      return const SizedBox();
+    }
     return StoryPageView(
       storyLength: (pageIndex) => inputDatas.length,
       pageLength: 1,
@@ -99,7 +111,7 @@ class StoryWidget extends StatelessWidget {
                           ],
                         ),
                         child: StaticText(
-                          text: participant.name == currentUserName
+                          text: participant.name == currentUser.name
                               ? 'Me'
                               : participant.name,
                           fontSize: TextSize.lBody,
@@ -116,6 +128,15 @@ class StoryWidget extends StatelessWidget {
       },
       gestureItemBuilder: (context, pageIndex, storyIndex) {
         final inputData = inputDatas[storyIndex];
+        final userAlreadyValidated = inputData.isValidated?.containsKey(
+          currentUser.id,
+        );
+        if (userAlreadyValidated == true) {
+          return const SizedBox();
+        }
+        if (participant.uid == currentUser.id) {
+          return const SizedBox();
+        }
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 75, horizontal: 20),
           child: Row(
@@ -138,7 +159,31 @@ class StoryWidget extends StatelessWidget {
                     child: FloatingActionButton(
                       heroTag: 'btn7',
                       highlightElevation: 0,
-                      onPressed: () {},
+                      onPressed: () {
+                        Provider.of<AddInputProvider>(
+                          context,
+                          listen: false,
+                        ).dataValidationNo(
+                          context,
+                          group.id,
+                          inputData.date,
+                          inputData.value,
+                          inputData.image!,
+                          participant.uid,
+                        );
+                        Navigator.of(context).pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: StaticText(
+                              text: "Done! You invalidated this data!",
+                              textAlign: TextAlign.center,
+                              fontSize: TextSize.mBody,
+                              color: Colors.white,
+                            ),
+                            backgroundColor: kSecondaryColor,
+                          ),
+                        );
+                      },
                       backgroundColor: Colors.red,
                       elevation: 0,
                       child: const Icon(
@@ -154,9 +199,9 @@ class StoryWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
+                      color: Colors.black.withOpacity(0.1),
                       blurRadius: 10,
-                      offset: const Offset(0, 5),
+                      offset: const Offset(0, 0),
                     ),
                   ],
                 ),
@@ -177,7 +222,7 @@ class StoryWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
+                      color: Colors.black.withOpacity(0.1),
                       blurRadius: 10,
                       offset: const Offset(0, 5),
                     ),
@@ -190,7 +235,31 @@ class StoryWidget extends StatelessWidget {
                     child: FloatingActionButton(
                       heroTag: 'btn8',
                       highlightElevation: 0,
-                      onPressed: () {},
+                      onPressed: () {
+                        Provider.of<AddInputProvider>(
+                          context,
+                          listen: false,
+                        ).dataValidationYes(
+                          context,
+                          group.id,
+                          inputData.date,
+                          inputData.value,
+                          inputData.image!,
+                          participant.uid,
+                        );
+                        Navigator.of(context).pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: StaticText(
+                              text: "Done! You validated this data!",
+                              textAlign: TextAlign.center,
+                              fontSize: TextSize.mBody,
+                              color: Colors.white,
+                            ),
+                            backgroundColor: kSecondaryColor,
+                          ),
+                        );
+                      },
                       backgroundColor: kPrimaryColor,
                       elevation: 0,
                       child: const Icon(

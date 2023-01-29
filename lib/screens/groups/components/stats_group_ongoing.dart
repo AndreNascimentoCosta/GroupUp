@@ -11,17 +11,17 @@ import '../../../constants.dart';
 class StatsGroup extends StatelessWidget {
   const StatsGroup({
     Key? key,
-    required this.groups,
+    required this.group,
     required this.homeViewModel,
   }) : super(key: key);
 
-  final GroupModel groups;
+  final GroupModel group;
   final HomeViewModel homeViewModel;
 
   @override
   Widget build(BuildContext context) {
     final currentUserId = Provider.of<AuthProvider>(context).user?.id;
-    final currentUserRank = groups.participantsData
+    final currentUserRank = group.participantsData
                             .firstWhere(
                                 (element) => element.uid == currentUserId)
                             .rank(context);
@@ -82,7 +82,7 @@ class StatsGroup extends StatelessWidget {
                         height: kDefaultPadding * 0.25,
                       ),
                       MediumBody(
-                        text: groups.daysGone,
+                        text: group.daysGone,
                         textAlign: TextAlign.center,
                         color: Colors.red,
                       ),
@@ -90,7 +90,7 @@ class StatsGroup extends StatelessWidget {
                         height: kDefaultPadding * 0.25,
                       ),
                       MediumBody(
-                        text: groups.daysLeft,
+                        text: group.daysLeft,
                         textAlign: TextAlign.center,
                         color: kPrimaryColor,
                       ),

@@ -33,6 +33,7 @@ class AddInputProvider extends ChangeNotifier {
     String groupId,
   ) {
     if (inputController.text.isEmpty) return;
+    if (int.tryParse(inputController.text) == 0) return;
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
@@ -48,7 +49,7 @@ class AddInputProvider extends ChangeNotifier {
           ),
           content: const StaticText(
             text:
-                'Validate your data by adding \na media. If the majority of the group \nvalidates, your data will be \ntaking into account.',
+                'Validate your data by adding \na media. If the majority of the \ngroup validates, your data will be \ntaken into account.',
             maxLines: 4,
             textAlign: TextAlign.center,
             fontSize: TextSize.mBody,
@@ -132,6 +133,114 @@ class AddInputProvider extends ChangeNotifier {
     );
   }
 
+  Future<void> dataValidationYes(
+    BuildContext context,
+    String groupId,
+    DateTime date,
+    double value,
+    String image,
+    String participantId,
+  ) async {
+    final currentUser = Provider.of<AuthProvider>(context, listen: false).user;
+    final individualGroupProvider =
+        Provider.of<IndividualGroupProvider>(context, listen: false);
+    if (currentUser == null) {
+      return;
+    }
+    final group = await FirebaseFirestore.instance
+        .collection('groups')
+        .doc(groupId)
+        .get();
+    if (group.exists) {
+      final groupData = group.data();
+      if (groupData != null) {
+        final participantsData =
+            GroupModel.fromMap(group.id, groupData).participantsData;
+        final userIndex =
+            participantsData.indexWhere((element) => element.uid == participantId);
+        if (userIndex != -1) {
+          final inputDataIndex = participantsData[userIndex]
+              .inputData
+              .indexWhere((element) => element.date == date);
+          final userParticipantData = participantsData[userIndex];
+          if (userParticipantData.inputData[inputDataIndex].isValidated ==
+              null) {
+            userParticipantData.inputData[inputDataIndex].isValidated = {
+              currentUser.id: true,
+            };
+          } else {
+            userParticipantData.inputData[inputDataIndex].isValidated?[currentUser.id] =
+                true;
+          }
+          await FirebaseFirestore.instance
+              .collection('groups')
+              .doc(groupId)
+              .update(
+            {
+              'participantsData':
+                  participantsData.map((e) => e.toMap()).toList(),
+            },
+          );
+          individualGroupProvider.getGroup(groupId, reset: false);
+        }
+      }
+    }
+  }
+
+  Future<void> dataValidationNo(
+    BuildContext context,
+    String groupId,
+    DateTime date,
+    double value,
+    String image,
+    String participantId,
+  ) async {
+    final currentUser = Provider.of<AuthProvider>(context, listen: false).user;
+    final individualGroupProvider =
+        Provider.of<IndividualGroupProvider>(context, listen: false);
+    if (currentUser == null) {
+      return;
+    }
+    final group = await FirebaseFirestore.instance
+        .collection('groups')
+        .doc(groupId)
+        .get();
+    if (group.exists) {
+      final groupData = group.data();
+      if (groupData != null) {
+        final participantsData =
+            GroupModel.fromMap(group.id, groupData).participantsData;
+        final userIndex =
+            participantsData.indexWhere((element) => element.uid == participantId);
+        if (userIndex != -1) {
+          final inputDataIndex = participantsData[userIndex]
+              .inputData
+              .indexWhere((element) => element.date == date);
+          final userParticipantData = participantsData[userIndex];
+          if (userParticipantData.inputData[inputDataIndex].isValidated ==
+              null) {
+            userParticipantData.inputData[inputDataIndex].isValidated = {
+              currentUser.id: false,
+            };
+          } else {
+            userParticipantData.inputData[inputDataIndex].isValidated?[currentUser.id] =
+                false;
+          }
+          await FirebaseFirestore.instance
+              .collection('groups')
+              .doc(groupId)
+              .update(
+            {
+              'participantsData':
+                  participantsData.map((e) => e.toMap()).toList(),
+            },
+          );
+          individualGroupProvider.getGroup(groupId, reset: false);
+        }
+      }
+    }
+  }
+
   Future<void> addInput(BuildContext context, String groupId) async {
     final user = Provider.of<AuthProvider>(context, listen: false).user;
     final individualGroupProvider =
@@ -192,5 +301,10 @@ class AddInputProvider extends ChangeNotifier {
         }
       }
     }
+  }
+
+  void clean() {
+    inputController.clear();
+    notifyListeners();
   }
 }

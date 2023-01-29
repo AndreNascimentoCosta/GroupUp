@@ -58,8 +58,11 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                       padding: const EdgeInsets.only(
                         left: kDefaultPadding / 2,
                       ),
-                      child: ExtraLargeBody(
-                          text: widget.participant.rank(context)),
+                      child: SizedBox(
+                        width: 25,
+                        child: ExtraLargeBody(
+                            text: widget.participant.rank(context)),
+                      ),
                     ),
                     const SizedBox(width: kDefaultPadding),
                     widget.participant.profilePicture.isNotEmpty

@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
@@ -27,24 +28,28 @@ Future<void> main() async {
         child: MultiProvider(
           providers: [
             ListenableProvider(
-              create: ((context) => AuthProvider()),
+              create: (context) => AuthProvider(),
             ),
             ListenableProvider(
-              create: ((context) => CreateGroupProvider()),
+              create: (context) => CreateGroupProvider(),
             ),
             ListenableProvider(
-              create: ((context) => JoinGroupProvider()),
+              create: (context) => JoinGroupProvider(),
               lazy: true,
             ),
             ListenableProvider(
-              create: ((context) => PhoneAuthenProvider()),
+              create: (context) => PhoneAuthenProvider(),
             ),
             ListenableProvider(
-              create: ((context) => StorageProvider()),
+              create: (context) => StorageProvider(),
             ),
             ListenableProvider(
-              create: ((context) => IndividualGroupProvider()),
+              create: (context) => IndividualGroupProvider(),
             ),
+            ListenableProvider(
+              create: (context) => AddInputProvider(),
+              lazy: true,
+            )
           ],
           child: MaterialApp(
             title: 'GroupUp',

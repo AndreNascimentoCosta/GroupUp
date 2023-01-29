@@ -105,7 +105,7 @@ class _GroupsCardState extends State<GroupsCard> {
               ),
             ),
             StatsGroup(
-              groups: widget.group,
+              group: widget.group,
               homeViewModel: widget.homeViewModel,
             ),
           ],

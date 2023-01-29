@@ -50,9 +50,6 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                       focusNode: nodePhone,
                       decoration: const InputDecoration(
                         labelText: 'Phone Number',
-                        labelStyle: TextStyle(
-                          color: kPrimaryColor,
-                        ),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(),
                         ),

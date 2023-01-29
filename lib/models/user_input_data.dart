@@ -2,11 +2,13 @@ class UserInputData {
   final DateTime date;
   final double value;
   final String? image;
+  Map<String, dynamic>? isValidated;
 
   UserInputData({
     required this.date,
     required this.value,
     this.image,
+    this.isValidated,
   });
 
   Map<String, dynamic> toMap() {
@@ -14,6 +16,7 @@ class UserInputData {
       'date': date,
       'value': value,
       'image': image,
+      'isValidated': isValidated,
     };
   }
 
@@ -22,6 +25,7 @@ class UserInputData {
       date: map['date'].toDate(),
       value: map['value'],
       image: map['image'],
+      isValidated: map['isValidated'],
     );
   }
 }

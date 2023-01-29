@@ -37,6 +37,7 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
               heroTag: 'btn3',
               highlightElevation: 0,
               onPressed: () {
+                Provider.of<AddInputProvider>(context, listen: false).clean();
                 showModalBottomSheet(
                   isScrollControlled: true,
                   context: context,
@@ -44,12 +45,9 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                     borderRadius: BorderRadius.circular(Insets.m),
                   ),
                   builder: (context) {
-                    return ChangeNotifierProvider(
-                      create: (context) => AddInputProvider(),
-                      child: const BuilderBottomSheet(
-                        height: 220,
-                        child: AddInput(),
-                      ),
+                    return const BuilderBottomSheet(
+                      height: 220,
+                      child: AddInput(),
                     );
                   },
                 );
