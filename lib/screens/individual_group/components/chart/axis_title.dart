@@ -51,8 +51,8 @@ SideTitles get bottomTitles {
   );
 }
 
-SideTitles leftTitles(Participant currentUserData,
-    List<UserInputData>? userData1) {
+SideTitles leftTitles(
+    Participant currentUserData, List<UserInputData>? userData1) {
   userData1 ??= [];
   final greater = max(
     currentUserData.inputData.isNotEmpty
@@ -64,10 +64,10 @@ SideTitles leftTitles(Participant currentUserData,
   return SideTitles(
     interval: value,
     showTitles: true,
-    reservedSize: 30,
+    reservedSize: greater < 5 ? 40 : 30,
     getTitlesWidget: (value, meta) {
       return StaticText(
-        text: value.round().toString(),
+        text: greater < 5 ? value.toStringAsFixed(2) : value.round().toString(),
         color: kSecondaryColor,
         fontSize: TextSize.xsBody,
       );
