@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/widgets/texts/extra_large_body.dart';
+import 'package:groupup/core/widgets/texts/medium_body.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/created_groups/components/dates.dart';
 
 class IndividualCreatedGroup extends StatelessWidget {
   const IndividualCreatedGroup({
-    required this.groups,
+    required this.group,
   });
 
-  final GroupModel groups;
+  final GroupModel group;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,9 @@ class IndividualCreatedGroup extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(37.5),
-            child: groups.image.isNotEmpty
+            child: group.image.isNotEmpty
                 ? Image.network(
-                    groups.image,
+                    group.image,
                     height: 75,
                     width: 75,
                     fit: BoxFit.cover,
@@ -38,15 +39,37 @@ class IndividualCreatedGroup extends StatelessWidget {
               padding: const EdgeInsets.only(
                 left: kDefaultPadding,
               ),
-              child: ExtraLargeBody(
-                text: groups.projectName,
-                overflow: TextOverflow.ellipsis,
-              ),
+              child: group.endDate!.isBefore(DateTime.now())
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        StaticText(
+                          text: Characters(group.projectName)
+                              .replaceAll(
+                                  Characters(''), Characters('\u{200B}'))
+                              .toString(),
+                          overflow: TextOverflow.ellipsis,
+                          fontSize: 20,
+                        ),
+                        const SizedBox(height: Insets.s),
+                        const MediumBody(
+                          text: 'Ended',
+                          color: kSecondaryColor,
+                        ),
+                      ],
+                    )
+                  : StaticText(
+                      text: Characters(group.projectName)
+                          .replaceAll(Characters(''), Characters('\u{200B}'))
+                          .toString(),
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: 20,
+                    ),
             ),
           ),
           const SizedBox(width: Insets.s),
           ShowDates(
-            groups: groups,
+            group: group,
           )
         ],
       ),

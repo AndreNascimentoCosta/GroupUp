@@ -6,10 +6,10 @@ import 'package:intl/intl.dart';
 
 class ShowDates extends StatelessWidget {
   const ShowDates({
-    required this.groups,
+    required this.group,
   });
 
-  final GroupModel groups;
+  final GroupModel group;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +29,13 @@ class ShowDates extends StatelessWidget {
           children: [
             StaticText(
               text: DateFormat('dd/MM/yyyy').format(
-                groups.startDate ?? DateTime.now(),
+                group.startDate ?? DateTime.now(),
               ),
             ),
             const SizedBox(height: kDefaultPadding / 2),
             StaticText(
                 text: DateFormat('dd/MM/yyyy').format(
-              groups.endDate ?? DateTime.now(),
+              group.endDate ?? DateTime.now(),
             )),
           ],
         ),

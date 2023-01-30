@@ -75,7 +75,7 @@ class BodyCreatedGroup extends StatelessWidget {
                 ),
                 itemCount: groups.length,
                 itemBuilder: (context, index) => IndividualCreatedGroup(
-                  groups: groups.elementAt(index),
+                  group: groups.elementAt(index),
                 ),
               );
             }
