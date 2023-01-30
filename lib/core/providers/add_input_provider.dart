@@ -21,6 +21,7 @@ import 'individual_group_provider.dart';
 class AddInputProvider extends ChangeNotifier {
   final TextEditingController inputController = TextEditingController();
   File? story;
+  bool isLoading = false;
 
   AddInputProvider() {
     inputController.addListener(notifyListeners);
@@ -242,6 +243,8 @@ class AddInputProvider extends ChangeNotifier {
   }
 
   Future<void> addInput(BuildContext context, String groupId) async {
+    isLoading = true;
+    notifyListeners();
     final user = Provider.of<AuthProvider>(context, listen: false).user;
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
@@ -298,6 +301,8 @@ class AddInputProvider extends ChangeNotifier {
             },
           );
           individualGroupProvider.getGroup(groupId, reset: false);
+          isLoading = false;
+          notifyListeners();
         }
       }
     }

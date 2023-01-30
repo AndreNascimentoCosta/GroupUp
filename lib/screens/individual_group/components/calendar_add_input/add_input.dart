@@ -144,14 +144,18 @@ class _AddInputState extends State<AddInput> {
                       pickImage(ImageSource.camera);
                     }, group.id);
                   },
-                  child: StandardTextStyle(
-                    text: 'OK',
-                    textAlign: TextAlign.center,
-                    fontSize: TextSize.mBody,
-                    color: addInputProvider.inputController.text.isEmpty
-                        ? kSecondaryColor
-                        : kPrimaryColor,
-                  ),
+                  child: addInputProvider.isLoading
+                      ? const CircularProgressIndicator(
+                          color: kPrimaryColor,
+                        )
+                      : StandardTextStyle(
+                          text: 'OK',
+                          textAlign: TextAlign.center,
+                          fontSize: TextSize.mBody,
+                          color: addInputProvider.inputController.text.isEmpty
+                              ? kSecondaryColor
+                              : kPrimaryColor,
+                        ),
                 ),
               ),
             ],
