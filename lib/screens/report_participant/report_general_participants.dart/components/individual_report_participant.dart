@@ -19,7 +19,9 @@ class IndividualParticipant extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: ButtonCommonStyle(
         onPressed: () {
-          final group = Provider.of<IndividualGroupProvider>(context, listen: false).group;
+          final group =
+              Provider.of<IndividualGroupProvider>(context, listen: false)
+                  .group;
           if (group == null) {
             return;
           }
@@ -38,11 +40,17 @@ class IndividualParticipant extends StatelessWidget {
               backgroundImage: NetworkImage(participant.profilePicture),
             ),
             const SizedBox(width: kDefaultPadding),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: StaticText(
-                text: participant.name,
-                fontSize: 20,
+            SizedBox(
+              width: 220,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: StaticText(
+                  text: Characters(participant.name)
+                      .replaceAll(Characters(''), Characters('\u{200B}'))
+                      .toString(),
+                      overflow: TextOverflow.ellipsis,
+                  fontSize: 20,
+                ),
               ),
             ),
             const Spacer(),
