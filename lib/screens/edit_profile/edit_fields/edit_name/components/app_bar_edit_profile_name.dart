@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -39,7 +41,12 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
-                    nameProvider.confirmDiscard(context);
+                    final user = Provider.of<AuthProvider>(context, listen: false).user;
+                    if (nameProvider.profileNameController.text == user?.name) {
+                      Navigator.pop(context);
+                    } else {
+                      nameProvider.confirmDiscard(context);
+                    }
                   },
                   child: GestureDetector(
                     child: Container(

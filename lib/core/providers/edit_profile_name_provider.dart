@@ -83,16 +83,4 @@ class EditProfileNameProvider extends ChangeNotifier {
       },
     );
   }
-
-  void Function()? back(BuildContext context) {
-    final nameText = profileNameController.text;
-
-    if ((nameText.isEmpty)) {
-      return null;
-    } else {
-      return () => {
-            confirmDiscard(context),
-          };
-    }
-  }
 }
