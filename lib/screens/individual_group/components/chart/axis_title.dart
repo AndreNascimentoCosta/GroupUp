@@ -64,10 +64,18 @@ SideTitles leftTitles(
   return SideTitles(
     interval: value,
     showTitles: true,
-    reservedSize: greater < 5 ? 40 : 30,
+    reservedSize: greater < 1
+        ? 50
+        : greater < 5
+            ? 40
+            : 30,
     getTitlesWidget: (value, meta) {
       return StaticText(
-        text: greater < 5 ? value.toStringAsFixed(2) : value.round().toString(),
+        text: greater < 1
+            ? value.toStringAsFixed(3)
+            : greater < 5
+                ? value.toStringAsFixed(2)
+                : value.round().toString(),
         color: kSecondaryColor,
         fontSize: TextSize.xsBody,
       );

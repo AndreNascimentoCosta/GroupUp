@@ -152,9 +152,13 @@ class _AddInputState extends State<AddInput> {
                           text: 'OK',
                           textAlign: TextAlign.center,
                           fontSize: TextSize.mBody,
-                          color: addInputProvider.inputController.text.isEmpty
-                              ? kSecondaryColor
-                              : kPrimaryColor,
+                          color:
+                              addInputProvider.inputController.text.isEmpty ||
+                                      int.tryParse(addInputProvider
+                                              .inputController.text) ==
+                                          0
+                                  ? kSecondaryColor
+                                  : kPrimaryColor,
                         ),
                 ),
               ),
