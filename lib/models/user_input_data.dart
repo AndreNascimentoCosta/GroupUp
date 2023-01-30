@@ -1,6 +1,6 @@
 class UserInputData {
   final DateTime date;
-  final double value;
+  double value;
   final String? image;
   Map<String, dynamic>? isValidated;
 

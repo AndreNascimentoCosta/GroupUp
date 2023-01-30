@@ -157,8 +157,8 @@ class AddInputProvider extends ChangeNotifier {
       if (groupData != null) {
         final participantsData =
             GroupModel.fromMap(group.id, groupData).participantsData;
-        final userIndex =
-            participantsData.indexWhere((element) => element.uid == participantId);
+        final userIndex = participantsData
+            .indexWhere((element) => element.uid == participantId);
         if (userIndex != -1) {
           final inputDataIndex = participantsData[userIndex]
               .inputData
@@ -170,8 +170,8 @@ class AddInputProvider extends ChangeNotifier {
               currentUser.id: true,
             };
           } else {
-            userParticipantData.inputData[inputDataIndex].isValidated?[currentUser.id] =
-                true;
+            userParticipantData
+                .inputData[inputDataIndex].isValidated?[currentUser.id] = true;
           }
           await FirebaseFirestore.instance
               .collection('groups')
@@ -211,8 +211,8 @@ class AddInputProvider extends ChangeNotifier {
       if (groupData != null) {
         final participantsData =
             GroupModel.fromMap(group.id, groupData).participantsData;
-        final userIndex =
-            participantsData.indexWhere((element) => element.uid == participantId);
+        final userIndex = participantsData
+            .indexWhere((element) => element.uid == participantId);
         if (userIndex != -1) {
           final inputDataIndex = participantsData[userIndex]
               .inputData
@@ -224,8 +224,15 @@ class AddInputProvider extends ChangeNotifier {
               currentUser.id: false,
             };
           } else {
-            userParticipantData.inputData[inputDataIndex].isValidated?[currentUser.id] =
-                false;
+            userParticipantData
+                .inputData[inputDataIndex].isValidated?[currentUser.id] = false;
+          }
+          if (userParticipantData.inputData[inputDataIndex].isValidated!.entries
+                  .where((element) => element.value == false)
+                  .toList()
+                  .length >
+              participantsData.length / 2) {
+            userParticipantData.inputData[inputDataIndex].value = 0;
           }
           await FirebaseFirestore.instance
               .collection('groups')
