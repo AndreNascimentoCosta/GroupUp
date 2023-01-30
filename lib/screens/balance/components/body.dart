@@ -77,7 +77,7 @@ class GroupsBalance extends StatelessWidget {
                   itemCount: groups.length,
                   itemBuilder: (context, index) {
                     return IndividualCardBalance(
-                      groups: groups[index],
+                      group: groups[index],
                     );
                   },
                 ),

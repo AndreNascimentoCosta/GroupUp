@@ -6,9 +6,9 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 
 class IndividualCardBalance extends StatelessWidget {
-  const IndividualCardBalance({required this.groups});
+  const IndividualCardBalance({required this.group});
 
-  final GroupModel groups;
+  final GroupModel group;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,9 @@ class IndividualCardBalance extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(37.5),
-            child: groups.image.isNotEmpty
+            child: group.image.isNotEmpty
                 ? Image.network(
-                    groups.image,
+                    group.image,
                     height: 50,
                     width: 50,
                     fit: BoxFit.cover,
@@ -47,12 +47,13 @@ class IndividualCardBalance extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             LargeBody(
-              text: groups.projectName.replaceAll(RegExp('#'), ''),
+              text: group.projectName.replaceAll(RegExp('#'), ''),
               fontFamily: 'Montserrat-SemiBold',
             ),
             const SizedBox(height: Insets.s),
-            const MediumBody(
-              text: 'Ended',
+            MediumBody(
+              text:
+                  group.endDate!.isBefore(DateTime.now()) ? 'Ended' : 'Ongoing',
               color: kSecondaryColor,
             ),
           ],
