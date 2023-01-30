@@ -35,7 +35,6 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                     child: phoneProvider.pageIndex != 0
                         ? ButtonCommonStyle(
                             onPressed: () {
-                              phoneProvider.start = 30;
                               phoneProvider.controller.previousPage(
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.ease);

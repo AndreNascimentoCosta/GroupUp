@@ -25,6 +25,7 @@ class PhoneAuthenProvider extends ChangeNotifier {
   int start = 30;
   final controller = PageController(initialPage: 0);
   int pageIndex = 0;
+  Timer? timer;
 
   void onPaste(String value) {
     if (value.length == 6) {
@@ -51,7 +52,9 @@ class PhoneAuthenProvider extends ChangeNotifier {
 
   void startTimer() {
     const onesec = Duration(seconds: 1);
-    Timer.periodic(
+    start = 30;
+    timer?.cancel();
+    timer = Timer.periodic(
       onesec,
       (timer) {
         if (start == 0) {
@@ -72,8 +75,8 @@ class PhoneAuthenProvider extends ChangeNotifier {
     } else {
       return () => {
             Provider.of<AuthProvider>(context, listen: false)
-                    .phoneLogin(context),
-                startTimer(),
+                .phoneLogin(context),
+            startTimer(),
           };
     }
   }
