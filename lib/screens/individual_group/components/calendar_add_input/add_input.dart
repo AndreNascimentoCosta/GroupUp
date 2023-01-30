@@ -127,7 +127,7 @@ class _AddInputState extends State<AddInput> {
                       inputFormatters: [
                         ReplaceCommaFormatter(),
                         FilteringTextInputFormatter.allow(
-                          RegExp(r'^\d*\.?\d{0,2}'),
+                          RegExp(r'^\d*\.?\d{0,3}'),
                         ),
                       ],
                     ),
