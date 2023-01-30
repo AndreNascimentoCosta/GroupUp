@@ -109,7 +109,7 @@ class CreateGroupProvider extends ChangeNotifier {
             (double.tryParse(rewardText) ?? 0) <= 0.0)) {
       return null;
     } else if (pageIndex == 1 &&
-        (noParticipantsText.isEmpty &&
+        (noParticipantsText.isEmpty ||
                 (int.tryParse(noParticipantsText) ?? 0) > 50 ||
             startDateText.isEmpty ||
             endDateText.isEmpty)) {
