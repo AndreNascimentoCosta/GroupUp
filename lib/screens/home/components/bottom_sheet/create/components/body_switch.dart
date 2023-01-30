@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/models/switch.dart';
-import 'package:groupup/styles/text.dart';
 
 class BodySwitch extends StatefulWidget {
   const BodySwitch({required this.text, required this.switchType});
@@ -21,7 +21,13 @@ class _BodySwitchState extends State<BodySwitch> {
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Row(
         children: [
-          SizedBox(width: 250, child: StandardTextStyle(text: widget.text, fontSize:  14)),
+          SizedBox(
+            width: 250,
+            child: StaticText(
+              text: widget.text,
+              fontSize: 14,
+            ),
+          ),
           const Spacer(),
           widget.switchType,
         ],

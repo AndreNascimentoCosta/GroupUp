@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/first_page.dart';
@@ -8,7 +9,6 @@ import 'package:groupup/screens/home/components/bottom_sheet/create/pages/second
 import 'package:groupup/screens/home/components/bottom_sheet/create/pages/third_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -54,7 +54,7 @@ class _CreatePageViewState extends State<CreatePageView> {
                         : null,
                   ),
                 ),
-                const StandardTextStyle(
+                const StaticText(
                   text: 'Create a group',
                   fontFamily: 'Montserrat-SemiBold',
                   fontSize: 28,

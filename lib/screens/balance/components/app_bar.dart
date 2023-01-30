@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/styles/text.dart';
 
 class AppBarBalance extends StatelessWidget with PreferredSizeWidget {
   const AppBarBalance({super.key});
@@ -29,7 +29,7 @@ class AppBarBalance extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const StandardTextStyle(
+                child: const StaticText(
                   text: 'Balance',
                   fontFamily: 'Montserrat-Bold',
                   fontSize: TextSize.subTitle,
@@ -39,7 +39,7 @@ class AppBarBalance extends StatelessWidget with PreferredSizeWidget {
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   child: SvgPicture.asset(
-                      'assets/icons/arrow_left.svg',
+                    'assets/icons/arrow_left.svg',
                     height: Insets.l * 1.25,
                     width: Insets.l * 1.25,
                     color: Colors.black,

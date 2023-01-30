@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/switch.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/page_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
-import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -23,7 +23,8 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
   final SwitchModel switchModel = SwitchModel();
   @override
   Widget build(BuildContext context) {
-    final phoneProvider = Provider.of<PhoneAuthenProvider>(context, listen: false);
+    final phoneProvider =
+        Provider.of<PhoneAuthenProvider>(context, listen: false);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -80,7 +81,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                           width: 31,
                         ),
                         const Expanded(
-                          child: StandardTextStyle(
+                          child: StaticText(
                             text: 'Continue with Google',
                             fontSize: 18.92,
                             textAlign: TextAlign.center,
@@ -97,8 +98,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                 onPressed: () {
                   Navigator.pop(context);
                   phoneProvider.start = 30;
-                  phoneProvider
-                      .clean();
+                  phoneProvider.clean();
                   showModalBottomSheet(
                       isScrollControlled: true,
                       context: context,
@@ -135,7 +135,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                     child: Row(
                       children: const [
                         Expanded(
-                          child: StandardTextStyle(
+                          child: StaticText(
                             text: 'Continue with phone number',
                             fontSize: 18.92,
                             textAlign: TextAlign.center,

@@ -1,8 +1,8 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/styles/text.dart';
 
 class DropDown extends StatefulWidget {
   const DropDown({super.key});
@@ -20,7 +20,7 @@ class _DropDownState extends State<DropDown> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const StandardTextStyle(text: 'Type', fontSize: TextSize.lBody),
+        const StaticText(text: 'Type', fontSize: TextSize.lBody),
         const SizedBox(height: Insets.s),
         SizedBox(
           width: 120,
@@ -46,7 +46,7 @@ class _DropDownState extends State<DropDown> {
               items: items
                   .map((item) => DropdownMenuItem<String>(
                       value: item,
-                      child: StandardTextStyle(
+                      child: StaticText(
                         text: item,
                         fontFamily: 'Montserrat-Regular',
                         fontSize: TextSize.mBody,

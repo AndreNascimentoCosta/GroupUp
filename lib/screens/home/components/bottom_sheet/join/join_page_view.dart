@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/join/pages/first_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 
 class JoinPageView extends StatefulWidget {
@@ -45,7 +45,7 @@ class _JoinPageViewState extends State<JoinPageView> {
                         : null,
                   ),
                 ),
-                StandardTextStyle(
+                StaticText(
                   text: joinGroupProvider.pageIndex == 0
                       ? 'Join a group'
                       : joinGroupProvider.pageIndex == 1

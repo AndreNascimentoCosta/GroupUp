@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/first_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/second_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPhonePageView extends StatefulWidget {
@@ -50,7 +50,7 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                         : null,
                   ),
                 ),
-                StandardTextStyle(
+                StaticText(
                   textAlign: TextAlign.center,
                   text: phoneProvider.pageIndex < 2
                       ? 'Continue'

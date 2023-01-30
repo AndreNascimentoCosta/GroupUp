@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
-import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 import 'package:currency_picker/currency_picker.dart';
 
@@ -96,7 +96,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                 children: [
                   Column(
                     children: [
-                      const StandardTextStyle(
+                      const StaticText(
                         text: 'Currency',
                         fontSize: TextSize.lBody,
                       ),

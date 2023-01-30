@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
-import 'package:groupup/styles/text.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +41,7 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const StandardTextStyle(
+                    const StaticText(
                       text: 'Phone number',
                       fontSize: TextSize.lBody,
                     ),

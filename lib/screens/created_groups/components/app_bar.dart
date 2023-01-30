@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/styles/text.dart';
 
 class AppBarCreatedGroups extends StatelessWidget with PreferredSizeWidget {
   const AppBarCreatedGroups({super.key});
@@ -29,7 +29,7 @@ class AppBarCreatedGroups extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const StandardTextStyle(
+                child: const StaticText(
                   text: 'Created groups',
                   fontFamily: 'Montserrat-Bold',
                   fontSize: TextSize.subTitle,

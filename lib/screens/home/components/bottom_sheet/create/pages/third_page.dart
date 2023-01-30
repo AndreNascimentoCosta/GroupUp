@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -34,7 +34,7 @@ class ThirdPageCreate extends StatelessWidget {
             color: kPrimaryColor,
           ),
           const SizedBox(height: kDefaultPadding),
-          const StandardTextStyle(
+          const StaticText(
             text: 'Completed',
             fontFamily: 'Montserrat-SemiBold',
             fontSize: 28,
@@ -45,7 +45,7 @@ class ThirdPageCreate extends StatelessWidget {
             children: [
               const SizedBox(
                 width: 180,
-                child: StandardTextStyle(
+                child: StaticText(
                   text: 'Group code',
                   fontSize: TextSize.lBody,
                 ),

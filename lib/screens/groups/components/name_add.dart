@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
-import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 
 class NameAdd extends StatefulWidget {
@@ -24,9 +24,9 @@ class _NameAddState extends State<NameAdd> {
         children: [
           const Padding(
             padding: EdgeInsets.only(top: kDefaultPadding * 2),
-            child: StandardTextStyle(
-              textAlign: TextAlign.center,
+            child: StaticText(
               text: 'Name',
+              textAlign: TextAlign.center,
               fontFamily: 'Montserrat-SemiBold',
               fontSize: 28,
             ),

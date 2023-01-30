@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/otp_field.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
-import 'package:groupup/styles/text.dart';
 import 'package:provider/provider.dart';
 
 class SecondPageSignUp extends StatefulWidget {
@@ -40,7 +40,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: Insets.l * 2),
-              StandardTextStyle(
+              StaticText(
                   text: 'Code is sent to $phoneControllerText',
                   fontSize: TextSize.mBody,
                   color: kSecondaryColor),
@@ -52,7 +52,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const StandardTextStyle(
+                  const StaticText(
                       text: "Didn't receive a code?",
                       fontSize: TextSize.mBody,
                       color: kSecondaryColor),
@@ -63,7 +63,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                           ? null
                           : authProvider.phoneLogin(context);
                     },
-                    child: StandardTextStyle(
+                    child: StaticText(
                         text: phoneProvider.start != 0
                             ? 'Request in ${phoneProvider.start} sec'
                             : 'Request again',

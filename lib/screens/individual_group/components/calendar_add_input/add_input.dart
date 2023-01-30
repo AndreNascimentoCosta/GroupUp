@@ -7,9 +7,9 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
-import 'package:groupup/styles/text.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -148,7 +148,7 @@ class _AddInputState extends State<AddInput> {
                       ? const CircularProgressIndicator(
                           color: kPrimaryColor,
                         )
-                      : StandardTextStyle(
+                      : StaticText(
                           text: 'OK',
                           textAlign: TextAlign.center,
                           fontSize: TextSize.mBody,

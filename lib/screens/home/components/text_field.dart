@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/styles/text.dart';
 
 class TextFieldModelHome extends StatefulWidget {
   const TextFieldModelHome({
@@ -66,7 +66,7 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          StandardTextStyle(
+          StaticText(
             text: widget.header,
             fontSize: TextSize.lBody,
           ),
