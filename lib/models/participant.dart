@@ -1,29 +1,25 @@
-import 'package:flutter/material.dart';
+import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_input_data.dart';
-import 'package:provider/provider.dart';
 
-import '../core/providers/individual_group_provider.dart';
 
 class Participant {
   String name, profilePicture, uid;
   bool isAdmin;
 
-  String rank(BuildContext context) {
-    final individualGroupProvider = Provider.of<IndividualGroupProvider>(
-      context,
-      listen: false,
-    );
+  String rank(GroupModel? group) {
     if (inputData.isEmpty) {
       return '-';
     }
-    if (individualGroupProvider.group == null) return '-';
+    if (group == null) {
+      return '-';
+    }
     int rank = 1;
-    for (var element in individualGroupProvider.group!.participantsData) {
+    for (var element in group.participantsData) {
       if (element.sumData.value > sumData.value) {
         rank++;
       }
     }
-    return '${rank.toString()}º';
+    return '$rankº';
   }
 
   List<UserInputData> inputData;

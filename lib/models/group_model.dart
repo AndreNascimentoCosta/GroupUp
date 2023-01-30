@@ -11,8 +11,10 @@ class GroupModel {
   List<String> participants;
   List<Participant> participantsData;
 
-  String get rank {
-    return '-'; // foda
+  Participant currentParticipant(String userId) {
+    return participantsData.firstWhere(
+      (element) => element.uid == userId,
+    );
   }
 
   String get daysGone {

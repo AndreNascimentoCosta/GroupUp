@@ -61,7 +61,8 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                       child: SizedBox(
                         width: 25,
                         child: ExtraLargeBody(
-                            text: widget.participant.rank(context)),
+                            text: widget.participant
+                                .rank(individualGroupProvider.group)),
                       ),
                     ),
                     const SizedBox(width: kDefaultPadding),

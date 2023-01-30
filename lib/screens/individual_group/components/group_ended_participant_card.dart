@@ -56,7 +56,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                   child: SizedBox(
                     width: 25,
                     child: MediumBody(
-                        text: widget.participant.rank(context)),
+                        text: widget.participant.rank(individualGroupProvider.group)),
                   ),
                 ),
                 const SizedBox(width: kDefaultPadding / 2),

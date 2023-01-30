@@ -21,9 +21,7 @@ class StatsGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentUserId = Provider.of<AuthProvider>(context).user?.id;
-    final currentUserRank = group.participantsData
-        .firstWhere((element) => element.uid == currentUserId)
-        .rank(context);
+    final currentUserRank = group.currentParticipant(currentUserId!).rank(group);
     return ValueListenableBuilder(
       valueListenable: homeViewModel.isEditing,
       builder: (context, value, child) {
