@@ -22,9 +22,8 @@ class StatsGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     final currentUserId = Provider.of<AuthProvider>(context).user?.id;
     final currentUserRank = group.participantsData
-                            .firstWhere(
-                                (element) => element.uid == currentUserId)
-                            .rank(context);
+        .firstWhere((element) => element.uid == currentUserId)
+        .rank(context);
     return ValueListenableBuilder(
       valueListenable: homeViewModel.isEditing,
       builder: (context, value, child) {
@@ -70,33 +69,59 @@ class StatsGroup extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: Insets.l,
-                  child: Column(
-                    children: [
-                      MediumBody(
-                        text: currentUserRank,
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: kDefaultPadding * 0.25,
-                      ),
-                      MediumBody(
-                        text: group.daysGone,
-                        textAlign: TextAlign.center,
-                        color: Colors.red,
-                      ),
-                      const SizedBox(
-                        height: kDefaultPadding * 0.25,
-                      ),
-                      MediumBody(
-                        text: group.daysLeft,
-                        textAlign: TextAlign.center,
-                        color: kPrimaryColor,
-                      ),
-                    ],
+                if (group.endDate != null)
+                  SizedBox(
+                    width: Insets.l,
+                    child: group.endDate!.isBefore(DateTime.now())
+                        ? Column(
+                            children: [
+                              MediumBody(
+                                text: currentUserRank,
+                                textAlign: TextAlign.center,
+                              ),
+                              const SizedBox(
+                                height: kDefaultPadding * 0.25,
+                              ),
+                              const MediumBody(
+                                text: '-',
+                                textAlign: TextAlign.center,
+                                color: Colors.red,
+                              ),
+                              const SizedBox(
+                                height: kDefaultPadding * 0.25,
+                              ),
+                              const MediumBody(
+                                text: '-',
+                                textAlign: TextAlign.center,
+                                color: kPrimaryColor,
+                              ),
+                            ],
+                          )
+                        : Column(
+                            children: [
+                              MediumBody(
+                                text: currentUserRank,
+                                textAlign: TextAlign.center,
+                              ),
+                              const SizedBox(
+                                height: kDefaultPadding * 0.25,
+                              ),
+                              MediumBody(
+                                text: group.daysGone,
+                                textAlign: TextAlign.center,
+                                color: Colors.red,
+                              ),
+                              const SizedBox(
+                                height: kDefaultPadding * 0.25,
+                              ),
+                              MediumBody(
+                                text: group.daysLeft,
+                                textAlign: TextAlign.center,
+                                color: kPrimaryColor,
+                              ),
+                            ],
+                          ),
                   ),
-                ),
               ],
             ),
           ),

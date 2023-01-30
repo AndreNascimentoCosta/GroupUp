@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/large_body.dart';
+import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -90,20 +93,41 @@ class _GroupsCardState extends State<GroupsCard> {
                       width: 75,
                     ),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: kDefaultPadding,
-                ),
-                child: StaticText(
-                  text: Characters(widget.group.projectName)
-                      .replaceAll(Characters(''), Characters('\u{200B}'))
-                      .toString(),
-                  overflow: TextOverflow.ellipsis,
-                  fontSize: 20,
+            if (widget.group.endDate != null)
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: kDefaultPadding,
+                  ),
+                  child: widget.group.endDate!.isBefore(DateTime.now())
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            StaticText(
+                              text: Characters(widget.group.projectName)
+                                  .replaceAll(
+                                      Characters(''), Characters('\u{200B}'))
+                                  .toString(),
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: 20,
+                            ),
+                            const SizedBox(height: Insets.s),
+                            const MediumBody(
+                              text: 'Ended',
+                              color: kSecondaryColor,
+                            ),
+                          ],
+                        )
+                      : StaticText(
+                          text: Characters(widget.group.projectName)
+                              .replaceAll(
+                                  Characters(''), Characters('\u{200B}'))
+                              .toString(),
+                          overflow: TextOverflow.ellipsis,
+                          fontSize: 20,
+                        ),
                 ),
               ),
-            ),
             StatsGroup(
               group: widget.group,
               homeViewModel: widget.homeViewModel,
