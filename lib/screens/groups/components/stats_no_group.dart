@@ -56,6 +56,7 @@ class StatsNoGroup extends StatelessWidget {
               MediumBody(
                 text: '-',
                 textAlign: TextAlign.center,
+                color: kSecondaryColor,
               ),
               SizedBox(
                 height: kDefaultPadding * 0.25,
