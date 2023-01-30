@@ -9,18 +9,28 @@ class EditProfileNameBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var editProfileNameController = Provider.of<EditProfileNameProvider>(context).profileNameController;
+    var editProfileNameController =
+        Provider.of<EditProfileNameProvider>(context).profileNameController;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,
         horizontal: kDefaultPadding,
       ),
       child: SizedBox(
-        height: 50,
+        height: 70,
         width: 400,
         child: TextFieldModel(
           controller: editProfileNameController,
           hint: '',
+          validator: (value) {
+            if (value!.isNotEmpty && value.length < 3) {
+              return 'Name must be at least 3 characters';
+            } else if (value.length >= 30) {
+              return 'Name must be less than 30 characters';
+            } else {
+              return null;
+            }
+          },
           maxLength: 30,
           border: const UnderlineInputBorder(
             borderSide: BorderSide(

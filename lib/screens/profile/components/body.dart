@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/balance/screens/balance.dart';
@@ -131,10 +132,22 @@ class _BodyProfileState extends State<BodyProfile> {
               height: kDefaultPadding,
             ),
             if (user != null)
-              Header(
-                text: user.name,
-                textAlign: TextAlign.center,
-                fontFamily: 'Montserrat-SemiBold',
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 250,
+                    child: StaticText(
+                      text: Characters(user.name)
+                          .replaceAll(Characters(''), Characters('\u{200B}'))
+                          .toString(),
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      fontSize: TextSize.subTitle,
+                      fontFamily: 'Montserrat-SemiBold',
+                    ),
+                  ),
+                ],
               ),
             const SizedBox(height: kDefaultPadding * 1.25),
             ButtonCommonStyle(

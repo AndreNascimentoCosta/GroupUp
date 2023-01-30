@@ -20,7 +20,7 @@ class EditProfileNameProvider extends ChangeNotifier {
     final nameText = profileNameController.text;
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
 
-    if ((nameText.isEmpty)) {
+    if ((nameText.isEmpty || nameText.length < 3 || nameText.length >= 30)) {
       return null;
     } else {
       return () {

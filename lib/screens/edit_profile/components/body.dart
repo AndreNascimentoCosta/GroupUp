@@ -187,8 +187,15 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     ),
                   ),
                   const SizedBox(width: Insets.l * 2),
-                  StaticText(
-                      text: user?.name ?? 'Name', fontSize: TextSize.lBody),
+                  SizedBox(
+                    width: 200,
+                    child: StaticText(
+                        text: Characters(user?.name ?? 'Name')
+                            .replaceAll(Characters(''), Characters('\u{200B}'))
+                            .toString(),
+                            overflow: TextOverflow.ellipsis,
+                        fontSize: TextSize.lBody),
+                  ),
                 ],
               ),
             ),
