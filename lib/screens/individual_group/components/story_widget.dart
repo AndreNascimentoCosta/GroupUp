@@ -256,6 +256,7 @@ class StoryWidget extends StatelessWidget {
                               fontSize: TextSize.mBody,
                               color: Colors.white,
                             ),
+                            duration: Duration(seconds: 2),
                             backgroundColor: kSecondaryColor,
                           ),
                         );
