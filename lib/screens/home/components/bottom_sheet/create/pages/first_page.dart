@@ -74,14 +74,14 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               validator: (value) {
                 if (value!.isNotEmpty && value.length < 3) {
                   return 'Objective must be at least 3 characters';
-                } else if (value.length >= 30) {
-                  return 'Objective must be less than 30 characters';
+                } else if (value.length >= 50) {
+                  return 'Objective must be less than 50 characters';
                 }
                 else {
                   return null;
                 }
               },
-              maxLength: 30,
+              maxLength: 50,
               hint: 'Enter objective',
               textInputAction: TextInputAction.next,
               padding: const EdgeInsets.symmetric(

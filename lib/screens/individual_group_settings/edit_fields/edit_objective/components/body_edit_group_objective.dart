@@ -28,7 +28,17 @@ class EditGroupObjectiveBody extends StatelessWidget {
             child: TextFieldModel(
               controller: groupObjectiveController,
               hint: '',
-              maxLength: 30,
+              validator: (value) {
+                if (value!.isNotEmpty && value.length < 3) {
+                  return 'Objective must be at least 3 characters';
+                } else if (value.length >= 50) {
+                  return 'Objective must be less than 50 characters';
+                }
+                else {
+                  return null;
+                }
+              },
+              maxLength: 50,
               border: const UnderlineInputBorder(
                 borderSide: BorderSide(
                   color: kSecondaryColor,

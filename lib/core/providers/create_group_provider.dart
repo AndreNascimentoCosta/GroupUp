@@ -104,7 +104,7 @@ class CreateGroupProvider extends ChangeNotifier {
         (projectNameText.length < 3 ||
             objectiveText.length < 3 ||
             projectNameText.length >= 20 ||
-            objectiveText.length >= 30 ||
+            objectiveText.length >= 50 ||
             rewardText.isEmpty ||
             (double.tryParse(rewardText) ?? 0) <= 0.0)) {
       return null;

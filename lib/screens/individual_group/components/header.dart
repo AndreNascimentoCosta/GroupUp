@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/objective_reward.dart';
 import 'package:groupup/screens/individual_group/components/start_end_date.dart';
 import 'package:provider/provider.dart';
@@ -38,9 +42,51 @@ class HeaderIndividualGroup extends StatelessWidget {
             child: Row(
               children: [
                 SizedBox(width: MediaQuery.of(context).size.width * 0.075),
-                ObjectiveRewardModel(
-                  icon: 'assets/icons/objective.svg',
-                  text: group.objective,
+                ButtonCommonStyle(
+                  onPressed: () {
+                    showCupertinoDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const StaticText(
+                            text: 'Objective',
+                            textAlign: TextAlign.center,
+                            fontFamily: 'Montserrat-SemiBold',
+                            fontSize: TextSize.lBody,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          content: StaticText(
+                            text:
+                                group.objective,
+                            maxLines: 4,
+                            textAlign: TextAlign.center,
+                            fontSize: TextSize.mBody,
+                          ),
+                          actionsAlignment: MainAxisAlignment.center,
+                          contentPadding:
+                              const EdgeInsets.only(top: 20, bottom: 20),
+                          actions: [
+                            ButtonCommonStyle(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const StaticText(
+                                text: 'Ok',
+                                color: kPrimaryColor,
+                                fontSize: TextSize.mBody,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: ObjectiveRewardModel(
+                    icon: 'assets/icons/objective.svg',
+                    text: group.objective,
+                  ),
                 ),
                 VerticalDivider(
                   width: MediaQuery.of(context).size.width * 0.115,
