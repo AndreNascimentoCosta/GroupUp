@@ -95,7 +95,7 @@ class _AddInputState extends State<AddInput> {
                   const SizedBox(width: Insets.l),
                   SizedBox(
                     width: 200,
-                    child: TextField(
+                    child: TextFormField(
                       controller: addInputProvider.inputController,
                       keyboardType:
                           const TextInputType.numberWithOptions(decimal: true),
@@ -106,6 +106,8 @@ class _AddInputState extends State<AddInput> {
                       decoration: InputDecoration(
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        focusedErrorBorder: InputBorder.none,
                         hintText: 'Enter data',
                         suffixIcon:
                             addInputProvider.inputController.text.isEmpty
@@ -124,6 +126,14 @@ class _AddInputState extends State<AddInput> {
                           fontSize: TextSize.lBody,
                         ),
                       ),
+                      autovalidateMode: AutovalidateMode.always,
+                      validator: (value) {
+                        if ((int.tryParse(value!) ?? 0) > 99999) {
+                          return 'Value must be less than 99999';
+                        } else {
+                          return null;
+                        }
+                      },
                       inputFormatters: [
                         ReplaceCommaFormatter(),
                         FilteringTextInputFormatter.allow(

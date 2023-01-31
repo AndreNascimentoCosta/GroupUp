@@ -31,7 +31,15 @@ class IndividualValue extends StatelessWidget {
                 SizedBox(
                   width: 65,
                   child: ExtraLargeBody(
-                    text: userInputData.value.toString(),
+                    text: userInputData.value == 0
+                        ? userInputData.value.toString()
+                        : userInputData.value < 1
+                            ? userInputData.value.toStringAsFixed(3)
+                            : userInputData.value < 5
+                                ? userInputData.value.toStringAsFixed(2)
+                                : userInputData.value
+                                    .round()
+                                    .toStringAsFixed(1),
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -40,8 +48,7 @@ class IndividualValue extends StatelessWidget {
                 ValueListenableBuilder(
                   valueListenable: dropDownModel.isOpened,
                   builder: ((context, value, child) {
-                    return 
-                    ImageIcon(
+                    return ImageIcon(
                       AssetImage(
                         dropDownModel.isOpened.value
                             ? 'assets/icons/minus.png'

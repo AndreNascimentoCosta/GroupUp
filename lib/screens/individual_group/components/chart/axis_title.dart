@@ -68,7 +68,13 @@ SideTitles leftTitles(
         ? 50
         : greater < 5
             ? 40
-            : 30,
+            : greater > 999
+                ? 40
+                : greater > 9999
+                    ? 50
+                    : greater > 99999
+                        ? 80
+                        : 30,
     getTitlesWidget: (value, meta) {
       return StaticText(
         text: greater < 1
