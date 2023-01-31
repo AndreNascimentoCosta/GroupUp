@@ -71,6 +71,16 @@ class Participant {
     );
   }
 
+  factory Participant.empty() {
+    return Participant(
+      uid: '',
+      name: '',
+      profilePicture: '',
+      inputData: [],
+      isAdmin: false,
+    );
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'uid': uid,

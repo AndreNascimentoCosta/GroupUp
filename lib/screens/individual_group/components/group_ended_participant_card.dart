@@ -56,7 +56,9 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                   child: SizedBox(
                     width: 25,
                     child: MediumBody(
-                        text: widget.participant.rank(individualGroupProvider.group)),
+                      text: widget.participant
+                          .rank(individualGroupProvider.group),
+                    ),
                   ),
                 ),
                 const SizedBox(width: kDefaultPadding / 2),
@@ -102,8 +104,8 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                               ),
                               child: StaticText(
                                 text: Characters(widget.participant.name)
-                                    .replaceAll(Characters(''),
-                                        Characters('\u{200B}'))
+                                    .replaceAll(
+                                        Characters(''), Characters('\u{200B}'))
                                     .toString(),
                                 overflow: TextOverflow.ellipsis,
                                 fontSize: TextSize.mBody,

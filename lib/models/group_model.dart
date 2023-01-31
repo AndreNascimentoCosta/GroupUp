@@ -14,6 +14,7 @@ class GroupModel {
   Participant currentParticipant(String userId) {
     return participantsData.firstWhere(
       (element) => element.uid == userId,
+      orElse: () => Participant.empty(),
     );
   }
 
