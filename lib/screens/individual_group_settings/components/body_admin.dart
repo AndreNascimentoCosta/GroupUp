@@ -12,7 +12,6 @@ import 'package:groupup/screens/individual_group_settings/edit_fields/edit_dates
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_no_participants/edit_group_max_participants.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_objective/edit_group_objective.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/edit_group_name.dart';
-import 'package:groupup/screens/individual_group_settings/edit_fields/edit_reward/edit_group_reward.dart';
 import 'package:groupup/screens/report_participant/report_general_participants.dart/screens/report_participant.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -84,20 +83,6 @@ class BodyAdminSettings extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return EditGroupRewardScreen(groups: groups);
-                    },
-                  ),
-                );
-              },
-              child: const BodyContentArrow(name: 'Reward'),
-            ),
-            const SizedBox(height: kDefaultPadding * 1.5),
-            ButtonCommonStyle(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
                       return EditGroupDatesScreen(groups: groups);
                     },
                   ),
@@ -134,7 +119,7 @@ class BodyAdminSettings extends StatelessWidget {
               text: 'Allow refund request',
               boolValue: groups.allowRefundRequest,
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.13),
             Row(
               children: [
                 const SizedBox(
