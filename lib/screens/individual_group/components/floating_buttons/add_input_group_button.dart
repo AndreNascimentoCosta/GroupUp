@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
@@ -37,20 +41,66 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
               heroTag: 'btn3',
               highlightElevation: 0,
               onPressed: () {
+                final group =
+                    Provider.of<IndividualGroupProvider>(context, listen: false)
+                        .group;
                 Provider.of<AddInputProvider>(context, listen: false).clean();
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(Insets.m),
-                  ),
-                  builder: (context) {
-                    return const BuilderBottomSheet(
-                      height: 220,
-                      child: AddInput(),
-                    );
-                  },
-                );
+                if (group == null) return;
+                if (group.maxParticipants > 1 &&
+                    group.maxParticipants > group.participants.length) {
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const StaticText(
+                          text: "You can't do this",
+                          textAlign: TextAlign.center,
+                          fontFamily: 'Montserrat-SemiBold',
+                          fontSize: TextSize.lBody,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        content: const StaticText(
+                          text:
+                              "To add data, you have to wait \nfor everyone to join the group. \nIf you still want to add data, \nplease change the number \nof participants.",
+                          maxLines: 5,
+                          textAlign: TextAlign.center,
+                          fontSize: TextSize.mBody,
+                        ),
+                        actionsAlignment: MainAxisAlignment.center,
+                        contentPadding:
+                            const EdgeInsets.only(top: 20, bottom: 20),
+                        actions: [
+                          ButtonCommonStyle(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const StaticText(
+                              text: 'OK',
+                              fontSize: TextSize.mBody,
+                              color: kPrimaryColor,
+                            ),
+                          )
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(Insets.m),
+                    ),
+                    builder: (context) {
+                      return const BuilderBottomSheet(
+                        height: 220,
+                        child: AddInput(),
+                      );
+                    },
+                  );
+                }
               },
               backgroundColor: widget.backgroundColor,
               elevation: 0,
