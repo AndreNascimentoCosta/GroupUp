@@ -9,7 +9,7 @@ import 'package:groupup/screens/individual_group_settings/components/body_conten
 import 'package:groupup/screens/individual_group_settings/components/other_options.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_dates/edit_group_dates.dart';
-import 'package:groupup/screens/individual_group_settings/edit_fields/edit_max_participants/edit_group_max_participants.dart';
+import 'package:groupup/screens/individual_group_settings/edit_fields/edit_no_participants/edit_group_max_participants.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_objective/edit_group_objective.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/edit_group_name.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_reward/edit_group_reward.dart';
@@ -118,7 +118,7 @@ class BodyAdminSettings extends StatelessWidget {
                 );
               },
               child: const BodyContentArrow(
-                name: 'Maximum number of participants',
+                name: 'Number of participants',
                 maxLine: 2,
               ),
             ),
