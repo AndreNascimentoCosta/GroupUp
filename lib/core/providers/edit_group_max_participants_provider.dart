@@ -10,10 +10,10 @@ import 'package:provider/provider.dart';
 
 import '../widgets/texts/static_text.dart';
 
-class EditGroupMaxParticipantsProvider extends ChangeNotifier {
+class EditGroupNoParticipantsProvider extends ChangeNotifier {
   final groupMaxParticipantsController = TextEditingController();
 
-  EditGroupMaxParticipantsProvider(String initialText) {
+  EditGroupNoParticipantsProvider(String initialText) {
     groupMaxParticipantsController.addListener(notifyListeners);
     groupMaxParticipantsController.text = initialText;
   }

@@ -9,14 +9,14 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/providers/edit_group_max_participants_provider.dart';
 import 'package:provider/provider.dart';
 
-class AppBarEditGroupMaxParticipats extends StatelessWidget with PreferredSizeWidget {
-  const AppBarEditGroupMaxParticipats({required this.groups});
+class AppBarEditGroupNoParticipats extends StatelessWidget with PreferredSizeWidget {
+  const AppBarEditGroupNoParticipats({required this.groups});
 
   final GroupModel groups;
 
   @override
   Widget build(BuildContext context) {
-    final editGroupMaxParticipantsProvider = Provider.of<EditGroupMaxParticipantsProvider>(context);
+    final editGroupMaxParticipantsProvider = Provider.of<EditGroupNoParticipantsProvider>(context);
     return SafeArea(
       child: Row(
         children: [

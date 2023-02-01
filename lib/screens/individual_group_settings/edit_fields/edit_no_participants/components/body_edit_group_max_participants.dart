@@ -7,13 +7,13 @@ import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:groupup/core/providers/edit_group_max_participants_provider.dart';
 import 'package:provider/provider.dart';
 
-class EditGroupMaxParticipantsBody extends StatelessWidget {
-  const EditGroupMaxParticipantsBody({super.key});
+class EditGroupNoParticipantsBody extends StatelessWidget {
+  const EditGroupNoParticipantsBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     final groupMaxParticipantsController =
-        Provider.of<EditGroupMaxParticipantsProvider>(context)
+        Provider.of<EditGroupNoParticipantsProvider>(context)
             .groupMaxParticipantsController;
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -51,7 +51,7 @@ class EditGroupMaxParticipantsBody extends StatelessWidget {
           ),
           const SizedBox(height: Insets.l),
           const StaticText(
-              text: 'Change the maximum number of participants',
+              text: 'Change the number of participants',
               maxLines: 2,
               fontSize: TextSize.mBody),
         ],
