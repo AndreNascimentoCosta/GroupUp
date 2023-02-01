@@ -10,18 +10,18 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../../constants.dart';
 
-class EditGroupButton extends StatefulWidget {
-  const EditGroupButton(
+class EditAndHistoryGroupButton extends StatefulWidget {
+  const EditAndHistoryGroupButton(
       {required this.homeViewModel, this.backgroundColor = kPrimaryColor});
 
   final HomeViewModel homeViewModel;
   final Color backgroundColor;
 
   @override
-  State<EditGroupButton> createState() => _EditGroupButtonState();
+  State<EditAndHistoryGroupButton> createState() => _EditAndHistoryGroupButtonState();
 }
 
-class _EditGroupButtonState extends State<EditGroupButton> {
+class _EditAndHistoryGroupButtonState extends State<EditAndHistoryGroupButton> {
   @override
   Widget build(BuildContext context) {
     final individualGroupProvider =
