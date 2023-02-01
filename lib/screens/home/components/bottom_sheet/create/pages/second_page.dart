@@ -34,8 +34,6 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
         }
-
-        Form.of(context).validate();
       },
       child: Scrollbar(
         child: SingleChildScrollView(
@@ -66,7 +64,7 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                   TextFieldModelHome(
                     controller:
                         createGroupProvider.controllerNumberParticipants,
-                    header: 'Limit of participants',
+                    header: 'Number of participants',
                     hint: 'Enter a number',
                     validator: (value) {
                       if (value!.isNotEmpty && int.tryParse(value)! > 50) {
