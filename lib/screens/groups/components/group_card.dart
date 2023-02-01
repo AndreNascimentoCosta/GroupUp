@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -99,7 +98,11 @@ class _GroupsCardState extends State<GroupsCard> {
                   padding: const EdgeInsets.only(
                     left: kDefaultPadding,
                   ),
-                  child: widget.group.endDate!.isBefore(DateTime.now())
+                  child: widget.group.endDate!.isBefore(
+                    DateTime.now().subtract(
+                      const Duration(days: 1),
+                    ),
+                  )
                       ? Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

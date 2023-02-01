@@ -7,14 +7,13 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/floating_buttons/add_input_group_button.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/calendar.dart';
 import 'package:groupup/screens/individual_group/components/floating_buttons/calenda_screen_button.dart';
-import 'package:groupup/screens/individual_group/components/floating_buttons/edit_group.dart';
 import 'package:groupup/screens/individual_group/components/app_bar.dart';
 import 'package:groupup/screens/individual_group/components/body.dart';
+import 'package:groupup/screens/individual_group/components/floating_buttons/edit_group.dart';
 import 'package:groupup/screens/individual_group/components/group_ended_participant_card.dart';
 import 'package:groupup/screens/individual_group/components/header.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/screens/individual_group/components/individual_card.dart';
 import 'package:provider/provider.dart';
 
 class IndividualGroupScreen extends StatefulWidget {
@@ -44,7 +43,13 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
         Provider.of<IndividualGroupProvider>(context, listen: false).group;
     if (group == null) return;
     if (group.endDate == null) return;
-    if (group.endDate!.isBefore(DateTime.now())) {
+    if (group.endDate!.isBefore(
+      DateTime.now().subtract(
+        const Duration(
+          days: 1,
+        ),
+      ),
+    )) {
       if (willShowEndGroupDialog) return;
       willShowEndGroupDialog = true;
       WidgetsBinding.instance.addPostFrameCallback(
@@ -84,7 +89,8 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                           color: kSecondaryColor,
                         ),
                         itemCount: group.participantsData.length,
-                        itemBuilder: (context, index) => GroupEndedParticipantCard(
+                        itemBuilder: (context, index) =>
+                            GroupEndedParticipantCard(
                           participant: group.participantsData[index],
                           homeViewModel: widget.homeViewModel,
                         ),
@@ -124,6 +130,51 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
   Widget build(BuildContext context) {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
+    if (individualGroupProvider.group == null) {
+      return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBarIndividualGroup(
+          homeViewModel: widget.homeViewModel,
+        ),
+        body: PageView(
+          controller: individualGroupProvider.pageController,
+          onPageChanged: (value) {
+            individualGroupProvider.updateIndex(value);
+          },
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            Column(
+              children: [
+                const HeaderIndividualGroup(),
+                const SizedBox(height: kDefaultPadding),
+                BodyIndividualGroup(
+                  homeViewModel: widget.homeViewModel,
+                )
+              ],
+            ),
+            Column(
+              children: const [
+                Calendar(),
+              ],
+            ),
+          ],
+        ),
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            EditAndHistoryGroupButton(
+              homeViewModel: widget.homeViewModel,
+            ),
+            const SizedBox(height: kDefaultPadding),
+            individualGroupProvider.pageIndex == 0
+                ? CalendarScreenButton(
+                    homeViewModel: widget.homeViewModel,
+                  )
+                : AddInputGroupButton(homeViewModel: widget.homeViewModel),
+          ],
+        ),
+      );
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBarIndividualGroup(
@@ -156,15 +207,27 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          EditGroupButton(
+          EditAndHistoryGroupButton(
             homeViewModel: widget.homeViewModel,
           ),
-          const SizedBox(height: kDefaultPadding),
-          individualGroupProvider.pageIndex == 0
-              ? CalendarScreenButton(
-                  homeViewModel: widget.homeViewModel,
-                )
-              : AddInputGroupButton(homeViewModel: widget.homeViewModel),
+          if (individualGroupProvider.group == null) const SizedBox(),
+          if (individualGroupProvider.group?.endDate == null) const SizedBox(),
+          individualGroupProvider.group!.endDate!.isBefore(DateTime.now()) &&
+                  individualGroupProvider.group!.endDate!
+                      .isAfter(DateTime.now().subtract(const Duration(days: 1)))
+              ? const SizedBox()
+              : const SizedBox(height: kDefaultPadding),
+          if (individualGroupProvider.group == null) const SizedBox(),
+          if (individualGroupProvider.group?.endDate == null) const SizedBox(),
+          individualGroupProvider.group!.endDate!.isBefore(DateTime.now()) &&
+                  individualGroupProvider.group!.endDate!
+                      .isAfter(DateTime.now().subtract(const Duration(days: 1)))
+              ? const SizedBox()
+              : individualGroupProvider.pageIndex == 0
+                  ? CalendarScreenButton(
+                      homeViewModel: widget.homeViewModel,
+                    )
+                  : AddInputGroupButton(homeViewModel: widget.homeViewModel),
         ],
       ),
     );
