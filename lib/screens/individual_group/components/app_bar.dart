@@ -62,7 +62,47 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
         Provider.of<IndividualGroupProvider>(context);
     final currentUserId = Provider.of<AuthProvider>(context).user?.id;
     if (group == null) {
-      return const CircularProgressIndicator(color: kPrimaryColor);
+      return AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        flexibleSpace: ClipRect(
+          child: SvgPicture.asset(
+            'assets/images/groupup_placeholder.svg',
+            fit: BoxFit.cover,
+          ),
+        ),
+        title: Row(
+          children: [
+            FloatingActionButton(
+              heroTag: 'btn1',
+              elevation: 0,
+              backgroundColor: Colors.white,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: SvgPicture.asset(
+                'assets/icons/arrow_left.svg',
+                height: Insets.l * 1.25,
+                width: Insets.l * 1.25,
+                color: Colors.black,
+              ),
+            ),
+            const Spacer(),
+            FloatingActionButton(
+              heroTag: 'btn2',
+              elevation: 0,
+              backgroundColor: Colors.white,
+              onPressed: () {},
+              child: SvgPicture.asset(
+                'assets/icons/settings.svg',
+                height: Insets.l * 1.25,
+                width: Insets.l * 1.25,
+                color: Colors.black,
+              ),
+            )
+          ],
+        ),
+      );
     }
     return AppBar(
       automaticallyImplyLeading: false,

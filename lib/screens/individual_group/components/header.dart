@@ -17,7 +17,59 @@ class HeaderIndividualGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
-      return const CircularProgressIndicator(color: kPrimaryColor);
+      return Container(
+        color: Colors.white,
+        height: 125,
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(
+                top: kDefaultPadding / 2.5,
+                bottom: kDefaultPadding,
+              ),
+              child: SizedBox(
+                width: 300,
+                child: GroupTitle(
+                  text: 'Name',
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+            IntrinsicHeight(
+              child: Row(
+                children: [
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.075),
+                  ButtonCommonStyle(
+                    onPressed: () {},
+                    child: const ObjectiveRewardModel(
+                      icon: 'assets/icons/objective.svg',
+                      text: '',
+                    ),
+                  ),
+                  VerticalDivider(
+                    width: MediaQuery.of(context).size.width * 0.115,
+                    thickness: 1,
+                    color: kSecondaryColor,
+                  ),
+                  const ObjectiveRewardModel(
+                    icon: 'assets/icons/reward.svg',
+                    text: '',
+                  ),
+                  const VerticalDivider(
+                    width: kDefaultPadding * 2.25,
+                    thickness: 1,
+                    color: kSecondaryColor,
+                  ),
+                  const SizedBox(
+                    width: kDefaultPadding * 1.5,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
     }
     return Container(
       color: Colors.white,
@@ -58,8 +110,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           content: StaticText(
-                            text:
-                                group.objective,
+                            text: group.objective,
                             maxLines: 4,
                             textAlign: TextAlign.center,
                             fontSize: TextSize.mBody,
