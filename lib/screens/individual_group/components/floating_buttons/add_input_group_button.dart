@@ -63,7 +63,7 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                         ),
                         content: const StaticText(
                           text:
-                              "To add data, you have to wait \nfor everyone to join the group. \nIf you still want to add data, \nplease change the number \nof participants.",
+                              "To add data, you have to wait \nfor everyone to join the group.",
                           maxLines: 5,
                           textAlign: TextAlign.center,
                           fontSize: TextSize.mBody,
