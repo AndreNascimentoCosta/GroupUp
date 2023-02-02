@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
+import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
@@ -49,6 +50,9 @@ Future<void> main() async {
             ListenableProvider(
               create: (context) => AddInputProvider(),
               lazy: true,
+            ),
+            ListenableProvider(
+              create: (context) => InstagrammableProvider(),
             )
           ],
           child: MaterialApp(
