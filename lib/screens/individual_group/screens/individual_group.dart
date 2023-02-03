@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -128,8 +129,6 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
     if (individualGroupProvider.group == null) {
@@ -214,13 +213,18 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
           ),
         ],
       ),
-      floatingActionButtonLocation: screenHeight < 800 || screenWidth < 350
-          ? FloatingActionButtonLocation.endDocked
-          : FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: screenHeight < 800 || screenWidth < 350
-          ? Padding(
-            padding: const EdgeInsets.only(bottom: Insets.m),
-            child: Column(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: Insets.m,
+          horizontal: Insets.l,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            const InstagrammableButton(),
+            Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 EditAndHistoryGroupButton(
@@ -232,8 +236,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                 individualGroupProvider.group!.endDate!
                             .isBefore(DateTime.now()) &&
                         individualGroupProvider.group!.endDate!.isAfter(
-                            DateTime.now()
-                                .subtract(const Duration(days: 1)))
+                            DateTime.now().subtract(const Duration(days: 1)))
                     ? const SizedBox()
                     : const SizedBox(height: kDefaultPadding),
                 if (individualGroupProvider.group == null) const SizedBox(),
@@ -242,8 +245,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                 individualGroupProvider.group!.endDate!
                             .isBefore(DateTime.now()) &&
                         individualGroupProvider.group!.endDate!.isAfter(
-                            DateTime.now()
-                                .subtract(const Duration(days: 1)))
+                            DateTime.now().subtract(const Duration(days: 1)))
                     ? const SizedBox()
                     : individualGroupProvider.pageIndex == 0
                         ? CalendarScreenButton(
@@ -253,55 +255,9 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                             homeViewModel: widget.homeViewModel),
               ],
             ),
-          )
-          : Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: Insets.m,
-                horizontal: Insets.l,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const InstagrammableButton(),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      EditAndHistoryGroupButton(
-                        homeViewModel: widget.homeViewModel,
-                      ),
-                      if (individualGroupProvider.group == null)
-                        const SizedBox(),
-                      if (individualGroupProvider.group?.endDate == null)
-                        const SizedBox(),
-                      individualGroupProvider.group!.endDate!
-                                  .isBefore(DateTime.now()) &&
-                              individualGroupProvider.group!.endDate!.isAfter(
-                                  DateTime.now()
-                                      .subtract(const Duration(days: 1)))
-                          ? const SizedBox()
-                          : const SizedBox(height: kDefaultPadding),
-                      if (individualGroupProvider.group == null)
-                        const SizedBox(),
-                      if (individualGroupProvider.group?.endDate == null)
-                        const SizedBox(),
-                      individualGroupProvider.group!.endDate!
-                                  .isBefore(DateTime.now()) &&
-                              individualGroupProvider.group!.endDate!.isAfter(
-                                  DateTime.now()
-                                      .subtract(const Duration(days: 1)))
-                          ? const SizedBox()
-                          : individualGroupProvider.pageIndex == 0
-                              ? CalendarScreenButton(
-                                  homeViewModel: widget.homeViewModel,
-                                )
-                              : AddInputGroupButton(
-                                  homeViewModel: widget.homeViewModel),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+          ],
+        ),
+      ),
     );
   }
 }

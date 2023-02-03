@@ -59,13 +59,14 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                         left: kDefaultPadding / 2,
                       ),
                       child: SizedBox(
-                        width: 25,
+                        width: MediaQuery.of(context).size.width * 0.1,
                         child: ExtraLargeBody(
-                            text: widget.participant
-                                .rank(individualGroupProvider.group)),
+                          text: widget.participant
+                              .rank(individualGroupProvider.group),
+                        ),
                       ),
                     ),
-                    const SizedBox(width: kDefaultPadding),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                     widget.participant.profilePicture.isNotEmpty
                         ? ButtonCommonStyle(
                             onPressed: () {
@@ -123,11 +124,14 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                               child: authProvider.user != null
                                   ? authProvider.user!.id ==
                                           widget.participant.uid
-                                      ? const Padding(
+                                      ? Padding(
                                           padding: EdgeInsets.only(
-                                            left: kDefaultPadding,
+                                            left: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.02,
                                           ),
-                                          child: StaticText(
+                                          child: const StaticText(
                                             text: 'Me',
                                             overflow: TextOverflow.ellipsis,
                                             fontSize: 20,
@@ -135,8 +139,11 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                           ),
                                         )
                                       : Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: kDefaultPadding,
+                                          padding: EdgeInsets.only(
+                                            left: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.02,
                                           ),
                                           child: StaticText(
                                             text: Characters(

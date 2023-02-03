@@ -21,6 +21,9 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
     final participantsData =
         Provider.of<IndividualGroupProvider>(context).group!.participantsData;
     final instagrammableProvider = Provider.of<InstagrammableProvider>(context);
@@ -30,38 +33,48 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
       child: Scaffold(
         appBar: const AppBarInstagrammable(),
         body: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.8,
-          width: MediaQuery.of(context).size.width,
+          height: screenHeight * 0.8,
+          width: screenWidth,
           child: Stack(
             children: [
               SvgPicture.asset(
                 'assets/images/instagrammable.svg',
               ),
               Positioned(
-                width: MediaQuery.of(context).size.width * 0.145,
-                bottom: MediaQuery.of(context).size.height * 0.585,
-                left: MediaQuery.of(context).size.width * 0.165,
+                width: isSmallScreen ? screenWidth * 0.12 : screenWidth * 0.145,
+                bottom: screenHeight * 0.585,
+                left: isSmallScreen ? screenWidth * 0.225 : screenWidth * 0.165,
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black, width: 2),
-                    borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.145),
+                    borderRadius: BorderRadius.circular(
+                      isSmallScreen ? screenWidth * 0.12 : screenWidth * 0.145,
+                    ),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.145),
+                    borderRadius: BorderRadius.circular(isSmallScreen
+                        ? screenWidth * 0.12
+                        : screenWidth * 0.145),
                     child: CachedNetworkImage(
                       imageUrl: participantData.profilePicture,
                       fadeInDuration: const Duration(milliseconds: 100),
-                      height: MediaQuery.of(context).size.width * 0.145,
-                      width: MediaQuery.of(context).size.width * 0.145,
+                      height: isSmallScreen
+                          ? screenWidth * 0.12
+                          : screenWidth * 0.145,
+                      width: isSmallScreen
+                          ? screenWidth * 0.12
+                          : screenWidth * 0.145,
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
               Positioned(
-                width: MediaQuery.of(context).size.width * 0.127,
-                bottom: MediaQuery.of(context).size.height * 0.575,
-                right: MediaQuery.of(context).size.width * 0.1415,
+                width:
+                    isSmallScreen ? screenWidth * 0.105 : screenWidth * 0.127,
+                bottom: screenHeight * 0.575,
+                right:
+                    isSmallScreen ? screenWidth * 0.205 : screenWidth * 0.1415,
                 child: ButtonCommonStyle(
                   onPressed: () {
                     Provider.of<InstagrammableProvider>(context, listen: false)
@@ -70,14 +83,22 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.127),
+                      borderRadius: BorderRadius.circular(isSmallScreen
+                          ? screenWidth * 0.105
+                          : screenWidth * 0.127),
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.127),
+                      borderRadius: BorderRadius.circular(isSmallScreen
+                          ? screenWidth * 0.105
+                          : screenWidth * 0.127),
                       child: CachedNetworkImage(
                         imageUrl: participantData.profilePicture,
-                        height: MediaQuery.of(context).size.width * 0.127,
-                        width: MediaQuery.of(context).size.width * 0.127,
+                        height: isSmallScreen
+                            ? screenWidth * 0.105
+                            : screenWidth * 0.127,
+                        width: isSmallScreen
+                            ? screenWidth * 0.105
+                            : screenWidth * 0.127,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -85,72 +106,101 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                 ),
               ),
               Positioned(
-                width: MediaQuery.of(context).size.width * 0.165,
-                bottom: MediaQuery.of(context).size.width * 0.58,
-                right: MediaQuery.of(context).size.width * 0.1125,
+                width: isSmallScreen ? screenWidth * 0.14 : screenWidth * 0.165,
+                bottom: screenHeight * 0.267,
+                right:
+                    isSmallScreen ? screenWidth * 0.1775 : screenWidth * 0.1125,
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black, width: 2),
-                    borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.165),
+                    borderRadius: BorderRadius.circular(isSmallScreen
+                        ? screenWidth * 0.14
+                        : screenWidth * 0.165),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.165),
+                    borderRadius: BorderRadius.circular(isSmallScreen
+                        ? screenWidth * 0.14
+                        : screenWidth * 0.165),
                     child: CachedNetworkImage(
                       imageUrl: participantData.profilePicture,
                       fadeInDuration: const Duration(milliseconds: 100),
-                      height: MediaQuery.of(context).size.width * 0.165,
-                      width: MediaQuery.of(context).size.width * 0.165,
+                      height: isSmallScreen
+                          ? screenWidth * 0.14
+                          : screenWidth * 0.165,
+                      width: isSmallScreen
+                          ? screenWidth * 0.14
+                          : screenWidth * 0.165,
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
               Positioned(
-                width: MediaQuery.of(context).size.width * 0.1575,
-                bottom: MediaQuery.of(context).size.width * 0.6625,
-                left: MediaQuery.of(context).size.width * 0.103,
+                width:
+                    isSmallScreen ? screenWidth * 0.13 : screenWidth * 0.1575,
+                bottom: screenHeight * 0.305,
+                left:
+                    isSmallScreen ? screenWidth * 0.1725 : screenWidth * 0.103,
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black, width: 2),
-                    borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.1575),
+                    borderRadius: BorderRadius.circular(isSmallScreen
+                        ? screenWidth * 0.13
+                        : screenWidth * 0.1575),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.1575),
+                    borderRadius: BorderRadius.circular(isSmallScreen
+                        ? screenWidth * 0.13
+                        : screenWidth * 0.1575),
                     child: CachedNetworkImage(
                       imageUrl: participantData.profilePicture,
                       fadeInDuration: const Duration(milliseconds: 100),
-                      height: MediaQuery.of(context).size.width * 0.1575,
-                      width: MediaQuery.of(context).size.width * 0.1575,
+                      height: isSmallScreen
+                          ? screenWidth * 0.13
+                          : screenWidth * 0.1575,
+                      width: isSmallScreen
+                          ? screenWidth * 0.13
+                          : screenWidth * 0.1575,
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
               Positioned(
-                width: MediaQuery.of(context).size.width * 0.18,
-                bottom: MediaQuery.of(context).size.width * 0.82,
-                right: MediaQuery.of(context).size.width * 0.43,
+                width: isSmallScreen ? screenWidth * 0.145 : screenWidth * 0.18,
+                bottom: screenHeight * 0.375,
+                right: isSmallScreen ? screenWidth * 0.445 : screenWidth * 0.43,
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black, width: 2),
-                    borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.1725),
+                    borderRadius: BorderRadius.circular(isSmallScreen
+                        ? screenWidth * 0.145
+                        : screenWidth * 0.18),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.1725),
+                    borderRadius: BorderRadius.circular(isSmallScreen
+                        ? screenWidth * 0.145
+                        : screenWidth * 0.18),
                     child: CachedNetworkImage(
                       imageUrl: participantData.profilePicture,
                       fadeInDuration: const Duration(milliseconds: 100),
-                      height: MediaQuery.of(context).size.width * 0.1725,
-                      width: MediaQuery.of(context).size.width * 0.1725,
+                      height: isSmallScreen
+                          ? screenWidth * 0.145
+                          : screenWidth * 0.18,
+                      width: isSmallScreen
+                          ? screenWidth * 0.145
+                          : screenWidth * 0.18,
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
               Positioned(
-                width: MediaQuery.of(context).size.width * 0.17,
-                bottom: MediaQuery.of(context).size.width * 0.96,
-                right: MediaQuery.of(context).size.width * 0.43,
+                width: isSmallScreen ? screenWidth * 0.155 : screenWidth * 0.17,
+                bottom: isSmallScreen
+                    ? screenHeight * 0.43
+                    : screenHeight * 0.445,
+                right: screenWidth * 0.435,
                 child: SvgPicture.asset(
                   'assets/icons/crown.svg',
                 ),
