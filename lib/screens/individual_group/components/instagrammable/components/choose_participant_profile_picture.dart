@@ -16,9 +16,11 @@ class ChooseParticipantProfilePicture extends StatefulWidget {
   const ChooseParticipantProfilePicture({
     Key? key,
     required this.participant,
+    required this.pictureType,
   }) : super(key: key);
 
   final Participant participant;
+  final SetPictureType pictureType;
 
   @override
   State<ChooseParticipantProfilePicture> createState() =>
@@ -40,15 +42,9 @@ class _ChooseParticipantProfilePictureState
       final authProvider = Provider.of<AuthProvider>(context);
       return ButtonCommonStyle(
         onPressed: () {
-          final placeholderPicture =
-              Provider.of<InstagrammableProvider>(context, listen: false)
-                  .picture;
-          setState(
-            () {
-              widget.participant.profilePicture = placeholderPicture;
-              Navigator.of(context).pop();
-            },
-          );
+          Provider.of<InstagrammableProvider>(context, listen: false)
+              .setPicture(widget.participant.profilePicture, widget.pictureType);
+          Navigator.of(context).pop();
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
