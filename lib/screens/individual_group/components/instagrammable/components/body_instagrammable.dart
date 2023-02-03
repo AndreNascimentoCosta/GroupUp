@@ -33,6 +33,7 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
     return Screenshot(
       controller: instagrammableProvider.screenshotController,
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: const AppBarInstagrammable(),
         body: SizedBox(
           height: screenHeight * 0.8,

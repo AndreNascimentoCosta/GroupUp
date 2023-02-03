@@ -45,19 +45,7 @@ class InstagrammableProvider extends ChangeNotifier {
         currentUserPicture.isEmpty ? placholderImage : currentUserPicture;
     notifyListeners();
   }
-
-  void takeScreenshot() async {
-    final imageFile = await screenshotController.capture();
-    if (imageFile == null) return;
-    Share.shareXFiles(
-      [
-        XFile(
-          imageFile.toString(),
-        ),
-      ],
-    );
-  }
-
+  
   void setPicture(String picture, SetPictureType pictureType) {
     switch (pictureType) {
       case SetPictureType.picture1:
@@ -104,7 +92,8 @@ class InstagrammableProvider extends ChangeNotifier {
               children: [
                 ListView.separated(
                   shrinkWrap: true,
-                  padding: const EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
                   separatorBuilder: (context, index) => const Divider(
                     indent: kDefaultPadding,
                     endIndent: kDefaultPadding,

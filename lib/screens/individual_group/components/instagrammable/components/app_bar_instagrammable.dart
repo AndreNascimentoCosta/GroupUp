@@ -21,25 +21,6 @@ class AppBarInstagrammable extends StatelessWidget with PreferredSizeWidget {
                 alignment: AlignmentDirectional.center,
                 child: const Header(text: 'GroupUp'),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: kDefaultPadding),
-                child: ButtonCommonStyle(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: GestureDetector(
-                    child: Container(
-                      color: Colors.transparent,
-                      width: Insets.l * 3,
-                      child: Row(
-                        children: const [
-                          Icon(Icons.close_rounded, color: Colors.black, size: 40),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               Positioned(
                 right: kDefaultPadding,
                 child: Padding(
