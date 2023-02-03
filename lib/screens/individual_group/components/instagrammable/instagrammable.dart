@@ -25,7 +25,7 @@ class _InstagrammableScreenState extends State<InstagrammableScreen> {
       if (!mounted) return;
       Provider.of<InstagrammableProvider>(context, listen: false)
           .setPlaceholderImages(
-        currentUser!.profilePicture,
+        'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/choosePicture.png?alt=media&token=25743fdd-a3b1-4439-9a2a-ae477238a640',
       );
     });
   }
