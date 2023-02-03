@@ -140,7 +140,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                   ),
                 ),
                 VerticalDivider(
-                  width: MediaQuery.of(context).size.width * 0.115,
+                  width: MediaQuery.of(context).size.width * 0.1,
                   thickness: 1,
                   color: kSecondaryColor,
                 ),
@@ -149,7 +149,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                   text: group.reward,
                 ),
                 const VerticalDivider(
-                  width: kDefaultPadding * 2.25,
+                  width: kDefaultPadding * 1.75,
                   thickness: 1,
                   color: kSecondaryColor,
                 ),
