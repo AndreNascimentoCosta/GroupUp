@@ -7,7 +7,6 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/choose_participant_profile_picture.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../widgets/texts/static_text.dart';
 
