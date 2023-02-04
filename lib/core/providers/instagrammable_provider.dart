@@ -44,7 +44,7 @@ class InstagrammableProvider extends ChangeNotifier {
         currentUserPicture.isEmpty ? placholderImage : currentUserPicture;
     notifyListeners();
   }
-  
+
   void setPicture(String picture, SetPictureType pictureType) {
     switch (pictureType) {
       case SetPictureType.picture1:
