@@ -67,17 +67,19 @@ class _CreatePageViewState extends State<CreatePageView> {
                   Padding(
                     padding: const EdgeInsets.only(right: kDefaultPadding),
                     child: Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: SmoothPageIndicator(
-                            controller: createGroupProvider.controller,
-                            count: createGroupProvider.itemCount,
-                            effect: const WormEffect(
-                              dotHeight: 10,
-                              dotWidth: 10,
-                              dotColor: Color(0xFFD9D9D9),
-                              activeDotColor: Color(0xFF868686),
-                              type: WormType.thin,
-                            ))),
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: SmoothPageIndicator(
+                        controller: createGroupProvider.controller,
+                        count: createGroupProvider.itemCount,
+                        effect: const WormEffect(
+                          dotHeight: 10,
+                          dotWidth: 10,
+                          dotColor: Color(0xFFD9D9D9),
+                          activeDotColor: Color(0xFF868686),
+                          type: WormType.thin,
+                        ),
+                      ),
+                    ),
                   )
               ],
             ),
@@ -96,9 +98,9 @@ class _CreatePageViewState extends State<CreatePageView> {
           ),
           createGroupProvider.isCreatingGroup
               ? const SizedBox()
-              : NextButton(
-                  onPressed: createGroupProvider.nextPressed(context),
-                ),
+                  : NextButton(
+                      onPressed: createGroupProvider.nextPressed(context),
+                    ),
           const SizedBox(height: kDefaultPadding / 4),
         ],
       ),

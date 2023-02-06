@@ -18,11 +18,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 
 class IndividualGroupScreen extends StatefulWidget {
-  const IndividualGroupScreen({
-    required this.homeViewModel,
-  });
-
-  final HomeViewModel homeViewModel;
+  const IndividualGroupScreen({super.key});
 
   @override
   State<IndividualGroupScreen> createState() => _IndividualGroupScreenState();
@@ -30,6 +26,7 @@ class IndividualGroupScreen extends StatefulWidget {
 
 class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
   var willShowEndGroupDialog = false;
+  final homeViewModel = HomeViewModel();
 
   @override
   void initState() {
@@ -134,7 +131,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
       return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBarIndividualGroup(
-          homeViewModel: widget.homeViewModel,
+          homeViewModel: homeViewModel,
         ),
         body: PageView(
           controller: individualGroupProvider.pageController,
@@ -148,7 +145,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                 const HeaderIndividualGroup(),
                 const SizedBox(height: kDefaultPadding),
                 BodyIndividualGroup(
-                  homeViewModel: widget.homeViewModel,
+                  homeViewModel: homeViewModel,
                 )
               ],
             ),
@@ -169,14 +166,14 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 EditAndHistoryGroupButton(
-                  homeViewModel: widget.homeViewModel,
+                  homeViewModel: homeViewModel,
                 ),
                 const SizedBox(height: kDefaultPadding),
                 individualGroupProvider.pageIndex == 0
                     ? CalendarScreenButton(
-                        homeViewModel: widget.homeViewModel,
+                        homeViewModel: homeViewModel,
                       )
-                    : AddInputGroupButton(homeViewModel: widget.homeViewModel),
+                    : AddInputGroupButton(homeViewModel: homeViewModel),
               ],
             ),
           ],
@@ -186,7 +183,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBarIndividualGroup(
-        homeViewModel: widget.homeViewModel,
+        homeViewModel: homeViewModel,
       ),
       resizeToAvoidBottomInset: false,
       body: PageView(
@@ -201,7 +198,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
               const HeaderIndividualGroup(),
               const SizedBox(height: kDefaultPadding),
               BodyIndividualGroup(
-                homeViewModel: widget.homeViewModel,
+                homeViewModel: homeViewModel,
               )
             ],
           ),
@@ -227,7 +224,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 EditAndHistoryGroupButton(
-                  homeViewModel: widget.homeViewModel,
+                  homeViewModel: homeViewModel,
                 ),
                 if (individualGroupProvider.group == null) const SizedBox(),
                 if (individualGroupProvider.group?.endDate == null)
@@ -248,10 +245,10 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                     ? const SizedBox()
                     : individualGroupProvider.pageIndex == 0
                         ? CalendarScreenButton(
-                            homeViewModel: widget.homeViewModel,
+                            homeViewModel: homeViewModel,
                           )
                         : AddInputGroupButton(
-                            homeViewModel: widget.homeViewModel),
+                            homeViewModel: homeViewModel),
               ],
             ),
           ],
