@@ -36,6 +36,14 @@
 				<string>com.googleusercontent.apps.703700374903-phon209a2g1su55bi32gqt126b2vg94n</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.andrecosta.groupup.payments</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
@@ -83,5 +91,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	 <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Application requires user's location for better user experience.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Application requires user's location for better user experience.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Application requires user's location for better user experience.</string>
 </dict>
 </plist>

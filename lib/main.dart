@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
@@ -8,6 +10,7 @@ import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/screens/splashscreen/splashscreen.dart';
 import 'package:groupup/styles/theme.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +19,9 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  Stripe.publishableKey = stripePublishableKey;
+  Stripe.merchantIdentifier = 'merchant.com.andrecosta.groupup';
+  await Stripe.instance.applySettings();
   await SentryFlutter.init(
     (options) => {
       options.dsn =
@@ -53,7 +59,10 @@ Future<void> main() async {
             ),
             ListenableProvider(
               create: (context) => InstagrammableProvider(),
-            )
+            ),
+            ListenableProvider(
+              create: (context) => StripePaymentProvider(),
+            ),
           ],
           child: MaterialApp(
             title: 'GroupUp',
