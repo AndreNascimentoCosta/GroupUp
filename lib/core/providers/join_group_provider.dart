@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
@@ -16,15 +17,21 @@ enum JoinGroupErrorType {
 
 class JoinGroupProvider extends ChangeNotifier {
   final controllerGroupCode = TextEditingController();
-
   final controller = PageController();
   int pageIndex = 0;
+  bool isPaying = false;
 
   JoinGroupProvider() {
     controllerGroupCode.addListener(notifyListeners);
   }
 
-  void Function()? nextPressedJoin(BuildContext context) {
+  void Function()? nextPressedJoin(
+    BuildContext context,
+    String groupId,
+    String userId,
+    String reward,
+    String groupCurrencyCode,
+  ) {
     // Index 0
     final joinGroupText = controllerGroupCode.text;
 
@@ -34,7 +41,20 @@ class JoinGroupProvider extends ChangeNotifier {
       return () async {
         final scaffoldMessengerState = ScaffoldMessenger.of(context);
         final navigatorState = Navigator.of(context);
-        FocusNode().unfocus();
+        final initPayment =
+            Provider.of<StripePaymentProvider>(context, listen: false)
+                .initPayment(
+          context,
+          userId,
+          reward,
+          groupCurrencyCode,
+        );
+        FocusScope.of(context).unfocus();
+        isPaying = true;
+        notifyListeners();
+        await initPayment;
+        isPaying = false;
+        notifyListeners();
         final error = await joinGroup(context);
         switch (error) {
           case JoinGroupErrorType.groupCodeEmpty:
@@ -97,8 +117,7 @@ class JoinGroupProvider extends ChangeNotifier {
     if (groupModel.participants.contains(userId)) {
       return JoinGroupErrorType.userAlreadyInGroup;
     }
-    if (groupModel.participants.length >=
-        groupModel.maxParticipants) {
+    if (groupModel.participants.length >= groupModel.maxParticipants) {
       return JoinGroupErrorType.groupCodeFull;
     }
     if (groupModel.endDate!.isBefore(DateTime.now())) {

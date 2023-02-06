@@ -2,10 +2,6 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/individual_group/screens/individual_group.dart';
-import 'package:provider/provider.dart';
 
 enum PaymentStatus { initial, loading, success, error }
 
@@ -16,20 +12,15 @@ class StripePaymentProvider extends ChangeNotifier {
 
   Future<void> initPayment(
     BuildContext context,
-    String groupId,
     String userId,
     String groupReward,
     String groupCurrency,
-    HomeViewModel homeViewModel,
   ) async {
-    final individualGroupProvider =
-        Provider.of<IndividualGroupProvider>(context, listen: false);
     try {
       final clientSecret = await FirebaseFunctions.instance
           .httpsCallable('StripePayEndPointMethodId')
           .call(
         {
-          'groupId': groupId,
           'userId': userId,
           'groupReward': groupReward,
           'groupCurrency': groupCurrency,
@@ -79,16 +70,6 @@ class StripePaymentProvider extends ChangeNotifier {
         ),
       );
       await Stripe.instance.presentPaymentSheet();
-      individualGroupProvider.getGroup(groupId);
-      individualGroupProvider.updateIndex(0);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return IndividualGroupScreen(homeViewModel: homeViewModel);
-          },
-        ),
-      );
     } on FirebaseFunctionsException catch (e) {
       print(e.message);
     }

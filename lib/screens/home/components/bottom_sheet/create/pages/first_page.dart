@@ -7,7 +7,6 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:currency_picker/currency_picker.dart';
 
@@ -21,7 +20,7 @@ class FirsPageCreate extends StatefulWidget {
 }
 
 class _FirsPageCreateState extends State<FirsPageCreate> {
-  String groupCurrencySymbol = '';
+  String groupCurrencySymbol = '\$';
   final node1 = FocusNode();
   final node2 = FocusNode();
   final node3 = FocusNode();
@@ -52,8 +51,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                   return 'Project name must be at least 3 characters';
                 } else if (value.length >= 20) {
                   return 'Project name must be less than 20 characters';
-                }
-                else {
+                } else {
                   return null;
                 }
               },
@@ -77,8 +75,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                   return 'Objective must be at least 3 characters';
                 } else if (value.length >= 50) {
                   return 'Objective must be less than 50 characters';
-                }
-                else {
+                } else {
                   return null;
                 }
               },
@@ -112,9 +109,9 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                             onSelect: (Currency currency) {
                               setState(
                                 () {
-                                  print(NumberFormat.currency(symbol: currency.code).currencySymbol);
                                   groupCurrencySymbol = currency.symbol;
-                                  createGroupProvider.groupCurrencyCode = currency.code;
+                                  createGroupProvider.groupCurrencyCode =
+                                      currency.code;
                                 },
                               );
                             },
@@ -152,7 +149,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                           return null;
                         }
                       },
-                      header: 'Reward',
+                      header: 'Group fee',
                       hint: '0,00',
                       padding: const EdgeInsets.symmetric(
                         horizontal: kDefaultPadding,
@@ -172,6 +169,18 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                 ],
               ),
             ),
+            const SizedBox(height: Insets.s),
+            const Padding(
+              padding: EdgeInsets.only(
+                left: 130,
+                right: 20,
+              ),
+              child: StaticText(
+                text:
+                    'Each participant will pay the fee and the total amount will be used as the group reward.',
+                maxLines: 3,
+              ),
+            )
           ],
         ),
       ),

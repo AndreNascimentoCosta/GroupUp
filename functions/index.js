@@ -40,14 +40,10 @@ const createOrGetCustomerId = async function (userId) {
     return customer.id;
 }
 
-exports.StripePayEndPointMethodId = functions.https.onRequest(async (req, res) => {
-    const { groupId, userId, groupReward, groupCurrency } = req.body.data;
-    console.log(groupId);
-    console.log(userId);
-    console.log(req.body);
 
-    const groupDoc = await admin.firestore().collection('groups').doc(groupId).get();
-    const groupData = groupDoc.data();
+
+exports.StripePayEndPointMethodId = functions.https.onRequest(async (req, res) => {
+    const { userId, groupReward, groupCurrency } = req.body.data;
 
     const reward = groupReward * 100;
     const currency = groupCurrency;
@@ -63,16 +59,12 @@ exports.StripePayEndPointMethodId = functions.https.onRequest(async (req, res) =
             },
             setup_future_usage: 'off_session',
         });
-        console.log(paymentIntent.client_secret);
-        console.log(paymentIntent);
-
         return res.send({
             data: {
                 clientSecret: paymentIntent.client_secret,
             }
         });
     } catch (e) {
-        console.log(e);
         return res.send({ data: { clientSecret: '', error: e.message } });
     }
 });

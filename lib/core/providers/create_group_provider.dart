@@ -7,6 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -15,13 +16,12 @@ import 'package:groupup/models/participant.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class CreateGroupProvider extends ChangeNotifier {
   final controllerProjectName = TextEditingController();
   final controllerObjective = TextEditingController();
-  final controllerReward = TextEditingController(text: 'oiii');
+  final controllerReward = TextEditingController();
   final controllerNumberParticipants = TextEditingController();
   final controllerStartDate = TextEditingController();
   final controllerEndDate = TextEditingController();
@@ -81,7 +81,20 @@ class CreateGroupProvider extends ChangeNotifier {
             NextButton(
               text: 'Yes',
               borderColor: kPrimaryColor,
-              onPressed: () => createGroup(context),
+              onPressed: () async {
+                final userId = Provider.of<AuthProvider>(context, listen: false)
+                        .user
+                        ?.id ??
+                    '';
+                await Provider.of<StripePaymentProvider>(context, listen: false)
+                    .initPayment(
+                  context,
+                  userId,
+                  controllerReward.text,
+                  groupCurrencyCode,
+                );
+                await createGroup(context);
+              },
               height: 40,
               width: 140,
             ),
@@ -91,7 +104,9 @@ class CreateGroupProvider extends ChangeNotifier {
     );
   }
 
-  void Function()? nextPressed(BuildContext context) {
+  void Function()? nextPressed(
+    BuildContext context,
+  ) {
     // Index 0
     final projectNameText = controllerProjectName.text;
     final objectiveText = controllerObjective.text;
@@ -112,9 +127,13 @@ class CreateGroupProvider extends ChangeNotifier {
       return null;
     } else if (pageIndex == 1 &&
         (noParticipantsText.isEmpty ||
-                (int.tryParse(noParticipantsText) ?? 0) > 50 ||
+            (int.tryParse(noParticipantsText) ?? 0) > 50 ||
+            (int.tryParse(noParticipantsText) ?? 0) == 0 ||
             startDateText.isEmpty ||
-            endDateText.isEmpty)) {
+            endDateText.isEmpty ||
+            newGroup.endDate!.isBefore(
+              newGroup.startDate!,
+            ))) {
       return null;
     } else if (pageIndex == 2) {
       return () {
@@ -280,7 +299,6 @@ class CreateGroupProvider extends ChangeNotifier {
         print("Deu ruim");
       }
     }
-    //
     await FirebaseFirestore.instance
         .collection('groups')
         .doc()
@@ -436,7 +454,6 @@ class CreateGroupProvider extends ChangeNotifier {
     newGroup.objective = '';
     newGroup.reward = '';
     newGroup.image = '';
-    newGroup.groupCurrencyCode = '';
     newGroup.participants = [];
     newGroup.participantsData = [];
     image = null;
@@ -445,6 +462,7 @@ class CreateGroupProvider extends ChangeNotifier {
     newGroup.allowRefundRequest = false;
     newGroup.startDate = null;
     newGroup.endDate = null;
+    groupCurrencyCode = 'USD';
     updateIndex(0);
     notifyListeners();
   }
