@@ -3,8 +3,7 @@ import 'package:groupup/models/participant.dart';
 
 class GroupModel {
   String id;
-  String projectName, objective, reward, groupCode;
-  String image;
+  String projectName, objective, reward, groupCode, image, groupCurrencyCode;
   int maxParticipants;
   DateTime? startDate, endDate;
   bool allowEditImage, allowRefundRequest;
@@ -45,6 +44,7 @@ class GroupModel {
     required this.allowEditImage,
     required this.allowRefundRequest,
     required this.image,
+    required this.groupCurrencyCode,
     required this.participants,
     required this.participantsData,
     this.startDate,
@@ -59,6 +59,7 @@ class GroupModel {
       reward: '',
       groupCode: '',
       image: '',
+      groupCurrencyCode: '',
       participants: [],
       participantsData: [],
       maxParticipants: 0,
@@ -83,6 +84,7 @@ class GroupModel {
       reward: map['reward'] ?? '',
       groupCode: map['groupCode'] ?? '',
       image: map['image'] ?? '',
+      groupCurrencyCode: map['groupCurrencyCode'] ?? '',
       participants: List<String>.from(map['participants'] ?? []),
       participantsData: List<Participant>.from(
         (map['participantsData'] ?? []).map(
@@ -104,6 +106,7 @@ class GroupModel {
       'reward': reward,
       'groupCode': groupCode,
       'image': image,
+      'groupCurrencyCode': groupCurrencyCode,
       'noParticipants': maxParticipants,
       'allowEditImage': allowEditImage,
       'allowRefundRequest': allowRefundRequest,

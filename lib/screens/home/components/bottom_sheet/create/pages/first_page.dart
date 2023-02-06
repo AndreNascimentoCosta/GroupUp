@@ -7,6 +7,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:currency_picker/currency_picker.dart';
 
@@ -20,7 +21,7 @@ class FirsPageCreate extends StatefulWidget {
 }
 
 class _FirsPageCreateState extends State<FirsPageCreate> {
-  String currency2 = '\$';
+  String groupCurrencySymbol = '';
   final node1 = FocusNode();
   final node2 = FocusNode();
   final node3 = FocusNode();
@@ -111,7 +112,9 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                             onSelect: (Currency currency) {
                               setState(
                                 () {
-                                  currency2 = currency.symbol;
+                                  print(NumberFormat.currency(symbol: currency.code).currencySymbol);
+                                  groupCurrencySymbol = currency.symbol;
+                                  createGroupProvider.groupCurrencyCode = currency.code;
                                 },
                               );
                             },
@@ -130,7 +133,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                             borderRadius: BorderRadius.circular(Insets.s),
                           ),
                           child: MediumBody(
-                            text: currency2,
+                            text: groupCurrencySymbol,
                           ),
                         ),
                       ),

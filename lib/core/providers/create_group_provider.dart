@@ -15,6 +15,7 @@ import 'package:groupup/models/participant.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class CreateGroupProvider extends ChangeNotifier {
@@ -29,6 +30,7 @@ class CreateGroupProvider extends ChangeNotifier {
   final itemCount = 3;
   int pageIndex = 0;
   File? image;
+  String groupCurrencyCode = '';
   final users = [];
   bool isCreatingGroup = false;
   bool isRefundRequested = true;
@@ -241,6 +243,7 @@ class CreateGroupProvider extends ChangeNotifier {
     newGroup.reward = controllerReward.text;
     newGroup.maxParticipants =
         int.tryParse(controllerNumberParticipants.text) ?? 0;
+    newGroup.groupCurrencyCode = groupCurrencyCode;
 
     final userId = FirebaseAuth.instance.currentUser!.uid;
     final user = Provider.of<AuthProvider>(context, listen: false).user;
@@ -433,6 +436,7 @@ class CreateGroupProvider extends ChangeNotifier {
     newGroup.objective = '';
     newGroup.reward = '';
     newGroup.image = '';
+    newGroup.groupCurrencyCode = '';
     newGroup.participants = [];
     newGroup.participantsData = [];
     image = null;
