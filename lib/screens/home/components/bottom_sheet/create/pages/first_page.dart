@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
@@ -9,6 +11,38 @@ import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:currency_picker/currency_picker.dart';
+
+enum Currencies {
+  GBP(0.3),
+  USD(0.5),
+  AUD(0.5),
+  BRL(0.5),
+  CAD(0.5),
+  CHF(0.5),
+  EUR(0.5),
+  HRK(0.5),
+  INR(0.5),
+  NZD(0.5),
+  SGD(0.5),
+  BGN(1),
+  AED(2),
+  MYR(2),
+  PLN(2),
+  RON(2),
+  DKK(2.5),
+  NOK(3),
+  SEK(3),
+  HKD(4),
+  MXN(10),
+  THB(10),
+  CZK(15),
+  JPY(50),
+  HUF(100);
+
+  final double minValue;
+
+  const Currencies(this.minValue);
+}
 
 class FirsPageCreate extends StatefulWidget {
   const FirsPageCreate({required this.controller});
@@ -108,7 +142,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                             showCurrencyCode: true,
                             currencyFilter: [
                               'USD'
-                              'AED',
+                                  'AED',
                               'AFN',
                               'ALL',
                               'AMD',
@@ -246,6 +280,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                               'ZMW',
                             ],
                             onSelect: (Currency currency) {
+                              createGroupProvider.controllerReward.clear();
                               setState(
                                 () {
                                   groupCurrencySymbol = currency.symbol;
@@ -281,9 +316,19 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                       controller: createGroupProvider.controllerReward,
                       textInputAction: TextInputAction.done,
                       validator: (value) {
-                        if (value!.isNotEmpty &&
-                            (double.tryParse(value) ?? 0) <= 0.0) {
-                          return 'Reward must be greater than 0';
+                        double minValueCurrencies = Currencies.values
+                            .firstWhere(
+                              (element) =>
+                                  element.name ==
+                                  createGroupProvider.groupCurrencyCode,
+                            )
+                            .minValue;
+                        if (value!.isEmpty) {
+                          return "Fee can't be empty";
+                        } else if ((double.tryParse(value) ?? 0) <
+                                minValueCurrencies &&
+                            (double.tryParse(value) ?? 0) > 0) {
+                          return 'Fee must be greater than ${minValueCurrencies.toStringAsFixed(2)}';
                         } else {
                           return null;
                         }

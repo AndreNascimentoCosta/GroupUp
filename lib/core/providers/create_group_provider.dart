@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:io';
 import 'dart:math';
 
@@ -17,6 +19,38 @@ import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:provider/provider.dart';
+
+enum Currencies {
+  GBP(0.3),
+  USD(0.5),
+  AUD(0.5),
+  BRL(0.5),
+  CAD(0.5),
+  CHF(0.5),
+  EUR(0.5),
+  HRK(0.5),
+  INR(0.5),
+  NZD(0.5),
+  SGD(0.5),
+  BGN(1),
+  AED(2),
+  MYR(2),
+  PLN(2),
+  RON(2),
+  DKK(2.5),
+  NOK(3),
+  SEK(3),
+  HKD(4),
+  MXN(10),
+  THB(10),
+  CZK(15),
+  JPY(50),
+  HUF(100);
+
+  final double minValue;
+
+  const Currencies(this.minValue);
+}
 
 class CreateGroupProvider extends ChangeNotifier {
   final controllerProjectName = TextEditingController();
@@ -87,18 +121,23 @@ class CreateGroupProvider extends ChangeNotifier {
                         .user
                         ?.id ??
                     '';
-                isPaying = true;
-                notifyListeners();
-                await Provider.of<StripePaymentProvider>(context, listen: false)
-                    .initPaymentCreateGroup(
-                  newContext,
-                  userId,
-                  controllerReward.text,
-                  groupCurrencyCode,
-                );
-                isPaying = false;
-                notifyListeners();
-                await createGroup(context);
+                if (int.tryParse(controllerReward.text) != 0) {
+                  isPaying = true;
+                  notifyListeners();
+                  await Provider.of<StripePaymentProvider>(context,
+                          listen: false)
+                      .initPaymentCreateGroup(
+                    newContext,
+                    userId,
+                    controllerReward.text,
+                    groupCurrencyCode,
+                  );
+                  isPaying = false;
+                  notifyListeners();
+                  await createGroup(context);
+                } else {
+                  await createGroup(context);
+                }
               },
               height: 40,
               width: 140,
@@ -121,6 +160,12 @@ class CreateGroupProvider extends ChangeNotifier {
 
     // Index 1
     final noParticipantsText = controllerNumberParticipants.text;
+    double minValueCurrencies = Currencies.values
+        .firstWhere(
+          (element) => element.name == groupCurrencyCode,
+          orElse: () => Currencies.USD,
+        )
+        .minValue;
 
     if (pageIndex == 0 &&
         (projectNameText.length < 3 ||
@@ -128,7 +173,8 @@ class CreateGroupProvider extends ChangeNotifier {
             projectNameText.length >= 20 ||
             objectiveText.length >= 50 ||
             rewardText.isEmpty ||
-            (double.tryParse(rewardText) ?? 0) <= 0.0)) {
+            double.parse(rewardText) < minValueCurrencies  &&
+                double.parse(rewardText) > 0)) {
       return null;
     } else if (pageIndex == 1 &&
         (noParticipantsText.isEmpty ||
