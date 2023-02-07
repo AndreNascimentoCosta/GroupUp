@@ -175,19 +175,6 @@ class _BodyProfileState extends State<BodyProfile> {
             BodyButtonModel(
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RefundRequestsScreen(
-                          groupsData: groupsData,
-                        ),
-                      ));
-                },
-                text: 'Refund requests',
-                secondaryText: ''),
-            const SizedBox(height: kDefaultPadding * 2),
-            BodyButtonModel(
-                onPressed: () {
-                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => CreatedGroupsScreen(),

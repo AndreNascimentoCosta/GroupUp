@@ -116,17 +116,6 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                   },
                 ),
               ),
-              BodySwitch(
-                text: 'Allow refund request',
-                switchType: SwitchButton(
-                  onChanged: (value) {
-                    final createGroupProvider =
-                        Provider.of<CreateGroupProvider>(context,
-                            listen: false);
-                    createGroupProvider.newGroup.allowRefundRequest = value;
-                  },
-                ),
-              ),
             ],
           ),
         ),

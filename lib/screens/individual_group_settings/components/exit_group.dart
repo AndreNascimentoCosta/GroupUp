@@ -15,30 +15,13 @@ class _ExitGroupState extends State<ExitGroup> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: kDefaultPadding),
-          CheckboxListTile(
-              title: const LargeBody(text: 'Request refund'),
-              activeColor: kPrimaryColor,
-              checkboxShape: const CircleBorder(),
-              value: checkedValue,
-              onChanged: ((value) {
-                setState(() {
-                  checkedValue = value!;
-                });
-              })),
-          const SizedBox(height: kDefaultPadding),
-          ButtonCommonStyle(
+      child: ButtonCommonStyle(
             onPressed: () {},
             child: const LargeBody(
               text: 'Exit group',
               color: Colors.red,
             ),
           )
-        ],
-      ),
     );
   }
 }
