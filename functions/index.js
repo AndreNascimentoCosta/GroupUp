@@ -42,7 +42,34 @@ const createOrGetCustomerId = async function (userId) {
 
 
 
-exports.StripePayEndPointMethodId = functions.https.onRequest(async (req, res) => {
+exports.StripePayEndPointMethodIdJoinGroup = functions.https.onRequest(async (req, res) => {
+    const { groupId, userId, groupReward, groupCurrency } = req.body.data;
+
+    const reward = groupReward * 100;
+    const currency = groupCurrency;
+    const customerId = createOrGetCustomerId(userId);
+
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: reward,
+            currency: currency,
+            customer: customerId,
+            automatic_payment_methods: {
+                enabled: true,
+            },
+            setup_future_usage: 'off_session',
+        });
+        return res.send({
+            data: {
+                clientSecret: paymentIntent.client_secret,
+            }
+        });
+    } catch (e) {
+        return res.send({ data: { clientSecret: '', error: e.message } });
+    }
+});
+
+exports.StripePayEndPointMethodIdCreateGroup = functions.https.onRequest(async (req, res) => {
     const { userId, groupReward, groupCurrency } = req.body.data;
 
     const reward = groupReward * 100;

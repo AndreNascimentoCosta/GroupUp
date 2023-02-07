@@ -34,6 +34,7 @@ class CreateGroupProvider extends ChangeNotifier {
   final users = [];
   bool isCreatingGroup = false;
   bool isRefundRequested = true;
+  bool isPaying = false;
 
   final newGroup = GroupModel.empty();
 
@@ -49,7 +50,7 @@ class CreateGroupProvider extends ChangeNotifier {
   void _confirm(BuildContext context) {
     showCupertinoDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (BuildContext newContext) {
         return AlertDialog(
           title: const StaticText(
             text: 'Confirm',
@@ -86,13 +87,17 @@ class CreateGroupProvider extends ChangeNotifier {
                         .user
                         ?.id ??
                     '';
+                isPaying = true;
+                notifyListeners();
                 await Provider.of<StripePaymentProvider>(context, listen: false)
-                    .initPayment(
-                  context,
+                    .initPaymentCreateGroup(
+                  newContext,
                   userId,
                   controllerReward.text,
                   groupCurrencyCode,
                 );
+                isPaying = false;
+                notifyListeners();
                 await createGroup(context);
               },
               height: 40,
@@ -254,7 +259,6 @@ class CreateGroupProvider extends ChangeNotifier {
 
   Future<void> createGroup(BuildContext context) async {
     controller.jumpToPage(3);
-    Navigator.pop(context);
     isCreatingGroup = true;
     notifyListeners();
     newGroup.projectName = controllerProjectName.text;
@@ -323,30 +327,12 @@ class CreateGroupProvider extends ChangeNotifier {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            content: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const StaticText(
-                    text: 'Are you sure you want to leave the \ngroup?',
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                    fontSize: TextSize.mBody,
-                  ),
-                  const SizedBox(width: Insets.l),
-                  CheckboxListTile(
-                    title: const StaticText(
-                      text: 'Request refund',
-                      fontSize: TextSize.mBody,
-                    ),
-                    activeColor: kPrimaryColor,
-                    value: isRefundRequested,
-                    onChanged: (value) {
-                      isRefundRequested = value ?? true;
-                      notifyListeners();
-                    },
-                  ),
-                ],
+            content: const SingleChildScrollView(
+              child: StaticText(
+                text: 'Are you sure you want to leave the \ngroup?',
+                maxLines: 2,
+                textAlign: TextAlign.center,
+                fontSize: TextSize.mBody,
               ),
             ),
             actionsAlignment: MainAxisAlignment.center,

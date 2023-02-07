@@ -96,8 +96,10 @@ class _CreatePageViewState extends State<CreatePageView> {
               ],
             ),
           ),
-          createGroupProvider.isCreatingGroup
-              ? const SizedBox()
+          createGroupProvider.isPaying
+              ? const CircularProgressIndicator(color: kPrimaryColor)
+              : createGroupProvider.isCreatingGroup
+                  ? const SizedBox()
                   : NextButton(
                       onPressed: createGroupProvider.nextPressed(context),
                     ),

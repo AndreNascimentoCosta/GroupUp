@@ -43,8 +43,9 @@ class JoinGroupProvider extends ChangeNotifier {
         final navigatorState = Navigator.of(context);
         final initPayment =
             Provider.of<StripePaymentProvider>(context, listen: false)
-                .initPayment(
+                .initPaymentJoinGroup(
           context,
+          groupId,
           userId,
           reward,
           groupCurrencyCode,
@@ -154,6 +155,7 @@ class JoinGroupProvider extends ChangeNotifier {
   }
 
   void clean() {
+    isPaying = false;
     controllerGroupCode.clear();
     updateIndex(0);
     notifyListeners();
