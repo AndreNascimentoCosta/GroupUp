@@ -8,6 +8,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/objective_reward.dart';
 import 'package:groupup/screens/individual_group/components/start_end_date.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class HeaderIndividualGroup extends StatelessWidget {
@@ -71,6 +72,9 @@ class HeaderIndividualGroup extends StatelessWidget {
         ),
       );
     }
+    String groupCurrencySymbol =
+        NumberFormat.simpleCurrency(name: group.groupCurrencyCode)
+            .currencySymbol;
     return Container(
       color: Colors.white,
       height: 125,
@@ -144,9 +148,51 @@ class HeaderIndividualGroup extends StatelessWidget {
                   thickness: 1,
                   color: kSecondaryColor,
                 ),
-                ObjectiveRewardModel(
-                  icon: 'assets/icons/reward.svg',
-                  text: group.reward,
+                ButtonCommonStyle(
+                  onPressed: () {
+                    showCupertinoDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const StaticText(
+                            text: 'Reward',
+                            textAlign: TextAlign.center,
+                            fontFamily: 'Montserrat-SemiBold',
+                            fontSize: TextSize.lBody,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          content: StaticText(
+                            text: '$groupCurrencySymbol ${double.parse(group.reward).toStringAsFixed(2)}',
+                            maxLines: 4,
+                            textAlign: TextAlign.center,
+                            fontSize: TextSize.mBody,
+                          ),
+                          actionsAlignment: MainAxisAlignment.center,
+                          contentPadding:
+                              const EdgeInsets.only(top: 20, bottom: 20),
+                          actions: [
+                            ButtonCommonStyle(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const StaticText(
+                                text: 'Ok',
+                                color: kPrimaryColor,
+                                fontSize: TextSize.mBody,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: ObjectiveRewardModel(
+                    icon: 'assets/icons/reward.svg',
+                    text:
+                        '$groupCurrencySymbol ${double.parse(group.reward).toStringAsFixed(2)}',
+                  ),
                 ),
                 const VerticalDivider(
                   width: kDefaultPadding * 1.75,

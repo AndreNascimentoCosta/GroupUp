@@ -141,8 +141,8 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                             showCurrencyName: true,
                             showCurrencyCode: true,
                             currencyFilter: [
-                              'USD'
-                                  'AED',
+                              'USD',
+                              'AED',
                               'AFN',
                               'ALL',
                               'AMD',
