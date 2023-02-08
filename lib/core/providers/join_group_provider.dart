@@ -19,7 +19,6 @@ class JoinGroupProvider extends ChangeNotifier {
   final controllerGroupCode = TextEditingController();
   final controller = PageController();
   int pageIndex = 0;
-  bool isPaying = false;
 
   JoinGroupProvider() {
     controllerGroupCode.addListener(notifyListeners);
@@ -27,10 +26,7 @@ class JoinGroupProvider extends ChangeNotifier {
 
   void Function()? nextPressedJoin(
     BuildContext context,
-    String groupId,
     String userId,
-    String reward,
-    String groupCurrencyCode,
   ) {
     // Index 0
     final joinGroupText = controllerGroupCode.text;
@@ -41,65 +37,103 @@ class JoinGroupProvider extends ChangeNotifier {
       return () async {
         final scaffoldMessengerState = ScaffoldMessenger.of(context);
         final navigatorState = Navigator.of(context);
-        final initPayment =
-            Provider.of<StripePaymentProvider>(context, listen: false)
-                .initPaymentJoinGroup(
-          context,
-          groupId,
-          userId,
-          reward,
-          groupCurrencyCode,
-        );
+        final stripePaymentProvider =
+            Provider.of<StripePaymentProvider>(context, listen: false);
         FocusScope.of(context).unfocus();
-        isPaying = true;
-        notifyListeners();
-        await initPayment;
-        isPaying = false;
-        notifyListeners();
-        final error = await joinGroup(context);
-        switch (error) {
-          case JoinGroupErrorType.groupCodeEmpty:
-            scaffoldMessengerState.showSnackBar(
-              const SnackBar(
-                content: Text('Please enter a group code'),
-              ),
-            );
-            break;
-          case JoinGroupErrorType.groupCodeInvalid:
-            scaffoldMessengerState.showSnackBar(
-              const SnackBar(
-                content: Text('Invalid group code'),
-              ),
-            );
-            break;
-          case JoinGroupErrorType.groupCodeExpired:
-            scaffoldMessengerState.showSnackBar(
-              const SnackBar(
-                content: Text('This group has already ended'),
-              ),
-            );
-            break;
-          case JoinGroupErrorType.groupCodeFull:
-            scaffoldMessengerState.showSnackBar(
-              const SnackBar(
-                content: Text('This group code is full'),
-              ),
-            );
-            break;
-          case JoinGroupErrorType.userAlreadyInGroup:
-            scaffoldMessengerState.showSnackBar(
-              const SnackBar(
-                content: Text('You are already in this group'),
-              ),
-            );
-            break;
-          default:
+        final error = await validateJoinGroup(context);
+        if (error != null) {
+          switch (error) {
+            case JoinGroupErrorType.groupCodeEmpty:
+              scaffoldMessengerState.showSnackBar(
+                const SnackBar(
+                  content: Text('Please enter a group code'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+              break;
+            case JoinGroupErrorType.groupCodeInvalid:
+              scaffoldMessengerState.showSnackBar(
+                const SnackBar(
+                  content: Text('Invalid group code'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+              break;
+            case JoinGroupErrorType.groupCodeExpired:
+              scaffoldMessengerState.showSnackBar(
+                const SnackBar(
+                  content: Text('This group has already ended'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+              break;
+            case JoinGroupErrorType.groupCodeFull:
+              scaffoldMessengerState.showSnackBar(
+                const SnackBar(
+                  content: Text('This group code is full'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+              break;
+            case JoinGroupErrorType.userAlreadyInGroup:
+              scaffoldMessengerState.showSnackBar(
+                const SnackBar(
+                  content: Text('You are already in this group'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+              break;
+            default:
+          }
+          return;
+        } else {
+          try {
+            await stripePaymentProvider.initPaymentJoinGroup(
+                controllerGroupCode.text, userId);
+            // ignore: use_build_context_synchronously
+            await joinGroup(context);
+          } catch (e) {}
         }
         clean();
-        navigatorState.pop();
-        navigatorState.pop();
       };
     }
+  }
+
+  Future<JoinGroupErrorType?> validateJoinGroup(BuildContext context) async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+    final navigatorState = Navigator.of(context);
+    final groups = await FirebaseFirestore.instance
+        .collection('groups')
+        .where('groupCode', isEqualTo: controllerGroupCode.text.toUpperCase())
+        .get();
+    if (groups.docs.isEmpty) {
+      navigatorState.pop();
+      navigatorState.pop();
+      return JoinGroupErrorType.groupCodeInvalid;
+    }
+    final groupDocument = groups.docs.first;
+    final groupData = groupDocument.data();
+    final groupModel = GroupModel.fromMap(groupDocument.id, groupData);
+    if (groupModel.participants.contains(userId)) {
+      navigatorState.pop();
+      navigatorState.pop();
+      return JoinGroupErrorType.userAlreadyInGroup;
+    }
+    if (groupModel.participants.length >= groupModel.maxParticipants) {
+      navigatorState.pop();
+      navigatorState.pop();
+      return JoinGroupErrorType.groupCodeFull;
+    }
+    if (groupModel.endDate!.year != DateTime.now().year ||
+        groupModel.endDate!.month != DateTime.now().month ||
+        groupModel.endDate!.day != DateTime.now().day) {
+      if (groupModel.endDate!.isBefore(DateTime.now())) {
+        navigatorState.pop();
+        navigatorState.pop();
+        return JoinGroupErrorType.groupCodeExpired;
+      }
+    }
+    return null;
   }
 
   Future<JoinGroupErrorType?> joinGroup(BuildContext context) async {
@@ -111,18 +145,6 @@ class JoinGroupProvider extends ChangeNotifier {
         .get();
     if (groups.docs.isEmpty) {
       return JoinGroupErrorType.groupCodeInvalid;
-    }
-    final groupDocument = groups.docs.first;
-    final groupData = groupDocument.data();
-    final groupModel = GroupModel.fromMap(groupDocument.id, groupData);
-    if (groupModel.participants.contains(userId)) {
-      return JoinGroupErrorType.userAlreadyInGroup;
-    }
-    if (groupModel.participants.length >= groupModel.maxParticipants) {
-      return JoinGroupErrorType.groupCodeFull;
-    }
-    if (groupModel.endDate!.isBefore(DateTime.now())) {
-      return JoinGroupErrorType.groupCodeExpired;
     }
     if (user == null) {
       return JoinGroupErrorType.groupCodeInvalid;
@@ -155,7 +177,6 @@ class JoinGroupProvider extends ChangeNotifier {
   }
 
   void clean() {
-    isPaying = false;
     controllerGroupCode.clear();
     updateIndex(0);
     notifyListeners();

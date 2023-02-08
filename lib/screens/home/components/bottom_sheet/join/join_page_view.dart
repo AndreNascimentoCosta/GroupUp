@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
+import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/join/pages/first_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
@@ -21,13 +21,8 @@ class _JoinPageViewState extends State<JoinPageView> {
   @override
   Widget build(BuildContext context) {
     final joinGroupProvider = Provider.of<JoinGroupProvider>(context);
-    final group = Provider.of<IndividualGroupProvider>(context).group;
+    final stripePaymentProvider = Provider.of<StripePaymentProvider>(context);
     final userId = Provider.of<AuthProvider>(context).user?.id ?? '';
-    if (group == null) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
     return SafeArea(
       child: Column(
         children: [
@@ -79,17 +74,14 @@ class _JoinPageViewState extends State<JoinPageView> {
               ],
             ),
           ),
-          if (joinGroupProvider.isPaying)
+          if (stripePaymentProvider.isPaying)
             const Center(
               child: CircularProgressIndicator(color: kPrimaryColor),
             ) else 
           NextButton(
             onPressed: joinGroupProvider.nextPressedJoin(
               context,
-              group.id,
               userId,
-              group.reward,
-              group.groupCurrencyCode,
             ),
           ),
           joinGroupProvider.pageIndex == 1

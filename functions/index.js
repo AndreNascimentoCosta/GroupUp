@@ -43,10 +43,13 @@ const createOrGetCustomerId = async function (userId) {
 
 
 exports.StripePayEndPointMethodIdJoinGroup = functions.https.onRequest(async (req, res) => {
-    const { groupId, userId, groupReward, groupCurrency } = req.body.data;
+    const { groupCode, userId } = req.body.data;
 
-    const reward = groupReward * 100;
-    const currency = groupCurrency;
+    const groupDoc = await admin.firestore().collection('groups').where('groupCode', "==", groupCode).get();
+    const groupData = groupDoc.docs[0].data();
+
+    const reward = groupData.reward * 100;
+    const currency = groupData.groupCurrencyCode;
     const customerId = createOrGetCustomerId(userId);
 
     try {
@@ -62,6 +65,7 @@ exports.StripePayEndPointMethodIdJoinGroup = functions.https.onRequest(async (re
         return res.send({
             data: {
                 clientSecret: paymentIntent.client_secret,
+                reward: reward,
             }
         });
     } catch (e) {

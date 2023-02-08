@@ -2,13 +2,14 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:provider/provider.dart';
 
 enum PaymentStatus { initial, loading, success, error }
 
 class StripePaymentProvider extends ChangeNotifier {
   final PaymentStatus status;
+  bool isPaying = false;
 
   StripePaymentProvider({this.status = PaymentStatus.initial});
 
@@ -79,23 +80,18 @@ class StripePaymentProvider extends ChangeNotifier {
   }
 
   Future<void> initPaymentJoinGroup(
-    BuildContext context,
-    String groupId,
+    String groupCode,
     String userId,
-    String groupReward,
-    String groupCurrency,
   ) async {
+    isPaying = true;
+    notifyListeners();
     try {
-      Provider.of<CreateGroupProvider>(context).isPaying = true;
-      notifyListeners();
       final clientSecret = await FirebaseFunctions.instance
           .httpsCallable('StripePayEndPointMethodIdJoinGroup')
           .call(
         {
-          'groupId': groupId,
+          'groupCode': groupCode,
           'userId': userId,
-          'groupReward': groupReward,
-          'groupCurrency': groupCurrency,
         },
       );
       await Stripe.instance.initPaymentSheet(
@@ -106,7 +102,7 @@ class StripePaymentProvider extends ChangeNotifier {
             paymentSummaryItems: [
               ApplePayCartSummaryItem.immediate(
                 label: 'Reward',
-                amount: groupReward.toString(),
+                amount: (clientSecret.data['reward'] / 100).toString(),
               )
             ],
           ),
@@ -142,10 +138,12 @@ class StripePaymentProvider extends ChangeNotifier {
         ),
       );
       await Stripe.instance.presentPaymentSheet();
-      Provider.of<CreateGroupProvider>(context).isPaying = false;
+      isPaying = false;
+    } on StripeException {
+      isPaying = false;
       notifyListeners();
-    } on FirebaseFunctionsException catch (e) {
-      print(e.message);
+      throw Exception('Payment failed');
     }
+    notifyListeners();
   }
 }
