@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -12,7 +10,6 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/groups/components/checkbox.dart';
 import 'package:groupup/screens/groups/components/stats_group_ongoing.dart';
 import 'package:groupup/screens/individual_group/screens/individual_group.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class GroupsCard extends StatefulWidget {
@@ -37,7 +34,6 @@ class _GroupsCardState extends State<GroupsCard> {
   Widget build(BuildContext context) {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
-    final userId = Provider.of<AuthProvider>(context).user?.id ?? '';
     return ButtonCommonStyle(
       onPressed: () async {
         if (widget.homeViewModel.isEditing.value) {

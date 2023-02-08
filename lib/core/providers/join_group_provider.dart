@@ -94,7 +94,10 @@ class JoinGroupProvider extends ChangeNotifier {
             await joinGroup(context);
             navigatorState.pop();
             navigatorState.pop();
-          } catch (e) {}
+          } catch (e) {
+            // ignore: avoid_print
+            print(e);
+          }
         }
         clean();
       };

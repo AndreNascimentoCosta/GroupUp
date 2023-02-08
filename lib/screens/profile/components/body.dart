@@ -14,7 +14,6 @@ import 'package:groupup/screens/created_groups/screens/created_groups_screen.dar
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/profile/components/profile_picture_add.dart';
-import 'package:groupup/screens/refund_requests/screens/refund_requests.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/profile/components/app_bar.dart';
 import 'package:groupup/screens/profile/components/body_button.dart';

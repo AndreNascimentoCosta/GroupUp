@@ -2,8 +2,6 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/providers/join_group_provider.dart';
-import 'package:provider/provider.dart';
 
 enum PaymentStatus { initial, loading, success, error }
 
@@ -75,6 +73,7 @@ class StripePaymentProvider extends ChangeNotifier {
       );
       await Stripe.instance.presentPaymentSheet();
     } on FirebaseFunctionsException catch (e) {
+      // ignore: avoid_print
       print(e.message);
     }
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 

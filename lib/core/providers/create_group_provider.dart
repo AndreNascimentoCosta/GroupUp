@@ -246,6 +246,7 @@ class CreateGroupProvider extends ChangeNotifier {
                   );
                   isPaying = false;
                   notifyListeners();
+                  // ignore: use_build_context_synchronously
                   await createGroup(context);
                 } else {
                   await createGroup(context);
