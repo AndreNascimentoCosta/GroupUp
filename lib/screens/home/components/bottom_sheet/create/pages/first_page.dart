@@ -443,7 +443,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                           return null;
                         }
                       },
-                      header: 'Group fee*',
+                      header: 'Group fee',
                       hint: '0,00',
                       padding: const EdgeInsets.symmetric(
                         horizontal: kDefaultPadding,
@@ -465,14 +465,13 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
             ),
             const SizedBox(height: Insets.s),
             const Padding(
-              padding: EdgeInsets.only(
-                left: 130,
-                right: 20,
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
               ),
               child: StaticText(
                 text:
-                    '*Each participant will pay the fee and the total amount will be used as the group reward.',
-                maxLines: 3,
+                    '1. Each participant will pay the fee and the total amount will be used as the group reward. \n2. If fee is set to 0, then there will be no reward. \n3. The fee is non-refundable.',
+                maxLines: 4,
               ),
             )
           ],
