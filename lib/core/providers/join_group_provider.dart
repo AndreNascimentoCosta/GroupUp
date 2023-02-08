@@ -92,6 +92,8 @@ class JoinGroupProvider extends ChangeNotifier {
                 controllerGroupCode.text, userId);
             // ignore: use_build_context_synchronously
             await joinGroup(context);
+            navigatorState.pop();
+            navigatorState.pop();
           } catch (e) {}
         }
         clean();
