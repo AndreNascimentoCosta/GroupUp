@@ -17,6 +17,8 @@ class StripePaymentProvider extends ChangeNotifier {
     String groupReward,
     String groupCurrency,
   ) async {
+    isPaying = true;
+    notifyListeners();
     Navigator.of(context).pop();
     try {
       final clientSecret = await FirebaseFunctions.instance
@@ -72,10 +74,13 @@ class StripePaymentProvider extends ChangeNotifier {
         ),
       );
       await Stripe.instance.presentPaymentSheet();
-    } on FirebaseFunctionsException catch (e) {
-      // ignore: avoid_print
-      print(e.message);
+    } on StripeException catch (e) {
+      isPaying = false;
+      notifyListeners();
+      throw Exception('Payment failed');
     }
+    isPaying = false;
+    notifyListeners();
   }
 
   Future<void> initPaymentJoinGroup(
@@ -138,7 +143,7 @@ class StripePaymentProvider extends ChangeNotifier {
       );
       await Stripe.instance.presentPaymentSheet();
       isPaying = false;
-    } on StripeException {
+    }  on StripeException catch (e) {
       isPaying = false;
       notifyListeners();
       throw Exception('Payment failed');

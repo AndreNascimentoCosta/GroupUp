@@ -5,6 +5,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StartDateTimePicker extends StatefulWidget {
   const StartDateTimePicker({required this.onChanged});
@@ -22,7 +23,7 @@ class _StartDateTimePickerState extends State<StartDateTimePicker> {
     if (date != null) {
       return '${date.day}/${date.month}/${date.year}';
     } else {
-      return 'Select date';
+      return AppLocalizations.of(context).selectDate;
     }
   }
 
@@ -50,12 +51,13 @@ class _StartDateTimePickerState extends State<StartDateTimePicker> {
   }
 
   String? startDateValidator(value) {
-    if (startDate == null) return "Select date";
+    if (startDate == null) return AppLocalizations.of(context).selectDate;
     return null;
   }
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: 
@@ -81,7 +83,7 @@ class _StartDateTimePickerState extends State<StartDateTimePicker> {
                     width: Insets.l,
                   ),
                 ),
-                hintText: 'Start date',
+                hintText: appLocalizations.startDate,
                 hintStyle: const TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize: TextSize.mBody,

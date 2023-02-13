@@ -10,8 +10,9 @@ import 'package:groupup/screens/individual_group_settings/components/other_optio
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../report_participant/report_general_participants.dart/screens/report_participant.dart';
+import '../../report_participant/screens/report_participant.dart';
 
 class BodyNotAdminSettings extends StatelessWidget {
   const BodyNotAdminSettings({required this.groups});
@@ -22,6 +23,7 @@ class BodyNotAdminSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     final createGroupProvider =
         Provider.of<CreateGroupProvider>(context, listen: false);
+    final appLocalizations = AppLocalizations.of(context);
     return ChangeNotifierProvider(
       create: (context) => ReportParticipantProvider(),
       child: Padding(
@@ -45,21 +47,26 @@ class BodyNotAdminSettings extends StatelessWidget {
                     ),
                   );
                 },
-                child: const BodyContentArrow(name: 'Report a participant'),
+                child:
+                    BodyContentArrow(name: appLocalizations.reportParticipant),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.625),
               Row(
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     width: 150,
-                    child: LargeBody(text: 'Group code'),
+                    child: LargeBody(text: appLocalizations.groupCode),
                   ),
                   const Spacer(),
                   ShareButton(
                     text: groups.groupCode,
                     onPressed: () async {
                       await Share.share(
-                          'Join my group ${groups.projectName} on GroupUp! \nThe code is ${groups.groupCode}');
+                        appLocalizations.shareGroupCodeText(
+                          groups.projectName,
+                          groups.groupCode,
+                        ),
+                      );
                     },
                   ),
                 ],
@@ -72,7 +79,7 @@ class BodyNotAdminSettings extends StatelessWidget {
                     groups.id,
                   );
                 },
-                text: 'Exit group',
+                text: appLocalizations.exitGroup,
                 color: Colors.red,
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),

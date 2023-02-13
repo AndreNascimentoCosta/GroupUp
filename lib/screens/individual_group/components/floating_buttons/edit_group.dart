@@ -18,7 +18,8 @@ class EditAndHistoryGroupButton extends StatefulWidget {
   final Color backgroundColor;
 
   @override
-  State<EditAndHistoryGroupButton> createState() => _EditAndHistoryGroupButtonState();
+  State<EditAndHistoryGroupButton> createState() =>
+      _EditAndHistoryGroupButtonState();
 }
 
 class _EditAndHistoryGroupButtonState extends State<EditAndHistoryGroupButton> {
@@ -35,65 +36,66 @@ class _EditAndHistoryGroupButtonState extends State<EditAndHistoryGroupButton> {
       width: 75,
       child: FittedBox(
         child: ValueListenableBuilder(
-            valueListenable: widget.homeViewModel.isEditing,
-            builder: (context, value, child) {
-              if (widget.homeViewModel.isEditing.value) {
-                return FloatingActionButton(
-                  heroTag: 'btn5',
-                  highlightElevation: 0,
-                  onPressed: widget.homeViewModel.switchEdit,
-                  backgroundColor: widget.backgroundColor,
-                  elevation: 0,
-                  child: SvgPicture.asset(
-                    'assets/icons/exit.svg',
-                    height: Insets.xl,
-                    width: Insets.xl,
-                  ),
-                );
-              }
-              if (individualGroupProvider.pageIndex == 0) {
-                return FloatingActionButton(
-                  heroTag: 'btn4',
-                  onPressed: individualGroupProvider.pageIndex == 0
-                      ? widget.homeViewModel.switchEdit
-                      : () {
-                          showModalBottomSheet(
-                            isScrollControlled: true,
-                            context: context,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(Insets.m),
-                            ),
-                            builder: (context) {
-                              return BuilderBottomSheet(
-                                height: 500,
-                                child: DataHistoryBottomSheet(
-                                  userInputData: individualGroupProvider
-                                      .group!.participantsData
-                                      .firstWhere(
-                                          (element) => element.uid == user?.id)
-                                      .inputData,
-                                ),
-                              );
-                            },
-                          );
-                        },
-                  backgroundColor: widget.backgroundColor,
-                  highlightElevation: 0,
-                  elevation: 0,
-                  child: individualGroupProvider.pageIndex == 0
-                      ? SvgPicture.asset(
-                          'assets/icons/edit.svg',
-                          height: Insets.xl,
-                          width: Insets.xl,
-                        )
-                      : const Icon(Icons.history, size: 30),
-                );
-              } else {
-                return DataHistoryButton(
-                  homeViewModel: widget.homeViewModel,
-                );
-              }
-            }),
+          valueListenable: widget.homeViewModel.isEditing,
+          builder: (context, value, child) {
+            if (widget.homeViewModel.isEditing.value) {
+              return FloatingActionButton(
+                heroTag: 'btn5',
+                highlightElevation: 0,
+                onPressed: widget.homeViewModel.switchEdit,
+                backgroundColor: widget.backgroundColor,
+                elevation: 0,
+                child: SvgPicture.asset(
+                  'assets/icons/exit.svg',
+                  height: Insets.xl,
+                  width: Insets.xl,
+                ),
+              );
+            }
+            if (individualGroupProvider.pageIndex == 0) {
+              return FloatingActionButton(
+                heroTag: 'btn4',
+                onPressed: individualGroupProvider.pageIndex == 0
+                    ? widget.homeViewModel.switchEdit
+                    : () {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(Insets.m),
+                          ),
+                          builder: (context) {
+                            return BuilderBottomSheet(
+                              height: 500,
+                              child: DataHistoryBottomSheet(
+                                userInputData: individualGroupProvider
+                                    .group!.participantsData
+                                    .firstWhere(
+                                        (element) => element.uid == user?.id)
+                                    .inputData,
+                              ),
+                            );
+                          },
+                        );
+                      },
+                backgroundColor: widget.backgroundColor,
+                highlightElevation: 0,
+                elevation: 0,
+                child: individualGroupProvider.pageIndex == 0
+                    ? SvgPicture.asset(
+                        'assets/icons/edit.svg',
+                        height: Insets.xl,
+                        width: Insets.xl,
+                      )
+                    : const Icon(Icons.history, size: 30),
+              );
+            } else {
+              return DataHistoryButton(
+                homeViewModel: widget.homeViewModel,
+              );
+            }
+          },
+        ),
       ),
     );
   }

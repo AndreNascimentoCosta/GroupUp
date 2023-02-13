@@ -8,15 +8,19 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AppBarEditGroupNoParticipats extends StatelessWidget with PreferredSizeWidget {
+class AppBarEditGroupNoParticipats extends StatelessWidget
+    with PreferredSizeWidget {
   const AppBarEditGroupNoParticipats({required this.groups});
 
   final GroupModel groups;
 
   @override
   Widget build(BuildContext context) {
-    final editGroupMaxParticipantsProvider = Provider.of<EditGroupNoParticipantsProvider>(context);
+    final editGroupMaxParticipantsProvider =
+        Provider.of<EditGroupNoParticipantsProvider>(context);
+    final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
         children: [
@@ -35,11 +39,13 @@ class AppBarEditGroupNoParticipats extends StatelessWidget with PreferredSizeWid
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const Header(text: 'Participants'),
+                child: Header(text: appLocalizations.participants),
               ),
               ButtonCommonStyle(
                 onPressed: () {
-                  if (editGroupMaxParticipantsProvider.groupMaxParticipantsController.text == groups.maxParticipants.toString()) {
+                  if (editGroupMaxParticipantsProvider
+                          .groupMaxParticipantsController.text ==
+                      groups.maxParticipants.toString()) {
                     Navigator.pop(context);
                   } else {
                     editGroupMaxParticipantsProvider.confirmDiscard(context);
@@ -71,12 +77,18 @@ class AppBarEditGroupNoParticipats extends StatelessWidget with PreferredSizeWid
                 child: Padding(
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: ButtonCommonStyle(
-                    onPressed: editGroupMaxParticipantsProvider.done(context, groups.maxParticipants.toString(), groups.id),
+                    onPressed: editGroupMaxParticipantsProvider.done(
+                        context, groups.maxParticipants.toString(), groups.id),
                     child: StaticText(
-                      text: 'Done',
+                      text: appLocalizations.done,
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
-                      color: editGroupMaxParticipantsProvider.done(context, groups.maxParticipants.toString(), groups.id) == null
+                      color: editGroupMaxParticipantsProvider.done(
+                                context,
+                                groups.maxParticipants.toString(),
+                                groups.id,
+                              ) ==
+                              null
                           ? kSecondaryColor
                           : Colors.black,
                     ),

@@ -12,6 +12,7 @@ import 'package:groupup/screens/edit_profile/components/profile_picture_add.dart
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GroupPictureAdd extends StatefulWidget {
   const GroupPictureAdd({super.key});
@@ -46,6 +47,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return ButtonCommonStyle(
       onPressed: () {
         showModalBottomSheet(
@@ -75,8 +77,8 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                                 onPressed: () {
                                   pickImage(ImageSource.gallery);
                                 },
-                                child: const LargeBody(
-                                  text: 'Choose from gallery',
+                                child: LargeBody(
+                                  text: appLocalizations.chooseFromGallery,
                                   textAlign: TextAlign.center,
                                 ),
                               ),
@@ -85,8 +87,8 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                                 onPressed: () {
                                   pickImage(ImageSource.camera);
                                 },
-                                child: const LargeBody(
-                                  text: 'Take photo',
+                                child: LargeBody(
+                                  text: appLocalizations.takePhoto,
                                   textAlign: TextAlign.center,
                                 ),
                               )

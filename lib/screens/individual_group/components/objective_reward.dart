@@ -25,7 +25,10 @@ class ObjectiveRewardModel extends StatelessWidget {
           width: 65,
           child: StaticText(
             text: Characters(text)
-                .replaceAll(Characters(''), Characters('\u{200B}'))
+                .replaceAll(
+                  Characters(''),
+                  Characters('\u{200B}'),
+                )
                 .toString(),
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,

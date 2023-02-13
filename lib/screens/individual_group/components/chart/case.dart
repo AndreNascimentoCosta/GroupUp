@@ -19,8 +19,15 @@ class CaseChart extends StatelessWidget {
             height: kDefaultPadding * 0.25,
           ),
           StaticText(
-            text: DateFormat.E()
-                .format(DateTime.now().subtract(Duration(days: days)))[0],
+            text: DateFormat.E(
+              Localizations.localeOf(context).toLanguageTag(),
+            ).format(
+              DateTime.now().subtract(
+                Duration(
+                  days: days,
+                ),
+              ),
+            )[0].toUpperCase(),
             color: kSecondaryColor,
             fontSize: TextSize.xsBody,
           ),

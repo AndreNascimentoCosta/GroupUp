@@ -3,30 +3,6 @@ const stripe = require("stripe")('sk_test_51MXufcIXmdKwNYjDzpHrTwv42aY8LErRVMtLg
 const admin = require('firebase-admin');
 admin.initializeApp();
 
-// const generateResponse = function (intent) {
-//     switch (intent.status) {
-//         case 'requires_action':
-//             return {
-//                 clientSecret: intent.client_secret,
-//                 requiresAction: true,
-//                 status: intent.status,
-//             };
-//         case 'requires_payment_method':
-//             return {
-//                 error: 'Your card was declined, please provide a new payment method.',
-//             };
-//         case 'succeeded':
-//             console.log('Payment succeeded!')
-//             return {
-//                 clientSecret: intent.client_secret,
-//                 status: intent.status,
-//             };
-//     }
-//     return {
-//         error: 'Failed to process payment.',
-//     };
-// };
-
 const createOrGetCustomerId = async function (userId) {
     const userDoc = await admin.firestore().collection('users').doc(userId).get();
     const userData = userDoc.data();
@@ -100,16 +76,35 @@ exports.StripePayEndPointMethodIdCreateGroup = functions.https.onRequest(async (
     }
 });
 
-// exports.StripePayEndPointIntentId = functions.https.onRequest(async (req, res) => {
-//     const { paymentIntentId } = req.body;
-//     try {
-//         if (paymentIntentId) {
-//             const intent = await stripe.paymentIntents.confirm(paymentIntentId);
-//             return res.send(generateResponse(intent));
-//         }
-//         return res.send(generateResponse(intent));
-//     } catch (e) {
-//         return res.send({ error: e.message });
-//     }
-// });
+exports.CreateAccount = functions.https.onRequest(async (req, res) => {
 
+    const account = await stripe.accounts.create({
+        type: 'express',
+        country: 'BR',
+        email: 'test@test.com',
+        business_type: 'individual',
+        individual: {
+            political_exposure: 'none',
+        },
+        business_profile: {
+            name: "Andre",
+            product_description: "Test",
+        },
+        individual: {
+            first_name: "Andre",
+            last_name: "Test",
+            id_number: "123456789",
+        },
+        capabilities: {
+            card_payments: { requested: true },
+            transfers: { requested: true },
+        },
+    });
+    return res.send(account);
+});
+
+exports.DeleteAccount = functions.https.onRequest(async (req, res) => {
+    const { accountId } = req.body.data;
+    const account = await stripe.accounts.del(accountId);
+    return res.send(account);
+});

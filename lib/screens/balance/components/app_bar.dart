@@ -5,12 +5,14 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarBalance extends StatelessWidget with PreferredSizeWidget {
   const AppBarBalance({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
         children: [
@@ -29,8 +31,8 @@ class AppBarBalance extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const StaticText(
-                  text: 'Balance',
+                child: StaticText(
+                  text: appLocalizations.balance,
                   fontFamily: 'Montserrat-Bold',
                   fontSize: TextSize.subTitle,
                 ),

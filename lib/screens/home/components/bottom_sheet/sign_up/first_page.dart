@@ -9,6 +9,7 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirsPageSignUp extends StatefulWidget {
   const FirsPageSignUp({
@@ -49,7 +50,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                   provider.appleLogin();
                   Navigator.pop(context);
                 },
-                text: 'Continue with Apple',
+                text: AppLocalizations.of(context).continueApple,
                 height: 50,
                 iconAlignment: IconAlignment.left,
                 style: SignInWithAppleButtonStyle.whiteOutlined,
@@ -80,9 +81,9 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                           height: 35,
                           width: 31,
                         ),
-                        const Expanded(
+                        Expanded(
                           child: StaticText(
-                            text: 'Continue with Google',
+                            text: AppLocalizations.of(context).continueGoogle,
                             fontSize: 18.92,
                             textAlign: TextAlign.center,
                           ),
@@ -100,28 +101,30 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                   phoneProvider.start = 30;
                   phoneProvider.clean();
                   showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(Insets.m),
-                      ),
-                      builder: (context) {
-                        return Padding(
-                          padding: MediaQuery.of(context).viewInsets,
-                          child: Wrap(
-                            children: <Widget>[
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: const [
-                                  SizedBox(
-                                      height: 400,
-                                      child: SignUpPhonePageView()),
-                                ],
-                              )
-                            ],
-                          ),
-                        );
-                      });
+                    isScrollControlled: true,
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(Insets.m),
+                    ),
+                    builder: (context) {
+                      return Padding(
+                        padding: MediaQuery.of(context).viewInsets,
+                        child: Wrap(
+                          children: <Widget>[
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                SizedBox(
+                                  height: 400,
+                                  child: SignUpPhonePageView(),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  );
                 },
                 child: Container(
                   height: 50,
@@ -133,10 +136,11 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Row(
-                      children: const [
+                      children: [
                         Expanded(
                           child: StaticText(
-                            text: 'Continue with phone number',
+                            text: AppLocalizations.of(context)
+                                .continuePhoneNumber,
                             fontSize: 18.92,
                             textAlign: TextAlign.center,
                           ),

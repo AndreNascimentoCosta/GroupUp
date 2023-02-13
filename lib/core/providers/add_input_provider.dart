@@ -15,6 +15,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:ntp/ntp.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'individual_group_provider.dart';
 
@@ -38,9 +39,10 @@ class AddInputProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
+        final appLocalizations = AppLocalizations.of(context);
         return AlertDialog(
-          title: const StaticText(
-            text: 'Add a Photo or Video',
+          title: StaticText(
+            text: appLocalizations.addMedia,
             textAlign: TextAlign.center,
             fontFamily: 'Montserrat-SemiBold',
             fontSize: TextSize.lBody,
@@ -48,9 +50,9 @@ class AddInputProvider extends ChangeNotifier {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          content: const StaticText(
+          content: StaticText(
             text:
-                'Validate your data by adding \na media. If the majority of the \ngroup validates, your data will be \ntaken into account.',
+                appLocalizations.validateMediaText,
             maxLines: 4,
             textAlign: TextAlign.center,
             fontSize: TextSize.mBody,
@@ -59,7 +61,7 @@ class AddInputProvider extends ChangeNotifier {
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
           actions: [
             NextButton(
-              text: 'Cancel',
+              text: appLocalizations.cancel,
               textColor: Colors.red,
               borderColor: Colors.transparent,
               onPressed: () => Navigator.of(context).pop(),
@@ -68,7 +70,7 @@ class AddInputProvider extends ChangeNotifier {
               width: 140,
             ),
             NextButton(
-              text: 'Add',
+              text: appLocalizations.add,
               borderColor: kPrimaryColor,
               onPressed: () {
                 Navigator.pop(context);
@@ -99,16 +101,16 @@ class AddInputProvider extends ChangeNotifier {
                                     children: [
                                       ButtonCommonStyle(
                                         onPressed: onPressedGallery,
-                                        child: const LargeBody(
-                                          text: 'Choose from gallery',
+                                        child: LargeBody(
+                                          text: appLocalizations.chooseFromGallery,
                                           textAlign: TextAlign.center,
                                         ),
                                       ),
                                       const SizedBox(height: Insets.l * 1.75),
                                       ButtonCommonStyle(
                                         onPressed: onPressedCamera,
-                                        child: const LargeBody(
-                                          text: 'Take photo',
+                                        child: LargeBody(
+                                          text: appLocalizations.takePhoto,
                                           textAlign: TextAlign.center,
                                         ),
                                       )

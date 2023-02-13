@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditProfile extends StatelessWidget {
   const EditProfile({super.key});
@@ -19,8 +20,8 @@ class EditProfile extends StatelessWidget {
         borderRadius: BorderRadius.circular(kDefaultPadding * 0.25),
       ),
       alignment: Alignment.center,
-      child: const LargeBody(
-        text: 'Edit Profile',
+      child: LargeBody(
+        text: AppLocalizations.of(context).editProfile,
         fontFamily: 'Montserrat-Semibold',
       ),
     );

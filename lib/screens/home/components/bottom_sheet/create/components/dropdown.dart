@@ -32,7 +32,9 @@ class _DropDownState extends State<DropDown> {
               buttonHeight: 50,
               buttonWidth: 120,
               decoration: InputDecoration(
-                contentPadding: const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: kDefaultPadding / 2,
+                ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(Insets.s),
                   borderSide: const BorderSide(color: kSecondaryColor),
@@ -44,18 +46,23 @@ class _DropDownState extends State<DropDown> {
               ),
               value: selectedItem,
               items: items
-                  .map((item) => DropdownMenuItem<String>(
+                  .map(
+                    (item) => DropdownMenuItem<String>(
                       value: item,
                       child: StaticText(
                         text: item,
                         fontFamily: 'Montserrat-Regular',
                         fontSize: TextSize.mBody,
-                      ),))
+                      ),
+                    ),
+                  )
                   .toList(),
               onChanged: (item) {
-                return setState(() {
-                  selectedItem = item;
-                });
+                return setState(
+                  () {
+                    selectedItem = item;
+                  },
+                );
               },
               itemHeight: 50,
             ),

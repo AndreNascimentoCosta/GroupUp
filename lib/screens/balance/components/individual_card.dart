@@ -4,6 +4,7 @@ import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IndividualCardBalance extends StatelessWidget {
   const IndividualCardBalance({required this.group});
@@ -12,6 +13,7 @@ class IndividualCardBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return Row(
       children: [
         Container(
@@ -52,8 +54,9 @@ class IndividualCardBalance extends StatelessWidget {
             ),
             const SizedBox(height: Insets.s),
             MediumBody(
-              text:
-                  group.endDate!.isBefore(DateTime.now()) ? 'Ended' : 'Ongoing',
+              text: group.endDate!.isBefore(DateTime.now())
+                  ? appLocalizations.ended
+                  : appLocalizations.ongoing,
               color: kSecondaryColor,
             ),
           ],

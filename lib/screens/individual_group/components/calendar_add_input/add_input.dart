@@ -13,6 +13,7 @@ import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../home/components/bottom_sheet/create/pages/first_page.dart';
 
@@ -24,10 +25,14 @@ class AddInput extends StatefulWidget {
 }
 
 class _AddInputState extends State<AddInput> {
-  final String currentDate = DateFormat('dd/MM/yyyy').format(DateTime.now());
-
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
+    final String currentDate = DateFormat.yMd(
+      Localizations.localeOf(context).toLanguageTag(),
+    ).format(
+      DateTime.now(),
+    );
     Future pickImage(ImageSource source) async {
       Navigator.pop(context);
       final addInputProvider =
@@ -72,15 +77,15 @@ class _AddInputState extends State<AddInput> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: Insets.l),
-              const Header(
-                text: 'Data',
+              Header(
+                text: appLocalizations.data,
                 textAlign: TextAlign.center,
                 fontFamily: 'MontSerrat-Medium',
               ),
               const SizedBox(height: Insets.l),
               Row(
                 children: [
-                  const LargeBody(text: 'Date:'),
+                  LargeBody(text: appLocalizations.dateAddData),
                   const SizedBox(width: Insets.l),
                   LargeBody(
                     text: currentDate,
@@ -91,7 +96,7 @@ class _AddInputState extends State<AddInput> {
               const SizedBox(height: Insets.l),
               Row(
                 children: [
-                  const LargeBody(text: 'Data:'),
+                  LargeBody(text: appLocalizations.dataAddData),
                   const SizedBox(width: Insets.l),
                   SizedBox(
                     width: 200,
@@ -108,7 +113,7 @@ class _AddInputState extends State<AddInput> {
                         focusedBorder: InputBorder.none,
                         errorBorder: InputBorder.none,
                         focusedErrorBorder: InputBorder.none,
-                        hintText: 'Enter data',
+                        hintText: appLocalizations.enterData,
                         suffixIcon:
                             addInputProvider.inputController.text.isEmpty
                                 ? null
@@ -129,7 +134,7 @@ class _AddInputState extends State<AddInput> {
                       autovalidateMode: AutovalidateMode.always,
                       validator: (value) {
                         if ((int.tryParse(value!) ?? 0) > 99999) {
-                          return 'Value must be less than 99999';
+                          return appLocalizations.dataValidatorMaxNum;
                         } else {
                           return null;
                         }

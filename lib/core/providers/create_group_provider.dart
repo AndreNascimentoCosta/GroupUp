@@ -19,6 +19,7 @@ import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum Currencies {
   AND(0.3),
@@ -194,12 +195,13 @@ class CreateGroupProvider extends ChangeNotifier {
   }
 
   void _confirm(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     showCupertinoDialog(
       context: context,
       builder: (BuildContext newContext) {
         return AlertDialog(
-          title: const StaticText(
-            text: 'Confirm',
+          title: StaticText(
+            text: appLocalizations.confirm,
             textAlign: TextAlign.center,
             fontFamily: 'Montserrat-SemiBold',
             fontSize: TextSize.lBody,
@@ -207,8 +209,8 @@ class CreateGroupProvider extends ChangeNotifier {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          content: const StaticText(
-            text: 'Are you sure you want to create a \ngroup?',
+          content: StaticText(
+            text: appLocalizations.confirmCreateGroup,
             maxLines: 2,
             textAlign: TextAlign.center,
             fontSize: TextSize.mBody,
@@ -217,7 +219,7 @@ class CreateGroupProvider extends ChangeNotifier {
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
           actions: [
             NextButton(
-              text: 'No',
+              text: appLocalizations.no,
               textColor: Colors.red,
               borderColor: Colors.transparent,
               onPressed: () => Navigator.of(context).pop(),
@@ -226,7 +228,7 @@ class CreateGroupProvider extends ChangeNotifier {
               width: 140,
             ),
             NextButton(
-              text: 'Yes',
+              text: appLocalizations.yes,
               borderColor: kPrimaryColor,
               onPressed: () async {
                 final userId = Provider.of<AuthProvider>(context, listen: false)
@@ -471,14 +473,15 @@ class CreateGroupProvider extends ChangeNotifier {
   }
 
   void confirmExitGroup(BuildContext context, String groupId) {
+    final appLocalizations = AppLocalizations.of(context);
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
         return SizedBox(
           width: double.infinity,
           child: AlertDialog(
-            title: const StaticText(
-              text: 'Confirm',
+            title: StaticText(
+              text: appLocalizations.confirm,
               textAlign: TextAlign.center,
               fontFamily: 'Montserrat-SemiBold',
               fontSize: TextSize.lBody,
@@ -486,9 +489,9 @@ class CreateGroupProvider extends ChangeNotifier {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            content: const SingleChildScrollView(
+            content: SingleChildScrollView(
               child: StaticText(
-                text: 'Are you sure you want to leave the \ngroup?',
+                text: appLocalizations.confirmExitGroup,
                 maxLines: 2,
                 textAlign: TextAlign.center,
                 fontSize: TextSize.mBody,
@@ -498,7 +501,7 @@ class CreateGroupProvider extends ChangeNotifier {
             contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
             actions: [
               NextButton(
-                text: 'No',
+                text: appLocalizations.no,
                 textColor: Colors.red,
                 borderColor: Colors.transparent,
                 onPressed: () {
@@ -510,7 +513,7 @@ class CreateGroupProvider extends ChangeNotifier {
                 width: 140,
               ),
               NextButton(
-                text: 'Yes',
+                text: appLocalizations.yes,
                 borderColor: kPrimaryColor,
                 onPressed: () {
                   leaveGroup(context, groupId);
@@ -577,10 +580,12 @@ class CreateGroupProvider extends ChangeNotifier {
             await FirebaseFirestore.instance
                 .collection('groups')
                 .doc(groupId)
-                .update({
-              'participants': participants,
-              'participantsData': participantsData,
-            });
+                .update(
+              {
+                'participants': participants,
+                'participantsData': participantsData,
+              },
+            );
           }
         }
       }
@@ -607,7 +612,7 @@ class CreateGroupProvider extends ChangeNotifier {
     newGroup.allowRefundRequest = false;
     newGroup.startDate = null;
     newGroup.endDate = null;
-    groupCurrencyCode = 'USD';
+    groupCurrencyCode = 'BRL';
     updateIndex(0);
     notifyListeners();
   }

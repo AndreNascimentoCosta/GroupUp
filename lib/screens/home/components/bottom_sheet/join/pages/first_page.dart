@@ -4,6 +4,7 @@ import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirsPageJoin extends StatefulWidget {
   const FirsPageJoin({required this.controller});
@@ -34,18 +35,22 @@ class _FirsPageJoinState extends State<FirsPageJoin> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter group code';
+                    return AppLocalizations.of(context).pleaseEnterGroupCode;
                   }
                   return null;
                 },
-                header: 'Group code',
-                hint: 'Enter group code',
+                header: AppLocalizations.of(context).groupCode,
+                hint: AppLocalizations.of(context).enterGroupCode,
                 padding: const EdgeInsets.symmetric(
                   horizontal: kDefaultPadding,
                 ),
               ),
               const SizedBox(height: kDefaultPadding / 2),
-              const StaticText(text: 'If group has a fee, this fee is non-refundable.')
+              StaticText(
+                text: AppLocalizations.of(context).feeNotRefundable,
+                maxLines: 2,
+                textAlign: TextAlign.center,
+              ),
             ],
           ),
         ),

@@ -15,7 +15,9 @@ import 'package:groupup/screens/individual_group/components/group_ended_particip
 import 'package:groupup/screens/individual_group/components/header.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IndividualGroupScreen extends StatefulWidget {
   const IndividualGroupScreen({super.key});
@@ -57,10 +59,14 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
             context: context,
             builder: (BuildContext context) {
               final group = Provider.of<IndividualGroupProvider>(context).group;
+              final appLocalizations = AppLocalizations.of(context);
+              String groupCurrencySymbol =
+                  NumberFormat.simpleCurrency(name: group?.groupCurrencyCode)
+                      .currencySymbol;
               if (group == null) return const SizedBox();
               return AlertDialog(
-                title: const StaticText(
-                  text: 'Group ended',
+                title: StaticText(
+                  text: appLocalizations.groupEnded,
                   textAlign: TextAlign.center,
                   fontFamily: 'Montserrat-SemiBold',
                   fontSize: TextSize.lBody,
@@ -74,7 +80,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       StaticText(
-                        text: 'The winner won ${group.reward}',
+                        text: appLocalizations.winnerWon(groupCurrencySymbol, group.reward),
                         fontSize: TextSize.mBody,
                       ),
                       ListView.separated(
@@ -247,8 +253,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                         ? CalendarScreenButton(
                             homeViewModel: homeViewModel,
                           )
-                        : AddInputGroupButton(
-                            homeViewModel: homeViewModel),
+                        : AddInputGroupButton(homeViewModel: homeViewModel),
               ],
             ),
           ],

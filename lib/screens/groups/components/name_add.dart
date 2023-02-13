@@ -5,6 +5,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NameAdd extends StatefulWidget {
   const NameAdd({required this.controller});
@@ -22,10 +23,10 @@ class _NameAddState extends State<NameAdd> {
     return SafeArea(
       child: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 2),
+          Padding(
+            padding: const EdgeInsets.only(top: kDefaultPadding * 2),
             child: StaticText(
-              text: 'Name',
+              text: AppLocalizations.of(context).name,
               textAlign: TextAlign.center,
               fontFamily: 'Montserrat-SemiBold',
               fontSize: 28,
@@ -46,13 +47,13 @@ class _NameAddState extends State<NameAdd> {
                     autoFocus: true,
                     validator: (value) {
                       if (value!.isNotEmpty && value.length < 3) {
-                        return 'Name must be at least 3 characters';
+                        return AppLocalizations.of(context).nameValidatorAtLeast3Chars;
                       } else {
                         return null;
                       }
                     },
-                    header: 'Name',
-                    hint: 'Enter your name',
+                    header: AppLocalizations.of(context).name,
+                    hint: AppLocalizations.of(context).enterName,
                     autoFillHints: const [AutofillHints.name],
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.next,

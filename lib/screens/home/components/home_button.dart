@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeButton extends StatelessWidget {
   const HomeButton({required this.isGreen});
@@ -23,7 +24,7 @@ class HomeButton extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            isGreen ? 'Join a group' : 'Create a new group',
+            isGreen ? AppLocalizations.of(context).joinAGroup : AppLocalizations.of(context).createNewGroup,
             style: TextStyle(
               fontFamily: 'Montserrat-SemiBold',
               fontSize: 20,

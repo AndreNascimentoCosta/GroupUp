@@ -5,18 +5,20 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/profile/components/other_options.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
   const AppBarProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
-      title: const StaticText(
-        text: 'Profile',
+      title: StaticText(
+        text: appLocalizations.profile,
         fontFamily: 'Montserrat-SemiBold',
         fontSize: TextSize.subTitle,
       ),

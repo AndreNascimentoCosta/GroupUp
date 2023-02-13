@@ -11,6 +11,7 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChooseParticipantProfilePicture extends StatefulWidget {
   const ChooseParticipantProfilePicture({
@@ -36,6 +37,7 @@ class _ChooseParticipantProfilePictureState
   Widget build(BuildContext context) {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
+    final appLocalizations = AppLocalizations.of(context);
     if (individualGroupProvider.group == null) {
       return const CircularProgressIndicator(color: kPrimaryColor);
     } else {
@@ -43,7 +45,8 @@ class _ChooseParticipantProfilePictureState
       return ButtonCommonStyle(
         onPressed: () {
           Provider.of<InstagrammableProvider>(context, listen: false)
-              .setPicture(widget.participant.profilePicture, widget.pictureType);
+              .setPicture(
+                  widget.participant.profilePicture, widget.pictureType);
           Navigator.of(context).pop();
         },
         child: Padding(
@@ -75,12 +78,12 @@ class _ChooseParticipantProfilePictureState
                 width: 180,
                 child: authProvider.user != null
                     ? authProvider.user!.id == widget.participant.uid
-                        ? const Padding(
-                            padding: EdgeInsets.only(
+                        ? Padding(
+                            padding: const EdgeInsets.only(
                               left: kDefaultPadding,
                             ),
                             child: StaticText(
-                              text: 'Me',
+                              text: appLocalizations.me,
                               overflow: TextOverflow.ellipsis,
                               fontSize: TextSize.mBody,
                               fontFamily: 'Montserrat-SemiBold',
@@ -93,7 +96,9 @@ class _ChooseParticipantProfilePictureState
                             child: StaticText(
                               text: Characters(widget.participant.name)
                                   .replaceAll(
-                                      Characters(''), Characters('\u{200B}'))
+                                    Characters(''),
+                                    Characters('\u{200B}'),
+                                  )
                                   .toString(),
                               overflow: TextOverflow.ellipsis,
                               fontSize: TextSize.mBody,

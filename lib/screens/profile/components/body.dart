@@ -19,6 +19,7 @@ import 'package:groupup/screens/profile/components/app_bar.dart';
 import 'package:groupup/screens/profile/components/body_button.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'edit_profile_button.dart';
 
@@ -52,6 +53,7 @@ class _BodyProfileState extends State<BodyProfile> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
+    final appLocalizations = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const AppBarProfile(),
@@ -168,7 +170,7 @@ class _BodyProfileState extends State<BodyProfile> {
                         ),
                       ));
                 },
-                text: 'Balance',
+                text: appLocalizations.balance,
                 secondaryText: user?.balance.toString() ?? '0'),
             const SizedBox(height: kDefaultPadding * 2),
             BodyButtonModel(
@@ -180,7 +182,7 @@ class _BodyProfileState extends State<BodyProfile> {
                     ),
                   );
                 },
-                text: 'Created groups',
+                text: appLocalizations.createdGroups,
                 secondaryText: '')
           ],
         ),

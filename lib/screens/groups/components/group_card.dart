@@ -11,6 +11,7 @@ import 'package:groupup/screens/groups/components/checkbox.dart';
 import 'package:groupup/screens/groups/components/stats_group_ongoing.dart';
 import 'package:groupup/screens/individual_group/screens/individual_group.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GroupsCard extends StatefulWidget {
   const GroupsCard({
@@ -108,14 +109,16 @@ class _GroupsCardState extends State<GroupsCard> {
                             StaticText(
                               text: Characters(widget.group.projectName)
                                   .replaceAll(
-                                      Characters(''), Characters('\u{200B}'))
+                                    Characters(''),
+                                    Characters('\u{200B}'),
+                                  )
                                   .toString(),
                               overflow: TextOverflow.ellipsis,
                               fontSize: 20,
                             ),
                             const SizedBox(height: Insets.s),
-                            const MediumBody(
-                              text: 'Ended',
+                            MediumBody(
+                              text: AppLocalizations.of(context).ended,
                               color: kSecondaryColor,
                             ),
                           ],
@@ -123,7 +126,9 @@ class _GroupsCardState extends State<GroupsCard> {
                       : StaticText(
                           text: Characters(widget.group.projectName)
                               .replaceAll(
-                                  Characters(''), Characters('\u{200B}'))
+                                Characters(''),
+                                Characters('\u{200B}'),
+                              )
                               .toString(),
                           overflow: TextOverflow.ellipsis,
                           fontSize: 20,

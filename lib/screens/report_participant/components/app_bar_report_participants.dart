@@ -4,6 +4,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarReportParticipant extends StatelessWidget with PreferredSizeWidget {
   const AppBarReportParticipant({super.key});
@@ -28,7 +29,7 @@ class AppBarReportParticipant extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const Header(text: 'Report participant'),
+                child: Header(text: AppLocalizations.of(context).reportParticipant),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),

@@ -10,6 +10,8 @@ import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../../../constants.dart';
 
 class AddInputGroupButton extends StatefulWidget {
@@ -30,6 +32,7 @@ class AddInputGroupButton extends StatefulWidget {
 class _AddInputGroupButtonState extends State<AddInputGroupButton> {
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return SizedBox(
       height: 75,
       width: 75,
@@ -52,8 +55,8 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: const StaticText(
-                          text: "You can't do this",
+                        title: StaticText(
+                          text: appLocalizations.youCantDoThis,
                           textAlign: TextAlign.center,
                           fontFamily: 'Montserrat-SemiBold',
                           fontSize: TextSize.lBody,
@@ -61,9 +64,9 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        content: const StaticText(
+                        content: StaticText(
                           text:
-                              "To add data, you have to wait \nfor everyone to join the group.",
+                              appLocalizations.cantAddDataWhenNotEveryoneHasJoined,
                           maxLines: 5,
                           textAlign: TextAlign.center,
                           fontSize: TextSize.mBody,

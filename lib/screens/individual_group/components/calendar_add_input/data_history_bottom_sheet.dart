@@ -5,6 +5,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/single_data.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DataHistoryBottomSheet extends StatelessWidget {
   const DataHistoryBottomSheet({required this.userInputData});
@@ -13,28 +14,29 @@ class DataHistoryBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: Insets.l),
-          const StaticText(
-            text: 'Data history',
+          StaticText(
+            text: appLocalizations.dataHistory,
             textAlign: TextAlign.center,
             fontSize: TextSize.subTitle,
           ),
           const SizedBox(height: Insets.l),
           Row(
-            children: const [
+            children: [
               SizedBox(
                 width: 100,
-                child: LargeBody(text: 'Dates'),
+                child: LargeBody(text: appLocalizations.dates),
               ),
-              SizedBox(width: Insets.l),
+              const SizedBox(width: Insets.l),
               Expanded(
                 child: LargeBody(
-                  text: 'Values',
+                  text: appLocalizations.values,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -52,7 +54,9 @@ class DataHistoryBottomSheet extends StatelessWidget {
               itemBuilder: ((context, index) {
                 int itemCount = userInputData.length;
                 int reversedIndex = itemCount - 1 - index;
-                return SingleData(userInputData: userInputData[reversedIndex]);
+                return SingleData(
+                  userInputData: userInputData[reversedIndex],
+                );
               }),
             ),
           )

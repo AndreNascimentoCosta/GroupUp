@@ -11,6 +11,7 @@ import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SecondPageCreate extends StatefulWidget {
   const SecondPageCreate({
@@ -28,6 +29,7 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
+    final appLocalizations = AppLocalizations.of(context);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -53,7 +55,7 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                       preferBelow: false,
                       showDuration: const Duration(seconds: 3),
                       triggerMode: TooltipTriggerMode.tap,
-                      message: 'Maximum of 50 participants.',
+                      message: appLocalizations.maxParticipants,
                       child: Icon(
                         Icons.info,
                         color: kSecondaryColor,
@@ -64,12 +66,15 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                   TextFieldModelHome(
                     controller:
                         createGroupProvider.controllerNumberParticipants,
-                    header: 'Number of participants',
-                    hint: 'Enter a number',
+                    header: appLocalizations.noParticipants,
+                    hint: appLocalizations.enterNumber,
                     validator: (value) {
                       if (value!.isNotEmpty && int.tryParse(value)! > 50) {
-                        return 'Number of participants cannot exceed 50';
-                      } else {
+                        return appLocalizations.noParticipantsValidatorMaxParticipants;
+                      } else if (int.tryParse(value) == 0) {
+                        return appLocalizations.noParticipantsValidatorMinParticipants;
+                      }
+                      else {
                         return null;
                       }
                     },
@@ -86,12 +91,12 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                 ],
               ),
               const SizedBox(height: Insets.xl),
-              const Align(
+              Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                  padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                   child: StaticText(
-                    text: 'Date',
+                    text: appLocalizations.dates,
                     fontSize: 14,
                   ),
                 ),
@@ -106,7 +111,7 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                 },
               ),
               BodySwitch(
-                text: 'Everyone can edit group picture',
+                text: appLocalizations.everyoneCanEditGroupPic,
                 switchType: SwitchButton(
                   onChanged: (value) {
                     final createGroupProvider =

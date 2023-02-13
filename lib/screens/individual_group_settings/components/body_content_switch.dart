@@ -22,11 +22,12 @@ class BodyContentSwitch extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-            width: 250,
-            child: LargeBody(
-              text: text,
-              maxLines: 2,
-            )),
+          width: 250,
+          child: LargeBody(
+            text: text,
+            maxLines: 2,
+          ),
+        ),
         const Spacer(),
         SwitchButton(
           onChanged: (value) {

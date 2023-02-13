@@ -5,6 +5,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DateTimePicker extends StatefulWidget {
   const DateTimePicker({required this.onChanged});
@@ -22,7 +23,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
     if (date != null) {
       return '${date.day}/${date.month}/${date.year}';
     } else {
-      return 'Select date';
+      return AppLocalizations.of(context).selectDate;
     }
   }
 
@@ -50,18 +51,19 @@ class _DateTimePickerState extends State<DateTimePicker> {
   }
 
   String? startDateValidator(value) {
-    if (startDate == null) return "Select date";
+    if (startDate == null) return AppLocalizations.of(context).selectDate;
     return null;
   }
 
   String? endDateValidator(value) {
+    final appLocalizations  = AppLocalizations.of(context);
     if (startDate != null && endDate == null) {
-      return "Select both data";
+      return appLocalizations.selectBothDates;
     }
-    if (endDate == null) return "Select the date";
+    if (endDate == null) return appLocalizations.selectDate;
     if (startDate == null) return null;
     if ((endDate!.isBefore(startDate!))) {
-      return "Must be after Start Date";
+      return appLocalizations.endDateMustBeAfterStartDate;
     }
     return null;
   }
@@ -69,6 +71,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: 
@@ -95,7 +98,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     width: Insets.l,
                   ),
                 ),
-                hintText: startDate == null ? 'Start date' : _displayText(startDate),
+                hintText: startDate == null ? appLocalizations.startDate : _displayText(startDate),
                 hintStyle: const TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize: TextSize.mBody,
@@ -143,7 +146,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     width: Insets.l,
                   ),
                 ),
-                hintText: endDate == null ? 'End date' : _displayText(endDate),
+                hintText: endDate == null ? appLocalizations.endDate : _displayText(endDate),
                 hintStyle: const TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize: TextSize.mBody,

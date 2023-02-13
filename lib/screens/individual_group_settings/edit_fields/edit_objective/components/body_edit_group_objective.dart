@@ -5,6 +5,7 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:groupup/core/providers/edit_group_objective_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditGroupObjectiveBody extends StatelessWidget {
   const EditGroupObjectiveBody({super.key});
@@ -14,6 +15,7 @@ class EditGroupObjectiveBody extends StatelessWidget {
     final groupObjectiveController =
         Provider.of<EditGroupObjectiveProvider>(context)
             .groupObjectiveController;
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,
@@ -30,11 +32,10 @@ class EditGroupObjectiveBody extends StatelessWidget {
               hint: '',
               validator: (value) {
                 if (value!.isNotEmpty && value.length < 3) {
-                  return 'Objective must be at least 3 characters';
+                  return appLocalizations.objectiveValidatorMinChars;
                 } else if (value.length >= 50) {
-                  return 'Objective must be less than 50 characters';
-                }
-                else {
+                  return appLocalizations.objectiveValidatorMaxChars;
+                } else {
                   return null;
                 }
               },
@@ -48,7 +49,10 @@ class EditGroupObjectiveBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: Insets.l),
-          const StaticText(text: 'Change group objective', fontSize: TextSize.mBody),
+          StaticText(
+            text: appLocalizations.changeGroupObjective,
+            fontSize: TextSize.mBody,
+          ),
         ],
       ),
     );

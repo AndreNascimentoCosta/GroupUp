@@ -3,6 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GroupPictureEdit extends StatelessWidget {
   const GroupPictureEdit({
@@ -17,6 +18,7 @@ class GroupPictureEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return ButtonCommonStyle(
       onPressed: () {
         showModalBottomSheet(
@@ -34,32 +36,33 @@ class GroupPictureEdit extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.17,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: kDefaultPadding * 1.75),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                ButtonCommonStyle(
-                                  onPressed: onPressedGallery,
-                                  child: const LargeBody(
-                                    text: 'Choose from gallery',
-                                    textAlign: TextAlign.center,
-                                  ),
+                        height: MediaQuery.of(context).size.height * 0.17,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: kDefaultPadding * 1.75),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ButtonCommonStyle(
+                                onPressed: onPressedGallery,
+                                child: LargeBody(
+                                  text: appLocalizations.chooseFromGallery,
+                                  textAlign: TextAlign.center,
                                 ),
-                                const SizedBox(height: Insets.l * 1.75),
-                                ButtonCommonStyle(
-                                  onPressed: onPressedCamera,
-                                  child: const LargeBody(
-                                    text: 'Take photo',
-                                    textAlign: TextAlign.center,
-                                  ),
-                                )
-                              ],
-                            ),
-                          )),
+                              ),
+                              const SizedBox(height: Insets.l * 1.75),
+                              ButtonCommonStyle(
+                                onPressed: onPressedCamera,
+                                child: LargeBody(
+                                  text: appLocalizations.takePhoto,
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   )
                 ],

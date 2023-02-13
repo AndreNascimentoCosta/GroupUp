@@ -3,6 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShowDates extends StatelessWidget {
   const ShowDates({
@@ -13,14 +14,15 @@ class ShowDates extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return Row(
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            StaticText(text: 'Start'),
-            SizedBox(height: kDefaultPadding / 2),
-            StaticText(text: 'End'),
+          children: [
+            StaticText(text: appLocalizations.start),
+            const SizedBox(height: kDefaultPadding / 2),
+            StaticText(text: appLocalizations.end),
           ],
         ),
         const SizedBox(width: kDefaultPadding / 1.75),
@@ -28,15 +30,20 @@ class ShowDates extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             StaticText(
-              text: DateFormat('dd/MM/yyyy').format(
+              text: DateFormat.yMd(
+                Localizations.localeOf(context).toLanguageTag(),
+              ).format(
                 group.startDate ?? DateTime.now(),
               ),
             ),
             const SizedBox(height: kDefaultPadding / 2),
             StaticText(
-                text: DateFormat('dd/MM/yyyy').format(
-              group.endDate ?? DateTime.now(),
-            )),
+              text: DateFormat.yMd(
+                Localizations.localeOf(context).toLanguageTag(),
+              ).format(
+                group.endDate ?? DateTime.now(),
+              ),
+            ),
           ],
         ),
       ],

@@ -7,6 +7,7 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../widgets/texts/static_text.dart';
 
@@ -66,10 +67,11 @@ class EditGroupNoParticipantsProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext newContext) {
+        final appLocalizations = AppLocalizations.of(context);
         FocusScope.of(context).unfocus();
         return AlertDialog(
-          title: const StaticText(
-            text: 'Discard changes?',
+          title: StaticText(
+            text: appLocalizations.discardChangesQuestion,
             textAlign: TextAlign.center,
             fontFamily: 'Montserrat-SemiBold',
             fontSize: TextSize.lBody,
@@ -77,8 +79,8 @@ class EditGroupNoParticipantsProvider extends ChangeNotifier {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          content: const StaticText(
-            text: 'Are you sure you want to lose your changes?',
+          content: StaticText(
+            text: appLocalizations.areYouSureToDiscardChanges,
             maxLines: 2,
             textAlign: TextAlign.center,
             fontSize: TextSize.mBody,
@@ -87,7 +89,7 @@ class EditGroupNoParticipantsProvider extends ChangeNotifier {
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
           actions: [
             NextButton(
-              text: 'Yes, discard',
+              text: appLocalizations.yesDiscard,
               textColor: Colors.red,
               borderColor: Colors.transparent,
               onPressed: () {
@@ -99,7 +101,7 @@ class EditGroupNoParticipantsProvider extends ChangeNotifier {
               width: 140,
             ),
             NextButton(
-              text: 'No, keep',
+              text: appLocalizations.noKeep,
               borderColor: kPrimaryColor,
               onPressed: () {
                 Navigator.of(newContext).pop();

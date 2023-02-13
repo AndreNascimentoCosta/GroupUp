@@ -11,6 +11,7 @@ import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:currency_picker/currency_picker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum Currencies {
   AND(0.3),
@@ -172,6 +173,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
   final node3 = FocusNode();
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return GestureDetector(
       onTap: () {
@@ -191,19 +193,19 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               submitted: (String value) {
                 FocusScope.of(context).nextFocus();
               },
-              header: 'Project name',
+              header: appLocalizations.projectName,
               validator: (value) {
                 if (value!.isNotEmpty && value.length < 3) {
-                  return 'Project name must be at least 3 characters';
+                  return appLocalizations.projectNameValidatorMinChars;
                 } else if (value.length >= 20) {
-                  return 'Project name must be less than 20 characters';
+                  return appLocalizations.projectNameValidatorMaxChars;
                 } else {
                   return null;
                 }
               },
               maxLength: 20,
               textInputAction: TextInputAction.next,
-              hint: 'Enter project name',
+              hint: appLocalizations.enterProjectName,
               padding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding,
               ),
@@ -212,21 +214,21 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
             TextFieldModelHome(
               focusNode: node2,
               controller: createGroupProvider.controllerObjective,
-              header: 'Objective',
+              header: appLocalizations.objective,
               submitted: (String value) {
                 FocusScope.of(context).nextFocus();
               },
               validator: (value) {
                 if (value!.isNotEmpty && value.length < 3) {
-                  return 'Objective must be at least 3 characters';
+                  return appLocalizations.objectiveValidatorMinChars;
                 } else if (value.length >= 50) {
-                  return 'Objective must be less than 50 characters';
+                  return appLocalizations.objectiveValidatorMaxChars;
                 } else {
                   return null;
                 }
               },
               maxLength: 50,
-              hint: 'Enter objective',
+              hint: appLocalizations.enterObjective,
               textInputAction: TextInputAction.next,
               padding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding,
@@ -240,8 +242,8 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                 children: [
                   Column(
                     children: [
-                      const StaticText(
-                        text: 'Currency',
+                      StaticText(
+                        text: appLocalizations.currency,
                         fontSize: TextSize.lBody,
                       ),
                       const SizedBox(height: Insets.xs),
@@ -250,8 +252,15 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                           showCurrencyPicker(
                             context: context,
                             showFlag: true,
+                            searchHint: appLocalizations.searchCountry,
                             showCurrencyName: true,
                             showCurrencyCode: true,
+                            favorite: [
+                              'USD',
+                              'BRL',
+                              'EUR',
+                              'GBP',
+                            ],
                             currencyFilter: [
                               'USD',
                               'AED',
@@ -438,12 +447,13 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                         if ((double.tryParse(value!) ?? 0) <
                                 minValueCurrencies &&
                             (double.tryParse(value) ?? 0) > 0) {
-                          return 'Fee must be greater than ${minValueCurrencies.toStringAsFixed(2)}';
+                          return appLocalizations.feeGreaterThan(
+                              minValueCurrencies.toStringAsFixed(2));
                         } else {
                           return null;
                         }
                       },
-                      header: 'Group fee',
+                      header: appLocalizations.groupFee,
                       hint: '0,00',
                       padding: const EdgeInsets.symmetric(
                         horizontal: kDefaultPadding,
@@ -464,13 +474,13 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               ),
             ),
             const SizedBox(height: Insets.s),
-            const Padding(
-              padding: EdgeInsets.symmetric(
+            Padding(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 20,
               ),
               child: StaticText(
                 text:
-                    '1. Each participant will pay the fee and the total amount will be used as the group reward. \n2. If fee is set to 0, then there will be no reward. \n3. The fee is non-refundable.',
+                    appLocalizations.groupFeeDescription,
                 maxLines: 4,
               ),
             )

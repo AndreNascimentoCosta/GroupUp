@@ -8,6 +8,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_phone/pages/otp_field.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SecondPageSignUp extends StatefulWidget {
   const SecondPageSignUp({
@@ -41,7 +42,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
             children: [
               const SizedBox(height: Insets.l * 2),
               StaticText(
-                  text: 'Code is sent to $phoneControllerText',
+                  text: AppLocalizations.of(context).codeSent(phoneControllerText),
                   fontSize: TextSize.mBody,
                   color: kSecondaryColor),
               const SizedBox(height: Insets.l * 2),
@@ -52,8 +53,8 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const StaticText(
-                      text: "Didn't receive a code?",
+                  StaticText(
+                      text: AppLocalizations.of(context).codeNotReceived,
                       fontSize: TextSize.mBody,
                       color: kSecondaryColor),
                   const SizedBox(width: Insets.xs),
@@ -65,8 +66,8 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                     },
                     child: StaticText(
                         text: phoneProvider.start != 0
-                            ? 'Request in ${phoneProvider.start} sec'
-                            : 'Request again',
+                            ? AppLocalizations.of(context).waitingRequestAgain(phoneProvider.start)
+                            : AppLocalizations.of(context).requestAgain,
                         fontSize: TextSize.mBody,
                         fontFamily: 'Montserrat-SemiBold',
                         color: phoneProvider.start != 0

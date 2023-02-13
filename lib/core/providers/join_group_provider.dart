@@ -6,6 +6,7 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum JoinGroupErrorType {
   groupCodeEmpty,
@@ -39,47 +40,49 @@ class JoinGroupProvider extends ChangeNotifier {
         final navigatorState = Navigator.of(context);
         final stripePaymentProvider =
             Provider.of<StripePaymentProvider>(context, listen: false);
+        final appLocalizations = AppLocalizations.of(context);
         FocusScope.of(context).unfocus();
         final error = await validateJoinGroup(context);
         if (error != null) {
           switch (error) {
             case JoinGroupErrorType.groupCodeEmpty:
               scaffoldMessengerState.showSnackBar(
-                const SnackBar(
-                  content: Text('Please enter a group code'),
-                  duration: Duration(seconds: 2),
+                SnackBar(
+                  content:
+                      Text(appLocalizations.pleaseEnterGroupCode),
+                  duration: const Duration(seconds: 2),
                 ),
               );
               break;
             case JoinGroupErrorType.groupCodeInvalid:
               scaffoldMessengerState.showSnackBar(
-                const SnackBar(
-                  content: Text('Invalid group code'),
-                  duration: Duration(seconds: 2),
+                SnackBar(
+                  content: Text(appLocalizations.invalidGroupCode),
+                  duration: const Duration(seconds: 2),
                 ),
               );
               break;
             case JoinGroupErrorType.groupCodeExpired:
               scaffoldMessengerState.showSnackBar(
-                const SnackBar(
-                  content: Text('This group has already ended'),
-                  duration: Duration(seconds: 2),
+                SnackBar(
+                  content: Text(appLocalizations.groupAlreadyEnded),
+                  duration: const Duration(seconds: 2),
                 ),
               );
               break;
             case JoinGroupErrorType.groupCodeFull:
               scaffoldMessengerState.showSnackBar(
-                const SnackBar(
-                  content: Text('This group code is full'),
-                  duration: Duration(seconds: 2),
+                SnackBar(
+                  content: Text(appLocalizations.groupAlreadyFull),
+                  duration: const Duration(seconds: 2),
                 ),
               );
               break;
             case JoinGroupErrorType.userAlreadyInGroup:
               scaffoldMessengerState.showSnackBar(
-                const SnackBar(
-                  content: Text('You are already in this group'),
-                  duration: Duration(seconds: 2),
+                SnackBar(
+                  content: Text(appLocalizations.userAlreadyInTheGroup),
+                  duration: const Duration(seconds: 2),
                 ),
               );
               break;

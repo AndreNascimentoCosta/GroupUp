@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/bottom_calendar.dart';
+import 'package:groupup/screens/individual_group/components/calendar_add_input/bottom_calendar_text_style.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/box_decoration.dart';
-import 'package:groupup/screens/individual_group/components/calendar_add_input/text.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
@@ -45,16 +45,16 @@ class _CalendarState extends State<Calendar> {
         child: Column(
           children: [
             TableCalendar(
-              locale: 'en_Us',
+              locale: Localizations.localeOf(context).toLanguageTag(),
               rowHeight: 40,
               rangeStartDay: group.startDate,
               rangeEndDay: group.endDate,
               calendarStyle: CalendarStyle(
                 tablePadding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                defaultTextStyle: textStyle(),
-                weekendTextStyle: textStyle(),
-                holidayTextStyle: textStyle(),
+                defaultTextStyle: bottomCalendarTextStyle(),
+                weekendTextStyle: bottomCalendarTextStyle(),
+                holidayTextStyle: bottomCalendarTextStyle(),
                 rangeHighlightColor: const Color(0X9946E297),
                 rangeStartDecoration: boxDecoration(),
                 rangeEndDecoration: boxDecoration(),
@@ -90,7 +90,7 @@ class _CalendarState extends State<Calendar> {
               ),
               focusedDay: today,
               firstDay: DateTime.utc(2022),
-              lastDay: DateTime.utc(2050),
+              lastDay: DateTime.utc(2100),
             ),
             const SizedBox(height: Insets.s),
             BottomCalendar(

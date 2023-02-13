@@ -10,6 +10,7 @@ import 'package:groupup/screens/individual_group/components/objective_reward.dar
 import 'package:groupup/screens/individual_group/components/start_end_date.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HeaderIndividualGroup extends StatelessWidget {
   const HeaderIndividualGroup({super.key});
@@ -17,21 +18,22 @@ class HeaderIndividualGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
+    final appLocalizations = AppLocalizations.of(context);
     if (group == null) {
       return Container(
         color: Colors.white,
         height: 125,
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                 top: kDefaultPadding / 2.5,
                 bottom: kDefaultPadding,
               ),
               child: SizedBox(
                 width: 300,
                 child: GroupTitle(
-                  text: 'Name',
+                  text: appLocalizations.name,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -104,8 +106,8 @@ class HeaderIndividualGroup extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: const StaticText(
-                            text: 'Objective',
+                          title: StaticText(
+                            text: appLocalizations.objective,
                             textAlign: TextAlign.center,
                             fontFamily: 'Montserrat-SemiBold',
                             fontSize: TextSize.lBody,
@@ -154,8 +156,8 @@ class HeaderIndividualGroup extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: const StaticText(
-                            text: 'Reward',
+                          title: StaticText(
+                            text: appLocalizations.reward,
                             textAlign: TextAlign.center,
                             fontFamily: 'Montserrat-SemiBold',
                             fontSize: TextSize.lBody,

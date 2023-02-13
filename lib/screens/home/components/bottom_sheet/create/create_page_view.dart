@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
@@ -11,6 +12,7 @@ import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CreatePageView extends StatefulWidget {
   const CreatePageView({super.key});
@@ -23,6 +25,7 @@ class _CreatePageViewState extends State<CreatePageView> {
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
+    final stripePaymentProvider = Provider.of<StripePaymentProvider>(context);
     return SafeArea(
       child: Column(
         children: [
@@ -54,8 +57,8 @@ class _CreatePageViewState extends State<CreatePageView> {
                         : null,
                   ),
                 ),
-                const StaticText(
-                  text: 'Create a group',
+                StaticText(
+                  text: AppLocalizations.of(context).createGroup,
                   fontFamily: 'Montserrat-SemiBold',
                   fontSize: 28,
                 ),
@@ -96,7 +99,7 @@ class _CreatePageViewState extends State<CreatePageView> {
               ],
             ),
           ),
-          createGroupProvider.isPaying
+          stripePaymentProvider.isPaying
               ? const CircularProgressIndicator(color: kPrimaryColor)
               : createGroupProvider.isCreatingGroup
                   ? const SizedBox()

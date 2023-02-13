@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContinueButton extends StatelessWidget {
   const ContinueButton({Key? key}) : super(key: key);
@@ -27,8 +28,8 @@ class ContinueButton extends StatelessWidget {
         ]
       ),
       alignment: Alignment.center,
-      child: const StaticText(
-        text: 'Get started',
+      child: StaticText(
+        text: AppLocalizations.of(context).getStarted,
           fontFamily: 'Montserrat-SemiBold',
           fontSize: 22,
           color: Colors.white,

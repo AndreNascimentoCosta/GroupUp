@@ -6,6 +6,7 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/created_groups/components/individual_card.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BodyCreatedGroup extends StatelessWidget {
   const BodyCreatedGroup({required this.groups});
@@ -15,6 +16,7 @@ class BodyCreatedGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
+    final appLocalizations = AppLocalizations.of(context);
     return Expanded(
       child: Scrollbar(
         child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -34,14 +36,14 @@ class BodyCreatedGroup extends StatelessWidget {
             }
             if (snapshot.data!.docs.isEmpty) {
               return Column(
-                children: const [
+                children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(top: kDefaultPadding),
+                      padding: const EdgeInsets.only(top: kDefaultPadding),
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: StaticText(
-                          text: 'No created groups',
+                          text: appLocalizations.noCreatedGroups,
                           color: kSecondaryColor,
                           textAlign: TextAlign.center,
                           fontSize: 20,

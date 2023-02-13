@@ -16,6 +16,7 @@ import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/individual_group/components/story_page.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/providers/auth_provider.dart';
 
@@ -41,6 +42,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
   Widget build(BuildContext context) {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
+    final appLocalizations = AppLocalizations.of(context);
     if (individualGroupProvider.group == null) {
       return const CircularProgressIndicator(color: kPrimaryColor);
     } else {
@@ -131,8 +133,8 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                                     .width *
                                                 0.02,
                                           ),
-                                          child: const StaticText(
-                                            text: 'Me',
+                                          child: StaticText(
+                                            text: appLocalizations.me,
                                             overflow: TextOverflow.ellipsis,
                                             fontSize: 20,
                                             fontFamily: 'Montserrat-SemiBold',
@@ -148,8 +150,10 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                           child: StaticText(
                                             text: Characters(
                                                     widget.participant.name)
-                                                .replaceAll(Characters(''),
-                                                    Characters('\u{200B}'))
+                                                .replaceAll(
+                                                  Characters(''),
+                                                  Characters('\u{200B}'),
+                                                )
                                                 .toString(),
                                             overflow: TextOverflow.ellipsis,
                                             fontSize: 20,

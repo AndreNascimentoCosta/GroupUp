@@ -11,6 +11,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/sign_up/first_page.dart';
 import 'package:groupup/screens/home/components/continue_button.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -29,7 +30,8 @@ class _HomeState extends State<Home> {
           } else if (snapshot.hasData) {
             return GroupsScreen(homeViewModel: HomeViewModel());
           } else if (snapshot.hasError) {
-            return const Center(child: Header(text: 'Something went wrong'));
+            return Center(
+                child: Header(text: AppLocalizations.of(context).generalError));
           } else {
             return SafeArea(
               child: Padding(
@@ -59,34 +61,34 @@ class _HomeState extends State<Home> {
                             height: MediaQuery.of(context).size.height * 0.05),
                         RichText(
                           textAlign: TextAlign.center,
-                          text: const TextSpan(
-                            style: TextStyle(
+                          text: TextSpan(
+                            style: const TextStyle(
                               color: Colors.black,
                               fontSize: 28,
                               fontFamily: 'Montserrat-Medium',
                             ),
                             children: [
                               TextSpan(
-                                text: 'Create',
-                                style: TextStyle(
+                                text: AppLocalizations.of(context).createHS,
+                                style: const TextStyle(
                                   fontFamily: 'Montserrat-Bold',
                                 ),
                               ),
                               TextSpan(
-                                text: ' or',
+                                text: AppLocalizations.of(context).orHS,
                               ),
                               TextSpan(
-                                text: ' Join',
-                                style: TextStyle(
+                                text: AppLocalizations.of(context).joinHS,
+                                style: const TextStyle(
                                   fontFamily: 'Montserrat-Bold',
                                 ),
                               ),
                               TextSpan(
-                                text: ' a group then',
+                                text: AppLocalizations.of(context).groupHS,
                               ),
                               TextSpan(
-                                text: ' Challenge!',
-                                style: TextStyle(
+                                text: AppLocalizations.of(context).challengeHS,
+                                style: const TextStyle(
                                   fontFamily: 'Montserrat-Bold',
                                 ),
                               ),
@@ -112,8 +114,9 @@ class _HomeState extends State<Home> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: const [
                                           SizedBox(
-                                              height: 280,
-                                              child: FirsPageSignUp()),
+                                            height: 280,
+                                            child: FirsPageSignUp(),
+                                          ),
                                         ],
                                       )
                                     ],
@@ -123,7 +126,8 @@ class _HomeState extends State<Home> {
                             );
                           },
                           child: Provider.of<AuthProvider>(context).loading
-                              ? const CircularProgressIndicator(color: kPrimaryColor)
+                              ? const CircularProgressIndicator(
+                                  color: kPrimaryColor)
                               : const ContinueButton(),
                         ),
                         const SizedBox(height: Insets.l),

@@ -7,6 +7,7 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/choose_participant_profile_picture.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../widgets/texts/static_text.dart';
 
@@ -72,11 +73,12 @@ class InstagrammableProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
+        final appLocalizations = AppLocalizations.of(context);
         final group = Provider.of<IndividualGroupProvider>(context).group;
         if (group == null) return const SizedBox();
         return AlertDialog(
-          title: const StaticText(
-            text: 'Choose a picture',
+          title: StaticText(
+            text: appLocalizations.choosePicture,
             textAlign: TextAlign.center,
             fontFamily: 'Montserrat-SemiBold',
             fontSize: TextSize.lBody,
@@ -131,9 +133,9 @@ class InstagrammableProvider extends ChangeNotifier {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           StaticText(
-                            text: 'None',
+                            text: appLocalizations.none,
                             fontSize: TextSize.mBody,
                           ),
                         ],

@@ -7,12 +7,14 @@ import 'package:groupup/core/widgets/buttons/share_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ThirdPageCreate extends StatelessWidget {
   const ThirdPageCreate({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     if (createGroupProvider.isCreatingGroup) {
       return const Center(
@@ -34,8 +36,8 @@ class ThirdPageCreate extends StatelessWidget {
             color: kPrimaryColor,
           ),
           const SizedBox(height: kDefaultPadding),
-          const StaticText(
-            text: 'Completed',
+          StaticText(
+            text: appLocalizations.completed,
             fontFamily: 'Montserrat-SemiBold',
             fontSize: 28,
             color: kPrimaryColor,
@@ -43,10 +45,10 @@ class ThirdPageCreate extends StatelessWidget {
           SizedBox(height: MediaQuery.of(context).size.height * 0.035),
           Row(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 180,
                 child: StaticText(
-                  text: 'Group code',
+                  text: appLocalizations.groupCode,
                   fontSize: TextSize.lBody,
                 ),
               ),
@@ -55,7 +57,10 @@ class ThirdPageCreate extends StatelessWidget {
                 text: createGroupProvider.newGroup.groupCode,
                 onPressed: () async {
                   await Share.share(
-                    'Join my group ${createGroupProvider.newGroup.projectName} on GroupUp! \nThe code is ${createGroupProvider.newGroup.groupCode}',
+                    appLocalizations.shareGroupCodeText(
+                      createGroupProvider.newGroup.projectName,
+                      createGroupProvider.newGroup.groupCode,
+                    ),
                   );
                 },
               ),

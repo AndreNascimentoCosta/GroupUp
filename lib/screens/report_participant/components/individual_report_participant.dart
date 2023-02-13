@@ -7,6 +7,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IndividualParticipant extends StatelessWidget {
   const IndividualParticipant({required this.participant});
@@ -28,8 +29,12 @@ class IndividualParticipant extends StatelessWidget {
           final Uri emailLaunchUri = Uri(
             scheme: 'mailto',
             path: 'groupupapp@outlook.com',
-            query:
-                'subject=Report a problem&body=I would like to report ${participant.name} (${participant.uid}) from the group ${group.projectName} (${group.id}) for the following reason: ',
+            query: AppLocalizations.of(context).mailReportParticipant(
+              participant.name,
+              participant.uid,
+              group.projectName,
+              group.id,
+            ),
           );
           launchUrl(emailLaunchUri);
         },
@@ -48,7 +53,7 @@ class IndividualParticipant extends StatelessWidget {
                   text: Characters(participant.name)
                       .replaceAll(Characters(''), Characters('\u{200B}'))
                       .toString(),
-                      overflow: TextOverflow.ellipsis,
+                  overflow: TextOverflow.ellipsis,
                   fontSize: 20,
                 ),
               ),

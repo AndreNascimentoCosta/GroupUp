@@ -7,6 +7,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/profile/components/alert_dialog_delete.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OtherOptionsProfile extends StatelessWidget {
   const OtherOptionsProfile({super.key});
@@ -14,6 +15,7 @@ class OtherOptionsProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: kDefaultPadding * 1.5),
       child: Column(
@@ -28,8 +30,8 @@ class OtherOptionsProfile extends StatelessWidget {
               );
               launchUrl(emailLaunchUri);
             },
-            child: const LargeBody(
-              text: 'Report a problem',
+            child: LargeBody(
+              text: appLocalizations.reportProblem,
               textAlign: TextAlign.center,
             ),
           ),
@@ -47,8 +49,8 @@ class OtherOptionsProfile extends StatelessWidget {
                 throw 'Could not launch $url';
               }
             },
-            child: const LargeBody(
-              text: 'Privacy policy',
+            child: LargeBody(
+              text: appLocalizations.privacyPolicy,
               textAlign: TextAlign.center,
             ),
           ),
@@ -58,8 +60,8 @@ class OtherOptionsProfile extends StatelessWidget {
               Navigator.pop(context);
               confirmDelete(context);
             },
-            child: const LargeBody(
-              text: 'Delete account',
+            child: LargeBody(
+              text: appLocalizations.deleteAccount,
               textAlign: TextAlign.center,
               color: Colors.black,
             ),
@@ -70,8 +72,8 @@ class OtherOptionsProfile extends StatelessWidget {
               Navigator.pop(context);
               authProvider.signOut();
             },
-            child: const LargeBody(
-              text: 'Log out',
+            child: LargeBody(
+              text: appLocalizations.logout,
               textAlign: TextAlign.center,
               color: Colors.red,
             ),

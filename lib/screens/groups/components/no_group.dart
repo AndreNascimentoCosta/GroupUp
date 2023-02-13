@@ -9,6 +9,7 @@ import 'package:groupup/screens/groups/components/stats_no_group.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create/create_page_view.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NoGroup extends StatelessWidget {
   const NoGroup({super.key});
@@ -67,12 +68,12 @@ class NoGroup extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(
+                    Padding(
+                      padding: const EdgeInsets.only(
                         left: kDefaultPadding,
                       ),
                       child: ExtraLargeBody(
-                        text: '#NewProject',
+                        text: AppLocalizations.of(context).newGroup,
                         color: kSecondaryColor,
                       ),
                     ),
@@ -81,10 +82,10 @@ class NoGroup extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              const Padding(
-                padding: EdgeInsets.only(bottom: Insets.xl * 1.5),
+              Padding(
+                padding: const EdgeInsets.only(bottom: Insets.xl * 1.5),
                 child: StaticText(
-                  text: 'Create or join a new project',
+                  text: AppLocalizations.of(context).createOrJoinAGroup,
                   color: kSecondaryColor,
                   fontFamily: 'Montserrat-Medium',
                   fontSize: 20,

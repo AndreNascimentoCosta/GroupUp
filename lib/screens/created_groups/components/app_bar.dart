@@ -5,12 +5,14 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarCreatedGroups extends StatelessWidget with PreferredSizeWidget {
   const AppBarCreatedGroups({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
         children: [
@@ -29,8 +31,8 @@ class AppBarCreatedGroups extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const StaticText(
-                  text: 'Created groups',
+                child: StaticText(
+                  text: appLocalizations.createdGroups,
                   fontFamily: 'Montserrat-Bold',
                   fontSize: TextSize.subTitle,
                 ),

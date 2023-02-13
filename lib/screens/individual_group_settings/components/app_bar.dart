@@ -4,12 +4,14 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
   const AppBarGroupSettings({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
         children: [
@@ -28,7 +30,7 @@ class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const Header(text: 'Group settings'),
+                child: Header(text: appLocalizations.groupSettings),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),

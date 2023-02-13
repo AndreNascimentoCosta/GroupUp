@@ -68,9 +68,9 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
         children: [
           StaticText(
             text: widget.header,
-            fontSize: TextSize.lBody,
+            fontSize: TextSize.sBody,
           ),
-          const SizedBox(height: Insets.xs),
+          const SizedBox(height: Insets.s),
           TextFormField(
             key: widget.keyUnique,
             focusNode: widget.focusNode,

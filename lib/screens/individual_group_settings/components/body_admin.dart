@@ -15,9 +15,10 @@ import 'package:groupup/screens/individual_group_settings/edit_fields/edit_dates
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_no_participants/edit_no_participants_screen.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_objective/edit_group_objective.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/edit_group_name.dart';
-import 'package:groupup/screens/report_participant/report_general_participants.dart/screens/report_participant.dart';
+import 'package:groupup/screens/report_participant/screens/report_participant.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BodyAdminSettings extends StatelessWidget {
   const BodyAdminSettings({required this.groups});
@@ -29,6 +30,7 @@ class BodyAdminSettings extends StatelessWidget {
     final participantsData = groups.participantsData;
     final createGroupProvider =
         Provider.of<CreateGroupProvider>(context, listen: false);
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.only(
         top: kDefaultPadding,
@@ -50,7 +52,7 @@ class BodyAdminSettings extends StatelessWidget {
                   ),
                 );
               },
-              child: const BodyContentArrow(name: 'Report a participant'),
+              child: BodyContentArrow(name: appLocalizations.reportParticipant),
             ),
             const SizedBox(height: kDefaultPadding * 1.5),
             ButtonCommonStyle(
@@ -64,7 +66,7 @@ class BodyAdminSettings extends StatelessWidget {
                   ),
                 );
               },
-              child: const BodyContentArrow(name: 'Project name'),
+              child: BodyContentArrow(name: appLocalizations.projectName),
             ),
             const SizedBox(height: kDefaultPadding * 1.5),
             ButtonCommonStyle(
@@ -78,19 +80,19 @@ class BodyAdminSettings extends StatelessWidget {
                   ),
                 );
               },
-              child: const BodyContentArrow(name: 'Objective'),
+              child: BodyContentArrow(name: appLocalizations.objective),
             ),
             const SizedBox(height: kDefaultPadding * 1.5),
             ButtonCommonStyle(
               onPressed: () {
-                if (participantsData.any((element) => element.hasStory) ==
+                if (participantsData.any((element) => element.inputData.isNotEmpty) ==
                     true) {
                   showCupertinoDialog(
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: const StaticText(
-                          text: "You can't do this",
+                        title: StaticText(
+                          text: appLocalizations.youCantDoThis,
                           textAlign: TextAlign.center,
                           fontFamily: 'Montserrat-SemiBold',
                           fontSize: TextSize.lBody,
@@ -98,9 +100,9 @@ class BodyAdminSettings extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        content: const StaticText(
-                          text:
-                              "A participant has already added \ndata. You can't change the dates anymore.",
+                        content: StaticText(
+                          text: appLocalizations
+                              .cantChangeDatesWhenParticipantAddedData,
                           maxLines: 5,
                           textAlign: TextAlign.center,
                           fontSize: TextSize.mBody,
@@ -134,19 +136,19 @@ class BodyAdminSettings extends StatelessWidget {
                   );
                 }
               },
-              child: const BodyContentArrow(name: 'Dates'),
+              child: BodyContentArrow(name: appLocalizations.dates),
             ),
             const SizedBox(height: kDefaultPadding * 1.5),
             ButtonCommonStyle(
               onPressed: () {
-                if (participantsData.any((element) => element.hasStory) ==
+                if (participantsData.any((element) => element.inputData.isNotEmpty) ==
                     true) {
                   showCupertinoDialog(
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: const StaticText(
-                          text: "You can't do this",
+                        title: StaticText(
+                          text: appLocalizations.youCantDoThis,
                           textAlign: TextAlign.center,
                           fontFamily: 'Montserrat-SemiBold',
                           fontSize: TextSize.lBody,
@@ -154,9 +156,9 @@ class BodyAdminSettings extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        content: const StaticText(
-                          text:
-                              "A participant has already added \ndata. You can't change the dates anymore.",
+                        content: StaticText(
+                          text: appLocalizations
+                              .cantChangeNoParticipantsWhenParticipantAddedData,
                           maxLines: 5,
                           textAlign: TextAlign.center,
                           fontSize: TextSize.mBody,
@@ -190,8 +192,8 @@ class BodyAdminSettings extends StatelessWidget {
                   );
                 }
               },
-              child: const BodyContentArrow(
-                name: 'Number of participants',
+              child: BodyContentArrow(
+                name: appLocalizations.noParticipants,
                 maxLine: 2,
               ),
             ),
@@ -199,23 +201,27 @@ class BodyAdminSettings extends StatelessWidget {
             const SizedBox(height: kDefaultPadding * 1.5),
             BodyContentSwitch(
               groups: groups,
-              text: 'Everyone can edit group picture',
+              text: appLocalizations.everyoneCanEditGroupPic,
               boolValue: groups.allowEditImage,
             ),
             const SizedBox(height: kDefaultPadding * 1.5),
             SizedBox(height: MediaQuery.of(context).size.height * 0.3),
             Row(
               children: [
-                const SizedBox(
+                SizedBox(
                   width: 150,
-                  child: LargeBody(text: 'Group code'),
+                  child: LargeBody(text: appLocalizations.groupCode),
                 ),
                 const Spacer(),
                 ShareButton(
                   text: groups.groupCode,
                   onPressed: () async {
                     await Share.share(
-                        'Join my group ${groups.projectName} on GroupUp! \nThe code is ${groups.groupCode}');
+                      appLocalizations.shareGroupCodeText(
+                        groups.projectName,
+                        groups.groupCode,
+                      ),
+                    );
                   },
                 ),
               ],
@@ -228,7 +234,7 @@ class BodyAdminSettings extends StatelessWidget {
                   groups.id,
                 );
               },
-              text: 'Exit group',
+              text: appLocalizations.exitGroup,
               color: Colors.red,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),

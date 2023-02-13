@@ -10,6 +10,7 @@ import 'package:groupup/models/participant.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:provider/provider.dart';
 import 'package:story/story.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StoryWidget extends StatelessWidget {
   const StoryWidget({
@@ -23,6 +24,7 @@ class StoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentUser = Provider.of<AuthProvider>(context).user;
+    final appLocalizations = AppLocalizations.of(context);
     if (currentUser == null) {
       return const SizedBox();
     }
@@ -112,7 +114,7 @@ class StoryWidget extends StatelessWidget {
                         ),
                         child: StaticText(
                           text: participant.name == currentUser.name
-                              ? 'Me'
+                              ? appLocalizations.me
                               : participant.name,
                           fontSize: TextSize.lBody,
                           color: Colors.white,
@@ -173,13 +175,14 @@ class StoryWidget extends StatelessWidget {
                         );
                         Navigator.of(context).pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: StaticText(
-                              text: "Done! You invalidated this data!",
+                              text: appLocalizations.dataInvalidated,
                               textAlign: TextAlign.center,
                               fontSize: TextSize.mBody,
                               color: Colors.white,
                             ),
+                            duration: const Duration(seconds: 2),
                             backgroundColor: kSecondaryColor,
                           ),
                         );
@@ -249,14 +252,14 @@ class StoryWidget extends StatelessWidget {
                         );
                         Navigator.of(context).pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: StaticText(
-                              text: "Done! You validated this data!",
+                              text: appLocalizations.dataValidated,
                               textAlign: TextAlign.center,
                               fontSize: TextSize.mBody,
                               color: Colors.white,
                             ),
-                            duration: Duration(seconds: 2),
+                            duration: const Duration(seconds: 2),
                             backgroundColor: kSecondaryColor,
                           ),
                         );

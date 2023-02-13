@@ -12,6 +12,7 @@ import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AuthProvider extends ChangeNotifier {
   UserDataModel? _user;
@@ -212,8 +213,8 @@ class AuthProvider extends ChangeNotifier {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const StaticText(
-            text: 'Error',
+          title: StaticText(
+            text: AppLocalizations.of(context).error,
             textAlign: TextAlign.center,
             fontFamily: 'Montserrat-SemiBold',
             fontSize: TextSize.lBody,
@@ -254,11 +255,11 @@ class AuthProvider extends ChangeNotifier {
       },
       verificationFailed: (e) {
         if (e.code == 'invalid-phone-number') {
-          _error(context, 'Invalid phone number');
+          _error(context, AppLocalizations.of(context).invalidPhoneNumber);
         } else if (e.code == 'too-many-requests') {
-          _error(context, 'Too many requests, try again \nlater');
+          _error(context, AppLocalizations.of(context).tooManyRequests);
         } else {
-          _error(context, 'Something went wrong');
+          _error(context, AppLocalizations.of(context).generalError);
         }
       },
       codeSent: (String verificationId, int? resendToken) async {
@@ -288,10 +289,10 @@ class AuthProvider extends ChangeNotifier {
       await _auth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-verification-code') {
-        _error(context, 'Invalid verification code');
+        _error(context, AppLocalizations.of(context).invalidVerificationCode);
         return;
       } else {
-        _error(context, 'Something went wrongx');
+        _error(context, AppLocalizations.of(context).generalError);
       }
     }
     navigatorState.pop();

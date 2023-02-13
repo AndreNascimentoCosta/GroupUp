@@ -8,6 +8,7 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/providers/edit_group_objective_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarEditGroupObjective extends StatelessWidget with PreferredSizeWidget {
   const AppBarEditGroupObjective({required this.groups});
@@ -17,6 +18,7 @@ class AppBarEditGroupObjective extends StatelessWidget with PreferredSizeWidget 
   @override
   Widget build(BuildContext context) {
     final editGroupObjectiveProvider = Provider.of<EditGroupObjectiveProvider>(context);
+    final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
         children: [
@@ -35,7 +37,7 @@ class AppBarEditGroupObjective extends StatelessWidget with PreferredSizeWidget 
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const Header(text: 'Group objective'),
+                child: Header(text: appLocalizations.groupObjective),
               ),
               ButtonCommonStyle(
                 onPressed: () {
@@ -73,7 +75,7 @@ class AppBarEditGroupObjective extends StatelessWidget with PreferredSizeWidget 
                   child: ButtonCommonStyle(
                     onPressed: editGroupObjectiveProvider.done(context, groups.objective, groups.id),
                     child: StaticText(
-                      text: 'Done',
+                      text: appLocalizations.done,
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
                       color: editGroupObjectiveProvider.done(context, groups.objective, groups.id) == null

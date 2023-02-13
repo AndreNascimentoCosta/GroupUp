@@ -8,6 +8,7 @@ import 'package:groupup/screens/home/components/bottom_sheet/sign_up/sign_up_pho
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpPhonePageView extends StatefulWidget {
   const SignUpPhonePageView({Key? key}) : super(key: key);
@@ -52,8 +53,8 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                 StaticText(
                   textAlign: TextAlign.center,
                   text: phoneProvider.pageIndex < 2
-                      ? 'Continue'
-                      : 'Verification code',
+                      ? AppLocalizations.of(context).continuePN
+                      : AppLocalizations.of(context).verificationCode,
                   fontFamily: 'Montserrat-SemiBold',
                   fontSize: 28,
                 ),

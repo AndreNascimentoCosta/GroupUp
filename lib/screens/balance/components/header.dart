@@ -1,3 +1,4 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
@@ -6,6 +7,7 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/balance/components/button.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HeaderBalance extends StatelessWidget {
   const HeaderBalance({super.key});
@@ -13,6 +15,7 @@ class HeaderBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
@@ -21,7 +24,7 @@ class HeaderBalance extends StatelessWidget {
           const SizedBox(
             height: kDefaultPadding,
           ),
-          const LargeBody(text: 'Total Balance'),
+          LargeBody(text: appLocalizations.balance),
           Row(
             children: [
               SizedBox(
@@ -34,14 +37,36 @@ class HeaderBalance extends StatelessWidget {
                 ),
               ),
               SizedBox(width: MediaQuery.of(context).size.width * 0.05),
-              const Button(
-                text: 'Add',
+              Button(
+                onPressed: () async {
+                  try {
+                    await FirebaseFunctions.instance
+                        .httpsCallable('CreateAccount')
+                        .call({});
+                  } on FirebaseFunctionsException catch (e) {
+                    // ignore: avoid_print
+                    print(e.message);
+                  }
+                },
+                text: appLocalizations.add,
                 buttonColor: kPrimaryColor,
                 textColor: Colors.white,
               ),
               const SizedBox(width: Insets.l),
-              const Button(
-                text: 'Withdraw',
+              Button(
+                onPressed: () async {
+                  try {
+                    await FirebaseFunctions.instance
+                        .httpsCallable('DeleteAccount')
+                        .call({
+                      'accountId': 'acct_1MaROrIAfr4NdoZf',
+                    });
+                  } on FirebaseFunctionsException catch (e) {
+                    // ignore: avoid_print
+                    print(e.message);
+                  }
+                },
+                text: appLocalizations.withdraw,
                 buttonColor: Color(0XFFE1E1E1),
                 textColor: Colors.black,
               ),

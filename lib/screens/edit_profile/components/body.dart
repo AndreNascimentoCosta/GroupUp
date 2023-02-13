@@ -15,6 +15,7 @@ import 'package:groupup/screens/edit_profile/edit_fields/edit_name/edit_profile_
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditProfileBody extends StatefulWidget {
   const EditProfileBody({super.key});
@@ -46,6 +47,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
@@ -179,18 +181,18 @@ class _EditProfileBodyState extends State<EditProfileBody> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     width: 110,
                     child: Padding(
-                      padding: EdgeInsets.only(left: kDefaultPadding * 0.5),
-                      child: LargeBody(text: 'Name'),
+                      padding: const EdgeInsets.only(left: kDefaultPadding * 0.5),
+                      child: LargeBody(text: appLocalizations.name),
                     ),
                   ),
                   const SizedBox(width: Insets.l * 2),
                   SizedBox(
                     width: 200,
                     child: StaticText(
-                        text: Characters(user?.name ?? 'Name')
+                        text: Characters(user?.name ?? appLocalizations.name)
                             .replaceAll(Characters(''), Characters('\u{200B}'))
                             .toString(),
                             overflow: TextOverflow.ellipsis,

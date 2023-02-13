@@ -8,6 +8,7 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/providers/edit_group_name_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
   const AppBarEditGroupName({required this.groups});
@@ -17,6 +18,7 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final editGroupNameProvider = Provider.of<EditGroupNameProvider>(context);
+    final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
         children: [
@@ -35,7 +37,7 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const Header(text: 'Group name'),
+                child: Header(text: appLocalizations.groupName),
               ),
               ButtonCommonStyle(
                 onPressed: () {
@@ -74,7 +76,7 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
                     onPressed: editGroupNameProvider.done(
                         context, groups.projectName, groups.id),
                     child: StaticText(
-                      text: 'Done',
+                      text: appLocalizations.done,
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
                       color: editGroupNameProvider.done(

@@ -5,6 +5,7 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:groupup/core/providers/edit_group_name_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditGroupNameBody extends StatelessWidget {
   const EditGroupNameBody({super.key});
@@ -38,7 +39,10 @@ class EditGroupNameBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: Insets.l),
-            const StaticText(text: 'Change group name', fontSize: TextSize.mBody),
+            StaticText(
+              text: AppLocalizations.of(context).changeGroupName,
+              fontSize: TextSize.mBody,
+            ),
           ],
         ),
       ),

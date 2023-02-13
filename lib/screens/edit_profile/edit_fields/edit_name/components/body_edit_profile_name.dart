@@ -3,6 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:groupup/core/providers/edit_profile_name_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditProfileNameBody extends StatelessWidget {
   const EditProfileNameBody({super.key});
@@ -11,6 +12,7 @@ class EditProfileNameBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var editProfileNameController =
         Provider.of<EditProfileNameProvider>(context).profileNameController;
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,
@@ -24,9 +26,9 @@ class EditProfileNameBody extends StatelessWidget {
           hint: '',
           validator: (value) {
             if (value!.isNotEmpty && value.length < 3) {
-              return 'Name must be at least 3 characters';
+              return appLocalizations.nameValidatorMinChars;
             } else if (value.length >= 30) {
-              return 'Name must be less than 30 characters';
+              return appLocalizations.nameValidatorMaxChars;
             } else {
               return null;
             }

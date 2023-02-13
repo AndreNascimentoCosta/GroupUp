@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/screens/report_participant/report_general_participants.dart/components/individual_report_participant.dart';
+import 'package:groupup/screens/report_participant/components/individual_report_participant.dart';
 import 'package:provider/provider.dart';
 
 class BodyReportParticipant extends StatelessWidget {

@@ -7,6 +7,7 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/styles/end_date_picker.dart';
 import 'package:groupup/styles/start_date_picker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DateBottomSheet extends StatelessWidget {
   const DateBottomSheet({
@@ -19,6 +20,7 @@ class DateBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
@@ -34,7 +36,10 @@ class DateBottomSheet extends StatelessWidget {
           const SizedBox(height: Insets.l),
           Row(
             children: [
-              const SizedBox(width: 45, child: LargeBody(text: 'Start')),
+              SizedBox(
+                width: 45,
+                child: LargeBody(text: appLocalizations.start),
+              ),
               const SizedBox(width: Insets.l),
               Expanded(
                 child: Padding(
@@ -49,7 +54,10 @@ class DateBottomSheet extends StatelessWidget {
           const SizedBox(height: Insets.l),
           Row(
             children: [
-              const SizedBox(width: 45, child: LargeBody(text: 'End')),
+              SizedBox(
+                width: 45,
+                child: LargeBody(text: appLocalizations.end),
+              ),
               const SizedBox(width: Insets.l),
               Expanded(
                 child: Padding(

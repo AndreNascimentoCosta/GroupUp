@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-TextStyle textStyle() {
+TextStyle bottomCalendarTextStyle() {
   return const TextStyle(
     fontFamily: 'Montserrat-Medium',
     fontSize: 16,

@@ -5,6 +5,7 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChartLabel extends StatelessWidget {
   const ChartLabel({required this.participant});
@@ -14,6 +15,7 @@ class ChartLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.only(
         top: kDefaultPadding,
@@ -51,25 +53,26 @@ class ChartLabel extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                    height: 10,
-                    width: 10,
-                    decoration: participant.uid != user?.id
-                        ? BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: kSecondaryColor,
-                              width: 1,
-                            ),
-                          )
-                        : const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: kPrimaryColor,
-                          )),
+                  height: 10,
+                  width: 10,
+                  decoration: participant.uid != user?.id
+                      ? BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: kSecondaryColor,
+                            width: 1,
+                          ),
+                        )
+                      : const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: kPrimaryColor,
+                        ),
+                ),
                 const SizedBox(
                   width: Insets.s,
                 ),
                 StaticText(
-                  text: 'Me',
+                  text: appLocalizations.me,
                   color: participant.uid != user?.id
                       ? kSecondaryColor
                       : kPrimaryColor,

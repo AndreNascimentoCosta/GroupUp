@@ -7,6 +7,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../core/providers/edit_profile_name_provider.dart';
 
@@ -16,6 +17,7 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final nameProvider = Provider.of<EditProfileNameProvider>(context);
+    final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
         children: [
@@ -34,7 +36,7 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const Header(text: 'Name'),
+                child: Header(text: appLocalizations.name),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),
@@ -72,7 +74,7 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
                   child: ButtonCommonStyle(
                     onPressed: nameProvider.done(context),
                     child: StaticText(
-                      text: 'Done',
+                      text: appLocalizations.done,
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
                       color: nameProvider.done(context) == null

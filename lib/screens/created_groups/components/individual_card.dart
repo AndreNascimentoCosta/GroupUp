@@ -5,6 +5,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/created_groups/components/dates.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IndividualCreatedGroup extends StatelessWidget {
   const IndividualCreatedGroup({
@@ -15,6 +16,7 @@ class IndividualCreatedGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Row(
@@ -52,8 +54,8 @@ class IndividualCreatedGroup extends StatelessWidget {
                           fontSize: 20,
                         ),
                         const SizedBox(height: Insets.s),
-                        const MediumBody(
-                          text: 'Ended',
+                        MediumBody(
+                          text: appLocalizations.ended,
                           color: kSecondaryColor,
                         ),
                       ],

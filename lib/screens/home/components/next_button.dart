@@ -3,11 +3,12 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NextButton extends StatelessWidget {
   const NextButton({
     this.onPressed,
-    this.text = 'Next',
+    this.text,
     this.borderColor = kPrimaryColor,
     this.color = kPrimaryColor,
     this.textColor = Colors.white,
@@ -16,7 +17,7 @@ class NextButton extends StatelessWidget {
   });
 
   final void Function()? onPressed;
-  final String text;
+  final String? text;
   final Color borderColor;
   final Color color;
   final Color textColor;
@@ -38,7 +39,7 @@ class NextButton extends StatelessWidget {
       child: ButtonCommonStyle(
         onPressed: onPressed,
         child: StaticText(
-          text: text,
+          text: text ?? AppLocalizations.of(context).next,
           fontFamily: 'Montserrat-SemiBold',
           fontSize: TextSize.lBody,
           color: textColor,

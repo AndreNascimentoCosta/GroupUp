@@ -5,8 +5,10 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirstPageSignUp extends StatefulWidget {
   const FirstPageSignUp({required this.controller});
@@ -41,16 +43,22 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const StaticText(
-                      text: 'Phone number',
+                    StaticText(
+                      text: AppLocalizations.of(context).phoneNumber,
                       fontSize: TextSize.lBody,
                     ),
                     const SizedBox(height: 5),
                     IntlPhoneField(
                       focusNode: nodePhone,
-                      decoration: const InputDecoration(
-                        labelText: 'Phone Number',
-                        border: OutlineInputBorder(
+                      pickerDialogStyle: PickerDialogStyle(
+                        searchFieldInputDecoration: InputDecoration(
+                          labelText: AppLocalizations.of(context).searchCountry,
+                        ),
+                      ),
+                      invalidNumberMessage: AppLocalizations.of(context).invalidPhoneNumber,
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context).phoneNumber,
+                        border: const OutlineInputBorder(
                           borderSide: BorderSide(),
                         ),
                       ),

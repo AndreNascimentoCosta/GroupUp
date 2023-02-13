@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
@@ -11,10 +12,12 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
+import 'package:groupup/l10n/l10n.dart';
 import 'package:groupup/screens/splashscreen/splashscreen.dart';
 import 'package:groupup/styles/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,6 +70,13 @@ Future<void> main() async {
           child: MaterialApp(
             title: 'GroupUp',
             theme: themeData,
+            supportedLocales: L10n.all,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,  
+            ],
             home: const SplashScreen(),
           ),
         ),

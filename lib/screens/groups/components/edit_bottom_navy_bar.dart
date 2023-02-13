@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import '../../../constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BottomNavyBarEdit extends StatefulWidget {
   const BottomNavyBarEdit({super.key});
@@ -35,18 +36,18 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
             BottomNavigationBarItem(
               icon: ButtonCommonStyle(
                 onPressed: () {},
-                child: const Padding(
-                  padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                   child: LargeBody(
-                    text: 'Pin',
+                    text: AppLocalizations.of(context).pin,
                     color: kGroupEditColor,
                   ),
                 ),
               ),
-              activeIcon: const Padding(
-                padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                 child: LargeBody(
-                  text: 'Pin',
+                  text: AppLocalizations.of(context).pin,
                   color: kPrimaryColor,
                 ),
               ),
@@ -57,18 +58,18 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                 onPressed: () {
 
                 },
-                child: const Padding(
-                  padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                   child: LargeBody(
-                    text: 'Delete',
+                    text: AppLocalizations.of(context).delete,
                     color: kGroupEditColor,
                   ),
                 ),
               ),
-              activeIcon: const Padding(
-                padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                 child: LargeBody(
-                  text: 'Delete',
+                  text: AppLocalizations.of(context).delete,
                   color: kPrimaryColor,
                 ),
               ),

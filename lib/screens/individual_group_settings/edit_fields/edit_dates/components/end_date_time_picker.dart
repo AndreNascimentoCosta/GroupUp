@@ -4,6 +4,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EndDateTimePicker extends StatefulWidget {
   const EndDateTimePicker({required this.onChanged});
@@ -21,7 +22,7 @@ class _EndDateTimePickerState extends State<EndDateTimePicker> {
     if (date != null) {
       return '${date.day}/${date.month}/${date.year}';
     } else {
-      return 'Select date';
+      return AppLocalizations.of(context).selectDate;
     }
   }
 
@@ -49,12 +50,13 @@ class _EndDateTimePickerState extends State<EndDateTimePicker> {
   }
 
   String? endDateValidator(value) {
-    if (endDate == null) return "Select date";
+    if (endDate == null) return AppLocalizations.of(context).selectDate;
     return null;
   }
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: 
@@ -77,7 +79,7 @@ class _EndDateTimePickerState extends State<EndDateTimePicker> {
                     width: Insets.l,
                   ),
                 ),
-                hintText: 'End date',
+                hintText: appLocalizations.endDate,
                 hintStyle: const TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize: TextSize.mBody,

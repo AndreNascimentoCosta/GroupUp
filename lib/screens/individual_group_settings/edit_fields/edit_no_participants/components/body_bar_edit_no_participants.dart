@@ -6,6 +6,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditGroupNoParticipantsBody extends StatelessWidget {
   const EditGroupNoParticipantsBody({super.key});
@@ -15,6 +16,7 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
     final groupMaxParticipantsController =
         Provider.of<EditGroupNoParticipantsProvider>(context)
             .groupMaxParticipantsController;
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,
@@ -31,7 +33,8 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
               hint: '',
               validator: (value) {
                 if (value!.isNotEmpty && int.tryParse(value)! > 50) {
-                  return 'Number of participants cannot exceed 50';
+                  return appLocalizations
+                      .noParticipantsValidatorMaxParticipants;
                 } else {
                   return null;
                 }
@@ -50,10 +53,11 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: Insets.l),
-          const StaticText(
-              text: 'Change the number of participants',
-              maxLines: 2,
-              fontSize: TextSize.mBody),
+          StaticText(
+            text: appLocalizations.changeNoParticipants,
+            maxLines: 2,
+            fontSize: TextSize.mBody,
+          ),
         ],
       ),
     );

@@ -9,6 +9,7 @@ import 'package:groupup/screens/home/components/bottom_sheet/join/pages/first_pa
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class JoinPageView extends StatefulWidget {
   const JoinPageView({super.key});
@@ -50,11 +51,7 @@ class _JoinPageViewState extends State<JoinPageView> {
                   ),
                 ),
                 StaticText(
-                  text: joinGroupProvider.pageIndex == 0
-                      ? 'Join a group'
-                      : joinGroupProvider.pageIndex == 1
-                          ? 'Sign in or Sign up'
-                          : 'Sign up',
+                  text: AppLocalizations.of(context).joinAGroup,
                   fontFamily: 'Montserrat-SemiBold',
                   fontSize: 28,
                 ),
@@ -65,9 +62,11 @@ class _JoinPageViewState extends State<JoinPageView> {
             child: PageView(
               controller: joinGroupProvider.controller,
               onPageChanged: (int index) {
-                setState(() {
-                  joinGroupProvider.pageIndex = index;
-                });
+                setState(
+                  () {
+                    joinGroupProvider.pageIndex = index;
+                  },
+                );
               },
               children: [
                 FirsPageJoin(controller: joinGroupProvider.controller),
@@ -77,13 +76,14 @@ class _JoinPageViewState extends State<JoinPageView> {
           if (stripePaymentProvider.isPaying)
             const Center(
               child: CircularProgressIndicator(color: kPrimaryColor),
-            ) else 
-          NextButton(
-            onPressed: joinGroupProvider.nextPressedJoin(
-              context,
-              userId,
+            )
+          else
+            NextButton(
+              onPressed: joinGroupProvider.nextPressedJoin(
+                context,
+                userId,
+              ),
             ),
-          ),
           joinGroupProvider.pageIndex == 1
               ? const SizedBox(height: 0)
               : const SizedBox(height: kDefaultPadding / 4)
