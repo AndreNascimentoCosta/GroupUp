@@ -846,6 +846,8 @@ PODS:
     - StripeUICore (= 23.3.3)
   - StripeUICore (23.3.3):
     - StripeCore (= 23.3.3)
+  - uni_links (0.0.1):
+    - Flutter
   - url_launcher_ios (0.0.1):
     - Flutter
 
@@ -867,6 +869,7 @@ DEPENDENCIES:
   - smart_auth (from `.symlinks/plugins/smart_auth/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - stripe_ios (from `.symlinks/plugins/stripe_ios/ios`)
+  - uni_links (from `.symlinks/plugins/uni_links/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
@@ -943,6 +946,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sqflite/ios"
   stripe_ios:
     :path: ".symlinks/plugins/stripe_ios/ios"
+  uni_links:
+    :path: ".symlinks/plugins/uni_links/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
@@ -1000,6 +1005,7 @@ SPEC CHECKSUMS:
   StripePaymentSheet: f5e74b3c1fdd9d6ecd0e1075c1ad48d3b574cd26
   StripePaymentsUI: f9c8a63faf4858f66e2302a717ebb7c928197f53
   StripeUICore: 784efbcb5ed1e3dc69e4179e1a8feb247d792d81
+  uni_links: d97da20c7701486ba192624d99bffaaffcfc298a
   url_launcher_ios: ae1517e5e344f5544fb090b079e11f399dfbe4d2
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
