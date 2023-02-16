@@ -235,12 +235,14 @@ class CreateGroupProvider extends ChangeNotifier {
                         .user
                         ?.id ??
                     '';
+                final stripePayment = Provider.of<StripePaymentProvider>(
+                  context,
+                  listen: false,
+                );
                 if (int.tryParse(controllerReward.text) != 0) {
                   isPaying = true;
                   notifyListeners();
-                  await Provider.of<StripePaymentProvider>(context,
-                          listen: false)
-                      .initPaymentCreateGroup(
+                  final paymentIntentId = await stripePayment.initPaymentCreateGroup(
                     newContext,
                     userId,
                     controllerReward.text,
@@ -250,6 +252,10 @@ class CreateGroupProvider extends ChangeNotifier {
                   notifyListeners();
                   // ignore: use_build_context_synchronously
                   await createGroup(context);
+                  await stripePayment.addPaymentIntentId(
+                    paymentIntentId,
+                    newGroup.groupCode,
+                  );
                 } else {
                   await createGroup(context);
                 }
@@ -444,8 +450,10 @@ class CreateGroupProvider extends ChangeNotifier {
 
     final groupCode = await generateGroupCode();
     newGroup.groupCode = groupCode;
+    newGroup.creator = userId; 
     newGroup.participants.add(userId);
     newGroup.participantsData.add(userParticipant);
+    newGroup.paymentIntentIds = [];
 
     final image = this.image;
     if (image != null) {
