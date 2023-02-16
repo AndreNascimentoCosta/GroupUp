@@ -38,6 +38,7 @@ class OTPField extends StatelessWidget {
       length: 6,
       animationCurve: Curves.fastOutSlowIn,
       pinAnimationType: PinAnimationType.none,
+      autofillHints: const [AutofillHints.oneTimeCode],
       animationDuration: const Duration(milliseconds: 10),
       onChanged: (value) {
         if (value.length == 6) {
