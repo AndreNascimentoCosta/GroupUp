@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 enum PaymentStatus { initial, loading, success, error }
 
@@ -11,7 +14,7 @@ class StripePaymentProvider extends ChangeNotifier {
 
   StripePaymentProvider({this.status = PaymentStatus.initial});
 
-  Future<void> initPaymentCreateGroup(
+  Future<String> initPaymentCreateGroup(
     BuildContext context,
     String userId,
     String groupReward,
@@ -74,13 +77,14 @@ class StripePaymentProvider extends ChangeNotifier {
         ),
       );
       await Stripe.instance.presentPaymentSheet();
-    } on StripeException catch (e) {
+      isPaying = false;
+      notifyListeners();
+      return clientSecret.data['paymentIntentId'];
+    } on StripeException {
       isPaying = false;
       notifyListeners();
       throw Exception('Payment failed');
     }
-    isPaying = false;
-    notifyListeners();
   }
 
   Future<void> initPaymentJoinGroup(
@@ -100,9 +104,10 @@ class StripePaymentProvider extends ChangeNotifier {
       );
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
+          merchantDisplayName: 'GroupUp',
           paymentIntentClientSecret: clientSecret.data['clientSecret'],
           applePay: PaymentSheetApplePay(
-            merchantCountryCode: 'US',
+            merchantCountryCode: 'BR',
             paymentSummaryItems: [
               ApplePayCartSummaryItem.immediate(
                 label: 'Reward',
@@ -142,12 +147,47 @@ class StripePaymentProvider extends ChangeNotifier {
         ),
       );
       await Stripe.instance.presentPaymentSheet();
+      await addPaymentIntentId(
+        clientSecret.data['paymentIntentId'],
+        groupCode,
+      );
       isPaying = false;
-    }  on StripeException catch (e) {
+    } on StripeException {
       isPaying = false;
       notifyListeners();
       throw Exception('Payment failed');
     }
     notifyListeners();
+  }
+
+  Future<void> addPaymentIntentId(
+    String paymentIntentId,
+    String groupCode,
+  ) async {
+    final documents = await FirebaseFirestore.instance
+        .collection('groups')
+        .where('groupCode', isEqualTo: groupCode)
+        .get();
+    if (documents.docs.isEmpty) return;
+    final groupId = documents.docs.first.id;
+    await FirebaseFirestore.instance.collection('groups').doc(groupId).update(
+      {
+        'paymentIntentIds': FieldValue.arrayUnion(
+          [paymentIntentId],
+        ),
+      },
+    );
+  }
+
+  Future<void> deleteConnectedAccount(
+      BuildContext context, String accountId) async {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    if (authProvider.user == null) return;
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(authProvider.user?.id)
+        .update({'stripeAccountId': ''});
+    await authProvider.getUser();
   }
 }
