@@ -631,5 +631,9 @@
     "redirecting": "Redirecting...",
     "@redirecting": {
         "description": "Redirecting"
+    },
+    "options": "Options",
+    "@options": {
+        "description": "Options"
     }
 }

@@ -145,5 +145,6 @@
     "requestPayout": "Solicitar um pagamento",
     "connectedAccountDeleted": "Conta conectada excluída",
     "resumeAccountCreation": "Continuar a criação da conta",
-    "redirecting": "Redirecionando..."
+    "redirecting": "Redirecionando...",
+    "options": "Opções"
 }
