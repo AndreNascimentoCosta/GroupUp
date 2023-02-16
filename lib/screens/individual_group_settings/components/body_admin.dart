@@ -205,7 +205,7 @@ class BodyAdminSettings extends StatelessWidget {
               boolValue: groups.allowEditImage,
             ),
             const SizedBox(height: kDefaultPadding * 1.5),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.3),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             Row(
               children: [
                 SizedBox(
