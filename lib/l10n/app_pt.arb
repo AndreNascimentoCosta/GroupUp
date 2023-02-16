@@ -133,5 +133,17 @@
     "noKeep": "Não, manter",
     "choosePicture": "Escolha uma foto",
     "none": "Nenhum",
-    "completed": "Concluído"
+    "completed": "Concluído",
+    "createConnectedAccount": "Criar conta conectada",
+    "createConnectedAccountText": "Crie uma conta conectada, \npreencha o formulário e \nadicione sua conta do banco \npara receber pagamentos.",
+    "createAccount": "Criar conta",
+    "connectedAccount": "Conta conectada",
+    "chooseOption": "Escolha uma opção",
+    "loginToYourConnectedAccount": "Entre na conta conectada",
+    "deleteConnectedAccount": "Excluir conta conectada",
+    "deleteConnectedAccountText": "Tem certeza que quer excluir sua \nconta conectada?",
+    "requestPayout": "Solicitar um pagamento",
+    "connectedAccountDeleted": "Conta conectada excluída",
+    "resumeAccountCreation": "Continuar a criação da conta",
+    "redirecting": "Redirecionando..."
 }

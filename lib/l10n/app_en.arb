@@ -583,5 +583,53 @@
     "completed": "Completed",
     "@completed": {
         "description": "Completed"
+    },
+    "createConnectedAccount": "Create Connected account",
+    "@createConnectedAccount": {
+        "description": "Create Connected account"
+    },
+    "createConnectedAccountText": "Create an account, fill the \nform and add your bank \naccount to receive payouts.",
+    "@createConnectedAccountText": {
+        "description": "Create Connected account text"
+    },
+    "createAccount": "Create account",
+    "@createAccount": {
+        "description": "Create account"
+    },
+    "connectedAccount": "Connected account",
+    "@connectedAccount": {
+        "description": "Connected account"
+    },
+    "chooseOption": "Choose an option",
+    "@chooseOption": {
+        "description": "Choose an option"
+    },
+    "loginToYourConnectedAccount": "Login to your Connected account",
+    "@loginToYourConnectedAccount": {
+        "description": "Login to your Connected account"
+    },
+    "deleteConnectedAccount": "Delete Connected account",
+    "@deleteConnectedAccount": {
+        "description": "Delete Connected account"
+    },
+    "deleteConnectedAccountText": "Are you sure you want to delete your \nConnected account?",
+    "@deleteConnectedAccountText": {
+        "description": "Delete Connected account text"
+    },
+    "requestPayout": "Request a payout",
+    "@requestPayout": {
+        "description": "Request a payout"
+    },
+    "connectedAccountDeleted": "Your Connected account has been deleted.",
+    "@connectedAccountDeleted": {
+        "description": "Connected account deleted"
+    },
+    "resumeAccountCreation": "Resume account creation",
+    "@resumeAccountCreation": {
+        "description": "Resume account creation"
+    },
+    "redirecting": "Redirecting...",
+    "@redirecting": {
+        "description": "Redirecting"
     }
 }
