@@ -16,7 +16,16 @@ const createOrGetCustomerId = async function (userId) {
     return customer.id;
 }
 
-
+const removeDuplicates = function arrayUnique(array) {
+    var a = array.concat();
+    for (var i = 0; i < a.length; ++i) {
+        for (var j = i + 1; j < a.length; ++j) {
+            if (a[i] === a[j])
+                a.splice(j--, 1);
+        }
+    }
+    return a;
+}
 
 exports.StripePayEndPointMethodIdJoinGroup = functions.https.onRequest(async (req, res) => {
     const { groupCode, userId } = req.body.data;
@@ -41,6 +50,7 @@ exports.StripePayEndPointMethodIdJoinGroup = functions.https.onRequest(async (re
         return res.send({
             data: {
                 clientSecret: paymentIntent.client_secret,
+                paymentIntentId: paymentIntent.id,
                 reward: reward,
             }
         });
@@ -69,6 +79,7 @@ exports.StripePayEndPointMethodIdCreateGroup = functions.https.onRequest(async (
         return res.send({
             data: {
                 clientSecret: paymentIntent.client_secret,
+                paymentIntentId: paymentIntent.id,
             }
         });
     } catch (e) {
@@ -81,30 +92,144 @@ exports.CreateAccount = functions.https.onRequest(async (req, res) => {
     const account = await stripe.accounts.create({
         type: 'express',
         country: 'BR',
-        email: 'test@test.com',
         business_type: 'individual',
+        business_profile: {
+            mcc: '7623',
+            product_description: 'GroupUp',
+        },
         individual: {
             political_exposure: 'none',
-        },
-        business_profile: {
-            name: "Andre",
-            product_description: "Test",
-        },
-        individual: {
-            first_name: "Andre",
-            last_name: "Test",
-            id_number: "123456789",
         },
         capabilities: {
             card_payments: { requested: true },
             transfers: { requested: true },
         },
     });
-    return res.send(account);
+
+    const accountLink = await stripe.accountLinks.create({
+        account: account.id,
+        refresh_url: 'https://groupupapp.page.link/stripe',
+        return_url: 'https://groupupapp.page.link/stripe',
+        type: 'account_onboarding',
+        collect: 'eventually_due',
+    });
+
+    console.log(accountLink.url);
+    console.log(account.details_submitted);
+
+    return res.send({
+        data: {
+            accountId: account.id,
+            accountLink: accountLink,
+            accountLinkUrl: accountLink.url,
+            detailsSubmitted: account.details_submitted,
+        }
+    });
+});
+
+exports.CreateAccountLink = functions.https.onRequest(async (req, res) => {
+    const { accountId } = req.body.data;
+
+    const accountLink = await stripe.accountLinks.create({
+        account: accountId,
+        refresh_url: 'https://groupupapp.page.link/stripe',
+        return_url: 'https://groupupapp.page.link/stripe',
+        type: 'account_onboarding',
+        collect: 'eventually_due',
+    });
+
+    return res.send({
+        data: {
+            accountLink: accountLink,
+            accountLinkUrl: accountLink.url,
+        }
+    });
+});
+
+
+exports.GetAccount = functions.https.onRequest(async (req, res) => {
+    const { accountId } = req.body.data;
+    const account = await stripe.accounts.retrieve(accountId);
+    return res.send({
+        data: {
+            account: account,
+            detailsSubmitted: account.details_submitted,
+        }
+    });
+});
+
+exports.LoginLink = functions.https.onRequest(async (req, res) => {
+    const { accountId } = req.body.data;
+
+    const loginLink = await stripe.accounts.createLoginLink(
+        accountId
+    );
+
+    console.log(loginLink.url);
+
+    return res.send({
+        data: {
+            loginLink: loginLink.url,
+        }
+    });
+});
+
+exports.CreateTransferStripe = functions.https.onRequest(async (req, res) => {
+    const { accountId, amount, paymentIntentId } = req.body.data;
+
+    const paymentIntent = await stripe.paymentIntents.retrieve(
+        paymentIntentId,
+    );
+
+    try {
+        const transfer = await stripe.transfers.create({
+            amount: amount * 100,
+            currency: 'brl',
+            destination: accountId,
+            source_transaction: paymentIntent.latest_charge,
+        });
+
+        return res.send({
+            data: {
+                transfer: transfer,
+                paymentIntent: paymentIntent.latest_charge,
+            }
+        });
+
+    } catch (error) {
+        return res.send({ data: { error: e.message } });
+    }
+
 });
 
 exports.DeleteAccount = functions.https.onRequest(async (req, res) => {
     const { accountId } = req.body.data;
     const account = await stripe.accounts.del(accountId);
     return res.send(account);
+});
+
+exports.onGroupEnded = functions.firestore.document('groups/{groupId}').onUpdate(async (change, context) => {
+    const groupId = context.params.groupId;
+    const groupData = change.after.data();
+    const userId = groupData.creator;
+
+    const dateTimeNow = new Date();
+
+    console.log(groupData.endDate);
+    console.log(groupId);
+    console.log(userId);
+
+    if (groupData.endDate < dateTimeNow.setDate(dateTimeNow.getDate() - 1)) {
+        const groupDoc = await admin.firestore().collection('groups').doc(groupId).get();
+        const groupData = groupDoc.data();
+
+        const userRef = admin.firestore().collection('users').doc(userId);
+        const userData = (await userRef.get()).data();
+        console.log(userRef);
+        console.log(userData);
+        const paymentIntentIds = removeDuplicates(groupData.paymentIntentIds.concat(userData.paymentIntentIds || []));
+        userRef.update({
+            paymentIntentIds,
+        });
+    }
 });
