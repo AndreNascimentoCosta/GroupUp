@@ -1,6 +1,7 @@
 class UserDataModel {
-  String id, name, email, phoneNumber, profilePicture;
+  String id, name, email, phoneNumber, profilePicture, stripeAccountId;
   double balance;
+  List<String> paymentIntentIds;
 
   UserDataModel({
     required this.id,
@@ -9,6 +10,8 @@ class UserDataModel {
     required this.phoneNumber,
     required this.profilePicture,
     required this.balance,
+    required this.stripeAccountId,
+    required this.paymentIntentIds,
   });
 
   factory UserDataModel.fromMap(Map<String, dynamic> map) {
@@ -19,6 +22,8 @@ class UserDataModel {
       phoneNumber: map['phoneNumber'],
       profilePicture: map['profilePicture'],
       balance: map['balance'] ?? 0,
+      stripeAccountId: map['stripeAccountId'],
+      paymentIntentIds: List<String>.from(map['paymentIntentIds'] ?? []),
     );
   }
 
@@ -30,6 +35,8 @@ class UserDataModel {
       'phoneNumber': phoneNumber,
       'profilePicture': profilePicture,
       'balance': balance,
+      'stripeAccountId': stripeAccountId,
+      'paymentIntentIds': paymentIntentIds,
     };
   }
 }
