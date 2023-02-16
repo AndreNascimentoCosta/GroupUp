@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -48,8 +50,7 @@ class JoinGroupProvider extends ChangeNotifier {
             case JoinGroupErrorType.groupCodeEmpty:
               scaffoldMessengerState.showSnackBar(
                 SnackBar(
-                  content:
-                      Text(appLocalizations.pleaseEnterGroupCode),
+                  content: Text(appLocalizations.pleaseEnterGroupCode),
                   duration: const Duration(seconds: 2),
                 ),
               );
@@ -92,8 +93,9 @@ class JoinGroupProvider extends ChangeNotifier {
         } else {
           try {
             await stripePaymentProvider.initPaymentJoinGroup(
-                controllerGroupCode.text, userId);
-            // ignore: use_build_context_synchronously
+              controllerGroupCode.text,
+              userId,
+            );
             await joinGroup(context);
             navigatorState.pop();
             navigatorState.pop();
