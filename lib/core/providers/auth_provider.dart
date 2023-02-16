@@ -98,6 +98,17 @@ class AuthProvider extends ChangeNotifier {
     await getUser();
   }
 
+  Future<void> updateStripeAccountId(String accountId) async {
+    final user = _user;
+    if (user == null) return;
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.id)
+        .update({'stripeAccountId': accountId});
+    await getUser();
+  }
+
   Future<void> updateSocialUserData() async {
     final user = _auth.currentUser;
     if (user == null) return;
@@ -116,6 +127,8 @@ class AuthProvider extends ChangeNotifier {
       profilePicture: user.photoURL ?? '',
       phoneNumber: '',
       balance: 0.0,
+      stripeAccountId: '',
+      paymentIntentIds: [],
     );
     await FirebaseFirestore.instance
         .collection('users')
@@ -144,6 +157,8 @@ class AuthProvider extends ChangeNotifier {
       profilePicture: user.photoURL ?? '',
       phoneNumber: phoneNumber,
       balance: 0.0,
+      stripeAccountId: '',
+      paymentIntentIds: [],
     );
     await FirebaseFirestore.instance
         .collection('users')
