@@ -3,11 +3,11 @@ import 'package:groupup/models/participant.dart';
 
 class GroupModel {
   String id;
-  String projectName, objective, reward, groupCode, image, groupCurrencyCode;
+  String projectName, objective, reward, groupCode, image, groupCurrencyCode, creator;
   int maxParticipants;
   DateTime? startDate, endDate;
   bool allowEditImage, allowRefundRequest;
-  List<String> participants;
+  List<String> participants, paymentIntentIds;
   List<Participant> participantsData;
 
   Participant currentParticipant(String userId) {
@@ -45,8 +45,10 @@ class GroupModel {
     required this.allowRefundRequest,
     required this.image,
     required this.groupCurrencyCode,
+    required this.creator,
     required this.participants,
     required this.participantsData,
+    required this.paymentIntentIds,
     this.startDate,
     this.endDate,
   });
@@ -60,8 +62,10 @@ class GroupModel {
       groupCode: '',
       image: '',
       groupCurrencyCode: '',
+      creator: '',
       participants: [],
       participantsData: [],
+      paymentIntentIds: [],
       maxParticipants: 0,
       allowEditImage: false,
       allowRefundRequest: false,
@@ -85,12 +89,14 @@ class GroupModel {
       groupCode: map['groupCode'] ?? '',
       image: map['image'] ?? '',
       groupCurrencyCode: map['groupCurrencyCode'] ?? '',
+      creator: map['creator'] ?? '',
       participants: List<String>.from(map['participants'] ?? []),
       participantsData: List<Participant>.from(
         (map['participantsData'] ?? []).map(
           (e) => Participant.fromMap(e),
         ),
       ),
+      paymentIntentIds: List<String>.from(map['paymentIntentIds'] ?? []),
       maxParticipants: map['noParticipants'] ?? 0,
       allowEditImage: map['allowEditImage'] ?? false,
       allowRefundRequest: map['allowRefundRequest'] ?? false,
@@ -107,12 +113,14 @@ class GroupModel {
       'groupCode': groupCode,
       'image': image,
       'groupCurrencyCode': groupCurrencyCode,
+      'creator': creator,
       'noParticipants': maxParticipants,
       'allowEditImage': allowEditImage,
       'allowRefundRequest': allowRefundRequest,
       'createdAt': FieldValue.serverTimestamp(),
       'participants': participants,
       'participantsData': participantsData.map((e) => e.toMap()).toList(),
+      'paymentIntentIds': paymentIntentIds,
       'startDate': startDate,
       'endDate': endDate,
     };
