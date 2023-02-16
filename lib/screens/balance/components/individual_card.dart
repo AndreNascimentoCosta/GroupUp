@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class IndividualCardBalance extends StatelessWidget {
   const IndividualCardBalance({required this.group});
@@ -14,6 +16,15 @@ class IndividualCardBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context);
+    final currentUser = Provider.of<AuthProvider>(context).user;
+    if (currentUser == null) {
+      return const SizedBox();
+    }
+    final currentUserRank = group.participantsData.firstWhere(
+      (element) {
+        return element.uid == currentUser.id;
+      },
+    ).rank(group);
     return Row(
       children: [
         Container(
@@ -62,12 +73,39 @@ class IndividualCardBalance extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        const Padding(
-          padding: EdgeInsets.only(right: kDefaultPadding),
-          child: LargeBody(
-            text: '\$200.00',
-            color: Colors.green,
-          ),
+        Padding(
+          padding: const EdgeInsets.only(right: kDefaultPadding),
+          child: group.endDate!.isBefore(DateTime.now())
+              ? group.participants.length == 1
+                  ? LargeBody(
+                      text:
+                          '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
+                      color: Colors.red,
+                    )
+                  : group.participantsData.any((element) {
+                            return element.inputData.isEmpty ? false : true;
+                          }) ==
+                          true
+                      ? LargeBody(
+                          text:
+                              '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
+                          color: kSecondaryColor,
+                        )
+                      : currentUserRank == '1'
+                          ? LargeBody(
+                              text:
+                                  'R\$${(int.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
+                              color: Colors.green,
+                            )
+                          : LargeBody(
+                              text:
+                                  '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
+                              color: Colors.red,
+                            )
+              : const LargeBody(
+                  text: 'R\$ -',
+                  color: kSecondaryColor,
+                ),
         ),
       ],
     );
