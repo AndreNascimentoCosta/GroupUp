@@ -12,7 +12,8 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void payoutOrConnectedAccountOptionsDialog(BuildContext context) {
+void payoutOrConnectedAccountOptionsDialog(
+    BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
   final appLocalizations = AppLocalizations.of(context);
   if (authProvider.user == null) {
@@ -50,12 +51,25 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext context) {
                 onPressed: () async {
                   Navigator.of(context).pop();
                   try {
-                    await FirebaseFunctions.instance
-                        .httpsCallable('CreateTransferStripe')
-                        .call({
-                      'accountId': authProvider.user!.stripeAccountId,
-                      'amount': 2,
-                    });
+                    for (var i = 0;
+                        i < authProvider.user!.paymentIntentIds.length;
+                        i++) {
+                      final userData = authProvider.user!.paymentIntentIds[i];
+                      final retrievePaymentIntent = await FirebaseFunctions
+                          .instance
+                          .httpsCallable('RetrivePaymentIntent')
+                          .call({
+                        'paymentIntentId': userData,
+                      });
+                      await FirebaseFunctions.instance
+                          .httpsCallable('CreateTransferStripe')
+                          .call({
+                        'accountId': authProvider.user!.stripeAccountId,
+                        'amount': retrievePaymentIntent
+                            .data['paymentIntentAmountReceived'],
+                        'paymentIntentId': userData,
+                      });
+                    }
                   } on FirebaseFunctionsException catch (e) {
                     // ignore: avoid_print
                     print(e.message);
