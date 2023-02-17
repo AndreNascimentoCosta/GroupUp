@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
@@ -21,56 +22,80 @@ class HeaderBalance extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
     final appLocalizations = AppLocalizations.of(context);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(
-            height: kDefaultPadding,
-          ),
-          LargeBody(text: appLocalizations.balance),
-          Row(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.3,
-                child: GroupTitle(
-                  text: Characters(user?.balance.toString() ?? '0')
-                      .replaceAll(Characters(''), Characters('\u{200B}'))
-                      .toString(),
-                  fontFamily: 'Montserrat-SemiBold',
-                ),
+    if (user == null) return const SizedBox();
+    return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance
+            .collection('users')
+            .where('id', isEqualTo: user.id)
+            .snapshots(),
+        builder: (context, snapshot) {
+          final data = snapshot.data?.docs.first.data()['balance'];
+          if (snapshot.hasData == false || snapshot.data == null) {
+            return const Center(
+              child: CircularProgressIndicator(color: kPrimaryColor),
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(
+                    height: kDefaultPadding,
+                  ),
+                  LargeBody(text: appLocalizations.balance),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        child: GroupTitle(
+                          text:
+                              'R\$ ${Characters((data / 100).toStringAsFixed(2)).replaceAll(Characters(''), Characters('\u{200B}')).toString()}',
+                          fontFamily: 'Montserrat-SemiBold',
+                        ),
+                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.32),
+                      Button(
+                        onPressed: () async {
+                          final authProvider =
+                              Provider.of<AuthProvider>(context, listen: false);
+                          if (authProvider.user == null) return;
+                          if (authProvider.user!.stripeAccountId.isEmpty) {
+                            createConnectedAccount(context);
+                          } else {
+                            final getAccount = await FirebaseFunctions.instance
+                                .httpsCallable('GetAccount')
+                                .call({
+                              'accountId': authProvider.user!.stripeAccountId,
+                            });
+                            if (getAccount.data['detailsSubmitted'] == true) {
+                              if (authProvider.user!.paymentIntentIds.isEmpty) {
+                                Navigator.of(context).pop();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(appLocalizations.balanceZero),
+                                    duration: const Duration(seconds: 2),
+                                  ),
+                                );
+                              } else {
+                                payoutOrConnectedAccountOptionsDialog(context);
+                              }
+                            } else {
+                              continueCreateConnectedAccountDialog(context);
+                            }
+                          }
+                        },
+                        text: appLocalizations.options,
+                        buttonColor: kPrimaryColor,
+                        textColor: Colors.white,
+                      ),
+                      const SizedBox(height: Insets.l * 2.25),
+                    ],
+                  ),
+                ],
               ),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.32),
-              Button(
-                onPressed: () async {
-                  final authProvider =
-                      Provider.of<AuthProvider>(context, listen: false);
-                  if (authProvider.user == null) return;
-                  if (authProvider.user!.stripeAccountId.isEmpty) {
-                    createConnectedAccount(context);
-                  } else {
-                    final getAccount = await FirebaseFunctions.instance
-                        .httpsCallable('GetAccount')
-                        .call({
-                      'accountId': authProvider.user!.stripeAccountId,
-                    });
-                    if (getAccount.data['detailsSubmitted'] == true) {
-                      payoutOrConnectedAccountOptionsDialog(context);
-                    } else {
-                      continueCreateConnectedAccountDialog(context);
-                    }
-                  }
-                },
-                text: appLocalizations.options,
-                buttonColor: kPrimaryColor,
-                textColor: Colors.white,
-              ),
-              const SizedBox(height: Insets.l * 2.25),
-            ],
-          ),
-        ],
-      ),
-    );
+            );
+          }
+        });
   }
 }
