@@ -19,7 +19,7 @@ class BalanceScreen extends StatelessWidget {
         children: [
           const HeaderBalance(),
           const SizedBox(height: Insets.s),
-          GroupsBalance(groupsData: groupsData,),
+          GroupsBalance(groupsData: groupsData),
         ],
       ),
     );
