@@ -21,7 +21,7 @@ class UserDataModel {
       email: map['email'],
       phoneNumber: map['phoneNumber'],
       profilePicture: map['profilePicture'],
-      balance: map['balance'] ?? 0,
+      balance: double.parse(map['balance'].toString()),
       stripeAccountId: map['stripeAccountId'],
       paymentIntentIds: List<String>.from(map['paymentIntentIds'] ?? []),
     );
