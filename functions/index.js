@@ -51,6 +51,7 @@ exports.StripePayEndPointMethodIdJoinGroup = functions.https.onRequest(async (re
             data: {
                 clientSecret: paymentIntent.client_secret,
                 paymentIntentId: paymentIntent.id,
+                amountReceived: paymentIntent.amount_received,
                 reward: reward,
             }
         });
@@ -211,25 +212,23 @@ exports.DeleteAccount = functions.https.onRequest(async (req, res) => {
 exports.onGroupEnded = functions.firestore.document('groups/{groupId}').onUpdate(async (change, context) => {
     const groupId = context.params.groupId;
     const groupData = change.after.data();
-    const userId = groupData.creator;
 
+    let participantsDatas = groupData.participantsData.map(participant => ({ uid: participant.uid, sum: participant.inputData.map(input => input.value).reduce((a, b) => a + b, 0) }));
+
+    const winnerUid = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].uid;
+
+    const userRef = admin.firestore().collection('users').doc(winnerUid);
+    const userData = (await userRef.get()).data();
     const dateTimeNow = new Date();
-
-    console.log(groupData.endDate);
-    console.log(groupId);
-    console.log(userId);
 
     if (groupData.endDate < dateTimeNow.setDate(dateTimeNow.getDate() - 1)) {
         const groupDoc = await admin.firestore().collection('groups').doc(groupId).get();
         const groupData = groupDoc.data();
-
-        const userRef = admin.firestore().collection('users').doc(userId);
-        const userData = (await userRef.get()).data();
-        console.log(userRef);
-        console.log(userData);
         const paymentIntentIds = removeDuplicates(groupData.paymentIntentIds.concat(userData.paymentIntentIds || []));
         userRef.update({
             paymentIntentIds,
         });
     }
 });
+
+
