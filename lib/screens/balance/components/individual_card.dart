@@ -75,14 +75,20 @@ class IndividualCardBalance extends StatelessWidget {
         const Spacer(),
         Padding(
           padding: const EdgeInsets.only(right: kDefaultPadding),
-          child: group.endDate!.isBefore(DateTime.now())
+          child: group.endDate!.isBefore(
+            DateTime.now().subtract(
+              const Duration(
+                days: 1,
+              ),
+            ),
+          )
               ? group.participants.length == 1
                   ? LargeBody(
                       text:
                           '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
                       color: Colors.red,
                     )
-                  : group.participantsData.any((element) {
+                  : group.participantsData.every((element) {
                             return element.inputData.isEmpty ? false : true;
                           }) ==
                           true
@@ -91,7 +97,7 @@ class IndividualCardBalance extends StatelessWidget {
                               '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
                           color: kSecondaryColor,
                         )
-                      : currentUserRank == '1'
+                      : currentUserRank == '1º'
                           ? LargeBody(
                               text:
                                   'R\$${(int.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
