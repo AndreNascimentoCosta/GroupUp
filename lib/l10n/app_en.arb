@@ -635,5 +635,9 @@
     "options": "Options",
     "@options": {
         "description": "Options"
+    },
+    "balanceZero": "Your balance is 0",
+    "@balanceZero": {
+        "description": "Balance is zero"
     }
 }

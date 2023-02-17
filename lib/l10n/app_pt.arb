@@ -81,7 +81,7 @@
     "reportProblem": "Reportar problema",
     "privacyPolicy": "Política de privacidade",
     "deleteAccount": "Excluir conta",
-    "logout": "Sair",
+    "logout": "Sair da conta",
     "chooseFromGallery": "Escolha da galeria",
     "takePhoto": "Tire uma foto",
     "done": "Feito",
@@ -146,5 +146,6 @@
     "connectedAccountDeleted": "Conta conectada excluída",
     "resumeAccountCreation": "Continuar a criação da conta",
     "redirecting": "Redirecionando...",
-    "options": "Opções"
+    "options": "Opções",
+    "balanceZero": "Seu saldo é 0"
 }
