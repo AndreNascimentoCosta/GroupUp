@@ -184,7 +184,7 @@ exports.CreateTransferStripe = functions.https.onRequest(async (req, res) => {
 
     try {
         const transfer = await stripe.transfers.create({
-            amount: amount * 100,
+            amount: amount,
             currency: 'brl',
             destination: accountId,
             source_transaction: paymentIntent.latest_charge,
@@ -194,6 +194,7 @@ exports.CreateTransferStripe = functions.https.onRequest(async (req, res) => {
             data: {
                 transfer: transfer,
                 paymentIntent: paymentIntent.latest_charge,
+                paymentIntentAmountReceived: paymentIntent.amount_received,
             }
         });
 
@@ -209,13 +210,31 @@ exports.DeleteAccount = functions.https.onRequest(async (req, res) => {
     return res.send(account);
 });
 
-exports.onGroupEnded = functions.firestore.document('groups/{groupId}').onUpdate(async (change, context) => {
+exports.RetrivePaymentIntent = functions.https.onRequest(async (req, res) => {
+    const { paymentIntentId } = req.body.data;
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+    return res.send({
+        data: {
+            paymentIntent: paymentIntent,
+            paymentIntentAmountReceived: paymentIntent.amount_received,
+        }
+    });
+});
+
+const retrievePaymentIntent = async (paymentIntentId) => {
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+    return paymentIntent;
+}
+
+exports.OnGroupEnded = functions.firestore.document('groups/{groupId}').onUpdate(async (change, context) => {
     const groupId = context.params.groupId;
     const groupData = change.after.data();
 
     let participantsDatas = groupData.participantsData.map(participant => ({ uid: participant.uid, sum: participant.inputData.map(input => input.value).reduce((a, b) => a + b, 0) }));
 
     const winnerUid = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].uid;
+
+    console.log(winnerUid);
 
     const userRef = admin.firestore().collection('users').doc(winnerUid);
     const userData = (await userRef.get()).data();
@@ -224,11 +243,24 @@ exports.onGroupEnded = functions.firestore.document('groups/{groupId}').onUpdate
     if (groupData.endDate < dateTimeNow.setDate(dateTimeNow.getDate() - 1)) {
         const groupDoc = await admin.firestore().collection('groups').doc(groupId).get();
         const groupData = groupDoc.data();
+
         const paymentIntentIds = removeDuplicates(groupData.paymentIntentIds.concat(userData.paymentIntentIds || []));
+        
+        var paymentIntentAmountReceived = 0
+
+        for (let i = 0; i < paymentIntentIds.length; i++) {
+            const paymentIntentId = paymentIntentIds[i];
+            const paymentIntent = await retrievePaymentIntent(paymentIntentId);
+            paymentIntentAmountReceived += paymentIntent.amount_received;            
+        }
+    
         userRef.update({
             paymentIntentIds,
+            balance: paymentIntentAmountReceived,
         });
     }
 });
+
+
 
 
