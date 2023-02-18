@@ -51,8 +51,7 @@ class AddInputProvider extends ChangeNotifier {
             borderRadius: BorderRadius.circular(10),
           ),
           content: StaticText(
-            text:
-                appLocalizations.validateMediaText,
+            text: appLocalizations.validateMediaText,
             maxLines: 4,
             textAlign: TextAlign.center,
             fontSize: TextSize.mBody,
@@ -102,7 +101,8 @@ class AddInputProvider extends ChangeNotifier {
                                       ButtonCommonStyle(
                                         onPressed: onPressedGallery,
                                         child: LargeBody(
-                                          text: appLocalizations.chooseFromGallery,
+                                          text: appLocalizations
+                                              .chooseFromGallery,
                                           textAlign: TextAlign.center,
                                         ),
                                       ),
@@ -234,7 +234,7 @@ class AddInputProvider extends ChangeNotifier {
                   .toList()
                   .length >
               participantsData.length / 2) {
-            userParticipantData.inputData[inputDataIndex].value = 0;
+            userParticipantData.inputData.removeAt(inputDataIndex);
           }
           await FirebaseFirestore.instance
               .collection('groups')
