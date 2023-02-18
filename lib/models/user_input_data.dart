@@ -1,7 +1,7 @@
 class UserInputData {
   final DateTime date;
   double value;
-  final String? image;
+  String? image;
   Map<String, dynamic>? isValidated;
 
   UserInputData({
@@ -23,7 +23,7 @@ class UserInputData {
   factory UserInputData.fromMap(map) {
     return UserInputData(
       date: map['date'].toDate(),
-      value: map['value'],
+      value: double.parse(map['value'].toString()),
       image: map['image'],
       isValidated: map['isValidated'],
     );
