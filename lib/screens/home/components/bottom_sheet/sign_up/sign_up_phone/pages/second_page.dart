@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -42,7 +41,8 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
             children: [
               const SizedBox(height: Insets.l * 2),
               StaticText(
-                  text: AppLocalizations.of(context).codeSent(phoneControllerText),
+                  text: AppLocalizations.of(context)
+                      .codeSent(phoneControllerText),
                   fontSize: TextSize.mBody,
                   color: kSecondaryColor),
               const SizedBox(height: Insets.l * 2),
@@ -60,13 +60,17 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                   const SizedBox(width: Insets.xs),
                   ButtonCommonStyle(
                     onPressed: () {
-                      phoneProvider.start != 0
-                          ? null
-                          : authProvider.phoneLogin(context);
+                      if (phoneProvider.start != 0) {
+                        return;
+                      } else {
+                        phoneProvider.startTimer();
+                        authProvider.phoneLogin(context);
+                      }
                     },
                     child: StaticText(
                         text: phoneProvider.start != 0
-                            ? AppLocalizations.of(context).waitingRequestAgain(phoneProvider.start)
+                            ? AppLocalizations.of(context)
+                                .waitingRequestAgain(phoneProvider.start)
                             : AppLocalizations.of(context).requestAgain,
                         fontSize: TextSize.mBody,
                         fontFamily: 'Montserrat-SemiBold',
