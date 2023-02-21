@@ -18,6 +18,7 @@ import 'package:groupup/screens/profile/components/profile_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/profile/components/app_bar.dart';
 import 'package:groupup/screens/profile/components/body_button.dart';
+import 'package:groupup/screens/saved_cards/screens/saved_cards_join_group_screen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -167,9 +168,11 @@ class _BodyProfileState extends State<BodyProfile> {
                   ButtonCommonStyle(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const EditProfileScreen()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EditProfileScreen(),
+                        ),
+                      );
                     },
                     child: const EditProfile(),
                   ),
@@ -177,12 +180,13 @@ class _BodyProfileState extends State<BodyProfile> {
                   BodyButtonModel(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BalanceScreen(
-                              groupsData: groupsData,
-                            ),
-                          ));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BalanceScreen(
+                            groupsData: groupsData,
+                          ),
+                        ),
+                      );
                     },
                     text: appLocalizations.balance,
                     secondaryText:
@@ -190,16 +194,30 @@ class _BodyProfileState extends State<BodyProfile> {
                   ),
                   const SizedBox(height: kDefaultPadding * 2),
                   BodyButtonModel(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CreatedGroupsScreen(),
-                          ),
-                        );
-                      },
-                      text: appLocalizations.createdGroups,
-                      secondaryText: '')
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CreatedGroupsScreen(),
+                        ),
+                      );
+                    },
+                    text: appLocalizations.createdGroups,
+                    secondaryText: '',
+                  ),
+                  const SizedBox(height: kDefaultPadding * 2),
+                  BodyButtonModel(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SavedCardsScreen(),
+                        ),
+                      );
+                    },
+                    text: 'Saved cards',
+                    secondaryText: '',
+                  )
                 ],
               ),
             ),
