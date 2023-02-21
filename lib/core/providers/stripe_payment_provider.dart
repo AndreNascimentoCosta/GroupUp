@@ -123,7 +123,7 @@ class StripePaymentProvider extends ChangeNotifier {
           merchantDisplayName: 'GroupUp',
           paymentIntentClientSecret: clientSecret.data['clientSecret'],
           applePay: PaymentSheetApplePay(
-            merchantCountryCode: NumberFormat.simpleCurrency(name: clientSecret.data['currency']).currencyName ?? 'BR',
+            merchantCountryCode: NumberFormat.simpleCurrency(name: clientSecret.data['currency']).locale.split('_').last,
             paymentSummaryItems: [
               ApplePayCartSummaryItem.immediate(
                 label: 'Reward',
