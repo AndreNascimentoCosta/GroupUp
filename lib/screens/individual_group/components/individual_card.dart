@@ -69,22 +69,52 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                       ),
                     ),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                    widget.participant.profilePicture.isNotEmpty
-                        ? ButtonCommonStyle(
-                            onPressed: () {
-                              if (widget.participant.hasStory) {
-                                Navigator.of(context).push(
-                                  CupertinoPageRoute(
-                                    builder: (context) => StoryPage(
-                                      inputDatas: widget.participant.inputData,
-                                      participant: widget.participant,
-                                    ),
-                                    fullscreenDialog: true,
-                                  ),
-                                );
-                              }
-                            },
-                            child: Container(
+                    ButtonCommonStyle(
+                      onPressed: () {
+                        if (widget.participant.hasStory) {
+                          Navigator.of(context).push(
+                            CupertinoPageRoute(
+                              builder: (context) => StoryPage(
+                                inputDatas: widget.participant.inputData,
+                                participant: widget.participant,
+                              ),
+                              fullscreenDialog: true,
+                            ),
+                          );
+                        }
+                      },
+                      child: widget.participant.profilePicture.isNotEmpty
+                          ? Container(
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.circular(Insets.l * 6),
+                                color: widget.participant.hasStory
+                                    ? kPrimaryColor
+                                    : Colors.transparent,
+                              ),
+                              padding: widget.participant.hasStory
+                                  ? const EdgeInsets.all(3)
+                                  : EdgeInsets.zero,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                    widget.participant.hasStory
+                                        ? Insets.l * 3
+                                        : Insets.l * 3),
+                                child: CachedNetworkImage(
+                                  imageUrl: widget.participant.profilePicture,
+                                  fadeInDuration:
+                                      const Duration(milliseconds: 100),
+                                  height: widget.participant.hasStory
+                                      ? Insets.l * 3
+                                      : Insets.l * 3,
+                                  width: widget.participant.hasStory
+                                      ? Insets.l * 3
+                                      : Insets.l * 3,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            )
+                          : Container(
                               decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.circular(Insets.l * 6),
@@ -93,30 +123,24 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                     : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(3),
-                              child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.circular(Insets.l * 6),
-                                child: CachedNetworkImage(
-                                  imageUrl: widget.participant.profilePicture,
-                                  fadeInDuration:
-                                      const Duration(milliseconds: 100),
-                                  height: Insets.l * 3,
-                                  width: Insets.l * 3,
-                                  fit: BoxFit.cover,
+                              child: CircleAvatar(
+                                radius: widget.participant.hasStory
+                                    ? Insets.l * 1.50
+                                    : Insets.l * 1.65,
+                                backgroundColor: const Color(0XFFE1E1E1),
+                                child: SvgPicture.asset(
+                                  'assets/icons/profile_picture_add.svg',
+                                  color: Colors.white,
+                                  height: widget.participant.hasStory
+                                      ? Insets.l * 1.50
+                                      : Insets.l * 1.65,
+                                  width: widget.participant.hasStory
+                                      ? Insets.l * 1.50
+                                      : Insets.l * 1.65,
                                 ),
                               ),
                             ),
-                          )
-                        : CircleAvatar(
-                            radius: Insets.l * 1.65,
-                            backgroundColor: const Color(0XFFE1E1E1),
-                            child: SvgPicture.asset(
-                              'assets/icons/profile_picture_add.svg',
-                              color: Colors.white,
-                              height: Insets.l * 1.65,
-                              width: Insets.l * 1.65,
-                            ),
-                          ),
+                    ),
                     Expanded(
                       child: ButtonCommonStyle(
                         onPressed: dropDownModel.switchEdit,
