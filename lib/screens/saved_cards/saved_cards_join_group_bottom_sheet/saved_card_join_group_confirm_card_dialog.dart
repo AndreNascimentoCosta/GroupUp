@@ -78,7 +78,6 @@ void savedCardConfirmCardJoinGroup(
               navigatorState.pop();
               navigatorState.pop();
               navigatorState.pop();
-              navigatorState.pop();
             },
             height: 40,
             width: 140,
