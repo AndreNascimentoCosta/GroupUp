@@ -231,8 +231,11 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                         const SizedBox(height: kDefaultPadding)
                       else
                         const SizedBox()
-                    else
+                    else if (individualGroupProvider.group!.endDate!
+                        .isBefore(dateTimeNow))
                       const SizedBox()
+                    else
+                      const SizedBox(height: kDefaultPadding)
                   else if (individualGroupProvider.group!.endDate!
                           .isBefore(dateTimeNow) &&
                       individualGroupProvider.group!.endDate!.isAfter(
@@ -266,8 +269,15 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                             : AddInputGroupButton(homeViewModel: homeViewModel)
                       else
                         const SizedBox()
-                    else
+                    else if (individualGroupProvider.group!.endDate!
+                        .isBefore(dateTimeNow))
                       const SizedBox()
+                    else
+                      individualGroupProvider.pageIndex == 0
+                          ? CalendarScreenButton(
+                              homeViewModel: homeViewModel,
+                            )
+                          : AddInputGroupButton(homeViewModel: homeViewModel)
                   else if (individualGroupProvider.group!.endDate!
                           .isBefore(dateTimeNow) &&
                       individualGroupProvider.group!.endDate!.isAfter(
