@@ -13,6 +13,10 @@ const createOrGetCustomerId = async function (userId) {
         name: userData.name
     });
 
+    await admin.firestore().collection('users').doc(userId).update({
+        customerId: customer.id
+    });
+
     return customer.id;
 }
 
@@ -28,64 +32,128 @@ const removeDuplicates = function arrayUnique(array) {
 }
 
 exports.StripePayEndPointMethodIdJoinGroup = functions.https.onRequest(async (req, res) => {
-    const { groupCode, userId } = req.body.data;
+    const { groupCode, userId, paymentMethodId } = req.body.data;
 
     const groupDoc = await admin.firestore().collection('groups').where('groupCode', "==", groupCode).get();
     const groupData = groupDoc.docs[0].data();
 
     const reward = groupData.reward * 100;
     const currency = groupData.groupCurrencyCode;
-    const customerId = createOrGetCustomerId(userId);
+    const customerId = await createOrGetCustomerId(userId);
 
     try {
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: reward,
-            currency: currency,
-            customer: customerId,
-            automatic_payment_methods: {
-                enabled: true,
-            },
-            setup_future_usage: 'off_session',
-        });
-        return res.send({
-            data: {
-                clientSecret: paymentIntent.client_secret,
-                paymentIntentId: paymentIntent.id,
-                amountReceived: paymentIntent.amount_received,
-                reward: reward,
-            }
-        });
+        if (paymentMethodId != '' && paymentMethodId != null) {
+            const paymentIntent = await stripe.paymentIntents.create({
+                amount: reward,
+                currency: currency,
+                customer: customerId,
+                payment_method: paymentMethodId,
+                off_session: true,
+                confirm: true,
+            });
+            return res.send({
+                data: {
+                    clientSecret: paymentIntent.client_secret,
+                    paymentIntentId: paymentIntent.id,
+                    amountReceived: paymentIntent.amount_received,
+                    reward: reward,
+                    currency: currency,
+                }
+            });
+        } else {
+            const paymentIntent = await stripe.paymentIntents.create({
+                amount: reward,
+                currency: currency,
+                customer: customerId,
+                automatic_payment_methods: {
+                    enabled: true,
+                },
+                setup_future_usage: 'off_session',
+            });
+            console.log(customerId);
+            return res.send({
+                data: {
+                    clientSecret: paymentIntent.client_secret,
+                    paymentIntentId: paymentIntent.id,
+                    amountReceived: paymentIntent.amount_received,
+                    reward: reward,
+                    currency: currency,
+                }
+            });
+        }
     } catch (e) {
         return res.send({ data: { clientSecret: '', error: e.message } });
     }
 });
 
 exports.StripePayEndPointMethodIdCreateGroup = functions.https.onRequest(async (req, res) => {
-    const { userId, groupReward, groupCurrency } = req.body.data;
+    const { userId, groupReward, groupCurrency, paymentMethodId } = req.body.data;
 
     const reward = groupReward * 100;
     const currency = groupCurrency;
-    const customerId = createOrGetCustomerId(userId);
+    const customerId = await createOrGetCustomerId(userId);
 
     try {
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: reward,
-            currency: currency,
-            customer: customerId,
-            automatic_payment_methods: {
-                enabled: true,
-            },
-            setup_future_usage: 'off_session',
-        });
-        return res.send({
-            data: {
-                clientSecret: paymentIntent.client_secret,
-                paymentIntentId: paymentIntent.id,
-            }
-        });
+        if (paymentMethodId != '' && paymentMethodId != null) {
+            const paymentIntent = await stripe.paymentIntents.create({
+                amount: reward,
+                currency: currency,
+                customer: customerId,
+                payment_method: paymentMethodId,
+                off_session: true,
+                confirm: true,
+            });
+            return res.send({
+                data: {
+                    clientSecret: paymentIntent.client_secret,
+                    paymentIntentId: paymentIntent.id,
+                    amountReceived: paymentIntent.amount_received,
+                    reward: reward,
+                    currency: currency,
+                }
+            });
+        } else {
+            const paymentIntent = await stripe.paymentIntents.create({
+                amount: reward,
+                currency: currency,
+                customer: customerId,
+                automatic_payment_methods: {
+                    enabled: true,
+                },
+                setup_future_usage: 'off_session',
+            });
+            return res.send({
+                data: {
+                    clientSecret: paymentIntent.client_secret,
+                    paymentIntentId: paymentIntent.id,
+                    amountReceived: paymentIntent.amount_received,
+                    reward: reward,
+                    currency: currency,
+                }
+            });
+        }
     } catch (e) {
         return res.send({ data: { clientSecret: '', error: e.message } });
     }
+});
+
+exports.ListPaymentMethods = functions.https.onRequest(async (req, res) => {
+    const { userId } = req.body.data;
+
+    const customerId = await createOrGetCustomerId(userId);
+
+    const paymentMethods = await stripe.customers.listPaymentMethods(
+        customerId,
+        { type: 'card' }
+    );
+
+    return res.send({
+        data: {
+            paymentMethods: paymentMethods,
+            paymentMethodsData: paymentMethods.data,
+        }
+
+    });
 });
 
 exports.CreateAccount = functions.https.onRequest(async (req, res) => {
@@ -97,9 +165,6 @@ exports.CreateAccount = functions.https.onRequest(async (req, res) => {
         business_profile: {
             mcc: '7623',
             product_description: 'GroupUp',
-        },
-        individual: {
-            political_exposure: 'none',
         },
         capabilities: {
             card_payments: { requested: true },
@@ -232,32 +297,70 @@ exports.OnGroupEnded = functions.firestore.document('groups/{groupId}').onUpdate
 
     let participantsDatas = groupData.participantsData.map(participant => ({ uid: participant.uid, sum: participant.inputData.map(input => input.value).reduce((a, b) => a + b, 0) }));
 
-    const winnerUid = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].uid;
+    const greatestValue = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].sum;
 
-    console.log(winnerUid);
+    const winners = participantsDatas.filter(participant => participant.sum === greatestValue);
 
-    const userRef = admin.firestore().collection('users').doc(winnerUid);
-    const userData = (await userRef.get()).data();
-    const dateTimeNow = new Date();
 
-    if (groupData.endDate < dateTimeNow.setDate(dateTimeNow.getDate() - 1)) {
-        const groupDoc = await admin.firestore().collection('groups').doc(groupId).get();
-        const groupData = groupDoc.data();
+    if (winners.length > 1) {
 
-        const paymentIntentIds = removeDuplicates(groupData.paymentIntentIds.concat(userData.paymentIntentIds || []));
-        
-        var paymentIntentAmountReceived = 0
+        const winnerUid = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].uid;
 
-        for (let i = 0; i < paymentIntentIds.length; i++) {
-            const paymentIntentId = paymentIntentIds[i];
-            const paymentIntent = await retrievePaymentIntent(paymentIntentId);
-            paymentIntentAmountReceived += paymentIntent.amount_received;            
+        console.log(winnerUid);
+
+        const userRef = admin.firestore().collection('users').doc(winnerUid);
+        const userData = (await userRef.get()).data();
+        const dateTimeNow = new Date();
+
+        if (groupData.endDate < dateTimeNow.setDate(dateTimeNow.getDate() - 3)) {
+            const groupDoc = await admin.firestore().collection('groups').doc(groupId).get();
+            const groupData = groupDoc.data();
+
+            const paymentIntentIds = removeDuplicates(groupData.paymentIntentIds.concat(userData.paymentIntentIds || []));
+
+            var paymentIntentAmountReceived = 0
+
+            for (let i = 0; i < paymentIntentIds.length; i++) {
+                const paymentIntentId = paymentIntentIds[i];
+                const paymentIntent = await retrievePaymentIntent(paymentIntentId);
+                paymentIntentAmountReceived += paymentIntent.amount_received;
+            }
+
+            userRef.update({
+                paymentIntentIds,
+                balance: paymentIntentAmountReceived,
+            });
         }
-    
-        userRef.update({
-            paymentIntentIds,
-            balance: paymentIntentAmountReceived,
-        });
+
+    } else {
+
+        const winnerUid = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].uid;
+
+        console.log(winnerUid);
+
+        const userRef = admin.firestore().collection('users').doc(winnerUid);
+        const userData = (await userRef.get()).data();
+        const dateTimeNow = new Date();
+
+        if (groupData.endDate < dateTimeNow.setDate(dateTimeNow.getDate() - 1)) {
+            const groupDoc = await admin.firestore().collection('groups').doc(groupId).get();
+            const groupData = groupDoc.data();
+
+            const paymentIntentIds = removeDuplicates(groupData.paymentIntentIds.concat(userData.paymentIntentIds || []));
+
+            var paymentIntentAmountReceived = 0
+
+            for (let i = 0; i < paymentIntentIds.length; i++) {
+                const paymentIntentId = paymentIntentIds[i];
+                const paymentIntent = await retrievePaymentIntent(paymentIntentId);
+                paymentIntentAmountReceived += paymentIntent.amount_received;
+            }
+
+            userRef.update({
+                paymentIntentIds,
+                balance: paymentIntentAmountReceived,
+            });
+        }
     }
 });
 
