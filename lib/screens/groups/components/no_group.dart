@@ -7,7 +7,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/groups/components/stats_no_group.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/create_page_view.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create_group/create_page_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

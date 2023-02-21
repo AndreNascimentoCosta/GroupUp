@@ -6,16 +6,16 @@ import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class FirsPageJoin extends StatefulWidget {
-  const FirsPageJoin({required this.controller});
+class FirstPageJoin extends StatefulWidget {
+  const FirstPageJoin({required this.controller});
 
   final PageController controller;
 
   @override
-  State<FirsPageJoin> createState() => _FirsPageJoinState();
+  State<FirstPageJoin> createState() => _FirstPageJoinState();
 }
 
-class _FirsPageJoinState extends State<FirsPageJoin> {
+class _FirstPageJoinState extends State<FirstPageJoin> {
   @override
   Widget build(BuildContext context) {
     final joinGroupProvider = Provider.of<JoinGroupProvider>(context);

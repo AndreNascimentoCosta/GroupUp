@@ -15,7 +15,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../home/components/bottom_sheet/create/pages/first_page.dart';
+import '../../../home/components/bottom_sheet/create_group/pages/first_page.dart';
 
 class AddInput extends StatefulWidget {
   const AddInput({super.key});
@@ -153,11 +153,15 @@ class _AddInputState extends State<AddInput> {
                 padding: const EdgeInsets.only(top: Insets.s),
                 child: ButtonCommonStyle(
                   onPressed: () {
-                    addInputProvider.confirm(context, () {
-                      pickImage(ImageSource.gallery);
-                    }, () {
-                      pickImage(ImageSource.camera);
-                    }, group.id);
+                    try {
+                      addInputProvider.confirm(context, () {
+                        pickImage(ImageSource.gallery);
+                      }, () {
+                        pickImage(ImageSource.camera);
+                      }, group.id);
+                    } catch (e) {
+                      addInputProvider.isLoading = false;
+                    }
                   },
                   child: addInputProvider.isLoading
                       ? const CircularProgressIndicator(

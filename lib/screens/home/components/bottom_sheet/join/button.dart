@@ -15,26 +15,27 @@ class JoinGroupButton extends StatelessWidget {
       onPressed: () {
         Provider.of<JoinGroupProvider>(context, listen: false).clean();
         showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Insets.m),
-            ),
-            builder: (context) {
-              return Padding(
-                padding: MediaQuery.of(context).viewInsets,
-                child: Wrap(
-                  children: <Widget>[
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        SizedBox(height: 400, child: JoinPageView()),
-                      ],
-                    )
-                  ],
-                ),
-              );
-            });
+          isScrollControlled: true,
+          context: context,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Insets.m),
+          ),
+          builder: (context) {
+            return Padding(
+              padding: MediaQuery.of(context).viewInsets,
+              child: Wrap(
+                children: <Widget>[
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      SizedBox(height: 420, child: JoinPageView()),
+                    ],
+                  )
+                ],
+              ),
+            );
+          },
+        );
       },
       child: const HomeButton(isGreen: true),
     );
