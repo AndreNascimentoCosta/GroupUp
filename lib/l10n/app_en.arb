@@ -639,5 +639,33 @@
     "balanceZero": "Your balance is 0",
     "@balanceZero": {
         "description": "Balance is zero"
+    },
+    "tieBreaker": "Tiebreaker",
+    "@tieBreaker": {
+        "description": "Tiebreaker"
+    },
+    "tieBreakerText": "The group ended in a draw. \nThe participants who tied have \none day to break the tie by \nadding data. The data will go \nthrough the validation process. If \nnone data is added, the participant\n who joined the group first will be the winner.",
+    "@tieBreakerText": {
+        "description": "Tiebreaker text"
+    },
+    "savedCards": "Saved cards",
+    "@savedCards": {
+        "description": "Saved cards"
+    },
+    "noSavedCards": "No saved cards",
+    "@noSavedCards": {
+        "description": "No saved cards"
+    },
+    "expDate": "Exp. date",
+    "@expDate": {
+        "description": "Exp. date"
+    },
+    "confirmCard": "Are you sure you want pay with \nthis card?",
+    "@confirmCard": {
+        "description": "Confirm card"
+    },
+    "startEndDate": "Start - End date",
+    "@startEndDate": {
+        "description": "Start - End date"
     }
 }

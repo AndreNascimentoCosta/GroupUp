@@ -147,5 +147,12 @@
     "resumeAccountCreation": "Continuar a criação da conta",
     "redirecting": "Redirecionando...",
     "options": "Opções",
-    "balanceZero": "Seu saldo é 0"
+    "balanceZero": "Seu saldo é 0",
+    "tieBreaker": "Desempate",
+    "tieBreakerText": "O grupo terminou empatado. Os participantes que empataramtem um dia para desempatar adicionado dados. Os dados passarão pelo processo de validação. Se nenhum dado for adicionado, o participante que entro primeiro no grupo será o ganhador.",
+    "savedCards": "Cartões salvos",
+    "noSavedCards": "Sem cartões salvos",
+    "expDate": "Data de val.",
+    "confirmCard": "Tem certeza de que deseja pagar com \neste cartão?",
+    "startEndDate": "Data de Início - Fim"
 }
