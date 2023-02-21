@@ -526,7 +526,6 @@ class CreateGroupProvider extends ChangeNotifier {
         final url = await result.ref.getDownloadURL();
         newGroup.image = url;
       } on FirebaseException {
-        // ignore: avoid_print
         print("Deu ruim");
       }
     }
