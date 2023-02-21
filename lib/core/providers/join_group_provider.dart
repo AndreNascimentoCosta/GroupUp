@@ -103,6 +103,8 @@ class JoinGroupProvider extends ChangeNotifier {
         final stripePaymentProvider =
             Provider.of<StripePaymentProvider>(context, listen: false);
         FocusScope.of(context).unfocus();
+        isOpeningSavedCards = true;
+        notifyListeners();
         try {
           final listPaymentMethods = await FirebaseFunctions.instance
               .httpsCallable('ListPaymentMethods')
@@ -132,10 +134,10 @@ class JoinGroupProvider extends ChangeNotifier {
                 ),
               );
             }
+            isOpeningSavedCards = false;
+            notifyListeners();
           } else {
             navigatorState.pop();
-            isOpeningSavedCards = true;
-            notifyListeners();
             await showModalBottomSheet(
               isScrollControlled: true,
               context: context,
@@ -167,6 +169,8 @@ class JoinGroupProvider extends ChangeNotifier {
             notifyListeners();
           }
         } catch (e) {
+          isOpeningSavedCards = false;
+          notifyListeners();
           print(e);
         }
         clean();
