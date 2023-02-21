@@ -5,9 +5,9 @@ import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/pages/first_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/pages/second_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/pages/third_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/first_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/second_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/third_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
@@ -99,12 +99,12 @@ class _CreatePageViewState extends State<CreatePageView> {
               ],
             ),
           ),
-          stripePaymentProvider.isPaying
+          createGroupProvider.isPaying
               ? const CircularProgressIndicator(color: kPrimaryColor)
               : createGroupProvider.isCreatingGroup
                   ? const SizedBox()
                   : NextButton(
-                      onPressed: createGroupProvider.nextPressed(context),
+                      onPressed: createGroupProvider.nextPressedCreate(context),
                     ),
           const SizedBox(height: kDefaultPadding / 4),
         ],

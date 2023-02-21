@@ -4,28 +4,24 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/switch.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/components/body_switch.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_time_picker.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/components/group_picture_add.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create_group/components/body_switch.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create_group/components/date_time_picker.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create_group/components/group_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SecondPageCreate extends StatefulWidget {
-  const SecondPageCreate({
+class SecondPageCreate extends StatelessWidget {
+  SecondPageCreate({
     required this.controller,
   });
 
   final PageController controller;
 
-  @override
-  State<SecondPageCreate> createState() => _SecondPageCreateState();
-}
-
-class _SecondPageCreateState extends State<SecondPageCreate> {
   final SwitchModel switchModel = SwitchModel();
+
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
@@ -70,11 +66,12 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
                     hint: appLocalizations.enterNumber,
                     validator: (value) {
                       if (value!.isNotEmpty && int.tryParse(value)! > 50) {
-                        return appLocalizations.noParticipantsValidatorMaxParticipants;
+                        return appLocalizations
+                            .noParticipantsValidatorMaxParticipants;
                       } else if (int.tryParse(value) == 0) {
-                        return appLocalizations.noParticipantsValidatorMinParticipants;
-                      }
-                      else {
+                        return appLocalizations
+                            .noParticipantsValidatorMinParticipants;
+                      } else {
                         return null;
                       }
                     },
@@ -94,7 +91,8 @@ class _SecondPageCreateState extends State<SecondPageCreate> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                   child: StaticText(
                     text: appLocalizations.dates,
                     fontSize: 14,

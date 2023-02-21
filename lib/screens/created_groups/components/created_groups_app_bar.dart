@@ -40,12 +40,6 @@ class AppBarCreatedGroups extends StatelessWidget with PreferredSizeWidget {
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
-                  child: SvgPicture.asset(
-                      'assets/icons/arrow_left.svg',
-                    height: Insets.l * 1.25,
-                    width: Insets.l * 1.25,
-                    color: Colors.black,
-                  ),
                   onPressed: () {
                     Navigator.pop(
                       context,
@@ -54,6 +48,22 @@ class AppBarCreatedGroups extends StatelessWidget with PreferredSizeWidget {
                       ),
                     );
                   },
+                  child: GestureDetector(
+                    child: Container(
+                      color: Colors.transparent,
+                      width: Insets.l * 3,
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/arrow_left.svg',
+                            height: Insets.l * 1.25,
+                            width: Insets.l * 1.25,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],

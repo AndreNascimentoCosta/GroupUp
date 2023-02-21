@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/models/group_model.dart';
-import 'package:groupup/screens/created_groups/components/app_bar.dart';
-import 'package:groupup/screens/created_groups/components/body.dart';
+import 'package:groupup/screens/created_groups/components/created_groups_app_bar.dart';
+import 'package:groupup/screens/created_groups/components/created_groups_body.dart';
 
 class CreatedGroupsScreen extends StatelessWidget {
-  CreatedGroupsScreen({super.key});
-
-  final List<GroupModel> groups = [];
+  const CreatedGroupsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +11,8 @@ class CreatedGroupsScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: const AppBarCreatedGroups(),
       body: Column(
-        children: [
-          BodyCreatedGroup(
-            groups: groups,
-          ),
+        children: const [
+          BodyCreatedGroup(),
         ],
       ),
     );
