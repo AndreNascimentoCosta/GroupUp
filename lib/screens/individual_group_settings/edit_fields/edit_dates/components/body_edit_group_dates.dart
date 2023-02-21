@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create/components/date_time_picker.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create_group/components/date_time_picker.dart';
 import 'package:groupup/core/providers/edit_group_dates_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
