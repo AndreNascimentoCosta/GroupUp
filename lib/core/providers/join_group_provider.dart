@@ -111,18 +111,27 @@ class JoinGroupProvider extends ChangeNotifier {
               'userId': userId,
             },
           );
-          if (listPaymentMethods.data['paymentMethodsData'] == []) {
+          if (listPaymentMethods.data['paymentMethodsData'].length == 0) {
             try {
               await stripePaymentProvider.initPaymentJoinGroup(
                 controllerGroupCode.text,
                 userId,
               );
+              await joinGroup(context);
+              navigatorState.pop();
+              navigatorState.pop();
             } catch (e) {
+              final appLocalizations = AppLocalizations.of(context);
+              navigatorState.pop();
+              navigatorState.pop();
               print(e);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(appLocalizations.paymentInterrupted),
+                  duration: const Duration(seconds: 2),
+                ),
+              );
             }
-            await joinGroup(context);
-            navigatorState.pop();
-            navigatorState.pop();
           } else {
             navigatorState.pop();
             isOpeningSavedCards = true;
