@@ -19,15 +19,17 @@ class StartState extends State<SplashScreen> {
   }
 
   startTimer() async {
-    var duration = const Duration(seconds: 2);
+    var duration = const Duration(seconds: 0);
     return Timer(duration, route);
   }
 
   route() {
     Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Home()));
+      context,
+      MaterialPageRoute(
+        builder: (context) => Home(),
+      ),
+    );
   }
 
   @override
