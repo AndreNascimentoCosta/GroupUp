@@ -667,5 +667,9 @@
     "startEndDate": "Start - End date",
     "@startEndDate": {
         "description": "Start - End date"
+    },
+    "paymentInterrupted": "Payment interrupted, try again",
+    "@paymentInterrupted": {
+        "description": "Payment interrupted"
     }
 }
