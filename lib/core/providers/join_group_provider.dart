@@ -1,12 +1,15 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/screens/saved_cards/saved_cards_join_group_bottom_sheet/saved_cards_join_group_bottom_sheet_page_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -22,6 +25,7 @@ class JoinGroupProvider extends ChangeNotifier {
   final controllerGroupCode = TextEditingController();
   final controller = PageController();
   int pageIndex = 0;
+  bool isOpeningSavedCards = false;
 
   JoinGroupProvider() {
     controllerGroupCode.addListener(notifyListeners);
@@ -36,14 +40,11 @@ class JoinGroupProvider extends ChangeNotifier {
 
     if ((joinGroupText.isEmpty)) {
       return null;
-    } else {
+    } else if (pageIndex == 0) {
       return () async {
-        final scaffoldMessengerState = ScaffoldMessenger.of(context);
-        final navigatorState = Navigator.of(context);
-        final stripePaymentProvider =
-            Provider.of<StripePaymentProvider>(context, listen: false);
-        final appLocalizations = AppLocalizations.of(context);
         FocusScope.of(context).unfocus();
+        final scaffoldMessengerState = ScaffoldMessenger.of(context);
+        final appLocalizations = AppLocalizations.of(context);
         final error = await validateJoinGroup(context);
         if (error != null) {
           switch (error) {
@@ -90,19 +91,74 @@ class JoinGroupProvider extends ChangeNotifier {
             default:
           }
           return;
-        } else {
-          try {
-            await stripePaymentProvider.initPaymentJoinGroup(
-              controllerGroupCode.text,
-              userId,
-            );
+        }
+        controller.nextPage(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.ease,
+        );
+      };
+    } else {
+      return () async {
+        final navigatorState = Navigator.of(context);
+        final stripePaymentProvider =
+            Provider.of<StripePaymentProvider>(context, listen: false);
+        FocusScope.of(context).unfocus();
+        try {
+          final listPaymentMethods = await FirebaseFunctions.instance
+              .httpsCallable('ListPaymentMethods')
+              .call(
+            {
+              'userId': userId,
+            },
+          );
+          if (listPaymentMethods.data['paymentMethodsData'] == []) {
+            try {
+              await stripePaymentProvider.initPaymentJoinGroup(
+                controllerGroupCode.text,
+                userId,
+              );
+            } catch (e) {
+              print(e);
+            }
             await joinGroup(context);
             navigatorState.pop();
             navigatorState.pop();
-          } catch (e) {
-            // ignore: avoid_print
-            print(e);
+          } else {
+            navigatorState.pop();
+            isOpeningSavedCards = true;
+            notifyListeners();
+            await showModalBottomSheet(
+              isScrollControlled: true,
+              context: context,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Insets.m),
+              ),
+              builder: (context) {
+                return Padding(
+                  padding: MediaQuery.of(context).viewInsets,
+                  child: Wrap(
+                    children: <Widget>[
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            height: 400,
+                            child: SavedCardsJoinGroupBottomSheetPageView(
+                              groupCode: controllerGroupCode.text,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                );
+              },
+            );
+            isOpeningSavedCards = false;
+            notifyListeners();
           }
+        } catch (e) {
+          print(e);
         }
         clean();
       };
@@ -149,11 +205,11 @@ class JoinGroupProvider extends ChangeNotifier {
   Future<JoinGroupErrorType?> joinGroup(BuildContext context) async {
     final userId = FirebaseAuth.instance.currentUser!.uid;
     final user = Provider.of<AuthProvider>(context, listen: false).user;
-    final groups = await FirebaseFirestore.instance
+    final group = await FirebaseFirestore.instance
         .collection('groups')
         .where('groupCode', isEqualTo: controllerGroupCode.text.toUpperCase())
         .get();
-    if (groups.docs.isEmpty) {
+    if (group.docs.isEmpty) {
       return JoinGroupErrorType.groupCodeInvalid;
     }
     if (user == null) {
@@ -161,7 +217,7 @@ class JoinGroupProvider extends ChangeNotifier {
     }
     await FirebaseFirestore.instance
         .collection('groups')
-        .doc(groups.docs.first.id)
+        .doc(group.docs.first.id)
         .update(
       {
         'participants': FieldValue.arrayUnion([userId]),

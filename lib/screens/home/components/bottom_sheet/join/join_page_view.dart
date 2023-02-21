@@ -6,6 +6,7 @@ import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/join/pages/first_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/join/pages/second_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
@@ -60,23 +61,23 @@ class _JoinPageViewState extends State<JoinPageView> {
           ),
           Expanded(
             child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: joinGroupProvider.controller,
-              onPageChanged: (int index) {
-                setState(
-                  () {
-                    joinGroupProvider.pageIndex = index;
-                  },
-                );
-              },
+              onPageChanged: joinGroupProvider.updateIndex,
               children: [
-                FirsPageJoin(controller: joinGroupProvider.controller),
+                FirstPageJoin(controller: joinGroupProvider.controller),
+                SecondPageJoin(controller: joinGroupProvider.controller),
               ],
             ),
           ),
           if (stripePaymentProvider.isPaying)
             const Center(
               child: CircularProgressIndicator(color: kPrimaryColor),
-            )
+            ),
+            if (joinGroupProvider.isOpeningSavedCards)
+              const Center(
+                child: CircularProgressIndicator(color: kPrimaryColor),
+              )
           else
             NextButton(
               onPressed: joinGroupProvider.nextPressedJoin(
@@ -84,9 +85,7 @@ class _JoinPageViewState extends State<JoinPageView> {
                 userId,
               ),
             ),
-          joinGroupProvider.pageIndex == 1
-              ? const SizedBox(height: 0)
-              : const SizedBox(height: kDefaultPadding / 4)
+          const SizedBox(height: kDefaultPadding / 4)
         ],
       ),
     );

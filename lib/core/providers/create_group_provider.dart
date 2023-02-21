@@ -1,9 +1,10 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, use_build_context_synchronously, avoid_print
 
 import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,6 +19,7 @@ import 'package:groupup/models/participant.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/screens/saved_cards/saved_cards_create_group_bottom_sheet/saved_cards_create_group_bottom_sheet_page_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -242,20 +244,74 @@ class CreateGroupProvider extends ChangeNotifier {
                 if (int.tryParse(controllerReward.text) != 0) {
                   isPaying = true;
                   notifyListeners();
-                  final paymentIntentId = await stripePayment.initPaymentCreateGroup(
-                    newContext,
-                    userId,
-                    controllerReward.text,
-                    groupCurrencyCode,
-                  );
+                  final navigatorState = Navigator.of(context); 
+                  FocusScope.of(context).unfocus();
+                  try {
+                    final listPaymentMethods = await FirebaseFunctions.instance
+                        .httpsCallable('ListPaymentMethods')
+                        .call(
+                      {
+                        'userId': userId,
+                      },
+                    );
+                    print(listPaymentMethods.data['paymentMethodsData']);
+                    if (listPaymentMethods.data['paymentMethodsData'].length == 0) {
+                      try {
+                        final paymentIntentId =
+                            await stripePayment.initPaymentCreateGroup(
+                          newContext,
+                          userId,
+                          controllerReward.text,
+                          groupCurrencyCode,
+                        );
+                        await createGroup(context);
+                        navigatorState.pop();
+                        navigatorState.pop();
+                        await stripePayment.addPaymentIntentId(
+                          paymentIntentId,
+                          newGroup.groupCode,
+                        );
+                      } catch (e) {
+                        print(e);
+                      }
+                    } else {
+                      navigatorState.pop();
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(Insets.m),
+                        ),
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.of(context).viewInsets,
+                            child: Wrap(
+                              children: <Widget>[
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    SizedBox(
+                                      height: 400,
+                                      child:
+                                          SavedCardsCreateGroupBottomSheetPageView(
+                                        groupReward: controllerReward.text,
+                                        groupCurrency: groupCurrencyCode,
+                                        groupCode: newGroup.groupCode,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    }
+                  } catch (e) {
+                    print(e);
+                  }
                   isPaying = false;
                   notifyListeners();
-                  // ignore: use_build_context_synchronously
-                  await createGroup(context);
-                  await stripePayment.addPaymentIntentId(
-                    paymentIntentId,
-                    newGroup.groupCode,
-                  );
                 } else {
                   await createGroup(context);
                 }
@@ -269,7 +325,7 @@ class CreateGroupProvider extends ChangeNotifier {
     );
   }
 
-  void Function()? nextPressed(
+  void Function()? nextPressedCreate(
     BuildContext context,
   ) {
     // Index 0
@@ -303,6 +359,8 @@ class CreateGroupProvider extends ChangeNotifier {
             (int.tryParse(noParticipantsText) ?? 0) == 0 ||
             startDateText.isEmpty ||
             endDateText.isEmpty ||
+            newGroup.endDate == null ||
+            newGroup.startDate == null ||
             newGroup.endDate!.isBefore(
               newGroup.startDate!,
             ))) {
@@ -450,7 +508,7 @@ class CreateGroupProvider extends ChangeNotifier {
 
     final groupCode = await generateGroupCode();
     newGroup.groupCode = groupCode;
-    newGroup.creator = userId; 
+    newGroup.creator = userId;
     newGroup.participants.add(userId);
     newGroup.participantsData.add(userParticipant);
     newGroup.paymentIntentIds = [];

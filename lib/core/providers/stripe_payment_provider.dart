@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 enum PaymentStatus { initial, loading, success, error }
@@ -22,8 +23,14 @@ class StripePaymentProvider extends ChangeNotifier {
   ) async {
     isPaying = true;
     notifyListeners();
-    Navigator.of(context).pop();
     try {
+      final listPaymentMethods = await FirebaseFunctions.instance
+          .httpsCallable('ListPaymentMethods')
+          .call(
+        {
+          'userId': userId,
+        },
+      );
       final clientSecret = await FirebaseFunctions.instance
           .httpsCallable('StripePayEndPointMethodIdCreateGroup')
           .call(
@@ -31,6 +38,7 @@ class StripePaymentProvider extends ChangeNotifier {
           'userId': userId,
           'groupReward': groupReward,
           'groupCurrency': groupCurrency,
+          'paymentMethodId': listPaymentMethods.data['paymentMethodId'],
         },
       );
       await Stripe.instance.initPaymentSheet(
@@ -94,12 +102,20 @@ class StripePaymentProvider extends ChangeNotifier {
     isPaying = true;
     notifyListeners();
     try {
+      final listPaymentMethods = await FirebaseFunctions.instance
+          .httpsCallable('ListPaymentMethods')
+          .call(
+        {
+          'userId': userId,
+        },
+      );
       final clientSecret = await FirebaseFunctions.instance
           .httpsCallable('StripePayEndPointMethodIdJoinGroup')
           .call(
         {
           'groupCode': groupCode,
           'userId': userId,
+          'paymentMethodId': listPaymentMethods.data['paymentMethodId'],
         },
       );
       await Stripe.instance.initPaymentSheet(
@@ -107,7 +123,7 @@ class StripePaymentProvider extends ChangeNotifier {
           merchantDisplayName: 'GroupUp',
           paymentIntentClientSecret: clientSecret.data['clientSecret'],
           applePay: PaymentSheetApplePay(
-            merchantCountryCode: 'BR',
+            merchantCountryCode: NumberFormat.simpleCurrency(name: clientSecret.data['currency']).currencyName ?? 'BR',
             paymentSummaryItems: [
               ApplePayCartSummaryItem.immediate(
                 label: 'Reward',
