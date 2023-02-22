@@ -66,22 +66,22 @@ class SavedCardsCreateGroupBottomSheetBody extends StatelessWidget {
                     thickness: 0.5,
                     color: kSecondaryColor,
                   ),
-                  itemCount: snapshot.data?.data['paymentMethodsData'].length,
+                  itemCount: snapshot.data?.data['paymentMethods'].length,
                   itemBuilder: (context, index) =>
                       SavedCardCreateGroupBottomSheet(
-                    last4Numbers: snapshot.data?.data['paymentMethodsData']
-                        [index]['card']['last4'],
-                    brand: (snapshot.data?.data['paymentMethodsData'][index]
-                            ['card']['brand'])
+                    last4Numbers: snapshot.data?.data['paymentMethods'][index]
+                        ['card']['last4'],
+                    brand: (snapshot.data?.data['paymentMethods'][index]['card']
+                            ['brand'])
                         .toString()
                         .capitalize(),
-                    expMonth: snapshot.data?.data['paymentMethodsData'][index]
+                    expMonth: snapshot.data?.data['paymentMethods'][index]
                         ['card']['exp_month'],
-                    expYear: snapshot.data?.data['paymentMethodsData'][index]
+                    expYear: snapshot.data?.data['paymentMethods'][index]
                         ['card']['exp_year'],
                     groupReward: groupReward,
                     groupCurrency: groupCurrency,
-                    paymentMethodId: snapshot.data?.data['paymentMethodsData']
+                    paymentMethodId: snapshot.data?.data['paymentMethods']
                         [index]['id'],
                     groupCode: groupCode,
                   ),

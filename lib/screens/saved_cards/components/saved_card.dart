@@ -29,78 +29,79 @@ class SavedCard extends StatelessWidget {
     final user = Provider.of<AuthProvider>(context).user;
     if (user == null) return const SizedBox();
     return FutureBuilder(
-        future:
-            FirebaseFunctions.instance.httpsCallable('ListPaymentMethods').call(
-          {
-            'userId': user.id,
-          },
-        ),
-        builder: (context, snapshot) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: kDefaultPadding,
-              vertical: kDefaultPadding / 2,
-            ),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.credit_card,
-                  color: kSecondaryColor,
-                  size: 30,
-                ),
-                const SizedBox(width: kDefaultPadding),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    StaticText(
-                      text: brand,
-                      fontSize: TextSize.mBody,
-                    ),
-                    const SizedBox(height: kDefaultPadding / 2),
-                    StaticText(
-                      text: '**** **** **** $last4Numbers',
-                      color: kSecondaryColor,
-                      fontSize: TextSize.mBody,
-                    ),
-                  ],
-                ),
-                const SizedBox(width: kDefaultPadding),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    StaticText(
-                      text: appLocalizations.expDate,
-                      fontSize: TextSize.mBody,
-                    ),
-                    const SizedBox(height: kDefaultPadding / 2),
-                    StaticText(
-                      text: '$expMonth/$expYear',
-                      color: kSecondaryColor,
-                      fontSize: TextSize.mBody,
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: ButtonCommonStyle(
-                    onPressed: () async {
-                      await FirebaseFunctions.instance
-                          .httpsCallable('DetachPaymentMethod')
-                          .call(
-                        {
-                          'paymentMethodId': paymentMethodId,
-                        },
-                      );
-                    },
-                    child: const Icon(
-                      Icons.delete_outline_rounded,
-                      color: Colors.red,
-                      size: 30,
-                    ),
+      future:
+          FirebaseFunctions.instance.httpsCallable('ListPaymentMethods').call(
+        {
+          'userId': user.id,
+        },
+      ),
+      builder: (context, snapshot) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: kDefaultPadding,
+            vertical: kDefaultPadding / 2,
+          ),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.credit_card,
+                color: kSecondaryColor,
+                size: 30,
+              ),
+              const SizedBox(width: kDefaultPadding),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  StaticText(
+                    text: brand,
+                    fontSize: TextSize.mBody,
+                  ),
+                  const SizedBox(height: kDefaultPadding / 2),
+                  StaticText(
+                    text: '**** **** **** $last4Numbers',
+                    color: kSecondaryColor,
+                    fontSize: TextSize.mBody,
+                  ),
+                ],
+              ),
+              const SizedBox(width: kDefaultPadding),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  StaticText(
+                    text: appLocalizations.expDate,
+                    fontSize: TextSize.mBody,
+                  ),
+                  const SizedBox(height: kDefaultPadding / 2),
+                  StaticText(
+                    text: '$expMonth/$expYear',
+                    color: kSecondaryColor,
+                    fontSize: TextSize.mBody,
+                  ),
+                ],
+              ),
+              Expanded(
+                child: ButtonCommonStyle(
+                  onPressed: () async {
+                    await FirebaseFunctions.instance
+                        .httpsCallable('DetachPaymentMethod')
+                        .call(
+                      {
+                        'paymentMethodId': paymentMethodId,
+                      },
+                    );
+                  },
+                  child: const Icon(
+                    Icons.delete_outline_rounded,
+                    color: Colors.red,
+                    size: 30,
                   ),
                 ),
-              ],
-            ),
-          );
-        });
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

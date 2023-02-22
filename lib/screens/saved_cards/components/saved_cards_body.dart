@@ -42,7 +42,7 @@ class BodySavedCards extends StatelessWidget {
                     child: CircularProgressIndicator(color: kPrimaryColor),
                   );
                 }
-                if (snapshot.data?.data['paymentMethodsData'].length == 0) {
+                if (snapshot.data?.data['paymentMethods'].length == 0) {
                   return Column(
                     children: [
                       Expanded(
@@ -73,19 +73,19 @@ class BodySavedCards extends StatelessWidget {
                     thickness: 0.5,
                     color: kSecondaryColor,
                   ),
-                  itemCount: snapshot.data?.data['paymentMethodsData'].length,
+                  itemCount: snapshot.data?.data['paymentMethods'].length,
                   itemBuilder: (context, index) => SavedCard(
-                    last4Numbers: snapshot.data?.data['paymentMethodsData']
+                    last4Numbers: snapshot.data?.data['paymentMethods']
                         [index]['card']['last4'],
-                    brand: (snapshot.data?.data['paymentMethodsData'][index]
+                    brand: (snapshot.data?.data['paymentMethods'][index]
                             ['card']['brand'])
                         .toString()
                         .capitalize(),
-                    expMonth: snapshot.data?.data['paymentMethodsData'][index]
+                    expMonth: snapshot.data?.data['paymentMethods'][index]
                         ['card']['exp_month'],
-                    expYear: snapshot.data?.data['paymentMethodsData'][index]
+                    expYear: snapshot.data?.data['paymentMethods'][index]
                         ['card']['exp_year'],
-                    paymentMethodId: snapshot.data?.data['paymentMethodsData']
+                    paymentMethodId: snapshot.data?.data['paymentMethods']
                         [index]['id'],
                   ),
                 );

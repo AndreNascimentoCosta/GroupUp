@@ -113,7 +113,7 @@ class JoinGroupProvider extends ChangeNotifier {
               'userId': userId,
             },
           );
-          if (listPaymentMethods.data['paymentMethodsData'].length == 0) {
+          if (listPaymentMethods.data['paymentMethods'].length == 0) {
             try {
               await stripePaymentProvider.initPaymentJoinGroup(
                 controllerGroupCode.text,

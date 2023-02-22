@@ -60,14 +60,14 @@ class SavedCardsJoinGroupBottomSheetBody extends StatelessWidget {
                     thickness: 0.5,
                     color: kSecondaryColor,
                   ),
-                  itemCount: snapshot.data?.data['paymentMethodsData'].length,
+                  itemCount: snapshot.data?.data['paymentMethods'].length,
                   itemBuilder: (context, index) => SavedCardJoinGroupBottomSheet(
-                    last4Numbers: snapshot.data?.data['paymentMethodsData'][index]['card']['last4'],
-                    brand: (snapshot.data?.data['paymentMethodsData'][index]['card']['brand']).toString().capitalize(),
-                    expMonth: snapshot.data?.data['paymentMethodsData'][index]['card']['exp_month'],
-                    expYear: snapshot.data?.data['paymentMethodsData'][index]['card']['exp_year'],
+                    last4Numbers: snapshot.data?.data['paymentMethods'][index]['card']['last4'],
+                    brand: (snapshot.data?.data['paymentMethods'][index]['card']['brand']).toString().capitalize(),
+                    expMonth: snapshot.data?.data['paymentMethods'][index]['card']['exp_month'],
+                    expYear: snapshot.data?.data['paymentMethods'][index]['card']['exp_year'],
                     groupCode: groupCode,
-                    paymentMethodId: snapshot.data?.data['paymentMethodsData'][index]['id'],
+                    paymentMethodId: snapshot.data?.data['paymentMethods'][index]['id'],
                   ),
                 );
               }

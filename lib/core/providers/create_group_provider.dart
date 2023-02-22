@@ -254,8 +254,7 @@ class CreateGroupProvider extends ChangeNotifier {
                         'userId': userId,
                       },
                     );
-                    print(listPaymentMethods.data['paymentMethodsData']);
-                    if (listPaymentMethods.data['paymentMethodsData'].length == 0) {
+                    if (listPaymentMethods.data['paymentMethods'].length == 0) {
                       try {
                         final paymentIntentId =
                             await stripePayment.initPaymentCreateGroup(
