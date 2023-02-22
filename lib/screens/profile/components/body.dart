@@ -56,6 +56,9 @@ class _BodyProfileState extends State<BodyProfile> {
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
     final appLocalizations = AppLocalizations.of(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
     if (user == null) return const SizedBox();
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
       stream: FirebaseFirestore.instance
@@ -137,8 +140,8 @@ class _BodyProfileState extends State<BodyProfile> {
                         return SvgPicture.asset(
                           'assets/icons/profile_picture_add.svg',
                           color: Colors.white,
-                          height: Insets.l * 3,
-                          width: Insets.l * 3,
+                          height:  isSmallScreen ? Insets.l * 2 : Insets.l * 3,
+                          width: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                         );
                       },
                     ),

@@ -19,30 +19,36 @@ class _InstagrammableScreenState extends State<InstagrammableScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            SizedBox(
-              height: 75,
-              width: 75,
-              child: FittedBox(
-                child: FloatingActionButton(
-                  heroTag: 'btn11',
-                  onPressed: () async {
-                    Navigator.of(context).pop();
-                  },
-                  backgroundColor: kPrimaryColor,
-                  highlightElevation: 0,
-                  elevation: 0,
-                  child: const Icon(
-                    Icons.close_rounded,
-                    size: 40,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: 75,
+                  width: 75,
+                  child: FittedBox(
+                    child: FloatingActionButton(
+                      heroTag: 'btn11',
+                      onPressed: () async {
+                        Navigator.of(context).pop();
+                      },
+                      backgroundColor: kPrimaryColor,
+                      highlightElevation: 0,
+                      elevation: 0,
+                      child: const Icon(
+                        Icons.close_rounded,
+                        size: 40,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                const ShareInstagrammableButton(),
+              ],
             ),
-            const ShareInstagrammableButton(),
+            const SizedBox(height: kDefaultPadding),
           ],
         ),
       ),

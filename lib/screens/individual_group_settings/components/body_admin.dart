@@ -31,6 +31,10 @@ class BodyAdminSettings extends StatelessWidget {
     final createGroupProvider =
         Provider.of<CreateGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     return Padding(
       padding: const EdgeInsets.only(
         top: kDefaultPadding,
@@ -54,7 +58,7 @@ class BodyAdminSettings extends StatelessWidget {
               },
               child: BodyContentArrow(name: appLocalizations.reportParticipant),
             ),
-            const SizedBox(height: kDefaultPadding * 1.5),
+            SizedBox(height: screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
                 Navigator.push(
@@ -68,7 +72,7 @@ class BodyAdminSettings extends StatelessWidget {
               },
               child: BodyContentArrow(name: appLocalizations.projectName),
             ),
-            const SizedBox(height: kDefaultPadding * 1.5),
+            SizedBox(height: screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
                 Navigator.push(
@@ -82,10 +86,11 @@ class BodyAdminSettings extends StatelessWidget {
               },
               child: BodyContentArrow(name: appLocalizations.objective),
             ),
-            const SizedBox(height: kDefaultPadding * 1.5),
+            SizedBox(height: screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
-                if (participantsData.any((element) => element.inputData.isNotEmpty) ==
+                if (participantsData
+                        .any((element) => element.inputData.isNotEmpty) ==
                     true) {
                   showCupertinoDialog(
                     context: context,
@@ -138,10 +143,11 @@ class BodyAdminSettings extends StatelessWidget {
               },
               child: BodyContentArrow(name: appLocalizations.dates),
             ),
-            const SizedBox(height: kDefaultPadding * 1.5),
+            SizedBox(height: screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
-                if (participantsData.any((element) => element.inputData.isNotEmpty) ==
+                if (participantsData
+                        .any((element) => element.inputData.isNotEmpty) ==
                     true) {
                   showCupertinoDialog(
                     context: context,
@@ -197,19 +203,27 @@ class BodyAdminSettings extends StatelessWidget {
                 maxLine: 2,
               ),
             ),
-            const SizedBox(height: kDefaultPadding * 1.5),
-            const SizedBox(height: kDefaultPadding * 1.5),
+            SizedBox(height: screenHeight * 0.035),
+            SizedBox(height: screenHeight * 0.035),
             BodyContentSwitch(
               groups: groups,
               text: appLocalizations.everyoneCanEditGroupPic,
               boolValue: groups.allowEditImage,
             ),
-            const SizedBox(height: kDefaultPadding * 1.5),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+            SizedBox(height: screenHeight * 0.035),
+            SizedBox(
+              height: isVerySmallScreen
+                  ? screenHeight * 0.06
+                  : isSmallScreen
+                      ? screenHeight * 0.085
+                      : screenHeight * 0.135,
+            ),
             Row(
               children: [
                 SizedBox(
-                  width: 150,
+                  width: isVerySmallScreen
+                      ? screenWidth * 0.4
+                      : screenWidth * 0.35,
                   child: LargeBody(text: appLocalizations.groupCode),
                 ),
                 const Spacer(),
@@ -224,9 +238,15 @@ class BodyAdminSettings extends StatelessWidget {
                     );
                   },
                 ),
+                const SizedBox(width: kDefaultPadding / 4),
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.175),
+            SizedBox(
+                height: isVerySmallScreen
+                    ? screenHeight * 0.09
+                    : isSmallScreen
+                        ? screenHeight * 0.14
+                        : screenHeight * 0.175),
             OtherOptions(
               onPressed: () {
                 createGroupProvider.confirmExitGroup(

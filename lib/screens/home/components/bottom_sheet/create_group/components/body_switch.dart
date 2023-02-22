@@ -17,12 +17,13 @@ class _BodySwitchState extends State<BodySwitch> {
   final SwitchModel switchModel = SwitchModel();
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Row(
         children: [
           SizedBox(
-            width: 250,
+            width: screenWidth * 0.6,
             child: StaticText(
               text: widget.text,
               fontSize: 14,

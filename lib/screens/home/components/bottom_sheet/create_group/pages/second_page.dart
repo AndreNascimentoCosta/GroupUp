@@ -24,8 +24,13 @@ class SecondPageCreate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scrollController = ScrollController();
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     final appLocalizations = AppLocalizations.of(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -34,7 +39,9 @@ class SecondPageCreate extends StatelessWidget {
         }
       },
       child: Scrollbar(
+        controller: scrollController,
         child: SingleChildScrollView(
+          controller: scrollController,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -45,8 +52,14 @@ class SecondPageCreate extends StatelessWidget {
                 alignment: AlignmentDirectional.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                        top: kDefaultPadding * 1.25, left: 260),
+                    padding: EdgeInsets.only(
+                      top: kDefaultPadding * 1.25,
+                      left: isVerySmallScreen
+                          ? 160
+                          : isSmallScreen
+                              ? 220
+                              : 260,
+                    ),
                     child: Tooltip(
                       preferBelow: false,
                       showDuration: const Duration(seconds: 3),
@@ -55,7 +68,7 @@ class SecondPageCreate extends StatelessWidget {
                       child: Icon(
                         Icons.info,
                         color: kSecondaryColor,
-                        size: MediaQuery.of(context).size.height * 0.035,
+                        size: screenHeight * 0.035,
                       ),
                     ),
                   ),
@@ -87,7 +100,7 @@ class SecondPageCreate extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: Insets.xl),
+              SizedBox(height: isSmallScreen ? Insets.m : Insets.xl),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(

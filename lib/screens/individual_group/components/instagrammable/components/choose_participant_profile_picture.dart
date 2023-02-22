@@ -38,6 +38,10 @@ class _ChooseParticipantProfilePictureState
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     if (individualGroupProvider.group == null) {
       return const CircularProgressIndicator(color: kPrimaryColor);
     } else {
@@ -75,7 +79,11 @@ class _ChooseParticipantProfilePictureState
                       ),
                     ),
               SizedBox(
-                width: 180,
+                width: isVerySmallScreen
+                    ? Insets.l * 7.5
+                    : isSmallScreen
+                        ? Insets.l * 10
+                        : Insets.l * 12,
                 child: authProvider.user != null
                     ? authProvider.user!.id == widget.participant.uid
                         ? Padding(

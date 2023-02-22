@@ -24,6 +24,9 @@ class _CreatePageViewState extends State<CreatePageView> {
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
     return SafeArea(
       child: Column(
         children: [
@@ -58,7 +61,7 @@ class _CreatePageViewState extends State<CreatePageView> {
                 StaticText(
                   text: AppLocalizations.of(context).createGroup,
                   fontFamily: 'Montserrat-SemiBold',
-                  fontSize: 28,
+                  fontSize: isVerySmallScreen ? 24 : 28,
                 ),
                 if (Provider.of<CreateGroupProvider>(context, listen: false)
                         .pageIndex ==

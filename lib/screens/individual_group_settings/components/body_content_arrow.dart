@@ -11,11 +11,14 @@ class BodyContentArrow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
-          width: 250,
+          width: isVerySmallScreen ? screenWidth * 0.675 : screenWidth * 0.65,
           child: StaticText(
             text: name,
             maxLines: maxLine,

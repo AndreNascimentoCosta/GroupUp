@@ -5,6 +5,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
+import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/balance/components/button.dart';
@@ -47,14 +48,15 @@ class HeaderBalance extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.3,
-                        child: GroupTitle(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: StaticText(
                           text:
                               'R\$ ${Characters((data / 100).toStringAsFixed(2)).replaceAll(Characters(''), Characters('\u{200B}')).toString()}',
                           fontFamily: 'Montserrat-SemiBold',
+                          fontSize: 30,
                         ),
                       ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.32),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                       Button(
                         onPressed: () async {
                           final authProvider =

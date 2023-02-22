@@ -10,12 +10,15 @@ class HomeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
     return Container(
       padding: EdgeInsets.only(
         right: isGreen ? kDefaultPadding * 1.25 : kDefaultPadding * 0.75,
         left: kDefaultPadding,
       ),
-      height: MediaQuery.of(context).size.height * 0.095,
+      height: isSmallScreen ? screenHeight * 0.125 : screenHeight * 0.105,
       decoration: BoxDecoration(
         color: isGreen ? const Color(0xFFEBEBEB) : const Color(0xFF46E297),
         borderRadius: BorderRadius.circular(20),

@@ -18,11 +18,14 @@ class BodyContentSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return Row(
       children: [
         SizedBox(
-          width: 250,
+          width: isVerySmallScreen ? screenWidth * 0.675 : screenWidth * 0.65,
           child: LargeBody(
             text: text,
             maxLines: 2,

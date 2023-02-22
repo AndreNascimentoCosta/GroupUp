@@ -294,7 +294,7 @@
     "@confirm": {
         "description": "Confirm"
     },
-    "confirmCreateGroup": "Are you sure you want to create a \ngroup?",
+    "confirmCreateGroup": "Are you sure you want to create a group?",
     "@confirmCreateGroup": {
         "description": "Confirmation to create the group"
     },
@@ -540,7 +540,7 @@
             }
         }
     },
-    "infoReportParticipant": "Info: If a participant is reported by majority, after the report is analysed and approved, this person will be removed from the group (This only works when there \nare at least 3 participants in the group.)",
+    "infoReportParticipant": "Info: If a participant is reported by majority, after the report is analysed and approved, this person will be removed from the group (This only works when there are at least 3 participants in the group.)",
     "@infoReportParticipant": {
         "description": "Info report participant"
     },

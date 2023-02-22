@@ -48,6 +48,9 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
     final appLocalizations = AppLocalizations.of(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
@@ -120,18 +123,20 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     return SvgPicture.asset(
                       'assets/icons/profile_picture_add.svg',
                       color: Colors.white,
-                      height: Insets.l * 3,
-                      width: Insets.l * 3,
+                      height: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
+                      width: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                     );
                   },
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    top: kDefaultPadding * 3.85, left: kDefaultPadding * 3.85),
+                padding: EdgeInsets.only(
+                  top: isSmallScreen ? screenHeight * 0.085 : screenHeight * 0.085,
+                  left: isSmallScreen ? screenWidth * 0.15 : screenWidth * 0.175,
+                ),
                 child: Container(
-                  height: 30,
-                  width: 30,
+                  height: isSmallScreen ? 22.5 : 30,
+                  width: isSmallScreen ? 22.5 : 30,
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: Colors.transparent,
@@ -140,13 +145,13 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     borderRadius: BorderRadius.circular(Insets.l),
                     color: kPrimaryColor,
                   ),
-                  child: const SizedBox(
-                    height: 30,
-                    width: 30,
+                  child: SizedBox(
+                    height: isSmallScreen ? 22.5 : 30,
+                    width: isSmallScreen ? 22.5 : 30,
                     child: Icon(
                       Icons.add,
                       color: Colors.white,
-                      size: 25,
+                      size: isSmallScreen ? 17 : 25,
                     ),
                   ),
                 ),
@@ -184,19 +189,23 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                   SizedBox(
                     width: 110,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: kDefaultPadding * 0.5),
+                      padding:
+                          const EdgeInsets.only(left: kDefaultPadding * 0.5),
                       child: LargeBody(text: appLocalizations.name),
                     ),
                   ),
                   const SizedBox(width: Insets.l * 2),
                   SizedBox(
-                    width: 200,
+                    width: isSmallScreen
+                        ? MediaQuery.of(context).size.width * 0.4
+                        : MediaQuery.of(context).size.width * 0.5,
                     child: StaticText(
-                        text: Characters(user?.name ?? appLocalizations.name)
-                            .replaceAll(Characters(''), Characters('\u{200B}'))
-                            .toString(),
-                            overflow: TextOverflow.ellipsis,
-                        fontSize: TextSize.lBody),
+                      text: Characters(user?.name ?? appLocalizations.name)
+                          .replaceAll(Characters(''), Characters('\u{200B}'))
+                          .toString(),
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: TextSize.lBody,
+                    ),
                   ),
                 ],
               ),

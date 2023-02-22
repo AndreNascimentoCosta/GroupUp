@@ -48,6 +48,10 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
     return ButtonCommonStyle(
       onPressed: () {
         showModalBottomSheet(
@@ -68,7 +72,8 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                         height: MediaQuery.of(context).size.height * 0.185,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: kDefaultPadding * 1.75),
+                            vertical: kDefaultPadding * 1.75,
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -125,22 +130,50 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                       return Stack(
                         children: [
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(Insets.l * 6),
+                            borderRadius: BorderRadius.circular(
+                              isVerySmallScreen
+                                  ? Insets.l * 8
+                                  : isSmallScreen
+                                      ? Insets.l * 7
+                                      : Insets.l * 6,
+                            ),
                             child: Image.file(
                               image!,
-                              height: Insets.l * 6,
-                              width: Insets.l * 6,
+                              height: isVerySmallScreen
+                                  ? Insets.l * 8
+                                  : isSmallScreen
+                                      ? Insets.l * 7
+                                      : Insets.l * 6,
+                              width: isVerySmallScreen
+                                  ? Insets.l * 8
+                                  : isSmallScreen
+                                      ? Insets.l * 7
+                                      : Insets.l * 6,
                               fit: BoxFit.cover,
                             ),
                           ),
                           Visibility(
                             visible: storage.isLoading,
                             child: Container(
-                              height: Insets.l * 6,
-                              width: Insets.l * 6,
-                              decoration: const BoxDecoration(
+                              height: isVerySmallScreen
+                                  ? Insets.l * 8
+                                  : isSmallScreen
+                                      ? Insets.l * 7
+                                      : Insets.l * 6,
+                              width: isVerySmallScreen
+                                  ? Insets.l * 8
+                                  : isSmallScreen
+                                      ? Insets.l * 7
+                                      : Insets.l * 6,
+                              decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(
-                                  Radius.circular(Insets.l * 6),
+                                  Radius.circular(
+                                    isVerySmallScreen
+                                        ? Insets.l * 8
+                                        : isSmallScreen
+                                            ? Insets.l * 7
+                                            : Insets.l * 6,
+                                  ),
                                 ),
                                 color: Colors.black54,
                               ),
@@ -157,47 +190,30 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                     return SvgPicture.asset(
                       'assets/icons/profile_picture_add.svg',
                       color: Colors.white,
-                      height: Insets.l * 2.5,
-                      width: Insets.l * 2.5,
+                      height: isVerySmallScreen
+                          ? Insets.l * 1.5
+                          : isSmallScreen
+                              ? Insets.l * 2
+                              : Insets.l * 2.5,
+                      width: isVerySmallScreen
+                          ? Insets.l * 1.5
+                          : isSmallScreen
+                              ? Insets.l * 1.75
+                              : Insets.l * 2.5,
                     );
                   },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: kDefaultPadding * 3.85, left: kDefaultPadding * 3.85),
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.transparent,
-                      width: 3,
-                    ),
-                    borderRadius: BorderRadius.circular(Insets.l),
-                    color: kPrimaryColor,
-                  ),
-                  child: const SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 25,
-                    ),
-                  ),
                 ),
               ),
             ],
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.081,
-              left: MediaQuery.of(context).size.height * 0.081,
+              top: screenHeight * 0.081,
+              left: screenHeight * 0.081,
             ),
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.04,
-              width: MediaQuery.of(context).size.height * 0.04,
+              height: screenHeight * 0.04,
+              width: screenHeight * 0.04,
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.transparent,
@@ -207,12 +223,16 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                 color: kPrimaryColor,
               ),
               child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.04,
-                width: MediaQuery.of(context).size.height * 0.04,
+                height: screenHeight * 0.04,
+                width: screenHeight * 0.04,
                 child: Icon(
                   Icons.add,
                   color: Colors.white,
-                  size: MediaQuery.of(context).size.height * 0.032,
+                  size: isVerySmallScreen
+                      ? screenHeight * 0.025
+                      : isSmallScreen
+                          ? screenHeight * 0.027
+                          : screenHeight * 0.032,
                 ),
               ),
             ),

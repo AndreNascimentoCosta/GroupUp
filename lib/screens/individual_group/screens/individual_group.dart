@@ -90,6 +90,10 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
   Widget build(BuildContext context) {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     if (individualGroupProvider.group == null) {
       return Scaffold(
         backgroundColor: Colors.white,

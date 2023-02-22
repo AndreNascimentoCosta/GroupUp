@@ -176,7 +176,7 @@ class CreateGroupProvider extends ChangeNotifier {
   final controllerEndDate = TextEditingController();
 
   final controller = PageController(initialPage: 0);
-  final itemCount = 3;
+  final itemCount = 2;
   int pageIndex = 0;
   File? image;
   String groupCurrencyCode = '';
@@ -201,6 +201,10 @@ class CreateGroupProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext newContext) {
+        final screenHeight = MediaQuery.of(context).size.height;
+        final screenWidth = MediaQuery.of(context).size.width;
+        final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+        final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
         return AlertDialog(
           title: StaticText(
             text: appLocalizations.confirm,
@@ -227,7 +231,11 @@ class CreateGroupProvider extends ChangeNotifier {
               onPressed: () => Navigator.of(context).pop(),
               color: Colors.transparent,
               height: 40,
-              width: 140,
+              width: isVerySmallScreen
+                  ? 100
+                  : isSmallScreen
+                      ? 120
+                      : 140,
             ),
             NextButton(
               text: appLocalizations.yes,
@@ -244,7 +252,7 @@ class CreateGroupProvider extends ChangeNotifier {
                 if (int.tryParse(controllerReward.text) != 0) {
                   isPaying = true;
                   notifyListeners();
-                  final navigatorState = Navigator.of(context); 
+                  final navigatorState = Navigator.of(context);
                   FocusScope.of(context).unfocus();
                   try {
                     final listPaymentMethods = await FirebaseFunctions.instance
@@ -316,7 +324,11 @@ class CreateGroupProvider extends ChangeNotifier {
                 }
               },
               height: 40,
-              width: 140,
+              width: isVerySmallScreen
+                  ? 100
+                  : isSmallScreen
+                      ? 120
+                      : 140,
             ),
           ],
         );
@@ -339,7 +351,7 @@ class CreateGroupProvider extends ChangeNotifier {
     double minValueCurrencies = Currencies.values
         .firstWhere(
           (element) => element.name == groupCurrencyCode,
-          orElse: () => Currencies.USD,
+          orElse: () => Currencies.BRL,
         )
         .minValue;
 

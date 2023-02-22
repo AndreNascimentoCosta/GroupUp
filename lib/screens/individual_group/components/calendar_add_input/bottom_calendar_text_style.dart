@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
-TextStyle bottomCalendarTextStyle() {
-  return const TextStyle(
+TextStyle bottomCalendarTextStyle(BuildContext context) {
+  final screenHeight = MediaQuery.of(context).size.height;
+  final screenWidth = MediaQuery.of(context).size.width;
+  final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
+  return TextStyle(
     fontFamily: 'Montserrat-Medium',
-    fontSize: 16,
-    color: Color(0xFF7A7A7A)
+    fontSize: isVerySmallScreen ? 14 : 16,
+    color: const Color(0xFF7A7A7A),
   );
 }

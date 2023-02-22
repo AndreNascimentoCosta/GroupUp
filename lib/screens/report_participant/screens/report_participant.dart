@@ -20,10 +20,10 @@ class ReportParticipant extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: StaticText(
-                text:
-                    AppLocalizations.of(context).infoReportParticipant,
-                maxLines: 5,
-                fontSize: TextSize.sBody),
+              text: AppLocalizations.of(context).infoReportParticipant,
+              maxLines: 7,
+              fontSize: TextSize.sBody,
+            ),
           ),
           const SizedBox(height: kDefaultPadding),
           const BodyReportParticipant(),

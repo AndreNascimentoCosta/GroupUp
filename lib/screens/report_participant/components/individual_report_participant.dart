@@ -46,7 +46,7 @@ class IndividualParticipant extends StatelessWidget {
             ),
             const SizedBox(width: kDefaultPadding),
             SizedBox(
-              width: 220,
+              width: MediaQuery.of(context).size.width * 0.4,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: StaticText(

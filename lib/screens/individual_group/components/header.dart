@@ -19,6 +19,10 @@ class HeaderIndividualGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final appLocalizations = AppLocalizations.of(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     if (group == null) {
       return Container(
         color: Colors.white,
@@ -42,7 +46,7 @@ class HeaderIndividualGroup extends StatelessWidget {
             IntrinsicHeight(
               child: Row(
                 children: [
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.075),
+                  SizedBox(width: screenWidth * 0.075),
                   ButtonCommonStyle(
                     onPressed: () {},
                     child: const ObjectiveRewardModel(
@@ -51,7 +55,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                     ),
                   ),
                   VerticalDivider(
-                    width: MediaQuery.of(context).size.width * 0.115,
+                    width: screenWidth * 0.115,
                     thickness: 1,
                     color: kSecondaryColor,
                   ),
@@ -99,7 +103,7 @@ class HeaderIndividualGroup extends StatelessWidget {
           IntrinsicHeight(
             child: Row(
               children: [
-                SizedBox(width: MediaQuery.of(context).size.width * 0.075),
+                SizedBox(width: screenWidth * 0.075),
                 ButtonCommonStyle(
                   onPressed: () {
                     showCupertinoDialog(
@@ -146,7 +150,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                   ),
                 ),
                 VerticalDivider(
-                  width: MediaQuery.of(context).size.width * 0.1,
+                  width: isVerySmallScreen? screenWidth * 0.05 : isSmallScreen ? screenWidth * 0.075 : screenWidth * 0.13,
                   thickness: 1,
                   color: kSecondaryColor,
                 ),
@@ -166,7 +170,8 @@ class HeaderIndividualGroup extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           content: StaticText(
-                            text: '$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
+                            text:
+                                '$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
                             maxLines: 4,
                             textAlign: TextAlign.center,
                             fontSize: TextSize.mBody,
@@ -196,8 +201,8 @@ class HeaderIndividualGroup extends StatelessWidget {
                         '$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
                   ),
                 ),
-                const VerticalDivider(
-                  width: kDefaultPadding * 1.75,
+                VerticalDivider(
+                  width: isVerySmallScreen ?  screenWidth * 0.06: isSmallScreen? screenWidth * 0.075 : screenWidth * 0.13,
                   thickness: 1,
                   color: kSecondaryColor,
                 ),

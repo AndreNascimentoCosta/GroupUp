@@ -28,7 +28,10 @@ class JoinGroupButton extends StatelessWidget {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: const [
-                      SizedBox(height: 420, child: JoinPageView()),
+                      SizedBox(
+                        height: 420,
+                        child: JoinPageView(),
+                      ),
                     ],
                   )
                 ],

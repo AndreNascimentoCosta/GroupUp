@@ -56,7 +56,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
   }
 
   String? endDateValidator(value) {
-    final appLocalizations  = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context);
     if (startDate != null && endDate == null) {
       return appLocalizations.selectBothDates;
     }
@@ -72,16 +72,23 @@ class _DateTimePickerState extends State<DateTimePicker> {
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     final appLocalizations = AppLocalizations.of(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-      child: 
-      Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             height: 70,
-            width: 160,
+            width: isVerySmallScreen
+                ? 130
+                : isSmallScreen
+                    ? 150
+                    : 160,
             child: TextFormField(
               controller: createGroupProvider.controllerStartDate,
               autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -98,38 +105,46 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     width: Insets.l,
                   ),
                 ),
-                hintText: startDate == null ? appLocalizations.startDate : _displayText(startDate),
-                hintStyle: const TextStyle(
+                hintText: startDate == null
+                    ? appLocalizations.startDate
+                    : _displayText(startDate),
+                hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
-                    fontSize: TextSize.mBody,
+                    fontSize:
+                        isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                     color: kSecondaryColor),
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: kDefaultPadding / 2,
+                ),
               ),
               onTap: () async {
                 startDate = await pickDate();
                 widget.onChanged(startDate, endDate);
-                createGroupProvider.controllerStartDate.text = _displayText(startDate);
+                createGroupProvider.controllerStartDate.text =
+                    _displayText(startDate);
                 setState(() {});
               },
               readOnly: true,
               validator: startDateValidator,
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Montserrat-Medium',
-                fontSize: TextSize.mBody,
+                fontSize: isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                 color: kSecondaryColor,
               ),
             ),
           ),
-          const SizedBox(width: Insets.s),
+          SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),
           const Padding(
             padding: EdgeInsets.only(top: Insets.s),
             child: StaticText(text: '-', fontSize: 24, color: kSecondaryColor),
           ),
-          const SizedBox(width: Insets.s),
+          SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),
           SizedBox(
-            height: 70,
-            width: 160,
+            width: isVerySmallScreen
+                ? 130
+                : isSmallScreen
+                    ? 150
+                    : 160,
             child: TextFormField(
               controller: createGroupProvider.controllerEndDate,
               autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -146,10 +161,13 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     width: Insets.l,
                   ),
                 ),
-                hintText: endDate == null ? appLocalizations.endDate : _displayText(endDate),
-                hintStyle: const TextStyle(
+                hintText: endDate == null
+                    ? appLocalizations.endDate
+                    : _displayText(endDate),
+                hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
-                    fontSize: TextSize.mBody,
+                    fontSize:
+                        isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                     color: kSecondaryColor),
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
@@ -157,14 +175,15 @@ class _DateTimePickerState extends State<DateTimePicker> {
               onTap: () async {
                 endDate = await pickDate();
                 widget.onChanged(startDate, endDate);
-                createGroupProvider.controllerEndDate.text = _displayText(endDate);
+                createGroupProvider.controllerEndDate.text =
+                    _displayText(endDate);
                 setState(() {});
               },
               readOnly: true,
               validator: endDateValidator,
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Montserrat-Medium',
-                fontSize: TextSize.mBody,
+                fontSize: isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                 color: kSecondaryColor,
               ),
             ),

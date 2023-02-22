@@ -256,7 +256,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                     children: [
                       StaticText(
                         text: appLocalizations.currency,
-                        fontSize: TextSize.lBody,
+                        fontSize: TextSize.sBody,
                       ),
                       const SizedBox(height: Insets.xs),
                       ButtonCommonStyle(
