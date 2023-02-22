@@ -604,10 +604,11 @@
     "@chooseOption": {
         "description": "Choose an option"
     },
-    "loginToYourConnectedAccount": "Login to your Connected account",
+    "loginToYourConnectedAccount": "Login to your Connected \naccount",
     "@loginToYourConnectedAccount": {
         "description": "Login to your Connected account"
     },
+    "loginToYourConnectedAccountText": "Are you sure you want to login \nto your Connected account? \nYou will be redirected to a new \npage",
     "deleteConnectedAccount": "Delete Connected account",
     "@deleteConnectedAccount": {
         "description": "Delete Connected account"
@@ -619,6 +620,10 @@
     "requestPayout": "Request a payout",
     "@requestPayout": {
         "description": "Request a payout"
+    },
+    "requestPayoutText": "Are you sure you want to \nrequest a payout? \nAll the money in your balance will be sent to \nyour bank account of your \nconnectec account.",
+    "@requestPayoutText": {
+        "description": "Request a payout text"
     },
     "connectedAccountDeleted": "Your Connected account has been deleted.",
     "@connectedAccountDeleted": {
