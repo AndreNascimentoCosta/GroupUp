@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void confirmRequestPayoutDialog(BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
   final appLocalizations = AppLocalizations.of(context);
+  if (authProvider.user == null) {
+    return;
+  }
   showCupertinoDialog(
     context: context,
     builder: (BuildContext newContext) {
@@ -75,6 +79,15 @@ void confirmRequestPayoutDialog(BuildContext context) {
                 // ignore: avoid_print
                 print(e.message);
               }
+              await FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(authProvider.user!.id)
+                  .update({
+                'paymentIntentIds': FieldValue.arrayRemove(
+                  authProvider.user!.paymentIntentIds,
+                ),
+                'balance': 0,
+              });
             },
             height: 40,
             width: 140,
