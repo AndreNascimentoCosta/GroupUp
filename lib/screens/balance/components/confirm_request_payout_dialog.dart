@@ -31,7 +31,7 @@ void confirmRequestPayoutDialog(BuildContext context) {
         ),
         content: StaticText(
           text: appLocalizations.requestPayoutText,
-          maxLines: 2,
+          maxLines: 6,
           textAlign: TextAlign.center,
           fontSize: TextSize.mBody,
         ),
@@ -42,7 +42,7 @@ void confirmRequestPayoutDialog(BuildContext context) {
             text: appLocalizations.no,
             textColor: Colors.red,
             borderColor: Colors.transparent,
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Navigator.of(newContext).pop(),
             color: Colors.transparent,
             height: 40,
             width: 140,
@@ -51,7 +51,7 @@ void confirmRequestPayoutDialog(BuildContext context) {
             text: appLocalizations.yes,
             borderColor: kPrimaryColor,
             onPressed: () async {
-              Navigator.of(newContext).pop();
+              Navigator.of(context).pop();
               try {
                 for (var i = 0;
                     i < authProvider.user!.paymentIntentIds.length;
@@ -82,12 +82,14 @@ void confirmRequestPayoutDialog(BuildContext context) {
               await FirebaseFirestore.instance
                   .collection('users')
                   .doc(authProvider.user!.id)
-                  .update({
-                'paymentIntentIds': FieldValue.arrayRemove(
-                  authProvider.user!.paymentIntentIds,
-                ),
-                'balance': 0,
-              });
+                  .update(
+                {
+                  'paymentIntentIds': FieldValue.arrayRemove(
+                    authProvider.user!.paymentIntentIds,
+                  ),
+                  'balance': 0,
+                },
+              );
             },
             height: 40,
             width: 140,

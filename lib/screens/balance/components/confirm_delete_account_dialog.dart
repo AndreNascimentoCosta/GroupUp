@@ -39,7 +39,7 @@ void confirmDeleteAccountDialog(BuildContext context) {
             text: appLocalizations.no,
             textColor: Colors.red,
             borderColor: Colors.transparent,
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Navigator.of(newContext).pop(),
             color: Colors.transparent,
             height: 40,
             width: 140,
@@ -48,7 +48,7 @@ void confirmDeleteAccountDialog(BuildContext context) {
             text: appLocalizations.yes,
             borderColor: kPrimaryColor,
             onPressed: () async {
-              Navigator.of(newContext).pop();
+              Navigator.of(context).pop();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(appLocalizations.connectedAccountDeleted),
