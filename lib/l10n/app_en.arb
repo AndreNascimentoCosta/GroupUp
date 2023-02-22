@@ -613,7 +613,7 @@
     "@deleteConnectedAccount": {
         "description": "Delete Connected account"
     },
-    "deleteConnectedAccountText": "Are you sure you want to delete your \nConnected account?",
+    "deleteConnectedAccountText": "Are you sure you want to delete \nyour Connected account?",
     "@deleteConnectedAccountText": {
         "description": "Delete Connected account text"
     },
@@ -621,7 +621,7 @@
     "@requestPayout": {
         "description": "Request a payout"
     },
-    "requestPayoutText": "Are you sure you want to \nrequest a payout? \nAll the money in your balance will be sent to \nyour bank account of your \nconnectec account.",
+    "requestPayoutText": "Are you sure you want to \nrequest a payout? \nAll the money in your balance \nwill be sent to your bank account \nof your connected account within \none business day.",
     "@requestPayoutText": {
         "description": "Request a payout text"
     },

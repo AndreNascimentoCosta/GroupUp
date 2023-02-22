@@ -144,7 +144,7 @@
     "deleteConnectedAccount": "Excluir conta conectada",
     "deleteConnectedAccountText": "Tem certeza que quer excluir sua \nconta conectada?",
     "requestPayout": "Solicitar um pagamento",
-    "requestPayoutText": "Tem certeza que quer solicitar \num pagamento? \nTodo o dinheiro do seu saldo será \nenviado para sua conta do banco da sua \nconta conectada.",
+    "requestPayoutText": "Tem certeza que quer solicitar \num pagamento? \nTodo o dinheiro do seu saldo será \nenviado para sua conta do banco da sua \nconta conectada em até um dia útil.",
     "connectedAccountDeleted": "Conta conectada excluída",
     "resumeAccountCreation": "Continuar a criação da conta",
     "redirecting": "Redirecionando...",
