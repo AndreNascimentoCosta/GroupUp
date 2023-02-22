@@ -209,6 +209,12 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               padding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding,
               ),
+              inputFormatters: [
+                if (createGroupProvider.controllerProjectName.text.isEmpty)
+                  FilteringTextInputFormatter.deny(
+                    RegExp(r' '),
+                  )
+              ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.035),
             TextFieldModelHome(
@@ -233,6 +239,12 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               padding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding,
               ),
+              inputFormatters: [
+                if (createGroupProvider.controllerObjective.text.isEmpty)
+                  FilteringTextInputFormatter.deny(
+                    RegExp(r' '),
+                  )
+              ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.035),
             Padding(
@@ -479,8 +491,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                 horizontal: 20,
               ),
               child: StaticText(
-                text:
-                    appLocalizations.groupFeeDescription,
+                text: appLocalizations.groupFeeDescription,
                 maxLines: 4,
               ),
             )

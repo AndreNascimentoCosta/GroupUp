@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -46,6 +47,12 @@ class EditGroupObjectiveBody extends StatelessWidget {
                   width: 0.5,
                 ),
               ),
+              inputFormatters: [
+                if (groupObjectiveController.text.isEmpty)
+                  FilteringTextInputFormatter.deny(
+                    RegExp(r' '),
+                  )
+              ],
             ),
           ),
           const SizedBox(height: Insets.l),

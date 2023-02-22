@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:groupup/core/providers/edit_profile_name_provider.dart';
@@ -40,6 +41,12 @@ class EditProfileNameBody extends StatelessWidget {
               width: 0.5,
             ),
           ),
+          inputFormatters: [
+            if (editProfileNameController.text.isEmpty)
+              FilteringTextInputFormatter.deny(
+                RegExp(r' '),
+              )
+          ],
         ),
       ),
     );

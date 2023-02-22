@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -47,7 +48,8 @@ class _NameAddState extends State<NameAdd> {
                     autoFocus: true,
                     validator: (value) {
                       if (value!.isNotEmpty && value.length < 3) {
-                        return AppLocalizations.of(context).nameValidatorAtLeast3Chars;
+                        return AppLocalizations.of(context)
+                            .nameValidatorAtLeast3Chars;
                       } else {
                         return null;
                       }
@@ -60,6 +62,12 @@ class _NameAddState extends State<NameAdd> {
                     padding: const EdgeInsets.symmetric(
                       horizontal: kDefaultPadding,
                     ),
+                    inputFormatters: [
+                      if (phoneProvider.nameController.text.isEmpty)
+                        FilteringTextInputFormatter.deny(
+                          RegExp(r' '),
+                        )
+                    ],
                   ),
                 ),
               ),

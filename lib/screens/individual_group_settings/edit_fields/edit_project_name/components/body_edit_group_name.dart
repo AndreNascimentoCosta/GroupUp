@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -12,6 +13,7 @@ class EditGroupNameBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     final groupNameProvider =
         Provider.of<EditGroupNameProvider>(context).groupNameController;
     return Padding(
@@ -30,17 +32,32 @@ class EditGroupNameBody extends StatelessWidget {
                 controller: groupNameProvider,
                 hint: '',
                 maxLength: 30,
+                validator: (value) {
+                if (value!.isNotEmpty && value.length < 3) {
+                  return appLocalizations.projectNameValidatorMinChars;
+                } else if (value.length >= 20) {
+                  return appLocalizations.projectNameValidatorMaxChars;
+                } else {
+                  return null;
+                }
+              },
                 border: const UnderlineInputBorder(
                   borderSide: BorderSide(
                     color: kSecondaryColor,
                     width: 0.5,
                   ),
                 ),
+                inputFormatters: [
+                  if (groupNameProvider.text.isEmpty)
+                    FilteringTextInputFormatter.deny(
+                      RegExp(r' '),
+                    )
+                ],
               ),
             ),
             const SizedBox(height: Insets.l),
             StaticText(
-              text: AppLocalizations.of(context).changeGroupName,
+              text: appLocalizations.changeGroupName,
               fontSize: TextSize.mBody,
             ),
           ],
