@@ -156,6 +156,18 @@ exports.ListPaymentMethods = functions.https.onRequest(async (req, res) => {
     });
 });
 
+exports.DetachPaymentMethod = functions.https.onRequest(async (req, res) => {
+    const { paymentMethodId } = req.body.data;
+    const paymentMethod = await stripe.paymentMethods.detach(
+        paymentMethodId,
+    );
+    return res.send({
+        data: {
+            paymentMethod: paymentMethod,
+        }
+    });
+});
+
 exports.CreateAccount = functions.https.onRequest(async (req, res) => {
 
     const account = await stripe.accounts.create({
