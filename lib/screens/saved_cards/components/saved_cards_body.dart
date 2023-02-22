@@ -42,25 +42,25 @@ class BodySavedCards extends StatelessWidget {
                     child: CircularProgressIndicator(color: kPrimaryColor),
                   );
                 }
-                if (snapshot.data!.data.isEmpty) {
-                 return Column(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: kDefaultPadding),
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: StaticText(
-                          text: appLocalizations.noSavedCards,
-                          color: kSecondaryColor,
-                          textAlign: TextAlign.center,
-                          fontSize: 20,
+                if (snapshot.data?.data['paymentMethodsData'].length == 0) {
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: kDefaultPadding),
+                          child: Align(
+                            alignment: Alignment.topCenter,
+                            child: StaticText(
+                              text: appLocalizations.noSavedCards,
+                              color: kSecondaryColor,
+                              textAlign: TextAlign.center,
+                              fontSize: 20,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ],
-              );
+                    ],
+                  );
                 }
                 return ListView.separated(
                   padding: const EdgeInsets.only(
@@ -85,6 +85,8 @@ class BodySavedCards extends StatelessWidget {
                         ['card']['exp_month'],
                     expYear: snapshot.data?.data['paymentMethodsData'][index]
                         ['card']['exp_year'],
+                    paymentMethodId: snapshot.data?.data['paymentMethodsData']
+                        [index]['id'],
                   ),
                 );
               }
@@ -101,7 +103,7 @@ class BodySavedCards extends StatelessWidget {
 }
 
 extension StringExtension on String {
-    String capitalize() {
-      return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
-    }
+  String capitalize() {
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
+  }
 }

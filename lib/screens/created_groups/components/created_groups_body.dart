@@ -11,7 +11,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class BodyCreatedGroup extends StatelessWidget {
   const BodyCreatedGroup({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
@@ -28,12 +27,22 @@ class BodyCreatedGroup extends StatelessWidget {
               )
               .snapshots(),
           builder: (context, snapshot) {
+            final groups = snapshot.data?.docs
+                .map((e) => GroupModel.fromMap(e.id, e.data()))
+                .toList()
+                .where(
+                  (element) => element.participantsData
+                      .where((element) => element.uid == user?.id)
+                      .first
+                      .isAdmin,
+                )
+                .toList();
             if (snapshot.hasData == false) {
               return const Center(
                 child: CircularProgressIndicator(color: kPrimaryColor),
               );
             }
-            if (snapshot.data!.docs.isEmpty) {
+            if (snapshot.data!.docs.isEmpty || groups!.isEmpty) {
               return Column(
                 children: [
                   Expanded(
@@ -53,16 +62,6 @@ class BodyCreatedGroup extends StatelessWidget {
                 ],
               );
             } else {
-              final groups = snapshot.data!.docs
-                  .map((e) => GroupModel.fromMap(e.id, e.data()))
-                  .toList()
-                  .where(
-                    (element) => element.participantsData
-                        .where((element) => element.uid == user?.id)
-                        .first
-                        .isAdmin,
-                  )
-                  .toList();
               return ListView.separated(
                 padding: const EdgeInsets.only(
                   top: kDefaultPadding / 2,
