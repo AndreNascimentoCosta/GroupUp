@@ -147,10 +147,17 @@ exports.ListPaymentMethods = functions.https.onRequest(async (req, res) => {
         { type: 'card' }
     );
 
+    const paymentMethodsFiltered = paymentMethods.data.filter((item) => {
+        if (item.card.wallet == null)
+        return item;
+    });
+
+    console.log(paymentMethodsFiltered.data);
+
     return res.send({
         data: {
-            paymentMethods: paymentMethods,
-            paymentMethodsData: paymentMethods.data,
+            paymentMethods: paymentMethodsFiltered,
+            paymentMethodsData: paymentMethodsFiltered.data,
         }
 
     });
