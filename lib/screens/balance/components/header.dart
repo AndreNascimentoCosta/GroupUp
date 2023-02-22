@@ -69,17 +69,7 @@ class HeaderBalance extends StatelessWidget {
                               'accountId': authProvider.user!.stripeAccountId,
                             });
                             if (getAccount.data['detailsSubmitted'] == true) {
-                              if (authProvider.user!.paymentIntentIds.isEmpty) {
-                                Navigator.of(context).pop();
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(appLocalizations.balanceZero),
-                                    duration: const Duration(seconds: 2),
-                                  ),
-                                );
-                              } else {
-                                payoutOrConnectedAccountOptionsDialog(context);
-                              }
+                              payoutOrConnectedAccountOptionsDialog(context);
                             } else {
                               continueCreateConnectedAccountDialog(context);
                             }
