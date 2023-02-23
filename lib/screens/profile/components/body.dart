@@ -218,7 +218,7 @@ class _BodyProfileState extends State<BodyProfile> {
                         ),
                       );
                     },
-                    text: 'Saved cards',
+                    text: appLocalizations.savedCards,
                     secondaryText: '',
                   )
                 ],

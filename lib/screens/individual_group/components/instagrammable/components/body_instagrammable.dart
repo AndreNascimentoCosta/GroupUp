@@ -27,6 +27,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isAndroidScreen =
+        screenHeight > 820 && screenHeight < 821 || screenWidth < 412;
     final instagrammableProvider = Provider.of<InstagrammableProvider>(context);
     final noPicture = instagrammableProvider.picture6;
     final currentUser = Provider.of<AuthProvider>(context).user;
@@ -53,11 +55,13 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
               bottom: widget.isSharing
                   ? screenHeight * 0.4715
                   : screenHeight * 0.585,
-              left: widget.isSharing
-                  ? screenWidth * 0.2325
-                  : isSmallScreen
-                      ? screenWidth * 0.225
-                      : screenWidth * 0.165,
+              left: isAndroidScreen
+                  ? screenWidth * 0.185
+                  : widget.isSharing
+                      ? screenWidth * 0.2325
+                      : isSmallScreen
+                          ? screenWidth * 0.225
+                          : screenWidth * 0.165,
               child: ButtonCommonStyle(
                 onPressed: () {
                   instagrammableProvider.choosePicture(
@@ -113,11 +117,13 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
               bottom: widget.isSharing
                   ? screenHeight * 0.465
                   : screenHeight * 0.575,
-              right: widget.isSharing
-                  ? screenWidth * 0.2125
-                  : isSmallScreen
-                      ? screenWidth * 0.205
-                      : screenWidth * 0.1415,
+              right: isAndroidScreen
+                  ? screenWidth * 0.1625
+                  : widget.isSharing
+                      ? screenWidth * 0.2125
+                      : isSmallScreen
+                          ? screenWidth * 0.205
+                          : screenWidth * 0.1415,
               child: ButtonCommonStyle(
                 onPressed: () {
                   Provider.of<InstagrammableProvider>(context, listen: false)
@@ -131,18 +137,22 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                           : Colors.black,
                       width: 2,
                     ),
-                    borderRadius: BorderRadius.circular(widget.isSharing
-                        ? screenWidth * 0.099
-                        : isSmallScreen
-                            ? screenWidth * 0.105
-                            : screenWidth * 0.127),
+                    borderRadius: BorderRadius.circular(
+                      widget.isSharing
+                          ? screenWidth * 0.099
+                          : isSmallScreen
+                              ? screenWidth * 0.105
+                              : screenWidth * 0.127,
+                    ),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(widget.isSharing
-                        ? screenWidth * 0.099
-                        : isSmallScreen
-                            ? screenWidth * 0.105
-                            : screenWidth * 0.127),
+                    borderRadius: BorderRadius.circular(
+                      widget.isSharing
+                          ? screenWidth * 0.099
+                          : isSmallScreen
+                              ? screenWidth * 0.105
+                              : screenWidth * 0.127,
+                    ),
                     child: CachedNetworkImage(
                       imageUrl: instagrammableProvider.picture2,
                       height: widget.isSharing
@@ -170,11 +180,13 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
               bottom: widget.isSharing
                   ? screenHeight * 0.21575
                   : screenHeight * 0.267,
-              right: widget.isSharing
-                  ? screenWidth * 0.1925
-                  : isSmallScreen
-                      ? screenWidth * 0.1775
-                      : screenWidth * 0.1125,
+              right: isAndroidScreen
+                  ? screenWidth * 0.1325
+                  : widget.isSharing
+                      ? screenWidth * 0.1925
+                      : isSmallScreen
+                          ? screenWidth * 0.1775
+                          : screenWidth * 0.1125,
               child: ButtonCommonStyle(
                 onPressed: () {
                   Provider.of<InstagrammableProvider>(context, listen: false)
@@ -228,11 +240,13 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
               bottom: widget.isSharing
                   ? screenHeight * 0.246
                   : screenHeight * 0.305,
-              left: widget.isSharing
-                  ? screenWidth * 0.181
-                  : isSmallScreen
-                      ? screenWidth * 0.1725
-                      : screenWidth * 0.103,
+              left: isAndroidScreen
+                  ? screenWidth * 0.1275
+                  : widget.isSharing
+                      ? screenWidth * 0.181
+                      : isSmallScreen
+                          ? screenWidth * 0.1725
+                          : screenWidth * 0.103,
               child: ButtonCommonStyle(
                 onPressed: () {
                   Provider.of<InstagrammableProvider>(context, listen: false)
