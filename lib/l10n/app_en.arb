@@ -294,7 +294,7 @@
     "@confirm": {
         "description": "Confirm"
     },
-    "confirmCreateGroup": "Are you sure you want to create a group?",
+    "confirmCreateGroup": "Are you sure you want to create a \ngroup?",
     "@confirmCreateGroup": {
         "description": "Confirmation to create the group"
     },

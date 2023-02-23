@@ -176,7 +176,7 @@ class CreateGroupProvider extends ChangeNotifier {
   final controllerEndDate = TextEditingController();
 
   final controller = PageController(initialPage: 0);
-  final itemCount = 2;
+  final itemCount = 3;
   int pageIndex = 0;
   File? image;
   String groupCurrencyCode = '';
@@ -263,6 +263,7 @@ class CreateGroupProvider extends ChangeNotifier {
                       },
                     );
                     if (listPaymentMethods.data['paymentMethods'].length == 0) {
+                      navigatorState.pop();
                       try {
                         final paymentIntentId =
                             await stripePayment.initPaymentCreateGroup(
@@ -376,7 +377,7 @@ class CreateGroupProvider extends ChangeNotifier {
               newGroup.startDate!,
             ))) {
       return null;
-    } else if (pageIndex == 2) {
+    } else if (pageIndex == 3) {
       return () {
         Navigator.of(context).pushAndRemoveUntil(
           PageRouteBuilder(
@@ -392,7 +393,7 @@ class CreateGroupProvider extends ChangeNotifier {
     } else {
       return () => {
             FocusNode().unfocus(),
-            if (pageIndex == 0)
+            if (pageIndex == 0 || pageIndex == 1)
               {
                 controller.nextPage(
                   duration: const Duration(milliseconds: 300),

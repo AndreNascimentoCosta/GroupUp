@@ -5,6 +5,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/first_page.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/review_create_group.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/second_page.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/third_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
@@ -40,7 +41,7 @@ class _CreatePageViewState extends State<CreatePageView> {
                   child: Align(
                     alignment: AlignmentDirectional.centerStart,
                     child: createGroupProvider.pageIndex != 0 &&
-                            createGroupProvider.pageIndex != 2
+                            createGroupProvider.pageIndex != 3
                         ? ButtonCommonStyle(
                             onPressed: () {
                               createGroupProvider.controller.previousPage(
@@ -54,7 +55,8 @@ class _CreatePageViewState extends State<CreatePageView> {
                                 'assets/icons/arrow_left.svg',
                                 color: const Color(0xFF868686),
                               ),
-                            ))
+                            ),
+                          )
                         : null,
                   ),
                 ),
@@ -96,6 +98,7 @@ class _CreatePageViewState extends State<CreatePageView> {
               children: [
                 FirsPageCreate(controller: createGroupProvider.controller),
                 SecondPageCreate(controller: createGroupProvider.controller),
+                ReviewCreateGroup(controller: createGroupProvider.controller),
                 const ThirdPageCreate(),
               ],
             ),
