@@ -121,15 +121,32 @@ class StripePaymentProvider extends ChangeNotifier {
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           merchantDisplayName: 'GroupUp',
+          setupIntentClientSecret:
+              'sk_test_51MXufcIXmdKwNYjDzpHrTwv42aY8LErRVMtLgYyFS79jzbXnuFgEvyFBV0XO7vms9VgQo8zLIEPWFPBS6M3xgJTM00N4hMsZ8H',
           paymentIntentClientSecret: clientSecret.data['clientSecret'],
           applePay: PaymentSheetApplePay(
-            merchantCountryCode: NumberFormat.simpleCurrency(name: clientSecret.data['currency']).locale.split('_').last,
+            merchantCountryCode:
+                NumberFormat.simpleCurrency(name: clientSecret.data['currency'])
+                    .locale
+                    .split('_')
+                    .last,
             paymentSummaryItems: [
               ApplePayCartSummaryItem.immediate(
                 label: 'Reward',
                 amount: (clientSecret.data['reward'] / 100).toString(),
               )
             ],
+          ),
+          googlePay: PaymentSheetGooglePay(
+            merchantCountryCode:
+                NumberFormat.simpleCurrency(name: clientSecret.data['currency'])
+                    .locale
+                    .split('_')
+                    .last,
+            currencyCode:
+                NumberFormat.simpleCurrency(name: clientSecret.data['currency'])
+                    .currencyName,
+            testEnv: true,
           ),
           style: ThemeMode.light,
           allowsDelayedPaymentMethods: false,
