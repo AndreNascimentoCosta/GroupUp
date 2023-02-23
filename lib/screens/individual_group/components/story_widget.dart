@@ -91,16 +91,28 @@ class StoryWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(Insets.l * 2),
-                        child: CachedNetworkImage(
-                          imageUrl: participant.profilePicture,
-                          fadeInDuration: const Duration(milliseconds: 100),
-                          height: Insets.l * 2,
-                          width: Insets.l * 2,
-                          fit: BoxFit.fitWidth,
+                      if (participant.profilePicture.isEmpty)
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(Insets.l * 2),
+                          child: CachedNetworkImage(
+                            imageUrl: 'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-bcf2-89b5e5b93bad',
+                            fadeInDuration: const Duration(milliseconds: 100),
+                            height: Insets.l * 2,
+                            width: Insets.l * 2,
+                            fit: BoxFit.fitWidth,
+                          ),
+                        )
+                      else
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(Insets.l * 2),
+                          child: CachedNetworkImage(
+                            imageUrl: participant.profilePicture,
+                            fadeInDuration: const Duration(milliseconds: 100),
+                            height: Insets.l * 2,
+                            width: Insets.l * 2,
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
-                      ),
                       const SizedBox(width: Insets.m),
                       Container(
                         decoration: BoxDecoration(
