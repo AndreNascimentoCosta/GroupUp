@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -31,20 +32,22 @@ class _FirstPageJoinState extends State<FirstPageJoin> {
           child: Column(
             children: [
               TextFieldModelHome(
-                controller: joinGroupProvider.controllerGroupCode,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return AppLocalizations.of(context).pleaseEnterGroupCode;
-                  }
-                  return null;
-                },
-                header: AppLocalizations.of(context).groupCode,
-                hint: AppLocalizations.of(context).enterGroupCode,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kDefaultPadding,
-                ),
-              ),
+                  controller: joinGroupProvider.controllerGroupCode,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return AppLocalizations.of(context).pleaseEnterGroupCode;
+                    }
+                    return null;
+                  },
+                  header: AppLocalizations.of(context).groupCode,
+                  hint: AppLocalizations.of(context).enterGroupCode,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: kDefaultPadding,
+                  ),
+                  inputFormatters: [
+                      UpperCaseTextFormatter(),
+                  ]),
               const SizedBox(height: kDefaultPadding / 2),
               StaticText(
                 text: AppLocalizations.of(context).feeNotRefundable,
@@ -55,6 +58,16 @@ class _FirstPageJoinState extends State<FirstPageJoin> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class UpperCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    return TextEditingValue(
+      text: newValue.text.toUpperCase(),
+      selection: newValue.selection,
     );
   }
 }
