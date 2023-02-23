@@ -5,8 +5,11 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../core/providers/mix_panel_provider.dart';
 
 showDialogIfFirstOpened(BuildContext context) async {
   const keyIsFirstOpened = 'is_first_opened';
@@ -28,8 +31,7 @@ showDialogIfFirstOpened(BuildContext context) async {
             borderRadius: BorderRadius.circular(10),
           ),
           content: StaticText(
-            text: appLocalizations
-                .tieBreakerText,
+            text: appLocalizations.tieBreakerText,
             maxLines: 8,
             textAlign: TextAlign.center,
             fontSize: TextSize.mBody,
@@ -39,6 +41,8 @@ showDialogIfFirstOpened(BuildContext context) async {
           actions: [
             ButtonCommonStyle(
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Tie Breaker OK');
                 Navigator.of(context).pop();
                 prefs.setBool(keyIsFirstOpened, false);
               },

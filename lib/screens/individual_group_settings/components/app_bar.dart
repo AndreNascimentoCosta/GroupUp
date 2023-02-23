@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
   const AppBarGroupSettings({super.key});
@@ -36,6 +38,9 @@ class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                        eventName:
+                            'Back to Group Screen from Group Settings Screen');
                     Navigator.pop(context);
                   },
                   child: GestureDetector(

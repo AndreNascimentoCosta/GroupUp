@@ -13,6 +13,8 @@ import 'package:provider/provider.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../../core/providers/mix_panel_provider.dart';
+
 enum Currencies {
   AND(0.3),
   AWG(0.3),
@@ -261,6 +263,8 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                       const SizedBox(height: Insets.xs),
                       ButtonCommonStyle(
                         onPressed: () {
+                          Provider.of<MixPanelProvider>(context, listen: false)
+                            .logEvent(eventName: 'Currency Picker');
                           showCurrencyPicker(
                             context: context,
                             showFlag: true,

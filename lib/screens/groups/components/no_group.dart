@@ -11,6 +11,8 @@ import 'package:groupup/screens/home/components/bottom_sheet/create_group/create
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../core/providers/mix_panel_provider.dart';
+
 class NoGroup extends StatelessWidget {
   const NoGroup({super.key});
 
@@ -24,35 +26,38 @@ class NoGroup extends StatelessWidget {
           child: Column(
             children: [
               ButtonCommonStyle(
-                onPressed: (() {
+                onPressed: () {
                   Provider.of<CreateGroupProvider>(context, listen: false)
                       .clean();
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Create Group Bottom Sheet');
                   showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(Insets.m),
-                      ),
-                      builder: (context) {
-                        return Padding(
-                          padding: MediaQuery.of(context).viewInsets,
-                          child: Wrap(
-                            children: <Widget>[
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.7,
-                                      child: const CreatePageView()),
-                                ],
-                              )
-                            ],
-                          ),
-                        );
-                      });
-                }),
+                    isScrollControlled: true,
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(Insets.m),
+                    ),
+                    builder: (context) {
+                      return Padding(
+                        padding: MediaQuery.of(context).viewInsets,
+                        child: Wrap(
+                          children: <Widget>[
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  child: const CreatePageView(),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
                 child: Row(
                   children: [
                     DottedBorder(

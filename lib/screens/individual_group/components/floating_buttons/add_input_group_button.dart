@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../constants.dart';
+import '../../../../core/providers/mix_panel_provider.dart';
 
 class AddInputGroupButton extends StatefulWidget {
   const AddInputGroupButton({
@@ -44,6 +45,8 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
               heroTag: 'btn3',
               highlightElevation: 0,
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Confirm Add Input');
                 final group =
                     Provider.of<IndividualGroupProvider>(context, listen: false)
                         .group;
@@ -65,8 +68,8 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         content: StaticText(
-                          text:
-                              appLocalizations.cantAddDataWhenNotEveryoneHasJoined,
+                          text: appLocalizations
+                              .cantAddDataWhenNotEveryoneHasJoined,
                           maxLines: 5,
                           textAlign: TextAlign.center,
                           fontSize: TextSize.mBody,
@@ -77,6 +80,9 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                         actions: [
                           ButtonCommonStyle(
                             onPressed: () {
+                              Provider.of<MixPanelProvider>(context,
+                                      listen: false)
+                                  .logEvent(eventName: 'Add Input');
                               Navigator.of(context).pop();
                             },
                             child: const StaticText(

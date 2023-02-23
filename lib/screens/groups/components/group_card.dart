@@ -13,6 +13,8 @@ import 'package:groupup/screens/individual_group/screens/individual_group.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../core/providers/mix_panel_provider.dart';
+
 class GroupsCard extends StatefulWidget {
   const GroupsCard({
     Key? key,
@@ -44,6 +46,8 @@ class _GroupsCardState extends State<GroupsCard> {
             },
           );
         } else {
+          Provider.of<MixPanelProvider>(context, listen: false)
+              .logEvent(eventName: 'Individual Group Screen');
           Provider.of<IndividualGroupProvider>(context, listen: false).getGroup(
             widget.group.id,
           );

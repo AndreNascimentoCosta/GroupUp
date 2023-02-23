@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/body_instagrammable.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/share_instagrammable_button.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../core/providers/mix_panel_provider.dart';
 
 class InstagrammableScreen extends StatefulWidget {
   const InstagrammableScreen({super.key});
@@ -33,6 +36,8 @@ class _InstagrammableScreenState extends State<InstagrammableScreen> {
                     child: FloatingActionButton(
                       heroTag: 'btn11',
                       onPressed: () async {
+                        Provider.of<MixPanelProvider>(context, listen: false)
+                            .logEvent(eventName: 'Close Instagrammable');
                         Navigator.of(context).pop();
                       },
                       backgroundColor: kPrimaryColor,

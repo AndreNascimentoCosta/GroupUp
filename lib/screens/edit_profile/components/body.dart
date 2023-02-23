@@ -17,6 +17,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../core/providers/mix_panel_provider.dart';
+
 class EditProfileBody extends StatefulWidget {
   const EditProfileBody({super.key});
 
@@ -62,9 +64,15 @@ class _EditProfileBodyState extends State<EditProfileBody> {
             children: [
               ProfilePictureAdd(
                 onPressedGallery: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(
+                          eventName:
+                              'Edit Profile Picture - Choose from Gallery');
                   pickImage(ImageSource.gallery);
                 },
                 onPressedCamera: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Edit Profile Picture - Take Photo');
                   pickImage(ImageSource.camera);
                 },
                 child: Builder(
@@ -131,8 +139,11 @@ class _EditProfileBodyState extends State<EditProfileBody> {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  top: isSmallScreen ? screenHeight * 0.085 : screenHeight * 0.085,
-                  left: isSmallScreen ? screenWidth * 0.15 : screenWidth * 0.175,
+                  top: isSmallScreen
+                      ? screenHeight * 0.085
+                      : screenHeight * 0.085,
+                  left:
+                      isSmallScreen ? screenWidth * 0.15 : screenWidth * 0.175,
                 ),
                 child: Container(
                   height: isSmallScreen ? 22.5 : 30,
@@ -161,6 +172,8 @@ class _EditProfileBodyState extends State<EditProfileBody> {
           const SizedBox(height: kDefaultPadding * 2),
           ButtonCommonStyle(
             onPressed: () {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Edit Name Screen');
               Navigator.push(
                 context,
                 MaterialPageRoute(

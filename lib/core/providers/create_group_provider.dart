@@ -23,6 +23,8 @@ import 'package:groupup/screens/saved_cards/saved_cards_create_group_bottom_shee
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'mix_panel_provider.dart';
+
 enum Currencies {
   AND(0.3),
   AWG(0.3),
@@ -228,7 +230,11 @@ class CreateGroupProvider extends ChangeNotifier {
               text: appLocalizations.no,
               textColor: Colors.red,
               borderColor: Colors.transparent,
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Create Group Cancel Dialog');
+                Navigator.of(context).pop();
+              },
               color: Colors.transparent,
               height: 40,
               width: isVerySmallScreen
@@ -241,6 +247,8 @@ class CreateGroupProvider extends ChangeNotifier {
               text: appLocalizations.yes,
               borderColor: kPrimaryColor,
               onPressed: () async {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Create Group Confirm Dialog');
                 final userId = Provider.of<AuthProvider>(context, listen: false)
                         .user
                         ?.id ??
@@ -379,6 +387,8 @@ class CreateGroupProvider extends ChangeNotifier {
       return null;
     } else if (pageIndex == 3) {
       return () {
+        Provider.of<MixPanelProvider>(context, listen: false)
+            .logEvent(eventName: 'Create Group Success');
         Navigator.of(context).pushAndRemoveUntil(
           PageRouteBuilder(
             pageBuilder: (context, animation1, animation2) => GroupsScreen(
@@ -392,6 +402,8 @@ class CreateGroupProvider extends ChangeNotifier {
       };
     } else {
       return () => {
+            Provider.of<MixPanelProvider>(context, listen: false)
+                .logEvent(eventName: 'Create Group Next'),
             FocusNode().unfocus(),
             if (pageIndex == 0 || pageIndex == 1)
               {
@@ -402,6 +414,8 @@ class CreateGroupProvider extends ChangeNotifier {
               }
             else
               {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Confirm Create Group'),
                 _confirm(context),
               }
           };
@@ -582,6 +596,8 @@ class CreateGroupProvider extends ChangeNotifier {
                 textColor: Colors.red,
                 borderColor: Colors.transparent,
                 onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Cancel Leave Group');
                   isRefundRequested = true;
                   Navigator.of(context).pop();
                 },
@@ -593,6 +609,8 @@ class CreateGroupProvider extends ChangeNotifier {
                 text: appLocalizations.yes,
                 borderColor: kPrimaryColor,
                 onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Leave Group');
                   leaveGroup(context, groupId);
                   Navigator.pop(context);
                   Navigator.pop(context);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/screens/home/components/home_button.dart';
@@ -14,6 +15,8 @@ class JoinGroupButton extends StatelessWidget {
     return ButtonCommonStyle(
       onPressed: () {
         Provider.of<JoinGroupProvider>(context, listen: false).clean();
+        Provider.of<MixPanelProvider>(context, listen: false)
+            .logEvent(eventName: 'Join Group Button');
         showModalBottomSheet(
           isScrollControlled: true,
           context: context,

@@ -5,6 +5,9 @@ import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/providers/mix_panel_provider.dart';
 
 class AppBarReportParticipant extends StatelessWidget with PreferredSizeWidget {
   const AppBarReportParticipant({super.key});
@@ -29,12 +32,15 @@ class AppBarReportParticipant extends StatelessWidget with PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: Header(text: AppLocalizations.of(context).reportParticipant),
+                child: Header(
+                    text: AppLocalizations.of(context).reportParticipant),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Back to Edit Profile Screen from Report Participant Screen');
                     Navigator.pop(context);
                   },
                   child: GestureDetector(

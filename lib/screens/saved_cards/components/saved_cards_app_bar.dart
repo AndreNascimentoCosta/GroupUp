@@ -6,6 +6,9 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/providers/mix_panel_provider.dart';
 
 class AppBarSavedCards extends StatelessWidget with PreferredSizeWidget {
   const AppBarSavedCards({super.key});
@@ -41,6 +44,8 @@ class AppBarSavedCards extends StatelessWidget with PreferredSizeWidget {
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Back to Edit Profile Screen from Saved Cards Screen');
                     Navigator.pop(
                       context,
                       MaterialPageRoute(

@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'individual_group_provider.dart';
+import 'mix_panel_provider.dart';
 
 class AddInputProvider extends ChangeNotifier {
   final TextEditingController inputController = TextEditingController();
@@ -63,7 +64,11 @@ class AddInputProvider extends ChangeNotifier {
               text: appLocalizations.cancel,
               textColor: Colors.red,
               borderColor: Colors.transparent,
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Cancel Media in Add Input');
+                Navigator.of(context).pop();
+              },
               color: Colors.transparent,
               height: 40,
               width: 140,
@@ -72,6 +77,8 @@ class AddInputProvider extends ChangeNotifier {
               text: appLocalizations.add,
               borderColor: kPrimaryColor,
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Add Media in Add Input');
                 Navigator.pop(context);
                 showModalBottomSheet(
                   isScrollControlled: true,

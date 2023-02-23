@@ -6,6 +6,9 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/providers/mix_panel_provider.dart';
 
 class AppBarEditProfile extends StatelessWidget with PreferredSizeWidget {
   const AppBarEditProfile({super.key});
@@ -37,6 +40,8 @@ class AppBarEditProfile extends StatelessWidget with PreferredSizeWidget {
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Back Button from Edit Profile Screen to Profile Screen'); 
                     Navigator.pop(
                       context,
                       MaterialPageRoute(

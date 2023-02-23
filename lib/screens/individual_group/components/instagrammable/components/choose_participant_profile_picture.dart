@@ -5,6 +5,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -48,6 +49,8 @@ class _ChooseParticipantProfilePictureState
       final authProvider = Provider.of<AuthProvider>(context);
       return ButtonCommonStyle(
         onPressed: () {
+          Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+              eventName: 'Choose Participant Profile Picture Instagrammable');
           Provider.of<InstagrammableProvider>(context, listen: false)
               .setPicture(
                   widget.participant.profilePicture, widget.pictureType);

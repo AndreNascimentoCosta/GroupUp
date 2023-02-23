@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/groups/components/add_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 import '../../../constants.dart';
+import '../../../core/providers/mix_panel_provider.dart';
 
 class AddProject extends StatelessWidget {
   const AddProject({super.key});
@@ -11,6 +13,8 @@ class AddProject extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
+        Provider.of<MixPanelProvider>(context, listen: false)
+            .logEvent(eventName: 'Add Project Button');
         showModalBottomSheet(
             isScrollControlled: true,
             context: context,

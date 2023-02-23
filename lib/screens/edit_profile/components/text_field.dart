@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/providers/mix_panel_provider.dart';
 
 class TextFieldModel extends StatelessWidget {
   const TextFieldModel({
@@ -73,6 +76,8 @@ class TextFieldModel extends StatelessWidget {
                       color: kSecondaryColor,
                     ),
                     onPressed: () {
+                      Provider.of<MixPanelProvider>(context, listen: false)
+                          .logEvent(eventName: 'Clear Text');
                       controller.clear();
                     },
                   ),

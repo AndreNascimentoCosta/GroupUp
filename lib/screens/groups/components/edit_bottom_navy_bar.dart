@@ -55,9 +55,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
             ),
             BottomNavigationBarItem(
               icon: ButtonCommonStyle(
-                onPressed: () {
-
-                },
+                onPressed: () {},
                 child: Padding(
                   padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                   child: LargeBody(

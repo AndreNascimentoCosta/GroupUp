@@ -10,6 +10,8 @@ import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../core/providers/mix_panel_provider.dart';
+
 void confirmRequestPayoutDialog(BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
   final appLocalizations = AppLocalizations.of(context);
@@ -42,7 +44,11 @@ void confirmRequestPayoutDialog(BuildContext context) {
             text: appLocalizations.no,
             textColor: Colors.red,
             borderColor: Colors.transparent,
-            onPressed: () => Navigator.of(newContext).pop(),
+            onPressed: () {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Cancel Request Payout');
+              Navigator.of(newContext).pop();
+            },
             color: Colors.transparent,
             height: 40,
             width: 140,
@@ -51,6 +57,8 @@ void confirmRequestPayoutDialog(BuildContext context) {
             text: appLocalizations.yes,
             borderColor: kPrimaryColor,
             onPressed: () async {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Request Payout');
               Navigator.of(context).pop();
               try {
                 for (var i = 0;

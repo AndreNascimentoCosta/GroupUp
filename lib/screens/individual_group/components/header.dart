@@ -12,6 +12,8 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../core/providers/mix_panel_provider.dart';
+
 class HeaderIndividualGroup extends StatelessWidget {
   const HeaderIndividualGroup({super.key});
 
@@ -106,6 +108,8 @@ class HeaderIndividualGroup extends StatelessWidget {
                 SizedBox(width: screenWidth * 0.075),
                 ButtonCommonStyle(
                   onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Open Objective Dialog');
                     showCupertinoDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -131,6 +135,10 @@ class HeaderIndividualGroup extends StatelessWidget {
                           actions: [
                             ButtonCommonStyle(
                               onPressed: () {
+                                Provider.of<MixPanelProvider>(context,
+                                        listen: false)
+                                    .logEvent(
+                                        eventName: 'Close Objective Dialog');
                                 Navigator.pop(context);
                               },
                               child: const StaticText(
@@ -150,12 +158,18 @@ class HeaderIndividualGroup extends StatelessWidget {
                   ),
                 ),
                 VerticalDivider(
-                  width: isVerySmallScreen? screenWidth * 0.05 : isSmallScreen ? screenWidth * 0.075 : screenWidth * 0.13,
+                  width: isVerySmallScreen
+                      ? screenWidth * 0.05
+                      : isSmallScreen
+                          ? screenWidth * 0.075
+                          : screenWidth * 0.13,
                   thickness: 1,
                   color: kSecondaryColor,
                 ),
                 ButtonCommonStyle(
                   onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Open Reward Dialog');
                     showCupertinoDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -182,6 +196,9 @@ class HeaderIndividualGroup extends StatelessWidget {
                           actions: [
                             ButtonCommonStyle(
                               onPressed: () {
+                                Provider.of<MixPanelProvider>(context,
+                                        listen: false)
+                                    .logEvent(eventName: 'Close Reward Dialog');
                                 Navigator.pop(context);
                               },
                               child: const StaticText(
@@ -202,7 +219,11 @@ class HeaderIndividualGroup extends StatelessWidget {
                   ),
                 ),
                 VerticalDivider(
-                  width: isVerySmallScreen ?  screenWidth * 0.06: isSmallScreen? screenWidth * 0.075 : screenWidth * 0.13,
+                  width: isVerySmallScreen
+                      ? screenWidth * 0.06
+                      : isSmallScreen
+                          ? screenWidth * 0.075
+                          : screenWidth * 0.13,
                   thickness: 1,
                   color: kSecondaryColor,
                 ),

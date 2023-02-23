@@ -14,6 +14,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/providers/auth_provider.dart';
+import '../../../core/providers/mix_panel_provider.dart';
 
 class AppBarIndividualGroup extends StatefulWidget with PreferredSizeWidget {
   const AppBarIndividualGroup({
@@ -78,6 +79,8 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
               elevation: 0,
               backgroundColor: Colors.white,
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                    eventName: 'Leave Individual Group Screen - Back Button');
                 Navigator.pop(context);
               },
               child: SvgPicture.asset(
@@ -153,9 +156,17 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                   backgroundColor: Colors.white,
                   onPressed: individualGroupProvider.pageIndex == 0
                       ? () {
+                          Provider.of<MixPanelProvider>(context, listen: false)
+                              .logEvent(
+                                  eventName:
+                                      'Leave Individual Group Screen - Back Button');
                           Navigator.pop(context);
                         }
                       : () {
+                          Provider.of<MixPanelProvider>(context, listen: false)
+                              .logEvent(
+                                  eventName:
+                                      'Back one page Individual Group Settings Screen - Back Button');
                           individualGroupProvider.pageController.previousPage(
                             duration: const Duration(milliseconds: 300),
                             curve: Curves.ease,
@@ -178,6 +189,11 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                               elevation: 0,
                               backgroundColor: Colors.white,
                               onPressed: () {
+                                Provider.of<MixPanelProvider>(context,
+                                        listen: false)
+                                    .logEvent(
+                                        eventName:
+                                            'Individual Group Settings Screen');
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -197,9 +213,19 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                             )
                           : GroupPictureEdit(
                               onPressedGallery: () {
+                                Provider.of<MixPanelProvider>(context,
+                                        listen: false)
+                                    .logEvent(
+                                        eventName:
+                                            'Choose Photo to Change Group Image');
                                 pickImage(ImageSource.gallery);
                               },
                               onPressedCamera: () {
+                                Provider.of<MixPanelProvider>(context,
+                                        listen: false)
+                                    .logEvent(
+                                        eventName:
+                                            'Take Photo to Change Group Image');
                                 pickImage(ImageSource.camera);
                               },
                               child: FloatingActionButton(
@@ -220,6 +246,11 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                           elevation: 0,
                           backgroundColor: Colors.white,
                           onPressed: () {
+                            Provider.of<MixPanelProvider>(context,
+                                    listen: false)
+                                .logEvent(
+                                    eventName:
+                                        'Individual Group Settings Screen');
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -243,6 +274,11 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                           elevation: 0,
                           backgroundColor: Colors.white,
                           onPressed: () {
+                            Provider.of<MixPanelProvider>(context,
+                                    listen: false)
+                                .logEvent(
+                                    eventName:
+                                        'Individual Group Settings Screen');
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -262,9 +298,19 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                         )
                       : GroupPictureEdit(
                           onPressedGallery: () {
+                            Provider.of<MixPanelProvider>(context,
+                                    listen: false)
+                                .logEvent(
+                                    eventName:
+                                        'Choose Photo to Change Group Image');
                             pickImage(ImageSource.gallery);
                           },
                           onPressedCamera: () {
+                            Provider.of<MixPanelProvider>(context,
+                                    listen: false)
+                                .logEvent(
+                                    eventName:
+                                        'Take Photo to Change Group Image');
                             pickImage(ImageSource.camera);
                           },
                           child: FloatingActionButton(

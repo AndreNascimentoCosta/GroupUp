@@ -7,6 +7,7 @@ import 'package:groupup/screens/individual_group/components/calendar_add_input/d
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../../../constants.dart';
+import '../../../../core/providers/mix_panel_provider.dart';
 
 class DataHistoryButton extends StatefulWidget {
   const DataHistoryButton({
@@ -40,6 +41,8 @@ class _DataHistoryButtonState extends State<DataHistoryButton> {
               heroTag: 'btn6',
               highlightElevation: 0,
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Data History Button');
                 showModalBottomSheet(
                   isScrollControlled: true,
                   context: context,
@@ -50,8 +53,9 @@ class _DataHistoryButtonState extends State<DataHistoryButton> {
                     return BuilderBottomSheet(
                       height: 500,
                       child: DataHistoryBottomSheet(
-                        userInputData:
-                            group.participantsData.firstWhere((element) => element.uid == user?.id).inputData,
+                        userInputData: group.participantsData
+                            .firstWhere((element) => element.uid == user?.id)
+                            .inputData,
                       ),
                     );
                   },

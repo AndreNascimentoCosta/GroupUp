@@ -7,6 +7,7 @@ import 'package:groupup/screens/individual_group/components/calendar_add_input/a
 import 'package:provider/provider.dart';
 import '../../../../constants.dart';
 import '../../../../core/providers/individual_group_provider.dart';
+import '../../../../core/providers/mix_panel_provider.dart';
 
 class CalendarScreenButton extends StatefulWidget {
   const CalendarScreenButton({
@@ -47,6 +48,8 @@ class _CalendarScreenButtonState extends State<CalendarScreenButton> {
                   heroTag: 'btn3',
                   highlightElevation: 0,
                   onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Calendar Screen Button');
                     individualGroupProvider.pageIndex == 0
                         ? individualGroupProvider.pageController.nextPage(
                             duration: const Duration(milliseconds: 300),

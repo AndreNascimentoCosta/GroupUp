@@ -15,6 +15,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../core/providers/mix_panel_provider.dart';
 import '../../../home/components/bottom_sheet/create_group/pages/first_page.dart';
 
 class AddInput extends StatefulWidget {
@@ -114,18 +115,21 @@ class _AddInputState extends State<AddInput> {
                         errorBorder: InputBorder.none,
                         focusedErrorBorder: InputBorder.none,
                         hintText: appLocalizations.enterData,
-                        suffixIcon:
-                            addInputProvider.inputController.text.isEmpty
-                                ? null
-                                : IconButton(
-                                    icon: const Icon(
-                                      Icons.close,
-                                      color: Colors.black,
-                                    ),
-                                    onPressed: () {
-                                      addInputProvider.inputController.clear();
-                                    },
-                                  ),
+                        suffixIcon: addInputProvider
+                                .inputController.text.isEmpty
+                            ? null
+                            : IconButton(
+                                icon: const Icon(
+                                  Icons.close,
+                                  color: Colors.black,
+                                ),
+                                onPressed: () {
+                                  Provider.of<MixPanelProvider>(context,
+                                          listen: false)
+                                      .logEvent(eventName: 'lear input field');
+                                  addInputProvider.inputController.clear();
+                                },
+                              ),
                         hintStyle: const TextStyle(
                           fontFamily: 'Montserrat-Regular',
                           fontSize: TextSize.lBody,
@@ -153,6 +157,8 @@ class _AddInputState extends State<AddInput> {
                 padding: const EdgeInsets.only(top: Insets.s),
                 child: ButtonCommonStyle(
                   onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Add Media');
                     try {
                       addInputProvider.confirm(context, () {
                         pickImage(ImageSource.gallery);

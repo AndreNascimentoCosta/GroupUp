@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/switch.dart';
@@ -26,6 +27,8 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
   Widget build(BuildContext context) {
     final phoneProvider =
         Provider.of<PhoneAuthenProvider>(context, listen: false);
+    final mixPanel = Provider.of<MixPanelProvider>(context, listen: false);
+
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -44,6 +47,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
               const SizedBox(height: Insets.l * 1.5),
               SignInWithAppleButton(
                 onPressed: () {
+                  mixPanel.logEvent(eventName: 'Sign Up with Apple');
                   Provider.of<AuthProvider>(context, listen: false).loading ==
                       true;
                   final provider = context.read<AuthProvider>();
@@ -59,6 +63,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
               const SizedBox(height: Insets.l * 1.25),
               ButtonCommonStyle(
                 onPressed: () {
+                  mixPanel.logEvent(eventName: 'Sign Up with Google');
                   Provider.of<AuthProvider>(context, listen: false).loading ==
                       true;
                   final provider = context.read<AuthProvider>();
@@ -97,6 +102,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
               const SizedBox(height: Insets.l * 1.25),
               ButtonCommonStyle(
                 onPressed: () {
+                  mixPanel.logEvent(eventName: 'Sign Up with Phone Number');
                   Navigator.pop(context);
                   phoneProvider.start = 30;
                   phoneProvider.clean();

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'mix_panel_provider.dart';
+
 class PhoneAuthenProvider extends ChangeNotifier {
   String get otpCode {
     return otpCode1.text +
@@ -74,6 +76,8 @@ class PhoneAuthenProvider extends ChangeNotifier {
       return null;
     } else {
       return () => {
+            Provider.of<MixPanelProvider>(context, listen: false)
+                .logEvent(eventName: 'Next Button Phone'),
             Provider.of<AuthProvider>(context, listen: false)
                 .phoneLogin(context),
             startTimer(),
@@ -88,6 +92,8 @@ class PhoneAuthenProvider extends ChangeNotifier {
       return null;
     } else {
       return () => {
+            Provider.of<MixPanelProvider>(context, listen: false)
+                .logEvent(eventName: 'Update Name'),
             authProvider.updateNameUserData(
               name: nameController.text,
             ),

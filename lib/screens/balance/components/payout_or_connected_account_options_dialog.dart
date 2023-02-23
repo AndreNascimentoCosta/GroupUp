@@ -64,7 +64,6 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext context) {
                               duration: const Duration(seconds: 2),
                             ),
                           );
-                          ;
                         } else {
                           confirmRequestPayoutDialog(context);
                         }

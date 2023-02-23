@@ -4,6 +4,9 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/providers/mix_panel_provider.dart';
 
 class GroupPictureEdit extends StatelessWidget {
   const GroupPictureEdit({
@@ -21,6 +24,8 @@ class GroupPictureEdit extends StatelessWidget {
     final appLocalizations = AppLocalizations.of(context);
     return ButtonCommonStyle(
       onPressed: () {
+        Provider.of<MixPanelProvider>(context, listen: false)
+            .logEvent(eventName: 'Edit Group Picture');
         showModalBottomSheet(
           isScrollControlled: true,
           context: context,

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -65,6 +66,8 @@ groupEndedDialog(BuildContext context) {
             width: double.infinity,
             child: ButtonCommonStyle(
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Group Ended Dialog OK');
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
               },

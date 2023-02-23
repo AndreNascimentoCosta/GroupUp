@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/models/participant.dart';
@@ -20,6 +21,8 @@ class IndividualParticipant extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: ButtonCommonStyle(
         onPressed: () {
+          Provider.of<MixPanelProvider>(context, listen: false)
+              .logEvent(eventName: 'Report Participant');
           final group =
               Provider.of<IndividualGroupProvider>(context, listen: false)
                   .group;
@@ -40,10 +43,19 @@ class IndividualParticipant extends StatelessWidget {
         },
         child: Row(
           children: [
-            CircleAvatar(
-              radius: 30,
-              backgroundImage: NetworkImage(participant.profilePicture),
-            ),
+            if (participant.profilePicture.isEmpty)
+              const CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage(
+                    'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-bcf2-89b5e5b93bad'),
+              )
+            else
+              CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage(
+                  participant.profilePicture,
+                ),
+              ),
             const SizedBox(width: kDefaultPadding),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.4,

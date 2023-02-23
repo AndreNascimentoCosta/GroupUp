@@ -14,6 +14,8 @@ import 'package:provider/provider.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'mix_panel_provider.dart';
+
 class AuthProvider extends ChangeNotifier {
   UserDataModel? _user;
   UserDataModel? get user => _user;
@@ -249,7 +251,11 @@ class AuthProvider extends ChangeNotifier {
             NextButton(
               text: 'Ok',
               borderColor: kPrimaryColor,
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Error', properties: {'Error': e});
+                Navigator.of(context).pop();
+              },
               height: 40,
               width: 140,
             ),

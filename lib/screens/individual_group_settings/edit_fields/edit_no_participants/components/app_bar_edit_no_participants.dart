@@ -10,6 +10,8 @@ import 'package:groupup/models/group_model.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../core/providers/mix_panel_provider.dart';
+
 class AppBarEditGroupNoParticipats extends StatelessWidget
     with PreferredSizeWidget {
   const AppBarEditGroupNoParticipats({required this.groups});
@@ -46,8 +48,14 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
                   if (editGroupMaxParticipantsProvider
                           .groupMaxParticipantsController.text ==
                       groups.maxParticipants.toString()) {
+                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                        eventName:
+                            'Back to Edit Profile Screen from Edit Group No Participants Screen');
                     Navigator.pop(context);
                   } else {
+                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                        eventName:
+                            'Discard Changes from Edit Group No Participants Screen');
                     editGroupMaxParticipantsProvider.confirmDiscard(context);
                   }
                 },

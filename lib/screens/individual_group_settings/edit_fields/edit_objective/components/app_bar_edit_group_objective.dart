@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -10,14 +11,16 @@ import 'package:groupup/core/providers/edit_group_objective_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AppBarEditGroupObjective extends StatelessWidget with PreferredSizeWidget {
+class AppBarEditGroupObjective extends StatelessWidget
+    with PreferredSizeWidget {
   const AppBarEditGroupObjective({required this.groups});
 
   final GroupModel groups;
 
   @override
   Widget build(BuildContext context) {
-    final editGroupObjectiveProvider = Provider.of<EditGroupObjectiveProvider>(context);
+    final editGroupObjectiveProvider =
+        Provider.of<EditGroupObjectiveProvider>(context);
     final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
@@ -41,9 +44,17 @@ class AppBarEditGroupObjective extends StatelessWidget with PreferredSizeWidget 
               ),
               ButtonCommonStyle(
                 onPressed: () {
-                  if (editGroupObjectiveProvider.groupObjectiveController.text == groups.objective) {
+                  if (editGroupObjectiveProvider
+                          .groupObjectiveController.text ==
+                      groups.objective) {
+                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                        eventName:
+                            'Back to Edit Profile Screen from Edit Group Objective Screen');
                     Navigator.pop(context);
                   } else {
+                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                        eventName:
+                            'Discard Changes from Edit Group Objective Screen');
                     editGroupObjectiveProvider.confirmDiscard(context);
                   }
                 },
@@ -73,12 +84,15 @@ class AppBarEditGroupObjective extends StatelessWidget with PreferredSizeWidget 
                 child: Padding(
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: ButtonCommonStyle(
-                    onPressed: editGroupObjectiveProvider.done(context, groups.objective, groups.id),
+                    onPressed: editGroupObjectiveProvider.done(
+                        context, groups.objective, groups.id),
                     child: StaticText(
                       text: appLocalizations.done,
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
-                      color: editGroupObjectiveProvider.done(context, groups.objective, groups.id) == null
+                      color: editGroupObjectiveProvider.done(
+                                  context, groups.objective, groups.id) ==
+                              null
                           ? kSecondaryColor
                           : Colors.black,
                     ),

@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../core/providers/edit_profile_name_provider.dart';
+import '../../../../../core/providers/mix_panel_provider.dart';
 
 class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
   const AppBarEditProfileName({super.key});
@@ -42,10 +43,15 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
-                    final user = Provider.of<AuthProvider>(context, listen: false).user;
+                    final user =
+                        Provider.of<AuthProvider>(context, listen: false).user;
                     if (nameProvider.profileNameController.text == user?.name) {
+                      Provider.of<MixPanelProvider>(context, listen: false)
+                          .logEvent(eventName: 'Back Button Edit Name');
                       Navigator.pop(context);
                     } else {
+                      Provider.of<MixPanelProvider>(context, listen: false)
+                          .logEvent(eventName: 'Discard Edit Name');
                       nameProvider.confirmDiscard(context);
                     }
                   },

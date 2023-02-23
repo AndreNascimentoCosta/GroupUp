@@ -4,6 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/providers/mix_panel_provider.dart';
 
 class TextFieldModelHome extends StatefulWidget {
   const TextFieldModelHome({
@@ -110,6 +113,8 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
                         color: kSecondaryColor,
                       ),
                       onPressed: () {
+                        Provider.of<MixPanelProvider>(context, listen: false)
+                            .logEvent(eventName: 'Clear Text');
                         widget.controller.clear();
                       },
                     ),

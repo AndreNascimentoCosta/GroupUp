@@ -10,6 +10,8 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../../../core/providers/mix_panel_provider.dart';
+
 class SignUpPhonePageView extends StatefulWidget {
   const SignUpPhonePageView({Key? key}) : super(key: key);
 
@@ -36,6 +38,9 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                     child: phoneProvider.pageIndex != 0
                         ? ButtonCommonStyle(
                             onPressed: () {
+                              Provider.of<MixPanelProvider>(context,
+                                      listen: false)
+                                  .logEvent(eventName: 'Back Button Phone');
                               phoneProvider.controller.previousPage(
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.ease);
@@ -73,10 +78,9 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
           ),
           phoneProvider.pageIndex != 0
               ? const SizedBox()
-              :
-          NextButton(
-            onPressed: phoneProvider.nextPressedPhone(context),
-          ),
+              : NextButton(
+                  onPressed: phoneProvider.nextPressedPhone(context),
+                ),
           const SizedBox(height: kDefaultPadding / 4)
         ],
       ),

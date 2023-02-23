@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -37,6 +38,8 @@ class SavedCardJoinGroupBottomSheet extends StatelessWidget {
     }
     return ButtonCommonStyle(
       onPressed: () {
+        Provider.of<MixPanelProvider>(context, listen: false)
+            .logEvent(eventName: 'Confirm Join Group Paying with Saved Card');
         savedCardConfirmCardJoinGroup(
           context,
           groupCode,

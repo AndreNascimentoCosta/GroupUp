@@ -8,6 +8,9 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/styles/end_date_picker.dart';
 import 'package:groupup/styles/start_date_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/providers/mix_panel_provider.dart';
 
 class DateBottomSheet extends StatelessWidget {
   const DateBottomSheet({
@@ -71,9 +74,11 @@ class DateBottomSheet extends StatelessWidget {
           ),
           const SizedBox(height: Insets.xs),
           TextButton(
-            onPressed: (() {
+            onPressed: () {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Date Bottom Sheet OK');
               Navigator.pop(context);
-            }),
+            },
             child: const MediumBody(text: 'OK', color: kPrimaryColor),
           ),
         ],

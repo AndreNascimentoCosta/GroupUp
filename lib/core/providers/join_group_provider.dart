@@ -13,6 +13,8 @@ import 'package:groupup/screens/saved_cards/saved_cards_join_group_bottom_sheet/
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'mix_panel_provider.dart';
+
 enum JoinGroupErrorType {
   groupCodeEmpty,
   groupCodeInvalid,
@@ -42,6 +44,8 @@ class JoinGroupProvider extends ChangeNotifier {
       return null;
     } else if (pageIndex == 0) {
       return () async {
+        Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+            eventName: 'Check if group code is valid and next button');
         FocusScope.of(context).unfocus();
         final scaffoldMessengerState = ScaffoldMessenger.of(context);
         final appLocalizations = AppLocalizations.of(context);
@@ -99,6 +103,8 @@ class JoinGroupProvider extends ChangeNotifier {
       };
     } else {
       return () async {
+        Provider.of<MixPanelProvider>(context, listen: false)
+            .logEvent(eventName: 'Join group button');
         final navigatorState = Navigator.of(context);
         final stripePaymentProvider =
             Provider.of<StripePaymentProvider>(context, listen: false);

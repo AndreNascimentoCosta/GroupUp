@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -47,7 +48,11 @@ void savedCardConfirmCardCreateGroup(
             text: appLocalizations.no,
             textColor: Colors.red,
             borderColor: Colors.transparent,
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Cancel Create Group Paying with Saved Card');
+              Navigator.of(context).pop();
+            },
             color: Colors.transparent,
             height: 40,
             width: 140,
@@ -56,6 +61,8 @@ void savedCardConfirmCardCreateGroup(
             text: appLocalizations.yes,
             borderColor: kPrimaryColor,
             onPressed: () async {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Create Group Paying with Saved Card');
               final user =
                   Provider.of<AuthProvider>(context, listen: false).user;
               if (user == null) {

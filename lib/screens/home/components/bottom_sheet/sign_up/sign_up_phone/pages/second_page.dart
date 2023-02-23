@@ -9,6 +9,8 @@ import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../../../core/providers/mix_panel_provider.dart';
+
 class SecondPageSignUp extends StatefulWidget {
   const SecondPageSignUp({
     required this.controller,
@@ -63,6 +65,8 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                       if (phoneProvider.start != 0) {
                         return;
                       } else {
+                        Provider.of<MixPanelProvider>(context, listen: false)
+                            .logEvent(eventName: 'Request Code Again');
                         phoneProvider.startTimer();
                         authProvider.phoneLogin(context);
                       }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -41,9 +42,16 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
               ),
               ButtonCommonStyle(
                 onPressed: () {
-                  if (editGroupNameProvider.groupNameController.text == groups.projectName) {
+                  if (editGroupNameProvider.groupNameController.text ==
+                      groups.projectName) {
+                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                        eventName:
+                            'Back to Edit Profile Screen from Edit Group Name Screen');
                     Navigator.pop(context);
                   } else {
+                    Provider.of<MixPanelProvider>(context).logEvent(
+                        eventName:
+                            'Discard Changes from Edit Group Name Screen');
                     editGroupNameProvider.confirmDiscard(context);
                   }
                 },

@@ -4,6 +4,9 @@ import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/providers/mix_panel_provider.dart';
 
 class HeaderBottomSheet extends StatelessWidget {
   const HeaderBottomSheet({
@@ -44,9 +47,11 @@ class HeaderBottomSheet extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: (() {
+            onPressed: () {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Edit Group Name OK');
               Navigator.pop(context);
-            }),
+            },
             child: const MediumBody(
               text: 'OK',
               color: kPrimaryColor,

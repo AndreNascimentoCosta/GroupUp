@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
@@ -13,8 +15,9 @@ import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/l10n/l10n.dart';
-import 'package:groupup/screens/splashscreen/splashscreen.dart';
+import 'package:groupup/screens/home/screens/home.dart';
 import 'package:groupup/styles/theme.dart';
+import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -66,6 +69,15 @@ Future<void> main() async {
             ListenableProvider(
               create: (context) => StripePaymentProvider(),
             ),
+            ListenableProvider(
+              create: (context) => MixPanelProvider(
+                mixpanel: Mixpanel.init(
+                  '88935fffe276a4ba87e683e9f0ba3c63',
+                  trackAutomaticEvents: true,
+                  optOutTrackingDefault: !kReleaseMode,
+                ),
+              ),
+            ),
           ],
           child: MaterialApp(
             title: 'GroupUp',
@@ -75,9 +87,9 @@ Future<void> main() async {
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,  
+              GlobalWidgetsLocalizations.delegate,
             ],
-            home: const SplashScreen(),
+            home: Home(),
           ),
         ),
       ),

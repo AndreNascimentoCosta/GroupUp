@@ -10,6 +10,7 @@ import 'package:screenshot/screenshot.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../widgets/texts/static_text.dart';
+import 'mix_panel_provider.dart';
 
 enum SetPictureType {
   picture1,
@@ -111,6 +112,8 @@ class InstagrammableProvider extends ChangeNotifier {
                 ),
                 ButtonCommonStyle(
                   onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Choose Picture Instagrammable - None');
                     setPicture(picture6, pictureType);
                     Navigator.of(context).pop();
                   },
@@ -154,6 +157,8 @@ class InstagrammableProvider extends ChangeNotifier {
               width: double.infinity,
               child: ButtonCommonStyle(
                 onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Choose Picture Instagrammable - OK');
                   Navigator.of(context).pop();
                 },
                 child: const StaticText(

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -99,6 +100,11 @@ class _HomeState extends State<Home> {
                             height: MediaQuery.of(context).size.height * 0.065),
                         ButtonCommonStyle(
                           onPressed: () {
+                            Provider.of<MixPanelProvider>(context,
+                                    listen: false)
+                                .logEvent(
+                                    eventName:
+                                        'Home Screen - Get Started Button');
                             showModalBottomSheet(
                               isScrollControlled: true,
                               context: context,

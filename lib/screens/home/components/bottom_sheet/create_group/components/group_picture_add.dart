@@ -14,6 +14,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../../core/providers/mix_panel_provider.dart';
+
 class GroupPictureAdd extends StatefulWidget {
   const GroupPictureAdd({super.key});
 
@@ -54,6 +56,8 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
     return ButtonCommonStyle(
       onPressed: () {
+        Provider.of<MixPanelProvider>(context, listen: false)
+            .logEvent(eventName: 'Create Group - Add Picture');
         showModalBottomSheet(
           isScrollControlled: true,
           context: context,
@@ -80,6 +84,11 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                             children: [
                               ButtonCommonStyle(
                                 onPressed: () {
+                                  Provider.of<MixPanelProvider>(context,
+                                          listen: false)
+                                      .logEvent(
+                                          eventName:
+                                              'Create Group - Choose From Gallery');
                                   pickImage(ImageSource.gallery);
                                 },
                                 child: LargeBody(
@@ -90,6 +99,11 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                               const SizedBox(height: Insets.l * 1.75),
                               ButtonCommonStyle(
                                 onPressed: () {
+                                  Provider.of<MixPanelProvider>(context,
+                                          listen: false)
+                                      .logEvent(
+                                          eventName:
+                                              'Create Group - Take Photo');
                                   pickImage(ImageSource.camera);
                                 },
                                 child: LargeBody(
@@ -117,9 +131,14 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
             children: [
               ProfilePictureAdd(
                 onPressedGallery: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(
+                          eventName: 'Create Group - Choose From Gallery');
                   pickImage(ImageSource.gallery);
                 },
                 onPressedCamera: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Create Group - Take Photo');
                   pickImage(ImageSource.camera);
                 },
                 child: Builder(

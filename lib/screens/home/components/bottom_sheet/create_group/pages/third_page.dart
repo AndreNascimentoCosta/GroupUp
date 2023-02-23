@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../../core/providers/mix_panel_provider.dart';
+
 class ThirdPageCreate extends StatelessWidget {
   const ThirdPageCreate({super.key});
 
@@ -56,6 +58,8 @@ class ThirdPageCreate extends StatelessWidget {
               ShareButton(
                 text: createGroupProvider.newGroup.groupCode,
                 onPressed: () async {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Share Group Code');
                   await Share.share(
                     appLocalizations.shareGroupCodeText(
                       createGroupProvider.newGroup.projectName,

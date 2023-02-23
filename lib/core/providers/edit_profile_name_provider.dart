@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../widgets/texts/static_text.dart';
+import 'mix_panel_provider.dart';
 
 class EditProfileNameProvider extends ChangeNotifier {
   final profileNameController = TextEditingController();
@@ -26,6 +27,8 @@ class EditProfileNameProvider extends ChangeNotifier {
     } else {
       return () {
         {
+          Provider.of<MixPanelProvider>(context, listen: false)
+              .logEvent(eventName: 'Update profile name');
           authProvider.updateProfileName(profileNameController.text);
           Navigator.pop(context);
         }
@@ -63,6 +66,8 @@ class EditProfileNameProvider extends ChangeNotifier {
               textColor: Colors.red,
               borderColor: Colors.transparent,
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Discard changes in Edit Profile Name');
                 Navigator.pop(newContext);
                 Navigator.pop(context);
               },
@@ -74,6 +79,8 @@ class EditProfileNameProvider extends ChangeNotifier {
               text: appLocalizations.noKeep,
               borderColor: kPrimaryColor,
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Keep changes in Edit Profile Name');
                 Navigator.of(newContext).pop();
                 FocusScope.of(context).requestFocus();
               },

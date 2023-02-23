@@ -9,6 +9,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../../constants.dart';
+import '../../../../core/providers/mix_panel_provider.dart';
 
 class EditAndHistoryGroupButton extends StatefulWidget {
   const EditAndHistoryGroupButton(
@@ -58,6 +59,8 @@ class _EditAndHistoryGroupButtonState extends State<EditAndHistoryGroupButton> {
                 onPressed: individualGroupProvider.pageIndex == 0
                     ? widget.homeViewModel.switchEdit
                     : () {
+                        Provider.of<MixPanelProvider>(context, listen: false)
+                            .logEvent(eventName: 'View Data History');
                         showModalBottomSheet(
                           isScrollControlled: true,
                           context: context,

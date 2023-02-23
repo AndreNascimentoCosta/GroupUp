@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -140,7 +141,7 @@ class _BodyProfileState extends State<BodyProfile> {
                         return SvgPicture.asset(
                           'assets/icons/profile_picture_add.svg',
                           color: Colors.white,
-                          height:  isSmallScreen ? Insets.l * 2 : Insets.l * 3,
+                          height: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                           width: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                         );
                       },
@@ -170,6 +171,8 @@ class _BodyProfileState extends State<BodyProfile> {
                   const SizedBox(height: kDefaultPadding * 1.25),
                   ButtonCommonStyle(
                     onPressed: () {
+                      Provider.of<MixPanelProvider>(context, listen: false)
+                          .logEvent(eventName: 'Edit Profile Screen');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -182,6 +185,8 @@ class _BodyProfileState extends State<BodyProfile> {
                   const SizedBox(height: kDefaultPadding * 2.5),
                   BodyButtonModel(
                     onPressed: () {
+                      Provider.of<MixPanelProvider>(context, listen: false)
+                          .logEvent(eventName: 'Balance Screen');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -198,6 +203,8 @@ class _BodyProfileState extends State<BodyProfile> {
                   const SizedBox(height: kDefaultPadding * 2),
                   BodyButtonModel(
                     onPressed: () {
+                      Provider.of<MixPanelProvider>(context, listen: false)
+                          .logEvent(eventName: 'Created Groups Screen');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -211,6 +218,8 @@ class _BodyProfileState extends State<BodyProfile> {
                   const SizedBox(height: kDefaultPadding * 2),
                   BodyButtonModel(
                     onPressed: () {
+                      Provider.of<MixPanelProvider>(context, listen: false)
+                          .logEvent(eventName: 'Saved Cards Screen');
                       Navigator.push(
                         context,
                         MaterialPageRoute(

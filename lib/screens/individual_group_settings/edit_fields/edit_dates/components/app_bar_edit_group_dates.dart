@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -41,6 +42,9 @@ class AppBarEditGroupDates extends StatelessWidget with PreferredSizeWidget {
               ),
               ButtonCommonStyle(
                 onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                      eventName:
+                          'Back to Edit Profile Screen from Edit Group Dates Screen');
                   editGroupDatesProvider.confirmDiscard(context);
                 },
                 child: Padding(

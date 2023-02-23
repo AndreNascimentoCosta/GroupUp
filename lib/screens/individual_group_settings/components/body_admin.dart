@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -47,6 +48,8 @@ class BodyAdminSettings extends StatelessWidget {
           children: [
             ButtonCommonStyle(
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Report Participant Screen');
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -61,6 +64,8 @@ class BodyAdminSettings extends StatelessWidget {
             SizedBox(height: screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Edit Group Name');
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -75,6 +80,8 @@ class BodyAdminSettings extends StatelessWidget {
             SizedBox(height: screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Edit Group Objective');
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -89,6 +96,8 @@ class BodyAdminSettings extends StatelessWidget {
             SizedBox(height: screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Edit Group Dates');
                 if (participantsData
                         .any((element) => element.inputData.isNotEmpty) ==
                     true) {
@@ -118,6 +127,9 @@ class BodyAdminSettings extends StatelessWidget {
                         actions: [
                           ButtonCommonStyle(
                             onPressed: () {
+                              Provider.of<MixPanelProvider>(context,
+                                      listen: false)
+                                  .logEvent(eventName: "Can't Change Dates");
                               Navigator.of(context).pop();
                             },
                             child: const StaticText(
@@ -146,6 +158,8 @@ class BodyAdminSettings extends StatelessWidget {
             SizedBox(height: screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Edit No Participants');
                 if (participantsData
                         .any((element) => element.inputData.isNotEmpty) ==
                     true) {
@@ -175,6 +189,11 @@ class BodyAdminSettings extends StatelessWidget {
                         actions: [
                           ButtonCommonStyle(
                             onPressed: () {
+                              Provider.of<MixPanelProvider>(
+                                context,
+                                listen: false,
+                              ).logEvent(
+                                  eventName: "Can't Edit No Participants");
                               Navigator.of(context).pop();
                             },
                             child: const StaticText(
@@ -230,6 +249,8 @@ class BodyAdminSettings extends StatelessWidget {
                 ShareButton(
                   text: groups.groupCode,
                   onPressed: () async {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Share Group Code');
                     await Share.share(
                       appLocalizations.shareGroupCodeText(
                         groups.projectName,
@@ -249,6 +270,8 @@ class BodyAdminSettings extends StatelessWidget {
                         : screenHeight * 0.175),
             OtherOptions(
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Exit Group');
                 createGroupProvider.confirmExitGroup(
                   context,
                   groups.id,

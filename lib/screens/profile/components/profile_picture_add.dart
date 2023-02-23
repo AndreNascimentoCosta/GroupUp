@@ -19,9 +19,10 @@ class ProfilePictureShow extends StatelessWidget {
         alignment: AlignmentDirectional.topCenter,
         children: [
           CircleAvatar(
-              radius: MediaQuery.of(context).size.height * 0.06,
-              backgroundColor: const Color(0XFFE1E1E1),
-              child: child),
+            radius: MediaQuery.of(context).size.height * 0.06,
+            backgroundColor: const Color(0XFFE1E1E1),
+            child: child,
+          ),
         ],
       ),
     );

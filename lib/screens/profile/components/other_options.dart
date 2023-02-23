@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -24,6 +25,8 @@ class OtherOptionsProfile extends StatelessWidget {
         children: [
           ButtonCommonStyle(
             onPressed: () async {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Report a Problem');
               final Uri emailLaunchUri = Uri(
                 scheme: 'mailto',
                 path: 'groupupapp@outlook.com',
@@ -38,6 +41,8 @@ class OtherOptionsProfile extends StatelessWidget {
           const SizedBox(height: Insets.l * 1.5),
           ButtonCommonStyle(
             onPressed: () async {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Privacy Policy');
               Navigator.pop(context);
               final url = Uri.parse('http://groupup.rf.gd/privacy-policy.html');
               if (await canLaunchUrl(url)) {
@@ -57,6 +62,8 @@ class OtherOptionsProfile extends StatelessWidget {
           const SizedBox(height: Insets.l * 1.5),
           ButtonCommonStyle(
             onPressed: () {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Confirm Delete Account');
               Navigator.pop(context);
               confirmDelete(context);
             },
@@ -69,6 +76,8 @@ class OtherOptionsProfile extends StatelessWidget {
           const SizedBox(height: Insets.l * 1.5),
           ButtonCommonStyle(
             onPressed: () {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Logout');
               Navigator.pop(context);
               authProvider.signOut();
             },

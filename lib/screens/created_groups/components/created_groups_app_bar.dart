@@ -41,6 +41,7 @@ class AppBarCreatedGroups extends StatelessWidget with PreferredSizeWidget {
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
+
                     Navigator.pop(
                       context,
                       MaterialPageRoute(

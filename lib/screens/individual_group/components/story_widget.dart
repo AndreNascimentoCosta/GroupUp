@@ -12,6 +12,8 @@ import 'package:provider/provider.dart';
 import 'package:story/story.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../core/providers/mix_panel_provider.dart';
+
 class StoryWidget extends StatelessWidget {
   const StoryWidget({
     required this.inputDatas,
@@ -95,7 +97,8 @@ class StoryWidget extends StatelessWidget {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(Insets.l * 2),
                           child: CachedNetworkImage(
-                            imageUrl: 'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-bcf2-89b5e5b93bad',
+                            imageUrl:
+                                'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-bcf2-89b5e5b93bad',
                             fadeInDuration: const Duration(milliseconds: 100),
                             height: Insets.l * 2,
                             width: Insets.l * 2,
@@ -174,6 +177,8 @@ class StoryWidget extends StatelessWidget {
                       heroTag: 'btn7',
                       highlightElevation: 0,
                       onPressed: () {
+                        Provider.of<MixPanelProvider>(context, listen: false)
+                            .logEvent(eventName: 'Data invalidated');
                         Provider.of<AddInputProvider>(
                           context,
                           listen: false,
@@ -251,6 +256,8 @@ class StoryWidget extends StatelessWidget {
                       heroTag: 'btn8',
                       highlightElevation: 0,
                       onPressed: () {
+                        Provider.of<MixPanelProvider>(context, listen: false)
+                            .logEvent(eventName: 'Data validated');
                         Provider.of<AddInputProvider>(
                           context,
                           listen: false,

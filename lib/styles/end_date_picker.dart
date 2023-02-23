@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:provider/provider.dart';
 
 class EndDatePicker extends StatefulWidget {
   const EndDatePicker({required this.groups});
@@ -19,13 +21,19 @@ class _EndDatePickerState extends State<EndDatePicker> {
   Widget build(BuildContext context) {
     return ButtonCommonStyle(
       onPressed: () async {
+        Provider.of<MixPanelProvider>(context, listen: false)
+            .logEvent(eventName: 'End Date Picker');
         DateTime? newDate = await showDatePicker(
           builder: (context, child) {
             return Theme(
               data: ThemeData.light().copyWith(
                 dialogTheme: const DialogTheme(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)))),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15),
+                    ),
+                  ),
+                ),
                 primaryColor: kPrimaryColor,
                 colorScheme: const ColorScheme.light(primary: kPrimaryColor),
                 buttonTheme:
@@ -41,9 +49,11 @@ class _EndDatePickerState extends State<EndDatePicker> {
         );
         if (newDate == null) return;
 
-        setState(() {
-          widget.groups.endDate = newDate;
-        });
+        setState(
+          () {
+            widget.groups.endDate = newDate;
+          },
+        );
       },
       child: Container(
         height: 45,
@@ -57,7 +67,7 @@ class _EndDatePickerState extends State<EndDatePicker> {
           children: [
             const SizedBox(width: Insets.s),
             SvgPicture.asset(
-                'assets/icons/date_switch.svg',
+              'assets/icons/date_switch.svg',
               height: Insets.l,
               width: Insets.l,
               color: kSecondaryColor,

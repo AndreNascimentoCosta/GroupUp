@@ -12,6 +12,8 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../core/providers/mix_panel_provider.dart';
+
 class JoinPageView extends StatefulWidget {
   const JoinPageView({super.key});
 
@@ -40,6 +42,9 @@ class _JoinPageViewState extends State<JoinPageView> {
                     child: joinGroupProvider.pageIndex != 0
                         ? ButtonCommonStyle(
                             onPressed: () {
+                              Provider.of<MixPanelProvider>(context,
+                                      listen: false)
+                                  .logEvent(eventName: 'Back Button Join');
                               joinGroupProvider.controller.previousPage(
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.ease);

@@ -4,7 +4,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/floating_buttons/add_input_group_button.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/calendar.dart';
-import 'package:groupup/screens/individual_group/components/floating_buttons/calenda_screen_button.dart';
+import 'package:groupup/screens/individual_group/components/floating_buttons/calendar_screen_button.dart';
 import 'package:groupup/screens/individual_group/components/app_bar.dart';
 import 'package:groupup/screens/individual_group/components/body.dart';
 import 'package:groupup/screens/individual_group/components/floating_buttons/edit_group.dart';

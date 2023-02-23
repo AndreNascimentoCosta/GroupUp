@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/app_bar_instagrammable.dart';
@@ -64,6 +65,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                           : screenWidth * 0.165,
               child: ButtonCommonStyle(
                 onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Instagrammable - Picture 1');
                   instagrammableProvider.choosePicture(
                       context, SetPictureType.picture1);
                 },
@@ -126,6 +129,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                           : screenWidth * 0.1415,
               child: ButtonCommonStyle(
                 onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Instagrammable - Picture 2');
                   Provider.of<InstagrammableProvider>(context, listen: false)
                       .choosePicture(context, SetPictureType.picture2);
                 },
@@ -189,6 +194,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                           : screenWidth * 0.1125,
               child: ButtonCommonStyle(
                 onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Instagrammable - Picture 3');
                   Provider.of<InstagrammableProvider>(context, listen: false)
                       .choosePicture(context, SetPictureType.picture3);
                 },
@@ -249,6 +256,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                           : screenWidth * 0.103,
               child: ButtonCommonStyle(
                 onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Instagrammable - Picture 4');
                   Provider.of<InstagrammableProvider>(context, listen: false)
                       .choosePicture(context, SetPictureType.picture4);
                 },
@@ -307,6 +316,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                       : screenWidth * 0.43,
               child: ButtonCommonStyle(
                 onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Instagrammable - Choose Picture 5');
                   Provider.of<InstagrammableProvider>(context, listen: false)
                       .choosePicture(context, SetPictureType.picture5);
                 },

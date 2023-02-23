@@ -12,6 +12,8 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../core/providers/mix_panel_provider.dart';
+
 void continueCreateConnectedAccountDialog(BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
   final appLocalizations = AppLocalizations.of(context);
@@ -48,6 +50,8 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
               width: double.infinity,
               child: ButtonCommonStyle(
                 onPressed: () async {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Resume Account Creation');
                   Navigator.of(context).pop();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -92,6 +96,8 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
               width: double.infinity,
               child: ButtonCommonStyle(
                 onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Confirm Delete Connected Account');
                   Navigator.of(context).pop();
                   showCupertinoDialog(
                     context: context,
@@ -120,7 +126,14 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                             text: appLocalizations.no,
                             textColor: Colors.red,
                             borderColor: Colors.transparent,
-                            onPressed: () => Navigator.of(context).pop(),
+                            onPressed: () {
+                              Provider.of<MixPanelProvider>(context,
+                                      listen: false)
+                                  .logEvent(
+                                      eventName:
+                                          'Cancel Delete Connected Account');
+                              Navigator.of(context).pop();
+                            },
                             color: Colors.transparent,
                             height: 40,
                             width: 140,
@@ -129,11 +142,16 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                             text: appLocalizations.yes,
                             borderColor: kPrimaryColor,
                             onPressed: () async {
+                              Provider.of<MixPanelProvider>(context,
+                                      listen: false)
+                                  .logEvent(
+                                      eventName: 'Delete Connected Account');
                               Navigator.of(newContext).pop();
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                      appLocalizations.connectedAccountDeleted),
+                                    appLocalizations.connectedAccountDeleted,
+                                  ),
                                   duration: const Duration(seconds: 2),
                                 ),
                               );
@@ -193,7 +211,11 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
             text: appLocalizations.cancel,
             textColor: Colors.red,
             borderColor: Colors.transparent,
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () {
+              Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName: 'Cancel Continue Create Connected Account');
+              Navigator.of(context).pop();
+            },
             color: Colors.transparent,
             height: 40,
             width: 140,

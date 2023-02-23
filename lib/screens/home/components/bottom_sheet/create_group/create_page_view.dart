@@ -14,6 +14,8 @@ import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../../core/providers/mix_panel_provider.dart';
+
 class CreatePageView extends StatefulWidget {
   const CreatePageView({super.key});
 
@@ -44,6 +46,10 @@ class _CreatePageViewState extends State<CreatePageView> {
                             createGroupProvider.pageIndex != 3
                         ? ButtonCommonStyle(
                             onPressed: () {
+                              Provider.of<MixPanelProvider>(context,
+                                      listen: false)
+                                  .logEvent(
+                                      eventName: 'Back Button Create Group');
                               createGroupProvider.controller.previousPage(
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.ease);

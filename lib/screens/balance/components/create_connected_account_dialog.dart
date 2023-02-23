@@ -10,6 +10,8 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../core/providers/mix_panel_provider.dart';
+
 void createConnectedAccount(BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
   final appLocalizations = AppLocalizations.of(context);
@@ -42,7 +44,11 @@ void createConnectedAccount(BuildContext context) {
             text: appLocalizations.cancel,
             textColor: Colors.red,
             borderColor: Colors.transparent,
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Cancel Create connected account');
+              Navigator.of(context).pop();
+            },
             color: Colors.transparent,
             height: 40,
             width: 140,
@@ -52,6 +58,8 @@ void createConnectedAccount(BuildContext context) {
             borderColor: kPrimaryColor,
             color: kPrimaryColor,
             onPressed: () async {
+              Provider.of<MixPanelProvider>(context, listen: false)
+                  .logEvent(eventName: 'Create connected account');
               {
                 final navigatorState = Navigator.of(context);
                 try {

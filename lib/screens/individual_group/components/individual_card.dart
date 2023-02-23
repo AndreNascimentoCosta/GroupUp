@@ -19,6 +19,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/providers/auth_provider.dart';
+import '../../../core/providers/mix_panel_provider.dart';
 
 class IndividualGroupCard extends StatefulWidget {
   const IndividualGroupCard({
@@ -71,6 +72,10 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                     SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                     ButtonCommonStyle(
                       onPressed: () {
+                        Provider.of<MixPanelProvider>(context, listen: false)
+                            .logEvent(
+                                eventName:
+                                    'Individual Group - Profile Picture');
                         if (widget.participant.hasStory) {
                           Navigator.of(context).push(
                             CupertinoPageRoute(

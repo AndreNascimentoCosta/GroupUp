@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/widgets/texts/title.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/balance/components/button.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
@@ -15,6 +14,8 @@ import 'package:groupup/screens/balance/components/create_connected_account_dial
 import 'package:groupup/screens/balance/components/payout_or_connected_account_options_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../core/providers/mix_panel_provider.dart';
 
 class HeaderBalance extends StatelessWidget {
   const HeaderBalance({super.key});
@@ -59,6 +60,8 @@ class HeaderBalance extends StatelessWidget {
                       SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                       Button(
                         onPressed: () async {
+                          Provider.of<MixPanelProvider>(context, listen: false)
+                              .logEvent(eventName: 'Balance Options');
                           final authProvider =
                               Provider.of<AuthProvider>(context, listen: false);
                           if (authProvider.user == null) return;

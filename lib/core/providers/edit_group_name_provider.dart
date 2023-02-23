@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
@@ -55,6 +56,8 @@ class EditGroupNameProvider extends ChangeNotifier {
             context,
             listen: false,
           );
+          Provider.of<MixPanelProvider>(context, listen: false)
+              .logEvent(eventName: 'Edit Group Name');
           Navigator.pop(context);
           await editGroupName(groupNameController.text, groupId);
           individualGroupProvider.getGroup(groupId);
@@ -93,6 +96,8 @@ class EditGroupNameProvider extends ChangeNotifier {
               textColor: Colors.red,
               borderColor: Colors.transparent,
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Discard Changes in Edit Group Name');
                 Navigator.pop(newContext);
                 Navigator.pop(context);
               },
@@ -104,6 +109,8 @@ class EditGroupNameProvider extends ChangeNotifier {
               text: appLocalizations.noKeep,
               borderColor: kPrimaryColor,
               onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Keep Changes in Edit Group Name');
                 Navigator.of(newContext).pop();
                 FocusScope.of(context).requestFocus();
               },
