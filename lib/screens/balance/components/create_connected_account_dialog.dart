@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +85,9 @@ void createConnectedAccount(BuildContext context) {
                   if (await canLaunchUrl(url)) {
                     await launchUrl(
                       url,
-                      mode: LaunchMode.inAppWebView,
+                      mode: Platform.isAndroid
+                          ? LaunchMode.externalApplication
+                          : LaunchMode.inAppWebView,
                     );
                   } else {
                     throw 'Could not launch $url';
