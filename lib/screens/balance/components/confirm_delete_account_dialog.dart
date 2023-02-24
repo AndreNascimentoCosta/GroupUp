@@ -1,4 +1,4 @@
-import 'package:cloud_functions/cloud_functions.dart';
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
@@ -12,11 +12,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/providers/mix_panel_provider.dart';
 
-void confirmDeleteAccountDialog(BuildContext context) {
-  final authProvider = Provider.of<AuthProvider>(context, listen: false);
-  final appLocalizations = AppLocalizations.of(context);
+void confirmDeleteAccountDialog(BuildContext rootContext) {
+  final authProvider = Provider.of<AuthProvider>(rootContext, listen: false);
+  final appLocalizations = AppLocalizations.of(rootContext);
   showCupertinoDialog(
-    context: context,
+    context: rootContext,
     builder: (BuildContext newContext) {
       return AlertDialog(
         title: StaticText(
@@ -42,7 +42,7 @@ void confirmDeleteAccountDialog(BuildContext context) {
             textColor: Colors.red,
             borderColor: Colors.transparent,
             onPressed: () {
-              Provider.of<MixPanelProvider>(context, listen: false)
+              Provider.of<MixPanelProvider>(newContext, listen: false)
                   .logEvent(eventName: 'Cancel Delete Connected Account');
               Navigator.of(newContext).pop();
             },
@@ -54,34 +54,34 @@ void confirmDeleteAccountDialog(BuildContext context) {
             text: appLocalizations.yes,
             borderColor: kPrimaryColor,
             onPressed: () async {
-              Provider.of<MixPanelProvider>(context, listen: false)
+              Provider.of<MixPanelProvider>(newContext, listen: false)
                   .logEvent(eventName: 'Delete Connected Account');
-              Navigator.of(context).pop();
-              ScaffoldMessenger.of(context).showSnackBar(
+              // try {
+              //   await FirebaseFunctions.instance
+              //       .httpsCallable('DeleteAccount')
+              //       .call(
+              //     {
+              //       'accountId': authProvider.user!.stripeAccountId,
+              //     },
+              //   );
+              // } on FirebaseFunctionsException catch (e) {
+              //   // ignore: avoid_print
+              //   print(e.message);
+              // }
+              await Provider.of<StripePaymentProvider>(newContext,
+                      listen: false)
+                  .deleteConnectedAccount(
+                newContext,
+                authProvider.user!.stripeAccountId,
+              );
+              await authProvider.getUser();
+              Navigator.of(newContext).pop();
+              ScaffoldMessenger.of(rootContext).showSnackBar(
                 SnackBar(
                   content: Text(appLocalizations.connectedAccountDeleted),
                   duration: const Duration(seconds: 2),
                 ),
               );
-              try {
-                await FirebaseFunctions.instance
-                    .httpsCallable('DeleteAccount')
-                    .call(
-                  {
-                    'accountId': authProvider.user!.stripeAccountId,
-                  },
-                );
-              } on FirebaseFunctionsException catch (e) {
-                // ignore: avoid_print
-                print(e.message);
-              }
-              // ignore: use_build_context_synchronously
-              await Provider.of<StripePaymentProvider>(context, listen: false)
-                  .deleteConnectedAccount(
-                context,
-                authProvider.user!.stripeAccountId,
-              );
-              authProvider.getUser();
             },
             height: 40,
             width: 140,

@@ -41,7 +41,7 @@ void confirmLoginToAccountDialog(BuildContext context) {
             textColor: Colors.red,
             borderColor: Colors.transparent,
             onPressed: () {
-              Provider.of<MixPanelProvider>(context, listen: false)
+              Provider.of<MixPanelProvider>(newContext, listen: false)
                   .logEvent(eventName: 'Cancel Login to Account');
               Navigator.of(newContext).pop();
             },
@@ -53,10 +53,10 @@ void confirmLoginToAccountDialog(BuildContext context) {
             text: appLocalizations.yes,
             borderColor: kPrimaryColor,
             onPressed: () async {
-              Provider.of<MixPanelProvider>(context, listen: false)
+              Provider.of<MixPanelProvider>(newContext, listen: false)
                   .logEvent(eventName: 'Login to Account');
-              Navigator.of(context).pop();
-              ScaffoldMessenger.of(context).showSnackBar(
+              Navigator.of(newContext).pop();
+              ScaffoldMessenger.of(newContext).showSnackBar(
                 SnackBar(
                   content: Text(appLocalizations.redirecting),
                   duration: const Duration(milliseconds: 500),
