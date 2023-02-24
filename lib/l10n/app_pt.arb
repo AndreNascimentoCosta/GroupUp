@@ -55,7 +55,7 @@
     "search": "Buscar",
     "feeGreaterThan": "Taxa deve ser maior que {minValueCurrencies}",
     "groupFee": "Taxa do grupo",
-    "groupFeeDescription": "1. Cada participante terá que pagar a taxa e a soma total será usada como a recompensa do grupo. \n2. Se a taxa for 0, então não terá recompensa. \n3. A taxa não é reembolsável.",
+    "groupFeeDescription": "1. No momento, a taxa pode apenas ser paga em real brasileiro, então certifique-se de que você pode pagar nessa moeda. \n2. A taxa pode ser 0 e não haverá recompensa no grupo. \n3. Cada participante terá que pagar a taxa e a soma total será usada como a recompensa do grupo. \n4. A taxa não é reembolsável.",
     "maxParticipants": "50 participantes no máximo",
     "noParticipants": "Número de participantes",
     "enterNumber": "Digite um número",
@@ -157,5 +157,6 @@
     "expDate": "Data de val.",
     "confirmCard": "Tem certeza de que deseja pagar com \neste cartão?",
     "startEndDate": "Data de Início - Fim",
-    "paymentInterrupted": "Pagamento interrompido, tente de novo"
+    "paymentInterrupted": "Pagamento interrompido, tente de novo",
+    "important": "Importante"
 }

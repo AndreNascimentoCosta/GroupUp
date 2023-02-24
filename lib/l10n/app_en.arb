@@ -238,7 +238,7 @@
     "@groupFee": {
         "description": "Group fee"
     },
-    "groupFeeDescription": "1. Each participant will pay the fee and the total amount will be used as the group reward. \n2. If fee is set to 0, then there will be no reward. \n3. The fee is non-refundable.",
+    "groupFeeDescription": "1. For the moment, the fee can only be paid in Brazilian Real, so make sure you can pay in that currency. \n2. The fee can be set to 0 and there will be no group reward. \n3. Each participant will pay the fee and the total amount will be used as the group reward. \n4. The fee is non-refundable.",
     "@groupFeeDescription": {
         "description": "Group fee description"
     },
@@ -676,5 +676,9 @@
     "paymentInterrupted": "Payment interrupted, try again",
     "@paymentInterrupted": {
         "description": "Payment interrupted"
+    },
+    "important": "Important",
+    "@important": {
+        "description": "Important"
     }
 }

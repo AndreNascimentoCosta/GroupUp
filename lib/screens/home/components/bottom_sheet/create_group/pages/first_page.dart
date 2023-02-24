@@ -264,7 +264,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                       ButtonCommonStyle(
                         onPressed: () {
                           Provider.of<MixPanelProvider>(context, listen: false)
-                            .logEvent(eventName: 'Currency Picker');
+                              .logEvent(eventName: 'Currency Picker');
                           showCurrencyPicker(
                             context: context,
                             showFlag: true,
@@ -494,9 +494,17 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
               ),
-              child: StaticText(
-                text: appLocalizations.groupFeeDescription,
-                maxLines: 4,
+              child: Column(
+                children: [
+                  StaticText(
+                    text: appLocalizations.important.toUpperCase(),
+                    fontFamily: 'Montserrat-SemiBold',
+                  ),
+                  StaticText(
+                    text: appLocalizations.groupFeeDescription,
+                    maxLines: 8,
+                  ),
+                ],
               ),
             )
           ],
