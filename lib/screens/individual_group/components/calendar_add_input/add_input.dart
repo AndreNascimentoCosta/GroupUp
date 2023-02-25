@@ -38,6 +38,7 @@ class _AddInputState extends State<AddInput> {
       Navigator.pop(context);
       final addInputProvider =
           Provider.of<AddInputProvider>(context, listen: false);
+      addInputProvider.isLoading = true;
       try {
         final story = await ImagePicker().pickImage(
           source: source,
@@ -54,6 +55,7 @@ class _AddInputState extends State<AddInput> {
         Navigator.pop(context);
         if (groupId == null) return;
         await addInputProvider.addInput(context, groupId);
+        addInputProvider.isLoading = false;
       } on PlatformException catch (e) {
         if (e.message == 'The user did not allow photo access.') {
           ScaffoldMessenger.of(context).showSnackBar(
