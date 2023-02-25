@@ -223,19 +223,17 @@ class BodyAdminSettings extends StatelessWidget {
               ),
             ),
             SizedBox(height: screenHeight * 0.035),
-            SizedBox(height: screenHeight * 0.035),
             BodyContentSwitch(
               groups: groups,
               text: appLocalizations.everyoneCanEditGroupPic,
               boolValue: groups.allowEditImage,
             ),
-            SizedBox(height: screenHeight * 0.035),
             SizedBox(
               height: isVerySmallScreen
-                  ? screenHeight * 0.06
+                  ? screenHeight * 0.17
                   : isSmallScreen
-                      ? screenHeight * 0.085
-                      : screenHeight * 0.135,
+                      ? screenHeight * 0.25
+                      : screenHeight * 0.315,
             ),
             Row(
               children: [
@@ -263,11 +261,8 @@ class BodyAdminSettings extends StatelessWidget {
               ],
             ),
             SizedBox(
-                height: isVerySmallScreen
-                    ? screenHeight * 0.09
-                    : isSmallScreen
-                        ? screenHeight * 0.14
-                        : screenHeight * 0.175),
+              height: screenHeight * 0.05,
+            ),
             OtherOptions(
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)

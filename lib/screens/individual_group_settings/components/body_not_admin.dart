@@ -24,6 +24,10 @@ class BodyNotAdminSettings extends StatelessWidget {
     final createGroupProvider =
         Provider.of<CreateGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     return Padding(
       padding: const EdgeInsets.only(
         top: kDefaultPadding,
@@ -47,10 +51,15 @@ class BodyNotAdminSettings extends StatelessWidget {
                   ),
                 );
               },
-              child:
-                  BodyContentArrow(name: appLocalizations.reportParticipant),
+              child: BodyContentArrow(name: appLocalizations.reportParticipant),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.625),
+            SizedBox(
+              height: isVerySmallScreen
+                  ? screenHeight * 0.575
+                  : isSmallScreen
+                      ? screenHeight * 0.625
+                      : screenHeight * 0.66,
+            ),
             Row(
               children: [
                 SizedBox(
@@ -73,7 +82,7 @@ class BodyNotAdminSettings extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.075),
+            SizedBox(height: screenHeight * 0.05),
             OtherOptions(
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
