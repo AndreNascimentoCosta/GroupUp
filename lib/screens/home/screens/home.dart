@@ -32,7 +32,8 @@ class _HomeState extends State<Home> {
             return GroupsScreen(homeViewModel: HomeViewModel());
           } else if (snapshot.hasError) {
             return Center(
-                child: Header(text: AppLocalizations.of(context).generalError));
+              child: Header(text: AppLocalizations.of(context).generalError),
+            );
           } else {
             return SafeArea(
               child: Padding(
@@ -49,7 +50,7 @@ class _HomeState extends State<Home> {
                           text: 'GroupUp',
                           textAlign: TextAlign.center,
                           fontSize: 34,
-                          fontFamily: 'Montserrat-SemiBold',
+                          fontFamily: 'Montserrat-Bold',
                         ),
                         SizedBox(
                             height: MediaQuery.of(context).size.height * 0.1),
