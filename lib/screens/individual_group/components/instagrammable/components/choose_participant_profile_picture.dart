@@ -83,10 +83,10 @@ class _ChooseParticipantProfilePictureState
                     ),
               SizedBox(
                 width: isVerySmallScreen
-                    ? Insets.l * 7.5
+                    ? Insets.l * 6
                     : isSmallScreen
-                        ? Insets.l * 10
-                        : Insets.l * 12,
+                        ? Insets.l * 8
+                        : Insets.l * 10,
                 child: authProvider.user != null
                     ? authProvider.user!.id == widget.participant.uid
                         ? Padding(
