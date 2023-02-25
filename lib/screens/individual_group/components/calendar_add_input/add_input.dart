@@ -55,8 +55,25 @@ class _AddInputState extends State<AddInput> {
         if (groupId == null) return;
         await addInputProvider.addInput(context, groupId);
       } on PlatformException catch (e) {
+        if (e.message == 'The user did not allow photo access.') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('You need to allow photo access'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Failed to pick image'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
+        addInputProvider.isLoading = false;
+        Navigator.of(context).pop();
         // ignore: avoid_print
-        print('Failed to pick image: $e');
+        print('Failed to pick image: ${e.message}');
       }
     }
 
@@ -166,6 +183,7 @@ class _AddInputState extends State<AddInput> {
                         pickImage(ImageSource.camera);
                       }, group.id);
                     } catch (e) {
+                      Navigator.of(context).pop();
                       addInputProvider.isLoading = false;
                     }
                   },
