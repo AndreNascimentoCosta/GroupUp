@@ -162,7 +162,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                       ? screenWidth * 0.05
                       : isSmallScreen
                           ? screenWidth * 0.075
-                          : screenWidth * 0.13,
+                          : screenWidth * 0.11,
                   thickness: 1,
                   color: kSecondaryColor,
                 ),
@@ -223,7 +223,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                       ? screenWidth * 0.06
                       : isSmallScreen
                           ? screenWidth * 0.075
-                          : screenWidth * 0.13,
+                          : screenWidth * 0.11,
                   thickness: 1,
                   color: kSecondaryColor,
                 ),
