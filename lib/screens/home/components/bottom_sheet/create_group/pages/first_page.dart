@@ -189,6 +189,25 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(height: MediaQuery.of(context).size.height * 0.035),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
+              child: Column(
+                children: [
+                  StaticText(
+                    text: appLocalizations.important.toUpperCase(),
+                    fontFamily: 'Montserrat-SemiBold',
+                  ),
+                  const SizedBox(height: 10),
+                  StaticText(
+                    text: appLocalizations.groupFeeDescription,
+                    maxLines: 8,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             TextFieldModelHome(
               focusNode: node1,
               controller: createGroupProvider.controllerProjectName,
@@ -490,23 +509,6 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               ),
             ),
             const SizedBox(height: Insets.s),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              child: Column(
-                children: [
-                  StaticText(
-                    text: appLocalizations.important.toUpperCase(),
-                    fontFamily: 'Montserrat-SemiBold',
-                  ),
-                  StaticText(
-                    text: appLocalizations.groupFeeDescription,
-                    maxLines: 8,
-                  ),
-                ],
-              ),
-            )
           ],
         ),
       ),
