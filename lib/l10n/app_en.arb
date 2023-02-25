@@ -680,5 +680,13 @@
     "important": "Important",
     "@important": {
         "description": "Important"
+    },
+    "allowPhotoAccess": "You need to allow photo access",
+    "@allowPhotoAccess": {
+        "description": "Allow photo access"
+    },
+    "failedPickImage": "Failed to pick image",
+    "@failedPickImage": {
+        "description": "Failed to pick image"
     }
 }

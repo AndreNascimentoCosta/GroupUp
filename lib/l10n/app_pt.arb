@@ -158,5 +158,7 @@
     "confirmCard": "Tem certeza de que deseja pagar com \neste cartão?",
     "startEndDate": "Data de Início - Fim",
     "paymentInterrupted": "Pagamento interrompido, tente de novo",
-    "important": "Importante"
+    "important": "Importante",
+    "allowPhotoAccess": "Você precisa permitir o acesso às fotos",
+    "failedPickImage": "Falha ao escolher a imagem"
 }
