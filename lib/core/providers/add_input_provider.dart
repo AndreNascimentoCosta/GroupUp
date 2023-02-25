@@ -96,7 +96,7 @@ class AddInputProvider extends ChangeNotifier {
                             children: [
                               SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.17,
+                                    MediaQuery.of(context).size.height * 0.185,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       vertical: kDefaultPadding * 1.75),

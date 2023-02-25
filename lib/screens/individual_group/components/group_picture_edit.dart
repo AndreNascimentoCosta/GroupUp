@@ -41,7 +41,7 @@ class GroupPictureEdit extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.17,
+                        height: MediaQuery.of(context).size.height * 0.185,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: kDefaultPadding * 1.75),
