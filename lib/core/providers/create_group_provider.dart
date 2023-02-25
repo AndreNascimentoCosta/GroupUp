@@ -329,6 +329,7 @@ class CreateGroupProvider extends ChangeNotifier {
                   isPaying = false;
                   notifyListeners();
                 } else {
+                  Navigator.of(context).pop();
                   await createGroup(context);
                 }
               },
