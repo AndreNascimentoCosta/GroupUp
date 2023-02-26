@@ -218,7 +218,7 @@ class BodyAdminSettings extends StatelessWidget {
                 }
               },
               child: BodyContentArrow(
-                name: appLocalizations.noParticipants,
+                name: appLocalizations.numberParticipants,
                 maxLine: 2,
               ),
             ),
