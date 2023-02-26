@@ -13,7 +13,7 @@ class EditGroupDatesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => EditGroupDatesProvider(groups.projectName),
+      create: (context) => EditGroupDatesProvider(),
       child: WillPopScope(
         onWillPop: () async {
           return false;

@@ -16,13 +16,6 @@ class EditGroupDatesProvider extends ChangeNotifier {
   final controllerStartDate = TextEditingController();
   final controllerEndDate = TextEditingController();
 
-  EditGroupDatesProvider(String initialText) {
-    controllerStartDate.addListener(notifyListeners);
-    controllerStartDate.text = initialText;
-    controllerEndDate.addListener(notifyListeners);
-    controllerEndDate.text = initialText;
-  }
-
   final newGroup = GroupModel.empty();
 
   Future<void> editGroupDates(String groupId) async {
@@ -40,14 +33,18 @@ class EditGroupDatesProvider extends ChangeNotifier {
           await FirebaseFirestore.instance
               .collection('groups')
               .doc(groupId)
-              .update({'startDate': newGroup.startDate});
+              .update(
+            {'startDate': newGroup.startDate},
+          );
         }
         newGroup.endDate ??= editGroupEndDate;
         if (editGroupEndDate != newGroup.endDate) {
           await FirebaseFirestore.instance
               .collection('groups')
               .doc(groupId)
-              .update({'endDate': newGroup.endDate});
+              .update(
+            {'endDate': newGroup.endDate},
+          );
         }
       }
     }
@@ -104,6 +101,7 @@ class EditGroupDatesProvider extends ChangeNotifier {
               textColor: Colors.red,
               borderColor: Colors.transparent,
               onPressed: () {
+                clean();
                 Navigator.pop(newContext);
                 Navigator.pop(context);
               },
@@ -125,5 +123,10 @@ class EditGroupDatesProvider extends ChangeNotifier {
         );
       },
     );
+  }
+
+  void clean() {
+    controllerStartDate.clear();
+    controllerEndDate.clear();
   }
 }

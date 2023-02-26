@@ -42,10 +42,23 @@ class AppBarEditGroupDates extends StatelessWidget with PreferredSizeWidget {
               ),
               ButtonCommonStyle(
                 onPressed: () {
-                  Provider.of<MixPanelProvider>(context, listen: false).logEvent(
-                      eventName:
-                          'Back to Edit Profile Screen from Edit Group Dates Screen');
-                  editGroupDatesProvider.confirmDiscard(context);
+                  if (editGroupDatesProvider.newGroup.startDate == null) {
+                    if (editGroupDatesProvider.newGroup.endDate == null) {
+                      editGroupDatesProvider.clean();
+                      Provider.of<MixPanelProvider>(context, listen: false)
+                          .logEvent(
+                              eventName:
+                                  'Back to Edit Profile Screen from Edit Group Dates Screen');
+                      Navigator.of(context).pop();
+                    } else {
+                      editGroupDatesProvider.confirmDiscard(context);
+                    }
+                  } else {
+                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                        eventName:
+                            'Discard and Back to Edit Profile Screen from Edit Group Dates Screen');
+                    editGroupDatesProvider.confirmDiscard(context);
+                  }
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(left: kDefaultPadding),
