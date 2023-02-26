@@ -138,12 +138,10 @@ class JoinGroupProvider extends ChangeNotifier {
                   userId,
                 );
                 await joinGroup(context);
-                navigatorState.pop();
-                navigatorState.pop();
+                Navigator.of(context).popUntil((route) => route.isFirst);
               } catch (e) {
                 final appLocalizations = AppLocalizations.of(context);
-                navigatorState.pop();
-                navigatorState.pop();
+                Navigator.of(context).popUntil((route) => route.isFirst);
                 print(e);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
