@@ -119,13 +119,30 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                 Row(
                   children: [
                     StaticText(
-                      text: '${appLocalizations.startEndDate}:',
+                      text: '${appLocalizations.startDate}:',
                       fontSize: TextSize.mBody,
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
                     StaticText(
                       text:
-                          '${createGroupProvider.controllerStartDate.text} - ${createGroupProvider.controllerEndDate.text}',
+                          createGroupProvider.controllerStartDate.text,
+                      maxLines: 2,
+                      fontSize: TextSize.mBody,
+                      color: kSecondaryColor,
+                    ),
+                  ],
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                Row(
+                  children: [
+                    StaticText(
+                      text: '${appLocalizations.endDate}:',
+                      fontSize: TextSize.mBody,
+                    ),
+                    const SizedBox(width: kDefaultPadding / 2),
+                    StaticText(
+                      text:
+                          createGroupProvider.controllerEndDate.text,
                       maxLines: 2,
                       fontSize: TextSize.mBody,
                       color: kSecondaryColor,
