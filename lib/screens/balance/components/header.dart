@@ -24,6 +24,7 @@ class HeaderBalance extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
     final appLocalizations = AppLocalizations.of(context);
+    bool isLoading = false;
     if (user == null) return const SizedBox();
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: FirebaseFirestore.instance
@@ -60,6 +61,7 @@ class HeaderBalance extends StatelessWidget {
                       SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                       Button(
                         onPressed: () async {
+                          if (isLoading) return;
                           Provider.of<MixPanelProvider>(context, listen: false)
                               .logEvent(eventName: 'Balance Options');
                           final authProvider =
@@ -68,11 +70,13 @@ class HeaderBalance extends StatelessWidget {
                           if (authProvider.user!.stripeAccountId.isEmpty) {
                             createConnectedAccount(context);
                           } else {
+                            isLoading = true;
                             final getAccount = await FirebaseFunctions.instance
                                 .httpsCallable('GetAccount')
                                 .call({
                               'accountId': authProvider.user!.stripeAccountId,
                             });
+                            isLoading = false;
                             if (getAccount.data['detailsSubmitted'] == true) {
                               payoutOrConnectedAccountOptionsDialog(context);
                             } else {
