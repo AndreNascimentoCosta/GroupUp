@@ -31,6 +31,12 @@ const removeDuplicates = function arrayUnique(array) {
     return a;
 }
 
+const retrievePaymentIntent = async (paymentIntentId) => {
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+    return paymentIntent;
+}
+
+
 exports.StripePayEndPointMethodIdJoinGroup = functions.https.onRequest(async (req, res) => {
     const { groupCode, userId, paymentMethodId } = req.body.data;
 
@@ -305,11 +311,6 @@ exports.RetrivePaymentIntent = functions.https.onRequest(async (req, res) => {
     });
 });
 
-const retrievePaymentIntent = async (paymentIntentId) => {
-    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
-    return paymentIntent;
-}
-
 exports.OnGroupEnded = functions.firestore.document('groups/{groupId}').onUpdate(async (change, context) => {
     const groupId = context.params.groupId;
     const groupData = change.after.data();
@@ -331,7 +332,7 @@ exports.OnGroupEnded = functions.firestore.document('groups/{groupId}').onUpdate
         const userData = (await userRef.get()).data();
         const dateTimeNow = new Date();
 
-        if (groupData.endDate < dateTimeNow.setDate(dateTimeNow.getDate() - 3)) {
+        if (groupData.endDate < dateTimeNow.setUTCDate(dateTimeNow.getUTCDate() - 3)) {
             const groupDoc = await admin.firestore().collection('groups').doc(groupId).get();
             const groupData = groupDoc.data();
 
@@ -361,7 +362,7 @@ exports.OnGroupEnded = functions.firestore.document('groups/{groupId}').onUpdate
         const userData = (await userRef.get()).data();
         const dateTimeNow = new Date();
 
-        if (groupData.endDate < dateTimeNow.setDate(dateTimeNow.getDate() - 1)) {
+        if (groupData.endDate < dateTimeNow.setUTCDate(dateTimeNow.getUTCDate() - 1)) {
             const groupDoc = await admin.firestore().collection('groups').doc(groupId).get();
             const groupData = groupDoc.data();
 

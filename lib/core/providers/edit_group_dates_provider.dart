@@ -34,7 +34,7 @@ class EditGroupDatesProvider extends ChangeNotifier {
               .collection('groups')
               .doc(groupId)
               .update(
-            {'startDate': newGroup.startDate},
+            {'startDate': newGroup.startDate?.toUtc()},
           );
         }
         newGroup.endDate ??= editGroupEndDate;
@@ -43,7 +43,7 @@ class EditGroupDatesProvider extends ChangeNotifier {
               .collection('groups')
               .doc(groupId)
               .update(
-            {'endDate': newGroup.endDate},
+            {'endDate': newGroup.endDate?.toUtc()},
           );
         }
       }

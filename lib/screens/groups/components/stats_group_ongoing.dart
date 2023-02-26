@@ -21,7 +21,8 @@ class StatsGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentUserId = Provider.of<AuthProvider>(context).user?.id;
-    final currentUserRank = group.currentParticipant(currentUserId ?? '').rank(group);
+    final currentUserRank =
+        group.currentParticipant(currentUserId ?? '').rank(group);
     return ValueListenableBuilder(
       valueListenable: homeViewModel.isEditing,
       builder: (context, value, child) {
@@ -70,55 +71,56 @@ class StatsGroup extends StatelessWidget {
                 if (group.endDate != null)
                   SizedBox(
                     width: Insets.l,
-                    child: group.endDate!.isBefore(DateTime.now())
-                        ? Column(
-                            children: [
-                              MediumBody(
-                                text: currentUserRank,
-                                textAlign: TextAlign.center,
+                    child:
+                        group.endDate!.toUtc().isBefore(DateTime.now().toUtc())
+                            ? Column(
+                                children: [
+                                  MediumBody(
+                                    text: currentUserRank,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  const SizedBox(
+                                    height: kDefaultPadding * 0.25,
+                                  ),
+                                  const MediumBody(
+                                    text: '-',
+                                    textAlign: TextAlign.center,
+                                    color: Colors.red,
+                                  ),
+                                  const SizedBox(
+                                    height: kDefaultPadding * 0.25,
+                                  ),
+                                  const MediumBody(
+                                    text: '-',
+                                    textAlign: TextAlign.center,
+                                    color: kPrimaryColor,
+                                  ),
+                                ],
+                              )
+                            : Column(
+                                children: [
+                                  MediumBody(
+                                    text: currentUserRank,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  const SizedBox(
+                                    height: kDefaultPadding * 0.25,
+                                  ),
+                                  MediumBody(
+                                    text: group.daysGone,
+                                    textAlign: TextAlign.center,
+                                    color: Colors.red,
+                                  ),
+                                  const SizedBox(
+                                    height: kDefaultPadding * 0.25,
+                                  ),
+                                  MediumBody(
+                                    text: group.daysLeft,
+                                    textAlign: TextAlign.center,
+                                    color: kPrimaryColor,
+                                  ),
+                                ],
                               ),
-                              const SizedBox(
-                                height: kDefaultPadding * 0.25,
-                              ),
-                              const MediumBody(
-                                text: '-',
-                                textAlign: TextAlign.center,
-                                color: Colors.red,
-                              ),
-                              const SizedBox(
-                                height: kDefaultPadding * 0.25,
-                              ),
-                              const MediumBody(
-                                text: '-',
-                                textAlign: TextAlign.center,
-                                color: kPrimaryColor,
-                              ),
-                            ],
-                          )
-                        : Column(
-                            children: [
-                              MediumBody(
-                                text: currentUserRank,
-                                textAlign: TextAlign.center,
-                              ),
-                              const SizedBox(
-                                height: kDefaultPadding * 0.25,
-                              ),
-                              MediumBody(
-                                text: group.daysGone,
-                                textAlign: TextAlign.center,
-                                color: Colors.red,
-                              ),
-                              const SizedBox(
-                                height: kDefaultPadding * 0.25,
-                              ),
-                              MediumBody(
-                                text: group.daysLeft,
-                                textAlign: TextAlign.center,
-                                color: kPrimaryColor,
-                              ),
-                            ],
-                          ),
                   ),
               ],
             ),

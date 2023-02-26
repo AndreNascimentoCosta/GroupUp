@@ -21,13 +21,15 @@ class CaseChart extends StatelessWidget {
           StaticText(
             text: DateFormat.E(
               Localizations.localeOf(context).toLanguageTag(),
-            ).format(
-              DateTime.now().subtract(
-                Duration(
-                  days: days,
-                ),
-              ),
-            )[0].toUpperCase(),
+            )
+                .format(
+                  DateTime.now().toUtc().subtract(
+                        Duration(
+                          days: days,
+                        ),
+                      ),
+                )[0]
+                .toUpperCase(),
             color: kSecondaryColor,
             fontSize: TextSize.xsBody,
           ),

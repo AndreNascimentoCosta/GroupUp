@@ -25,7 +25,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
   String _displayText(DateTime? date) {
     if (date != null) {
       return DateFormat.yMd(Localizations.localeOf(context).toLanguageTag())
-          .format(date);
+          .format(date.toUtc());
     } else {
       return AppLocalizations.of(context).selectDate;
     }
@@ -52,9 +52,9 @@ class _DateTimePickerState extends State<DateTimePicker> {
           child: child!,
         );
       },
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2999),
+      initialDate: DateTime.now().toUtc(),
+      firstDate: DateTime.now().toUtc(),
+      lastDate: DateTime(2999).toUtc(),
     );
   }
 
@@ -70,7 +70,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
     }
     if (endDate == null) return appLocalizations.selectDate;
     if (startDate == null) return null;
-    if ((endDate!.isBefore(startDate!))) {
+    if ((endDate!.toUtc().isBefore(startDate!.toUtc()))) {
       return appLocalizations.endDateMustBeAfterStartDate;
     }
     return null;
@@ -118,9 +118,11 @@ class _DateTimePickerState extends State<DateTimePicker> {
                   ),
                 ),
                 hintText: DateFormat.yMd(
-                        Localizations.localeOf(context).toLanguageTag())
-                    .format(individualGroupProvider.group!.startDate ??
-                        DateTime.now()),
+                  Localizations.localeOf(context).toLanguageTag(),
+                ).format(
+                  individualGroupProvider.group!.startDate?.toUtc() ??
+                      DateTime.now().toUtc(),
+                ),
                 hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize:
@@ -133,9 +135,9 @@ class _DateTimePickerState extends State<DateTimePicker> {
               onTap: () async {
                 startDate = await pickDate();
                 editGroupDatesProvider.controllerStartDate.text =
-                    _displayText(startDate);
+                    _displayText(startDate?.toUtc());
                 setState(() {
-                  widget.onChanged(startDate, endDate);
+                  widget.onChanged(startDate?.toUtc(), endDate?.toUtc());
                 });
               },
               readOnly: true,
@@ -176,9 +178,11 @@ class _DateTimePickerState extends State<DateTimePicker> {
                   ),
                 ),
                 hintText: DateFormat.yMd(
-                        Localizations.localeOf(context).toLanguageTag())
-                    .format(individualGroupProvider.group!.endDate ??
-                        DateTime.now()),
+                  Localizations.localeOf(context).toLanguageTag(),
+                ).format(
+                  individualGroupProvider.group!.endDate?.toUtc() ??
+                      DateTime.now().toUtc(),
+                ),
                 hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize:
@@ -189,11 +193,14 @@ class _DateTimePickerState extends State<DateTimePicker> {
               ),
               onTap: () async {
                 endDate = await pickDate();
-                editGroupDatesProvider.controllerEndDate.text =
-                    _displayText(endDate);
-                setState(() {
-                  widget.onChanged(startDate, endDate);
-                });
+                editGroupDatesProvider.controllerEndDate.text = _displayText(
+                  endDate?.toUtc(),
+                );
+                setState(
+                  () {
+                    widget.onChanged(startDate?.toUtc(), endDate?.toUtc());
+                  },
+                );
               },
               readOnly: true,
               validator: endDateValidator,

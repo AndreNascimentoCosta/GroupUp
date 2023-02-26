@@ -24,8 +24,8 @@ class EditGroupDatesBody extends StatelessWidget {
           children: [
             DateTimePicker(
               onChanged: (startDate, endDate) {
-                groupDatesProvider.newGroup.startDate = startDate;
-                groupDatesProvider.newGroup.endDate = endDate;
+                groupDatesProvider.newGroup.startDate = startDate?.toUtc();
+                groupDatesProvider.newGroup.endDate = endDate?.toUtc();
               },
             ),
             const SizedBox(height: Insets.s),

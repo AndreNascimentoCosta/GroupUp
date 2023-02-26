@@ -69,29 +69,29 @@ class IndividualCardBalance extends StatelessWidget {
             ),
             const SizedBox(height: Insets.s),
             MediumBody(
-              text: group.endDate!.isBefore(DateTime.now())
+              text: group.endDate!.toUtc().isBefore(DateTime.now().toUtc())
                   ? participantsSumValue.length > 1 &&
                           participantsSumValue
                                   .where((element) =>
                                       element == participantsSumValue.first)
                                   .length >
                               1
-                      ? group.endDate!.isAfter(
-                          DateTime.now().subtract(
-                            const Duration(
-                              days: 3,
-                            ),
-                          ),
-                        )
+                      ? group.endDate!.toUtc().isAfter(
+                                DateTime.now().toUtc().subtract(
+                                      const Duration(
+                                        days: 3,
+                                      ),
+                                    ),
+                              )
                           ? appLocalizations.ongoing
                           : appLocalizations.ended
-                      : group.endDate!.isAfter(
-                          DateTime.now().subtract(
-                            const Duration(
-                              days: 1,
-                            ),
-                          ),
-                        )
+                      : group.endDate!.toUtc().isAfter(
+                                DateTime.now().toUtc().subtract(
+                                      const Duration(
+                                        days: 1,
+                                      ),
+                                    ),
+                              )
                           ? appLocalizations.ongoing
                           : appLocalizations.ended
                   : appLocalizations.ongoing,
@@ -102,20 +102,20 @@ class IndividualCardBalance extends StatelessWidget {
         const Spacer(),
         Padding(
           padding: const EdgeInsets.only(right: kDefaultPadding),
-          child: group.endDate!.isBefore(DateTime.now())
+          child: group.endDate!.toUtc().isBefore(DateTime.now().toUtc())
               ? participantsSumValue.length > 1 &&
                       participantsSumValue
                               .where((element) =>
                                   element == participantsSumValue.first)
                               .length >
                           1
-                  ? group.endDate!.isAfter(
-                      DateTime.now().subtract(
-                        const Duration(
-                          days: 3,
-                        ),
-                      ),
-                    )
+                  ? group.endDate!.toUtc().isAfter(
+                            DateTime.now().toUtc().subtract(
+                                  const Duration(
+                                    days: 3,
+                                  ),
+                                ),
+                          )
                       ? const LargeBody(
                           text: 'R\$ -',
                           color: kSecondaryColor,
@@ -131,13 +131,13 @@ class IndividualCardBalance extends StatelessWidget {
                                   '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
                               color: Colors.red,
                             )
-                  : group.endDate!.isAfter(
-                      DateTime.now().subtract(
-                        const Duration(
-                          days: 1,
-                        ),
-                      ),
-                    )
+                  : group.endDate!.toUtc().isAfter(
+                            DateTime.now().toUtc().subtract(
+                                  const Duration(
+                                    days: 1,
+                                  ),
+                                ),
+                          )
                       ? const LargeBody(
                           text: 'R\$ -',
                           color: kSecondaryColor,

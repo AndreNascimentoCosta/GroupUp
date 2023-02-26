@@ -151,11 +151,13 @@ class _SecondPageJoinJoinState extends State<SecondPageJoin> {
                             text: '${DateFormat.yMd(
                               Localizations.localeOf(context).toLanguageTag(),
                             ).format(
-                              group[0].data()['startDate'].toDate() ?? DateTime.now(),
+                              group[0].data()['startDate'].toDate() ??
+                                  DateTime.now().toUtc(),
                             )} - ${DateFormat.yMd(
                               Localizations.localeOf(context).toLanguageTag(),
                             ).format(
-                              group[0].data()['endDate'].toDate() ?? DateTime.now(),
+                              group[0].data()['endDate'].toDate() ??
+                                  DateTime.now().toUtc(),
                             )}',
                             maxLines: 2,
                             fontSize: TextSize.mBody,

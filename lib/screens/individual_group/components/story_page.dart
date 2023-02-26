@@ -20,10 +20,10 @@ class StoryPage extends StatelessWidget {
           .where(
             (element) =>
                 element.image != null &&
-                element.date.isAfter(
-                  DateTime.now().subtract(
-                    const Duration(days: 1),
-                  ),
+                (element.date.toUtc()).isAfter(
+                  DateTime.now().toUtc().subtract(
+                        const Duration(days: 1),
+                      ),
                 ),
           )
           .toList(),

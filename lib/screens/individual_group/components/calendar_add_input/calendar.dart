@@ -18,7 +18,7 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  DateTime today = DateTime.now();
+  DateTime today = DateTime.now().toUtc();
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +57,8 @@ class _CalendarState extends State<Calendar> {
                       TableCalendar(
                         locale: Localizations.localeOf(context).toLanguageTag(),
                         rowHeight: 40,
-                        rangeStartDay: group.startDate,
-                        rangeEndDay: group.endDate,
+                        rangeStartDay: group.startDate?.toUtc(),
+                        rangeEndDay: group.endDate?.toUtc(),
                         calendarStyle: CalendarStyle(
                           tablePadding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding),

@@ -41,7 +41,7 @@ class IndividualCreatedGroup extends StatelessWidget {
               padding: const EdgeInsets.only(
                 left: kDefaultPadding,
               ),
-              child: group.endDate!.isBefore(DateTime.now())
+              child: group.endDate!.toUtc().isBefore(DateTime.now().toUtc())
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

@@ -82,9 +82,9 @@ class ComparativeChart extends StatelessWidget {
               spots: List.generate(
                 7,
                 (index) {
-                  final dateTimeResult = DateTime.now().subtract(
-                    Duration(days: 6 - index),
-                  );
+                  final dateTimeResult = DateTime.now().toUtc().subtract(
+                        Duration(days: 6 - index),
+                      );
                   final userInputData = userData1.firstWhere(
                     (element) => element.date.day == dateTimeResult.day,
                     orElse: () {
@@ -158,9 +158,9 @@ class ComparativeChart extends StatelessWidget {
               spots: List.generate(
                 7,
                 (index) {
-                  final dateTimeResult = DateTime.now().subtract(
-                    Duration(days: 6 - index),
-                  );
+                  final dateTimeResult = DateTime.now().toUtc().subtract(
+                        Duration(days: 6 - index),
+                      );
                   final currentUserInputData =
                       currentUserData.inputData.firstWhere(
                     (element) => element.date.day == dateTimeResult.day,
@@ -193,9 +193,9 @@ class ComparativeChart extends StatelessWidget {
               spots: List.generate(
                 7,
                 (index) {
-                  final dateTimeResult = DateTime.now().subtract(
-                    Duration(days: 6 - index),
-                  );
+                  final dateTimeResult = DateTime.now().toUtc().subtract(
+                        Duration(days: 6 - index),
+                      );
                   final userInputData = userData1.firstWhere(
                     (element) => element.date.day == dateTimeResult.day,
                     orElse: () {

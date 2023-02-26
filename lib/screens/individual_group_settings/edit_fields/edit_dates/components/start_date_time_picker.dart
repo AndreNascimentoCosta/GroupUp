@@ -21,7 +21,7 @@ class _StartDateTimePickerState extends State<StartDateTimePicker> {
 
   String _displayText(DateTime? date) {
     if (date != null) {
-      return '${date.day}/${date.month}/${date.year}';
+      return '${date.toUtc().day}/${date.toUtc().month}/${date.toUtc().year}';
     } else {
       return AppLocalizations.of(context).selectDate;
     }
@@ -44,9 +44,9 @@ class _StartDateTimePickerState extends State<StartDateTimePicker> {
           child: child!,
         );
       },
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2999),
+      initialDate: DateTime.now().toUtc(),
+      firstDate: DateTime.now().toUtc(),
+      lastDate: DateTime(2999).toUtc(),
     );
   }
 
@@ -54,14 +54,14 @@ class _StartDateTimePickerState extends State<StartDateTimePicker> {
     if (startDate == null) return AppLocalizations.of(context).selectDate;
     return null;
   }
+
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-      child: 
-      Row(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
@@ -93,8 +93,9 @@ class _StartDateTimePickerState extends State<StartDateTimePicker> {
               ),
               onTap: () async {
                 startDate = await pickDate();
-                widget.onChanged(startDate);
-                createGroupProvider.controllerStartDate.text = _displayText(startDate);
+                widget.onChanged(startDate?.toUtc());
+                createGroupProvider.controllerStartDate.text =
+                    _displayText(startDate?.toUtc());
                 setState(() {});
               },
               readOnly: true,

@@ -1,7 +1,6 @@
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_input_data.dart';
 
-
 class Participant {
   String name, profilePicture, uid;
   bool isAdmin;
@@ -29,9 +28,9 @@ class Participant {
         .where(
           (inputData) =>
               inputData.date.isAfter(
-                DateTime.now().subtract(
-                  const Duration(days: 1),
-                ),
+                DateTime.now().toUtc().subtract(
+                      const Duration(days: 1),
+                    ),
               ) &&
               inputData.image != null,
         )
@@ -45,7 +44,7 @@ class Participant {
     }
     return UserInputData(
       value: sum,
-      date: DateTime.now(),
+      date: DateTime.now().toUtc(),
     );
   }
 

@@ -50,13 +50,13 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                 .where((element) => element == participantsSumValue.first)
                 .length >
             1) {
-      if (group.endDate!.isBefore(
-        DateTime.now().subtract(
-          const Duration(
-            days: 3,
-          ),
-        ),
-      )) {
+      if (group.endDate!.toUtc().isBefore(
+            DateTime.now().toUtc().subtract(
+                  const Duration(
+                    days: 3,
+                  ),
+                ),
+          )) {
         if (willShowEndGroupDialog) return;
         willShowEndGroupDialog = true;
         WidgetsBinding.instance.addPostFrameCallback(
@@ -67,13 +67,13 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
         );
       }
     } else {
-      if (group.endDate!.isBefore(
-        DateTime.now().subtract(
-          const Duration(
-            days: 1,
-          ),
-        ),
-      )) {
+      if (group.endDate!.toUtc().isBefore(
+            DateTime.now().toUtc().subtract(
+                  const Duration(
+                    days: 1,
+                  ),
+                ),
+          )) {
         if (willShowEndGroupDialog) return;
         willShowEndGroupDialog = true;
         WidgetsBinding.instance.addPostFrameCallback(
@@ -149,7 +149,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
       }).toList();
       participantsSumValue.sort((a, b) => b.compareTo(a));
 
-      final dateTimeNow = DateTime.now();
+      final dateTimeNow = DateTime.now().toUtc();
       final dateTimeYesterday = dateTimeNow.subtract(
         const Duration(
           days: 1,
@@ -223,6 +223,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                               .length >
                           1)
                     if (individualGroupProvider.group!.endDate!
+                            .toUtc()
                             .isBefore(dateTimeNow) &&
                         individualGroupProvider.group!.endDate!.isAfter(
                           dateTimeThreeDaysAgo,
@@ -232,17 +233,20 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                       else
                         const SizedBox()
                     else if (individualGroupProvider.group!.endDate!
+                        .toUtc()
                         .isBefore(dateTimeNow))
                       const SizedBox()
                     else
                       const SizedBox(height: kDefaultPadding)
                   else if (individualGroupProvider.group!.endDate!
+                          .toUtc()
                           .isBefore(dateTimeNow) &&
-                      individualGroupProvider.group!.endDate!.isAfter(
-                        dateTimeYesterday,
-                      ))
+                      individualGroupProvider.group!.endDate!.toUtc().isAfter(
+                            dateTimeYesterday,
+                          ))
                     const SizedBox(height: kDefaultPadding)
                   else if (individualGroupProvider.group!.endDate!
+                      .toUtc()
                       .isBefore(dateTimeNow))
                     const SizedBox()
                   else
@@ -257,10 +261,11 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                               .length >
                           1)
                     if (individualGroupProvider.group!.endDate!
+                            .toUtc()
                             .isBefore(dateTimeNow) &&
-                        individualGroupProvider.group!.endDate!.isAfter(
-                          dateTimeThreeDaysAgo,
-                        ))
+                        individualGroupProvider.group!.endDate!.toUtc().isAfter(
+                              dateTimeThreeDaysAgo,
+                            ))
                       if (participantsSumValue.first == currentUserSumValue)
                         individualGroupProvider.pageIndex == 0
                             ? CalendarScreenButton(
@@ -270,6 +275,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                       else
                         const SizedBox()
                     else if (individualGroupProvider.group!.endDate!
+                        .toUtc()
                         .isBefore(dateTimeNow))
                       const SizedBox()
                     else
@@ -279,16 +285,18 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                             )
                           : AddInputGroupButton(homeViewModel: homeViewModel)
                   else if (individualGroupProvider.group!.endDate!
+                          .toUtc()
                           .isBefore(dateTimeNow) &&
-                      individualGroupProvider.group!.endDate!.isAfter(
-                        dateTimeYesterday,
-                      ))
+                      individualGroupProvider.group!.endDate!.toUtc().isAfter(
+                            dateTimeYesterday,
+                          ))
                     individualGroupProvider.pageIndex == 0
                         ? CalendarScreenButton(
                             homeViewModel: homeViewModel,
                           )
                         : AddInputGroupButton(homeViewModel: homeViewModel)
                   else if (individualGroupProvider.group!.endDate!
+                      .toUtc()
                       .isBefore(dateTimeNow))
                     const SizedBox()
                   else

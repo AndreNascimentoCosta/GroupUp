@@ -20,7 +20,7 @@ class _EndDateTimePickerState extends State<EndDateTimePicker> {
 
   String _displayText(DateTime? date) {
     if (date != null) {
-      return '${date.day}/${date.month}/${date.year}';
+      return '${date.toUtc().day}/${date.toUtc().month}/${date.toUtc().year}';
     } else {
       return AppLocalizations.of(context).selectDate;
     }
@@ -43,9 +43,9 @@ class _EndDateTimePickerState extends State<EndDateTimePicker> {
           child: child!,
         );
       },
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2999),
+      initialDate: DateTime.now().toUtc(),
+      firstDate: DateTime.now().toUtc(),
+      lastDate: DateTime(2999).toUtc(),
     );
   }
 
@@ -53,55 +53,56 @@ class _EndDateTimePickerState extends State<EndDateTimePicker> {
     if (endDate == null) return AppLocalizations.of(context).selectDate;
     return null;
   }
+
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-      child: 
-      SizedBox(
-            height: 70,
-            width: 160,
-            child: TextFormField(
-              controller: createGroupProvider.controllerEndDate,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              decoration: InputDecoration(
-                prefixIcon: Container(
-                  height: Insets.l,
-                  width: Insets.l,
-                  alignment: Alignment.center,
-                  color: Colors.transparent,
-                  child: SvgPicture.asset(
-                    'assets/icons/date_switch.svg',
-                    color: kSecondaryColor,
-                    height: Insets.l,
-                    width: Insets.l,
-                  ),
-                ),
-                hintText: appLocalizations.endDate,
-                hintStyle: const TextStyle(
-                    fontFamily: 'Montserrat-Medium',
-                    fontSize: TextSize.mBody,
-                    color: kSecondaryColor),
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
-              ),
-              onTap: () async {
-                endDate = await pickDate();
-                widget.onChanged(endDate);
-                createGroupProvider.controllerEndDate.text = _displayText(endDate);
-                setState(() {});
-              },
-              readOnly: true,
-              validator: endDateValidator,
-              style: const TextStyle(
-                fontFamily: 'Montserrat-Medium',
-                fontSize: TextSize.mBody,
+      child: SizedBox(
+        height: 70,
+        width: 160,
+        child: TextFormField(
+          controller: createGroupProvider.controllerEndDate,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          decoration: InputDecoration(
+            prefixIcon: Container(
+              height: Insets.l,
+              width: Insets.l,
+              alignment: Alignment.center,
+              color: Colors.transparent,
+              child: SvgPicture.asset(
+                'assets/icons/date_switch.svg',
                 color: kSecondaryColor,
+                height: Insets.l,
+                width: Insets.l,
               ),
             ),
+            hintText: appLocalizations.endDate,
+            hintStyle: const TextStyle(
+                fontFamily: 'Montserrat-Medium',
+                fontSize: TextSize.mBody,
+                color: kSecondaryColor),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
           ),
+          onTap: () async {
+            endDate = await pickDate();
+            widget.onChanged(endDate?.toUtc());
+            createGroupProvider.controllerEndDate.text =
+                _displayText(endDate?.toUtc());
+            setState(() {});
+          },
+          readOnly: true,
+          validator: endDateValidator,
+          style: const TextStyle(
+            fontFamily: 'Montserrat-Medium',
+            fontSize: TextSize.mBody,
+            color: kSecondaryColor,
+          ),
+        ),
+      ),
     );
   }
 }

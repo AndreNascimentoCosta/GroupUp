@@ -3,7 +3,13 @@ import 'package:groupup/models/participant.dart';
 
 class GroupModel {
   String id;
-  String projectName, objective, reward, groupCode, image, groupCurrencyCode, creator;
+  String projectName,
+      objective,
+      reward,
+      groupCode,
+      image,
+      groupCurrencyCode,
+      creator;
   int maxParticipants;
   DateTime? startDate, endDate;
   bool allowEditImage, allowRefundRequest;
@@ -18,19 +24,19 @@ class GroupModel {
   }
 
   String get daysGone {
-    final startDate = this.startDate;
+    final startDate = this.startDate?.toUtc();
     if (startDate == null) return '-';
-    final difference = startDate.difference(DateTime.now());
+    final difference = startDate.toUtc().difference(DateTime.now().toUtc());
     if (difference.inDays > 0) return '0';
     return difference.inDays.abs().toString();
   }
 
   String get daysLeft {
-    final endDate = this.endDate;
-    final startDate = this.startDate;
+    final endDate = this.endDate?.toUtc();
+    final startDate = this.startDate?.toUtc();
     if (endDate == null || startDate == null) return '-';
-    if (startDate.isAfter(DateTime.now())) return '0';
-    final difference = DateTime.now().difference(endDate);
+    if (startDate.toUtc().isAfter(DateTime.now().toUtc())) return '0';
+    final difference = DateTime.now().toUtc().difference(endDate.toUtc());
     return difference.inDays.abs().toString();
   }
 
@@ -100,8 +106,8 @@ class GroupModel {
       maxParticipants: map['noParticipants'] ?? 0,
       allowEditImage: map['allowEditImage'] ?? false,
       allowRefundRequest: map['allowRefundRequest'] ?? false,
-      startDate: startDate,
-      endDate: endDate,
+      startDate: startDate?.toUtc(),
+      endDate: endDate?.toUtc(),
     );
   }
 
@@ -121,8 +127,8 @@ class GroupModel {
       'participants': participants,
       'participantsData': participantsData.map((e) => e.toMap()).toList(),
       'paymentIntentIds': paymentIntentIds,
-      'startDate': startDate,
-      'endDate': endDate,
+      'startDate': startDate?.toUtc(),
+      'endDate': endDate?.toUtc(),
     };
   }
 }

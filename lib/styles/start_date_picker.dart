@@ -43,14 +43,15 @@ class _StartDatePickerState extends State<StartDatePicker> {
             );
           },
           context: context,
-          initialDate: widget.groups.startDate ?? DateTime.now(),
-          firstDate: DateTime(2010),
-          lastDate: DateTime(2050),
+          initialDate:
+              widget.groups.startDate?.toUtc() ?? DateTime.now().toUtc(),
+          firstDate: DateTime(2010).toUtc(),
+          lastDate: DateTime(2100).toUtc(),
         );
         if (newDate == null) return;
 
         setState(() {
-          widget.groups.startDate = newDate;
+          widget.groups.startDate = newDate.toUtc();
         });
       },
       child: Container(
@@ -72,7 +73,7 @@ class _StartDatePickerState extends State<StartDatePicker> {
             ),
             const SizedBox(width: Insets.l * 2),
             Text(
-              '${widget.groups.startDate?.day}/${widget.groups.startDate?.month}/${widget.groups.startDate?.year}',
+              '${widget.groups.startDate?.toUtc().day}/${widget.groups.startDate?.toUtc().month}/${widget.groups.startDate?.toUtc().year}',
               style: const TextStyle(
                 fontFamily: 'Montserrat-Medium',
                 fontSize: TextSize.mBody,
