@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../../../core/providers/edit_group_dates_provider.dart';
 import '../../../../../../core/providers/individual_group_provider.dart';
 
-class DateTimePicker extends StatefulWidget {
-  const DateTimePicker({required this.onChanged});
+class DateTimePickerCreateGroup extends StatefulWidget {
+  const DateTimePickerCreateGroup({required this.onChanged});
 
   final void Function(DateTime?, DateTime?) onChanged;
 
   @override
-  State<DateTimePicker> createState() => _DateTimePickerState();
+  State<DateTimePickerCreateGroup> createState() =>
+      _DateTimePickerCreateGroupState();
 }
 
-class _DateTimePickerState extends State<DateTimePicker> {
+class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
   DateTime? startDate, endDate;
 
   String _displayText(DateTime? date) {
@@ -78,16 +79,12 @@ class _DateTimePickerState extends State<DateTimePicker> {
 
   @override
   Widget build(BuildContext context) {
-    final editGroupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
-    final individualGroupProvider =
-        Provider.of<IndividualGroupProvider>(context);
+    final createGroupProvider = Provider.of<CreateGroupProvider>(context);
+    final appLocalizations = AppLocalizations.of(context);
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
-    if (individualGroupProvider.group == null) {
-      return const SizedBox();
-    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Row(
@@ -102,7 +99,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     ? 150
                     : 160,
             child: TextFormField(
-              controller: editGroupDatesProvider.controllerStartDate,
+              controller: createGroupProvider.controllerStartDate,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
                 prefixIcon: Container(
@@ -117,12 +114,9 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     width: Insets.l,
                   ),
                 ),
-                hintText: DateFormat.yMd(
-                  Localizations.localeOf(context).toLanguageTag(),
-                ).format(
-                  individualGroupProvider.group!.startDate?.toUtc() ??
-                      DateTime.now().toUtc(),
-                ),
+                hintText: startDate == null
+                    ? appLocalizations.startDate
+                    : _displayText(startDate),
                 hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize:
@@ -134,11 +128,10 @@ class _DateTimePickerState extends State<DateTimePicker> {
               ),
               onTap: () async {
                 startDate = await pickDate();
-                editGroupDatesProvider.controllerStartDate.text =
+                widget.onChanged(startDate?.toUtc(), endDate?.toUtc());
+                createGroupProvider.controllerStartDate.text =
                     _displayText(startDate?.toUtc());
-                setState(() {
-                  widget.onChanged(startDate?.toUtc(), endDate?.toUtc());
-                });
+                setState(() {});
               },
               readOnly: true,
               validator: startDateValidator,
@@ -162,7 +155,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     ? 150
                     : 160,
             child: TextFormField(
-              controller: editGroupDatesProvider.controllerEndDate,
+              controller: createGroupProvider.controllerEndDate,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
                 prefixIcon: Container(
@@ -177,12 +170,9 @@ class _DateTimePickerState extends State<DateTimePicker> {
                     width: Insets.l,
                   ),
                 ),
-                hintText: DateFormat.yMd(
-                  Localizations.localeOf(context).toLanguageTag(),
-                ).format(
-                  individualGroupProvider.group!.endDate?.toUtc() ??
-                      DateTime.now().toUtc(),
-                ),
+                hintText: endDate == null
+                    ? appLocalizations.endDate
+                    : _displayText(endDate),
                 hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize:
@@ -193,14 +183,11 @@ class _DateTimePickerState extends State<DateTimePicker> {
               ),
               onTap: () async {
                 endDate = await pickDate();
-                editGroupDatesProvider.controllerEndDate.text = _displayText(
+                widget.onChanged(startDate?.toUtc(), endDate?.toUtc());
+                createGroupProvider.controllerEndDate.text = _displayText(
                   endDate?.toUtc(),
                 );
-                setState(
-                  () {
-                    widget.onChanged(startDate?.toUtc(), endDate?.toUtc());
-                  },
-                );
+                setState(() {});
               },
               readOnly: true,
               validator: endDateValidator,

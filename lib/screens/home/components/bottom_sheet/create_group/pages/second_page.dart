@@ -5,7 +5,7 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/switch.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create_group/components/body_switch.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create_group/components/date_time_picker.dart';
+import 'package:groupup/screens/home/components/bottom_sheet/create_group/components/date_time_picker_create_group.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create_group/components/group_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
@@ -113,14 +113,12 @@ class SecondPageCreate extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: Insets.s),
-              DateTimePicker(
+              DateTimePickerCreateGroup(
                 onChanged: (startDate, endDate) {
                   final createGroupProvider =
                       Provider.of<CreateGroupProvider>(context, listen: false);
-                  createGroupProvider.newGroup.startDate =
-                      startDate?.toUtc() ?? DateTime.now().toUtc();
-                  createGroupProvider.newGroup.endDate =
-                      endDate?.toUtc() ?? DateTime.now().toUtc();
+                  createGroupProvider.newGroup.startDate = startDate?.toUtc();
+                  createGroupProvider.newGroup.endDate = endDate?.toUtc();
                 },
               ),
               BodySwitch(
