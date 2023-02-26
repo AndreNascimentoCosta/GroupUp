@@ -25,6 +25,10 @@ class IndividualCardBalance extends StatelessWidget {
         return element.uid == currentUser.id;
       },
     ).rank(group);
+    final participantsSumValue = group.participantsData.map((element) {
+      return element.sumData.value;
+    }).toList();
+    participantsSumValue.sort((a, b) => b.compareTo(a));
     return Row(
       children: [
         Container(
@@ -66,7 +70,30 @@ class IndividualCardBalance extends StatelessWidget {
             const SizedBox(height: Insets.s),
             MediumBody(
               text: group.endDate!.isBefore(DateTime.now())
-                  ? appLocalizations.ended
+                  ? participantsSumValue.length > 1 &&
+                          participantsSumValue
+                                  .where((element) =>
+                                      element == participantsSumValue.first)
+                                  .length >
+                              1
+                      ? group.endDate!.isAfter(
+                          DateTime.now().subtract(
+                            const Duration(
+                              days: 3,
+                            ),
+                          ),
+                        )
+                          ? appLocalizations.ongoing
+                          : appLocalizations.ended
+                      : group.endDate!.isAfter(
+                          DateTime.now().subtract(
+                            const Duration(
+                              days: 1,
+                            ),
+                          ),
+                        )
+                          ? appLocalizations.ongoing
+                          : appLocalizations.ended
                   : appLocalizations.ongoing,
               color: kSecondaryColor,
             ),
@@ -75,26 +102,44 @@ class IndividualCardBalance extends StatelessWidget {
         const Spacer(),
         Padding(
           padding: const EdgeInsets.only(right: kDefaultPadding),
-          child: group.endDate!.isBefore(
-            DateTime.now().subtract(
-              const Duration(
-                days: 1,
-              ),
-            ),
-          )
-              ? group.participants.length == 1
-                  ? LargeBody(
-                      text:
-                          '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
-                      color: Colors.red,
+          child: group.endDate!.isBefore(DateTime.now())
+              ? participantsSumValue.length > 1 &&
+                      participantsSumValue
+                              .where((element) =>
+                                  element == participantsSumValue.first)
+                              .length >
+                          1
+                  ? group.endDate!.isAfter(
+                      DateTime.now().subtract(
+                        const Duration(
+                          days: 3,
+                        ),
+                      ),
                     )
-                  : group.participantsData.every((element) {
-                            return element.inputData.isEmpty ? false : true;
-                          }) ==
-                          true
-                      ? LargeBody(
-                          text:
-                              '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
+                      ? const LargeBody(
+                          text: 'R\$ -',
+                          color: kSecondaryColor,
+                        )
+                      : currentUserRank == '1º'
+                          ? LargeBody(
+                              text:
+                                  'R\$${(int.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
+                              color: Colors.green,
+                            )
+                          : LargeBody(
+                              text:
+                                  '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
+                              color: Colors.red,
+                            )
+                  : group.endDate!.isAfter(
+                      DateTime.now().subtract(
+                        const Duration(
+                          days: 1,
+                        ),
+                      ),
+                    )
+                      ? const LargeBody(
+                          text: 'R\$ -',
                           color: kSecondaryColor,
                         )
                       : currentUserRank == '1º'
