@@ -80,7 +80,7 @@ class _SecondPageJoinJoinState extends State<SecondPageJoin> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.025),
+                          height: MediaQuery.of(context).size.height * 0.02),
                       Row(
                         children: [
                           StaticText(
@@ -99,7 +99,7 @@ class _SecondPageJoinJoinState extends State<SecondPageJoin> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.025),
+                          height: MediaQuery.of(context).size.height * 0.02),
                       Row(
                         children: [
                           StaticText(
@@ -119,7 +119,7 @@ class _SecondPageJoinJoinState extends State<SecondPageJoin> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.025),
+                          height: MediaQuery.of(context).size.height * 0.02),
                       Row(
                         children: [
                           StaticText(
@@ -139,26 +139,43 @@ class _SecondPageJoinJoinState extends State<SecondPageJoin> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.025),
+                          height: MediaQuery.of(context).size.height * 0.02),
                       Row(
                         children: [
                           StaticText(
-                            text: '${appLocalizations.startEndDate}:',
+                            text: '${appLocalizations.startDate}:',
                             fontSize: TextSize.mBody,
                           ),
                           const SizedBox(width: kDefaultPadding / 2),
                           StaticText(
-                            text: '${DateFormat.yMd(
+                            text: DateFormat.yMd(
                               Localizations.localeOf(context).toLanguageTag(),
                             ).format(
                               group[0].data()['startDate'].toDate() ??
                                   DateTime.now().toUtc(),
-                            )} - ${DateFormat.yMd(
+                            ),
+                            maxLines: 2,
+                            fontSize: TextSize.mBody,
+                            color: kSecondaryColor,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02),
+                      Row(
+                        children: [
+                          StaticText(
+                            text: '${appLocalizations.endDate}:',
+                            fontSize: TextSize.mBody,
+                          ),
+                          const SizedBox(width: kDefaultPadding / 2),
+                          StaticText(
+                            text: DateFormat.yMd(
                               Localizations.localeOf(context).toLanguageTag(),
                             ).format(
                               group[0].data()['endDate'].toDate() ??
                                   DateTime.now().toUtc(),
-                            )}',
+                            ),
                             maxLines: 2,
                             fontSize: TextSize.mBody,
                             color: kSecondaryColor,

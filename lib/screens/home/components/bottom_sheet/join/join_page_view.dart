@@ -75,6 +75,7 @@ class _JoinPageViewState extends State<JoinPageView> {
               ],
             ),
           ),
+          const SizedBox(height: kDefaultPadding / 2),
           if (stripePaymentProvider.isPaying ||
               joinGroupProvider.isOpeningSavedCards)
             const Center(
