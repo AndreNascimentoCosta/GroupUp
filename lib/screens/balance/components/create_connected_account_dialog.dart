@@ -53,7 +53,7 @@ void createConnectedAccount(BuildContext context) {
             },
             color: Colors.transparent,
             height: 40,
-            width: 140,
+            width: 100,
           ),
           NextButton(
             text: appLocalizations.createAccount,
