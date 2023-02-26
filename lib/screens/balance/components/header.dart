@@ -4,14 +4,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/widgets/texts/balance_auto_size.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/balance/components/button.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/balance/components/continue_create_connected_account_dialog.dart';
 import 'package:groupup/screens/balance/components/create_connected_account_dialog.dart';
 import 'package:groupup/screens/balance/components/payout_or_connected_account_options_dialog.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -50,15 +51,18 @@ class HeaderBalance extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: StaticText(
-                          text:
-                              'R\$ ${Characters((data / 100).toStringAsFixed(2)).replaceAll(Characters(''), Characters('\u{200B}')).toString()}',
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        child: BalanceAutoSize(
+                          text: 'R\$ ${NumberFormat.decimalPattern(
+                            Localizations.localeOf(context).toString(),
+                          ).format(
+                            double.parse('${(data / 100)}'),
+                          )}',
                           fontFamily: 'Montserrat-SemiBold',
-                          fontSize: 30,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                       Button(
                         onPressed: () async {
                           if (isLoading) return;

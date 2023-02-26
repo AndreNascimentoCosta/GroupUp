@@ -21,6 +21,7 @@ import 'package:groupup/screens/profile/components/app_bar.dart';
 import 'package:groupup/screens/profile/components/body_button.dart';
 import 'package:groupup/screens/saved_cards/screens/saved_cards_join_group_screen.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -197,8 +198,11 @@ class _BodyProfileState extends State<BodyProfile> {
                       );
                     },
                     text: appLocalizations.balance,
-                    secondaryText:
-                        'R\$ ${Characters((data / 100).toStringAsFixed(2)).replaceAll(Characters(''), Characters('\u{200B}')).toString()}',
+                    secondaryText: 'R\$ ${NumberFormat.decimalPattern(
+                      Localizations.localeOf(context).toString(),
+                    ).format(
+                      double.parse('${(data / 100)}'),
+                    )}',
                   ),
                   const SizedBox(height: kDefaultPadding * 2),
                   BodyButtonModel(
