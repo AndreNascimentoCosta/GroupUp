@@ -27,11 +27,11 @@ class Participant {
     return inputData
         .where(
           (inputData) =>
-              inputData.date.isAfter(
-                DateTime.now().toUtc().subtract(
-                      const Duration(days: 1),
-                    ),
-              ) &&
+              inputData.date.toUtc().isAfter(
+                    DateTime.now().toUtc().subtract(
+                          const Duration(days: 1),
+                        ),
+                  ) &&
               inputData.image != null,
         )
         .isNotEmpty;

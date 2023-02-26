@@ -86,7 +86,7 @@ class ComparativeChart extends StatelessWidget {
                         Duration(days: 6 - index),
                       );
                   final userInputData = userData1.firstWhere(
-                    (element) => element.date.day == dateTimeResult.day,
+                    (element) => element.date.toUtc().day == dateTimeResult.day,
                     orElse: () {
                       return UserInputData(
                         date: dateTimeResult,
@@ -163,7 +163,7 @@ class ComparativeChart extends StatelessWidget {
                       );
                   final currentUserInputData =
                       currentUserData.inputData.firstWhere(
-                    (element) => element.date.day == dateTimeResult.day,
+                    (element) => element.date.toUtc().day == dateTimeResult.day,
                     orElse: () {
                       return UserInputData(
                         date: dateTimeResult,
@@ -197,7 +197,7 @@ class ComparativeChart extends StatelessWidget {
                         Duration(days: 6 - index),
                       );
                   final userInputData = userData1.firstWhere(
-                    (element) => element.date.day == dateTimeResult.day,
+                    (element) => element.date.toUtc().day == dateTimeResult.day,
                     orElse: () {
                       return UserInputData(
                         date: dateTimeResult,

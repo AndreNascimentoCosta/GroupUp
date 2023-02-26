@@ -171,7 +171,7 @@ class AddInputProvider extends ChangeNotifier {
         if (userIndex != -1) {
           final inputDataIndex = participantsData[userIndex]
               .inputData
-              .indexWhere((element) => element.date == date);
+              .indexWhere((element) => element.date.toUtc() == date.toUtc());
           final userParticipantData = participantsData[userIndex];
           if (userParticipantData.inputData[inputDataIndex].isValidated ==
               null) {
@@ -225,7 +225,7 @@ class AddInputProvider extends ChangeNotifier {
         if (userIndex != -1) {
           final inputDataIndex = participantsData[userIndex]
               .inputData
-              .indexWhere((element) => element.date == date);
+              .indexWhere((element) => element.date.toUtc() == date.toUtc());
           final userParticipantData = participantsData[userIndex];
           if (userParticipantData.inputData[inputDataIndex].isValidated ==
               null) {
@@ -287,9 +287,9 @@ class AddInputProvider extends ChangeNotifier {
           final userParticipantData = participantsData[userIndex];
           final inputDataIndex = userParticipantData.inputData.indexWhere(
             (element) =>
-                element.date.day == (DateTime.now()).toUtc().day &&
-                element.date.month == (DateTime.now()).toUtc().month &&
-                element.date.year == (DateTime.now()).toUtc().year,
+                element.date.toUtc().day == (DateTime.now()).toUtc().day &&
+                element.date.toUtc().month == (DateTime.now()).toUtc().month &&
+                element.date.toUtc().year == (DateTime.now()).toUtc().year,
           );
           final offset = await NTP.getNtpOffset(
               localTime: DateTime.now().toUtc(),

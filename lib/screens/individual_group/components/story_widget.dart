@@ -185,7 +185,7 @@ class StoryWidget extends StatelessWidget {
                         ).dataValidationNo(
                           context,
                           group.id,
-                          inputData.date,
+                          inputData.date.toUtc(),
                           inputData.value,
                           inputData.image!,
                           participant.uid,
@@ -264,7 +264,7 @@ class StoryWidget extends StatelessWidget {
                         ).dataValidationYes(
                           context,
                           group.id,
-                          inputData.date,
+                          inputData.date.toUtc(),
                           inputData.value,
                           inputData.image!,
                           participant.uid,
