@@ -283,6 +283,7 @@ class CreateGroupProvider extends ChangeNotifier {
                         await createGroup(context);
                         navigatorState.pop();
                         navigatorState.pop();
+                        navigatorState.pop();
                         await stripePayment.addPaymentIntentId(
                           paymentIntentId,
                           newGroup.groupCode,
