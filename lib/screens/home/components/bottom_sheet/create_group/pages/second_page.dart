@@ -80,10 +80,10 @@ class SecondPageCreate extends StatelessWidget {
                     validator: (value) {
                       if (value!.isNotEmpty && int.tryParse(value)! > 50) {
                         return appLocalizations
-                            .noParticipantsValidatorMaxParticipants;
+                            .numberParticipantsValidatorMaxParticipants;
                       } else if (int.tryParse(value) == 0) {
                         return appLocalizations
-                            .noParticipantsValidatorMinParticipants;
+                            .numberParticipantsValidatorMinParticipants;
                       } else {
                         return null;
                       }

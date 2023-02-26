@@ -178,7 +178,7 @@ class BodyAdminSettings extends StatelessWidget {
                         ),
                         content: StaticText(
                           text: appLocalizations
-                              .cantChangeNoParticipantsWhenParticipantAddedData,
+                              .cantChangeNumberParticipantsWhenParticipantAddedData,
                           maxLines: 5,
                           textAlign: TextAlign.center,
                           fontSize: TextSize.mBody,

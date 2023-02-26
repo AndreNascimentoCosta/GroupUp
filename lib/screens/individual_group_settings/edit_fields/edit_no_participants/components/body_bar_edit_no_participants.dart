@@ -34,7 +34,7 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
               validator: (value) {
                 if (value!.isNotEmpty && int.tryParse(value)! > 50) {
                   return appLocalizations
-                      .noParticipantsValidatorMaxParticipants;
+                      .numberParticipantsValidatorMaxParticipants;
                 } else {
                   return null;
                 }
@@ -54,7 +54,7 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
           ),
           const SizedBox(height: Insets.l),
           StaticText(
-            text: appLocalizations.changeNoParticipants,
+            text: appLocalizations.changeNumberParticipants,
             maxLines: 2,
             fontSize: TextSize.mBody,
           ),
