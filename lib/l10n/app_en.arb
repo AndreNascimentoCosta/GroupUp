@@ -246,16 +246,16 @@
     "@maxParticipants": {
         "description": "Maximum participants in a group"
     },
-    "noParticipants": "Number of participants",
-    "@noParticipants": {
+    "numberParticipants": "Number of participants",
+    "@numberParticipants": {
         "description": "Number of participants"
     },
     "enterNumber": "Enter a number",
     "@enterNumber": {
         "description": "Enter a number of participants"
     },
-    "noParticipantsValidatorMaxParticipants": "Number of participants cannot exceed 50",
-    "@noParticipantsValidatorMaxParticipants": {
+    "numberParticipantsValidatorMaxParticipants": "Number of participants cannot exceed 50",
+    "@numberParticipantsValidatorMaxParticipants": {
         "description": "Maximum number of participants in a group"
     },
     "dates": "Dates",
@@ -266,8 +266,8 @@
     "@everyoneCanEditGroupPic": {
         "description": "Everyone can edit group picture switch"
     },
-    "noParticipantsValidatorMinParticipants": "Number of participants must be at least 1",
-    "@noParticipantsValidatorMinParticipants": {
+    "numberParticipantsValidatorMinParticipants": "Number of participants must be at least 1",
+    "@numberParticipantsValidatorMinParticipants": {
         "description": "Minimum number of participants in a group"
     },
     "selectDate": "Select date",
@@ -474,8 +474,8 @@
     "@cantChangeDatesWhenParticipantAddedData": {
         "description": "Can't change dates when participant was added"
     },
-    "cantChangeNoParticipantsWhenParticipantAddedData": "A participant has already added \ndata. You can't change the number of participants anymore.",
-    "@cantChangeNoParticipantsWhenParticipantAddedData": {
+    "cantChangeNumberParticipantsWhenParticipantAddedData": "A participant has already added \ndata. You can't change the number of participants anymore.",
+    "@cantChangeNumberParticipantsWhenParticipantAddedData": {
         "description": "Can't change number of participants when participant was added"
     },
     "shareGroupCodeText": "Join my group {groupsProjectName} on GroupUp! \nThe code is {groupsGroupCode}",
@@ -502,8 +502,8 @@
     "@participants": {
         "description": "Participants"
     },
-    "changeNoParticipants": "Change number of participants",
-    "@changeNoParticipants": {
+    "changeNumberParticipants": "Change number of participants",
+    "@changeNumberParticipants": {
         "description": "Change number of participants"
     },
     "groupObjective": "Group objective",
@@ -688,5 +688,9 @@
     "failedPickImage": "Failed to pick image",
     "@failedPickImage": {
         "description": "Failed to pick image"
+    },
+    "noParticipants": "No participants",
+    "@noParticipants": {
+        "description": "No participants"
     }
 }
