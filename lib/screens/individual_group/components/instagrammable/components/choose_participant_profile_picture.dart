@@ -36,6 +36,8 @@ class _ChooseParticipantProfilePictureState
 
   @override
   Widget build(BuildContext context) {
+    const placholderImage =
+        'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-bcf2-89b5e5b93bad';
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context);
@@ -53,7 +55,10 @@ class _ChooseParticipantProfilePictureState
               eventName: 'Choose Participant Profile Picture Instagrammable');
           Provider.of<InstagrammableProvider>(context, listen: false)
               .setPicture(
-                  widget.participant.profilePicture, widget.pictureType);
+                  widget.participant.profilePicture.isEmpty
+                      ? placholderImage
+                      : widget.participant.profilePicture,
+                  widget.pictureType);
           Navigator.of(context).pop();
         },
         child: Padding(
