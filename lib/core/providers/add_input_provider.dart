@@ -171,7 +171,7 @@ class AddInputProvider extends ChangeNotifier {
         if (userIndex != -1) {
           final inputDataIndex = participantsData[userIndex]
               .inputData
-              .indexWhere((element) => element.date.toUtc() == date.toUtc());
+              .indexWhere((element) => element.date == date);
           final userParticipantData = participantsData[userIndex];
           if (userParticipantData.inputData[inputDataIndex].isValidated ==
               null) {
@@ -225,7 +225,7 @@ class AddInputProvider extends ChangeNotifier {
         if (userIndex != -1) {
           final inputDataIndex = participantsData[userIndex]
               .inputData
-              .indexWhere((element) => element.date.toUtc() == date.toUtc());
+              .indexWhere((element) => element.date == date);
           final userParticipantData = participantsData[userIndex];
           if (userParticipantData.inputData[inputDataIndex].isValidated ==
               null) {
@@ -287,15 +287,15 @@ class AddInputProvider extends ChangeNotifier {
           final userParticipantData = participantsData[userIndex];
           final inputDataIndex = userParticipantData.inputData.indexWhere(
             (element) =>
-                element.date.toUtc().day == (DateTime.now()).toUtc().day &&
-                element.date.toUtc().month == (DateTime.now()).toUtc().month &&
-                element.date.toUtc().year == (DateTime.now()).toUtc().year,
+                element.date.day == (DateTime.now()).day &&
+                element.date.month == (DateTime.now()).month &&
+                element.date.year == (DateTime.now()).year,
           );
           final offset = await NTP.getNtpOffset(
-              localTime: DateTime.now().toUtc(),
+              localTime: DateTime.now(),
               lookUpAddress: "time.google.com");
           final internetTime =
-              (DateTime.now()).toUtc().add(Duration(milliseconds: offset));
+              (DateTime.now()).add(Duration(milliseconds: offset));
           final newInput = UserInputData(
             date: internetTime,
             value: value,

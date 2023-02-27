@@ -152,7 +152,7 @@ class _SecondPageJoinJoinState extends State<SecondPageJoin> {
                               Localizations.localeOf(context).toLanguageTag(),
                             ).format(
                               group[0].data()['startDate'].toDate() ??
-                                  DateTime.now().toUtc(),
+                                  DateTime.now(),
                             ),
                             maxLines: 2,
                             fontSize: TextSize.mBody,
@@ -174,7 +174,7 @@ class _SecondPageJoinJoinState extends State<SecondPageJoin> {
                               Localizations.localeOf(context).toLanguageTag(),
                             ).format(
                               group[0].data()['endDate'].toDate() ??
-                                  DateTime.now().toUtc(),
+                                  DateTime.now(),
                             ),
                             maxLines: 2,
                             fontSize: TextSize.mBody,

@@ -33,7 +33,7 @@ class ShowDates extends StatelessWidget {
               text: DateFormat.yMd(
                 Localizations.localeOf(context).toLanguageTag(),
               ).format(
-                group.startDate?.toUtc() ?? DateTime.now().toUtc(),
+                group.startDate ?? DateTime.now(),
               ),
             ),
             const SizedBox(height: kDefaultPadding / 2),
@@ -41,7 +41,7 @@ class ShowDates extends StatelessWidget {
               text: DateFormat.yMd(
                 Localizations.localeOf(context).toLanguageTag(),
               ).format(
-                group.endDate?.toUtc() ?? DateTime.now().toUtc(),
+                group.endDate ?? DateTime.now(),
               ),
             ),
           ],

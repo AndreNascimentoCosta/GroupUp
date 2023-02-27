@@ -72,7 +72,7 @@ class StatsGroup extends StatelessWidget {
                   SizedBox(
                     width: Insets.l,
                     child:
-                        group.endDate!.toUtc().isBefore(DateTime.now().toUtc())
+                        group.endDate!.isBefore(DateTime.now())
                             ? Column(
                                 children: [
                                   MediumBody(

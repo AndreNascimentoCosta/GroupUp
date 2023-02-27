@@ -117,8 +117,8 @@ class SecondPageCreate extends StatelessWidget {
                 onChanged: (startDate, endDate) {
                   final createGroupProvider =
                       Provider.of<CreateGroupProvider>(context, listen: false);
-                  createGroupProvider.newGroup.startDate = startDate?.toUtc();
-                  createGroupProvider.newGroup.endDate = endDate?.toUtc();
+                  createGroupProvider.newGroup.startDate = startDate;
+                  createGroupProvider.newGroup.endDate = endDate;
                 },
               ),
               BodySwitch(

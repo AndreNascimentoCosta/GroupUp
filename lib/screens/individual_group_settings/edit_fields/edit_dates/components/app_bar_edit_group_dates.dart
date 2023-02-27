@@ -88,8 +88,8 @@ class AppBarEditGroupDates extends StatelessWidget with PreferredSizeWidget {
                   child: ButtonCommonStyle(
                     onPressed: editGroupDatesProvider.done(
                         context,
-                        groups.startDate?.toUtc(),
-                        groups.endDate?.toUtc(),
+                        groups.startDate,
+                        groups.endDate,
                         groups.id),
                     child: StaticText(
                       text: appLocalizations.done,
@@ -97,8 +97,8 @@ class AppBarEditGroupDates extends StatelessWidget with PreferredSizeWidget {
                       fontFamily: 'Montserrat-SemiBold',
                       color: editGroupDatesProvider.done(
                                   context,
-                                  groups.startDate?.toUtc(),
-                                  groups.endDate?.toUtc(),
+                                  groups.startDate,
+                                  groups.endDate,
                                   groups.id) ==
                               null
                           ? kSecondaryColor

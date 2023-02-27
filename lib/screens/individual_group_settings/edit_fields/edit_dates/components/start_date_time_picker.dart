@@ -21,7 +21,7 @@ class _StartDateTimePickerState extends State<StartDateTimePicker> {
 
   String _displayText(DateTime? date) {
     if (date != null) {
-      return '${date.toUtc().day}/${date.toUtc().month}/${date.toUtc().year}';
+      return '${date.day}/${date.month}/${date.year}';
     } else {
       return AppLocalizations.of(context).selectDate;
     }
@@ -44,9 +44,9 @@ class _StartDateTimePickerState extends State<StartDateTimePicker> {
           child: child!,
         );
       },
-      initialDate: DateTime.now().toUtc(),
-      firstDate: DateTime.now().toUtc(),
-      lastDate: DateTime(2999).toUtc(),
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2999),
     );
   }
 
@@ -93,9 +93,9 @@ class _StartDateTimePickerState extends State<StartDateTimePicker> {
               ),
               onTap: () async {
                 startDate = await pickDate();
-                widget.onChanged(startDate?.toUtc());
+                widget.onChanged(startDate);
                 createGroupProvider.controllerStartDate.text =
-                    _displayText(startDate?.toUtc());
+                    _displayText(startDate);
                 setState(() {});
               },
               readOnly: true,

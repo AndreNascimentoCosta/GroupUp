@@ -69,15 +69,15 @@ class IndividualCardBalance extends StatelessWidget {
             ),
             const SizedBox(height: Insets.s),
             MediumBody(
-              text: group.endDate!.toUtc().isBefore(DateTime.now().toUtc())
+              text: group.endDate!.isBefore(DateTime.now())
                   ? participantsSumValue.length > 1 &&
                           participantsSumValue
                                   .where((element) =>
                                       element == participantsSumValue.first)
                                   .length >
                               1
-                      ? group.endDate!.toUtc().isAfter(
-                                DateTime.now().toUtc().subtract(
+                      ? group.endDate!.isAfter(
+                                DateTime.now().subtract(
                                       const Duration(
                                         days: 3,
                                       ),
@@ -85,8 +85,8 @@ class IndividualCardBalance extends StatelessWidget {
                               )
                           ? appLocalizations.ongoing
                           : appLocalizations.ended
-                      : group.endDate!.toUtc().isAfter(
-                                DateTime.now().toUtc().subtract(
+                      : group.endDate!.isAfter(
+                                DateTime.now().subtract(
                                       const Duration(
                                         days: 1,
                                       ),
@@ -102,15 +102,15 @@ class IndividualCardBalance extends StatelessWidget {
         const Spacer(),
         Padding(
           padding: const EdgeInsets.only(right: kDefaultPadding),
-          child: group.endDate!.toUtc().isBefore(DateTime.now().toUtc())
+          child: group.endDate!.isBefore(DateTime.now())
               ? participantsSumValue.length > 1 &&
                       participantsSumValue
                               .where((element) =>
                                   element == participantsSumValue.first)
                               .length >
                           1
-                  ? group.endDate!.toUtc().isAfter(
-                            DateTime.now().toUtc().subtract(
+                  ? group.endDate!.isAfter(
+                            DateTime.now().subtract(
                                   const Duration(
                                     days: 3,
                                   ),
@@ -131,8 +131,8 @@ class IndividualCardBalance extends StatelessWidget {
                                   '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
                               color: Colors.red,
                             )
-                  : group.endDate!.toUtc().isAfter(
-                            DateTime.now().toUtc().subtract(
+                  : group.endDate!.isAfter(
+                            DateTime.now().subtract(
                                   const Duration(
                                     days: 1,
                                   ),

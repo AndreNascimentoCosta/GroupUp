@@ -33,7 +33,7 @@ class StartEndDateButton extends StatelessWidget {
               text: DateFormat.yMd(
                 Localizations.localeOf(context).toLanguageTag(),
               ).format(
-                groups.startDate?.toUtc() ?? DateTime.now().toUtc(),
+                groups.startDate ?? DateTime.now(),
               ),
             ),
             const SizedBox(height: kDefaultPadding / 2),
@@ -41,7 +41,7 @@ class StartEndDateButton extends StatelessWidget {
               text: DateFormat.yMd(
                 Localizations.localeOf(context).toLanguageTag(),
               ).format(
-                groups.endDate?.toUtc() ?? DateTime.now().toUtc(),
+                groups.endDate ?? DateTime.now(),
               ),
             ),
           ],

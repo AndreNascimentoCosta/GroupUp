@@ -26,7 +26,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
   String _displayText(DateTime? date) {
     if (date != null) {
       return DateFormat.yMd(Localizations.localeOf(context).toLanguageTag())
-          .format(date.toUtc());
+          .format(date);
     } else {
       return AppLocalizations.of(context).selectDate;
     }
@@ -53,9 +53,9 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
           child: child!,
         );
       },
-      initialDate: DateTime.now().toUtc(),
-      firstDate: DateTime.now().toUtc(),
-      lastDate: DateTime(2999).toUtc(),
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2999),
     );
   }
 
@@ -71,7 +71,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
     }
     if (endDate == null) return appLocalizations.selectDate;
     if (startDate == null) return null;
-    if ((endDate!.toUtc().isBefore(startDate!.toUtc()))) {
+    if ((endDate!.isBefore(startDate!))) {
       return appLocalizations.endDateMustBeAfterStartDate;
     }
     return null;
@@ -128,9 +128,9 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
               ),
               onTap: () async {
                 startDate = await pickDate();
-                widget.onChanged(startDate?.toUtc(), endDate?.toUtc());
+                widget.onChanged(startDate, endDate);
                 createGroupProvider.controllerStartDate.text =
-                    _displayText(startDate?.toUtc());
+                    _displayText(startDate);
                 setState(() {});
               },
               readOnly: true,
@@ -183,9 +183,9 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
               ),
               onTap: () async {
                 endDate = await pickDate();
-                widget.onChanged(startDate?.toUtc(), endDate?.toUtc());
+                widget.onChanged(startDate, endDate);
                 createGroupProvider.controllerEndDate.text = _displayText(
-                  endDate?.toUtc(),
+                  endDate,
                 );
                 setState(() {});
               },

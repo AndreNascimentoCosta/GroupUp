@@ -43,15 +43,15 @@ class _EndDatePickerState extends State<EndDatePicker> {
             );
           },
           context: context,
-          initialDate: widget.groups.endDate?.toUtc() ?? DateTime.now().toUtc(),
-          firstDate: DateTime(2010).toUtc(),
-          lastDate: DateTime(2100).toUtc(),
+          initialDate: widget.groups.endDate ?? DateTime.now(),
+          firstDate: DateTime(2010),
+          lastDate: DateTime(2100),
         );
         if (newDate == null) return;
 
         setState(
           () {
-            widget.groups.endDate = newDate.toUtc();
+            widget.groups.endDate = newDate;
           },
         );
       },
@@ -74,7 +74,7 @@ class _EndDatePickerState extends State<EndDatePicker> {
             ),
             const SizedBox(width: Insets.l * 2),
             Text(
-              '${widget.groups.endDate?.toUtc().day}/${widget.groups.endDate?.toUtc().month}/${widget.groups.endDate?.toUtc().year}',
+              '${widget.groups.endDate?.day}/${widget.groups.endDate?.month}/${widget.groups.endDate?.year}',
               style: const TextStyle(
                 fontFamily: 'Montserrat-Medium',
                 fontSize: TextSize.mBody,

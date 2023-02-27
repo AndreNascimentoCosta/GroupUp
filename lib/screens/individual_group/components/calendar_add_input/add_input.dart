@@ -32,7 +32,7 @@ class _AddInputState extends State<AddInput> {
     final String currentDate = DateFormat.yMd(
       Localizations.localeOf(context).toLanguageTag(),
     ).format(
-      DateTime.now().toUtc(),
+      DateTime.now(),
     );
     Future pickImage(ImageSource source) async {
       Navigator.pop(context);

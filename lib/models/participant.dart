@@ -27,8 +27,8 @@ class Participant {
     return inputData
         .where(
           (inputData) =>
-              inputData.date.toUtc().isAfter(
-                    DateTime.now().toUtc().subtract(
+              inputData.date.isAfter(
+                    DateTime.now().subtract(
                           const Duration(days: 1),
                         ),
                   ) &&
@@ -44,7 +44,7 @@ class Participant {
     }
     return UserInputData(
       value: sum,
-      date: DateTime.now().toUtc(),
+      date: DateTime.now(),
     );
   }
 

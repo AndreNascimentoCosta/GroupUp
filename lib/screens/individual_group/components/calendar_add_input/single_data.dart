@@ -18,7 +18,7 @@ class SingleData extends StatelessWidget {
           child: LargeBody(
             text: DateFormat.yMd(
               Localizations.localeOf(context).toLanguageTag(),
-            ).format(userInputData.date.toUtc()),
+            ).format(userInputData.date),
           ),
         ),
         const SizedBox(width: Insets.l),

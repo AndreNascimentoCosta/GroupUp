@@ -82,11 +82,11 @@ class ComparativeChart extends StatelessWidget {
               spots: List.generate(
                 7,
                 (index) {
-                  final dateTimeResult = DateTime.now().toUtc().subtract(
+                  final dateTimeResult = DateTime.now().subtract(
                         Duration(days: 6 - index),
                       );
                   final userInputData = userData1.firstWhere(
-                    (element) => element.date.toUtc().day == dateTimeResult.day,
+                    (element) => element.date.day == dateTimeResult.day,
                     orElse: () {
                       return UserInputData(
                         date: dateTimeResult,
@@ -158,12 +158,12 @@ class ComparativeChart extends StatelessWidget {
               spots: List.generate(
                 7,
                 (index) {
-                  final dateTimeResult = DateTime.now().toUtc().subtract(
+                  final dateTimeResult = DateTime.now().subtract(
                         Duration(days: 6 - index),
                       );
                   final currentUserInputData =
                       currentUserData.inputData.firstWhere(
-                    (element) => element.date.toUtc().day == dateTimeResult.day,
+                    (element) => element.date.day == dateTimeResult.day,
                     orElse: () {
                       return UserInputData(
                         date: dateTimeResult,
@@ -193,11 +193,11 @@ class ComparativeChart extends StatelessWidget {
               spots: List.generate(
                 7,
                 (index) {
-                  final dateTimeResult = DateTime.now().toUtc().subtract(
+                  final dateTimeResult = DateTime.now().subtract(
                         Duration(days: 6 - index),
                       );
                   final userInputData = userData1.firstWhere(
-                    (element) => element.date.toUtc().day == dateTimeResult.day,
+                    (element) => element.date.day == dateTimeResult.day,
                     orElse: () {
                       return UserInputData(
                         date: dateTimeResult,

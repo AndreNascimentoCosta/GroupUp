@@ -220,10 +220,10 @@ class JoinGroupProvider extends ChangeNotifier {
       navigatorState.pop();
       return JoinGroupErrorType.groupCodeFull;
     }
-    if (groupModel.endDate!.toUtc().year != (DateTime.now()).toUtc().year ||
-        groupModel.endDate!.toUtc().month != (DateTime.now()).toUtc().month ||
-        groupModel.endDate!.toUtc().day != (DateTime.now()).toUtc().day) {
-      if (groupModel.endDate!.toUtc().isBefore((DateTime.now()).toUtc())) {
+    if (groupModel.endDate!.year != (DateTime.now()).year ||
+        groupModel.endDate!.month != (DateTime.now()).month ||
+        groupModel.endDate!.day != (DateTime.now()).day) {
+      if (groupModel.endDate!.isBefore((DateTime.now()))) {
         navigatorState.pop();
         navigatorState.pop();
         return JoinGroupErrorType.groupCodeExpired;

@@ -23,7 +23,7 @@ class CaseChart extends StatelessWidget {
               Localizations.localeOf(context).toLanguageTag(),
             )
                 .format(
-                  DateTime.now().toUtc().subtract(
+                  DateTime.now().subtract(
                         Duration(
                           days: days,
                         ),

@@ -18,7 +18,7 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  DateTime today = DateTime.now().toUtc();
+  DateTime today = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +57,8 @@ class _CalendarState extends State<Calendar> {
                       TableCalendar(
                         locale: Localizations.localeOf(context).toLanguageTag(),
                         rowHeight: 40,
-                        rangeStartDay: group.startDate?.toUtc(),
-                        rangeEndDay: group.endDate?.toUtc(),
+                        rangeStartDay: group.startDate,
+                        rangeEndDay: group.endDate,
                         calendarStyle: CalendarStyle(
                           tablePadding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding),
@@ -126,8 +126,8 @@ class _CalendarState extends State<Calendar> {
                           ),
                         ),
                         focusedDay: today,
-                        firstDay: DateTime.utc(2022),
-                        lastDay: DateTime.utc(2100),
+                        firstDay: DateTime(2022),
+                        lastDay: DateTime(2100),
                       ),
                       const SizedBox(height: Insets.s),
                       BottomCalendar(

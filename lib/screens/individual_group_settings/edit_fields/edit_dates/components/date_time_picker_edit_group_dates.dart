@@ -16,16 +16,18 @@ class DateTimePickerEditGroupDates extends StatefulWidget {
   final void Function(DateTime?, DateTime?) onChanged;
 
   @override
-  State<DateTimePickerEditGroupDates> createState() => _DateTimePickerEditGroupDatesState();
+  State<DateTimePickerEditGroupDates> createState() =>
+      _DateTimePickerEditGroupDatesState();
 }
 
-class _DateTimePickerEditGroupDatesState extends State<DateTimePickerEditGroupDates> {
+class _DateTimePickerEditGroupDatesState
+    extends State<DateTimePickerEditGroupDates> {
   DateTime? startDate, endDate;
 
   String _displayText(DateTime? date) {
     if (date != null) {
       return DateFormat.yMd(Localizations.localeOf(context).toLanguageTag())
-          .format(date.toUtc());
+          .format(date);
     } else {
       return AppLocalizations.of(context).selectDate;
     }
@@ -52,9 +54,9 @@ class _DateTimePickerEditGroupDatesState extends State<DateTimePickerEditGroupDa
           child: child!,
         );
       },
-      initialDate: DateTime.now().toUtc(),
-      firstDate: DateTime.now().toUtc(),
-      lastDate: DateTime(2999).toUtc(),
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2999),
     );
   }
 
@@ -70,7 +72,7 @@ class _DateTimePickerEditGroupDatesState extends State<DateTimePickerEditGroupDa
     }
     if (endDate == null) return appLocalizations.selectDate;
     if (startDate == null) return null;
-    if ((endDate!.toUtc().isBefore(startDate!.toUtc()))) {
+    if ((endDate!.isBefore(startDate!))) {
       return appLocalizations.endDateMustBeAfterStartDate;
     }
     return null;
@@ -120,8 +122,7 @@ class _DateTimePickerEditGroupDatesState extends State<DateTimePickerEditGroupDa
                 hintText: DateFormat.yMd(
                   Localizations.localeOf(context).toLanguageTag(),
                 ).format(
-                  individualGroupProvider.group!.startDate?.toUtc() ??
-                      DateTime.now().toUtc(),
+                  individualGroupProvider.group!.startDate ?? DateTime.now(),
                 ),
                 hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
@@ -135,9 +136,9 @@ class _DateTimePickerEditGroupDatesState extends State<DateTimePickerEditGroupDa
               onTap: () async {
                 startDate = await pickDate();
                 editGroupDatesProvider.controllerStartDate.text =
-                    _displayText(startDate?.toUtc());
+                    _displayText(startDate);
                 setState(() {
-                  widget.onChanged(startDate?.toUtc(), endDate?.toUtc());
+                  widget.onChanged(startDate, endDate);
                 });
               },
               readOnly: true,
@@ -180,8 +181,7 @@ class _DateTimePickerEditGroupDatesState extends State<DateTimePickerEditGroupDa
                 hintText: DateFormat.yMd(
                   Localizations.localeOf(context).toLanguageTag(),
                 ).format(
-                  individualGroupProvider.group!.endDate?.toUtc() ??
-                      DateTime.now().toUtc(),
+                  individualGroupProvider.group!.endDate ?? DateTime.now(),
                 ),
                 hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
@@ -194,11 +194,11 @@ class _DateTimePickerEditGroupDatesState extends State<DateTimePickerEditGroupDa
               onTap: () async {
                 endDate = await pickDate();
                 editGroupDatesProvider.controllerEndDate.text = _displayText(
-                  endDate?.toUtc(),
+                  endDate,
                 );
                 setState(
                   () {
-                    widget.onChanged(startDate?.toUtc(), endDate?.toUtc());
+                    widget.onChanged(startDate, endDate);
                   },
                 );
               },

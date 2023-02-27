@@ -20,7 +20,7 @@ class _EndDateTimePickerState extends State<EndDateTimePicker> {
 
   String _displayText(DateTime? date) {
     if (date != null) {
-      return '${date.toUtc().day}/${date.toUtc().month}/${date.toUtc().year}';
+      return '${date.day}/${date.month}/${date.year}';
     } else {
       return AppLocalizations.of(context).selectDate;
     }
@@ -43,9 +43,9 @@ class _EndDateTimePickerState extends State<EndDateTimePicker> {
           child: child!,
         );
       },
-      initialDate: DateTime.now().toUtc(),
-      firstDate: DateTime.now().toUtc(),
-      lastDate: DateTime(2999).toUtc(),
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2999),
     );
   }
 
@@ -89,9 +89,8 @@ class _EndDateTimePickerState extends State<EndDateTimePicker> {
           ),
           onTap: () async {
             endDate = await pickDate();
-            widget.onChanged(endDate?.toUtc());
-            createGroupProvider.controllerEndDate.text =
-                _displayText(endDate?.toUtc());
+            widget.onChanged(endDate);
+            createGroupProvider.controllerEndDate.text = _displayText(endDate);
             setState(() {});
           },
           readOnly: true,

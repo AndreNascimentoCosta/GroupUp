@@ -24,19 +24,19 @@ class GroupModel {
   }
 
   String get daysGone {
-    final startDate = this.startDate?.toUtc();
+    final startDate = this.startDate;
     if (startDate == null) return '-';
-    final difference = startDate.toUtc().difference(DateTime.now().toUtc());
+    final difference = startDate.difference(DateTime.now());
     if (difference.inDays > 0) return '0';
     return difference.inDays.abs().toString();
   }
 
   String get daysLeft {
-    final endDate = this.endDate?.toUtc();
-    final startDate = this.startDate?.toUtc();
+    final endDate = this.endDate;
+    final startDate = this.startDate;
     if (endDate == null || startDate == null) return '-';
-    if (startDate.toUtc().isAfter(DateTime.now().toUtc())) return '0';
-    final difference = DateTime.now().toUtc().difference(endDate.toUtc());
+    if (startDate.isAfter(DateTime.now())) return '0';
+    final difference = DateTime.now().difference(endDate);
     return difference.inDays.abs().toString();
   }
 
@@ -106,8 +106,8 @@ class GroupModel {
       maxParticipants: map['noParticipants'] ?? 0,
       allowEditImage: map['allowEditImage'] ?? false,
       allowRefundRequest: map['allowRefundRequest'] ?? false,
-      startDate: startDate?.toUtc(),
-      endDate: endDate?.toUtc(),
+      startDate: startDate,
+      endDate: endDate,
     );
   }
 
@@ -127,8 +127,8 @@ class GroupModel {
       'participants': participants,
       'participantsData': participantsData.map((e) => e.toMap()).toList(),
       'paymentIntentIds': paymentIntentIds,
-      'startDate': startDate?.toUtc(),
-      'endDate': endDate?.toUtc(),
+      'startDate': startDate,
+      'endDate': endDate,
     };
   }
 }

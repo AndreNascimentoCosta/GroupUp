@@ -102,8 +102,8 @@ class _GroupsCardState extends State<GroupsCard> {
                   padding: const EdgeInsets.only(
                     left: kDefaultPadding,
                   ),
-                  child: widget.group.endDate!.toUtc().isBefore(
-                            DateTime.now().toUtc().subtract(
+                  child: widget.group.endDate!.isBefore(
+                            DateTime.now().subtract(
                                   const Duration(days: 1),
                                 ),
                           )
