@@ -52,11 +52,14 @@ class EditProfileNameProvider extends ChangeNotifier {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          content: StaticText(
-            text: appLocalizations.areYouSureToDiscardChanges,
-            maxLines: 2,
-            textAlign: TextAlign.center,
-            fontSize: TextSize.mBody,
+          content: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+            child: StaticText(
+              text: appLocalizations.areYouSureToDiscardChanges,
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              fontSize: TextSize.mBody,
+            ),
           ),
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -66,8 +69,8 @@ class EditProfileNameProvider extends ChangeNotifier {
               textColor: Colors.red,
               borderColor: Colors.transparent,
               onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Discard changes in Edit Profile Name');
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                    eventName: 'Discard changes in Edit Profile Name');
                 Navigator.pop(newContext);
                 Navigator.pop(context);
               },

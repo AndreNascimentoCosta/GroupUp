@@ -114,12 +114,16 @@ class BodyAdminSettings extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        content: StaticText(
-                          text: appLocalizations
-                              .cantChangeDatesWhenParticipantAddedData,
-                          maxLines: 5,
-                          textAlign: TextAlign.center,
-                          fontSize: TextSize.mBody,
+                        content: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: kDefaultPadding),
+                          child: StaticText(
+                            text: appLocalizations
+                                .cantChangeDatesWhenParticipantAddedData,
+                            maxLines: 5,
+                            textAlign: TextAlign.center,
+                            fontSize: TextSize.mBody,
+                          ),
                         ),
                         actionsAlignment: MainAxisAlignment.center,
                         contentPadding:
@@ -176,12 +180,16 @@ class BodyAdminSettings extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        content: StaticText(
-                          text: appLocalizations
-                              .cantChangeNumberParticipantsWhenParticipantAddedData,
-                          maxLines: 5,
-                          textAlign: TextAlign.center,
-                          fontSize: TextSize.mBody,
+                        content: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: kDefaultPadding),
+                          child: StaticText(
+                            text: appLocalizations
+                                .cantChangeNumberParticipantsWhenParticipantAddedData,
+                            maxLines: 5,
+                            textAlign: TextAlign.center,
+                            fontSize: TextSize.mBody,
+                          ),
                         ),
                         actionsAlignment: MainAxisAlignment.center,
                         contentPadding:

@@ -82,11 +82,14 @@ class EditGroupNameProvider extends ChangeNotifier {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          content: StaticText(
-            text: appLocalizations.areYouSureToDiscardChanges,
-            maxLines: 2,
-            textAlign: TextAlign.center,
-            fontSize: TextSize.mBody,
+          content: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+            child: StaticText(
+              text: appLocalizations.areYouSureToDiscardChanges,
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              fontSize: TextSize.mBody,
+            ),
           ),
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -97,7 +100,7 @@ class EditGroupNameProvider extends ChangeNotifier {
               borderColor: Colors.transparent,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Discard Changes in Edit Group Name');
+                    .logEvent(eventName: 'Discard Changes in Edit Group Name');
                 Navigator.pop(newContext);
                 Navigator.pop(context);
               },
@@ -110,7 +113,7 @@ class EditGroupNameProvider extends ChangeNotifier {
               borderColor: kPrimaryColor,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Keep Changes in Edit Group Name');
+                    .logEvent(eventName: 'Keep Changes in Edit Group Name');
                 Navigator.of(newContext).pop();
                 FocusScope.of(context).requestFocus();
               },

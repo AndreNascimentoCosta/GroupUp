@@ -51,11 +51,14 @@ class AddInputProvider extends ChangeNotifier {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          content: StaticText(
-            text: appLocalizations.validateMediaText,
-            maxLines: 4,
-            textAlign: TextAlign.center,
-            fontSize: TextSize.mBody,
+          content: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+            child: StaticText(
+              text: appLocalizations.validateMediaText,
+              maxLines: 4,
+              textAlign: TextAlign.center,
+              fontSize: TextSize.mBody,
+            ),
           ),
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),

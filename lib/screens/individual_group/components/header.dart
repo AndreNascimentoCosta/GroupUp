@@ -123,11 +123,15 @@ class HeaderIndividualGroup extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          content: StaticText(
-                            text: group.objective,
-                            maxLines: 4,
-                            textAlign: TextAlign.center,
-                            fontSize: TextSize.mBody,
+                          content: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: kDefaultPadding),
+                            child: StaticText(
+                              text: group.objective,
+                              maxLines: 4,
+                              textAlign: TextAlign.center,
+                              fontSize: TextSize.mBody,
+                            ),
                           ),
                           actionsAlignment: MainAxisAlignment.center,
                           contentPadding:
@@ -183,12 +187,16 @@ class HeaderIndividualGroup extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          content: StaticText(
-                            text:
-                                '$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
-                            maxLines: 4,
-                            textAlign: TextAlign.center,
-                            fontSize: TextSize.mBody,
+                          content: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: kDefaultPadding),
+                            child: StaticText(
+                              text:
+                                  '$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
+                              maxLines: 4,
+                              textAlign: TextAlign.center,
+                              fontSize: TextSize.mBody,
+                            ),
                           ),
                           actionsAlignment: MainAxisAlignment.center,
                           contentPadding:

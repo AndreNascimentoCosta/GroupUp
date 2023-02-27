@@ -29,11 +29,14 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
           left: 10,
           right: 10,
         ),
-        title: StaticText(
-          text: appLocalizations.chooseOption,
-          textAlign: TextAlign.center,
-          fontFamily: 'Montserrat-SemiBold',
-          fontSize: TextSize.lBody,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+          child: StaticText(
+            text: appLocalizations.chooseOption,
+            textAlign: TextAlign.center,
+            fontFamily: 'Montserrat-SemiBold',
+            fontSize: TextSize.lBody,
+          ),
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -112,11 +115,15 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        content: StaticText(
-                          text: appLocalizations.deleteConnectedAccountText,
-                          maxLines: 2,
-                          textAlign: TextAlign.center,
-                          fontSize: TextSize.mBody,
+                        content: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: kDefaultPadding),
+                          child: StaticText(
+                            text: appLocalizations.deleteConnectedAccountText,
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                            fontSize: TextSize.mBody,
+                          ),
                         ),
                         actionsAlignment: MainAxisAlignment.center,
                         contentPadding:
