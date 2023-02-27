@@ -232,7 +232,7 @@ class CreateGroupProvider extends ChangeNotifier {
               borderColor: Colors.transparent,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Create Group Cancel Dialog');
+                    .logEvent(eventName: 'Create Group Cancel Dialog');
                 Navigator.of(context).pop();
               },
               color: Colors.transparent,
@@ -248,7 +248,7 @@ class CreateGroupProvider extends ChangeNotifier {
               borderColor: kPrimaryColor,
               onPressed: () async {
                 Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Create Group Confirm Dialog');
+                    .logEvent(eventName: 'Create Group Confirm Dialog');
                 final userId = Provider.of<AuthProvider>(context, listen: false)
                         .user
                         ?.id ??
@@ -262,6 +262,7 @@ class CreateGroupProvider extends ChangeNotifier {
                   notifyListeners();
                   final navigatorState = Navigator.of(context);
                   FocusScope.of(context).unfocus();
+                  navigatorState.pop();
                   try {
                     final listPaymentMethods = await FirebaseFunctions.instance
                         .httpsCallable('ListPaymentMethods')
@@ -271,7 +272,6 @@ class CreateGroupProvider extends ChangeNotifier {
                       },
                     );
                     if (listPaymentMethods.data['paymentMethods'].length == 0) {
-                      navigatorState.pop();
                       try {
                         final paymentIntentId =
                             await stripePayment.initPaymentCreateGroup(
@@ -281,7 +281,8 @@ class CreateGroupProvider extends ChangeNotifier {
                           groupCurrencyCode,
                         );
                         await createGroup(context);
-                        Navigator.of(context).popUntil((route) => route.isFirst);
+                        Navigator.of(context)
+                            .popUntil((route) => route.isFirst);
                         await stripePayment.addPaymentIntentId(
                           paymentIntentId,
                           newGroup.groupCode,
@@ -290,7 +291,6 @@ class CreateGroupProvider extends ChangeNotifier {
                         print(e);
                       }
                     } else {
-                      navigatorState.pop();
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         context: context,
