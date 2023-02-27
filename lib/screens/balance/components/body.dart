@@ -57,24 +57,21 @@ class GroupsBalance extends StatelessWidget {
               final groups = snapshot.data!.docs
                   .map((e) => GroupModel.fromMap(e.id, e.data()))
                   .toList();
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kDefaultPadding,
+              return ListView.separated(
+                padding: const EdgeInsets.only(
+                  top: kDefaultPadding / 2,
+                  left: kDefaultPadding,
+                  right: kDefaultPadding,
                 ),
-                child: ListView.separated(
-                  padding: const EdgeInsets.only(
-                    top: kDefaultPadding / 2,
-                  ),
-                  separatorBuilder: (context, index) => const Padding(
-                    padding: EdgeInsets.only(top: kDefaultPadding),
-                  ),
-                  itemCount: groups.length,
-                  itemBuilder: (context, index) {
-                    return IndividualCardBalance(
-                      group: groups[index],
-                    );
-                  },
+                separatorBuilder: (context, index) => const Padding(
+                  padding: EdgeInsets.only(top: kDefaultPadding),
                 ),
+                itemCount: groups.length,
+                itemBuilder: (context, index) {
+                  return IndividualCardBalance(
+                    group: groups[index],
+                  );
+                },
               );
             }
           },
