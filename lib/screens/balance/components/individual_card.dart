@@ -6,6 +6,7 @@ import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class IndividualCardBalance extends StatelessWidget {
@@ -77,21 +78,21 @@ class IndividualCardBalance extends StatelessWidget {
                                   .length >
                               1
                       ? group.endDate!.isAfter(
-                                DateTime.now().subtract(
-                                      const Duration(
-                                        days: 3,
-                                      ),
-                                    ),
-                              )
+                          DateTime.now().subtract(
+                            const Duration(
+                              days: 3,
+                            ),
+                          ),
+                        )
                           ? appLocalizations.ongoing
                           : appLocalizations.ended
                       : group.endDate!.isAfter(
-                                DateTime.now().subtract(
-                                      const Duration(
-                                        days: 1,
-                                      ),
-                                    ),
-                              )
+                          DateTime.now().subtract(
+                            const Duration(
+                              days: 1,
+                            ),
+                          ),
+                        )
                           ? appLocalizations.ongoing
                           : appLocalizations.ended
                   : appLocalizations.ongoing,
@@ -110,12 +111,12 @@ class IndividualCardBalance extends StatelessWidget {
                               .length >
                           1
                   ? group.endDate!.isAfter(
-                            DateTime.now().subtract(
-                                  const Duration(
-                                    days: 3,
-                                  ),
-                                ),
-                          )
+                      DateTime.now().subtract(
+                        const Duration(
+                          days: 3,
+                        ),
+                      ),
+                    )
                       ? const LargeBody(
                           text: 'R\$ -',
                           color: kSecondaryColor,
@@ -123,21 +124,21 @@ class IndividualCardBalance extends StatelessWidget {
                       : currentUserRank == '1º'
                           ? LargeBody(
                               text:
-                                  'R\$${(int.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
+                                  'R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: Colors.green,
                             )
                           : LargeBody(
                               text:
-                                  '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
+                                  '-R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: Colors.red,
                             )
                   : group.endDate!.isAfter(
-                            DateTime.now().subtract(
-                                  const Duration(
-                                    days: 1,
-                                  ),
-                                ),
-                          )
+                      DateTime.now().subtract(
+                        const Duration(
+                          days: 1,
+                        ),
+                      ),
+                    )
                       ? const LargeBody(
                           text: 'R\$ -',
                           color: kSecondaryColor,
@@ -145,12 +146,12 @@ class IndividualCardBalance extends StatelessWidget {
                       : currentUserRank == '1º'
                           ? LargeBody(
                               text:
-                                  'R\$${(int.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
+                                  'R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: Colors.green,
                             )
                           : LargeBody(
                               text:
-                                  '-R\$ ${int.parse(group.reward).toStringAsFixed(2)}',
+                                  '-R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: Colors.red,
                             )
               : const LargeBody(
