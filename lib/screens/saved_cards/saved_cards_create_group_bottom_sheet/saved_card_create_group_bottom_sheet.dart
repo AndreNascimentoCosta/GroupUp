@@ -8,8 +8,9 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:groupup/screens/saved_cards/saved_cards_create_group_bottom_sheet/saved_card_create_group_confirm_card_dialog.dart';
 import 'package:provider/provider.dart';
+
+import '../../../core/providers/stripe_payment_provider.dart';
 
 class SavedCardCreateGroupBottomSheet extends StatelessWidget {
   const SavedCardCreateGroupBottomSheet({
@@ -42,85 +43,88 @@ class SavedCardCreateGroupBottomSheet extends StatelessWidget {
       );
     }
     return FutureBuilder(
-        future:
-            FirebaseFunctions.instance.httpsCallable('ListPaymentMethods').call(
-          {
-            'userId': user.id,
+      future:
+          FirebaseFunctions.instance.httpsCallable('ListPaymentMethods').call(
+        {
+          'userId': user.id,
+        },
+      ),
+      builder: (_, snapshot) {
+        return ButtonCommonStyle(
+          onPressed: () async {
+            final stripePayment =
+                Provider.of<StripePaymentProvider>(context, listen: false);
+            Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                eventName: 'Confirm Create Group Paying with Saved Card');
+            await stripePayment.savedCardConfirmCardCreateGroup(
+              context,
+              groupReward,
+              groupCurrency,
+              paymentMethodId,
+              groupCode,
+            );
           },
-        ),
-        builder: (context, snapshot) {
-          return ButtonCommonStyle(
-            onPressed: () {
-              Provider.of<MixPanelProvider>(context, listen: false)
-                  .logEvent(eventName: 'Confirm Create Group Paying with Saved Card');
-              savedCardConfirmCardCreateGroup(
-                context,
-                groupReward,
-                groupCurrency,
-                paymentMethodId,
-                groupCode,
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: kDefaultPadding,
-                vertical: kDefaultPadding / 2,
-              ),
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.credit_card,
-                    color: kSecondaryColor,
-                    size: 30,
-                  ),
-                  const SizedBox(width: kDefaultPadding),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      StaticText(
-                        text: brand,
-                        fontSize: TextSize.mBody,
-                      ),
-                      const SizedBox(height: kDefaultPadding / 2),
-                      StaticText(
-                        text: '**** **** **** $last4Numbers',
-                        color: kSecondaryColor,
-                        fontSize: TextSize.mBody,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(width: kDefaultPadding),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      StaticText(
-                        text: appLocalizations.expDate,
-                        fontSize: TextSize.mBody,
-                      ),
-                      const SizedBox(height: kDefaultPadding / 2),
-                      StaticText(
-                        text: '$expMonth/$expYear',
-                        color: kSecondaryColor,
-                        fontSize: TextSize.mBody,
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.centerRight,
-                      child: SvgPicture.asset(
-                        'assets/icons/arrow_right.svg',
-                        height: Insets.l * 1.25,
-                        width: Insets.l * 1.25,
-                        color: kSecondaryColor,
-                      ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: kDefaultPadding,
+              vertical: kDefaultPadding / 2,
+            ),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.credit_card,
+                  color: kSecondaryColor,
+                  size: 30,
+                ),
+                const SizedBox(width: kDefaultPadding),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    StaticText(
+                      text: brand,
+                      fontSize: TextSize.mBody,
+                    ),
+                    const SizedBox(height: kDefaultPadding / 2),
+                    StaticText(
+                      text: '**** **** **** $last4Numbers',
+                      color: kSecondaryColor,
+                      fontSize: TextSize.mBody,
+                    ),
+                  ],
+                ),
+                const SizedBox(width: kDefaultPadding),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    StaticText(
+                      text: appLocalizations.expDate,
+                      fontSize: TextSize.mBody,
+                    ),
+                    const SizedBox(height: kDefaultPadding / 2),
+                    StaticText(
+                      text: '$expMonth/$expYear',
+                      color: kSecondaryColor,
+                      fontSize: TextSize.mBody,
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    child: SvgPicture.asset(
+                      'assets/icons/arrow_right.svg',
+                      height: Insets.l * 1.25,
+                      width: Insets.l * 1.25,
+                      color: kSecondaryColor,
                     ),
                   ),
-                  const SizedBox(width: kDefaultPadding / 2),
-                ],
-              ),
+                ),
+                const SizedBox(width: kDefaultPadding / 2),
+              ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

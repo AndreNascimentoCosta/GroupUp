@@ -24,12 +24,7 @@ class SavedCardsCreateGroupBottomSheetPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context);
-    final isPaying = Provider.of<StripePaymentProvider>(context).isPaying;
-    if (isPaying) {
-      return const Center(
-        child: CircularProgressIndicator(color: kPrimaryColor),
-      );
-    }
+    final stripePaymentProvider = Provider.of<StripePaymentProvider>(context);
     return SafeArea(
       child: Column(
         children: [
@@ -48,44 +43,49 @@ class SavedCardsCreateGroupBottomSheetPageView extends StatelessWidget {
             groupCode: groupCode,
           ),
           const SizedBox(height: kDefaultPadding / 2),
-          NextButton(
-            onPressed: () async {
-              Provider.of<MixPanelProvider>(context, listen: false).logEvent(
-                  eventName: 'Create Group Paying with Stripe Bottom Sheet');
-              final navigatorState = Navigator.of(context);
-              final createGroupProvider = Provider.of<CreateGroupProvider>(
-                context,
-                listen: false,
-              );
-              final user =
-                  Provider.of<AuthProvider>(context, listen: false).user;
-              if (user == null) {
-                return;
-              }
-              try {
-                final stripePaymentProvider =
-                    Provider.of<StripePaymentProvider>(
+          if (stripePaymentProvider.isPaying == true)
+            const CircularProgressIndicator(color: kPrimaryColor)
+          else
+            NextButton(
+              onPressed: () async {
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                    eventName: 'Create Group Paying with Stripe Bottom Sheet');
+                final navigatorState = Navigator.of(context);
+                final createGroupProvider = Provider.of<CreateGroupProvider>(
                   context,
                   listen: false,
                 );
-                await stripePaymentProvider.initPaymentCreateGroup(
-                  context,
-                  user.id,
-                  groupReward,
-                  groupCurrency,
-                );
-                // ignore: use_build_context_synchronously
-                await createGroupProvider.createGroup(context);
-                navigatorState.pop();
-                navigatorState.pop();
-              } catch (e) {
-                // ignore: avoid_print
-                print(e);
-              }
-            },
-            width: 250,
-            text: 'Other payment methods',
-          ),
+                final user =
+                    Provider.of<AuthProvider>(context, listen: false).user;
+                if (user == null) {
+                  return;
+                }
+                try {
+                  final stripePaymentProvider =
+                      Provider.of<StripePaymentProvider>(
+                    context,
+                    listen: false,
+                  );
+                  final paymentIntentId =
+                      await stripePaymentProvider.initPaymentCreateGroup(
+                    context,
+                    user.id,
+                    groupReward,
+                    groupCurrency,
+                  );
+                  await createGroupProvider.createGroup(user);
+                  await stripePaymentProvider.addPaymentIntentId(
+                    paymentIntentId,
+                    createGroupProvider.newGroup.groupCode,
+                  );
+                  navigatorState.pop();
+                } catch (e) {
+                  debugPrint(e.toString());
+                }
+              },
+              width: 250,
+              text: 'Other payment methods',
+            ),
         ],
       ),
     );

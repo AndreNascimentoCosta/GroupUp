@@ -16,6 +16,7 @@ import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/models/participant.dart';
+import 'package:groupup/models/user_data.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
@@ -217,11 +218,14 @@ class CreateGroupProvider extends ChangeNotifier {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          content: StaticText(
-            text: appLocalizations.confirmCreateGroup,
-            maxLines: 2,
-            textAlign: TextAlign.center,
-            fontSize: TextSize.mBody,
+          content: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+            child: StaticText(
+              text: appLocalizations.confirmCreateGroup,
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              fontSize: TextSize.mBody,
+            ),
           ),
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -247,6 +251,8 @@ class CreateGroupProvider extends ChangeNotifier {
               text: appLocalizations.yes,
               borderColor: kPrimaryColor,
               onPressed: () async {
+                final user =
+                    Provider.of<AuthProvider>(context, listen: false).user;
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Create Group Confirm Dialog');
                 final userId = Provider.of<AuthProvider>(context, listen: false)
@@ -280,15 +286,17 @@ class CreateGroupProvider extends ChangeNotifier {
                           controllerReward.text,
                           groupCurrencyCode,
                         );
-                        await createGroup(context);
-                        Navigator.of(context)
-                            .popUntil((route) => route.isFirst);
+                        await createGroup(user);
                         await stripePayment.addPaymentIntentId(
                           paymentIntentId,
                           newGroup.groupCode,
                         );
+                        controller.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.ease,
+                        );
                       } catch (e) {
-                        print(e);
+                        debugPrint(e.toString());
                       }
                     } else {
                       await showModalBottomSheet(
@@ -323,13 +331,13 @@ class CreateGroupProvider extends ChangeNotifier {
                       );
                     }
                   } catch (e) {
-                    print(e);
+                    debugPrint(e.toString());
                   }
                   isPaying = false;
                   notifyListeners();
                 } else {
                   Navigator.of(context).pop();
-                  await createGroup(context);
+                  await createGroup(user);
                 }
               },
               height: 40,
@@ -508,7 +516,7 @@ class CreateGroupProvider extends ChangeNotifier {
     return false;
   }
 
-  Future<void> createGroup(BuildContext context) async {
+  Future<void> createGroup(UserDataModel? user) async {
     controller.jumpToPage(3);
     isCreatingGroup = true;
     notifyListeners();
@@ -520,7 +528,6 @@ class CreateGroupProvider extends ChangeNotifier {
     newGroup.groupCurrencyCode = groupCurrencyCode;
 
     final userId = FirebaseAuth.instance.currentUser!.uid;
-    final user = Provider.of<AuthProvider>(context, listen: false).user;
     if (user == null) {
       return;
     }
@@ -552,7 +559,7 @@ class CreateGroupProvider extends ChangeNotifier {
         final url = await result.ref.getDownloadURL();
         newGroup.image = url;
       } on FirebaseException {
-        print("Deu ruim");
+        debugPrint("Deu ruim");
       }
     }
     await FirebaseFirestore.instance
@@ -580,12 +587,15 @@ class CreateGroupProvider extends ChangeNotifier {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            content: SingleChildScrollView(
-              child: StaticText(
-                text: appLocalizations.confirmExitGroup,
-                maxLines: 2,
-                textAlign: TextAlign.center,
-                fontSize: TextSize.mBody,
+            content: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+              child: SingleChildScrollView(
+                child: StaticText(
+                  text: appLocalizations.confirmExitGroup,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                  fontSize: TextSize.mBody,
+                ),
               ),
             ),
             actionsAlignment: MainAxisAlignment.center,

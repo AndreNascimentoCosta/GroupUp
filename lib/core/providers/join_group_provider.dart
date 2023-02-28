@@ -133,11 +133,15 @@ class JoinGroupProvider extends ChangeNotifier {
             );
             if (listPaymentMethods.data['paymentMethods'].length == 0) {
               try {
-                await stripePaymentProvider.initPaymentJoinGroup(
+                final paymentIntentId = await stripePaymentProvider.initPaymentJoinGroup(
                   controllerGroupCode.text,
                   userId,
                 );
                 await joinGroup(context);
+                await stripePaymentProvider.addPaymentIntentId(
+                  paymentIntentId,
+                  controllerGroupCode.text,
+                );
                 Navigator.of(context).popUntil((route) => route.isFirst);
               } catch (e) {
                 final appLocalizations = AppLocalizations.of(context);

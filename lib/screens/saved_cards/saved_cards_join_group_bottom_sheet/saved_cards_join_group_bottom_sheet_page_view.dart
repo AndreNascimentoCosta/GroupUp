@@ -40,8 +40,8 @@ class SavedCardsJoinGroupBottomSheetPageView extends StatelessWidget {
           const SizedBox(height: kDefaultPadding / 2),
           NextButton(
             onPressed: () async {
-              Provider.of<MixPanelProvider>(context, listen: false)
-                  .logEvent(eventName: 'Join Group Paying with Stripe Bottom Sheet');
+              Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName: 'Join Group Paying with Stripe Bottom Sheet');
               final navigatorState = Navigator.of(context);
               final joinGroupProvider = Provider.of<JoinGroupProvider>(
                 context,
@@ -58,12 +58,17 @@ class SavedCardsJoinGroupBottomSheetPageView extends StatelessWidget {
                   context,
                   listen: false,
                 );
-                await stripePaymentProvider.initPaymentJoinGroup(
+                final paymentIntentId =
+                    await stripePaymentProvider.initPaymentJoinGroup(
                   groupCode,
                   user.id,
                 );
                 // ignore: use_build_context_synchronously
                 await joinGroupProvider.joinGroup(context);
+                await stripePaymentProvider.addPaymentIntentId(
+                  paymentIntentId,
+                  groupCode,
+                );
                 navigatorState.pop();
                 navigatorState.pop();
               } catch (e) {
