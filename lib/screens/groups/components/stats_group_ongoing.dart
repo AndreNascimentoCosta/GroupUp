@@ -23,6 +23,10 @@ class StatsGroup extends StatelessWidget {
     final currentUserId = Provider.of<AuthProvider>(context).user?.id;
     final currentUserRank =
         group.currentParticipant(currentUserId ?? '').rank(group);
+    final participantsSumValue = group.participantsData.map((element) {
+      return element.sumData.value;
+    }).toList();
+    participantsSumValue.sort((a, b) => b.compareTo(a));
     return ValueListenableBuilder(
       valueListenable: homeViewModel.isEditing,
       builder: (context, value, child) {
@@ -71,56 +75,148 @@ class StatsGroup extends StatelessWidget {
                 if (group.endDate != null)
                   SizedBox(
                     width: Insets.l,
-                    child:
-                        group.endDate!.isBefore(DateTime.now())
-                            ? Column(
-                                children: [
-                                  MediumBody(
-                                    text: currentUserRank,
-                                    textAlign: TextAlign.center,
+                    child: group.endDate!.isBefore(DateTime.now())
+                        ? participantsSumValue.length > 1 &&
+                                participantsSumValue
+                                        .where((element) =>
+                                            element ==
+                                            participantsSumValue.first)
+                                        .length >
+                                    1
+                            ? group.endDate!.isBefore(
+                                DateTime.now().subtract(
+                                  const Duration(
+                                    days: 3,
                                   ),
-                                  const SizedBox(
-                                    height: kDefaultPadding * 0.25,
-                                  ),
-                                  const MediumBody(
-                                    text: '-',
-                                    textAlign: TextAlign.center,
-                                    color: Colors.red,
-                                  ),
-                                  const SizedBox(
-                                    height: kDefaultPadding * 0.25,
-                                  ),
-                                  const MediumBody(
-                                    text: '-',
-                                    textAlign: TextAlign.center,
-                                    color: kPrimaryColor,
-                                  ),
-                                ],
+                                ),
                               )
-                            : Column(
-                                children: [
-                                  MediumBody(
-                                    text: currentUserRank,
-                                    textAlign: TextAlign.center,
+                                ? Column(
+                                    children: [
+                                      MediumBody(
+                                        text: currentUserRank,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const SizedBox(
+                                        height: kDefaultPadding * 0.25,
+                                      ),
+                                      const MediumBody(
+                                        text: '-',
+                                        textAlign: TextAlign.center,
+                                        color: Colors.red,
+                                      ),
+                                      const SizedBox(
+                                        height: kDefaultPadding * 0.25,
+                                      ),
+                                      const MediumBody(
+                                        text: '-',
+                                        textAlign: TextAlign.center,
+                                        color: kPrimaryColor,
+                                      ),
+                                    ],
+                                  )
+                                : Column(
+                                    children: [
+                                      MediumBody(
+                                        text: currentUserRank,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const SizedBox(
+                                        height: kDefaultPadding * 0.25,
+                                      ),
+                                      MediumBody(
+                                        text: group.daysGone,
+                                        textAlign: TextAlign.center,
+                                        color: Colors.red,
+                                      ),
+                                      const SizedBox(
+                                        height: kDefaultPadding * 0.25,
+                                      ),
+                                      MediumBody(
+                                        text: group.daysLeft,
+                                        textAlign: TextAlign.center,
+                                        color: kPrimaryColor,
+                                      ),
+                                    ],
+                                  )
+                            : group.endDate!.isBefore(
+                                DateTime.now().subtract(
+                                  const Duration(
+                                    days: 1,
                                   ),
-                                  const SizedBox(
-                                    height: kDefaultPadding * 0.25,
-                                  ),
-                                  MediumBody(
-                                    text: group.daysGone,
-                                    textAlign: TextAlign.center,
-                                    color: Colors.red,
-                                  ),
-                                  const SizedBox(
-                                    height: kDefaultPadding * 0.25,
-                                  ),
-                                  MediumBody(
-                                    text: group.daysLeft,
-                                    textAlign: TextAlign.center,
-                                    color: kPrimaryColor,
-                                  ),
-                                ],
+                                ),
+                              )
+                                ? Column(
+                                    children: [
+                                      MediumBody(
+                                        text: currentUserRank,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const SizedBox(
+                                        height: kDefaultPadding * 0.25,
+                                      ),
+                                      const MediumBody(
+                                        text: '-',
+                                        textAlign: TextAlign.center,
+                                        color: Colors.red,
+                                      ),
+                                      const SizedBox(
+                                        height: kDefaultPadding * 0.25,
+                                      ),
+                                      const MediumBody(
+                                        text: '-',
+                                        textAlign: TextAlign.center,
+                                        color: kPrimaryColor,
+                                      ),
+                                    ],
+                                  )
+                                : Column(
+                                    children: [
+                                      MediumBody(
+                                        text: currentUserRank,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const SizedBox(
+                                        height: kDefaultPadding * 0.25,
+                                      ),
+                                      MediumBody(
+                                        text: group.daysGone,
+                                        textAlign: TextAlign.center,
+                                        color: Colors.red,
+                                      ),
+                                      const SizedBox(
+                                        height: kDefaultPadding * 0.25,
+                                      ),
+                                      MediumBody(
+                                        text: group.daysLeft,
+                                        textAlign: TextAlign.center,
+                                        color: kPrimaryColor,
+                                      ),
+                                    ],
+                                  )
+                        : Column(
+                            children: [
+                              MediumBody(
+                                text: currentUserRank,
+                                textAlign: TextAlign.center,
                               ),
+                              const SizedBox(
+                                height: kDefaultPadding * 0.25,
+                              ),
+                              MediumBody(
+                                text: group.daysGone,
+                                textAlign: TextAlign.center,
+                                color: Colors.red,
+                              ),
+                              const SizedBox(
+                                height: kDefaultPadding * 0.25,
+                              ),
+                              MediumBody(
+                                text: group.daysLeft,
+                                textAlign: TextAlign.center,
+                                color: kPrimaryColor,
+                              ),
+                            ],
+                          ),
                   ),
               ],
             ),
