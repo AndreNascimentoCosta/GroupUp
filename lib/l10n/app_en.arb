@@ -294,7 +294,7 @@
     "@confirm": {
         "description": "Confirm"
     },
-    "confirmCreateGroup": "Are you sure you want to create a \ngroup?",
+    "confirmCreateGroup": "Are you sure you want to create a group?",
     "@confirmCreateGroup": {
         "description": "Confirmation to create the group"
     },
@@ -306,11 +306,11 @@
     "@no": {
         "description": "No"
     },
-    "confirmExitGroup": "Are you sure you want to leave the \ngroup?",
+    "confirmExitGroup": "Are you sure you want to leave the group?",
     "@confirmExitGroup": {
         "description": "Confirmation to exit the group"
     },
-    "confirmDeleteAccount": "Are you sure you want to delete \nyour account?",
+    "confirmDeleteAccount": "Are you sure you want to delete your account?",
     "@confirmDeleteAccount": {
         "description": "Confirmation to delete account"
     },
