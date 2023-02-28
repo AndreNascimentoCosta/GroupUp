@@ -7,9 +7,6 @@ import 'package:groupup/design-system.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../../../../../core/providers/individual_group_provider.dart';
-
 class DateTimePickerCreateGroup extends StatefulWidget {
   const DateTimePickerCreateGroup({required this.onChanged});
 
@@ -55,7 +52,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
       },
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
-      lastDate: DateTime(2999),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     );
   }
 
