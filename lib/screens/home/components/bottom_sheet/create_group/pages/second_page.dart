@@ -75,7 +75,7 @@ class SecondPageCreate extends StatelessWidget {
                   TextFieldModelHome(
                     controller:
                         createGroupProvider.controllerNumberParticipants,
-                    header: appLocalizations.noParticipants,
+                    header: appLocalizations.numberParticipants,
                     hint: appLocalizations.enterNumber,
                     validator: (value) {
                       if (value!.isNotEmpty && int.tryParse(value)! > 50) {

@@ -109,6 +109,7 @@ class _CreatePageViewState extends State<CreatePageView> {
               ],
             ),
           ),
+          const SizedBox(height: kDefaultPadding / 2),
           createGroupProvider.isPaying
               ? const CircularProgressIndicator(color: kPrimaryColor)
               : createGroupProvider.isCreatingGroup

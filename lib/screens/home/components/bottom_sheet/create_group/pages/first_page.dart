@@ -201,8 +201,8 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                   ),
                   const SizedBox(height: 10),
                   StaticText(
-                    text: appLocalizations.groupFeeDescription,
-                    maxLines: 8,
+                    text: appLocalizations.groupDescription,
+                    maxLines: 15,
                   ),
                 ],
               ),

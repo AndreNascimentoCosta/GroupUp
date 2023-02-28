@@ -100,7 +100,7 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                 Row(
                   children: [
                     StaticText(
-                      text: '${appLocalizations.noParticipants}:',
+                      text: '${appLocalizations.numberParticipants}:',
                       fontSize: TextSize.mBody,
                     ),
                     const SizedBox(width: kDefaultPadding / 2),

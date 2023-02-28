@@ -26,6 +26,7 @@ class _BodySwitchState extends State<BodySwitch> {
             width: screenWidth * 0.6,
             child: StaticText(
               text: widget.text,
+              maxLines: 5,
               fontSize: 14,
             ),
           ),

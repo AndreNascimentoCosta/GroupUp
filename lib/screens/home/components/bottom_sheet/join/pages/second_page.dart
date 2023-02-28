@@ -123,7 +123,7 @@ class _SecondPageJoinJoinState extends State<SecondPageJoin> {
                       Row(
                         children: [
                           StaticText(
-                            text: '${appLocalizations.noParticipants}:',
+                            text: '${appLocalizations.numberParticipants}:',
                             fontSize: TextSize.mBody,
                           ),
                           const SizedBox(width: kDefaultPadding / 2),
