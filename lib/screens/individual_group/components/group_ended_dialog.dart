@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -15,12 +16,29 @@ groupEndedDialog(BuildContext context) {
   showCupertinoDialog(
     context: context,
     builder: (BuildContext context) {
-      final group = Provider.of<IndividualGroupProvider>(context).group;
+      final individualGroupProvider =
+          Provider.of<IndividualGroupProvider>(context);
+      final group = individualGroupProvider.group;
+      final currentUser = Provider.of<AuthProvider>(context).user;
       final appLocalizations = AppLocalizations.of(context);
+      bool isClaimingReward = false;
       String groupCurrencySymbol =
           NumberFormat.simpleCurrency(name: group?.groupCurrencyCode)
               .currencySymbol;
+      if (currentUser == null) return const SizedBox();
       if (group == null) return const SizedBox();
+      if (isClaimingReward == true) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+      final currentUserPaymentIntentIds = currentUser.paymentIntentIds;
+      final groupPaymentIntentIds = group.paymentIntentIds;
+      final currentUserRank = group.participantsData.firstWhere(
+        (element) {
+          return element.uid == currentUser.id;
+        },
+      ).rank(group);
       return AlertDialog(
         title: StaticText(
           text: appLocalizations.groupEnded,
@@ -38,7 +56,12 @@ groupEndedDialog(BuildContext context) {
             children: [
               StaticText(
                 text: appLocalizations.winnerWon(
-                    groupCurrencySymbol, group.reward),
+                    groupCurrencySymbol,
+                    'R\$ ${NumberFormat.decimalPattern(
+                      Localizations.localeOf(context).toString(),
+                    ).format(
+                      double.parse(group.reward),
+                    )}'),
                 fontSize: TextSize.mBody,
               ),
               ListView.separated(
@@ -62,23 +85,77 @@ groupEndedDialog(BuildContext context) {
         actionsAlignment: MainAxisAlignment.center,
         actionsPadding: const EdgeInsets.only(bottom: 15),
         actions: [
-          SizedBox(
-            width: double.infinity,
-            child: ButtonCommonStyle(
-              onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Group Ended Dialog OK');
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
-              },
-              child: const StaticText(
-                text: 'OK',
-                fontSize: TextSize.mBody,
-                fontFamily: 'Montserrat-SemiBold',
-                color: kPrimaryColor,
+          if (individualGroupProvider.isClaimingReward == true)
+            const Center(
+              child: CircularProgressIndicator(color: kPrimaryColor),
+            )
+          else
+            SizedBox(
+              width: currentUserRank == '1º'
+                  ? MediaQuery.of(context).size.width * 0.2
+                  : double.infinity,
+              child: ButtonCommonStyle(
+                onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Group Ended Dialog OK');
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+                child: const StaticText(
+                  text: 'OK',
+                  fontSize: TextSize.mBody,
+                  fontFamily: 'Montserrat-SemiBold',
+                  color: kPrimaryColor,
+                ),
               ),
             ),
-          )
+          if (individualGroupProvider.isClaimingReward == true)
+            const Center(
+              child: SizedBox(),
+            )
+          else if (currentUserRank == '1º')
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: ButtonCommonStyle(
+                onPressed: () {
+                  late bool isAllClaimed;
+                  for (var i = 0; i < group.paymentIntentIds.length; i++) {
+                    if (currentUserPaymentIntentIds
+                            .contains(groupPaymentIntentIds[i]) ==
+                        true) {
+                      isAllClaimed = true;
+                    } else {
+                      isAllClaimed = false;
+                      break;
+                    }
+                  }
+                  if (isAllClaimed == true) {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(appLocalizations.rewardAlreadyClaimed),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+                    return;
+                  }
+                  individualGroupProvider.claimReward(
+                    context,
+                    currentUser.id,
+                    group.id,
+                  );
+                },
+                child: StaticText(
+                  text: appLocalizations.claimReward,
+                  fontSize: TextSize.mBody,
+                  fontFamily: 'Montserrat-SemiBold',
+                  color: kPrimaryColor,
+                ),
+              ),
+            )
+          else
+            const SizedBox(),
         ],
       );
     },
