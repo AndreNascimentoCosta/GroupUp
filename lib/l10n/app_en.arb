@@ -692,5 +692,9 @@
     "noParticipants": "No participants",
     "@noParticipants": {
         "description": "No participants"
+    },
+    "cantAddDataInValidationPeriod": "You can't add data during the validation period",
+    "@cantAddDataInReviewTime": {
+        "description": "Cant add data in validation period"
     }
 }

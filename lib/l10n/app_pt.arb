@@ -161,5 +161,6 @@
     "important": "Importante",
     "allowPhotoAccess": "Você precisa permitir o acesso às fotos",
     "failedPickImage": "Falha ao escolher a imagem",
-    "noParticipants": "Sem participantes"
+    "noParticipants": "Sem participantes",
+    "cantAddDataInValidationPeriod": "Você não pode adicionar dados no período de validação"
 }
