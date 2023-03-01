@@ -621,7 +621,7 @@
     "@requestPayout": {
         "description": "Request a payout"
     },
-    "requestPayoutText": "Are you sure you want to \nrequest a payout? \nAll the money in your balance \nwill be sent to your bank account \nof your connected account within \none business day.",
+    "requestPayoutText": "Are you sure you want to \nrequest a payout? \nAll the money in your balance \nwill be sent to your bank account \nof your connected account within one business day.",
     "@requestPayoutText": {
         "description": "Request a payout text"
     },
@@ -704,5 +704,13 @@
     "rewardAlreadyClaimed": "Reward already claimed",
     "@rewardAlreadyClaimed": {
         "description": "Reward already claimed"
+    },
+    "rewardClaimedText": "Your reward has been claimed",
+    "@rewardClaimedText": {
+        "description": "Reward claimed text"
+    },
+    "payoutSuccessful": "Payout made successfully, login to your Connected account to see the details",
+    "@payoutSuccessful": {
+        "description": "Payout successful"
     }
 }

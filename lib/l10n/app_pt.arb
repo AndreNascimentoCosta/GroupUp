@@ -164,5 +164,8 @@
     "noParticipants": "Sem participantes",
     "cantAddDataInValidationPeriod": "Você não pode adicionar dados no período de validação",
     "claimReward": "Resgatar recompensa",
-    "rewardAlreadyClaimed": "Recompensa já resgatada"
+    "rewardAlreadyClaimed": "Recompensa já resgatada",
+    "rewardClaimed": "Recompensa resgatada",
+    "rewardClaimedText": "Sua recompensa foi resgatada",
+    "payoutSuccessful": "Pagamento bem sucedido, entre na sua conta conectada para ver detalhes"
 }
