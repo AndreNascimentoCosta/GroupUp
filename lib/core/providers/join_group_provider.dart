@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, avoid_print
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
@@ -8,7 +8,6 @@ import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/participant.dart';
-import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/saved_cards/saved_cards_join_group_bottom_sheet/saved_cards_join_group_bottom_sheet_page_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -146,7 +145,7 @@ class JoinGroupProvider extends ChangeNotifier {
               } catch (e) {
                 final appLocalizations = AppLocalizations.of(context);
                 Navigator.of(context).popUntil((route) => route.isFirst);
-                print(e);
+                debugPrint(e.toString());
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(appLocalizations.paymentInterrupted),
@@ -191,7 +190,7 @@ class JoinGroupProvider extends ChangeNotifier {
           } catch (e) {
             isOpeningSavedCards = false;
             notifyListeners();
-            print(e);
+            debugPrint(e.toString());
           }
         }
         clean();
@@ -236,9 +235,7 @@ class JoinGroupProvider extends ChangeNotifier {
     return null;
   }
 
-  Future<JoinGroupErrorType?> joinGroup(BuildContext context) async {
-    final userId = FirebaseAuth.instance.currentUser!.uid;
-    final user = Provider.of<AuthProvider>(context, listen: false).user;
+  Future<JoinGroupErrorType?> joinGroup(user) async {
     final group = await FirebaseFirestore.instance
         .collection('groups')
         .where('groupCode', isEqualTo: controllerGroupCode.text.toUpperCase())
@@ -254,11 +251,11 @@ class JoinGroupProvider extends ChangeNotifier {
         .doc(group.docs.first.id)
         .update(
       {
-        'participants': FieldValue.arrayUnion([userId]),
+        'participants': FieldValue.arrayUnion([user.id]),
         'participantsData': FieldValue.arrayUnion(
           [
             Participant(
-              uid: userId,
+              uid: user.id,
               name: user.name,
               profilePicture: user.profilePicture,
               inputData: [],
