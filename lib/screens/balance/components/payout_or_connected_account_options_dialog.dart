@@ -65,7 +65,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
                           ),
                         );
                       } else {
-                        confirmRequestPayoutDialog(context);
+                        confirmRequestPayoutDialog(rootContext);
                       }
                     },
                     child: StaticText(
