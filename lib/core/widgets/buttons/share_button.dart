@@ -27,11 +27,7 @@ class ShareButton extends StatelessWidget {
             : isSmallScreen
                 ? screenHeight * 0.08
                 : screenHeight * 0.06,
-        width: isVerySmallScreen
-            ? screenWidth * 0.45
-            : isSmallScreen
-                ? screenWidth * 0.4
-                : screenWidth * 0.35,
+        width: isVerySmallScreen ? screenWidth * 0.45 : screenWidth * 0.4,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white),
           borderRadius: BorderRadius.circular(Insets.m),
@@ -52,9 +48,7 @@ class ShareButton extends StatelessWidget {
               child: SizedBox(
                 width: isVerySmallScreen
                     ? screenWidth * 0.275
-                    : isSmallScreen
-                        ? screenWidth * 0.25
-                        : screenWidth * 0.2,
+                    : screenWidth * 0.25,
                 child: StaticText(
                   text: text,
                   textAlign: TextAlign.center,
