@@ -1,17 +1,14 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class ButtonCommonStyle extends StatelessWidget {
   const ButtonCommonStyle({
     required this.child,
     this.onPressed,
-    this.color = Colors.black,
     this.padding,
   });
 
   final Widget child;
   final void Function()? onPressed;
-  final Color color;
   final EdgeInsetsGeometry? padding;
 
   @override

@@ -14,7 +14,6 @@ class OtherOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonCommonStyle(
       onPressed: onPressed,
-      color: color,
       child: LargeBody(text: text, color: color),
     );
   }
