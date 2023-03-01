@@ -696,5 +696,13 @@
     "cantAddDataInValidationPeriod": "You can't add data during the validation period",
     "@cantAddDataInReviewTime": {
         "description": "Cant add data in validation period"
+    },
+    "claimReward": "Claim reward",
+    "@claimReward": {
+        "description": "Claim reward"
+    },
+    "rewardAlreadyClaimed": "Reward already claimed",
+    "@rewardAlreadyClaimed": {
+        "description": "Reward already claimed"
     }
 }

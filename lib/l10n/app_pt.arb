@@ -162,5 +162,7 @@
     "allowPhotoAccess": "Você precisa permitir o acesso às fotos",
     "failedPickImage": "Falha ao escolher a imagem",
     "noParticipants": "Sem participantes",
-    "cantAddDataInValidationPeriod": "Você não pode adicionar dados no período de validação"
+    "cantAddDataInValidationPeriod": "Você não pode adicionar dados no período de validação",
+    "claimReward": "Resgatar recompensa",
+    "rewardAlreadyClaimed": "Recompensa já resgatada"
 }
