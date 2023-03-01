@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -37,6 +38,10 @@ class _GroupsCardState extends State<GroupsCard> {
   Widget build(BuildContext context) {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
+    final participantsSumValue = widget.group.participantsData.map((element) {
+      return element.sumData.value;
+    }).toList();
+    participantsSumValue.sort((a, b) => b.compareTo(a));
     return ButtonCommonStyle(
       onPressed: () async {
         if (widget.homeViewModel.isEditing.value) {
@@ -51,6 +56,7 @@ class _GroupsCardState extends State<GroupsCard> {
           Provider.of<IndividualGroupProvider>(context, listen: false).getGroup(
             widget.group.id,
           );
+          Provider.of<AuthProvider>(context, listen: false).getUser();
           individualGroupProvider.updateIndex(0);
           Navigator.push(
             context,
@@ -103,15 +109,73 @@ class _GroupsCardState extends State<GroupsCard> {
                   padding: const EdgeInsets.only(
                     left: kDefaultPadding,
                   ),
-                  child: widget.group.endDate!.isBefore(
-                            DateTime.now().subtract(
-                                  const Duration(days: 1),
+                  child: participantsSumValue.length > 1 &&
+                          participantsSumValue
+                                  .where((element) =>
+                                      element == participantsSumValue.first)
+                                  .length >
+                              1
+                      ? widget.group.endDate!.isBefore(
+                          DateTime.now().subtract(
+                            const Duration(days: 3),
+                          ),
+                        )
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                StaticText(
+                                  text: Characters(widget.group.projectName)
+                                      .replaceAll(
+                                        Characters(''),
+                                        Characters('\u{200B}'),
+                                      )
+                                      .toString(),
+                                  overflow: TextOverflow.ellipsis,
+                                  fontSize: 20,
                                 ),
-                          )
-                      ? Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            StaticText(
+                                const SizedBox(height: Insets.s),
+                                MediumBody(
+                                  text: AppLocalizations.of(context).ended,
+                                  color: kSecondaryColor,
+                                ),
+                              ],
+                            )
+                          : StaticText(
+                              text: Characters(widget.group.projectName)
+                                  .replaceAll(
+                                    Characters(''),
+                                    Characters('\u{200B}'),
+                                  )
+                                  .toString(),
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: 20,
+                            )
+                      : widget.group.endDate!.isBefore(
+                          DateTime.now().subtract(
+                            const Duration(days: 1),
+                          ),
+                        )
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                StaticText(
+                                  text: Characters(widget.group.projectName)
+                                      .replaceAll(
+                                        Characters(''),
+                                        Characters('\u{200B}'),
+                                      )
+                                      .toString(),
+                                  overflow: TextOverflow.ellipsis,
+                                  fontSize: 20,
+                                ),
+                                const SizedBox(height: Insets.s),
+                                MediumBody(
+                                  text: AppLocalizations.of(context).ended,
+                                  color: kSecondaryColor,
+                                ),
+                              ],
+                            )
+                          : StaticText(
                               text: Characters(widget.group.projectName)
                                   .replaceAll(
                                     Characters(''),
@@ -121,23 +185,6 @@ class _GroupsCardState extends State<GroupsCard> {
                               overflow: TextOverflow.ellipsis,
                               fontSize: 20,
                             ),
-                            const SizedBox(height: Insets.s),
-                            MediumBody(
-                              text: AppLocalizations.of(context).ended,
-                              color: kSecondaryColor,
-                            ),
-                          ],
-                        )
-                      : StaticText(
-                          text: Characters(widget.group.projectName)
-                              .replaceAll(
-                                Characters(''),
-                                Characters('\u{200B}'),
-                              )
-                              .toString(),
-                          overflow: TextOverflow.ellipsis,
-                          fontSize: 20,
-                        ),
                 ),
               ),
             StatsGroup(
