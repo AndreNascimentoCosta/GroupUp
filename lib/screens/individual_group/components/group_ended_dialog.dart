@@ -7,6 +7,7 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
+import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/screens/individual_group/components/group_ended_participant_card.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -54,18 +55,25 @@ groupEndedDialog(BuildContext context) {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              StaticText(
-                text: appLocalizations.winnerWon(
-                    groupCurrencySymbol,
-                    'R\$ ${NumberFormat.decimalPattern(
-                      Localizations.localeOf(context).toString(),
-                    ).format(
-                      double.parse(group.reward),
-                    )}'),
-                fontSize: TextSize.mBody,
-              ),
+              if (double.parse(group.reward) == 0)
+                const SizedBox()
+              else
+                Padding(
+                  padding: const EdgeInsets.only(bottom: kDefaultPadding),
+                  child: StaticText(
+                    text: appLocalizations.winnerWon(
+                        groupCurrencySymbol,
+                        NumberFormat.decimalPattern(
+                          Localizations.localeOf(context).toString(),
+                        ).format(
+                          double.parse(group.reward),
+                        )),
+                    fontSize: TextSize.mBody,
+                  ),
+                ),
               ListView.separated(
                 shrinkWrap: true,
+                padding: EdgeInsets.zero,
                 separatorBuilder: (context, index) => const Divider(
                   indent: kDefaultPadding,
                   endIndent: kDefaultPadding,
@@ -116,7 +124,7 @@ groupEndedDialog(BuildContext context) {
           else if (currentUserRank == '1º')
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.5,
-              child: ButtonCommonStyle(
+              child: NextButton(
                 onPressed: () {
                   late bool isAllClaimed;
                   for (var i = 0; i < group.paymentIntentIds.length; i++) {
@@ -146,12 +154,8 @@ groupEndedDialog(BuildContext context) {
                     group.id,
                   );
                 },
-                child: StaticText(
-                  text: appLocalizations.claimReward,
-                  fontSize: TextSize.mBody,
-                  fontFamily: 'Montserrat-SemiBold',
-                  color: kPrimaryColor,
-                ),
+                text: appLocalizations.claimReward,
+                width: MediaQuery.of(context).size.width * 0.4,
               ),
             )
           else
