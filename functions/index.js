@@ -347,7 +347,7 @@ exports.AddGroupRewardToUserBalance = functions.https.onRequest(async (req, res)
 
 });
 
-exports.EveryDayAtMidnight = functions.pubsub.schedule('every 2 minutes').timeZone('Etc/UTC').onRun(async () => {
+exports.EveryDayAtMidnight = functions.pubsub.schedule('0 0 * * *').timeZone('Etc/UTC').onRun(async () => {
 
     const dateTimeNow = new Date();
 
