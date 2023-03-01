@@ -1,14 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
+import 'package:groupup/screens/individual_group/components/dialog_deny_add_input.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -52,53 +50,42 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                         .group;
                 Provider.of<AddInputProvider>(context, listen: false).clean();
                 if (group == null) return;
+                final participantsSumValue =
+                    group.participantsData.map((element) {
+                  return element.sumData.value;
+                }).toList();
+                participantsSumValue.sort((a, b) => b.compareTo(a));
+                final isTied = participantsSumValue
+                        .where(
+                            (element) => element == participantsSumValue.first)
+                        .length >
+                    1;
+                final isNotTied = participantsSumValue
+                        .where(
+                            (element) => element == participantsSumValue.first)
+                        .length ==
+                    1;
                 if (group.maxParticipants > 1 &&
                     group.maxParticipants > group.participants.length) {
-                  showCupertinoDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: StaticText(
-                          text: appLocalizations.youCantDoThis,
-                          textAlign: TextAlign.center,
-                          fontFamily: 'Montserrat-SemiBold',
-                          fontSize: TextSize.lBody,
+                  denyAddInputDialog(context,
+                      appLocalizations.cantAddDataWhenNotEveryoneHasJoined);
+                } else if (participantsSumValue.length > 1 &&
+                    isTied &&
+                    group.endDate!.isBefore(
+                      DateTime.now().subtract(
+                        const Duration(
+                          days: 2,
                         ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        content: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: kDefaultPadding),
-                          child: StaticText(
-                            text: appLocalizations
-                                .cantAddDataWhenNotEveryoneHasJoined,
-                            maxLines: 5,
-                            textAlign: TextAlign.center,
-                            fontSize: TextSize.mBody,
-                          ),
-                        ),
-                        actionsAlignment: MainAxisAlignment.center,
-                        contentPadding:
-                            const EdgeInsets.only(top: 20, bottom: 20),
-                        actions: [
-                          ButtonCommonStyle(
-                            onPressed: () {
-                              Provider.of<MixPanelProvider>(context,
-                                      listen: false)
-                                  .logEvent(eventName: 'Add Input');
-                              Navigator.of(context).pop();
-                            },
-                            child: const StaticText(
-                              text: 'OK',
-                              fontSize: TextSize.mBody,
-                              color: kPrimaryColor,
-                            ),
-                          )
-                        ],
-                      );
-                    },
-                  );
+                      ),
+                    )) {
+                  denyAddInputDialog(context,
+                      appLocalizations.cantAddDataInValidationPeriod);
+                } else if (group.endDate!.isBefore(
+                      DateTime.now(),
+                    ) &&
+                    isNotTied) {
+                  denyAddInputDialog(context,
+                      appLocalizations.cantAddDataInValidationPeriod);
                 } else {
                   showModalBottomSheet(
                     isScrollControlled: true,
