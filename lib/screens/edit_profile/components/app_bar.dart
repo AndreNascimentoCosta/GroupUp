@@ -46,6 +46,8 @@ class AppBarEditProfile extends StatelessWidget with PreferredSizeWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const EditProfileScreen(),
+                        settings:
+                            const RouteSettings(name: 'Edit_Profile'),
                       ),
                     );
                   },

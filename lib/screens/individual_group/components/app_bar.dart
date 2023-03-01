@@ -51,8 +51,7 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
       await storage.uploadGroupImage(context, group.id);
       individualGroupProvider.getGroup(group.id, reset: false);
     } on PlatformException catch (e) {
-      // ignore: avoid_print
-      print('Failed to pick image: $e');
+      debugPrint('Failed to pick image: $e');
     }
   }
 
@@ -201,6 +200,9 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                                       homeViewModel: widget.homeViewModel,
                                       groups: group,
                                     ),
+                                    settings: const RouteSettings(
+                                      name: 'Group_Settings',
+                                    ),
                                   ),
                                 );
                               },
@@ -258,6 +260,9 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                                   homeViewModel: widget.homeViewModel,
                                   groups: group,
                                 ),
+                                settings: const RouteSettings(
+                                  name: 'Group_Settings',
+                                ),
                               ),
                             );
                           },
@@ -285,6 +290,9 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                                 builder: (context) => GroupSettings(
                                   homeViewModel: widget.homeViewModel,
                                   groups: group,
+                                ),
+                                settings: const RouteSettings(
+                                  name: 'Group_Settings',
                                 ),
                               ),
                             );

@@ -49,8 +49,7 @@ class _BodyProfileState extends State<BodyProfile> {
       if (!mounted) return;
       await storage.uploadProfilePicture(context);
     } on PlatformException catch (e) {
-      // ignore: avoid_print
-      print('Failed to pick image: $e');
+      debugPrint('Failed to pick image: $e');
     }
   }
 
@@ -178,6 +177,7 @@ class _BodyProfileState extends State<BodyProfile> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const EditProfileScreen(),
+                          settings: const RouteSettings(name: 'Edit_Profile'),
                         ),
                       );
                     },
@@ -194,6 +194,7 @@ class _BodyProfileState extends State<BodyProfile> {
                           builder: (context) => BalanceScreen(
                             groupsData: groupsData,
                           ),
+                          settings: const RouteSettings(name: 'Balance'),
                         ),
                       );
                     },
@@ -213,6 +214,7 @@ class _BodyProfileState extends State<BodyProfile> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const CreatedGroupsScreen(),
+                          settings: const RouteSettings(name: 'Created_Groups'),
                         ),
                       );
                     },
@@ -228,6 +230,7 @@ class _BodyProfileState extends State<BodyProfile> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const SavedCardsScreen(),
+                          settings: const RouteSettings(name: 'Saved_Cards'),
                         ),
                       );
                     },

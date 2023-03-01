@@ -58,6 +58,7 @@ class _GroupsCardState extends State<GroupsCard> {
               builder: (context) {
                 return const IndividualGroupScreen();
               },
+              settings: const RouteSettings(name: 'Individual_Group'),
             ),
           );
         }

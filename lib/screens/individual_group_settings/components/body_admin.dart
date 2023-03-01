@@ -56,6 +56,7 @@ class BodyAdminSettings extends StatelessWidget {
                     builder: (context) {
                       return const ReportParticipant();
                     },
+                    settings: const RouteSettings(name: 'Report_Participant'),
                   ),
                 );
               },
@@ -72,6 +73,7 @@ class BodyAdminSettings extends StatelessWidget {
                     builder: (context) {
                       return EditGroupNameScreen(groups: groups);
                     },
+                    settings: const RouteSettings(name: 'Edit_Group_Name'),
                   ),
                 );
               },
@@ -88,6 +90,7 @@ class BodyAdminSettings extends StatelessWidget {
                     builder: (context) {
                       return EditGroupObjectiveScreen(groups: groups);
                     },
+                    settings: const RouteSettings(name: 'Edit_Group_Objective'),
                   ),
                 );
               },
@@ -153,6 +156,7 @@ class BodyAdminSettings extends StatelessWidget {
                       builder: (context) {
                         return EditGroupDatesScreen(groups: groups);
                       },
+                      settings: const RouteSettings(name: 'Edit_Group_Dates'),
                     ),
                   );
                 }
@@ -221,6 +225,8 @@ class BodyAdminSettings extends StatelessWidget {
                       builder: (context) {
                         return EditGroupNoParticipantsScreen(groups: groups);
                       },
+                      settings: const RouteSettings(
+                          name: 'Edit_Group_No_Participants'),
                     ),
                   );
                 }

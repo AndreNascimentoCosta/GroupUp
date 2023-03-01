@@ -83,6 +83,9 @@ Future<void> main() async {
             title: 'GroupUp',
             theme: themeData,
             supportedLocales: L10n.all,
+            navigatorObservers: [
+              SentryNavigatorObserver(),
+            ],
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

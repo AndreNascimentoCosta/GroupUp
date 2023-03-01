@@ -28,6 +28,7 @@ class StartState extends State<SplashScreen> {
       context,
       MaterialPageRoute(
         builder: (context) => Home(),
+        settings: const RouteSettings(name: 'Home'),
       ),
     );
   }

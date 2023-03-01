@@ -48,6 +48,7 @@ class BodyNotAdminSettings extends StatelessWidget {
                     builder: (context) {
                       return const ReportParticipant();
                     },
+                    settings: const RouteSettings(name: 'Report_Participant'),
                   ),
                 );
               },

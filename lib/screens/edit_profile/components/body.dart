@@ -41,8 +41,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
       if (!mounted) return;
       await storage.uploadProfilePicture(context);
     } on PlatformException catch (e) {
-      // ignore: avoid_print
-      print('Failed to pick image: $e');
+      debugPrint('Failed to pick image: $e');
     }
   }
 
@@ -178,6 +177,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const EditNameScreen(),
+                  settings: const RouteSettings(name: 'Edit_Name'),
                 ),
               );
             },
