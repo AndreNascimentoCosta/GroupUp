@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
@@ -121,11 +123,13 @@ groupEndedDialog(BuildContext context) {
             const Center(
               child: SizedBox(),
             )
+          else if (group.paymentIntentIds.isEmpty)
+            const SizedBox()
           else if (currentUserRank == '1º')
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.5,
               child: NextButton(
-                onPressed: () {
+                onPressed: () async {
                   late bool isAllClaimed;
                   for (var i = 0; i < group.paymentIntentIds.length; i++) {
                     if (currentUserPaymentIntentIds
@@ -137,7 +141,7 @@ groupEndedDialog(BuildContext context) {
                       break;
                     }
                   }
-                  if (isAllClaimed == true) {
+                  if (isAllClaimed == true)  {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -148,10 +152,16 @@ groupEndedDialog(BuildContext context) {
                     );
                     return;
                   }
-                  individualGroupProvider.claimReward(
+                  await individualGroupProvider.claimReward(
                     context,
                     currentUser.id,
                     group.id,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(appLocalizations.rewardClaimedText),
+                      duration: const Duration(seconds: 2),
+                    ),
                   );
                 },
                 text: appLocalizations.claimReward,
