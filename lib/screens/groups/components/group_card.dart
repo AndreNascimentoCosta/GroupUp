@@ -53,10 +53,11 @@ class _GroupsCardState extends State<GroupsCard> {
         } else {
           Provider.of<MixPanelProvider>(context, listen: false)
               .logEvent(eventName: 'Individual Group Screen');
-          Provider.of<IndividualGroupProvider>(context, listen: false).getGroup(
+          individualGroupProvider.getGroup(
             widget.group.id,
           );
           Provider.of<AuthProvider>(context, listen: false).getUser();
+          individualGroupProvider.isClaimingReward = false;
           individualGroupProvider.updateIndex(0);
           Navigator.push(
             context,
