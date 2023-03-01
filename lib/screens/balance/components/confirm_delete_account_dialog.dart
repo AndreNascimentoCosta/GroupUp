@@ -59,18 +59,6 @@ void confirmDeleteAccountDialog(BuildContext rootContext) {
             onPressed: () async {
               Provider.of<MixPanelProvider>(newContext, listen: false)
                   .logEvent(eventName: 'Delete Connected Account');
-              // try {
-              //   await FirebaseFunctions.instance
-              //       .httpsCallable('DeleteAccount')
-              //       .call(
-              //     {
-              //       'accountId': authProvider.user!.stripeAccountId,
-              //     },
-              //   );
-              // } on FirebaseFunctionsException catch (e) {
-              //   // ignore: avoid_print
-              //   print(e.message);
-              // }
               await Provider.of<StripePaymentProvider>(newContext,
                       listen: false)
                   .deleteConnectedAccount(

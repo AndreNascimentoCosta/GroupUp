@@ -87,8 +87,7 @@ void confirmRequestPayoutDialog(BuildContext context) {
                   );
                 }
               } on FirebaseFunctionsException catch (e) {
-                // ignore: avoid_print
-                print(e.message);
+                debugPrint(e.message);
               }
               await FirebaseFirestore.instance
                   .collection('users')

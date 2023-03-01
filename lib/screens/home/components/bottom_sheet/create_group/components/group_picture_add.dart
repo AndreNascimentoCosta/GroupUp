@@ -42,8 +42,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
         this.image = imageTemporary;
       });
     } on PlatformException catch (e) {
-      // ignore: avoid_print
-      print('Failed to pick image: $e');
+      debugPrint('Failed to pick image: $e');
     }
   }
 

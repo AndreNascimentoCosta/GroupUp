@@ -78,8 +78,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                       throw 'Could not launch $url';
                     }
                   } on FirebaseFunctionsException catch (e) {
-                    // ignore: avoid_print
-                    print(e.message);
+                    debugPrint(e.message);
                   }
                 },
                 child: StaticText(
@@ -170,8 +169,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                                       authProvider.user!.stripeAccountId,
                                 });
                               } on FirebaseFunctionsException catch (e) {
-                                // ignore: avoid_print
-                                print(e.message);
+                                debugPrint(e.message);
                               }
                               // ignore: use_build_context_synchronously
                               await Provider.of<StripePaymentProvider>(context,

@@ -83,8 +83,7 @@ void confirmLoginToAccountDialog(BuildContext context) {
                   throw 'Could not launch $url';
                 }
               } on FirebaseFunctionsException catch (e) {
-                // ignore: avoid_print
-                print(e.message);
+                debugPrint(e.message);
               }
             },
             height: 40,

@@ -49,7 +49,7 @@ class SavedCardCreateGroupBottomSheet extends StatelessWidget {
           'userId': user.id,
         },
       ),
-      builder: (_, snapshot) {
+      builder: (context, snapshot) {
         return ButtonCommonStyle(
           onPressed: () async {
             final stripePayment =

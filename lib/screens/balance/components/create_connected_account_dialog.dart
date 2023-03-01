@@ -97,8 +97,7 @@ void createConnectedAccount(BuildContext context) {
                   }
                 } on FirebaseFunctionsException catch (e) {
                   navigatorState.pop();
-                  // ignore: avoid_print
-                  print(e.message);
+                  debugPrint(e.message);
                 }
               }
             },

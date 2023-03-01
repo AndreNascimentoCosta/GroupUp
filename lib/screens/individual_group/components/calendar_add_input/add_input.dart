@@ -74,8 +74,7 @@ class _AddInputState extends State<AddInput> {
         }
         addInputProvider.isLoading = false;
         Navigator.of(context).pop();
-        // ignore: avoid_print
-        print('Failed to pick image: ${e.message}');
+        debugPrint('Failed to pick image: ${e.message}');
       }
     }
 
