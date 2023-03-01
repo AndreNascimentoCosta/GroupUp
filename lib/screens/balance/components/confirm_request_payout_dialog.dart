@@ -12,14 +12,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/providers/mix_panel_provider.dart';
 
-void confirmRequestPayoutDialog(BuildContext context) {
-  final authProvider = Provider.of<AuthProvider>(context, listen: false);
-  final appLocalizations = AppLocalizations.of(context);
+void confirmRequestPayoutDialog(BuildContext rootContext) {
+  final authProvider = Provider.of<AuthProvider>(rootContext, listen: false);
+  final appLocalizations = AppLocalizations.of(rootContext);
   if (authProvider.user == null) {
     return;
   }
   showCupertinoDialog(
-    context: context,
+    context: rootContext,
     builder: (BuildContext newContext) {
       return AlertDialog(
         title: StaticText(
@@ -48,7 +48,7 @@ void confirmRequestPayoutDialog(BuildContext context) {
             textColor: Colors.red,
             borderColor: Colors.transparent,
             onPressed: () {
-              Provider.of<MixPanelProvider>(context, listen: false)
+              Provider.of<MixPanelProvider>(newContext, listen: false)
                   .logEvent(eventName: 'Cancel Request Payout');
               Navigator.of(newContext).pop();
             },
@@ -60,9 +60,15 @@ void confirmRequestPayoutDialog(BuildContext context) {
             text: appLocalizations.yes,
             borderColor: kPrimaryColor,
             onPressed: () async {
-              Provider.of<MixPanelProvider>(context, listen: false)
+              Provider.of<MixPanelProvider>(newContext, listen: false)
                   .logEvent(eventName: 'Request Payout');
-              Navigator.of(context).pop();
+              Navigator.of(newContext).pop();
+              ScaffoldMessenger.of(rootContext).showSnackBar(
+                SnackBar(
+                  content: Text(appLocalizations.payoutSuccessful),
+                  duration: const Duration(seconds: 2),
+                ),
+              );
               try {
                 for (var i = 0;
                     i < authProvider.user!.paymentIntentIds.length;
