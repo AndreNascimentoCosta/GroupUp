@@ -11,7 +11,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/providers/mix_panel_provider.dart';
 
-showDialogIfFirstOpened(BuildContext context) async {
+tiebreakerDialog(BuildContext context) async {
   const keyIsFirstOpened = 'is_first_opened';
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool? isFirstLoaded = prefs.getBool(keyIsFirstOpened);
