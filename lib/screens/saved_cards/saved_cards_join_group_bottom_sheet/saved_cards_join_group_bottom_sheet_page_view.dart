@@ -18,12 +18,8 @@ class SavedCardsJoinGroupBottomSheetPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context);
-    final isPaying = Provider.of<StripePaymentProvider>(context).isPaying;
-    if (isPaying) {
-      return const Center(
-        child: CircularProgressIndicator(color: kPrimaryColor),
-      );
-    }
+    final stripePaymentProvider = Provider.of<StripePaymentProvider>(context);
+
     return SafeArea(
       child: Column(
         children: [
@@ -38,47 +34,51 @@ class SavedCardsJoinGroupBottomSheetPageView extends StatelessWidget {
           const SizedBox(height: kDefaultPadding / 2),
           SavedCardsJoinGroupBottomSheetBody(groupCode: groupCode),
           const SizedBox(height: kDefaultPadding / 2),
-          NextButton(
-            onPressed: () async {
-              Provider.of<MixPanelProvider>(context, listen: false).logEvent(
-                  eventName: 'Join Group Paying with Stripe Bottom Sheet');
-              final navigatorState = Navigator.of(context);
-              final joinGroupProvider = Provider.of<JoinGroupProvider>(
-                context,
-                listen: false,
-              );
-              final user =
-                  Provider.of<AuthProvider>(context, listen: false).user;
-              if (user == null) {
-                return;
-              }
-              try {
-                final stripePaymentProvider =
-                    Provider.of<StripePaymentProvider>(
+          if (stripePaymentProvider.isPaying)
+            const Center(
+              child: CircularProgressIndicator(color: kPrimaryColor),
+            )
+          else
+            NextButton(
+              onPressed: () async {
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                    eventName: 'Join Group Paying with Stripe Bottom Sheet');
+                final navigatorState = Navigator.of(context);
+                final joinGroupProvider = Provider.of<JoinGroupProvider>(
                   context,
                   listen: false,
                 );
-                final paymentIntentId =
-                    await stripePaymentProvider.initPaymentJoinGroup(
-                  groupCode,
-                  user.id,
-                );
-                // ignore: use_build_context_synchronously
-                await joinGroupProvider.joinGroup(context);
-                await stripePaymentProvider.addPaymentIntentId(
-                  paymentIntentId,
-                  groupCode,
-                );
-                navigatorState.pop();
-                navigatorState.pop();
-              } catch (e) {
-                // ignore: avoid_print
-                print(e);
-              }
-            },
-            width: 250,
-            text: 'Other payment methods',
-          ),
+                final user =
+                    Provider.of<AuthProvider>(context, listen: false).user;
+                if (user == null) {
+                  return;
+                }
+                try {
+                  final stripePaymentProvider =
+                      Provider.of<StripePaymentProvider>(
+                    context,
+                    listen: false,
+                  );
+                  final paymentIntentId =
+                      await stripePaymentProvider.initPaymentJoinGroup(
+                    groupCode,
+                    user.id,
+                  );
+                  // ignore: use_build_context_synchronously
+                  await joinGroupProvider.joinGroup(context);
+                  await stripePaymentProvider.addPaymentIntentId(
+                    paymentIntentId,
+                    groupCode,
+                  );
+                  navigatorState.pop();
+                  navigatorState.pop();
+                } catch (e) {
+                  debugPrint(e.toString());
+                }
+              },
+              width: 250,
+              text: 'Other payment methods',
+            ),
         ],
       ),
     );

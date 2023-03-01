@@ -7,8 +7,9 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:groupup/screens/saved_cards/saved_cards_join_group_bottom_sheet/saved_card_join_group_confirm_card_dialog.dart';
 import 'package:provider/provider.dart';
+
+import '../../../core/providers/stripe_payment_provider.dart';
 
 class SavedCardJoinGroupBottomSheet extends StatelessWidget {
   const SavedCardJoinGroupBottomSheet({
@@ -38,9 +39,13 @@ class SavedCardJoinGroupBottomSheet extends StatelessWidget {
     }
     return ButtonCommonStyle(
       onPressed: () {
+        final stripePaymentProvider = Provider.of<StripePaymentProvider>(
+          context,
+          listen: false,
+        );
         Provider.of<MixPanelProvider>(context, listen: false)
             .logEvent(eventName: 'Confirm Join Group Paying with Saved Card');
-        savedCardConfirmCardJoinGroup(
+        stripePaymentProvider.savedCardConfirmCardJoinGroup(
           context,
           groupCode,
           paymentMethodId,

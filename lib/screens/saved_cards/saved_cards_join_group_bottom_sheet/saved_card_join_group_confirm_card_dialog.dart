@@ -84,12 +84,11 @@ void savedCardConfirmCardJoinGroup(
                   },
                 );
                 await stripePaymentProvider.addPaymentIntentId(
-                  paymentMethodId,
+                  paymentIntentId.data['paymentIntentId'],
                   groupCode,
                 );
               } on FirebaseFunctionsException catch (e) {
-                // ignore: avoid_print
-                print(e.code);
+                debugPrint(e.code);
               }
               // ignore: use_build_context_synchronously
               joinGroupProvider.joinGroup(context);
