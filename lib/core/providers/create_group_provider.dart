@@ -173,7 +173,7 @@ enum Currencies {
 class CreateGroupProvider extends ChangeNotifier {
   final controllerProjectName = TextEditingController();
   final controllerObjective = TextEditingController();
-  final controllerReward = TextEditingController();
+  final controllerReward = TextEditingController(text: '0');
   final controllerNumberParticipants = TextEditingController();
   final controllerStartDate = TextEditingController();
   final controllerEndDate = TextEditingController();
@@ -701,13 +701,13 @@ class CreateGroupProvider extends ChangeNotifier {
   void clean() {
     controllerProjectName.clear();
     controllerObjective.clear();
-    controllerReward.clear();
+    controllerReward.text = '0';
     controllerNumberParticipants.clear();
     controllerStartDate.clear();
     controllerEndDate.clear();
     newGroup.projectName = '';
     newGroup.objective = '';
-    newGroup.reward = '';
+    newGroup.reward = '0';
     newGroup.image = '';
     newGroup.participants = [];
     newGroup.participantsData = [];
