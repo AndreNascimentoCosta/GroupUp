@@ -333,9 +333,13 @@ exports.AddGroupRewardToUserBalance = functions.https.onRequest(async (req, res)
 
     console.log(paymentIntentAmountReceived);
 
-    userRef.update({
+    await userRef.update({
         paymentIntentIds,
         balance: paymentIntentAmountReceived,
+    });
+
+    await admin.firestore().collection('groups').doc(groupId).update({
+        paymentIntentIds: [],
     });
 
     return res.send({
@@ -371,7 +375,7 @@ exports.EveryDayAtMidnight = functions.pubsub.schedule('0 0 * * *').timeZone('Et
 
             const userRef = admin.firestore().collection('users').doc(winnerUid);
             const userData = (await userRef.get()).data();
-            
+
             const dateTimeNow = new Date();
 
             dateTimeNow.setDate(dateTimeNow.getDate() - 3);
@@ -391,9 +395,13 @@ exports.EveryDayAtMidnight = functions.pubsub.schedule('0 0 * * *').timeZone('Et
                     paymentIntentAmountReceived += paymentIntent.amount_received;
                 }
 
-                userRef.update({
+                await userRef.update({
                     paymentIntentIds,
                     balance: paymentIntentAmountReceived,
+                });
+
+                await admin.firestore().collection('groups').doc(group.id).update({
+                    paymentIntentIds: [],
                 });
             }
 
@@ -426,10 +434,15 @@ exports.EveryDayAtMidnight = functions.pubsub.schedule('0 0 * * *').timeZone('Et
                     paymentIntentAmountReceived += paymentIntent.amount_received;
                 }
 
-                userRef.update({
+                await userRef.update({
                     paymentIntentIds,
                     balance: paymentIntentAmountReceived,
                 });
+
+                await admin.firestore().collection('groups').doc(group.id).update({
+                    paymentIntentIds: [],
+                });
+
             }
         }
 
