@@ -73,12 +73,12 @@ void confirmRequestPayoutDialog(BuildContext rootContext) {
                 for (var i = 0;
                     i < authProvider.user!.paymentIntentIds.length;
                     i++) {
-                  final userData = authProvider.user!.paymentIntentIds[i];
+                  final userPaymentIntentsIds = authProvider.user!.paymentIntentIds[i];
                   final retrievePaymentIntent = await FirebaseFunctions.instance
                       .httpsCallable('RetrivePaymentIntent')
                       .call(
                     {
-                      'paymentIntentId': userData,
+                      'paymentIntentId': userPaymentIntentsIds,
                     },
                   );
                   await FirebaseFunctions.instance
@@ -88,7 +88,7 @@ void confirmRequestPayoutDialog(BuildContext rootContext) {
                       'accountId': authProvider.user!.stripeAccountId,
                       'amount': retrievePaymentIntent
                           .data['paymentIntentAmountReceived'],
-                      'paymentIntentId': userData,
+                      'paymentIntentId': userPaymentIntentsIds,
                     },
                   );
                 }
