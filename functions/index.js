@@ -351,104 +351,104 @@ exports.AddGroupRewardToUserBalance = functions.https.onRequest(async (req, res)
 
 });
 
-exports.EveryDayAtMidnight = functions.pubsub.schedule('0 0 * * *').timeZone('Etc/UTC').onRun(async () => {
+// exports.EveryDayAtMidnight = functions.pubsub.schedule('0 0 * * *').timeZone('Etc/UTC').onRun(async () => {
 
-    const dateTimeNow = new Date();
+//     const dateTimeNow = new Date();
 
-    const groups = await admin.firestore().collection('groups').where('endDate', '<', dateTimeNow).get();
+//     const groups = await admin.firestore().collection('groups').where('endDate', '<', dateTimeNow).get();
 
-    groups.forEach(async group => {
+//     groups.forEach(async group => {
 
-        const groupData = group.data();
+//         const groupData = group.data();
 
-        let participantsDatas = groupData.participantsData.map(participant => ({ uid: participant.uid, sum: participant.inputData.map(input => input.value).reduce((a, b) => a + b, 0) }));
+//         let participantsDatas = groupData.participantsData.map(participant => ({ uid: participant.uid, sum: participant.inputData.map(input => input.value).reduce((a, b) => a + b, 0) }));
 
-        const greatestValue = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].sum;
+//         const greatestValue = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].sum;
 
-        const winners = participantsDatas.filter(participant => participant.sum === greatestValue);
-
-
-        if (winners.length > 1) {
-
-            const winnerUid = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].uid;
+//         const winners = participantsDatas.filter(participant => participant.sum === greatestValue);
 
 
-            const userRef = admin.firestore().collection('users').doc(winnerUid);
-            const userData = (await userRef.get()).data();
+//         if (winners.length > 1) {
 
-            const dateTimeNow = new Date();
-
-            dateTimeNow.setDate(dateTimeNow.getDate() - 3);
-            console.log(groupData.endDate.toDate().getTime());
-            console.log(dateTimeNow.getTime());
-            console.log(groupData.endDate.toDate().getTime() < dateTimeNow.getTime() ? 'true' : 'false');
-
-            if (groupData.endDate.toDate().getTime() < dateTimeNow.getTime()) {
-
-                const paymentIntentIds = removeDuplicates(groupData.paymentIntentIds.concat(userData.paymentIntentIds || []));
-
-                var paymentIntentAmountReceived = 0
-
-                for (let i = 0; i < paymentIntentIds.length; i++) {
-                    const paymentIntentId = paymentIntentIds[i];
-                    const paymentIntent = await retrievePaymentIntent(paymentIntentId);
-                    paymentIntentAmountReceived += paymentIntent.amount_received;
-                }
-
-                await userRef.update({
-                    paymentIntentIds,
-                    balance: paymentIntentAmountReceived,
-                });
-
-                await admin.firestore().collection('groups').doc(group.id).update({
-                    paymentIntentIds: [],
-                });
-            }
-
-        } else {
-
-            const winnerUid = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].uid;
-
-            console.log(winnerUid);
-
-            const userRef = admin.firestore().collection('users').doc(winnerUid);
-            const userData = (await userRef.get()).data();
-
-            const dateTimeNow = new Date();
-
-            dateTimeNow.setDate(dateTimeNow.getDate() - 1);
-            console.log(groupData.endDate.toDate().getTime());
-            console.log(dateTimeNow.getTime());
-            console.log(groupData.endDate.toDate().getTime() < dateTimeNow.getTime() ? 'true' : 'false');
-
-            if (groupData.endDate.toDate().getTime() < dateTimeNow.getTime()) {
+//             const winnerUid = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].uid;
 
 
-                const paymentIntentIds = removeDuplicates(groupData.paymentIntentIds.concat(userData.paymentIntentIds || []));
+//             const userRef = admin.firestore().collection('users').doc(winnerUid);
+//             const userData = (await userRef.get()).data();
 
-                var paymentIntentAmountReceived = 0
+//             const dateTimeNow = new Date();
 
-                for (let i = 0; i < paymentIntentIds.length; i++) {
-                    const paymentIntentId = paymentIntentIds[i];
-                    const paymentIntent = await retrievePaymentIntent(paymentIntentId);
-                    paymentIntentAmountReceived += paymentIntent.amount_received;
-                }
+//             dateTimeNow.setDate(dateTimeNow.getDate() - 3);
+//             console.log(groupData.endDate.toDate().getTime());
+//             console.log(dateTimeNow.getTime());
+//             console.log(groupData.endDate.toDate().getTime() < dateTimeNow.getTime() ? 'true' : 'false');
 
-                await userRef.update({
-                    paymentIntentIds,
-                    balance: paymentIntentAmountReceived,
-                });
+//             if (groupData.endDate.toDate().getTime() < dateTimeNow.getTime()) {
 
-                await admin.firestore().collection('groups').doc(group.id).update({
-                    paymentIntentIds: [],
-                });
+//                 const paymentIntentIds = removeDuplicates(groupData.paymentIntentIds.concat(userData.paymentIntentIds || []));
 
-            }
-        }
+//                 var paymentIntentAmountReceived = 0
 
-    });
+//                 for (let i = 0; i < paymentIntentIds.length; i++) {
+//                     const paymentIntentId = paymentIntentIds[i];
+//                     const paymentIntent = await retrievePaymentIntent(paymentIntentId);
+//                     paymentIntentAmountReceived += paymentIntent.amount_received;
+//                 }
 
-});
+//                 await userRef.update({
+//                     paymentIntentIds,
+//                     balance: paymentIntentAmountReceived,
+//                 });
+
+//                 await admin.firestore().collection('groups').doc(group.id).update({
+//                     paymentIntentIds: [],
+//                 });
+//             }
+
+//         } else {
+
+//             const winnerUid = participantsDatas.sort((a, b) => b.sum < a.sum ? -1 : 1)[0].uid;
+
+//             console.log(winnerUid);
+
+//             const userRef = admin.firestore().collection('users').doc(winnerUid);
+//             const userData = (await userRef.get()).data();
+
+//             const dateTimeNow = new Date();
+
+//             dateTimeNow.setDate(dateTimeNow.getDate() - 1);
+//             console.log(groupData.endDate.toDate().getTime());
+//             console.log(dateTimeNow.getTime());
+//             console.log(groupData.endDate.toDate().getTime() < dateTimeNow.getTime() ? 'true' : 'false');
+
+//             if (groupData.endDate.toDate().getTime() < dateTimeNow.getTime()) {
+
+
+//                 const paymentIntentIds = removeDuplicates(groupData.paymentIntentIds.concat(userData.paymentIntentIds || []));
+
+//                 var paymentIntentAmountReceived = 0
+
+//                 for (let i = 0; i < paymentIntentIds.length; i++) {
+//                     const paymentIntentId = paymentIntentIds[i];
+//                     const paymentIntent = await retrievePaymentIntent(paymentIntentId);
+//                     paymentIntentAmountReceived += paymentIntent.amount_received;
+//                 }
+
+//                 await userRef.update({
+//                     paymentIntentIds,
+//                     balance: paymentIntentAmountReceived,
+//                 });
+
+//                 await admin.firestore().collection('groups').doc(group.id).update({
+//                     paymentIntentIds: [],
+//                 });
+
+//             }
+//         }
+
+//     });
+
+// });
 
 
 

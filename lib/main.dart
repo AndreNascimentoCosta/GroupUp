@@ -25,9 +25,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  Stripe.publishableKey = stripePublishableKey;
-  Stripe.merchantIdentifier = 'merchant.com.andrecosta.groupup';
-  await Stripe.instance.applySettings();
+  // Stripe.publishableKey = stripePublishableKey;
+  // Stripe.merchantIdentifier = 'merchant.com.andrecosta.groupup';
+  // await Stripe.instance.applySettings();
   await SentryFlutter.init(
     (options) => {
       options.dsn =
