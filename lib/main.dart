@@ -2,8 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
