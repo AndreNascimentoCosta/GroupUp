@@ -426,13 +426,22 @@
     "@groupEnded": {
         "description": "Group ended"
     },
-    "winnerWon": "The winner won {groupCurrencySymbol} {groupReward}",
-    "@winnerWon": {
+    "winnerWonPayment": "The winner won {groupCurrencySymbol} {groupReward}",
+    "@winnerWonPayment": {
         "description": "Winner won",
         "placeholders": {
             "groupCurrencySymbol": {
                 "type": "String"
             },
+            "groupReward": {
+                "type": "String"
+            }
+        }
+    },
+    "winnerWon": "The winner won {groupReward}",
+    "@winnerWon": {
+        "description": "Winner won",
+        "placeholders": {
             "groupReward": {
                 "type": "String"
             }

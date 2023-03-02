@@ -63,7 +63,7 @@ groupEndedDialog(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.only(bottom: kDefaultPadding),
                 child: StaticText(
-                  text: group.reward, //appLocalizations.winnerWon(groupCurrencySymbol, NumberFormat.decimalPattern(Localizations.localeOf(context).toString(),).format(double.parse(group.reward),), //),
+                  text: appLocalizations.winnerWon(group.reward), //appLocalizations.winnerWon(groupCurrencySymbol, NumberFormat.decimalPattern(Localizations.localeOf(context).toString(),).format(double.parse(group.reward),), //),
                   fontSize: TextSize.mBody,
                 ),
               ),
@@ -89,11 +89,11 @@ groupEndedDialog(BuildContext context) {
         actionsAlignment: MainAxisAlignment.center,
         actionsPadding: const EdgeInsets.only(bottom: 15),
         actions: [
-          if (individualGroupProvider.isClaimingReward == true)
-            const Center(
-              child: CircularProgressIndicator.adaptive(),
-            )
-          else
+          // if (individualGroupProvider.isClaimingReward == true)
+          //   const Center(
+          //     child: CircularProgressIndicator.adaptive(),
+          //   )
+          // else
             SizedBox(
               width: currentUserRank == '1º'
                   ? MediaQuery.of(context).size.width * 0.2
@@ -113,57 +113,57 @@ groupEndedDialog(BuildContext context) {
                 ),
               ),
             ),
-          if (individualGroupProvider.isClaimingReward == true)
-            const Center(
-              child: SizedBox(),
-            )
-          else if (group.paymentIntentIds.isEmpty)
-            const SizedBox()
-          else if (currentUserRank == '1º')
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
-              child: NextButton(
-                onPressed: () async {
-                  late bool isAllClaimed;
-                  for (var i = 0; i < group.paymentIntentIds.length; i++) {
-                    if (currentUserPaymentIntentIds
-                            .contains(groupPaymentIntentIds[i]) ==
-                        true) {
-                      isAllClaimed = true;
-                    } else {
-                      isAllClaimed = false;
-                      break;
-                    }
-                  }
-                  if (isAllClaimed == true) {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(appLocalizations.rewardAlreadyClaimed),
-                        duration: const Duration(seconds: 2),
-                      ),
-                    );
-                    return;
-                  }
-                  await individualGroupProvider.claimReward(
-                    context,
-                    currentUser.id,
-                    group.id,
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(appLocalizations.rewardClaimedText),
-                      duration: const Duration(seconds: 2),
-                    ),
-                  );
-                },
-                text: appLocalizations.claimReward,
-                width: MediaQuery.of(context).size.width * 0.4,
-              ),
-            )
-          else
-            const SizedBox(),
+          // if (individualGroupProvider.isClaimingReward == true)
+          //   const Center(
+          //     child: SizedBox(),
+          //   )
+          // else if (group.paymentIntentIds.isEmpty)
+          //   const SizedBox()
+          // else if (currentUserRank == '1º')
+          //   SizedBox(
+          //     width: MediaQuery.of(context).size.width * 0.5,
+          //     child: NextButton(
+          //       onPressed: () async {
+          //         late bool isAllClaimed;
+          //         for (var i = 0; i < group.paymentIntentIds.length; i++) {
+          //           if (currentUserPaymentIntentIds
+          //                   .contains(groupPaymentIntentIds[i]) ==
+          //               true) {
+          //             isAllClaimed = true;
+          //           } else {
+          //             isAllClaimed = false;
+          //             break;
+          //           }
+          //         }
+          //         if (isAllClaimed == true) {
+          //           Navigator.of(context).pop();
+          //           Navigator.of(context).pop();
+          //           ScaffoldMessenger.of(context).showSnackBar(
+          //             SnackBar(
+          //               content: Text(appLocalizations.rewardAlreadyClaimed),
+          //               duration: const Duration(seconds: 2),
+          //             ),
+          //           );
+          //           return;
+          //         }
+          //         await individualGroupProvider.claimReward(
+          //           context,
+          //           currentUser.id,
+          //           group.id,
+          //         );
+          //         ScaffoldMessenger.of(context).showSnackBar(
+          //           SnackBar(
+          //             content: Text(appLocalizations.rewardClaimedText),
+          //             duration: const Duration(seconds: 2),
+          //           ),
+          //         );
+          //       },
+          //       text: appLocalizations.claimReward,
+          //       width: MediaQuery.of(context).size.width * 0.4,
+          //     ),
+          //   )
+          // else
+          //   const SizedBox(),
         ],
       );
     },
