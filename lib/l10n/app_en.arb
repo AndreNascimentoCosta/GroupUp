@@ -238,7 +238,11 @@
     "@groupFee": {
         "description": "Group fee"
     },
-    "groupDescription": "1. For the moment, the fee can only be paid in Brazilian Real, so make sure you can pay in that currency. \n2. The fee can be set to 0 and there will be no group reward. \n3. Each participant will pay the fee and the total amount will be used as the group reward. \n4. The fee is non-refundable. \n5. Once a data has been added by any participant, the dates and number of participants cannot be edited.",
+    "groupDescriptionPaymentOn": "1. For the moment, the fee can only be paid in Brazilian Real, so make sure you can pay in that currency. \n2. The fee can be set to 0 and there will be no group reward. \n3. Each participant will pay the fee and the total amount will be used as the group reward. \n4. The fee is non-refundable. \n5. Once a data has been added by any participant, the dates and number of participants cannot be edited.",
+    "@groupDescriptionPaymentOn": {
+        "description": "Group fee description"
+    },
+    "groupDescription": "1. Once a data has been added by any participant, the dates and number of participants cannot be edited.",
     "@groupDescription": {
         "description": "Group fee description"
     },
@@ -401,6 +405,14 @@
     "reward": "Reward",
     "@reward": {
         "description": "Reward"
+    },
+    "rewardValidatorMinChars": "Reward must be at least 3 characteres",
+    "@rewardValidatorMinChars": {
+        "description": "Reward minimum chars"
+    },
+    "rewardValidatorMaxChars": "Reward must be less than 50 characters",
+    "@rewardValidatorMaxChars": {
+        "description": "Reward maximum chars"
     },
     "dataValidated": "Done! You validated this data!",
     "@dataValidated": {

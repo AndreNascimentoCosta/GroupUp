@@ -4,13 +4,11 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -20,7 +18,6 @@ import 'package:groupup/models/user_data.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
-import 'package:groupup/screens/saved_cards/saved_cards_create_group_bottom_sheet/saved_cards_create_group_bottom_sheet_page_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -383,21 +380,22 @@ class CreateGroupProvider extends ChangeNotifier {
 
     // Index 1
     final noParticipantsText = controllerNumberParticipants.text;
-    double minValueCurrencies = Currencies.values
-        .firstWhere(
-          (element) => element.name == groupCurrencyCode,
-          orElse: () => Currencies.BRL,
-        )
-        .minValue;
+    // double minValueCurrencies = Currencies.values
+    //     .firstWhere(
+    //       (element) => element.name == groupCurrencyCode,
+    //       orElse: () => Currencies.BRL,
+    //     )
+    //     .minValue;
 
     if (pageIndex == 0 &&
         (projectNameText.length < 3 ||
             objectiveText.length < 3 ||
             projectNameText.length >= 20 ||
             objectiveText.length >= 50 ||
-            rewardText.isEmpty ||
-            double.parse(rewardText) < minValueCurrencies &&
-                double.parse(rewardText) > 0)) {
+            rewardText.length < 3 ||
+            rewardText.length >=
+                50 // || double.parse(rewardText) < minValueCurrencies && double.parse(rewardText) > 0
+        )) {
       return null;
     } else if (pageIndex == 1 &&
         (noParticipantsText.isEmpty ||
@@ -725,7 +723,7 @@ class CreateGroupProvider extends ChangeNotifier {
     controllerEndDate.clear();
     newGroup.projectName = '';
     newGroup.objective = '';
-    newGroup.reward = '0';
+    newGroup.reward = ''; //'0';
     newGroup.image = '';
     newGroup.participants = [];
     newGroup.participantsData = [];

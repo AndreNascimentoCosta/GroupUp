@@ -3,17 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../../../../../core/providers/mix_panel_provider.dart';
 
 enum Currencies {
   AND(0.3),
@@ -471,38 +466,42 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                       focusNode: node3,
                       controller: createGroupProvider.controllerReward,
                       textInputAction: TextInputAction.done,
+                      maxLength: 50,
                       validator: (value) {
-                        double minValueCurrencies = Currencies.values
-                            .firstWhere(
-                              (element) =>
-                                  element.name ==
-                                  createGroupProvider.groupCurrencyCode,
-                            )
-                            .minValue;
-                        if ((double.tryParse(value!) ?? 0) <
-                                minValueCurrencies &&
-                            (double.tryParse(value) ?? 0) > 0) {
-                          return appLocalizations.feeGreaterThan(
-                              minValueCurrencies.toStringAsFixed(2));
+                        if (value!.isNotEmpty && value.length < 3) {
+                          return appLocalizations.rewardValidatorMinChars;
+                        } else if (value.length >= 50) {
+                          return appLocalizations.rewardValidatorMaxChars;
                         } else {
                           return null;
                         }
+                        // double minValueCurrencies = Currencies.values
+                        //     .firstWhere(
+                        //       (element) =>
+                        //           element.name ==
+                        //           createGroupProvider.groupCurrencyCode,
+                        //     )
+                        //     .minValue;
+                        // if ((double.tryParse(value!) ?? 0) <
+                        //         minValueCurrencies &&
+                        //     (double.tryParse(value) ?? 0) > 0) {
+                        //   return appLocalizations.feeGreaterThan(
+                        //       minValueCurrencies.toStringAsFixed(2));
+                        // } else {
+                        //   return null;
+                        // }
                       },
                       header: appLocalizations.reward, //groupFee
                       hint: appLocalizations.enterReward, //'0,00'
                       padding: const EdgeInsets.symmetric(
                         horizontal: kDefaultPadding,
                       ),
-                      keyboardType: const TextInputType.numberWithOptions(
-                        signed: true,
-                        decimal: true,
-                      ),
-                      inputFormatters: [
-                        ReplaceCommaFormatter(),
-                        FilteringTextInputFormatter.allow(
-                          RegExp(r'^\d*\.?\d{0,2}'),
-                        ),
-                      ],
+                      // inputFormatters: [
+                      //   ReplaceCommaFormatter(),
+                      //   FilteringTextInputFormatter.allow(
+                      //     RegExp(r'^\d*\.?\d{0,2}'),
+                      //   ),
+                      // ],
                     ),
                   ),
                 ],
