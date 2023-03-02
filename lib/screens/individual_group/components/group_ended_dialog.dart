@@ -57,22 +57,16 @@ groupEndedDialog(BuildContext context) {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (double.parse(group.reward) == 0)
-                const SizedBox()
-              else
-                Padding(
-                  padding: const EdgeInsets.only(bottom: kDefaultPadding),
-                  child: StaticText(
-                    text: appLocalizations.winnerWon(
-                        groupCurrencySymbol,
-                        NumberFormat.decimalPattern(
-                          Localizations.localeOf(context).toString(),
-                        ).format(
-                          double.parse(group.reward),
-                        )),
-                    fontSize: TextSize.mBody,
-                  ),
+              // if (double.parse(group.reward) == 0)
+              //   const SizedBox()
+              // else
+              Padding(
+                padding: const EdgeInsets.only(bottom: kDefaultPadding),
+                child: StaticText(
+                  text: group.reward, //appLocalizations.winnerWon(groupCurrencySymbol, NumberFormat.decimalPattern(Localizations.localeOf(context).toString(),).format(double.parse(group.reward),), //),
+                  fontSize: TextSize.mBody,
                 ),
+              ),
               ListView.separated(
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,
@@ -141,7 +135,7 @@ groupEndedDialog(BuildContext context) {
                       break;
                     }
                   }
-                  if (isAllClaimed == true)  {
+                  if (isAllClaimed == true) {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
                     ScaffoldMessenger.of(context).showSnackBar(
