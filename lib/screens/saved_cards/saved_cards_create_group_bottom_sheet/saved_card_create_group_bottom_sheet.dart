@@ -39,7 +39,7 @@ class SavedCardCreateGroupBottomSheet extends StatelessWidget {
     final user = Provider.of<AuthProvider>(context).user;
     if (user == null) {
       return const Center(
-        child: CircularProgressIndicator(color: kPrimaryColor),
+        child: CircularProgressIndicator.adaptive(),
       );
     }
     return FutureBuilder(

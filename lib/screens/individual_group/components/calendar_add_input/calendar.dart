@@ -28,7 +28,7 @@ class _CalendarState extends State<Calendar> {
     final screenWidth = MediaQuery.of(context).size.width;
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     if (group == null) {
-      return const CircularProgressIndicator(color: kPrimaryColor);
+      return const CircularProgressIndicator.adaptive();
     }
     final participant =
         group.participantsData.firstWhere((element) => element.uid == user?.id);

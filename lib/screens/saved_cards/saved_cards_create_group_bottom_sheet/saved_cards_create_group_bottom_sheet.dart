@@ -24,7 +24,7 @@ class SavedCardsCreateGroupBottomSheetBody extends StatelessWidget {
     final currentUser = Provider.of<AuthProvider>(context).user;
     if (currentUser == null) {
       return const Center(
-        child: CircularProgressIndicator(color: kPrimaryColor),
+        child: CircularProgressIndicator.adaptive(),
       );
     }
     final userId = currentUser.id;
@@ -47,7 +47,7 @@ class SavedCardsCreateGroupBottomSheetBody extends StatelessWidget {
               } else {
                 if (snapshot.hasData == false) {
                   return const Center(
-                    child: CircularProgressIndicator(color: kPrimaryColor),
+                    child: CircularProgressIndicator.adaptive(),
                   );
                 }
                 if (snapshot.data!.data.isEmpty) {
@@ -89,7 +89,7 @@ class SavedCardsCreateGroupBottomSheetBody extends StatelessWidget {
               }
             } else {
               return const Center(
-                child: CircularProgressIndicator(color: kPrimaryColor),
+                child: CircularProgressIndicator.adaptive(),
               );
             }
           },

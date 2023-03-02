@@ -29,7 +29,7 @@ class _EditAndHistoryGroupButtonState extends State<EditAndHistoryGroupButton> {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
     if (individualGroupProvider.group == null) {
-      return const CircularProgressIndicator(color: kPrimaryColor);
+      return const CircularProgressIndicator.adaptive();
     }
     final user = Provider.of<AuthProvider>(context).user;
     return SizedBox(

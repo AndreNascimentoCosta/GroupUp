@@ -19,7 +19,7 @@ class ShareInstagrammableButton extends StatelessWidget {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
     if (individualGroupProvider.group == null) {
-      return const CircularProgressIndicator(color: kPrimaryColor);
+      return const CircularProgressIndicator.adaptive();
     }
     return SizedBox(
       height: 75,

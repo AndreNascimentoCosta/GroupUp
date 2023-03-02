@@ -79,7 +79,7 @@ class _JoinPageViewState extends State<JoinPageView> {
           if (stripePaymentProvider.isPaying ||
               joinGroupProvider.isOpeningSavedCards)
             const Center(
-              child: CircularProgressIndicator(color: kPrimaryColor),
+              child: CircularProgressIndicator.adaptive(),
             )
           else
             NextButton(

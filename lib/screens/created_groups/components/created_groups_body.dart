@@ -39,7 +39,7 @@ class BodyCreatedGroup extends StatelessWidget {
                 .toList();
             if (snapshot.hasData == false) {
               return const Center(
-                child: CircularProgressIndicator(color: kPrimaryColor),
+                child: CircularProgressIndicator.adaptive(),
               );
             }
             if (snapshot.data!.docs.isEmpty || groups!.isEmpty) {

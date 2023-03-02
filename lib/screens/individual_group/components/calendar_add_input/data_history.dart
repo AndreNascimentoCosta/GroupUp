@@ -28,7 +28,7 @@ class _DataHistoryButtonState extends State<DataHistoryButton> {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final user = Provider.of<AuthProvider>(context).user;
     if (group == null) {
-      return const CircularProgressIndicator(color: kPrimaryColor);
+      return const CircularProgressIndicator.adaptive();
     }
     return SizedBox(
       height: 75,

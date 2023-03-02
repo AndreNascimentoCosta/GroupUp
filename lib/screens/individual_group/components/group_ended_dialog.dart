@@ -97,7 +97,7 @@ groupEndedDialog(BuildContext context) {
         actions: [
           if (individualGroupProvider.isClaimingReward == true)
             const Center(
-              child: CircularProgressIndicator(color: kPrimaryColor),
+              child: CircularProgressIndicator.adaptive(),
             )
           else
             SizedBox(

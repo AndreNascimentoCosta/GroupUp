@@ -23,7 +23,7 @@ class BodyIndividualGroup extends StatelessWidget {
                 ?.participantsData;
             if (participants == null) {
               return const Center(
-                child: CircularProgressIndicator(color: kPrimaryColor),
+                child: CircularProgressIndicator.adaptive(),
               );
             }
             return ListView.separated(

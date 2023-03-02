@@ -46,7 +46,7 @@ class _ChooseParticipantProfilePictureState
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     if (individualGroupProvider.group == null) {
-      return const CircularProgressIndicator(color: kPrimaryColor);
+      return const CircularProgressIndicator.adaptive();
     } else {
       final authProvider = Provider.of<AuthProvider>(context);
       return ButtonCommonStyle(

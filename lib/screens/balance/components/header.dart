@@ -36,7 +36,7 @@ class HeaderBalance extends StatelessWidget {
           final data = snapshot.data?.docs.first.data()['balance'];
           if (snapshot.hasData == false || snapshot.data == null) {
             return const Center(
-              child: CircularProgressIndicator(color: kPrimaryColor),
+              child: CircularProgressIndicator.adaptive(),
             );
           } else {
             return Padding(

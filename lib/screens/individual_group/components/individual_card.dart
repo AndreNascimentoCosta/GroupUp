@@ -45,7 +45,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
         Provider.of<IndividualGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context);
     if (individualGroupProvider.group == null) {
-      return const CircularProgressIndicator(color: kPrimaryColor);
+      return const CircularProgressIndicator.adaptive();
     } else {
       final authProvider = Provider.of<AuthProvider>(context);
       return Padding(

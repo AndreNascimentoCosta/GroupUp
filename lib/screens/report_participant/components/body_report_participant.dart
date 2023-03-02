@@ -20,7 +20,7 @@ class BodyReportParticipant extends StatelessWidget {
             final currentUser = Provider.of<AuthProvider>(context).user;
             if (currentUser == null) {
               return const Center(
-                child: CircularProgressIndicator(color: kPrimaryColor),
+                child: CircularProgressIndicator.adaptive(),
               );
             }
             final participants = Provider.of<IndividualGroupProvider>(context)
@@ -30,7 +30,7 @@ class BodyReportParticipant extends StatelessWidget {
                 .toList();
             if (participants == null) {
               return const Center(
-                child: CircularProgressIndicator(color: kPrimaryColor),
+                child: CircularProgressIndicator.adaptive(),
               );
             }
             if (participants.isEmpty) {

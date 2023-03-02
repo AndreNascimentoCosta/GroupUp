@@ -33,7 +33,7 @@ class _SecondPageJoinJoinState extends State<SecondPageJoin> {
       builder: (context, snapshot) {
         if (snapshot.hasData == false) {
           return const Center(
-            child: CircularProgressIndicator(color: kPrimaryColor),
+            child: CircularProgressIndicator.adaptive(),
           );
         }
         if (snapshot.data!.docs.isEmpty) {

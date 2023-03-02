@@ -44,7 +44,7 @@ class SavedCardsCreateGroupBottomSheetPageView extends StatelessWidget {
           ),
           const SizedBox(height: kDefaultPadding / 2),
           if (stripePaymentProvider.isPaying == true)
-            const CircularProgressIndicator(color: kPrimaryColor)
+            const CircularProgressIndicator.adaptive()
           else
             NextButton(
               onPressed: () async {

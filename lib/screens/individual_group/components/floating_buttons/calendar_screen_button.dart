@@ -32,7 +32,7 @@ class _CalendarScreenButtonState extends State<CalendarScreenButton> {
       builder: (context) {
         if (group == null) {
           return const Center(
-            child: CircularProgressIndicator(color: kPrimaryColor),
+            child: CircularProgressIndicator.adaptive(),
           );
         }
         return SizedBox(
