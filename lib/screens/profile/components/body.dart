@@ -11,7 +11,6 @@ import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/screens/balance/screens/balance.dart';
 import 'package:groupup/screens/created_groups/screens/created_groups_screen.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
@@ -19,9 +18,7 @@ import 'package:groupup/screens/profile/components/profile_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/profile/components/app_bar.dart';
 import 'package:groupup/screens/profile/components/body_button.dart';
-import 'package:groupup/screens/saved_cards/screens/saved_cards_join_group_screen.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -67,7 +64,7 @@ class _BodyProfileState extends State<BodyProfile> {
           .where('id', isEqualTo: user.id)
           .snapshots(),
       builder: (context, snapshot) {
-        final data = snapshot.data?.docs.first.data()['balance'];
+        // final data = snapshot.data?.docs.first.data()['balance'];
         if (snapshot.hasData == false || snapshot.data == null) {
           return const Center(
             child: CircularProgressIndicator.adaptive(),

@@ -9,9 +9,7 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/screens/individual_group/components/group_ended_participant_card.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -25,9 +23,9 @@ groupEndedDialog(BuildContext context) {
       final currentUser = Provider.of<AuthProvider>(context).user;
       final appLocalizations = AppLocalizations.of(context);
       bool isClaimingReward = false;
-      String groupCurrencySymbol =
-          NumberFormat.simpleCurrency(name: group?.groupCurrencyCode)
-              .currencySymbol;
+      // String groupCurrencySymbol =
+      //     NumberFormat.simpleCurrency(name: group?.groupCurrencyCode)
+      //         .currencySymbol;
       if (currentUser == null) return const SizedBox();
       if (group == null) return const SizedBox();
       if (isClaimingReward == true) {
@@ -35,8 +33,8 @@ groupEndedDialog(BuildContext context) {
           child: CircularProgressIndicator(),
         );
       }
-      final currentUserPaymentIntentIds = currentUser.paymentIntentIds;
-      final groupPaymentIntentIds = group.paymentIntentIds;
+      // final currentUserPaymentIntentIds = currentUser.paymentIntentIds;
+      // final groupPaymentIntentIds = group.paymentIntentIds;
       final currentUserRank = group.participantsData.firstWhere(
         (element) {
           return element.uid == currentUser.id;

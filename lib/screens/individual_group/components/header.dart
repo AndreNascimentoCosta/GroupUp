@@ -8,7 +8,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/objective_reward.dart';
 import 'package:groupup/screens/individual_group/components/start_end_date.dart';
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -80,9 +80,9 @@ class HeaderIndividualGroup extends StatelessWidget {
         ),
       );
     }
-    String groupCurrencySymbol =
-        NumberFormat.simpleCurrency(name: group.groupCurrencyCode)
-            .currencySymbol;
+    // String groupCurrencySymbol =
+    //     NumberFormat.simpleCurrency(name: group.groupCurrencyCode)
+    //         .currencySymbol;
     return Container(
       color: Colors.white,
       height: 125,
