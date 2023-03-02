@@ -173,7 +173,7 @@ enum Currencies {
 class CreateGroupProvider extends ChangeNotifier {
   final controllerProjectName = TextEditingController();
   final controllerObjective = TextEditingController();
-  final controllerReward = TextEditingController(text: '0');
+  final controllerReward = TextEditingController();
   final controllerNumberParticipants = TextEditingController();
   final controllerStartDate = TextEditingController();
   final controllerEndDate = TextEditingController();
@@ -247,6 +247,106 @@ class CreateGroupProvider extends ChangeNotifier {
                       ? 120
                       : 140,
             ),
+            // NextButton(
+            //   text: appLocalizations.yes,
+            //   borderColor: kPrimaryColor,
+            //   onPressed: () async {
+            //     final user =
+            //         Provider.of<AuthProvider>(context, listen: false).user;
+            //     Provider.of<MixPanelProvider>(context, listen: false)
+            //         .logEvent(eventName: 'Create Group Confirm Dialog');
+            //     final userId = Provider.of<AuthProvider>(context, listen: false)
+            //             .user
+            //             ?.id ??
+            //         '';
+            //     final stripePayment = Provider.of<StripePaymentProvider>(
+            //       context,
+            //       listen: false,
+            //     );
+            //     if (int.tryParse(controllerReward.text) != 0) {
+            //       isPaying = true;
+            //       notifyListeners();
+            //       final navigatorState = Navigator.of(context);
+            //       FocusScope.of(context).unfocus();
+            //       navigatorState.pop();
+            //       try {
+            //         final listPaymentMethods = await FirebaseFunctions.instance
+            //             .httpsCallable('ListPaymentMethods')
+            //             .call(
+            //           {
+            //             'userId': userId,
+            //           },
+            //         );
+            //         if (listPaymentMethods.data['paymentMethods'].length == 0) {
+            //           try {
+            //             final paymentIntentId =
+            //                 await stripePayment.initPaymentCreateGroup(
+            //               newContext,
+            //               userId,
+            //               controllerReward.text,
+            //               groupCurrencyCode,
+            //             );
+            //             await createGroup(user);
+            //             await stripePayment.addPaymentIntentId(
+            //               paymentIntentId,
+            //               newGroup.groupCode,
+            //             );
+            //             controller.nextPage(
+            //               duration: const Duration(milliseconds: 300),
+            //               curve: Curves.ease,
+            //             );
+            //           } catch (e) {
+            //             debugPrint(e.toString());
+            //           }
+            //         } else {
+            //           await showModalBottomSheet(
+            //             isScrollControlled: true,
+            //             context: context,
+            //             shape: RoundedRectangleBorder(
+            //               borderRadius: BorderRadius.circular(Insets.m),
+            //             ),
+            //             builder: (context) {
+            //               return Padding(
+            //                 padding: MediaQuery.of(context).viewInsets,
+            //                 child: Wrap(
+            //                   children: <Widget>[
+            //                     Column(
+            //                       mainAxisSize: MainAxisSize.min,
+            //                       children: [
+            //                         SizedBox(
+            //                           height: 400,
+            //                           child:
+            //                               SavedCardsCreateGroupBottomSheetPageView(
+            //                             groupReward: controllerReward.text,
+            //                             groupCurrency: groupCurrencyCode,
+            //                             groupCode: newGroup.groupCode,
+            //                           ),
+            //                         ),
+            //                       ],
+            //                     )
+            //                   ],
+            //                 ),
+            //               );
+            //             },
+            //           );
+            //         }
+            //       } catch (e) {
+            //         debugPrint(e.toString());
+            //       }
+            //       isPaying = false;
+            //       notifyListeners();
+            //     } else {
+            //       Navigator.of(context).pop();
+            //       await createGroup(user);
+            //     }
+            //   },
+            //   height: 40,
+            //   width: isVerySmallScreen
+            //       ? 100
+            //       : isSmallScreen
+            //           ? 120
+            //           : 140,
+            // ),
             NextButton(
               text: appLocalizations.yes,
               borderColor: kPrimaryColor,
@@ -255,90 +355,8 @@ class CreateGroupProvider extends ChangeNotifier {
                     Provider.of<AuthProvider>(context, listen: false).user;
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Create Group Confirm Dialog');
-                final userId = Provider.of<AuthProvider>(context, listen: false)
-                        .user
-                        ?.id ??
-                    '';
-                final stripePayment = Provider.of<StripePaymentProvider>(
-                  context,
-                  listen: false,
-                );
-                if (int.tryParse(controllerReward.text) != 0) {
-                  isPaying = true;
-                  notifyListeners();
-                  final navigatorState = Navigator.of(context);
-                  FocusScope.of(context).unfocus();
-                  navigatorState.pop();
-                  try {
-                    final listPaymentMethods = await FirebaseFunctions.instance
-                        .httpsCallable('ListPaymentMethods')
-                        .call(
-                      {
-                        'userId': userId,
-                      },
-                    );
-                    if (listPaymentMethods.data['paymentMethods'].length == 0) {
-                      try {
-                        final paymentIntentId =
-                            await stripePayment.initPaymentCreateGroup(
-                          newContext,
-                          userId,
-                          controllerReward.text,
-                          groupCurrencyCode,
-                        );
-                        await createGroup(user);
-                        await stripePayment.addPaymentIntentId(
-                          paymentIntentId,
-                          newGroup.groupCode,
-                        );
-                        controller.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.ease,
-                        );
-                      } catch (e) {
-                        debugPrint(e.toString());
-                      }
-                    } else {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        context: context,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(Insets.m),
-                        ),
-                        builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.of(context).viewInsets,
-                            child: Wrap(
-                              children: <Widget>[
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    SizedBox(
-                                      height: 400,
-                                      child:
-                                          SavedCardsCreateGroupBottomSheetPageView(
-                                        groupReward: controllerReward.text,
-                                        groupCurrency: groupCurrencyCode,
-                                        groupCode: newGroup.groupCode,
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    }
-                  } catch (e) {
-                    debugPrint(e.toString());
-                  }
-                  isPaying = false;
-                  notifyListeners();
-                } else {
-                  Navigator.of(context).pop();
-                  await createGroup(user);
-                }
+                Navigator.of(context).pop();
+                await createGroup(user);
               },
               height: 40,
               width: isVerySmallScreen
@@ -701,7 +719,7 @@ class CreateGroupProvider extends ChangeNotifier {
   void clean() {
     controllerProjectName.clear();
     controllerObjective.clear();
-    controllerReward.text = '0';
+    controllerReward.clear();
     controllerNumberParticipants.clear();
     controllerStartDate.clear();
     controllerEndDate.clear();

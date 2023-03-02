@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -105,94 +106,95 @@ class JoinGroupProvider extends ChangeNotifier {
         Provider.of<MixPanelProvider>(context, listen: false)
             .logEvent(eventName: 'Join group button');
         final navigatorState = Navigator.of(context);
-        final stripePaymentProvider =
-            Provider.of<StripePaymentProvider>(context, listen: false);
+        final user = Provider.of<AuthProvider>(context, listen: false).user;
+        // final stripePaymentProvider =
+        //     Provider.of<StripePaymentProvider>(context, listen: false);
         FocusScope.of(context).unfocus();
-        final groups = await FirebaseFirestore.instance
-            .collection('groups')
-            .where('groupCode', isEqualTo: controllerGroupCode.text)
-            .get();
-        final groupsDocs = groups.docs;
-        final group = groupsDocs[0].data();
-        if (double.parse(group['reward']) == 0) {
-          await joinGroup(context);
+        // final groups = await FirebaseFirestore.instance
+        //     .collection('groups')
+        //     .where('groupCode', isEqualTo: controllerGroupCode.text)
+        //     .get();
+        // final groupsDocs = groups.docs;
+        // final group = groupsDocs[0].data();
+        // if (double.parse(group['reward']) == 0) {
+          await joinGroup(user);
           navigatorState.pop();
           navigatorState.pop();
-          clean();
-        } else {
-          isOpeningSavedCards = true;
-          notifyListeners();
-          try {
-            final listPaymentMethods = await FirebaseFunctions.instance
-                .httpsCallable('ListPaymentMethods')
-                .call(
-              {
-                'userId': userId,
-              },
-            );
-            if (listPaymentMethods.data['paymentMethods'].length == 0) {
-              try {
-                final paymentIntentId = await stripePaymentProvider.initPaymentJoinGroup(
-                  controllerGroupCode.text,
-                  userId,
-                );
-                await joinGroup(context);
-                await stripePaymentProvider.addPaymentIntentId(
-                  paymentIntentId,
-                  controllerGroupCode.text,
-                );
-                Navigator.of(context).popUntil((route) => route.isFirst);
-              } catch (e) {
-                final appLocalizations = AppLocalizations.of(context);
-                Navigator.of(context).popUntil((route) => route.isFirst);
-                debugPrint(e.toString());
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(appLocalizations.paymentInterrupted),
-                    duration: const Duration(seconds: 2),
-                  ),
-                );
-              }
-              isOpeningSavedCards = false;
-              notifyListeners();
-            } else {
-              navigatorState.pop();
-              await showModalBottomSheet(
-                isScrollControlled: true,
-                context: context,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(Insets.m),
-                ),
-                builder: (context) {
-                  return Padding(
-                    padding: MediaQuery.of(context).viewInsets,
-                    child: Wrap(
-                      children: <Widget>[
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SizedBox(
-                              height: 400,
-                              child: SavedCardsJoinGroupBottomSheetPageView(
-                                groupCode: controllerGroupCode.text,
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  );
-                },
-              );
-              isOpeningSavedCards = false;
-              notifyListeners();
-            }
-          } catch (e) {
-            isOpeningSavedCards = false;
-            notifyListeners();
-            debugPrint(e.toString());
-          }
-        }
+        //   clean();
+        // } else {
+        //   isOpeningSavedCards = true;
+        //   notifyListeners();
+        //   try {
+        //     final listPaymentMethods = await FirebaseFunctions.instance
+        //         .httpsCallable('ListPaymentMethods')
+        //         .call(
+        //       {
+        //         'userId': userId,
+        //       },
+        //     );
+        //     if (listPaymentMethods.data['paymentMethods'].length == 0) {
+        //       try {
+        //         final paymentIntentId = await stripePaymentProvider.initPaymentJoinGroup(
+        //           controllerGroupCode.text,
+        //           userId,
+        //         );
+        //         await joinGroup(context);
+        //         await stripePaymentProvider.addPaymentIntentId(
+        //           paymentIntentId,
+        //           controllerGroupCode.text,
+        //         );
+        //         Navigator.of(context).popUntil((route) => route.isFirst);
+        //       } catch (e) {
+        //         final appLocalizations = AppLocalizations.of(context);
+        //         Navigator.of(context).popUntil((route) => route.isFirst);
+        //         debugPrint(e.toString());
+        //         ScaffoldMessenger.of(context).showSnackBar(
+        //           SnackBar(
+        //             content: Text(appLocalizations.paymentInterrupted),
+        //             duration: const Duration(seconds: 2),
+        //           ),
+        //         );
+        //       }
+        //       isOpeningSavedCards = false;
+        //       notifyListeners();
+        //     } else {
+        //       navigatorState.pop();
+        //       await showModalBottomSheet(
+        //         isScrollControlled: true,
+        //         context: context,
+        //         shape: RoundedRectangleBorder(
+        //           borderRadius: BorderRadius.circular(Insets.m),
+        //         ),
+        //         builder: (context) {
+        //           return Padding(
+        //             padding: MediaQuery.of(context).viewInsets,
+        //             child: Wrap(
+        //               children: <Widget>[
+        //                 Column(
+        //                   mainAxisSize: MainAxisSize.min,
+        //                   children: [
+        //                     SizedBox(
+        //                       height: 400,
+        //                       child: SavedCardsJoinGroupBottomSheetPageView(
+        //                         groupCode: controllerGroupCode.text,
+        //                       ),
+        //                     ),
+        //                   ],
+        //                 )
+        //               ],
+        //             ),
+        //           );
+        //         },
+        //       );
+        //       isOpeningSavedCards = false;
+        //       notifyListeners();
+        //     }
+        //   } catch (e) {
+        //     isOpeningSavedCards = false;
+        //     notifyListeners();
+        //     debugPrint(e.toString());
+        //   }
+        // }
         clean();
       };
     }

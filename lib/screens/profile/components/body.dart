@@ -183,28 +183,28 @@ class _BodyProfileState extends State<BodyProfile> {
                     },
                     child: const EditProfile(),
                   ),
-                  const SizedBox(height: kDefaultPadding * 2.5),
-                  BodyButtonModel(
-                    onPressed: () {
-                      Provider.of<MixPanelProvider>(context, listen: false)
-                          .logEvent(eventName: 'Balance Screen');
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BalanceScreen(
-                            groupsData: groupsData,
-                          ),
-                          settings: const RouteSettings(name: 'Balance'),
-                        ),
-                      );
-                    },
-                    text: appLocalizations.balance,
-                    secondaryText: 'R\$ ${NumberFormat.decimalPattern(
-                      Localizations.localeOf(context).toString(),
-                    ).format(
-                      double.parse('${(data / 100)}'),
-                    )}',
-                  ),
+                  // const SizedBox(height: kDefaultPadding * 2.5),
+                  // BodyButtonModel(
+                  //   onPressed: () {
+                  //     Provider.of<MixPanelProvider>(context, listen: false)
+                  //         .logEvent(eventName: 'Balance Screen');
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) => BalanceScreen(
+                  //           groupsData: groupsData,
+                  //         ),
+                  //         settings: const RouteSettings(name: 'Balance'),
+                  //       ),
+                  //     );
+                  //   },
+                  //   text: appLocalizations.balance,
+                  //   secondaryText: 'R\$ ${NumberFormat.decimalPattern(
+                  //     Localizations.localeOf(context).toString(),
+                  //   ).format(
+                  //     double.parse('${(data / 100)}'),
+                  //   )}',
+                  // ),
                   const SizedBox(height: kDefaultPadding * 2),
                   BodyButtonModel(
                     onPressed: () {
@@ -221,22 +221,22 @@ class _BodyProfileState extends State<BodyProfile> {
                     text: appLocalizations.createdGroups,
                     secondaryText: '',
                   ),
-                  const SizedBox(height: kDefaultPadding * 2),
-                  BodyButtonModel(
-                    onPressed: () {
-                      Provider.of<MixPanelProvider>(context, listen: false)
-                          .logEvent(eventName: 'Saved Cards Screen');
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SavedCardsScreen(),
-                          settings: const RouteSettings(name: 'Saved_Cards'),
-                        ),
-                      );
-                    },
-                    text: appLocalizations.savedCards,
-                    secondaryText: '',
-                  )
+                  // const SizedBox(height: kDefaultPadding * 2),
+                  // BodyButtonModel(
+                  //   onPressed: () {
+                  //     Provider.of<MixPanelProvider>(context, listen: false)
+                  //         .logEvent(eventName: 'Saved Cards Screen');
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) => const SavedCardsScreen(),
+                  //         settings: const RouteSettings(name: 'Saved_Cards'),
+                  //       ),
+                  //     );
+                  //   },
+                  //   text: appLocalizations.savedCards,
+                  //   secondaryText: '',
+                  // )
                 ],
               ),
             ),

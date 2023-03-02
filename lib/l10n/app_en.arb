@@ -712,5 +712,9 @@
     "payoutSuccessful": "Payout made successfully, login to your Connected account to see the details.",
     "@payoutSuccessful": {
         "description": "Payout successful"
+    },
+    "enterReward": "Enter reward",
+    "@enterReward": {
+        "description": "Enter reward"
     }
 }

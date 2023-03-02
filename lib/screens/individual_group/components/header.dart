@@ -192,7 +192,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                                 horizontal: kDefaultPadding),
                             child: StaticText(
                               text:
-                                  '$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
+                                  group.reward, //'$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}'
                               maxLines: 4,
                               textAlign: TextAlign.center,
                               fontSize: TextSize.mBody,
@@ -223,7 +223,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                   child: ObjectiveRewardModel(
                     icon: 'assets/icons/reward.svg',
                     text:
-                        '$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}',
+                        group.reward, //'$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}'
                   ),
                 ),
                 VerticalDivider(

@@ -103,14 +103,14 @@ class _SecondPageJoinJoinState extends State<SecondPageJoin> {
                       Row(
                         children: [
                           StaticText(
-                            text: '${appLocalizations.groupFee}:',
+                            text: '${appLocalizations.reward}:', //groupFee
                             fontSize: TextSize.mBody,
                           ),
                           const SizedBox(width: kDefaultPadding / 2),
                           Expanded(
                             child: StaticText(
                               text:
-                                  '${NumberFormat.simpleCurrency(name: group[0].data()['groupCurrencyCode']).currencySymbol} ${group[0].data()['reward']}',
+                                  group[0].data()['reward'], //'${NumberFormat.simpleCurrency(name: group[0].data()['groupCurrencyCode']).currencySymbol} ${group[0].data()['reward']}'
                               maxLines: 2,
                               fontSize: TextSize.mBody,
                               color: kSecondaryColor,

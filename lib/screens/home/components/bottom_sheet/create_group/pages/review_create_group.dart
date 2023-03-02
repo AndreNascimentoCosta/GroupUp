@@ -81,14 +81,14 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                 Row(
                   children: [
                     StaticText(
-                      text: '${appLocalizations.groupFee}:',
+                      text: '${appLocalizations.reward}:', //groupFee
                       fontSize: TextSize.mBody,
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
                     Expanded(
                       child: StaticText(
-                        text:
-                            '${NumberFormat.simpleCurrency(name: createGroupProvider.groupCurrencyCode).currencySymbol} ${createGroupProvider.controllerReward.text}',
+                        text: createGroupProvider.controllerReward
+                            .text, //'${NumberFormat.simpleCurrency(name: createGroupProvider.groupCurrencyCode).currencySymbol} ${createGroupProvider.controllerReward.text}'
                         maxLines: 2,
                         fontSize: TextSize.mBody,
                         color: kSecondaryColor,
@@ -124,8 +124,7 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
                     StaticText(
-                      text:
-                          createGroupProvider.controllerStartDate.text,
+                      text: createGroupProvider.controllerStartDate.text,
                       maxLines: 2,
                       fontSize: TextSize.mBody,
                       color: kSecondaryColor,
@@ -141,8 +140,7 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
                     StaticText(
-                      text:
-                          createGroupProvider.controllerEndDate.text,
+                      text: createGroupProvider.controllerEndDate.text,
                       maxLines: 2,
                       fontSize: TextSize.mBody,
                       color: kSecondaryColor,
