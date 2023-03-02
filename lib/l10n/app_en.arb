@@ -709,7 +709,7 @@
     "@rewardClaimedText": {
         "description": "Reward claimed text"
     },
-    "payoutSuccessful": "Payout made successfully, login to your Connected account to see the details",
+    "payoutSuccessful": "Payout made successfully, login to your Connected account to see the details.",
     "@payoutSuccessful": {
         "description": "Payout successful"
     }

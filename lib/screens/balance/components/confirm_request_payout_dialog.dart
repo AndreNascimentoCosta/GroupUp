@@ -66,7 +66,7 @@ void confirmRequestPayoutDialog(BuildContext rootContext) {
               ScaffoldMessenger.of(rootContext).showSnackBar(
                 SnackBar(
                   content: Text(appLocalizations.payoutSuccessful),
-                  duration: const Duration(seconds: 2),
+                  duration: const Duration(seconds: 3),
                 ),
               );
               try {
