@@ -19,10 +19,11 @@ class StartEndDateButton extends StatelessWidget {
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            StaticText(text: appLocalizations.start),
+            StaticText(text: '${appLocalizations.start}:'),
             const SizedBox(height: kDefaultPadding / 2),
-            StaticText(text: appLocalizations.end),
+            StaticText(text: '${appLocalizations.end}:'),
           ],
         ),
         const SizedBox(width: kDefaultPadding / 1.75),
