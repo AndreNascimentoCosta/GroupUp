@@ -187,7 +187,6 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
           onPageChanged: (value) {
             individualGroupProvider.updateIndex(value);
           },
-          physics: const NeverScrollableScrollPhysics(),
           children: [
             Column(
               children: [
