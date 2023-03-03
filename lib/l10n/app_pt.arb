@@ -155,7 +155,7 @@
     "options": "Opções",
     "balanceZero": "Seu saldo é 0",
     "tieBreaker": "Desempate",
-    "tieBreakerText": "O grupo terminou empatado. Os participantes que empataramtem um dia para desempatar adicionado dados. Os dados passarão pelo processo de validação. Se nenhum dado for adicionado, o participante que entro primeiro no grupo será o ganhador.",
+    "tieBreakerText": "O grupo terminou empatado. Os participantes que empataram tem um dia para desempatar adicionado dados. Os dados passarão pelo processo de validação. Se nenhum dado for adicionado, o participante que entro primeiro no grupo será o ganhador.",
     "savedCards": "Cartões salvos",
     "noSavedCards": "Sem cartões salvos",
     "expDate": "Validade",
@@ -172,5 +172,7 @@
     "rewardClaimed": "Recompensa resgatada",
     "rewardClaimedText": "Sua recompensa foi resgatada",
     "payoutSuccessful": "Pagamento bem sucedido, entre na sua conta conectada para ver detalhes.",
-    "enterReward": "Digite a recompensa"
+    "enterReward": "Digite a recompensa",
+    "update": "Atualizar",
+    "updateText": "Uma nova versão do GroupUp está disponível. Por favor, atualize o aplicativo para continuar usando."
 }

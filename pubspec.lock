@@ -233,6 +233,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
+  firebase_analytics:
+    dependency: "direct main"
+    description:
+      name: firebase_analytics
+      sha256: "4d7829b265823ae6aff81656d5ab9d89f61edfa5a6647843ca978bd1d6ec1ae6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.1.4"
+  firebase_analytics_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_analytics_platform_interface
+      sha256: b18475c1367622b3a86585d970a755a73d00f320efa8977a46b4768e7752c037
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.21"
+  firebase_analytics_web:
+    dependency: transitive
+    description:
+      name: firebase_analytics_web
+      sha256: "30e5631f14bce70592bf9f26672302aafe62fe50b194c4c633c4b977051581ec"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.1+12"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -297,6 +321,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.3+30"
+  firebase_remote_config:
+    dependency: "direct main"
+    description:
+      name: firebase_remote_config
+      sha256: "1309deefd5ff29ea719fa3c48441f492204822c258c001751f762d8bbec1a222"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.13"
+  firebase_remote_config_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_remote_config_platform_interface
+      sha256: "3e20fa1d937d10a52b8e9b3c955161890d30d0924e18438280797b960d2799a4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.33"
+  firebase_remote_config_web:
+    dependency: transitive
+    description:
+      name: firebase_remote_config_web
+      sha256: f79573f237fe84c5927a7d2d5cee5ee6529a70bfe430c63ef0d2aa257eac4c96
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.22"
   firebase_storage:
     dependency: "direct main"
     description:
@@ -630,7 +678,7 @@ packages:
     source: hosted
     version: "1.0.2"
   package_info_plus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: package_info_plus
       sha256: "8df5ab0a481d7dc20c0e63809e90a588e496d276ba53358afc4c4443d0a00697"

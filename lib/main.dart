@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,9 +17,12 @@ import 'package:groupup/l10n/l10n.dart';
 import 'package:groupup/screens/home/screens/home.dart';
 import 'package:groupup/styles/theme.dart';
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'screens/force_update/screens/force_update_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -90,10 +94,76 @@ Future<void> main() async {
               GlobalCupertinoLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
             ],
-            home: Home(),
+            home: FutureBuilder<FirebaseRemoteConfig>(
+              future: setupRemoteConfig(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
+                  );
+                }
+                if (snapshot.data == null) {
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
+                  );
+                }
+                return FutureBuilder<PackageInfo>(
+                  future: PackageInfo.fromPlatform(),
+                  builder: (context, snapshotPlatform) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Scaffold(
+                        body: Center(
+                          child: CircularProgressIndicator.adaptive(),
+                        ),
+                      );
+                    }
+                    if (snapshot.data == null) {
+                      return const Scaffold(
+                        body: Center(
+                          child: CircularProgressIndicator.adaptive(),
+                        ),
+                      );
+                    }
+                    bool needsUpdate() {
+                      final List<int>? currentVersion = snapshotPlatform.data?.version
+                          .split('.')
+                          .map((String number) => (int.tryParse(number)) ?? 0)
+                          .toList();
+                      final List<int>? enforcedVersion = snapshot.data
+                          ?.getString('minimalVersionName')
+                          .split('.')
+                          .map((String number) => (int.tryParse(number)) ?? 0)
+                          .toList();
+                      for (int i = 0; i < 3; i++) {
+                        if (enforcedVersion == null || currentVersion == null) {
+                          return false;
+                        }
+                        if (enforcedVersion[i] > currentVersion[i]) return true;
+                      }
+                      return false;
+                    }
+                    if (needsUpdate() == true) {
+                      return const ForceUpdateScreen();
+                    } else {
+                      return Home(remoteConfig: snapshot.requireData);
+                    }
+                  },
+                );
+              },
+            ),
           ),
         ),
       ),
     ),
   );
+}
+
+Future<FirebaseRemoteConfig> setupRemoteConfig() async {
+  final remoteConfig = FirebaseRemoteConfig.instance;
+  await remoteConfig.fetchAndActivate();
+  return remoteConfig;
 }

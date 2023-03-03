@@ -737,5 +737,13 @@
     "enterReward": "Enter reward",
     "@enterReward": {
         "description": "Enter reward"
+    },
+    "update": "Update",
+    "@update": {
+        "description": "Update"
+    },
+    "updateText": "A new version of GroupUp is available. Please update to continue using the app.",
+    "@updateText": {
+        "description": "Update text"
     }
 }
