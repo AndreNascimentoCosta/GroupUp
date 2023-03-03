@@ -43,6 +43,12 @@ class DataHistoryBottomSheet extends StatelessWidget {
             ],
           ),
           const SizedBox(height: Insets.l),
+          if (userInputData.isEmpty)
+            LargeBody(
+              text: appLocalizations.noData,
+              textAlign: TextAlign.center,
+              color: kSecondaryColor,
+            ),
           Expanded(
             child: ListView.separated(
               separatorBuilder: (context, index) => const Divider(

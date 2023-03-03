@@ -745,5 +745,9 @@
     "updateText": "A new version of GroupUp is available. Please update to continue using the app.",
     "@updateText": {
         "description": "Update text"
+    },
+    "noData": "No data",
+    "@noData": {
+        "description": "No data"
     }
 }

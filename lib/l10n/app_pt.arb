@@ -174,5 +174,6 @@
     "payoutSuccessful": "Pagamento bem sucedido, entre na sua conta conectada para ver detalhes.",
     "enterReward": "Digite a recompensa",
     "update": "Atualizar",
-    "updateText": "Uma nova versão do GroupUp está disponível. Por favor, atualize o aplicativo para continuar usando."
+    "updateText": "Uma nova versão do GroupUp está disponível. Por favor, atualize o aplicativo para continuar usando.",
+    "noData": "Sem dados"
 }
