@@ -670,7 +670,7 @@
     "@tieBreaker": {
         "description": "Tiebreaker"
     },
-    "tieBreakerText": "The group ended in a draw. \nThe participants who tied have \none day to break the tie by \nadding data. The data will go \nthrough the validation process. If \nnone data is added, the participant\n who joined the group first will be the winner.",
+    "tieBreakerText": "The group ended in a draw. \nThe participants who tied have one day to break the tie by adding data. The data will go through the validation process. If none data is added, the participant who joined the group first will be the winner.",
     "@tieBreakerText": {
         "description": "Tiebreaker text"
     },
