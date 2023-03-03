@@ -146,7 +146,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                                 Navigator.pop(context);
                               },
                               child: const StaticText(
-                                text: 'Ok',
+                                text: 'OK',
                                 color: kPrimaryColor,
                                 fontSize: TextSize.mBody,
                               ),
@@ -210,7 +210,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                                 Navigator.pop(context);
                               },
                               child: const StaticText(
-                                text: 'Ok',
+                                text: 'OK',
                                 color: kPrimaryColor,
                                 fontSize: TextSize.mBody,
                               ),
