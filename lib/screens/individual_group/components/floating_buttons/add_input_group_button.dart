@@ -78,28 +78,17 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                         ),
                       ),
                     )) {
-                  denyAddInputDialog(context,
-                      appLocalizations.cantAddDataInValidationPeriod);
+                  denyAddInputDialog(
+                      context, appLocalizations.cantAddDataInValidationPeriod);
                 } else if (group.endDate!.isBefore(
                       DateTime.now(),
                     ) &&
                     isNotTied) {
-                  denyAddInputDialog(context,
-                      appLocalizations.cantAddDataInValidationPeriod);
+                  denyAddInputDialog(
+                      context, appLocalizations.cantAddDataInValidationPeriod);
                 } else {
-                  showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(Insets.m),
-                    ),
-                    builder: (context) {
-                      return const BuilderBottomSheet(
-                        height: 220,
-                        child: AddInput(),
-                      );
-                    },
-                  );
+                  Provider.of<AddInputProvider>(context, listen: false)
+                      .addInputBottomSheet(context);
                 }
               },
               backgroundColor: widget.backgroundColor,

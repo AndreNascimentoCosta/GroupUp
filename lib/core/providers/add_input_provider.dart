@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
+import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -13,6 +14,7 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
 import 'package:ntp/ntp.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -24,6 +26,7 @@ class AddInputProvider extends ChangeNotifier {
   final TextEditingController inputController = TextEditingController();
   File? story;
   bool isLoading = false;
+  bool isClosed = false;
 
   AddInputProvider() {
     inputController.addListener(notifyListeners);
@@ -295,8 +298,7 @@ class AddInputProvider extends ChangeNotifier {
                 element.date.year == (DateTime.now()).year,
           );
           final offset = await NTP.getNtpOffset(
-              localTime: DateTime.now(),
-              lookUpAddress: "time.google.com");
+              localTime: DateTime.now(), lookUpAddress: "time.google.com");
           final internetTime =
               (DateTime.now()).add(Duration(milliseconds: offset));
           final newInput = UserInputData(
@@ -322,6 +324,23 @@ class AddInputProvider extends ChangeNotifier {
         }
       }
     }
+  }
+
+  void addInputBottomSheet(BuildContext context) {
+    isClosed = false;
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Insets.m),
+      ),
+      builder: (context) {
+        return const BuilderBottomSheet(
+          height: 220,
+          child: AddInput(),
+        );
+      },
+    ).whenComplete(() => isClosed = true);
   }
 
   void clean() {

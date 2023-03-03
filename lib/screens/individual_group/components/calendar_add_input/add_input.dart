@@ -35,27 +35,33 @@ class _AddInputState extends State<AddInput> {
       DateTime.now(),
     );
     Future pickImage(ImageSource source) async {
-      Navigator.pop(context);
+      final navigatorState = Navigator.of(context);
       final addInputProvider =
           Provider.of<AddInputProvider>(context, listen: false);
-      addInputProvider.isLoading = true;
       try {
+        addInputProvider.isLoading = true;
         final story = await ImagePicker().pickImage(
           source: source,
           imageQuality: 15,
         );
-        if (story == null) return;
-
+        if (story == null) {
+          addInputProvider.isLoading = false;
+          return;
+        }
         addInputProvider.story = File(story.path);
         if (!mounted) return;
         final groupId =
             Provider.of<IndividualGroupProvider>(context, listen: false)
                 .group
                 ?.id;
-        Navigator.pop(context);
         if (groupId == null) return;
         await addInputProvider.addInput(context, groupId);
         addInputProvider.isLoading = false;
+        if (addInputProvider.isClosed == true) {
+          return;
+        } else {
+          navigatorState.pop();
+        }
       } on PlatformException catch (e) {
         if (e.message == 'The user did not allow photo access.') {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -144,7 +150,7 @@ class _AddInputState extends State<AddInput> {
                                 onPressed: () {
                                   Provider.of<MixPanelProvider>(context,
                                           listen: false)
-                                      .logEvent(eventName: 'lear input field');
+                                      .logEvent(eventName: 'Clear input field');
                                   addInputProvider.inputController.clear();
                                 },
                               ),
@@ -179,8 +185,10 @@ class _AddInputState extends State<AddInput> {
                         .logEvent(eventName: 'Add Media');
                     try {
                       addInputProvider.confirm(context, () {
+                        Navigator.of(context).pop();
                         pickImage(ImageSource.gallery);
                       }, () {
+                        Navigator.of(context).pop();
                         pickImage(ImageSource.camera);
                       }, group.id);
                     } catch (e) {
