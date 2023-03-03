@@ -63,9 +63,7 @@ class StoryWidget extends StatelessWidget {
                   return Container(
                     color: Colors.black,
                     child: const Center(
-                      child: CircularProgressIndicator(
-                        color: kPrimaryColor,
-                      ),
+                      child: CircularProgressIndicator.adaptive(),
                     ),
                   );
                 },
