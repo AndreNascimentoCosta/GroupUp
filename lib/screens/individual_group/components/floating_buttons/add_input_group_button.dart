@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/screens/individual_group/components/dialog_deny_add_input.dart';
 import 'package:provider/provider.dart';

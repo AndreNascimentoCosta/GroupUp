@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
@@ -55,7 +53,6 @@ class ForceUpdateScreen extends StatelessWidget {
                   } else {
                     throw 'Could not launch $url';
                   }
-                  ;
                 },
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.025)
