@@ -62,10 +62,15 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                         left: kDefaultPadding / 2,
                       ),
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.1,
+                        width: MediaQuery.of(context).size.width * 0.075,
                         child: ExtraLargeBody(
                           text: widget.participant
                               .rank(individualGroupProvider.group),
+                          textAlign: widget.participant
+                                      .rank(individualGroupProvider.group) ==
+                                  '-'
+                              ? TextAlign.center
+                              : TextAlign.start,
                         ),
                       ),
                     ),
