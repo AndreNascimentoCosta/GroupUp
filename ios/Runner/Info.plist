@@ -11,7 +11,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.andrecosta.groupup</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -56,13 +56,19 @@
 		<string>_dartobservatory._tcp</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) uses Cameras</string>
+	<string>GroupUp uses Cameras</string>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string></string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Application requires user's location for better user experience.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Application requires user's location for better user experience.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Application requires user's location for better user experience.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>$(PRODUCT_NAME) uses Microphone</string>
+	<string>GroupUp uses Microphone</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) uses Photos</string>
+	<string>GroupUp uses Photos</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -91,11 +97,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	 <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Application requires user's location for better user experience.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Application requires user's location for better user experience.</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Application requires user's location for better user experience.</string>
 </dict>
 </plist>
