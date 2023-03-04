@@ -36,16 +36,19 @@ void denyAddInputDialog(BuildContext context, String bodyText) {
         actionsAlignment: MainAxisAlignment.center,
         contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
         actions: [
-          ButtonCommonStyle(
-            onPressed: () {
-              Provider.of<MixPanelProvider>(context, listen: false)
-                  .logEvent(eventName: 'Add Input');
-              Navigator.of(context).pop();
-            },
-            child: const StaticText(
-              text: 'OK',
-              fontSize: TextSize.mBody,
-              color: kPrimaryColor,
+          SizedBox(
+            width: double.infinity,
+            child: ButtonCommonStyle(
+              onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Add Input');
+                Navigator.of(context).pop();
+              },
+              child: const StaticText(
+                text: 'OK',
+                fontSize: TextSize.mBody,
+                color: kPrimaryColor,
+              ),
             ),
           )
         ],

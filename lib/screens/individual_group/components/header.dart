@@ -137,18 +137,21 @@ class HeaderIndividualGroup extends StatelessWidget {
                           contentPadding:
                               const EdgeInsets.only(top: 20, bottom: 20),
                           actions: [
-                            ButtonCommonStyle(
-                              onPressed: () {
-                                Provider.of<MixPanelProvider>(context,
-                                        listen: false)
-                                    .logEvent(
-                                        eventName: 'Close Objective Dialog');
-                                Navigator.pop(context);
-                              },
-                              child: const StaticText(
-                                text: 'OK',
-                                color: kPrimaryColor,
-                                fontSize: TextSize.mBody,
+                            SizedBox(
+                              width: double.infinity,
+                              child: ButtonCommonStyle(
+                                onPressed: () {
+                                  Provider.of<MixPanelProvider>(context,
+                                          listen: false)
+                                      .logEvent(
+                                          eventName: 'Close Objective Dialog');
+                                  Navigator.pop(context);
+                                },
+                                child: const StaticText(
+                                  text: 'OK',
+                                  color: kPrimaryColor,
+                                  fontSize: TextSize.mBody,
+                                ),
                               ),
                             ),
                           ],
@@ -202,17 +205,20 @@ class HeaderIndividualGroup extends StatelessWidget {
                           contentPadding:
                               const EdgeInsets.only(top: 20, bottom: 20),
                           actions: [
-                            ButtonCommonStyle(
-                              onPressed: () {
-                                Provider.of<MixPanelProvider>(context,
-                                        listen: false)
-                                    .logEvent(eventName: 'Close Reward Dialog');
-                                Navigator.pop(context);
-                              },
-                              child: const StaticText(
-                                text: 'OK',
-                                color: kPrimaryColor,
-                                fontSize: TextSize.mBody,
+                            SizedBox(
+                              width: double.infinity,
+                              child: ButtonCommonStyle(
+                                onPressed: () {
+                                  Provider.of<MixPanelProvider>(context,
+                                          listen: false)
+                                      .logEvent(eventName: 'Close Reward Dialog');
+                                  Navigator.pop(context);
+                                },
+                                child: const StaticText(
+                                  text: 'OK',
+                                  color: kPrimaryColor,
+                                  fontSize: TextSize.mBody,
+                                ),
                               ),
                             ),
                           ],

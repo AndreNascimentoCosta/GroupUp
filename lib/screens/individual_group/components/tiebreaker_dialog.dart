@@ -42,17 +42,20 @@ tiebreakerDialog(BuildContext context) async {
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
           actions: [
-            ButtonCommonStyle(
-              onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Tie Breaker OK');
-                Navigator.of(context).pop();
-                prefs.setBool(keyIsFirstOpened, false);
-              },
-              child: const StaticText(
-                text: 'OK',
-                fontSize: TextSize.mBody,
-                color: kPrimaryColor,
+            SizedBox(
+              width: double.infinity,
+              child: ButtonCommonStyle(
+                onPressed: () {
+                  Provider.of<MixPanelProvider>(context, listen: false)
+                      .logEvent(eventName: 'Tie Breaker OK');
+                  Navigator.of(context).pop();
+                  prefs.setBool(keyIsFirstOpened, false);
+                },
+                child: const StaticText(
+                  text: 'OK',
+                  fontSize: TextSize.mBody,
+                  color: kPrimaryColor,
+                ),
               ),
             )
           ],
