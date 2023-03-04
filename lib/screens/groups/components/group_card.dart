@@ -132,7 +132,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                       )
                                       .toString(),
                                   overflow: TextOverflow.ellipsis,
-                                  fontSize: 20,
+                                  fontSize: 18,
                                 ),
                                 const SizedBox(height: Insets.s),
                                 MediumBody(
@@ -149,7 +149,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                   )
                                   .toString(),
                               overflow: TextOverflow.ellipsis,
-                              fontSize: 20,
+                              fontSize: 18,
                             )
                       : widget.group.endDate!.isBefore(
                           DateTime.now().subtract(
@@ -167,7 +167,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                       )
                                       .toString(),
                                   overflow: TextOverflow.ellipsis,
-                                  fontSize: 20,
+                                  fontSize: 18,
                                 ),
                                 const SizedBox(height: Insets.s),
                                 MediumBody(
@@ -184,7 +184,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                   )
                                   .toString(),
                               overflow: TextOverflow.ellipsis,
-                              fontSize: 20,
+                              fontSize: 18,
                             ),
                 ),
               ),
