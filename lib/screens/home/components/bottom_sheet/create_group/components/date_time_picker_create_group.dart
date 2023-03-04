@@ -52,7 +52,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
       },
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
-      lastDate: DateTime(2999),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     );
   }
 
