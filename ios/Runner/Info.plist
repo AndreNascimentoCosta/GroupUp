@@ -70,6 +70,8 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>GroupUp uses Photos</string>
 	<key>UIApplicationSceneManifest</key>
+	<key>FLTEnableImpeller</key>
+  	<true/>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
