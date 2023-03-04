@@ -45,53 +45,55 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
       return element.sumData.value;
     }).toList();
     participantsSumValue.sort((a, b) => b.compareTo(a));
-    if (participantsSumValue.length > 1 &&
-        participantsSumValue
-                .where((element) => element == participantsSumValue.first)
-                .length >
-            1) {
-      if (group.endDate!.isBefore(
-        DateTime.now().subtract(
-          const Duration(
-            days: 3,
+    if (group.endDate!.isBefore(DateTime.now())) {
+      if (participantsSumValue.length > 1 &&
+          participantsSumValue
+                  .where((element) => element == participantsSumValue.first)
+                  .length >
+              1) {
+        if (group.endDate!.isBefore(
+          DateTime.now().subtract(
+            const Duration(
+              days: 3,
+            ),
           ),
-        ),
-      )) {
-        if (willShowEndGroupDialog) return;
-        willShowEndGroupDialog = true;
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) async {
-            if (!mounted) return;
-            return groupEndedDialog(context);
-          },
-        );
+        )) {
+          if (willShowEndGroupDialog) return;
+          willShowEndGroupDialog = true;
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) async {
+              if (!mounted) return;
+              return groupEndedDialog(context);
+            },
+          );
+        } else {
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) async {
+              if (!mounted) return;
+              return tiebreakerDialog(context);
+            },
+          );
+        }
       } else {
-        if (willShowEndGroupDialog) return;
-        willShowEndGroupDialog = true;
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) async {
-            if (!mounted) return;
-            return tiebreakerDialog(context);
-          },
-        );
+        if (group.endDate!.isBefore(
+          DateTime.now().subtract(
+            const Duration(
+              days: 1,
+            ),
+          ),
+        )) {
+          if (willShowEndGroupDialog) return;
+          willShowEndGroupDialog = true;
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) async {
+              if (!mounted) return;
+              return groupEndedDialog(context);
+            },
+          );
+        }
       }
     } else {
-      if (group.endDate!.isBefore(
-        DateTime.now().subtract(
-          const Duration(
-            days: 1,
-          ),
-        ),
-      )) {
-        if (willShowEndGroupDialog) return;
-        willShowEndGroupDialog = true;
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) async {
-            if (!mounted) return;
-            return groupEndedDialog(context);
-          },
-        );
-      }
+      return;
     }
   }
 
