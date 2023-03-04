@@ -345,6 +345,7 @@ class AddInputProvider extends ChangeNotifier {
 
   void clean() {
     inputController.clear();
+    isLoading = false;
     notifyListeners();
   }
 }
