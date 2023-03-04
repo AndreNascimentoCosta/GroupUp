@@ -94,7 +94,7 @@ class HeaderIndividualGroup extends StatelessWidget {
               bottom: kDefaultPadding,
             ),
             child: SizedBox(
-              width: 300,
+              width: MediaQuery.of(context).size.width * 0.8,
               child: GroupTitle(
                 text: group.projectName,
                 textAlign: TextAlign.center,

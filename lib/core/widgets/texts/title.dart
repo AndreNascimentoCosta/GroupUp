@@ -23,7 +23,7 @@ class GroupTitle extends StatelessWidget {
       maxLines: 1,
       overflow: overflow,
       textAlign: textAlign,
-      minFontSize: 30,
+      minFontSize: 28,
       maxFontSize: 34,
       style: TextStyle(
         fontSize: 34,
