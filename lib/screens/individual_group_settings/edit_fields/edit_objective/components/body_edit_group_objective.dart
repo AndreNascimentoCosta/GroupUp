@@ -26,7 +26,7 @@ class EditGroupObjectiveBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 50,
+            height: 70,
             width: 400,
             child: TextFieldModel(
               controller: groupObjectiveController,

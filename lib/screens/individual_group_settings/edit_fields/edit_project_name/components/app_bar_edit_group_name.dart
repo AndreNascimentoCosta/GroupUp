@@ -49,7 +49,7 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
                             'Back to Edit Profile Screen from Edit Group Name Screen');
                     Navigator.pop(context);
                   } else {
-                    Provider.of<MixPanelProvider>(context).logEvent(
+                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                         eventName:
                             'Discard Changes from Edit Group Name Screen');
                     editGroupNameProvider.confirmDiscard(context);

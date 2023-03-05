@@ -26,7 +26,7 @@ class EditGroupNameBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 50,
+              height: 70,
               width: 400,
               child: TextFieldModel(
                 controller: groupNameProvider,
@@ -41,6 +41,7 @@ class EditGroupNameBody extends StatelessWidget {
                   return null;
                 }
               },
+              
                 border: const UnderlineInputBorder(
                   borderSide: BorderSide(
                     color: kSecondaryColor,
