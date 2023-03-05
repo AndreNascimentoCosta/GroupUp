@@ -50,6 +50,7 @@ class Body extends StatelessWidget {
               return ListView.separated(
                 padding: const EdgeInsets.only(
                   top: kDefaultPadding / 2,
+                  bottom: kDefaultPadding,
                 ),
                 separatorBuilder: (context, index) => const Divider(
                   indent: kDefaultPadding,

@@ -29,6 +29,7 @@ class BodyIndividualGroup extends StatelessWidget {
             return ListView.separated(
               padding: const EdgeInsets.only(
                 top: kDefaultPadding / 2,
+                bottom: kDefaultPadding * 18,
               ),
               separatorBuilder: (context, index) => const Divider(
                 indent: kDefaultPadding,
