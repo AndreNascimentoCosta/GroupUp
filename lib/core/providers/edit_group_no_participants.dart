@@ -43,13 +43,16 @@ class EditGroupNoParticipantsProvider extends ChangeNotifier {
     return '';
   }
 
-  void Function()? done(
-      BuildContext context, String groupMaxParticipants, String groupId) {
+  void Function()? done(BuildContext context, String groupMaxParticipants,
+      String groupId, int groupParticipantsLength) {
     final groupObjectiveControllerText = groupMaxParticipantsController.text;
 
     if ((groupObjectiveControllerText.isEmpty ||
         groupObjectiveControllerText == groupMaxParticipants ||
         (int.tryParse(groupObjectiveControllerText) ?? 0) > 50)) {
+      return null;
+    } else if (int.tryParse(groupObjectiveControllerText)! <=
+        groupParticipantsLength) {
       return null;
     } else {
       return () async {
@@ -100,8 +103,8 @@ class EditGroupNoParticipantsProvider extends ChangeNotifier {
               textColor: Colors.red,
               borderColor: Colors.transparent,
               onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Discard Changes in Edit Group No Participants');
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                    eventName: 'Discard Changes in Edit Group No Participants');
                 Navigator.pop(newContext);
                 Navigator.pop(context);
               },
@@ -113,8 +116,8 @@ class EditGroupNoParticipantsProvider extends ChangeNotifier {
               text: appLocalizations.noKeep,
               borderColor: kPrimaryColor,
               onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Keep Changes in Edit Group No Participants');
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                    eventName: 'Keep Changes in Edit Group No Participants');
                 Navigator.of(newContext).pop();
                 FocusScope.of(context).requestFocus();
               },

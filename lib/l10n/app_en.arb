@@ -274,6 +274,15 @@
     "@numberParticipantsValidatorMinParticipants": {
         "description": "Minimum number of participants in a group"
     },
+    "numberParticipantsValidatorMinParticipantsAfterGroupCreated": "Number of participants must be at least {participantsLength}",
+    "@numberParticipantsValidatorMinParticipantsAfterGroupCreated": {
+        "description": "Minimum number of participants in a group",
+        "placeholders": {
+            "participantsLength": {
+                "type": "int"
+            }
+        }
+    },
     "selectDate": "Select date",
     "@selectDate": {
         "description": "Select date in date time picker"

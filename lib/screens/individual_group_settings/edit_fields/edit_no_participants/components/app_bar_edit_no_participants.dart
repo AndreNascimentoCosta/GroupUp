@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/edit_group_no_participants.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -22,6 +23,10 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
   Widget build(BuildContext context) {
     final editGroupMaxParticipantsProvider =
         Provider.of<EditGroupNoParticipantsProvider>(context);
+    final group = Provider.of<IndividualGroupProvider>(context).group;
+    if (group == null) {
+      return const SizedBox();
+    }
     final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
@@ -86,7 +91,11 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: ButtonCommonStyle(
                     onPressed: editGroupMaxParticipantsProvider.done(
-                        context, groups.maxParticipants.toString(), groups.id),
+                      context,
+                      groups.maxParticipants.toString(),
+                      groups.id,
+                      group.participants.length,
+                    ),
                     child: StaticText(
                       text: appLocalizations.done,
                       fontSize: TextSize.lBody,
@@ -95,6 +104,7 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
                                 context,
                                 groups.maxParticipants.toString(),
                                 groups.id,
+                                group.participants.length,
                               ) ==
                               null
                           ? kSecondaryColor

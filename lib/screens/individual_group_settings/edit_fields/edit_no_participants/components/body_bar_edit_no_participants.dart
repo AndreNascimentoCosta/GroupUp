@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/edit_group_no_participants.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
@@ -16,7 +17,11 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
     final groupMaxParticipantsController =
         Provider.of<EditGroupNoParticipantsProvider>(context)
             .groupMaxParticipantsController;
+    final group = Provider.of<IndividualGroupProvider>(context).group;
     final appLocalizations = AppLocalizations.of(context);
+    if (group == null) {
+      return const SizedBox();
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,
@@ -35,6 +40,12 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
                 if (value!.isNotEmpty && int.tryParse(value)! > 50) {
                   return appLocalizations
                       .numberParticipantsValidatorMaxParticipants;
+                } else if ((int.tryParse(value) ?? 0) <=
+                    group.participants.length) {
+                  return appLocalizations
+                      .numberParticipantsValidatorMinParticipantsAfterGroupCreated(
+                    group.participants.length,
+                  );
                 } else {
                   return null;
                 }

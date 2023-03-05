@@ -64,6 +64,7 @@
     "dates": "Datas",
     "everyoneCanEditGroupPic": "Todos podem editar foto do grupo",
     "numberParticipantsValidatorMinParticipants": "Número de participantes deve ser pelo menos 1",
+    "numberParticipantsValidatorMinParticipantsAfterGroupCreated": "Número de participantes deve ser pelo menos {participantsLength}",
     "selectDate": "Escolha a data",
     "selectBothDates": "Escolha as duas datas",
     "endDateMustBeAfterStartDate": "Precisa ser no mesmo ou depois do dia de início",
