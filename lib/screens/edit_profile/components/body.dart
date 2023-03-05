@@ -159,9 +159,9 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     height: isSmallScreen ? 22.5 : 30,
                     width: isSmallScreen ? 22.5 : 30,
                     child: Icon(
-                      Icons.add,
+                      Icons.edit_rounded,
                       color: Colors.white,
-                      size: isSmallScreen ? 17 : 25,
+                      size: isSmallScreen ? 10 : 18,
                     ),
                   ),
                 ),
