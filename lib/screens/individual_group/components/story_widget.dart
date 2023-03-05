@@ -70,7 +70,7 @@ class StoryWidget extends StatelessWidget {
                 imageProvider: NetworkImage(
                   inputData.image!,
                 ),
-                fit: BoxFit.fitWidth,
+                fit: BoxFit.contain,
               ),
             ),
             Container(
