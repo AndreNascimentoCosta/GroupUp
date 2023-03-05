@@ -107,19 +107,20 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                   : EdgeInsets.zero,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(
-                                    widget.participant.hasStory
-                                        ? Insets.l * 3
-                                        : Insets.l * 3),
+                                  widget.participant.hasStory
+                                      ? Insets.l * 3
+                                      : Insets.l * 3.45,
+                                ),
                                 child: CachedNetworkImage(
                                   imageUrl: widget.participant.profilePicture,
                                   fadeInDuration:
                                       const Duration(milliseconds: 100),
                                   height: widget.participant.hasStory
                                       ? Insets.l * 3
-                                      : Insets.l * 3,
+                                      : Insets.l * 3.45,
                                   width: widget.participant.hasStory
                                       ? Insets.l * 3
-                                      : Insets.l * 3,
+                                      : Insets.l * 3.45,
                                   fit: BoxFit.cover,
                                 ),
                               ),
