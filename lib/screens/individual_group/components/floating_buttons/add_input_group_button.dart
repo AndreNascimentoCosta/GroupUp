@@ -79,7 +79,11 @@ class _AddInputGroupButtonState extends State<AddInputGroupButton> {
                   denyAddInputDialog(
                       context, appLocalizations.cantAddDataInValidationPeriod);
                 } else if (group.endDate!.isBefore(
-                      DateTime.now(),
+                      DateTime.now().subtract(
+                        const Duration(
+                          days: 1,
+                        ),
+                      ),
                     ) &&
                     isNotTied) {
                   denyAddInputDialog(
