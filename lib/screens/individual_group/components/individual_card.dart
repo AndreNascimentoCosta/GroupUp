@@ -209,13 +209,10 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                   : const StaticText(text: ''),
                             ),
                             const SizedBox(width: kDefaultPadding / 4),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: IndividualValue(
-                                homeViewModel: widget.homeViewModel,
-                                userInputData: widget.participant.sumData,
-                                dropDownModel: dropDownModel,
-                              ),
+                            IndividualValue(
+                              homeViewModel: widget.homeViewModel,
+                              userInputData: widget.participant.sumData,
+                              dropDownModel: dropDownModel,
                             ),
                           ],
                         ),
