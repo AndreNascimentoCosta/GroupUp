@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
@@ -92,8 +93,16 @@ class _GroupsCardState extends State<GroupsCard> {
             ClipRRect(
               borderRadius: BorderRadius.circular(37.5),
               child: widget.group.image.isNotEmpty
-                  ? Image.network(
-                      widget.group.image,
+                  ? CachedNetworkImage(
+                      imageUrl: widget.group.image,
+                      imageBuilder: (context, imageProvider) => Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
                       height: 75,
                       width: 75,
                       fit: BoxFit.cover,

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
@@ -24,8 +25,19 @@ class IndividualCreatedGroup extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(37.5),
             child: group.image.isNotEmpty
-                ? Image.network(
-                    group.image,
+                ? CachedNetworkImage(
+                    imageUrl: group.image,
+                    imageBuilder: (context, imageProvider) => Container(
+                      height: 75,
+                      width: 75,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                     height: 75,
                     width: 75,
                     fit: BoxFit.cover,

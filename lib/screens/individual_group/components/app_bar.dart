@@ -1,9 +1,9 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
@@ -111,25 +111,25 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
       centerTitle: true,
       flexibleSpace: group.image != ''
           ? ClipRect(
-              child: Image.network(
-                group.image,
-                fit: BoxFit.cover,
-                loadingBuilder: (context, child, loadingProgress) {
-                  final storage = Provider.of<StorageProvider>(context);
-                  final File? image = storage.image;
-                  if (loadingProgress == null) return child;
-                  if (image != null) {
-                    return Image.file(
-                      image,
+              child: CachedNetworkImage(
+                imageUrl: group.image,
+                imageBuilder: (context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: imageProvider,
                       fit: BoxFit.cover,
-                    );
-                  }
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: kPrimaryColor,
                     ),
-                  );
-                },
+                  ),
+                ),
+                fit: BoxFit.cover,
+                placeholder: (context, url) => SvgPicture.asset(
+                  'assets/images/groupup_placeholder.svg',
+                  fit: BoxFit.cover,
+                ),
+                errorWidget: (context, url, error) => SvgPicture.asset(
+                  'assets/images/groupup_placeholder.svg',
+                  fit: BoxFit.cover,
+                ),
               ),
             )
           : ClipRect(

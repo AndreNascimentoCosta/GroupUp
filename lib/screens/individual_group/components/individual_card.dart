@@ -113,8 +113,20 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                 ),
                                 child: CachedNetworkImage(
                                   imageUrl: widget.participant.profilePicture,
-                                  fadeInDuration:
-                                      const Duration(milliseconds: 100),
+                                  imageBuilder: (context, imageProvider) => Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                        widget.participant.hasStory
+                                            ? Insets.l * 3
+                                            : Insets.l * 3.45,
+                                      ),
+                                      image: DecorationImage(
+                                        image: imageProvider,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  fadeInDuration: const Duration(milliseconds: 100),
                                   height: widget.participant.hasStory
                                       ? Insets.l * 3
                                       : Insets.l * 3.45,

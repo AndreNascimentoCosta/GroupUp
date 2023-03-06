@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
@@ -47,8 +48,19 @@ class IndividualCardBalance extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(37.5),
             child: group.image.isNotEmpty
-                ? Image.network(
-                    group.image,
+                ? CachedNetworkImage(
+                    imageUrl: group.image,
+                    imageBuilder: (context, imageProvider) => Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                     height: 50,
                     width: 50,
                     fit: BoxFit.cover,
