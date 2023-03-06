@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -48,12 +47,12 @@ class _FirstPageJoinState extends State<FirstPageJoin> {
                   inputFormatters: [
                       UpperCaseTextFormatter(),
                   ]),
-              const SizedBox(height: kDefaultPadding / 2),
-              StaticText(
-                text: AppLocalizations.of(context).feeNotRefundable,
-                maxLines: 2,
-                textAlign: TextAlign.center,
-              ),
+              // const SizedBox(height: kDefaultPadding / 2),
+              // StaticText(
+              //   text: AppLocalizations.of(context).feeNotRefundable,
+              //   maxLines: 2,
+              //   textAlign: TextAlign.center,
+              // ),
             ],
           ),
         ),
