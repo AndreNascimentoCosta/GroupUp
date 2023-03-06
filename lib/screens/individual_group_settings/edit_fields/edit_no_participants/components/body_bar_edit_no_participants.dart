@@ -40,7 +40,7 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
                 if (value!.isNotEmpty && int.tryParse(value)! > 50) {
                   return appLocalizations
                       .numberParticipantsValidatorMaxParticipants;
-                } else if ((int.tryParse(value) ?? 0) <=
+                } else if ((int.tryParse(value) ?? 0) <
                     group.participants.length) {
                   return appLocalizations
                       .numberParticipantsValidatorMinParticipantsAfterGroupCreated(

@@ -51,7 +51,7 @@ class EditGroupNoParticipantsProvider extends ChangeNotifier {
         groupObjectiveControllerText == groupMaxParticipants ||
         (int.tryParse(groupObjectiveControllerText) ?? 0) > 50)) {
       return null;
-    } else if (int.tryParse(groupObjectiveControllerText)! <=
+    } else if (int.tryParse(groupObjectiveControllerText)! <
         groupParticipantsLength) {
       return null;
     } else {
