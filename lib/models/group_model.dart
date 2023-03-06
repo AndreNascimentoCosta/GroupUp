@@ -37,6 +37,7 @@ class GroupModel {
     if (endDate == null || startDate == null) return '-';
     if (startDate.isAfter(DateTime.now())) return '0';
     final difference = DateTime.now().difference(endDate);
+    if (difference.inDays > 0) return '0';
     return difference.inDays.abs().toString();
   }
 
