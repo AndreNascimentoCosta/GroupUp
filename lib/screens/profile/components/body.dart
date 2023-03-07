@@ -114,9 +114,7 @@ class _BodyProfileState extends State<BodyProfile> {
                                     color: Colors.black54,
                                   ),
                                   child: const Center(
-                                    child: CircularProgressIndicator(
-                                      color: kPrimaryColor,
-                                    ),
+                                    child: CircularProgressIndicator.adaptive(),
                                   ),
                                 ),
                               ),

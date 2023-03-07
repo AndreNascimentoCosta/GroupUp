@@ -30,7 +30,7 @@ groupEndedDialog(BuildContext context) {
       if (group == null) return const SizedBox();
       if (isClaimingReward == true) {
         return const Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator.adaptive(),
         );
       }
       // final currentUserPaymentIntentIds = currentUser.paymentIntentIds;
@@ -61,7 +61,8 @@ groupEndedDialog(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.only(bottom: kDefaultPadding),
                 child: StaticText(
-                  text: appLocalizations.winnerWon(group.reward), //appLocalizations.winnerWon(groupCurrencySymbol, NumberFormat.decimalPattern(Localizations.localeOf(context).toString(),).format(double.parse(group.reward),), //),
+                  text: appLocalizations.winnerWon(group
+                      .reward), //appLocalizations.winnerWon(groupCurrencySymbol, NumberFormat.decimalPattern(Localizations.localeOf(context).toString(),).format(double.parse(group.reward),), //),
                   fontSize: TextSize.mBody,
                   textAlign: TextAlign.center,
                   maxLines: 3,
@@ -94,25 +95,25 @@ groupEndedDialog(BuildContext context) {
           //     child: CircularProgressIndicator.adaptive(),
           //   )
           // else
-            SizedBox(
-              width: currentUserRank == '1º'
-                  ? MediaQuery.of(context).size.width * 0.2
-                  : double.infinity,
-              child: ButtonCommonStyle(
-                onPressed: () {
-                  Provider.of<MixPanelProvider>(context, listen: false)
-                      .logEvent(eventName: 'Group Ended Dialog OK');
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                },
-                child: const StaticText(
-                  text: 'OK',
-                  fontSize: TextSize.mBody,
-                  fontFamily: 'Montserrat-SemiBold',
-                  color: kPrimaryColor,
-                ),
+          SizedBox(
+            width: currentUserRank == '1º'
+                ? MediaQuery.of(context).size.width * 0.2
+                : double.infinity,
+            child: ButtonCommonStyle(
+              onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Group Ended Dialog OK');
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+              child: const StaticText(
+                text: 'OK',
+                fontSize: TextSize.mBody,
+                fontFamily: 'Montserrat-SemiBold',
+                color: kPrimaryColor,
               ),
             ),
+          ),
           // if (individualGroupProvider.isClaimingReward == true)
           //   const Center(
           //     child: SizedBox(),

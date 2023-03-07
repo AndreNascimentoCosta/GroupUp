@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator.adaptive());
           } else if (snapshot.hasData) {
             return GroupsScreen(homeViewModel: HomeViewModel());
           } else if (snapshot.hasError) {
@@ -141,8 +141,7 @@ class _HomeState extends State<Home> {
                             );
                           },
                           child: Provider.of<AuthProvider>(context).loading
-                              ? const CircularProgressIndicator(
-                                  color: kPrimaryColor)
+                              ? const CircularProgressIndicator.adaptive()
                               : const ContinueButton(),
                         ),
                         const SizedBox(height: Insets.l),

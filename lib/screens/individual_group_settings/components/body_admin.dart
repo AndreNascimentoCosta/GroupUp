@@ -29,7 +29,7 @@ class BodyAdminSettings extends StatelessWidget {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
       return const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator.adaptive(),
       );
     }
     final participantsData = group.participantsData;

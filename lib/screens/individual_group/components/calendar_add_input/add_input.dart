@@ -197,9 +197,7 @@ class _AddInputState extends State<AddInput> {
                     }
                   },
                   child: addInputProvider.isLoading
-                      ? const CircularProgressIndicator(
-                          color: kPrimaryColor,
-                        )
+                      ? const CircularProgressIndicator.adaptive()
                       : StaticText(
                           text: 'OK',
                           textAlign: TextAlign.center,

@@ -20,9 +20,7 @@ class ThirdPageCreate extends StatelessWidget {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     if (createGroupProvider.isCreatingGroup) {
       return const Center(
-        child: CircularProgressIndicator(
-          color: kPrimaryColor,
-        ),
+        child: CircularProgressIndicator.adaptive(),
       );
     }
     return Padding(
