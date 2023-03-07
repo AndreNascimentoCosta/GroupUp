@@ -248,7 +248,6 @@ class BodyAdminSettings extends StatelessWidget {
             ),
             SizedBox(height: screenHeight * 0.035),
             BodyContentSwitch(
-              groups: group,
               text: appLocalizations.everyoneCanEditGroupPic,
               boolValue: group.allowEditImage,
             ),
