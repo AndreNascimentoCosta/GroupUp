@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
@@ -5,6 +6,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/design-system.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -44,16 +46,41 @@ class IndividualParticipant extends StatelessWidget {
         child: Row(
           children: [
             if (participant.profilePicture.isEmpty)
-              const CircleAvatar(
-                radius: 30,
-                backgroundImage: NetworkImage(
-                    'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-bcf2-89b5e5b93bad'),
+              Container(
+                padding: const EdgeInsets.all(3),
+                child: CircleAvatar(
+                  radius: Insets.l * 1.425,
+                  backgroundColor: const Color(0XFFE1E1E1),
+                  child: SvgPicture.asset(
+                    'assets/icons/profile_picture_add.svg',
+                    color: Colors.white,
+                    height: Insets.l * 1.425,
+                    width: Insets.l * 1.425,
+                  ),
+                ),
               )
             else
-              CircleAvatar(
-                radius: 30,
-                backgroundImage: NetworkImage(
-                  participant.profilePicture,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(
+                  Insets.l * 3,
+                ),
+                child: CachedNetworkImage(
+                  imageUrl: participant.profilePicture,
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        Insets.l * 3,
+                      ),
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  fadeInDuration: const Duration(milliseconds: 100),
+                  height: Insets.l * 3,
+                  width: Insets.l * 3,
+                  fit: BoxFit.cover,
                 ),
               ),
             const SizedBox(width: kDefaultPadding),
