@@ -16,6 +16,11 @@ class IndividualGroupProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateAllowGroupPicture(bool value) {
+    group?.allowEditImage = value;
+    notifyListeners();
+  }
+
   Future<void> getGroup(
     String groupId, {
     bool reset = true,

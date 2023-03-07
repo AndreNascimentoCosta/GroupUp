@@ -9,6 +9,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -488,7 +489,10 @@ class CreateGroupProvider extends ChangeNotifier {
     }
   }
 
-  Future<bool> updateAllowEditImage(bool value, String groupId) async {
+  Future<bool> updateAllowEditImage(
+      BuildContext context, bool value, String groupId) async {
+    Provider.of<IndividualGroupProvider>(context, listen: false)
+        .updateAllowGroupPicture(value);
     final group = await FirebaseFirestore.instance
         .collection('groups')
         .doc(groupId)
@@ -497,12 +501,12 @@ class CreateGroupProvider extends ChangeNotifier {
       final groupData = group.data();
       if (groupData != null) {
         final allowEditImage = groupData['allowEditImage'] as bool;
-        newGroup.allowEditImage = value;
         if (allowEditImage != value) {
           await FirebaseFirestore.instance
               .collection('groups')
               .doc(groupId)
               .update({'allowEditImage': value});
+          await Provider.of<IndividualGroupProvider>(context).getGroup(groupId);
           return true;
         }
       }
