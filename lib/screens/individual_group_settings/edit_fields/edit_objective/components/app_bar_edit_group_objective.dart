@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -13,15 +14,17 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarEditGroupObjective extends StatelessWidget
     with PreferredSizeWidget {
-  const AppBarEditGroupObjective({required this.groups});
-
-  final GroupModel groups;
+  const AppBarEditGroupObjective({super.key});
 
   @override
   Widget build(BuildContext context) {
     final editGroupObjectiveProvider =
         Provider.of<EditGroupObjectiveProvider>(context);
     final appLocalizations = AppLocalizations.of(context);
+    final group = Provider.of<IndividualGroupProvider>(context).group;
+    if (group == null) {
+      return const SizedBox();
+    }
     return SafeArea(
       child: Row(
         children: [
@@ -46,7 +49,7 @@ class AppBarEditGroupObjective extends StatelessWidget
                 onPressed: () {
                   if (editGroupObjectiveProvider
                           .groupObjectiveController.text ==
-                      groups.objective) {
+                      group.objective) {
                     Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                         eventName:
                             'Back to Edit Profile Screen from Edit Group Objective Screen');
@@ -85,13 +88,13 @@ class AppBarEditGroupObjective extends StatelessWidget
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: ButtonCommonStyle(
                     onPressed: editGroupObjectiveProvider.done(
-                        context, groups.objective, groups.id),
+                        context, group.objective, group.id),
                     child: StaticText(
                       text: appLocalizations.done,
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
                       color: editGroupObjectiveProvider.done(
-                                  context, groups.objective, groups.id) ==
+                                  context, group.objective, group.id) ==
                               null
                           ? kSecondaryColor
                           : Colors.black,

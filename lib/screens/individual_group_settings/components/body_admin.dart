@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
-import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
 import 'package:groupup/screens/individual_group_settings/components/body_content_arrow.dart';
@@ -22,13 +22,17 @@ import 'package:share_plus/share_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BodyAdminSettings extends StatelessWidget {
-  const BodyAdminSettings({required this.groups});
-
-  final GroupModel groups;
+  const BodyAdminSettings({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final participantsData = groups.participantsData;
+    final group = Provider.of<IndividualGroupProvider>(context).group;
+    if (group == null) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+    final participantsData = group.participantsData;
     final createGroupProvider =
         Provider.of<CreateGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context);
@@ -71,7 +75,7 @@ class BodyAdminSettings extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return EditGroupNameScreen(groups: groups);
+                      return const EditGroupNameScreen();
                     },
                     settings: const RouteSettings(name: 'Edit_Group_Name'),
                   ),
@@ -88,7 +92,7 @@ class BodyAdminSettings extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return EditGroupObjectiveScreen(groups: groups);
+                      return const EditGroupObjectiveScreen();
                     },
                     settings: const RouteSettings(name: 'Edit_Group_Objective'),
                   ),
@@ -157,7 +161,7 @@ class BodyAdminSettings extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return EditGroupDatesScreen(groups: groups);
+                        return const EditGroupDatesScreen();
                       },
                       settings: const RouteSettings(name: 'Edit_Group_Dates'),
                     ),
@@ -229,7 +233,7 @@ class BodyAdminSettings extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return EditGroupNoParticipantsScreen(groups: groups);
+                        return const EditGroupNoParticipantsScreen();
                       },
                       settings: const RouteSettings(
                           name: 'Edit_Group_No_Participants'),
@@ -244,9 +248,9 @@ class BodyAdminSettings extends StatelessWidget {
             ),
             SizedBox(height: screenHeight * 0.035),
             BodyContentSwitch(
-              groups: groups,
+              groups: group,
               text: appLocalizations.everyoneCanEditGroupPic,
-              boolValue: groups.allowEditImage,
+              boolValue: group.allowEditImage,
             ),
             SizedBox(
               height: isVerySmallScreen
@@ -265,14 +269,14 @@ class BodyAdminSettings extends StatelessWidget {
                 ),
                 const Spacer(),
                 ShareButton(
-                  text: groups.groupCode,
+                  text: group.groupCode,
                   onPressed: () async {
                     Provider.of<MixPanelProvider>(context, listen: false)
                         .logEvent(eventName: 'Share Group Code');
                     await Share.share(
                       appLocalizations.shareGroupCodeText(
-                        groups.projectName,
-                        groups.groupCode,
+                        group.projectName,
+                        group.groupCode,
                       ),
                     );
                   },
@@ -289,7 +293,7 @@ class BodyAdminSettings extends StatelessWidget {
                     .logEvent(eventName: 'Exit Group');
                 createGroupProvider.confirmExitGroup(
                   context,
-                  groups.id,
+                  group.id,
                 );
               },
               text: appLocalizations.exitGroup,

@@ -30,11 +30,9 @@ class GroupSettings extends StatelessWidget {
         (element) => element.uid == currentUserId,
       );
       if (currentUserData.isAdmin) {
-        return Scaffold(
-          appBar: const AppBarGroupSettings(),
-          body: BodyAdminSettings(
-            groups: groups,
-          ),
+        return const Scaffold(
+          appBar: AppBarGroupSettings(),
+          body: BodyAdminSettings(),
         );
       } else {
         return Scaffold(

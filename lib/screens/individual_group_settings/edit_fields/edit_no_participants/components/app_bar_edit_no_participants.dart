@@ -15,9 +15,7 @@ import '../../../../../core/providers/mix_panel_provider.dart';
 
 class AppBarEditGroupNoParticipats extends StatelessWidget
     with PreferredSizeWidget {
-  const AppBarEditGroupNoParticipats({required this.groups});
-
-  final GroupModel groups;
+  const AppBarEditGroupNoParticipats({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +50,7 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
                 onPressed: () {
                   if (editGroupMaxParticipantsProvider
                           .groupMaxParticipantsController.text ==
-                      groups.maxParticipants.toString()) {
+                      group.maxParticipants.toString()) {
                     Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                         eventName:
                             'Back to Edit Profile Screen from Edit Group No Participants Screen');
@@ -92,8 +90,8 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
                   child: ButtonCommonStyle(
                     onPressed: editGroupMaxParticipantsProvider.done(
                       context,
-                      groups.maxParticipants.toString(),
-                      groups.id,
+                      group.maxParticipants.toString(),
+                      group.id,
                       group.participants.length,
                     ),
                     child: StaticText(
@@ -102,8 +100,8 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
                       fontFamily: 'Montserrat-SemiBold',
                       color: editGroupMaxParticipantsProvider.done(
                                 context,
-                                groups.maxParticipants.toString(),
-                                groups.id,
+                                group.maxParticipants.toString(),
+                                group.id,
                                 group.participants.length,
                               ) ==
                               null

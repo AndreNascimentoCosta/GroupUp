@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -12,14 +13,16 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
-  const AppBarEditGroupName({required this.groups});
-
-  final GroupModel groups;
+  const AppBarEditGroupName({super.key});
 
   @override
   Widget build(BuildContext context) {
     final editGroupNameProvider = Provider.of<EditGroupNameProvider>(context);
     final appLocalizations = AppLocalizations.of(context);
+    final group = Provider.of<IndividualGroupProvider>(context).group;
+    if (group == null) {
+      return const SizedBox();
+    }
     return SafeArea(
       child: Row(
         children: [
@@ -43,15 +46,16 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
               ButtonCommonStyle(
                 onPressed: () {
                   if (editGroupNameProvider.groupNameController.text ==
-                      groups.projectName) {
+                      group.projectName) {
                     Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                         eventName:
                             'Back to Edit Profile Screen from Edit Group Name Screen');
                     Navigator.pop(context);
                   } else {
-                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
-                        eventName:
-                            'Discard Changes from Edit Group Name Screen');
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(
+                            eventName:
+                                'Discard Changes from Edit Group Name Screen');
                     editGroupNameProvider.confirmDiscard(context);
                   }
                 },
@@ -82,13 +86,13 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: ButtonCommonStyle(
                     onPressed: editGroupNameProvider.done(
-                        context, groups.projectName, groups.id),
+                        context, group.projectName, group.id),
                     child: StaticText(
                       text: appLocalizations.done,
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
                       color: editGroupNameProvider.done(
-                                  context, groups.projectName, groups.id) ==
+                                  context, group.projectName, group.id) ==
                               null
                           ? kSecondaryColor
                           : Colors.black,

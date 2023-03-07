@@ -6,20 +6,23 @@ import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/providers/edit_group_dates_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AppBarEditGroupDates extends StatelessWidget with PreferredSizeWidget {
-  const AppBarEditGroupDates({required this.groups});
+import '../../../../../core/providers/individual_group_provider.dart';
 
-  final GroupModel groups;
+class AppBarEditGroupDates extends StatelessWidget with PreferredSizeWidget {
+  const AppBarEditGroupDates({super.key});
 
   @override
   Widget build(BuildContext context) {
     final editGroupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
     final appLocalizations = AppLocalizations.of(context);
+    final group = Provider.of<IndividualGroupProvider>(context).group;
+    if (group == null) {
+      return const Scaffold();
+    }
     return SafeArea(
       child: Row(
         children: [
@@ -87,19 +90,13 @@ class AppBarEditGroupDates extends StatelessWidget with PreferredSizeWidget {
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: ButtonCommonStyle(
                     onPressed: editGroupDatesProvider.done(
-                        context,
-                        groups.startDate,
-                        groups.endDate,
-                        groups.id),
+                        context, group.startDate, group.endDate, group.id),
                     child: StaticText(
                       text: appLocalizations.done,
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
-                      color: editGroupDatesProvider.done(
-                                  context,
-                                  groups.startDate,
-                                  groups.endDate,
-                                  groups.id) ==
+                      color: editGroupDatesProvider.done(context,
+                                  group.startDate, group.endDate, group.id) ==
                               null
                           ? kSecondaryColor
                           : Colors.black,
