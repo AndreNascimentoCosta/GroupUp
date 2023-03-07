@@ -64,23 +64,17 @@ class IndividualParticipant extends StatelessWidget {
                 borderRadius: BorderRadius.circular(
                   Insets.l * 3,
                 ),
-                child: CachedNetworkImage(
-                  imageUrl: participant.profilePicture,
-                  imageBuilder: (context, imageProvider) => Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        Insets.l * 3,
-                      ),
-                      image: DecorationImage(
-                        image: imageProvider,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  fadeInDuration: const Duration(milliseconds: 100),
+                child: Container(
                   height: Insets.l * 3,
                   width: Insets.l * 3,
-                  fit: BoxFit.cover,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: CachedNetworkImageProvider(
+                        participant.profilePicture,
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               ),
             const SizedBox(width: kDefaultPadding),

@@ -126,12 +126,17 @@ class _BodyProfileState extends State<BodyProfile> {
                         if (userProfilePicture.isNotEmpty == true) {
                           return ClipRRect(
                             borderRadius: BorderRadius.circular(Insets.l * 6),
-                            child: CachedNetworkImage(
-                              imageUrl: userProfilePicture,
-                              fadeInDuration: const Duration(milliseconds: 100),
+                            child: Container(
                               height: Insets.l * 6,
                               width: Insets.l * 6,
-                              fit: BoxFit.cover,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: CachedNetworkImageProvider(
+                                    userProfilePicture,
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
                           );
                         }

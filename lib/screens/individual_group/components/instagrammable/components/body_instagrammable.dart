@@ -162,9 +162,7 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                                           ? screenWidth * 0.1325
                                           : screenWidth * 0.145,
                     ),
-                    child: CachedNetworkImage(
-                      imageUrl: instagrammableProvider.picture1,
-                      fadeInDuration: const Duration(milliseconds: 100),
+                    child: Container(
                       height: widget.isSharing
                           ? screenWidth * 0.115
                           : isScreenSize0
@@ -187,7 +185,14 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                                       : isScreenSize5
                                           ? screenWidth * 0.1325
                                           : screenWidth * 0.145,
-                      fit: BoxFit.cover,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                            instagrammableProvider.picture1,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -268,8 +273,7 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                                           ? screenWidth * 0.1175
                                           : screenWidth * 0.127,
                     ),
-                    child: CachedNetworkImage(
-                      imageUrl: instagrammableProvider.picture2,
+                    child: Container(
                       height: widget.isSharing
                           ? screenWidth * 0.099
                           : isScreenSize0
@@ -292,7 +296,14 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                                       : isScreenSize5
                                           ? screenWidth * 0.1175
                                           : screenWidth * 0.127,
-                      fit: BoxFit.cover,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                            instagrammableProvider.picture2,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -373,9 +384,7 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                                           ? screenWidth * 0.1525
                                           : screenWidth * 0.165,
                     ),
-                    child: CachedNetworkImage(
-                      imageUrl: instagrammableProvider.picture3,
-                      fadeInDuration: const Duration(milliseconds: 100),
+                    child: Container(
                       height: widget.isSharing
                           ? screenWidth * 0.125
                           : isScreenSize0
@@ -398,7 +407,14 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                                       : isScreenSize5
                                           ? screenWidth * 0.1525
                                           : screenWidth * 0.165,
-                      fit: BoxFit.cover,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                            instagrammableProvider.picture3,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -473,9 +489,7 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                                       ? screenWidth * 0.1475
                                       : screenWidth * 0.1575,
                     ),
-                    child: CachedNetworkImage(
-                      imageUrl: instagrammableProvider.picture4,
-                      fadeInDuration: const Duration(milliseconds: 100),
+                    child: Container(
                       height: widget.isSharing
                           ? screenWidth * 0.127
                           : isScreenSize0
@@ -494,7 +508,14 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                                   : isScreenSize5
                                       ? screenWidth * 0.1475
                                       : screenWidth * 0.1575,
-                      fit: BoxFit.cover,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                            instagrammableProvider.picture4,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -536,14 +557,14 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                             : screenWidth * 0.18),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(widget.isSharing
-                        ? screenWidth * 0.145
-                        : isScreenSize0
-                            ? screenWidth * 0.145
-                            : screenWidth * 0.18),
-                    child: CachedNetworkImage(
-                      imageUrl: instagrammableProvider.picture5,
-                      fadeInDuration: const Duration(milliseconds: 100),
+                    borderRadius: BorderRadius.circular(
+                      widget.isSharing
+                          ? screenWidth * 0.145
+                          : isScreenSize0
+                              ? screenWidth * 0.145
+                              : screenWidth * 0.18,
+                    ),
+                    child: Container(
                       height: widget.isSharing
                           ? screenWidth * 0.145
                           : isScreenSize0
@@ -554,7 +575,14 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                           : isScreenSize0
                               ? screenWidth * 0.145
                               : screenWidth * 0.18,
-                      fit: BoxFit.cover,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                            instagrammableProvider.picture5,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 ),

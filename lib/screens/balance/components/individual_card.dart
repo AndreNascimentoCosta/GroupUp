@@ -61,6 +61,8 @@ class IndividualCardBalance extends StatelessWidget {
                         ),
                       ),
                     ),
+                    fadeInDuration: const Duration(milliseconds: 0),
+                    fadeOutDuration: const Duration(milliseconds: 0),
                     height: 50,
                     width: 50,
                     fit: BoxFit.cover,

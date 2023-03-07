@@ -25,22 +25,17 @@ class IndividualCreatedGroup extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(37.5),
             child: group.image.isNotEmpty
-                ? CachedNetworkImage(
-                    imageUrl: group.image,
-                    imageBuilder: (context, imageProvider) => Container(
-                      height: 75,
-                      width: 75,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover,
+                ? Container(
+                    height: Insets.l * 3.75,
+                    width: Insets.l * 3.75,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: CachedNetworkImageProvider(
+                          group.image,
                         ),
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    height: 75,
-                    width: 75,
-                    fit: BoxFit.cover,
                   )
                 : Image.asset(
                     'assets/icons/profile2.png',

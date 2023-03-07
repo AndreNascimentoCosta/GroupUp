@@ -58,12 +58,17 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
             widget.participant.profilePicture.isNotEmpty
                 ? ClipRRect(
                     borderRadius: BorderRadius.circular(Insets.l * 4),
-                    child: CachedNetworkImage(
-                      imageUrl: widget.participant.profilePicture,
-                      fadeInDuration: const Duration(milliseconds: 100),
+                    child: Container(
                       height: Insets.l * 2,
                       width: Insets.l * 2,
-                      fit: BoxFit.cover,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                            widget.participant.profilePicture,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   )
                 : CircleAvatar(

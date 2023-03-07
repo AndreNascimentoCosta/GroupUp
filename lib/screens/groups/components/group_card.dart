@@ -93,19 +93,17 @@ class _GroupsCardState extends State<GroupsCard> {
             ClipRRect(
               borderRadius: BorderRadius.circular(37.5),
               child: widget.group.image.isNotEmpty
-                  ? CachedNetworkImage(
-                      imageUrl: widget.group.image,
-                      imageBuilder: (context, imageProvider) => Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.cover,
+                  ? Container(
+                      height: Insets.l * 3.75,
+                      width: Insets.l * 3.75,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                            widget.group.image,
                           ),
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      height: 75,
-                      width: 75,
-                      fit: BoxFit.cover,
                     )
                   : Image.asset(
                       'assets/icons/profile2.png',

@@ -111,29 +111,21 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                       ? Insets.l * 3
                                       : Insets.l * 3.45,
                                 ),
-                                child: CachedNetworkImage(
-                                  imageUrl: widget.participant.profilePicture,
-                                  imageBuilder: (context, imageProvider) => Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                        widget.participant.hasStory
-                                            ? Insets.l * 3
-                                            : Insets.l * 3.45,
-                                      ),
-                                      image: DecorationImage(
-                                        image: imageProvider,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  fadeInDuration: const Duration(milliseconds: 100),
+                                child: Container(
                                   height: widget.participant.hasStory
                                       ? Insets.l * 3
                                       : Insets.l * 3.45,
                                   width: widget.participant.hasStory
                                       ? Insets.l * 3
                                       : Insets.l * 3.45,
-                                  fit: BoxFit.cover,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: CachedNetworkImageProvider(
+                                        widget.participant.profilePicture,
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                               ),
                             )

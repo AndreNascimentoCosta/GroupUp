@@ -27,6 +27,8 @@ class StoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final currentUser = Provider.of<AuthProvider>(context).user;
     final appLocalizations = AppLocalizations.of(context);
+    const placeholderProfilePicture =
+        'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-9b0e-8c8c0c8c0c8c';
     if (currentUser == null) {
       return const SizedBox();
     }
@@ -94,24 +96,33 @@ class StoryWidget extends StatelessWidget {
                       if (participant.profilePicture.isEmpty)
                         ClipRRect(
                           borderRadius: BorderRadius.circular(Insets.l * 2),
-                          child: CachedNetworkImage(
-                            imageUrl:
-                                'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-bcf2-89b5e5b93bad',
-                            fadeInDuration: const Duration(milliseconds: 100),
+                          child: Container(
                             height: Insets.l * 2,
                             width: Insets.l * 2,
-                            fit: BoxFit.fitWidth,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                  placeholderProfilePicture,
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         )
                       else
                         ClipRRect(
                           borderRadius: BorderRadius.circular(Insets.l * 2),
-                          child: CachedNetworkImage(
-                            imageUrl: participant.profilePicture,
-                            fadeInDuration: const Duration(milliseconds: 100),
+                          child: Container(
                             height: Insets.l * 2,
                             width: Insets.l * 2,
-                            fit: BoxFit.fitWidth,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                  participant.profilePicture,
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
                       const SizedBox(width: Insets.m),

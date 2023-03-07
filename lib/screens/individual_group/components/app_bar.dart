@@ -111,24 +111,14 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
       centerTitle: true,
       flexibleSpace: group.image != ''
           ? ClipRect(
-              child: CachedNetworkImage(
-                imageUrl: group.image,
-                imageBuilder: (context, imageProvider) => Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: imageProvider,
-                      fit: BoxFit.cover,
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(
+                      group.image,
                     ),
+                    fit: BoxFit.cover,
                   ),
-                ),
-                fit: BoxFit.cover,
-                placeholder: (context, url) => SvgPicture.asset(
-                  'assets/images/groupup_placeholder.svg',
-                  fit: BoxFit.cover,
-                ),
-                errorWidget: (context, url, error) => SvgPicture.asset(
-                  'assets/images/groupup_placeholder.svg',
-                  fit: BoxFit.cover,
                 ),
               ),
             )
