@@ -240,18 +240,14 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                 borderRadius: BorderRadius.circular(Insets.xl),
                 color: kPrimaryColor,
               ),
-              child: SizedBox(
-                height: screenHeight * 0.04,
-                width: screenHeight * 0.04,
-                child: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                  size: isVerySmallScreen
-                      ? screenHeight * 0.025
-                      : isSmallScreen
-                          ? screenHeight * 0.027
-                          : screenHeight * 0.032,
-                ),
+              child: Icon(
+                Icons.add_rounded,
+                color: Colors.white,
+                size: isVerySmallScreen
+                    ? screenHeight * 0.025
+                    : isSmallScreen
+                        ? screenHeight * 0.027
+                        : screenHeight * 0.031,
               ),
             ),
           ),
