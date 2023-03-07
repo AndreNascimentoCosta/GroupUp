@@ -63,6 +63,8 @@ groupEndedDialog(BuildContext context) {
                 child: StaticText(
                   text: appLocalizations.winnerWon(group.reward), //appLocalizations.winnerWon(groupCurrencySymbol, NumberFormat.decimalPattern(Localizations.localeOf(context).toString(),).format(double.parse(group.reward),), //),
                   fontSize: TextSize.mBody,
+                  textAlign: TextAlign.center,
+                  maxLines: 3,
                 ),
               ),
               ListView.separated(
