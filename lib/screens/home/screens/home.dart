@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
@@ -127,10 +129,18 @@ class _HomeState extends State<Home> {
                                     children: <Widget>[
                                       Column(
                                         mainAxisSize: MainAxisSize.min,
-                                        children: const [
+                                        children: [
                                           SizedBox(
-                                            height: 280,
-                                            child: FirsPageSignUp(),
+                                            height: Platform.isAndroid
+                                                ? MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.25
+                                                : MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.325,
+                                            child: const FirsPageSignUp(),
                                           ),
                                         ],
                                       )

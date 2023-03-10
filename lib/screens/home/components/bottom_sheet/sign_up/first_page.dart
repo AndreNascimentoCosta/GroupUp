@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
@@ -44,22 +46,28 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: Insets.l * 1.5),
-              SignInWithAppleButton(
-                onPressed: () {
-                  mixPanel.logEvent(eventName: 'Sign Up with Apple');
-                  Provider.of<AuthProvider>(context, listen: false).loading ==
-                      true;
-                  final provider = context.read<AuthProvider>();
-                  provider.appleLogin();
-                  Navigator.pop(context);
-                },
-                text: AppLocalizations.of(context).continueApple,
-                height: 50,
-                iconAlignment: IconAlignment.left,
-                style: SignInWithAppleButtonStyle.whiteOutlined,
-                borderRadius: BorderRadius.circular(Insets.l),
-              ),
+              if (Platform.isAndroid)
+                const SizedBox(height: Insets.l * 1.5)
+              else
+                const SizedBox(height: Insets.l * 1.5),
+              if (Platform.isAndroid)
+                const SizedBox()
+              else
+                SignInWithAppleButton(
+                  onPressed: () {
+                    mixPanel.logEvent(eventName: 'Sign Up with Apple');
+                    Provider.of<AuthProvider>(context, listen: false).loading ==
+                        true;
+                    final provider = context.read<AuthProvider>();
+                    provider.appleLogin();
+                    Navigator.pop(context);
+                  },
+                  text: AppLocalizations.of(context).continueApple,
+                  height: 50,
+                  iconAlignment: IconAlignment.left,
+                  style: SignInWithAppleButtonStyle.whiteOutlined,
+                  borderRadius: BorderRadius.circular(Insets.l),
+                ),
               const SizedBox(height: Insets.l * 1.25),
               ButtonCommonStyle(
                 onPressed: () {
