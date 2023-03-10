@@ -20,10 +20,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Home extends StatefulWidget {
   const Home({
     Key? key,
-    required this.remoteConfig,
+    this.remoteConfig,
   }) : super(key: key);
 
-  final FirebaseRemoteConfig remoteConfig;
+  final FirebaseRemoteConfig? remoteConfig;
 
   @override
   State<Home> createState() => _HomeState();
