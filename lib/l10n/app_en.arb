@@ -423,6 +423,10 @@
     "@rewardValidatorMaxChars": {
         "description": "Reward maximum chars"
     },
+    "changeGroupReward": "Change group reward",
+    "@changeGroupReward": {
+        "description": "Change group reward"
+    },
     "dataValidated": "Done! You validated this data!",
     "@dataValidated": {
         "description": "Data validated"

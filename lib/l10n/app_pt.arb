@@ -100,6 +100,7 @@
     "reward": "Recompensa",
     "rewardValidatorMinChars": "Recompensa deve conter pelo menos 3 caracteres",
     "rewardValidatorMaxChars": "Recompensa deve conter no máximo 50 caracteres",
+    "changeGroupReward": "Mude a recompensa do grupo",
     "dataValidated": "Pronto! Você validou esse dado!",
     "dataInvalidated": "Pronto! Você invalidou esse dado!",
     "groupEnded": "Grupo finalizado",

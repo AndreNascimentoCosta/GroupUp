@@ -16,6 +16,7 @@ import 'package:groupup/screens/individual_group_settings/edit_fields/edit_dates
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_no_participants/edit_no_participants_screen.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_objective/edit_group_objective.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_project_name/edit_group_name.dart';
+import 'package:groupup/screens/individual_group_settings/edit_fields/edit_reward/edit_group_reward.dart';
 import 'package:groupup/screens/report_participant/screens/report_participant.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -99,6 +100,23 @@ class BodyAdminSettings extends StatelessWidget {
                 );
               },
               child: BodyContentArrow(name: appLocalizations.objective),
+            ),
+            SizedBox(height: screenHeight * 0.035),
+            ButtonCommonStyle(
+              onPressed: () {
+                Provider.of<MixPanelProvider>(context, listen: false)
+                    .logEvent(eventName: 'Edit Group Reward');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const EditGroupRewardScreen();
+                    },
+                    settings: const RouteSettings(name: 'Edit_Group_Reward'),
+                  ),
+                );
+              },
+              child: BodyContentArrow(name: appLocalizations.reward),
             ),
             SizedBox(height: screenHeight * 0.035),
             ButtonCommonStyle(
