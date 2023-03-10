@@ -274,7 +274,7 @@ class BodyAdminSettings extends StatelessWidget {
                   ? screenHeight * 0.17
                   : isSmallScreen
                       ? screenHeight * 0.25
-                      : screenHeight * 0.315,
+                      : screenHeight * 0.26,
             ),
             Row(
               children: [
