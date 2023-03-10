@@ -79,7 +79,7 @@ class OtherOptionsProfile extends StatelessWidget {
               Provider.of<MixPanelProvider>(context, listen: false)
                   .logEvent(eventName: 'Logout');
               Navigator.pop(context);
-              authProvider.signOut();
+              authProvider.signOut(context);
             },
             child: LargeBody(
               text: appLocalizations.logout,

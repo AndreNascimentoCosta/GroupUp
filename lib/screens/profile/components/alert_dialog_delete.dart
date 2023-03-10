@@ -44,7 +44,7 @@ void confirmDelete(BuildContext context) {
             onPressed: () => {
               Provider.of<MixPanelProvider>(context, listen: false)
                   .logEvent(eventName: 'Delete Account'),
-              authProvider.signOut(),
+              authProvider.signOut(context),
               Navigator.of(context).pop(),
             },
             textColor: kPrimaryColor,
