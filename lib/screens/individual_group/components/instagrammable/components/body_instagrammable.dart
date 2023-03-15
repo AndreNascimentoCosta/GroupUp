@@ -78,7 +78,9 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
     }
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const AppBarInstagrammable(),
+      appBar: AppBarInstagrammable(
+        isSharing: widget.isSharing,
+      ),
       body: SizedBox(
         height: screenHeight * 0.8,
         width: screenWidth,
@@ -100,7 +102,7 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                                   ? screenWidth * 0.1325
                                   : screenWidth * 0.145,
               bottom: widget.isSharing
-                  ? screenHeight * 0.4715
+                  ? screenHeight * 0.47
                   : screenHeight * 0.585,
               left: isAndroidScreen
                   ? screenWidth * 0.185
@@ -216,7 +218,7 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
               right: isAndroidScreen
                   ? screenWidth * 0.1625
                   : widget.isSharing
-                      ? screenWidth * 0.2125
+                      ? screenWidth * 0.22
                       : isScreenSize0
                           ? screenWidth * 0.205
                           : isScreenSize1
