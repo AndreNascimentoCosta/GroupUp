@@ -1,0 +1,2 @@
+NSPhotoLibraryUsageDescription = "O acesso para a galeria permite você escolher fotos para seu perfil e grupos.";
+NSCameraUsageDescription = "O acesso para a câmera permite você tirar fotos para seu perfil e grupos.";
