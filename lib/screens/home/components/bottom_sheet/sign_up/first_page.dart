@@ -59,7 +59,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                     Provider.of<AuthProvider>(context, listen: false).loading ==
                         true;
                     final provider = context.read<AuthProvider>();
-                    provider.appleLogin();
+                    provider.appleLogin(context);
                     Navigator.pop(context);
                   },
                   text: AppLocalizations.of(context).continueApple,
@@ -75,7 +75,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                   Provider.of<AuthProvider>(context, listen: false).loading ==
                       true;
                   final provider = context.read<AuthProvider>();
-                  provider.googleLogin();
+                  provider.googleLogin(context);
                   Navigator.pop(context);
                 },
                 child: Container(

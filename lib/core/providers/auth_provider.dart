@@ -184,8 +184,8 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> googleLogin(BuildContext context) async {
-    Provider.of<MixPanelProvider>(context, listen: false)
-        .setUserId(_user.toString());
+    final mixPanelProvider =
+        Provider.of<MixPanelProvider>(context, listen: false);
     try {
       loading = true;
       notifyListeners();
@@ -194,7 +194,15 @@ class AuthProvider extends ChangeNotifier {
       await FirebaseAuth.instance.signInWithProvider(googleProvider);
       await updateSocialUserData();
       await getUser();
-      loading = false;
+      if (_user == null) {
+        loading = false;
+        notifyListeners();
+        return;
+      } else {
+        mixPanelProvider.setUserId(_user!.id);
+        loading = false;
+        notifyListeners();
+      }
     } on FirebaseAuthException {
       loading = false;
     }
@@ -202,8 +210,8 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> appleLogin(BuildContext context) async {
-    Provider.of<MixPanelProvider>(context, listen: false)
-        .setUserId(_user.toString());
+    final mixPanelProvider =
+        Provider.of<MixPanelProvider>(context, listen: false);
     try {
       loading = true;
       notifyListeners();
@@ -223,7 +231,15 @@ class AuthProvider extends ChangeNotifier {
           "${credentials.givenName} ${credentials.familyName}");
       await updateSocialUserData();
       await getUser();
-      loading = false;
+      if (_user == null) {
+        loading = false;
+        notifyListeners();
+        return;
+      } else {
+        mixPanelProvider.setUserId(_user!.id);
+        loading = false;
+        notifyListeners();
+      }
     } on SignInWithAppleException {
       loading = false;
     }
@@ -327,13 +343,17 @@ class AuthProvider extends ChangeNotifier {
       }
     }
     navigatorState.pop();
-    await updatePhoneUserData(
-      name: phoneProvider.nameController.text,
-      phoneNumber: phoneProvider.phoneController.text,
-    );
-    await getUser();
-    notifyListeners();
-    mixPanelProvider.setUserId(_user.toString());
+    if (_user == null) {
+      return;
+    } else {
+      await updatePhoneUserData(
+        name: phoneProvider.nameController.text,
+        phoneNumber: phoneProvider.phoneController.text,
+      );
+      await getUser();
+      notifyListeners();
+      mixPanelProvider.setUserId(_user!.id);
+    }
   }
 
   Future<void> signOut(BuildContext context) async {

@@ -70,6 +70,7 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
             child: PageView(
               controller: phoneProvider.controller,
               onPageChanged: phoneProvider.updateIndex,
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 FirstPageSignUp(controller: phoneProvider.controller),
                 SecondPageSignUp(controller: phoneProvider.controller),
