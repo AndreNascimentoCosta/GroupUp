@@ -183,7 +183,9 @@ class AuthProvider extends ChangeNotifier {
         .set(user.toMap());
   }
 
-  Future<void> googleLogin() async {
+  Future<void> googleLogin(BuildContext context) async {
+    Provider.of<MixPanelProvider>(context, listen: false)
+        .setUserId(_user.toString());
     try {
       loading = true;
       notifyListeners();
@@ -199,7 +201,9 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> appleLogin() async {
+  Future<void> appleLogin(BuildContext context) async {
+    Provider.of<MixPanelProvider>(context, listen: false)
+        .setUserId(_user.toString());
     try {
       loading = true;
       notifyListeners();
@@ -305,6 +309,8 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> verifyOTP(BuildContext context) async {
+    final mixPanelProvider =
+        Provider.of<MixPanelProvider>(context, listen: false);
     final phoneProvider =
         Provider.of<PhoneAuthenProvider>(context, listen: false);
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
@@ -327,14 +333,18 @@ class AuthProvider extends ChangeNotifier {
     );
     await getUser();
     notifyListeners();
+    mixPanelProvider.setUserId(_user.toString());
   }
 
   Future<void> signOut(BuildContext context) async {
+    final mixPanelProvider =
+        Provider.of<MixPanelProvider>(context, listen: false);
     final navigatorState = Navigator.of(context);
     await FirebaseAuth.instance.signOut();
     navigatorState.pushAndRemoveUntil(
       MaterialPageRoute(builder: (context) => const Home()),
       (route) => false,
     );
+    mixPanelProvider.removeUser();
   }
 }
