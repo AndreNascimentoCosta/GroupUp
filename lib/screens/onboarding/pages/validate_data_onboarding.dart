@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -15,10 +14,10 @@ class ValidateDataOnboarding extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
         children: [
-          const SizedBox(
-            height: 400,
-            width: 400,
-            child: RiveAnimation.asset(
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.475,
+            width: MediaQuery.of(context).size.height * 0.475,
+            child: const RiveAnimation.asset(
               'assets/animations/validate_data_onboarding.riv',
               fit: BoxFit.contain,
             ),
@@ -28,7 +27,7 @@ class ValidateDataOnboarding extends StatelessWidget {
             text: appLocalizations.validateDataOnboarding,
             maxLines: 2,
             textAlign: TextAlign.center,
-            fontSize: 24,
+            fontSize: MediaQuery.of(context).size.height * 0.0285,
             fontFamily: 'MontSerrat-Bold',
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.025),
@@ -37,7 +36,7 @@ class ValidateDataOnboarding extends StatelessWidget {
             child: StaticText(
               text:
                   appLocalizations.validateDataOnboardingText,
-              fontSize: TextSize.lBody,
+              fontSize: MediaQuery.of(context).size.height * 0.0215,
               maxLines: 3,
               textAlign: TextAlign.center,
               color: kSecondaryColor,

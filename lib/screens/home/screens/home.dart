@@ -42,7 +42,9 @@ class _HomeState extends State<Home> {
             return SafeArea(
               child: Padding(
                 padding: const EdgeInsets.only(
-                    right: kDefaultPadding * 1.5, left: kDefaultPadding * 1.5),
+                  right: kDefaultPadding * 1.5,
+                  left: kDefaultPadding * 1.5,
+                ),
                 child: ListView(
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
@@ -57,20 +59,23 @@ class _HomeState extends State<Home> {
                           fontFamily: 'Montserrat-Bold',
                         ),
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.1),
+                          height: MediaQuery.of(context).size.height * 0.1,
+                        ),
                         Image.asset(
                           'assets/images/target2.png',
                           height: MediaQuery.of(context).size.height * 0.35,
                           fit: BoxFit.fitHeight,
                         ),
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.05),
+                          height: MediaQuery.of(context).size.height * 0.05,
+                        ),
                         RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Colors.black,
-                              fontSize: 28,
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.033,
                               fontFamily: 'Montserrat-Medium',
                             ),
                             children: [
@@ -102,7 +107,8 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.065),
+                          height: MediaQuery.of(context).size.height * 0.065,
+                        ),
                         ButtonCommonStyle(
                           onPressed: () {
                             Provider.of<MixPanelProvider>(context,
