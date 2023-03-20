@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
@@ -18,12 +17,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Home extends StatefulWidget {
-  const Home({
-    Key? key,
-    this.remoteConfig,
-  }) : super(key: key);
-
-  final FirebaseRemoteConfig? remoteConfig;
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
