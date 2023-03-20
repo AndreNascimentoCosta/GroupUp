@@ -22,7 +22,6 @@ class SignUpPhonePageView extends StatefulWidget {
 class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
   @override
   Widget build(BuildContext context) {
-    final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
     return SafeArea(
       child: Column(
         children: [
@@ -35,29 +34,40 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: Align(
                     alignment: AlignmentDirectional.centerStart,
-                    child: phoneProvider.pageIndex != 0
-                        ? ButtonCommonStyle(
-                            onPressed: () {
-                              Provider.of<MixPanelProvider>(context,
-                                      listen: false)
-                                  .logEvent(eventName: 'Back Button Phone');
-                              phoneProvider.controller.previousPage(
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.ease);
-                              FocusScope.of(context).unfocus();
-                              phoneProvider.cleanOtp();
-                            },
-                            child: SvgPicture.asset(
-                              'assets/icons/arrow_left.svg',
-                              color: const Color(0xFF868686),
-                            ),
-                          )
-                        : null,
+                    child:
+                        Provider.of<PhoneAuthenProvider>(context, listen: false)
+                                    .pageIndex !=
+                                0
+                            ? ButtonCommonStyle(
+                                onPressed: () {
+                                  Provider.of<MixPanelProvider>(context,
+                                          listen: false)
+                                      .logEvent(eventName: 'Back Button Phone');
+                                  Provider.of<PhoneAuthenProvider>(context,
+                                          listen: false)
+                                      .controller
+                                      .previousPage(
+                                          duration:
+                                              const Duration(milliseconds: 300),
+                                          curve: Curves.ease);
+                                  FocusScope.of(context).unfocus();
+                                  Provider.of<PhoneAuthenProvider>(context,
+                                          listen: false)
+                                      .cleanOtp();
+                                },
+                                child: SvgPicture.asset(
+                                  'assets/icons/arrow_left.svg',
+                                  color: const Color(0xFF868686),
+                                ),
+                              )
+                            : null,
                   ),
                 ),
                 StaticText(
                   textAlign: TextAlign.center,
-                  text: phoneProvider.pageIndex < 2
+                  text: Provider.of<PhoneAuthenProvider>(context, listen: false)
+                              .pageIndex <
+                          2
                       ? AppLocalizations.of(context).continuePN
                       : AppLocalizations.of(context).verificationCode,
                   fontFamily: 'Montserrat-SemiBold',
@@ -68,20 +78,36 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
           ),
           Expanded(
             child: PageView(
-              controller: phoneProvider.controller,
-              onPageChanged: phoneProvider.updateIndex,
+              controller:
+                  Provider.of<PhoneAuthenProvider>(context, listen: false)
+                      .controller,
+              onPageChanged:
+                  Provider.of<PhoneAuthenProvider>(context, listen: false)
+                      .updateIndex,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                FirstPageSignUp(controller: phoneProvider.controller),
-                SecondPageSignUp(controller: phoneProvider.controller),
+                FirstPageSignUp(
+                    controller:
+                        Provider.of<PhoneAuthenProvider>(context, listen: false)
+                            .controller),
+                SecondPageSignUp(
+                    controller:
+                        Provider.of<PhoneAuthenProvider>(context, listen: false)
+                            .controller),
               ],
             ),
           ),
-          phoneProvider.pageIndex != 0
+          Provider.of<PhoneAuthenProvider>(context).pageIndex !=
+                  0
               ? const SizedBox()
-              : NextButton(
-                  onPressed: phoneProvider.nextPressedPhone(context),
-                ),
+              : Builder(
+                builder: (context) {
+                  return NextButton(
+                      onPressed: Provider.of<PhoneAuthenProvider>(context)
+                          .nextPressedPhone(context),
+                    );
+                }
+              ),
           const SizedBox(height: kDefaultPadding / 4)
         ],
       ),

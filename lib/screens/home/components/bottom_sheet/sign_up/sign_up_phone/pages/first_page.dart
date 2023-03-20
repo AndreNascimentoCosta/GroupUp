@@ -22,7 +22,6 @@ class FirstPageSignUp extends StatefulWidget {
 class _FirstPageSignUpState extends State<FirstPageSignUp> {
   @override
   Widget build(BuildContext context) {
-    final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
     final nodePhone = FocusNode();
     return GestureDetector(
       onTap: () {
@@ -55,7 +54,8 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                           labelText: AppLocalizations.of(context).searchCountry,
                         ),
                       ),
-                      invalidNumberMessage: AppLocalizations.of(context).invalidPhoneNumber,
+                      invalidNumberMessage:
+                          AppLocalizations.of(context).invalidPhoneNumber,
                       decoration: InputDecoration(
                         labelText: AppLocalizations.of(context).phoneNumber,
                         border: const OutlineInputBorder(
@@ -63,9 +63,9 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                         ),
                       ),
                       initialCountryCode: Platform.localeName.split('_').last,
-                      onChanged: (phoneNumber) {
-                        phoneProvider.phoneController.text =
-                            phoneNumber.completeNumber;
+                      onChanged: (phone) {
+                        Provider.of<PhoneAuthenProvider>(context, listen: false)
+                            .setPhone(phone.completeNumber);
                       },
                     ),
                   ],

@@ -27,7 +27,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
     final authProvider = Provider.of<AuthProvider>(context);
-    final phoneControllerText = phoneProvider.phoneController.text;
+    final phoneControllerText = phoneProvider.phoneController;
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);

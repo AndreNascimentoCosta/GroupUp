@@ -293,7 +293,7 @@ class AuthProvider extends ChangeNotifier {
     final phoneProvider =
         Provider.of<PhoneAuthenProvider>(context, listen: false);
     await _auth.verifyPhoneNumber(
-      phoneNumber: phoneProvider.phoneController.text,
+      phoneNumber: phoneProvider.phoneController,
       timeout: const Duration(seconds: 60),
       verificationCompleted: (credential) async {
         await _auth.signInWithCredential(credential);
@@ -348,7 +348,7 @@ class AuthProvider extends ChangeNotifier {
     } else {
       await updatePhoneUserData(
         name: phoneProvider.nameController.text,
-        phoneNumber: phoneProvider.phoneController.text,
+        phoneNumber: phoneProvider.phoneController,
       );
       await getUser();
       notifyListeners();

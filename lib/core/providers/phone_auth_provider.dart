@@ -23,11 +23,16 @@ class PhoneAuthenProvider extends ChangeNotifier {
   final otpCode5 = TextEditingController();
   final otpCode6 = TextEditingController();
   final nameController = TextEditingController();
-  final phoneController = TextEditingController();
+  String phoneController = '';
   int start = 30;
   final controller = PageController(initialPage: 0);
   int pageIndex = 0;
   Timer? timer;
+
+  void setPhone(String phone) {
+    phoneController = phone;
+    notifyListeners();
+  }
 
   void onPaste(String value) {
     if (value.length == 6) {
@@ -49,7 +54,6 @@ class PhoneAuthenProvider extends ChangeNotifier {
     otpCode5.addListener(notifyListeners);
     otpCode6.addListener(notifyListeners);
     nameController.addListener(notifyListeners);
-    phoneController.addListener(notifyListeners);
   }
 
   void startTimer() {
@@ -72,7 +76,7 @@ class PhoneAuthenProvider extends ChangeNotifier {
 
   void Function()? nextPressedPhone(BuildContext context) {
     // Index 0
-    if (pageIndex == 0 && phoneController.text.isEmpty) {
+    if (pageIndex == 0 && phoneController.isEmpty) {
       return null;
     } else {
       return () => {
@@ -125,7 +129,7 @@ class PhoneAuthenProvider extends ChangeNotifier {
   }
 
   void clean() {
-    phoneController.clear();
+    phoneController = '';
     otpCode1.clear();
     otpCode2.clear();
     otpCode3.clear();
