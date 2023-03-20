@@ -762,5 +762,37 @@
     "noData": "No data",
     "@noData": {
         "description": "No data"
+    },
+    "createOrJoinAGroupOnboardingText": "You can join an existing group or create one by setting an objective and reward",
+    "@createOrJoinAGroupOnboardingText": {
+        "description": "Create or join a group onboarding text"
+    },
+    "addDataAndPhotoOnboarding": "Track your progress with data and photos",
+    "@addDataAndPhotoOnboarding": {
+        "description": "Add data and photo onboarding"
+    },
+    "addDataAndPhotoOnboardingText": "Once you're in a group, submit your data and photos as proof of your progress",
+    "@addDataAndPhotoOnboardingText": {
+        "description": "Add data and photo onboarding text"
+    },
+    "validateDataOnboarding": "Validate your friends' progress",
+    "@validateDataOnboarding": {
+        "description": "Validate data onboarding"
+    },
+    "validateDataOnboardingText": "Review their data, and determine whether or not the photo provided is a good representation of the data submitted",
+    "@validateDataOnboardingText": {
+        "description": "Validate data onboarding text"
+    },
+    "winRewardOnboarding": "Win the reward",
+    "@winRewardOnboarding": {
+        "description": "Win reward onboarding"
+    },
+    "winRewardOnboardingText": "The user with the highest value at the end of the challenge will be the winner and will receive the reward",
+    "@winRewardOnboardingText": {
+        "description": "Win reward onboarding text"
+    },
+    "skip": "Skip",
+    "@skip": {
+        "description": "Skip"
     }
 }

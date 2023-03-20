@@ -45,6 +45,7 @@ dependencies:
   mixpanel_flutter: ^2.0.0
   firebase_remote_config: ^3.0.13
   package_info_plus: ^3.0.3
+  rive: ^0.10.3
 
   flutter_localizations:
     sdk: flutter
@@ -68,6 +69,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/animations/
   fonts:
      - family: Montserrat-Bold
        fonts:

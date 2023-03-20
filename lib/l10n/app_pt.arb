@@ -177,5 +177,13 @@
     "enterReward": "Digite a recompensa",
     "update": "Atualizar",
     "updateText": "Uma nova versão do GroupUp está disponível. Por favor, atualize o aplicativo para continuar usando.",
-    "noData": "Sem dados"
+    "noData": "Sem dados",
+    "createOrJoinAGroupOnboardingText": "Você pode entrar em um grupo existente ou criar um definindo um objetivo e uma recompensa",
+    "addDataAndPhotoOnboarding": "Acompanhe seu progresso com dados e fotos",
+    "addDataAndPhotoOnboardingText": "Quando estiver em um grupo, envie seus dados e fotos como prova de seu progresso",
+    "validateDataOnboarding": "Valide os dados de seus amigos",
+    "validateDataOnboardingText": "Revise seus dados e determine se a foto fornecida é ou não uma boa representação dos dados enviados",
+    "winRewardOnboarding": "Ganhe a recompensa",
+    "winRewardOnboardingText": "O participante com o maior valor ao final do desafio será o vencedor e receberá a recompensa",
+    "skip": "Pular"
 }
