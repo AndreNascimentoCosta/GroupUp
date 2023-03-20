@@ -82,11 +82,15 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
                       );
                     }
                   },
-                  child: StaticText(
-                    text: AppLocalizations.of(context).next,
-                    fontFamily: 'Montserrat-SemiBold',
-                    fontSize: TextSize.lBody * 1.1,
-                    color: kPrimaryColor,
+                  child: SizedBox(
+                    width: 150,
+                    child: StaticText(
+                      text: AppLocalizations.of(context).next,
+                      fontFamily: 'Montserrat-SemiBold',
+                      fontSize: TextSize.lBody * 1.1,
+                      textAlign: TextAlign.center,
+                      color: kPrimaryColor,
+                    ),
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.075),
