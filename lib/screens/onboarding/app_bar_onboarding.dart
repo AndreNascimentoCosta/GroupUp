@@ -3,6 +3,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/screens/home/screens/home.dart';
 
 class AppBarOnboarding extends StatelessWidget with PreferredSizeWidget {
   const AppBarOnboarding({super.key});
@@ -16,7 +17,13 @@ class AppBarOnboarding extends StatelessWidget with PreferredSizeWidget {
           SizedBox(
             width: 100,
             child: ButtonCommonStyle(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => const Home(),
+                    ),
+                    (route) => false);
+              },
               child: const StaticText(
                 text: 'Skip',
                 fontSize: TextSize.lBody,
