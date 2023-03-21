@@ -84,6 +84,7 @@ class PhoneAuthenProvider extends ChangeNotifier {
                 .logEvent(eventName: 'Next Button Phone'),
             Provider.of<AuthProvider>(context, listen: false)
                 .phoneLogin(context),
+            FocusScope.of(context).requestFocus(),
             startTimer(),
           };
     }
