@@ -97,17 +97,14 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
               ],
             ),
           ),
-          Provider.of<PhoneAuthenProvider>(context).pageIndex !=
-                  0
-              ? const SizedBox()
-              : Builder(
-                builder: (context) {
-                  return NextButton(
-                      onPressed: Provider.of<PhoneAuthenProvider>(context)
-                          .nextPressedPhone(context),
-                    );
-                }
-              ),
+          Builder(builder: (context) {
+            return Provider.of<PhoneAuthenProvider>(context).pageIndex != 0
+                ? const SizedBox()
+                : NextButton(
+                    onPressed: Provider.of<PhoneAuthenProvider>(context)
+                        .nextPressedPhone(context),
+                  );
+          }),
           const SizedBox(height: kDefaultPadding / 4)
         ],
       ),
