@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/groups/components/icon_bottom_navy_bar.dart';
+import 'package:provider/provider.dart';
 import '../../../constants.dart';
 
 class BottomNavyBar extends StatefulWidget {
@@ -22,6 +24,7 @@ class _BottomNavyBarState extends State<BottomNavyBar> {
       selectedItemColor: kPrimaryColor,
       unselectedItemColor: kSecondaryColor,
       onTap: (value) => setState(() {
+        Provider.of<AuthProvider>(context, listen: false).getUser();
         widget.pageController.jumpToPage(value);
       },),
       items: const [
