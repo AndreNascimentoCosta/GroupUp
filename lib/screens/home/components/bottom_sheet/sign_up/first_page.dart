@@ -70,13 +70,13 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                 ),
               const SizedBox(height: Insets.l * 1.25),
               ButtonCommonStyle(
-                onPressed: () {
+                onPressed: () async {
                   mixPanel.logEvent(eventName: 'Sign Up with Google');
                   Provider.of<AuthProvider>(context, listen: false).loading ==
                       true;
                   final provider = context.read<AuthProvider>();
-                  provider.googleLogin(context);
                   Navigator.pop(context);
+                  provider.googleLogin(context);
                 },
                 child: Container(
                   height: 50,
