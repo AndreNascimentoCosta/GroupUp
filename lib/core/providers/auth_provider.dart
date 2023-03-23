@@ -304,7 +304,7 @@ class AuthProvider extends ChangeNotifier {
         } else if (e.code == 'too-many-requests') {
           _error(context, AppLocalizations.of(context).tooManyRequests);
         } else {
-          _error(context, AppLocalizations.of(context).generalError);
+          _error(context, AppLocalizations.of(context).error);
         }
       },
       codeSent: (String verificationId, int? resendToken) async {
@@ -339,7 +339,7 @@ class AuthProvider extends ChangeNotifier {
         _error(context, AppLocalizations.of(context).invalidVerificationCode);
         return;
       } else {
-        _error(context, AppLocalizations.of(context).generalError);
+        return;
       }
     }
     navigatorState.pop();
