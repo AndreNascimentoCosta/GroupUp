@@ -187,10 +187,10 @@ class AuthProvider extends ChangeNotifier {
     final mixPanelProvider =
         Provider.of<MixPanelProvider>(context, listen: false);
     try {
+      Navigator.of(context).pop();
       loading = true;
       notifyListeners();
       final googleProvider = GoogleAuthProvider();
-
       await FirebaseAuth.instance.signInWithProvider(googleProvider);
       await updateSocialUserData();
       await getUser();
@@ -203,7 +203,11 @@ class AuthProvider extends ChangeNotifier {
         loading = false;
         notifyListeners();
       }
-    } on FirebaseAuthException {
+    } on FirebaseAuthException catch (e) {
+      mixPanelProvider.logEvent(
+        eventName: 'Google Login Error',
+        properties: {'error': e.message},
+      );
       loading = false;
     }
     notifyListeners();
@@ -290,6 +294,8 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> phoneLogin(BuildContext context) async {
+    final mixPanelProvider =
+        Provider.of<MixPanelProvider>(context, listen: false);
     final phoneProvider =
         Provider.of<PhoneAuthenProvider>(context, listen: false);
     await _auth.verifyPhoneNumber(
@@ -300,10 +306,22 @@ class AuthProvider extends ChangeNotifier {
       },
       verificationFailed: (e) {
         if (e.code == 'invalid-phone-number') {
+          mixPanelProvider.logEvent(
+            eventName: 'Phone Login Error',
+            properties: {'error': e.message},
+          );
           _error(context, AppLocalizations.of(context).invalidPhoneNumber);
         } else if (e.code == 'too-many-requests') {
+          mixPanelProvider.logEvent(
+            eventName: 'Phone Login Error',
+            properties: {'error': e.message},
+          );
           _error(context, AppLocalizations.of(context).tooManyRequests);
         } else {
+          mixPanelProvider.logEvent(
+            eventName: 'Phone Login Error',
+            properties: {'error': e.message},
+          );
           _error(context, AppLocalizations.of(context).error);
         }
       },

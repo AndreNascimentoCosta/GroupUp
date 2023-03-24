@@ -75,8 +75,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                   Provider.of<AuthProvider>(context, listen: false).loading ==
                       true;
                   final provider = context.read<AuthProvider>();
-                  Navigator.pop(context);
-                  provider.googleLogin(context);
+                  await provider.googleLogin(context);
                 },
                 child: Container(
                   height: 50,
