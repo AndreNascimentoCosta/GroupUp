@@ -49,6 +49,7 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
+  firebase_app_check: ^0.1.1+14
 
 
 dev_dependencies:

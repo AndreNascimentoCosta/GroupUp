@@ -1,3 +1,4 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
@@ -27,6 +28,9 @@ import 'screens/force_update/screens/force_update_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await FirebaseAppCheck.instance.activate(
+    webRecaptchaSiteKey: 'recaptcha-v3-site-key',
+  );
   // Stripe.publishableKey = stripePublishableKey;
   // Stripe.merchantIdentifier = 'merchant.com.andrecosta.groupup';
   // await Stripe.instance.applySettings();
