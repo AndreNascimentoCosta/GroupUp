@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "703700374903-ve62dl25rjv71jsrpvhfvktak0a87i9s.apps.googleusercontent.com",
+          "client_id": "703700374903-jq51a2dupj2iba32li6hqr6uo74bnd88.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.andrecosta.groupup",
-            "certificate_hash": "ae593c9e003858ee2df6840ca4004bed4cf11657"
+            "certificate_hash": "f9e668bbd657e3a9fb42837ac201a3f2388e33d2"
           }
         },
         {
