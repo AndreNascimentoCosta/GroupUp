@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
@@ -55,18 +55,10 @@ class _CalendarScreenButtonState extends State<CalendarScreenButton> {
                             duration: const Duration(milliseconds: 300),
                             curve: Curves.ease,
                           )
-                        : showModalBottomSheet(
-                            isScrollControlled: true,
-                            context: context,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(Insets.m),
-                            ),
-                            builder: (context) {
-                              return const BuilderBottomSheet(
-                                height: 220,
-                                child: AddInput(),
-                              );
-                            },
+                        : gpModalBottomSheet(
+                            context,
+                            220,
+                            const AddInput(),
                           );
                   },
                   backgroundColor: widget.homeViewModel.isEditing.value

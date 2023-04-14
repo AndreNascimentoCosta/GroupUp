@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
@@ -59,69 +60,44 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
       onPressed: () {
         Provider.of<MixPanelProvider>(context, listen: false)
             .logEvent(eventName: 'Create Group - Add Picture');
-        showModalBottomSheet(
-          isScrollControlled: true,
-          context: context,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Insets.m),
+        gpModalBottomSheet(
+          context,
+          context.screenHeight * 0.185,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: kDefaultPadding * 1.75,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ButtonCommonStyle(
+                  onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(
+                            eventName: 'Create Group - Choose From Gallery');
+                    pickImage(ImageSource.gallery);
+                  },
+                  child: LargeBody(
+                    text: appLocalizations.chooseFromGallery,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(height: Insets.l * 1.75),
+                ButtonCommonStyle(
+                  onPressed: () {
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: 'Create Group - Take Photo');
+                    pickImage(ImageSource.camera);
+                  },
+                  child: LargeBody(
+                    text: appLocalizations.takePhoto,
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              ],
+            ),
           ),
-          builder: (context) {
-            return Padding(
-              padding: context.screenViewInsets,
-              child: Wrap(
-                children: <Widget>[
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(
-                        height: context.screenHeight * 0.185,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: kDefaultPadding * 1.75,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              ButtonCommonStyle(
-                                onPressed: () {
-                                  Provider.of<MixPanelProvider>(context,
-                                          listen: false)
-                                      .logEvent(
-                                          eventName:
-                                              'Create Group - Choose From Gallery');
-                                  pickImage(ImageSource.gallery);
-                                },
-                                child: LargeBody(
-                                  text: appLocalizations.chooseFromGallery,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              const SizedBox(height: Insets.l * 1.75),
-                              ButtonCommonStyle(
-                                onPressed: () {
-                                  Provider.of<MixPanelProvider>(context,
-                                          listen: false)
-                                      .logEvent(
-                                          eventName:
-                                              'Create Group - Take Photo');
-                                  pickImage(ImageSource.camera);
-                                },
-                                child: LargeBody(
-                                  text: appLocalizations.takePhoto,
-                                  textAlign: TextAlign.center,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            );
-          },
         );
       },
       child: Stack(

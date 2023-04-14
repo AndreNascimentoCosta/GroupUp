@@ -4,10 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -88,57 +88,37 @@ class AddInputProvider extends ChangeNotifier {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Add Media in Add Input');
                 Navigator.pop(context);
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(Insets.m),
+                gpModalBottomSheet(
+                  context,
+                  context.screenHeight * 0.185,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: kDefaultPadding * 1.75,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ButtonCommonStyle(
+                          onPressed: onPressedGallery,
+                          child: LargeBody(
+                            text: appLocalizations.chooseFromGallery,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: Insets.l * 1.75,
+                        ),
+                        ButtonCommonStyle(
+                          onPressed: onPressedCamera,
+                          child: LargeBody(
+                            text: appLocalizations.takePhoto,
+                            textAlign: TextAlign.center,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                  builder: (context) {
-                    return Padding(
-                      padding: context.screenViewInsets,
-                      child: Wrap(
-                        children: <Widget>[
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              SizedBox(
-                                height:
-                                    context.screenHeight * 0.185,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: kDefaultPadding * 1.75),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      ButtonCommonStyle(
-                                        onPressed: onPressedGallery,
-                                        child: LargeBody(
-                                          text: appLocalizations
-                                              .chooseFromGallery,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                      const SizedBox(height: Insets.l * 1.75),
-                                      ButtonCommonStyle(
-                                        onPressed: onPressedCamera,
-                                        child: LargeBody(
-                                          text: appLocalizations.takePhoto,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    );
-                  },
                 );
                 addInput(context, groupId);
               },
@@ -330,19 +310,13 @@ class AddInputProvider extends ChangeNotifier {
 
   void addInputBottomSheet(BuildContext context) {
     isClosed = false;
-    showModalBottomSheet(
-      isScrollControlled: true,
-      context: context,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Insets.m),
-      ),
-      builder: (context) {
-        return const BuilderBottomSheet(
-          height: 220,
-          child: AddInput(),
-        );
-      },
-    ).whenComplete(() => isClosed = true);
+    gpModalBottomSheet(
+      context,
+      220,
+      const AddInput(),
+    ).whenComplete(
+      () => isClosed = true,
+    );
   }
 
   void clean() {

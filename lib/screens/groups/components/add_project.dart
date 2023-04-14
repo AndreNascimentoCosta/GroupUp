@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/design-system.dart';
@@ -16,30 +17,11 @@ class AddProject extends StatelessWidget {
       onPressed: () {
         Provider.of<MixPanelProvider>(context, listen: false)
             .logEvent(eventName: 'Add Project Button');
-        showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Insets.m),
-            ),
-            builder: (context) {
-              return Padding(
-                padding: context.screenViewInsets,
-                child: Wrap(
-                  children: <Widget>[
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          height: context.screenHeight * 0.35,
-                          child: const AddBottomSheet(),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              );
-            });
+        gpModalBottomSheet(
+          context,
+          context.screenHeight * 0.35,
+          const AddBottomSheet(),
+        );
       },
       backgroundColor: GPColors.primaryColor,
       highlightElevation: 0,

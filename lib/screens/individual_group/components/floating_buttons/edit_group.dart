@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/data_history.dart';
@@ -63,24 +63,16 @@ class _EditAndHistoryGroupButtonState extends State<EditAndHistoryGroupButton> {
                     : () {
                         Provider.of<MixPanelProvider>(context, listen: false)
                             .logEvent(eventName: 'View Data History');
-                        showModalBottomSheet(
-                          isScrollControlled: true,
-                          context: context,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(Insets.m),
+                        gpModalBottomSheet(
+                          context,
+                          500,
+                          DataHistoryBottomSheet(
+                            userInputData: individualGroupProvider
+                                .group!.participantsData
+                                .firstWhere(
+                                    (element) => element.uid == user?.id)
+                                .inputData,
                           ),
-                          builder: (context) {
-                            return BuilderBottomSheet(
-                              height: 500,
-                              child: DataHistoryBottomSheet(
-                                userInputData: individualGroupProvider
-                                    .group!.participantsData
-                                    .firstWhere(
-                                        (element) => element.uid == user?.id)
-                                    .inputData,
-                              ),
-                            );
-                          },
                         );
                       },
                 backgroundColor: widget.backgroundColor,

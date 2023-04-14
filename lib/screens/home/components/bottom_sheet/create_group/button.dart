@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
-import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/home/components/home_button.dart';
 import 'package:groupup/screens/home/components/bottom_sheet/create_group/create_page_view.dart';
@@ -18,30 +18,10 @@ class CreateGroupButton extends StatelessWidget {
         Provider.of<CreateGroupProvider>(context, listen: false).clean();
         Provider.of<MixPanelProvider>(context, listen: false)
             .logEvent(eventName: 'Create Group Button');
-        showModalBottomSheet(
-          isScrollControlled: true,
-          context: context,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Insets.m),
-          ),
-          builder: (context) {
-            return Padding(
-              padding: context.screenViewInsets,
-              child: Wrap(
-                children: <Widget>[
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(
-                        height: context.screenHeight * 0.7,
-                        child: const CreatePageView(),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            );
-          },
+        gpModalBottomSheet(
+          context,
+          context.screenHeight * 0.7,
+          const CreatePageView(),
         );
       },
       child: const HomeButton(isGreen: false),

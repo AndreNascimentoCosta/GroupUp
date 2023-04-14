@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
-import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -34,30 +34,10 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Other Options Profile');
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(Insets.m),
-                  ),
-                  builder: (context) {
-                    return Padding(
-                      padding: context.screenViewInsets,
-                      child: Wrap(
-                        children: <Widget>[
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              SizedBox(
-                                height: 240,
-                                child: OtherOptionsProfile(),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    );
-                  },
+                gpModalBottomSheet(
+                  context,
+                  240,
+                  const OtherOptionsProfile(),
                 );
               },
               child: Padding(

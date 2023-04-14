@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -33,31 +34,10 @@ class NoGroup extends StatelessWidget {
                       .clean();
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(eventName: 'Create Group Bottom Sheet');
-                  showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(Insets.m),
-                    ),
-                    builder: (context) {
-                      return Padding(
-                        padding: context.screenViewInsets,
-                        child: Wrap(
-                          children: <Widget>[
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(
-                                  height:
-                                      context.screenHeight * 0.7,
-                                  child: const CreatePageView(),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      );
-                    },
+                  gpModalBottomSheet(
+                    context,
+                    context.screenHeight * 0.7,
+                    const CreatePageView(),
                   );
                 },
                 child: Row(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
-import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/data_history_bottom_sheet.dart';
@@ -43,22 +42,14 @@ class _DataHistoryButtonState extends State<DataHistoryButton> {
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Data History Button');
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(Insets.m),
+                gpModalBottomSheet(
+                  context,
+                  500,
+                  DataHistoryBottomSheet(
+                    userInputData: group.participantsData
+                        .firstWhere((element) => element.uid == user?.id)
+                        .inputData,
                   ),
-                  builder: (context) {
-                    return BuilderBottomSheet(
-                      height: 500,
-                      child: DataHistoryBottomSheet(
-                        userInputData: group.participantsData
-                            .firstWhere((element) => element.uid == user?.id)
-                            .inputData,
-                      ),
-                    );
-                  },
                 );
               },
               backgroundColor: widget.backgroundColor,

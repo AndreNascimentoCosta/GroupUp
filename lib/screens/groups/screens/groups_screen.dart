@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
@@ -51,34 +51,14 @@ class _GroupsScreenState extends State<GroupsScreen> {
         (_) async {
           if (!mounted) return;
           phoneProvider.cleanName();
-          return showModalBottomSheet(
-            isScrollControlled: true,
+          return gpModalBottomSheet(
+            context,
+            280,
+            NameAdd(
+              controller: phoneProvider.controller,
+            ),
             isDismissible: false,
             enableDrag: false,
-            context: context,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Insets.m),
-            ),
-            builder: (context) {
-              return Padding(
-                padding: context.screenViewInsets,
-                child: Wrap(
-                  children: <Widget>[
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          height: 280,
-                          child: NameAdd(
-                            controller: phoneProvider.controller,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              );
-            },
           );
         },
       );
