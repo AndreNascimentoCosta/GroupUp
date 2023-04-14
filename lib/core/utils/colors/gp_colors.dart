@@ -16,6 +16,9 @@ class GPColors {
   /// It's a static constant variable of type Color red.
   static const red = Color(0xFFFF4D4F);
 
+  /// It's a static constant variable of type Color green.
+  static const green = Colors.green;
+
   /// It's a static constant variable of type Color transparent.
   static const transparent = Colors.transparent;
 
