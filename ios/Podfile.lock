@@ -596,11 +596,11 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
-  - AppAuth (1.6.0):
-    - AppAuth/Core (= 1.6.0)
-    - AppAuth/ExternalUserAgent (= 1.6.0)
-  - AppAuth/Core (1.6.0)
-  - AppAuth/ExternalUserAgent (1.6.0):
+  - AppAuth (1.6.1):
+    - AppAuth/Core (= 1.6.1)
+    - AppAuth/ExternalUserAgent (= 1.6.1)
+  - AppAuth/Core (1.6.1)
+  - AppAuth/ExternalUserAgent (1.6.1):
     - AppAuth/Core
   - BoringSSL-GRPC (0.0.24):
     - BoringSSL-GRPC/Implementation (= 0.0.24)
@@ -609,73 +609,82 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.24)
   - BoringSSL-GRPC/Interface (0.0.24)
   - cloud_firestore (4.4.3):
-    - Firebase/Firestore (= 10.3.0)
+    - Firebase/Firestore (= 10.6.0)
     - firebase_core
     - Flutter
     - nanopb (< 2.30910.0, >= 2.30908.0)
   - cloud_functions (4.0.11):
-    - Firebase/Functions (= 10.3.0)
+    - Firebase/Functions (= 10.6.0)
     - firebase_core
     - Flutter
-  - Firebase/Auth (10.3.0):
+  - Firebase/Auth (10.6.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (~> 10.3.0)
-  - Firebase/CoreOnly (10.3.0):
-    - FirebaseCore (= 10.3.0)
-  - Firebase/DynamicLinks (10.3.0):
+    - FirebaseAuth (~> 10.6.0)
+  - Firebase/CoreOnly (10.6.0):
+    - FirebaseCore (= 10.6.0)
+  - Firebase/DynamicLinks (10.6.0):
     - Firebase/CoreOnly
-    - FirebaseDynamicLinks (~> 10.3.0)
-  - Firebase/Firestore (10.3.0):
+    - FirebaseDynamicLinks (~> 10.6.0)
+  - Firebase/Firestore (10.6.0):
     - Firebase/CoreOnly
-    - FirebaseFirestore (~> 10.3.0)
-  - Firebase/Functions (10.3.0):
+    - FirebaseFirestore (~> 10.6.0)
+  - Firebase/Functions (10.6.0):
     - Firebase/CoreOnly
-    - FirebaseFunctions (~> 10.3.0)
-  - Firebase/RemoteConfig (10.3.0):
+    - FirebaseFunctions (~> 10.6.0)
+  - Firebase/RemoteConfig (10.6.0):
     - Firebase/CoreOnly
-    - FirebaseRemoteConfig (~> 10.3.0)
-  - Firebase/Storage (10.3.0):
+    - FirebaseRemoteConfig (~> 10.6.0)
+  - Firebase/Storage (10.6.0):
     - Firebase/CoreOnly
-    - FirebaseStorage (~> 10.3.0)
+    - FirebaseStorage (~> 10.6.0)
+  - firebase_app_check (0.1.1-14):
+    - Firebase/CoreOnly (~> 10.6.0)
+    - firebase_core
+    - FirebaseAppCheck (~> 10.6.0-beta)
+    - Flutter
   - firebase_auth (4.2.9):
-    - Firebase/Auth (= 10.3.0)
+    - Firebase/Auth (= 10.6.0)
     - firebase_core
     - Flutter
-  - firebase_core (2.7.0):
-    - Firebase/CoreOnly (= 10.3.0)
+  - firebase_core (2.8.0):
+    - Firebase/CoreOnly (= 10.6.0)
     - Flutter
   - firebase_dynamic_links (5.0.15):
-    - Firebase/DynamicLinks (= 10.3.0)
+    - Firebase/DynamicLinks (= 10.6.0)
     - firebase_core
     - Flutter
   - firebase_remote_config (3.0.13):
-    - Firebase/RemoteConfig (= 10.3.0)
+    - Firebase/RemoteConfig (= 10.6.0)
     - firebase_core
     - Flutter
   - firebase_storage (11.0.14):
-    - Firebase/Storage (= 10.3.0)
+    - Firebase/Storage (= 10.6.0)
     - firebase_core
     - Flutter
-  - FirebaseABTesting (10.6.0):
+  - FirebaseABTesting (10.8.0):
     - FirebaseCore (~> 10.0)
-  - FirebaseAppCheckInterop (10.4.0)
-  - FirebaseAuth (10.3.0):
+  - FirebaseAppCheck (10.6.0):
+    - FirebaseCore (~> 10.0)
+    - GoogleUtilities/Environment (~> 7.8)
+    - PromisesObjC (~> 2.1)
+  - FirebaseAppCheckInterop (10.7.0)
+  - FirebaseAuth (10.6.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
     - GoogleUtilities/Environment (~> 7.8)
     - GTMSessionFetcher/Core (< 4.0, >= 2.1)
-  - FirebaseAuthInterop (10.4.0)
-  - FirebaseCore (10.3.0):
+  - FirebaseAuthInterop (10.8.0)
+  - FirebaseCore (10.6.0):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/Logger (~> 7.8)
-  - FirebaseCoreExtension (10.4.0):
+  - FirebaseCoreExtension (10.8.0):
     - FirebaseCore (~> 10.0)
-  - FirebaseCoreInternal (10.4.0):
+  - FirebaseCoreInternal (10.8.0):
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
-  - FirebaseDynamicLinks (10.3.0):
+  - FirebaseDynamicLinks (10.6.0):
     - FirebaseCore (~> 10.0)
-  - FirebaseFirestore (10.3.0):
+  - FirebaseFirestore (10.6.0):
     - abseil/algorithm (~> 1.20211102.0)
     - abseil/base (~> 1.20211102.0)
     - abseil/container/flat_hash_map (~> 1.20211102.0)
@@ -688,7 +697,7 @@ PODS:
     - "gRPC-C++ (~> 1.44.0)"
     - leveldb-library (~> 1.22)
     - nanopb (< 2.30910.0, >= 2.30908.0)
-  - FirebaseFunctions (10.3.0):
+  - FirebaseFunctions (10.6.0):
     - FirebaseAppCheckInterop (~> 10.0)
     - FirebaseAuthInterop (~> 10.0)
     - FirebaseCore (~> 10.0)
@@ -696,20 +705,20 @@ PODS:
     - FirebaseMessagingInterop (~> 10.0)
     - FirebaseSharedSwift (~> 10.0)
     - GTMSessionFetcher/Core (< 4.0, >= 2.1)
-  - FirebaseInstallations (10.6.0):
+  - FirebaseInstallations (10.8.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
-  - FirebaseMessagingInterop (10.4.0)
-  - FirebaseRemoteConfig (10.3.0):
+  - FirebaseMessagingInterop (10.8.0)
+  - FirebaseRemoteConfig (10.6.0):
     - FirebaseABTesting (~> 10.0)
     - FirebaseCore (~> 10.0)
     - FirebaseInstallations (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
-  - FirebaseSharedSwift (10.4.0)
-  - FirebaseStorage (10.3.0):
+  - FirebaseSharedSwift (10.8.0)
+  - FirebaseStorage (10.6.0):
     - FirebaseAppCheckInterop (~> 10.0)
     - FirebaseAuthInterop (~> 10.0)
     - FirebaseCore (~> 10.0)
@@ -726,22 +735,22 @@ PODS:
     - AppAuth (~> 1.5)
     - GTMAppAuth (~> 1.3)
     - GTMSessionFetcher/Core (< 3.0, >= 1.1)
-  - GoogleUtilities/AppDelegateSwizzler (7.11.0):
+  - GoogleUtilities/AppDelegateSwizzler (7.11.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.11.0):
+  - GoogleUtilities/Environment (7.11.1):
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/Logger (7.11.0):
+  - GoogleUtilities/Logger (7.11.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/Network (7.11.0):
+  - GoogleUtilities/Network (7.11.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.11.0)"
-  - GoogleUtilities/Reachability (7.11.0):
+  - "GoogleUtilities/NSData+zlib (7.11.1)"
+  - GoogleUtilities/Reachability (7.11.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.11.0):
+  - GoogleUtilities/UserDefaults (7.11.1):
     - GoogleUtilities/Logger
   - "gRPC-C++ (1.44.0)":
     - "gRPC-C++/Implementation (= 1.44.0)"
@@ -800,7 +809,7 @@ PODS:
   - GTMSessionFetcher/Core (2.3.0)
   - image_picker_ios (0.0.1):
     - Flutter
-  - leveldb-library (1.22.1)
+  - leveldb-library (1.22.2)
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
     - Libuv-gRPC/Interface (= 0.0.10)
@@ -823,7 +832,7 @@ PODS:
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - PromisesObjC (2.1.1)
+  - PromisesObjC (2.2.0)
   - rive_common (0.0.1):
     - Flutter
   - Sentry/HybridSDK (7.31.5)
@@ -843,12 +852,12 @@ PODS:
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
-  - Stripe (23.3.3):
-    - StripeApplePay (= 23.3.3)
-    - StripeCore (= 23.3.3)
-    - StripePayments (= 23.3.3)
-    - StripePaymentsUI (= 23.3.3)
-    - StripeUICore (= 23.3.3)
+  - Stripe (23.3.4):
+    - StripeApplePay (= 23.3.4)
+    - StripeCore (= 23.3.4)
+    - StripePayments (= 23.3.4)
+    - StripePaymentsUI (= 23.3.4)
+    - StripeUICore (= 23.3.4)
   - stripe_ios (0.0.1):
     - Flutter
     - Stripe (~> 23.3.0)
@@ -857,28 +866,28 @@ PODS:
     - StripePayments (~> 23.3.0)
     - StripePaymentSheet (~> 23.3.0)
     - StripePaymentsUI (~> 23.3.0)
-  - StripeApplePay (23.3.3):
-    - StripeCore (= 23.3.3)
-  - StripeCore (23.3.3)
-  - StripeFinancialConnections (23.3.3):
-    - StripeCore (= 23.3.3)
-    - StripeUICore (= 23.3.3)
-  - StripePayments (23.3.3):
-    - StripeCore (= 23.3.3)
-    - StripePayments/Stripe3DS2 (= 23.3.3)
-  - StripePayments/Stripe3DS2 (23.3.3):
-    - StripeCore (= 23.3.3)
-  - StripePaymentSheet (23.3.3):
-    - StripeApplePay (= 23.3.3)
-    - StripeCore (= 23.3.3)
-    - StripePayments (= 23.3.3)
-    - StripePaymentsUI (= 23.3.3)
-  - StripePaymentsUI (23.3.3):
-    - StripeCore (= 23.3.3)
-    - StripePayments (= 23.3.3)
-    - StripeUICore (= 23.3.3)
-  - StripeUICore (23.3.3):
-    - StripeCore (= 23.3.3)
+  - StripeApplePay (23.3.4):
+    - StripeCore (= 23.3.4)
+  - StripeCore (23.3.4)
+  - StripeFinancialConnections (23.3.4):
+    - StripeCore (= 23.3.4)
+    - StripeUICore (= 23.3.4)
+  - StripePayments (23.3.4):
+    - StripeCore (= 23.3.4)
+    - StripePayments/Stripe3DS2 (= 23.3.4)
+  - StripePayments/Stripe3DS2 (23.3.4):
+    - StripeCore (= 23.3.4)
+  - StripePaymentSheet (23.3.4):
+    - StripeApplePay (= 23.3.4)
+    - StripeCore (= 23.3.4)
+    - StripePayments (= 23.3.4)
+    - StripePaymentsUI (= 23.3.4)
+  - StripePaymentsUI (23.3.4):
+    - StripeCore (= 23.3.4)
+    - StripePayments (= 23.3.4)
+    - StripeUICore (= 23.3.4)
+  - StripeUICore (23.3.4):
+    - StripeCore (= 23.3.4)
   - uni_links (0.0.1):
     - Flutter
   - url_launcher_ios (0.0.1):
@@ -887,6 +896,7 @@ PODS:
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - cloud_functions (from `.symlinks/plugins/cloud_functions/ios`)
+  - firebase_app_check (from `.symlinks/plugins/firebase_app_check/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_dynamic_links (from `.symlinks/plugins/firebase_dynamic_links/ios`)
@@ -916,6 +926,7 @@ SPEC REPOS:
     - BoringSSL-GRPC
     - Firebase
     - FirebaseABTesting
+    - FirebaseAppCheck
     - FirebaseAppCheckInterop
     - FirebaseAuth
     - FirebaseAuthInterop
@@ -957,6 +968,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/cloud_firestore/ios"
   cloud_functions:
     :path: ".symlinks/plugins/cloud_functions/ios"
+  firebase_app_check:
+    :path: ".symlinks/plugins/firebase_app_check/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -1002,49 +1015,51 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
-  AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
+  AppAuth: e48b432bb4ba88b10cb2bcc50d7f3af21e78b9c2
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
-  cloud_firestore: 94326bb743acbfe43c68f933dab8a094e84d5849
-  cloud_functions: c47b0379bca7f5f60884a27696248459de0a1f6b
-  Firebase: f92fc551ead69c94168d36c2b26188263860acd9
-  firebase_auth: 4e8c693e848ed13b263de2d702d55fa82ed04a79
-  firebase_core: 128d8c43c3a453a4a67463314fc3761bedff860b
-  firebase_dynamic_links: bb28b0958fd7f9c026611fcc11a61d9a40a0820c
-  firebase_remote_config: 4f27b3b5953fcdac0115a27138bbc8796f1e2c76
-  firebase_storage: bdbef04ce485eb426152016c735736bc3615b8c0
-  FirebaseABTesting: cec558d2e670053b1e862c98cfecae64aecfd629
-  FirebaseAppCheckInterop: ef074633831a90cf6c10e8f2c1e1f8b7842a446a
-  FirebaseAuth: 0e415d29d846c1dce2fb641e46f35e9888d9bec6
-  FirebaseAuthInterop: fef284922da3c350f846ff85cc0dfd5186448e49
-  FirebaseCore: 988754646ab3bd4bdcb740f1bfe26b9f6c0d5f2a
-  FirebaseCoreExtension: d209ada6f48bac53d149e996cf1b2dafa632a615
-  FirebaseCoreInternal: e301297f4c15a17489e48ed722d733b1578e0c02
-  FirebaseDynamicLinks: 51c81d07bd63155bb56d76b0abdda79c8a3d8d02
-  FirebaseFirestore: 244f71ff14ef44f39e00b44d356eac708ce03103
-  FirebaseFunctions: d8415d2237cc807d05fa0a921d645f50a0d9d803
-  FirebaseInstallations: 13dde135fa0524e15bddb133ccc8465c53a1b3f3
-  FirebaseMessagingInterop: 22f73a372df2ac34955936577fc2e2952c0d6995
-  FirebaseRemoteConfig: c24f767c17b0440ee63c7e93380d599173556113
-  FirebaseSharedSwift: 30cf8341a6785c035b38714c52ebc937acab3a57
-  FirebaseStorage: 0efbff0ac978981866d89804191688ae50d64033
+  cloud_firestore: e4309340b63ef6f579f43b7f16fd179351e05309
+  cloud_functions: 992d6e858e5a54450829bb857b70979f704ec24e
+  Firebase: f13680471b021937f2230ea8503c7809d8c29806
+  firebase_app_check: aa521b54379af998c95b05dca104b7f14a9c1ecc
+  firebase_auth: ade2a58f7ba3ed5c12494ad65a648da1bcbc34e4
+  firebase_core: 58542d7399889ebdbb034baa72d081e54c5c814d
+  firebase_dynamic_links: 58cb15baf69f74bb2b170a969d4e59ee1668c6e6
+  firebase_remote_config: a98738382b279a3259072f62c5634f5040bd0167
+  firebase_storage: 4fb057f5d3d2350cb4f1152cbc89e73c790eb926
+  FirebaseABTesting: 0c7038e4dce273821e417bdc2b0373ee0e0e8df3
+  FirebaseAppCheck: 3977b20650f45cc5f67704044e5c5e925e933c20
+  FirebaseAppCheckInterop: 8e907eea79958960a8bd2058e067f31e03a7914b
+  FirebaseAuth: 743e5cd568af59d6d99a91ea9300843672515cf7
+  FirebaseAuthInterop: 5ea2a68b83f5222f6d8688ffc3a49a9e92bb3eba
+  FirebaseCore: fa80ad16a62d52f67274b5b88304c3a318bbf9a4
+  FirebaseCoreExtension: d815fd6fec8bb3a0940bc02dd5e3e641ea7229d8
+  FirebaseCoreInternal: fa2899eb1f340054858d289e5a0fb935a0a74e52
+  FirebaseDynamicLinks: 99c501143953e925681a37aade96bb2db34b30ca
+  FirebaseFirestore: f91b23a3c71448475d17163baf916d5d20d01609
+  FirebaseFunctions: 00d1f36edb73f589b7b22af06abc097d144644d9
+  FirebaseInstallations: b2a05a3fe707df764345d68685534d07d0664af3
+  FirebaseMessagingInterop: dae5120fc708905f529dda1f6d377ae51ce51246
+  FirebaseRemoteConfig: 7ef4dd164f3066c64ca1efab0f990152a6b94fc0
+  FirebaseSharedSwift: e9e23efae965af553a8d1524efa3f64b5ef7ef0a
+  FirebaseStorage: 10d4f43a4ef98e7554da72197ad52216686ea990
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   google_sign_in_ios: 4f85eb9f937450765c8573bb85fd8cd6a5af675c
   GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
-  GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
+  GoogleUtilities: 9aa0ad5a7bc171f8bae016300bfcfa3fb8425749
   "gRPC-C++": 9675f953ace2b3de7c506039d77be1f2e77a8db2
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
   image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
-  leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   Mixpanel-swift: 6e970d16daf10283cd30a3e6e1a08f4410b25183
   mixpanel_flutter: b10020fd7e671b28dca0a3a426a5b10662cc0697
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   path_provider_foundation: 37748e03f12783f9de2cb2c4eadfaa25fe6d4852
-  PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   rive_common: b5b1aa30c63b8f0f00f32cddc9ea394d3d3473b5
   Sentry: 4c9babff9034785067c896fd580b1f7de44da020
   sentry_flutter: b10ae7a5ddcbc7f04648eeb2672b5747230172f1
@@ -1053,18 +1068,18 @@ SPEC CHECKSUMS:
   sign_in_with_apple: f3bf75217ea4c2c8b91823f225d70230119b8440
   smart_auth: 4bedbc118723912d0e45a07e8ab34039c19e04f2
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  Stripe: e12dd4f24d372fbae7b3090967bd416537a05324
+  Stripe: 7393b16fe555d4a68e6555044e7b57eff11ae547
   stripe_ios: f93762c5b513f456e82ac57cf7cab2aacc6ec7f7
-  StripeApplePay: b288df6ea5237bec30ff00b8e12b9465684813e6
-  StripeCore: 05ca3061651987b6aeb52028a8de087ad015d555
-  StripeFinancialConnections: eae5e14983f26bc23165f2b897f708e366239f46
-  StripePayments: 63a4c0b41148c83c4197e8ff9f0295dd0829660b
-  StripePaymentSheet: f5e74b3c1fdd9d6ecd0e1075c1ad48d3b574cd26
-  StripePaymentsUI: f9c8a63faf4858f66e2302a717ebb7c928197f53
-  StripeUICore: 784efbcb5ed1e3dc69e4179e1a8feb247d792d81
+  StripeApplePay: 174b09c0211134417e340c68af199a3dd34f3cd6
+  StripeCore: babb08ec2b961f7cde8663dad3b4cbb77e0ae63b
+  StripeFinancialConnections: 484096f2dc5d3c20cc24a5ad4d261953ba806ef0
+  StripePayments: 71bf62ccdacefc4b68b46a02a7f2492aeba252b3
+  StripePaymentSheet: 722ea7bea092c243d771122fe3572a9c84512704
+  StripePaymentsUI: fd08081c4be73c16322dc76a1878140520a9df2e
+  StripeUICore: ed68cbd5ad0626e0760e772f8c82d96cae9b829b
   uni_links: d97da20c7701486ba192624d99bffaaffcfc298a
   url_launcher_ios: fb12c43172927bb5cf75aeebd073f883801f1993
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0
