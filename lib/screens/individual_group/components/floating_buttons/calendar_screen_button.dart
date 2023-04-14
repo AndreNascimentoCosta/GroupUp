@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
 import 'package:provider/provider.dart';
-import '../../../../constants.dart';
 import '../../../../core/providers/individual_group_provider.dart';
 import '../../../../core/providers/mix_panel_provider.dart';
 
 class CalendarScreenButton extends StatefulWidget {
   const CalendarScreenButton({
     required this.homeViewModel,
-    this.backgroundColor = kPrimaryColor,
+    this.backgroundColor = GPColors.primaryColor,
     this.icon = 'assets/icons/plus.svg',
   });
 

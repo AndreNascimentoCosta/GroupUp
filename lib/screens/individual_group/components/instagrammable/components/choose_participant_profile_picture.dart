@@ -7,6 +7,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -87,7 +88,7 @@ class _ChooseParticipantProfilePictureState
                       backgroundColor: const Color(0XFFE1E1E1),
                       child: SvgPicture.asset(
                         'assets/icons/profile_picture_add.svg',
-                        color: Colors.white,
+                        color: GPColors.white,
                         height: Insets.l,
                         width: Insets.l,
                       ),

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -278,7 +279,7 @@ class AuthProvider extends ChangeNotifier {
           actions: [
             NextButton(
               text: 'Ok',
-              borderColor: kPrimaryColor,
+              borderColor: GPColors.primaryColor,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Error', properties: {'Error': e});

@@ -5,6 +5,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -54,7 +55,7 @@ class IndividualParticipant extends StatelessWidget {
                   backgroundColor: const Color(0XFFE1E1E1),
                   child: SvgPicture.asset(
                     'assets/icons/profile_picture_add.svg',
-                    color: Colors.white,
+                    color: GPColors.white,
                     height: Insets.l * 1.425,
                     width: Insets.l * 1.425,
                   ),
@@ -97,7 +98,7 @@ class IndividualParticipant extends StatelessWidget {
               width: 60,
               child: SvgPicture.asset(
                 'assets/icons/arrow_right.svg',
-                color: Colors.black,
+                color: GPColors.black,
                 height: 20,
                 width: 20,
               ),

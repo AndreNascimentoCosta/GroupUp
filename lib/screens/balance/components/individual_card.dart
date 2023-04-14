@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
@@ -35,12 +36,12 @@ class IndividualCardBalance extends StatelessWidget {
       children: [
         Container(
           decoration: const BoxDecoration(
-            color: Colors.white,
+            color: GPColors.white,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
                 blurRadius: 7,
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
                 spreadRadius: 0.2,
               ),
             ],
@@ -110,7 +111,7 @@ class IndividualCardBalance extends StatelessWidget {
                           ? appLocalizations.ongoing
                           : appLocalizations.ended
                   : appLocalizations.ongoing,
-              color: kSecondaryColor,
+              color: GPColors.secondaryColor,
             ),
           ],
         ),
@@ -133,7 +134,7 @@ class IndividualCardBalance extends StatelessWidget {
                     )
                       ? const LargeBody(
                           text: 'R\$ -',
-                          color: kSecondaryColor,
+                          color: GPColors.secondaryColor,
                         )
                       : currentUserRank == '1º'
                           ? LargeBody(
@@ -144,7 +145,7 @@ class IndividualCardBalance extends StatelessWidget {
                           : LargeBody(
                               text:
                                   '-R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
-                              color: Colors.red,
+                              color: GPColors.red,
                             )
                   : group.endDate!.isAfter(
                       DateTime.now().subtract(
@@ -155,7 +156,7 @@ class IndividualCardBalance extends StatelessWidget {
                     )
                       ? const LargeBody(
                           text: 'R\$ -',
-                          color: kSecondaryColor,
+                          color: GPColors.secondaryColor,
                         )
                       : currentUserRank == '1º'
                           ? LargeBody(
@@ -166,11 +167,11 @@ class IndividualCardBalance extends StatelessWidget {
                           : LargeBody(
                               text:
                                   '-R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
-                              color: Colors.red,
+                              color: GPColors.red,
                             )
               : const LargeBody(
                   text: 'R\$ -',
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                 ),
         ),
       ],

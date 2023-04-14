@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import '../../../constants.dart';
@@ -21,12 +22,12 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
       stream: FirebaseFirestore.instance.collection('groups').snapshots(),
       builder: ((context, snapshot) {
         return BottomNavigationBar(
-          backgroundColor: Colors.white,
+          backgroundColor: GPColors.white,
           selectedFontSize: 0,
           unselectedFontSize: 0,
           currentIndex: _selectedIndex,
-          selectedItemColor: kPrimaryColor,
-          unselectedItemColor: kSecondaryColor,
+          selectedItemColor: GPColors.primaryColor,
+          unselectedItemColor: GPColors.secondaryColor,
           onTap: (value) {
             setState(() {
               _selectedIndex = value;
@@ -40,7 +41,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                   padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                   child: LargeBody(
                     text: AppLocalizations.of(context).pin,
-                    color: kGroupEditColor,
+                    color: GPColors.groupEditColor,
                   ),
                 ),
               ),
@@ -48,7 +49,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                 padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                 child: LargeBody(
                   text: AppLocalizations.of(context).pin,
-                  color: kPrimaryColor,
+                  color: GPColors.primaryColor,
                 ),
               ),
               label: '',
@@ -60,7 +61,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                   padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                   child: LargeBody(
                     text: AppLocalizations.of(context).delete,
-                    color: kGroupEditColor,
+                    color: GPColors.groupEditColor,
                   ),
                 ),
               ),
@@ -68,7 +69,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                 padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                 child: LargeBody(
                   text: AppLocalizations.of(context).delete,
-                  color: kPrimaryColor,
+                  color: GPColors.primaryColor,
                 ),
               ),
               label: '',

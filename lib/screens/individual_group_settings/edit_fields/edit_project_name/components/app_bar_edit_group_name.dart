@@ -4,6 +4,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -63,7 +64,7 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: GestureDetector(
                     child: Container(
-                      color: Colors.transparent,
+                      color: GPColors.transparent,
                       width: Insets.l * 3,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -72,7 +73,7 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
                             'assets/icons/arrow_left.svg',
                             height: Insets.l * 1.25,
                             width: Insets.l * 1.25,
-                            color: Colors.black,
+                            color: GPColors.black,
                           ),
                         ],
                       ),
@@ -94,8 +95,8 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
                       color: editGroupNameProvider.done(
                                   context, group.projectName, group.id) ==
                               null
-                          ? kSecondaryColor
-                          : Colors.black,
+                          ? GPColors.secondaryColor
+                          : GPColors.black,
                     ),
                   ),
                 ),

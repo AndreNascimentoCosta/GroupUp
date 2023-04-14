@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/design-system.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +48,7 @@ void denyAddInputDialog(BuildContext context, String bodyText) {
               child: const StaticText(
                 text: 'OK',
                 fontSize: TextSize.mBody,
-                color: kPrimaryColor,
+                color: GPColors.primaryColor,
               ),
             ),
           )

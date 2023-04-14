@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
 import 'package:groupup/screens/profile/components/body.dart';
@@ -11,7 +12,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: GPColors.white,
       body: const BodyProfile(),
       floatingActionButton: const AddProject(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

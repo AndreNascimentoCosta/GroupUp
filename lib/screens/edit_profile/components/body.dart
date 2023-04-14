@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -133,7 +134,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     }
                     return SvgPicture.asset(
                       'assets/icons/profile_picture_add.svg',
-                      color: Colors.white,
+                      color: GPColors.white,
                       height: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                       width: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                     );
@@ -153,18 +154,18 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                   width: isSmallScreen ? 22.5 : 30,
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.transparent,
+                      color: GPColors.transparent,
                       width: 3,
                     ),
                     borderRadius: BorderRadius.circular(Insets.l),
-                    color: kPrimaryColor,
+                    color: GPColors.primaryColor,
                   ),
                   child: SizedBox(
                     height: isSmallScreen ? 22.5 : 30,
                     width: isSmallScreen ? 22.5 : 30,
                     child: Icon(
                       Icons.edit_rounded,
-                      color: Colors.white,
+                      color: GPColors.white,
                       size: isSmallScreen ? 10 : 18,
                     ),
                   ),
@@ -191,11 +192,11 @@ class _EditProfileBodyState extends State<EditProfileBody> {
               decoration: const BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: kSecondaryColor,
+                    color: GPColors.secondaryColor,
                     width: 0.5,
                   ),
                   bottom: BorderSide(
-                    color: kSecondaryColor,
+                    color: GPColors.secondaryColor,
                     width: 0.5,
                   ),
                 ),

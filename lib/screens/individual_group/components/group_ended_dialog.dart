@@ -7,6 +7,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -77,7 +78,7 @@ groupEndedDialog(BuildContext context) {
                   endIndent: kDefaultPadding,
                   height: 20,
                   thickness: 0.5,
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                 ),
                 itemCount: group.participantsData.length,
                 itemBuilder: (context, index) => GroupEndedParticipantCard(
@@ -111,7 +112,7 @@ groupEndedDialog(BuildContext context) {
                 text: 'OK',
                 fontSize: TextSize.mBody,
                 fontFamily: 'Montserrat-SemiBold',
-                color: kPrimaryColor,
+                color: GPColors.primaryColor,
               ),
             ),
           ),

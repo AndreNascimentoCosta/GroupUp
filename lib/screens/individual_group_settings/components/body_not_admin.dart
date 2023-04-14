@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
@@ -95,7 +96,7 @@ class BodyNotAdminSettings extends StatelessWidget {
                 );
               },
               text: appLocalizations.exitGroup,
-              color: Colors.red,
+              color: GPColors.red,
             ),
             SizedBox(height: context.screenHeight * 0.05),
           ],

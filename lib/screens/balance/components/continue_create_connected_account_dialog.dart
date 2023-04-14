@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -45,7 +46,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Divider(
-              color: kSecondaryColor,
+              color: GPColors.secondaryColor,
               thickness: 0.5,
             ),
             SizedBox(
@@ -90,7 +91,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
               ),
             ),
             const Divider(
-              color: kSecondaryColor,
+              color: GPColors.secondaryColor,
               thickness: 0.5,
             ),
             SizedBox(
@@ -130,8 +131,8 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                         actions: [
                           NextButton(
                             text: appLocalizations.no,
-                            textColor: Colors.red,
-                            borderColor: Colors.transparent,
+                            textColor: GPColors.red,
+                            borderColor: GPColors.transparent,
                             onPressed: () {
                               Provider.of<MixPanelProvider>(context,
                                       listen: false)
@@ -140,13 +141,13 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                                           'Cancel Delete Connected Account');
                               Navigator.of(context).pop();
                             },
-                            color: Colors.transparent,
+                            color: GPColors.transparent,
                             height: 40,
                             width: 140,
                           ),
                           NextButton(
                             text: appLocalizations.yes,
-                            borderColor: kPrimaryColor,
+                            borderColor: GPColors.primaryColor,
                             onPressed: () async {
                               Provider.of<MixPanelProvider>(context,
                                       listen: false)
@@ -196,7 +197,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
               ),
             ),
             const Divider(
-              color: kSecondaryColor,
+              color: GPColors.secondaryColor,
               thickness: 0.5,
             ),
           ],
@@ -214,14 +215,14 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
         actions: [
           NextButton(
             text: appLocalizations.cancel,
-            textColor: Colors.red,
-            borderColor: Colors.transparent,
+            textColor: GPColors.red,
+            borderColor: GPColors.transparent,
             onPressed: () {
               Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                   eventName: 'Cancel Continue Create Connected Account');
               Navigator.of(context).pop();
             },
-            color: Colors.transparent,
+            color: GPColors.transparent,
             height: 40,
             width: 140,
           ),

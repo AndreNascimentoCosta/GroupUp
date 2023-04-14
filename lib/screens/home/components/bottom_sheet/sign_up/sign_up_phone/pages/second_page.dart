@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -46,7 +47,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                   text: AppLocalizations.of(context)
                       .codeSent(phoneControllerText),
                   fontSize: TextSize.mBody,
-                  color: kSecondaryColor),
+                  color: GPColors.secondaryColor),
               const SizedBox(height: Insets.l * 2),
               OTPField(
                 controller: phoneProvider.otpCode1,
@@ -58,7 +59,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                   StaticText(
                       text: AppLocalizations.of(context).codeNotReceived,
                       fontSize: TextSize.mBody,
-                      color: kSecondaryColor),
+                      color: GPColors.secondaryColor),
                   const SizedBox(width: Insets.xs),
                   ButtonCommonStyle(
                     onPressed: () {
@@ -79,8 +80,8 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                         fontSize: TextSize.mBody,
                         fontFamily: 'Montserrat-SemiBold',
                         color: phoneProvider.start != 0
-                            ? kSecondaryColor
-                            : Colors.black),
+                            ? GPColors.secondaryColor
+                            : GPColors.black),
                   ),
                 ],
               ),

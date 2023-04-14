@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
@@ -28,7 +29,7 @@ class HeaderIndividualGroup extends StatelessWidget {
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     if (group == null) {
       return Container(
-        color: Colors.white,
+        color: GPColors.white,
         height: 125,
         child: Column(
           children: [
@@ -60,7 +61,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                   VerticalDivider(
                     width: screenWidth * 0.115,
                     thickness: 1,
-                    color: kSecondaryColor,
+                    color: GPColors.secondaryColor,
                   ),
                   const ObjectiveRewardModel(
                     icon: 'assets/icons/reward.svg',
@@ -69,7 +70,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                   const VerticalDivider(
                     width: kDefaultPadding * 2.25,
                     thickness: 1,
-                    color: kSecondaryColor,
+                    color: GPColors.secondaryColor,
                   ),
                   const SizedBox(
                     width: kDefaultPadding * 1.5,
@@ -85,7 +86,7 @@ class HeaderIndividualGroup extends StatelessWidget {
     //     NumberFormat.simpleCurrency(name: group.groupCurrencyCode)
     //         .currencySymbol;
     return Container(
-      color: Colors.white,
+      color: GPColors.white,
       height: 125,
       child: Column(
         children: [
@@ -150,7 +151,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                                 },
                                 child: const StaticText(
                                   text: 'OK',
-                                  color: kPrimaryColor,
+                                  color: GPColors.primaryColor,
                                   fontSize: TextSize.mBody,
                                 ),
                               ),
@@ -172,7 +173,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                           ? screenWidth * 0.075
                           : screenWidth * 0.11,
                   thickness: 1,
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                 ),
                 ButtonCommonStyle(
                   onPressed: () {
@@ -217,7 +218,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                                 },
                                 child: const StaticText(
                                   text: 'OK',
-                                  color: kPrimaryColor,
+                                  color: GPColors.primaryColor,
                                   fontSize: TextSize.mBody,
                                 ),
                               ),
@@ -240,7 +241,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                           ? screenWidth * 0.075
                           : screenWidth * 0.11,
                   thickness: 1,
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                 ),
                 StartEndDateButton(groups: group),
                 const SizedBox(

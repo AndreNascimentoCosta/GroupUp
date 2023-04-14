@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -48,7 +48,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Divider(
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                   thickness: 0.5,
                 ),
                 SizedBox(
@@ -76,7 +76,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
                   ),
                 ),
                 const Divider(
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                   thickness: 0.5,
                 ),
                 SizedBox(
@@ -96,7 +96,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
                   ),
                 ),
                 const Divider(
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                   thickness: 0.5,
                 ),
                 SizedBox(
@@ -115,7 +115,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
                   ),
                 ),
                 const Divider(
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                   thickness: 0.5,
                 ),
               ],
@@ -133,10 +133,10 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
             actions: [
               NextButton(
                 text: appLocalizations.cancel,
-                textColor: Colors.red,
-                borderColor: Colors.transparent,
+                textColor: GPColors.red,
+                borderColor: GPColors.transparent,
                 onPressed: () => Navigator.of(newContext).pop(),
-                color: Colors.transparent,
+                color: GPColors.transparent,
                 height: 40,
                 width: 140,
               ),

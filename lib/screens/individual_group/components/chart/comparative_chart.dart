@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:groupup/screens/individual_group/components/chart/axis_title.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
@@ -47,11 +47,11 @@ class ComparativeChart extends StatelessWidget {
           borderData: FlBorderData(
             border: const Border(
               bottom: BorderSide(
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
                 width: 0.5,
               ),
               top: BorderSide(
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
                 width: 0.5,
               ),
             ),
@@ -67,13 +67,13 @@ class ComparativeChart extends StatelessWidget {
                   );
                 },
               ),
-              color: kSecondaryColor,
+              color: GPColors.secondaryColor,
               barWidth: 1,
               dotData: FlDotData(
                 getDotPainter: (p0, p1, p2, p3) {
                   return FlDotCirclePainter(
-                    color: Colors.white,
-                    strokeColor: kSecondaryColor,
+                    color: GPColors.white,
+                    strokeColor: GPColors.secondaryColor,
                   );
                 },
               ),
@@ -101,13 +101,13 @@ class ComparativeChart extends StatelessWidget {
                   );
                 },
               ),
-              color: kPrimaryColor,
+              color: GPColors.primaryColor,
               barWidth: 1,
               dotData: FlDotData(
                 getDotPainter: (p0, p1, p2, p3) {
                   return FlDotCirclePainter(
-                    color: kPrimaryColor,
-                    strokeColor: kPrimaryColor,
+                    color: GPColors.primaryColor,
+                    strokeColor: GPColors.primaryColor,
                   );
                 },
               ),
@@ -117,7 +117,7 @@ class ComparativeChart extends StatelessWidget {
             show: true,
             getDrawingHorizontalLine: (value) {
               return FlLine(
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
                 strokeWidth: 0.5,
               );
             },
@@ -144,11 +144,11 @@ class ComparativeChart extends StatelessWidget {
           borderData: FlBorderData(
             border: const Border(
               bottom: BorderSide(
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
                 width: 0.5,
               ),
               top: BorderSide(
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
                 width: 0.5,
               ),
             ),
@@ -178,13 +178,13 @@ class ComparativeChart extends StatelessWidget {
                   );
                 },
               ),
-              color: kSecondaryColor,
+              color: GPColors.secondaryColor,
               barWidth: 1,
               dotData: FlDotData(
                 getDotPainter: (p0, p1, p2, p3) {
                   return FlDotCirclePainter(
-                    color: Colors.white,
-                    strokeColor: kSecondaryColor,
+                    color: GPColors.white,
+                    strokeColor: GPColors.secondaryColor,
                   );
                 },
               ),
@@ -212,13 +212,13 @@ class ComparativeChart extends StatelessWidget {
                   );
                 },
               ),
-              color: kPrimaryColor,
+              color: GPColors.primaryColor,
               barWidth: 1,
               dotData: FlDotData(
                 getDotPainter: (p0, p1, p2, p3) {
                   return FlDotCirclePainter(
-                    color: kPrimaryColor,
-                    strokeColor: kPrimaryColor,
+                    color: GPColors.primaryColor,
+                    strokeColor: GPColors.primaryColor,
                   );
                 },
               ),
@@ -228,7 +228,7 @@ class ComparativeChart extends StatelessWidget {
             show: true,
             getDrawingHorizontalLine: (value) {
               return FlLine(
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
                 strokeWidth: 0.5,
               );
             },

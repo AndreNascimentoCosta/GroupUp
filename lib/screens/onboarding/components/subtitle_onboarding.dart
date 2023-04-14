@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 
 class OnboardingSubtitle extends StatelessWidget {
@@ -20,7 +20,7 @@ class OnboardingSubtitle extends StatelessWidget {
         fontSize: context.screenHeight * 0.0215,
         maxLines: 3,
         textAlign: TextAlign.center,
-        color: kSecondaryColor,
+        color: GPColors.secondaryColor,
       ),
     );
   }

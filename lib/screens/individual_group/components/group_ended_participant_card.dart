@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -76,7 +77,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                     backgroundColor: const Color(0XFFE1E1E1),
                     child: SvgPicture.asset(
                       'assets/icons/profile_picture_add.svg',
-                      color: Colors.white,
+                      color: GPColors.white,
                       height: Insets.l,
                       width: Insets.l,
                     ),

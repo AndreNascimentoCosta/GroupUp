@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/providers/mix_panel_provider.dart';
@@ -55,15 +55,15 @@ class TextFieldModel extends StatelessWidget {
           validator: validator,
           inputFormatters: inputFormatters,
           autovalidateMode: AutovalidateMode.always,
-          cursorColor: Colors.black,
+          cursorColor: GPColors.black,
           decoration: InputDecoration(
             enabledBorder: border,
             focusedBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: kPrimaryColor)),
+                borderSide: BorderSide(color: GPColors.primaryColor)),
             errorBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.red)),
+                borderSide: BorderSide(color: GPColors.red)),
             focusedErrorBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.red)),
+                borderSide: BorderSide(color: GPColors.red)),
             hintText: hint,
             counterText: "",
             suffixIcon: controller.text.isEmpty
@@ -73,7 +73,7 @@ class TextFieldModel extends StatelessWidget {
                       'assets/icons/clear.svg',
                       height: 20,
                       width: 20,
-                      color: kSecondaryColor,
+                      color: GPColors.secondaryColor,
                     ),
                     onPressed: () {
                       Provider.of<MixPanelProvider>(context, listen: false)

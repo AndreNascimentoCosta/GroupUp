@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/participant.dart';
@@ -32,7 +33,7 @@ class ChartLabel extends StatelessWidget {
                         width: 10,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
-                          color: kPrimaryColor,
+                          color: GPColors.primaryColor,
                         ),
                       ),
                       const SizedBox(
@@ -42,7 +43,7 @@ class ChartLabel extends StatelessWidget {
                         text: participant.name.isNotEmpty
                             ? "${participant.name.trim().split(RegExp(' +')).map((s) => s[0]).take(2).join(". ")}."
                             : '',
-                        color: kPrimaryColor,
+                        color: GPColors.primaryColor,
                         fontSize: TextSize.sBody,
                       ),
                     ],
@@ -59,13 +60,13 @@ class ChartLabel extends StatelessWidget {
                       ? BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: kSecondaryColor,
+                            color: GPColors.secondaryColor,
                             width: 1,
                           ),
                         )
                       : const BoxDecoration(
                           shape: BoxShape.circle,
-                          color: kPrimaryColor,
+                          color: GPColors.primaryColor,
                         ),
                 ),
                 const SizedBox(
@@ -74,8 +75,8 @@ class ChartLabel extends StatelessWidget {
                 StaticText(
                   text: appLocalizations.me,
                   color: participant.uid != user?.id
-                      ? kSecondaryColor
-                      : kPrimaryColor,
+                      ? GPColors.secondaryColor
+                      : GPColors.primaryColor,
                   fontSize: TextSize.sBody,
                 ),
               ],

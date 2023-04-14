@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -30,15 +30,15 @@ class ShareButton extends StatelessWidget {
                 : screenHeight * 0.06,
         width: isVerySmallScreen ? screenWidth * 0.45 : screenWidth * 0.4,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.white),
+          border: Border.all(color: GPColors.white),
           borderRadius: BorderRadius.circular(Insets.m),
-          color: Colors.white,
+          color: GPColors.white,
           boxShadow: [
             BoxShadow(
               spreadRadius: 0,
               blurRadius: 5,
               offset: const Offset(1.5, 2.5),
-              color: kSecondaryColor.withOpacity(0.3),
+              color: GPColors.secondaryColor.withOpacity(0.3),
             )
           ],
         ),
@@ -60,7 +60,7 @@ class ShareButton extends StatelessWidget {
             const Expanded(
               child: Icon(
                 Icons.ios_share_rounded,
-                color: Colors.black,
+                color: GPColors.black,
                 size: 22,
               ),
             ),

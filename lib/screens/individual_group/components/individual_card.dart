@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -100,8 +101,8 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                 borderRadius:
                                     BorderRadius.circular(Insets.l * 6),
                                 color: widget.participant.hasStory
-                                    ? kPrimaryColor
-                                    : Colors.transparent,
+                                    ? GPColors.primaryColor
+                                    : GPColors.transparent,
                               ),
                               padding: widget.participant.hasStory
                                   ? const EdgeInsets.all(3)
@@ -135,8 +136,8 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                 borderRadius:
                                     BorderRadius.circular(Insets.l * 6),
                                 color: widget.participant.hasStory
-                                    ? kPrimaryColor
-                                    : Colors.transparent,
+                                    ? GPColors.primaryColor
+                                    : GPColors.transparent,
                               ),
                               padding: const EdgeInsets.all(3),
                               child: CircleAvatar(
@@ -146,7 +147,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                 backgroundColor: const Color(0XFFE1E1E1),
                                 child: SvgPicture.asset(
                                   'assets/icons/profile_picture_add.svg',
-                                  color: Colors.white,
+                                  color: GPColors.white,
                                   height: widget.participant.hasStory
                                       ? Insets.l * 1.50
                                       : Insets.l * 1.65,

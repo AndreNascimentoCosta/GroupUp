@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/groups/components/add_bottom_sheet.dart';
 import 'package:provider/provider.dart';
-import '../../../constants.dart';
 import '../../../core/providers/mix_panel_provider.dart';
 
 class AddProject extends StatelessWidget {
@@ -41,7 +41,7 @@ class AddProject extends StatelessWidget {
               );
             });
       },
-      backgroundColor: kPrimaryColor,
+      backgroundColor: GPColors.primaryColor,
       highlightElevation: 0,
       elevation: 0,
       child: SvgPicture.asset(

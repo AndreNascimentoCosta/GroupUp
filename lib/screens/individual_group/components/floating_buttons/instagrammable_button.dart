@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/instagrammable.dart';
 import 'package:provider/provider.dart';
-import '../../../../constants.dart';
 
 class InstagrammableButton extends StatelessWidget {
   const InstagrammableButton({super.key});
@@ -38,7 +38,7 @@ class InstagrammableButton extends StatelessWidget {
               ),
             );
           },
-          backgroundColor: kPrimaryColor,
+          backgroundColor: GPColors.primaryColor,
           highlightElevation: 0,
           elevation: 0,
           child: const Icon(

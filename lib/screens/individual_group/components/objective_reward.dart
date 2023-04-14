@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 
 class ObjectiveRewardModel extends StatelessWidget {
@@ -18,7 +19,7 @@ class ObjectiveRewardModel extends StatelessWidget {
       children: [
         SvgPicture.asset(
           icon,
-          color: Colors.black,
+          color: GPColors.black,
         ),
         const SizedBox(height: kDefaultPadding / 2),
         SizedBox(

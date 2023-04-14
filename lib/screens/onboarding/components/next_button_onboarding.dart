@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/routes/gp_named_routes.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -37,7 +37,7 @@ class NextButtonOnboarding extends StatelessWidget {
           fontFamily: 'Montserrat-SemiBold',
           fontSize: TextSize.lBody * 1.1,
           textAlign: TextAlign.center,
-          color: kPrimaryColor,
+          color: GPColors.primaryColor,
         ),
       ),
     );

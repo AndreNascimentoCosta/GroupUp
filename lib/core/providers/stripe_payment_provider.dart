@@ -8,6 +8,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -72,27 +73,27 @@ class StripePaymentProvider extends ChangeNotifier {
           allowsDelayedPaymentMethods: false,
           appearance: const PaymentSheetAppearance(
             colors: PaymentSheetAppearanceColors(
-              primary: Colors.black,
-              background: Colors.white,
-              secondaryText: Colors.black,
-              primaryText: Colors.white,
-              componentText: Colors.black,
-              placeholderText: kSecondaryColor,
-              componentBackground: Colors.white,
-              componentBorder: Colors.black,
-              componentDivider: Colors.black,
-              icon: Colors.black,
-              error: Colors.red,
+              primary: GPColors.black,
+              background: GPColors.white,
+              secondaryText: GPColors.black,
+              primaryText: GPColors.white,
+              componentText: GPColors.black,
+              placeholderText: GPColors.secondaryColor,
+              componentBackground: GPColors.white,
+              componentBorder: GPColors.black,
+              componentDivider: GPColors.black,
+              icon: GPColors.black,
+              error: GPColors.red,
             ),
             primaryButton: PaymentSheetPrimaryButtonAppearance(
               colors: PaymentSheetPrimaryButtonTheme(
                 light: PaymentSheetPrimaryButtonThemeColors(
-                  text: Colors.white,
-                  background: kPrimaryColor,
+                  text: GPColors.white,
+                  background: GPColors.primaryColor,
                 ),
                 dark: PaymentSheetPrimaryButtonThemeColors(
-                  text: Colors.white,
-                  background: kPrimaryColor,
+                  text: GPColors.white,
+                  background: GPColors.primaryColor,
                 ),
               ),
             ),
@@ -167,27 +168,27 @@ class StripePaymentProvider extends ChangeNotifier {
           allowsDelayedPaymentMethods: false,
           appearance: const PaymentSheetAppearance(
             colors: PaymentSheetAppearanceColors(
-              primary: Colors.black,
-              background: Colors.white,
-              secondaryText: Colors.black,
-              primaryText: Colors.white,
-              componentText: Colors.black,
-              placeholderText: kSecondaryColor,
-              componentBackground: Colors.white,
-              componentBorder: Colors.black,
-              componentDivider: Colors.black,
-              icon: Colors.black,
-              error: Colors.red,
+              primary: GPColors.black,
+              background: GPColors.white,
+              secondaryText: GPColors.black,
+              primaryText: GPColors.white,
+              componentText: GPColors.black,
+              placeholderText: GPColors.secondaryColor,
+              componentBackground: GPColors.white,
+              componentBorder: GPColors.black,
+              componentDivider: GPColors.black,
+              icon: GPColors.black,
+              error: GPColors.red,
             ),
             primaryButton: PaymentSheetPrimaryButtonAppearance(
               colors: PaymentSheetPrimaryButtonTheme(
                 light: PaymentSheetPrimaryButtonThemeColors(
-                  text: Colors.white,
-                  background: kPrimaryColor,
+                  text: GPColors.white,
+                  background: GPColors.primaryColor,
                 ),
                 dark: PaymentSheetPrimaryButtonThemeColors(
-                  text: Colors.white,
-                  background: kPrimaryColor,
+                  text: GPColors.white,
+                  background: GPColors.primaryColor,
                 ),
               ),
             ),
@@ -259,20 +260,20 @@ class StripePaymentProvider extends ChangeNotifier {
           actions: [
             NextButton(
               text: appLocalizations.no,
-              textColor: Colors.red,
-              borderColor: Colors.transparent,
+              textColor: GPColors.red,
+              borderColor: GPColors.transparent,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                     eventName: 'Cancel Create Group Paying with Saved Card');
                 Navigator.of(context).pop();
               },
-              color: Colors.transparent,
+              color: GPColors.transparent,
               height: 40,
               width: 140,
             ),
             NextButton(
               text: appLocalizations.yes,
-              borderColor: kPrimaryColor,
+              borderColor: GPColors.primaryColor,
               onPressed: () async {
                 Navigator.of(newContext).pop();
                 final navigatorState = Navigator.of(context);
@@ -353,20 +354,20 @@ class StripePaymentProvider extends ChangeNotifier {
           actions: [
             NextButton(
               text: appLocalizations.no,
-              textColor: Colors.red,
-              borderColor: Colors.transparent,
+              textColor: GPColors.red,
+              borderColor: GPColors.transparent,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                     eventName: 'Cancel Join Group Paying with Saved Card');
                 Navigator.of(context).pop();
               },
-              color: Colors.transparent,
+              color: GPColors.transparent,
               height: 40,
               width: 140,
             ),
             NextButton(
               text: appLocalizations.yes,
-              borderColor: kPrimaryColor,
+              borderColor: GPColors.primaryColor,
               onPressed: () async {
                 Navigator.of(newContext).pop();
                 final navigatorState = Navigator.of(context);

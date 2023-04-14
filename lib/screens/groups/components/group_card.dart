@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
@@ -143,7 +144,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                 const SizedBox(height: Insets.s),
                                 MediumBody(
                                   text: AppLocalizations.of(context).ended,
-                                  color: kSecondaryColor,
+                                  color: GPColors.secondaryColor,
                                 ),
                               ],
                             )
@@ -176,7 +177,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                 const SizedBox(height: Insets.s),
                                 MediumBody(
                                   text: AppLocalizations.of(context).ended,
-                                  color: kSecondaryColor,
+                                  color: GPColors.secondaryColor,
                                 ),
                               ],
                             )

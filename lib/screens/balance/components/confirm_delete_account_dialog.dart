@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
@@ -42,20 +43,20 @@ void confirmDeleteAccountDialog(BuildContext rootContext) {
         actions: [
           NextButton(
             text: appLocalizations.no,
-            textColor: Colors.red,
-            borderColor: Colors.transparent,
+            textColor: GPColors.red,
+            borderColor: GPColors.transparent,
             onPressed: () {
               Provider.of<MixPanelProvider>(newContext, listen: false)
                   .logEvent(eventName: 'Cancel Delete Connected Account');
               Navigator.of(newContext).pop();
             },
-            color: Colors.transparent,
+            color: GPColors.transparent,
             height: 40,
             width: 140,
           ),
           NextButton(
             text: appLocalizations.yes,
-            borderColor: kPrimaryColor,
+            borderColor: GPColors.primaryColor,
             onPressed: () async {
               Provider.of<MixPanelProvider>(newContext, listen: false)
                   .logEvent(eventName: 'Delete Connected Account');

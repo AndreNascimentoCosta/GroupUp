@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -58,7 +59,7 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
                   },
                   child: GestureDetector(
                     child: Container(
-                      color: Colors.transparent,
+                      color: GPColors.transparent,
                       width: Insets.l * 3,
                       child: Row(
                         children: [
@@ -66,7 +67,7 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
                             'assets/icons/arrow_left.svg',
                             height: Insets.l * 1.25,
                             width: Insets.l * 1.25,
-                            color: Colors.black,
+                            color: GPColors.black,
                           ),
                         ],
                       ),
@@ -85,8 +86,8 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
                       fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
                       color: nameProvider.done(context) == null
-                          ? kSecondaryColor
-                          : Colors.black,
+                          ? GPColors.secondaryColor
+                          : GPColors.black,
                     ),
                   ),
                 ),

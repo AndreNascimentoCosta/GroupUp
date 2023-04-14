@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
@@ -69,20 +70,20 @@ class AddInputProvider extends ChangeNotifier {
           actions: [
             NextButton(
               text: appLocalizations.cancel,
-              textColor: Colors.red,
-              borderColor: Colors.transparent,
+              textColor: GPColors.red,
+              borderColor: GPColors.transparent,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Cancel Media in Add Input');
                 Navigator.of(context).pop();
               },
-              color: Colors.transparent,
+              color: GPColors.transparent,
               height: 40,
               width: 140,
             ),
             NextButton(
               text: appLocalizations.add,
-              borderColor: kPrimaryColor,
+              borderColor: GPColors.primaryColor,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Add Media in Add Input');

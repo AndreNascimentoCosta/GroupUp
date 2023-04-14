@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 
 // ignore: must_be_immutable
 class SwitchButton extends StatefulWidget {
@@ -17,7 +17,7 @@ class _SwitchButtonState extends State<SwitchButton> {
   Widget build(BuildContext context) {
     return Switch.adaptive(
       value: widget.boolValue ?? false,
-      activeColor: kPrimaryColor,
+      activeColor: GPColors.primaryColor,
       onChanged: (value) {
         setState(() {
           widget.boolValue = value;

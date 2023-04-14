@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/design-system.dart';
 
 class ProfilePicture extends StatelessWidget {
@@ -16,7 +17,7 @@ class ProfilePicture extends StatelessWidget {
               backgroundColor: const Color(0XFFE1E1E1),
               child: SvgPicture.asset(
                   'assets/icons/profile_picture.svg',
-                color: Colors.white,
+                color: GPColors.white,
                 height: Insets.l * 3,
                 width: Insets.l * 3,
               ),
@@ -28,17 +29,17 @@ class ProfilePicture extends StatelessWidget {
                 width: 50,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.white,
+                    color: GPColors.white,
                     width: 4,
                   ),
                   borderRadius: BorderRadius.circular(Insets.xl),
-                  color: kPrimaryColor,
+                  color: GPColors.primaryColor,
                 ),
                 child: const ImageIcon(
                   AssetImage(
                     'assets/icons/plus_profile_2.png',
                   ),
-                  color: Colors.white,
+                  color: GPColors.white,
                   size: 30,
                 ),
               ),

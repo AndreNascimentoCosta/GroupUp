@@ -9,6 +9,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -72,7 +73,7 @@ class _BodyProfileState extends State<BodyProfile> {
           );
         } else {
           return Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: GPColors.white,
             appBar: const AppBarProfile(),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -141,7 +142,7 @@ class _BodyProfileState extends State<BodyProfile> {
                         }
                         return SvgPicture.asset(
                           'assets/icons/profile_picture_add.svg',
-                          color: Colors.white,
+                          color: GPColors.white,
                           height: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                           width: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                         );

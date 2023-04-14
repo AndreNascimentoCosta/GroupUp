@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 
 class CheckBoxGroup extends StatefulWidget {
   CheckBoxGroup({this.isChecked, this.onChanged});
@@ -19,7 +18,7 @@ class _CheckBoxGroupState extends State<CheckBoxGroup> {
   Widget build(BuildContext context) {
     return Checkbox(
       value: widget.isChecked,
-      activeColor: kPrimaryColor,
+      activeColor: GPColors.primaryColor,
       shape: const CircleBorder(),
       onChanged: (bool? value) {
         setState(() {

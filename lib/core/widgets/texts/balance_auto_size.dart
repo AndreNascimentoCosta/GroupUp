@@ -1,11 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 
 class BalanceAutoSize extends StatelessWidget {
   const BalanceAutoSize({
     required this.text,
     this.fontFamily = 'Montserrat-Medium',
-    this.color = Colors.black,
+    this.color = GPColors.black,
     this.overflow,
     this.textAlign,
     this.maxLines = 1,

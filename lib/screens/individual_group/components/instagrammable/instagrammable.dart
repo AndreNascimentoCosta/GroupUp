@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/body_instagrammable.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/share_instagrammable_button.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,7 @@ class _InstagrammableScreenState extends State<InstagrammableScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: GPColors.white,
       body: const BodyInstagrammable(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
@@ -40,7 +41,7 @@ class _InstagrammableScreenState extends State<InstagrammableScreen> {
                             .logEvent(eventName: 'Close Instagrammable');
                         Navigator.of(context).pop();
                       },
-                      backgroundColor: kPrimaryColor,
+                      backgroundColor: GPColors.primaryColor,
                       highlightElevation: 0,
                       elevation: 0,
                       child: const Icon(

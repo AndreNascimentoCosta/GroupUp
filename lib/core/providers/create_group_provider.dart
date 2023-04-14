@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -231,14 +232,14 @@ class CreateGroupProvider extends ChangeNotifier {
           actions: [
             NextButton(
               text: appLocalizations.no,
-              textColor: Colors.red,
-              borderColor: Colors.transparent,
+              textColor: GPColors.red,
+              borderColor: GPColors.transparent,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Create Group Cancel Dialog');
                 Navigator.of(context).pop();
               },
-              color: Colors.transparent,
+              color: GPColors.transparent,
               height: 40,
               width: isVerySmallScreen
                   ? 100
@@ -248,7 +249,7 @@ class CreateGroupProvider extends ChangeNotifier {
             ),
             // NextButton(
             //   text: appLocalizations.yes,
-            //   borderColor: kPrimaryColor,
+            //   borderColor: GPColors.primaryColor,
             //   onPressed: () async {
             //     final user =
             //         Provider.of<AuthProvider>(context, listen: false).user;
@@ -348,7 +349,7 @@ class CreateGroupProvider extends ChangeNotifier {
             // ),
             NextButton(
               text: appLocalizations.yes,
-              borderColor: kPrimaryColor,
+              borderColor: GPColors.primaryColor,
               onPressed: () async {
                 final user =
                     Provider.of<AuthProvider>(context, listen: false).user;
@@ -624,21 +625,21 @@ class CreateGroupProvider extends ChangeNotifier {
             actions: [
               NextButton(
                 text: appLocalizations.no,
-                textColor: Colors.red,
-                borderColor: Colors.transparent,
+                textColor: GPColors.red,
+                borderColor: GPColors.transparent,
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(eventName: 'Cancel Leave Group');
                   isRefundRequested = true;
                   Navigator.of(context).pop();
                 },
-                color: Colors.transparent,
+                color: GPColors.transparent,
                 height: 40,
                 width: 140,
               ),
               NextButton(
                 text: appLocalizations.yes,
-                borderColor: kPrimaryColor,
+                borderColor: GPColors.primaryColor,
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(eventName: 'Leave Group');

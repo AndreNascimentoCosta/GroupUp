@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/screens/individual_group/components/individual_card.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
@@ -36,7 +37,7 @@ class BodyIndividualGroup extends StatelessWidget {
                 endIndent: kDefaultPadding,
                 height: 20,
                 thickness: 0.5,
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
               ),
               itemCount: participants.length,
               itemBuilder: (context, index) => IndividualGroupCard(

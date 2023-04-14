@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/participant.dart';
@@ -50,7 +50,7 @@ class StoryWidget extends StatelessWidget {
           children: [
             Positioned.fill(
               child: Container(
-                color: Colors.black,
+                color: GPColors.black,
               ),
             ),
             Positioned.fill(
@@ -63,7 +63,7 @@ class StoryWidget extends StatelessWidget {
                     return child;
                   }
                   return Container(
-                    color: Colors.black,
+                    color: GPColors.black,
                     child: const Center(
                       child: CircularProgressIndicator.adaptive(),
                     ),
@@ -79,7 +79,7 @@ class StoryWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.025),
+                    color: GPColors.black.withOpacity(0.025),
                     blurRadius: 10,
                     offset: const Offset(0, 0),
                   ),
@@ -130,7 +130,7 @@ class StoryWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.15),
+                              color: GPColors.black.withOpacity(0.15),
                               blurRadius: 10,
                               offset: const Offset(0, 2),
                             ),
@@ -141,7 +141,7 @@ class StoryWidget extends StatelessWidget {
                               ? appLocalizations.me
                               : participant.name,
                           fontSize: TextSize.lBody,
-                          color: Colors.white,
+                          color: GPColors.white,
                         ),
                       ),
                     ],
@@ -172,7 +172,7 @@ class StoryWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: GPColors.black.withOpacity(0.1),
                       blurRadius: 10,
                       offset: const Offset(0, 5),
                     ),
@@ -206,14 +206,14 @@ class StoryWidget extends StatelessWidget {
                               text: appLocalizations.dataInvalidated,
                               textAlign: TextAlign.center,
                               fontSize: TextSize.mBody,
-                              color: Colors.white,
+                              color: GPColors.white,
                             ),
                             duration: const Duration(seconds: 2),
-                            backgroundColor: kSecondaryColor,
+                            backgroundColor: GPColors.secondaryColor,
                           ),
                         );
                       },
-                      backgroundColor: Colors.red,
+                      backgroundColor: GPColors.red,
                       elevation: 0,
                       child: const Icon(
                         Icons.close_rounded,
@@ -228,7 +228,7 @@ class StoryWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: GPColors.black.withOpacity(0.1),
                       blurRadius: 10,
                       offset: const Offset(0, 0),
                     ),
@@ -241,7 +241,7 @@ class StoryWidget extends StatelessWidget {
                     child: StaticText(
                       text: inputData.value.toString(),
                       fontSize: TextSize.title,
-                      color: Colors.white,
+                      color: GPColors.white,
                     ),
                   ),
                 ),
@@ -251,7 +251,7 @@ class StoryWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: GPColors.black.withOpacity(0.1),
                       blurRadius: 10,
                       offset: const Offset(0, 5),
                     ),
@@ -285,14 +285,14 @@ class StoryWidget extends StatelessWidget {
                               text: appLocalizations.dataValidated,
                               textAlign: TextAlign.center,
                               fontSize: TextSize.mBody,
-                              color: Colors.white,
+                              color: GPColors.white,
                             ),
                             duration: const Duration(seconds: 2),
-                            backgroundColor: kSecondaryColor,
+                            backgroundColor: GPColors.secondaryColor,
                           ),
                         );
                       },
-                      backgroundColor: kPrimaryColor,
+                      backgroundColor: GPColors.primaryColor,
                       elevation: 0,
                       child: const Icon(
                         Icons.check,

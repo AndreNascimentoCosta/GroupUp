@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
@@ -114,7 +115,7 @@ class _AddInputState extends State<AddInput> {
                   const SizedBox(width: Insets.l),
                   LargeBody(
                     text: currentDate,
-                    color: kSecondaryColor,
+                    color: GPColors.secondaryColor,
                   ),
                 ],
               ),
@@ -132,7 +133,7 @@ class _AddInputState extends State<AddInput> {
                       style: const TextStyle(
                           fontFamily: 'Montserrat-Regular',
                           fontSize: TextSize.lBody,
-                          color: Colors.black),
+                          color: GPColors.black),
                       decoration: InputDecoration(
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -145,7 +146,7 @@ class _AddInputState extends State<AddInput> {
                             : IconButton(
                                 icon: const Icon(
                                   Icons.close,
-                                  color: Colors.black,
+                                  color: GPColors.black,
                                 ),
                                 onPressed: () {
                                   Provider.of<MixPanelProvider>(context,
@@ -207,8 +208,8 @@ class _AddInputState extends State<AddInput> {
                                       int.tryParse(addInputProvider
                                               .inputController.text) ==
                                           0
-                                  ? kSecondaryColor
-                                  : kPrimaryColor,
+                                  ? GPColors.secondaryColor
+                                  : GPColors.primaryColor,
                         ),
                 ),
               ),

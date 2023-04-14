@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 
 class HomeButton extends StatelessWidget {
   const HomeButton({required this.isGreen});
@@ -32,7 +33,7 @@ class HomeButton extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Montserrat-SemiBold',
               fontSize: 20,
-              color: isGreen ? Colors.black : Colors.white,
+              color: isGreen ? GPColors.black : GPColors.white,
             ),
           ),
           const Spacer(),

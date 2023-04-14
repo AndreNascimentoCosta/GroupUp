@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
@@ -96,21 +97,21 @@ class EditGroupNameProvider extends ChangeNotifier {
           actions: [
             NextButton(
               text: appLocalizations.yesDiscard,
-              textColor: Colors.red,
-              borderColor: Colors.transparent,
+              textColor: GPColors.red,
+              borderColor: GPColors.transparent,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Discard Changes in Edit Group Name');
                 Navigator.pop(newContext);
                 Navigator.pop(context);
               },
-              color: Colors.transparent,
+              color: GPColors.transparent,
               height: 40,
               width: 140,
             ),
             NextButton(
               text: appLocalizations.noKeep,
-              borderColor: kPrimaryColor,
+              borderColor: GPColors.primaryColor,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Keep Changes in Edit Group Name');

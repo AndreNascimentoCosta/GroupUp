@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
@@ -6,13 +7,12 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/data_history_bottom_sheet.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
-import '../../../../../constants.dart';
 import '../../../../core/providers/mix_panel_provider.dart';
 
 class DataHistoryButton extends StatefulWidget {
   const DataHistoryButton({
     required this.homeViewModel,
-    this.backgroundColor = kPrimaryColor,
+    this.backgroundColor = GPColors.primaryColor,
   });
 
   final HomeViewModel homeViewModel;

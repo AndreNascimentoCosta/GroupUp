@@ -451,7 +451,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                   //         ),
                   //         decoration: BoxDecoration(
                   //           border: Border.all(
-                  //             color: kSecondaryColor,
+                  //             color: GPColors.secondaryColor,
                   //           ),
                   //           borderRadius: BorderRadius.circular(Insets.s),
                   //         ),

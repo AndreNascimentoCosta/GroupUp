@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
@@ -44,7 +45,7 @@ class EditGroupNameBody extends StatelessWidget {
               
                 border: const UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: kSecondaryColor,
+                    color: GPColors.secondaryColor,
                     width: 0.5,
                   ),
                 ),

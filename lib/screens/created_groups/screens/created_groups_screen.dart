@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/screens/created_groups/components/created_groups_app_bar.dart';
 import 'package:groupup/screens/created_groups/components/created_groups_body.dart';
 
@@ -8,7 +9,7 @@ class CreatedGroupsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: GPColors.white,
       appBar: const AppBarCreatedGroups(),
       body: Column(
         children: const [

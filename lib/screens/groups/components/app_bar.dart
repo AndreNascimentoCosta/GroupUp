@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -32,7 +33,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
   AppBar buildAppBar() {
     return AppBar(
       elevation: 0,
-      backgroundColor: Colors.white,
+      backgroundColor: GPColors.white,
       automaticallyImplyLeading: false,
       title: StaticText(
         text: AppLocalizations.of(context).groups,
@@ -89,7 +90,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
                     //     ? const StaticText(
                     //         text: 'Edit',
                     //         fontSize: TextSize.lBody,
-                    //         color: kSecondaryColor,
+                    //         color: GPColors.secondaryColor,
                     //       )
                     //     : ButtonCommonStyle(
                     //         onPressed: () {

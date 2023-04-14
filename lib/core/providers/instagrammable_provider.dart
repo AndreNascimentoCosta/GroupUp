@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/choose_participant_profile_picture.dart';
@@ -101,7 +102,7 @@ class InstagrammableProvider extends ChangeNotifier {
                     endIndent: kDefaultPadding,
                     height: 20,
                     thickness: 0.5,
-                    color: kSecondaryColor,
+                    color: GPColors.secondaryColor,
                   ),
                   itemCount: group.participantsData.length,
                   itemBuilder: (context, index) =>
@@ -125,11 +126,11 @@ class InstagrammableProvider extends ChangeNotifier {
                       decoration: const BoxDecoration(
                         border: Border(
                           top: BorderSide(
-                            color: kSecondaryColor,
+                            color: GPColors.secondaryColor,
                             width: 0.5,
                           ),
                           bottom: BorderSide(
-                            color: kSecondaryColor,
+                            color: GPColors.secondaryColor,
                             width: 0.5,
                           ),
                         ),
@@ -165,7 +166,7 @@ class InstagrammableProvider extends ChangeNotifier {
                   text: 'OK',
                   fontSize: TextSize.mBody,
                   fontFamily: 'Montserrat-SemiBold',
-                  color: kPrimaryColor,
+                  color: GPColors.primaryColor,
                 ),
               ),
             )

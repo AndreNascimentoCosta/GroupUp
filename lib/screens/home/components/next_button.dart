@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -9,9 +9,9 @@ class NextButton extends StatelessWidget {
   const NextButton({
     this.onPressed,
     this.text,
-    this.borderColor = kPrimaryColor,
-    this.color = kPrimaryColor,
-    this.textColor = Colors.white,
+    this.borderColor = GPColors.primaryColor,
+    this.color = GPColors.primaryColor,
+    this.textColor = GPColors.white,
     this.height = 50,
     this.width = 140,
   });
@@ -31,10 +31,10 @@ class NextButton extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         border: Border.all(
-          color: onPressed == null ? Colors.transparent : borderColor,
+          color: onPressed == null ? GPColors.transparent : borderColor,
         ),
         borderRadius: BorderRadius.circular(Insets.s),
-        color: onPressed == null ? kSecondaryColor : color,
+        color: onPressed == null ? GPColors.secondaryColor : color,
       ),
       child: ButtonCommonStyle(
         onPressed: onPressed,

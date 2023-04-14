@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:intl/intl.dart';
@@ -75,7 +76,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                               text: group[0].data()['projectName'],
                               maxLines: 2,
                               fontSize: TextSize.mBody,
-                              color: kSecondaryColor,
+                              color: GPColors.secondaryColor,
                             ),
                           ),
                         ],
@@ -94,7 +95,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                               text: group[0].data()['objective'],
                               maxLines: 2,
                               fontSize: TextSize.mBody,
-                              color: kSecondaryColor,
+                              color: GPColors.secondaryColor,
                             ),
                           ),
                         ],
@@ -114,7 +115,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                                   group[0].data()['reward'], //'${NumberFormat.simpleCurrency(name: group[0].data()['groupCurrencyCode']).currencySymbol} ${group[0].data()['reward']}'
                               maxLines: 2,
                               fontSize: TextSize.mBody,
-                              color: kSecondaryColor,
+                              color: GPColors.secondaryColor,
                             ),
                           ),
                         ],
@@ -134,7 +135,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                                   group[0].data()['noParticipants'].toString(),
                               maxLines: 2,
                               fontSize: TextSize.mBody,
-                              color: kSecondaryColor,
+                              color: GPColors.secondaryColor,
                             ),
                           ),
                         ],
@@ -157,7 +158,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                             ),
                             maxLines: 2,
                             fontSize: TextSize.mBody,
-                            color: kSecondaryColor,
+                            color: GPColors.secondaryColor,
                           ),
                         ],
                       ),
@@ -179,7 +180,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                             ),
                             maxLines: 2,
                             fontSize: TextSize.mBody,
-                            color: kSecondaryColor,
+                            color: GPColors.secondaryColor,
                           ),
                         ],
                       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:provider/provider.dart';
@@ -91,11 +92,11 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
             decoration: InputDecoration(
               enabledBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
-                borderSide: BorderSide(color: kSecondaryColor),
+                borderSide: BorderSide(color: GPColors.secondaryColor),
               ),
               focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
-                borderSide: BorderSide(color: kPrimaryColor),
+                borderSide: BorderSide(color: GPColors.primaryColor),
               ),
               prefixIcon: widget.prefixIcon,
               prefixIconConstraints: const BoxConstraints(
@@ -110,7 +111,7 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
                         'assets/icons/clear.svg',
                         height: 20,
                         width: 20,
-                        color: kSecondaryColor,
+                        color: GPColors.secondaryColor,
                       ),
                       onPressed: () {
                         Provider.of<MixPanelProvider>(context, listen: false)
@@ -127,7 +128,7 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(Insets.m),
-                borderSide: const BorderSide(color: kSecondaryColor),
+                borderSide: const BorderSide(color: GPColors.secondaryColor),
               ),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
 import '../../../constants.dart';
@@ -24,7 +25,7 @@ class StatsNoGroup extends StatelessWidget {
                   'assets/icons/rank.svg',
                   height: Insets.l,
                   width: Insets.l,
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                 ),
                 const SizedBox(
                   height: kDefaultPadding * 0.25,
@@ -33,7 +34,7 @@ class StatsNoGroup extends StatelessWidget {
                   'assets/icons/daysgone.svg',
                   height: Insets.l,
                   width: Insets.l,
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                 ),
                 const SizedBox(
                   height: kDefaultPadding * 0.25,
@@ -42,7 +43,7 @@ class StatsNoGroup extends StatelessWidget {
                   'assets/icons/daysleft.svg',
                   height: Insets.l,
                   width: Insets.l,
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                 ),
               ],
             ),
@@ -56,7 +57,7 @@ class StatsNoGroup extends StatelessWidget {
               MediumBody(
                 text: '-',
                 textAlign: TextAlign.center,
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
               ),
               SizedBox(
                 height: kDefaultPadding * 0.25,
@@ -64,7 +65,7 @@ class StatsNoGroup extends StatelessWidget {
               MediumBody(
                 text: '-',
                 textAlign: TextAlign.center,
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
               ),
               SizedBox(
                 height: kDefaultPadding * 0.25,
@@ -72,7 +73,7 @@ class StatsNoGroup extends StatelessWidget {
               MediumBody(
                 text: '-',
                 textAlign: TextAlign.center,
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
               ),
             ],
           ),

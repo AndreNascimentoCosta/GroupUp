@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/group_picture_edit.dart';
@@ -76,7 +77,7 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
             FloatingActionButton(
               heroTag: 'btn1',
               elevation: 0,
-              backgroundColor: Colors.white,
+              backgroundColor: GPColors.white,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                     eventName: 'Leave Individual Group Screen - Back Button');
@@ -86,20 +87,20 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                 'assets/icons/arrow_left.svg',
                 height: Insets.l * 1.25,
                 width: Insets.l * 1.25,
-                color: Colors.black,
+                color: GPColors.black,
               ),
             ),
             const Spacer(),
             FloatingActionButton(
               heroTag: 'btn2',
               elevation: 0,
-              backgroundColor: Colors.white,
+              backgroundColor: GPColors.white,
               onPressed: () {},
               child: SvgPicture.asset(
                 'assets/icons/settings.svg',
                 height: Insets.l * 1.25,
                 width: Insets.l * 1.25,
-                color: Colors.black,
+                color: GPColors.black,
               ),
             )
           ],
@@ -142,7 +143,7 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                 child: FloatingActionButton(
                   heroTag: 'btn1',
                   elevation: 0,
-                  backgroundColor: Colors.white,
+                  backgroundColor: GPColors.white,
                   onPressed: individualGroupProvider.pageIndex == 0
                       ? () {
                           Provider.of<MixPanelProvider>(context, listen: false)
@@ -165,7 +166,7 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                     'assets/icons/arrow_left.svg',
                     height: Insets.l * 1.25,
                     width: Insets.l * 1.25,
-                    color: Colors.black,
+                    color: GPColors.black,
                   ),
                 ),
               ),
@@ -176,7 +177,7 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                           ? FloatingActionButton(
                               heroTag: 'btn2',
                               elevation: 0,
-                              backgroundColor: Colors.white,
+                              backgroundColor: GPColors.white,
                               onPressed: () {
                                 Provider.of<MixPanelProvider>(context,
                                         listen: false)
@@ -200,7 +201,7 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                                 'assets/icons/settings.svg',
                                 height: Insets.l * 1.25,
                                 width: Insets.l * 1.25,
-                                color: Colors.black,
+                                color: GPColors.black,
                               ),
                             )
                           : GroupPictureEdit(
@@ -223,20 +224,20 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                               child: FloatingActionButton(
                                 heroTag: 'btn2',
                                 elevation: 0,
-                                backgroundColor: Colors.white,
+                                backgroundColor: GPColors.white,
                                 onPressed: null,
                                 child: SvgPicture.asset(
                                   'assets/icons/edit.svg',
                                   height: Insets.l * 1.25,
                                   width: Insets.l * 1.25,
-                                  color: Colors.black,
+                                  color: GPColors.black,
                                 ),
                               ),
                             )
                       : FloatingActionButton(
                           heroTag: 'btn2',
                           elevation: 0,
-                          backgroundColor: Colors.white,
+                          backgroundColor: GPColors.white,
                           onPressed: () {
                             Provider.of<MixPanelProvider>(context,
                                     listen: false)
@@ -260,14 +261,14 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                             'assets/icons/settings.svg',
                             height: Insets.l * 1.25,
                             width: Insets.l * 1.25,
-                            color: Colors.black,
+                            color: GPColors.black,
                           ),
                         )
                   : !value
                       ? FloatingActionButton(
                           heroTag: 'btn2',
                           elevation: 0,
-                          backgroundColor: Colors.white,
+                          backgroundColor: GPColors.white,
                           onPressed: () {
                             Provider.of<MixPanelProvider>(context,
                                     listen: false)
@@ -291,7 +292,7 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                             'assets/icons/settings.svg',
                             height: Insets.l * 1.25,
                             width: Insets.l * 1.25,
-                            color: Colors.black,
+                            color: GPColors.black,
                           ),
                         )
                       : GroupPictureEdit(
@@ -314,13 +315,13 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                           child: FloatingActionButton(
                             heroTag: 'btn2',
                             elevation: 0,
-                            backgroundColor: Colors.white,
+                            backgroundColor: GPColors.white,
                             onPressed: null,
                             child: SvgPicture.asset(
                               'assets/icons/edit.svg',
                               height: Insets.l * 1.25,
                               width: Insets.l * 1.25,
-                              color: Colors.black,
+                              color: GPColors.black,
                             ),
                           ),
                         ),

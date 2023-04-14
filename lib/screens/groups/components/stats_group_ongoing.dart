@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -48,7 +49,7 @@ class StatsGroup extends StatelessWidget {
                           'assets/icons/rank.svg',
                           height: Insets.l,
                           width: Insets.l,
-                          color: Colors.black,
+                          color: GPColors.black,
                         ),
                         const SizedBox(
                           height: kDefaultPadding * 0.25,
@@ -57,7 +58,7 @@ class StatsGroup extends StatelessWidget {
                           'assets/icons/daysgone.svg',
                           height: Insets.l,
                           width: Insets.l,
-                          color: Colors.black,
+                          color: GPColors.black,
                         ),
                         const SizedBox(
                           height: kDefaultPadding * 0.25,
@@ -66,7 +67,7 @@ class StatsGroup extends StatelessWidget {
                           'assets/icons/daysleft.svg',
                           height: Insets.l,
                           width: Insets.l,
-                          color: Colors.black,
+                          color: GPColors.black,
                         ),
                       ],
                     ),
@@ -102,7 +103,7 @@ class StatsGroup extends StatelessWidget {
                                       const MediumBody(
                                         text: '-',
                                         textAlign: TextAlign.center,
-                                        color: Colors.red,
+                                        color: GPColors.red,
                                       ),
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
@@ -110,7 +111,7 @@ class StatsGroup extends StatelessWidget {
                                       const MediumBody(
                                         text: '-',
                                         textAlign: TextAlign.center,
-                                        color: kPrimaryColor,
+                                        color: GPColors.primaryColor,
                                       ),
                                     ],
                                   )
@@ -126,7 +127,7 @@ class StatsGroup extends StatelessWidget {
                                       MediumBody(
                                         text: group.daysGone,
                                         textAlign: TextAlign.center,
-                                        color: Colors.red,
+                                        color: GPColors.red,
                                       ),
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
@@ -134,7 +135,7 @@ class StatsGroup extends StatelessWidget {
                                       MediumBody(
                                         text: group.daysLeft,
                                         textAlign: TextAlign.center,
-                                        color: kPrimaryColor,
+                                        color: GPColors.primaryColor,
                                       ),
                                     ],
                                   )
@@ -157,7 +158,7 @@ class StatsGroup extends StatelessWidget {
                                       const MediumBody(
                                         text: '-',
                                         textAlign: TextAlign.center,
-                                        color: Colors.red,
+                                        color: GPColors.red,
                                       ),
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
@@ -165,7 +166,7 @@ class StatsGroup extends StatelessWidget {
                                       const MediumBody(
                                         text: '-',
                                         textAlign: TextAlign.center,
-                                        color: kPrimaryColor,
+                                        color: GPColors.primaryColor,
                                       ),
                                     ],
                                   )
@@ -181,7 +182,7 @@ class StatsGroup extends StatelessWidget {
                                       MediumBody(
                                         text: group.daysGone,
                                         textAlign: TextAlign.center,
-                                        color: Colors.red,
+                                        color: GPColors.red,
                                       ),
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
@@ -189,7 +190,7 @@ class StatsGroup extends StatelessWidget {
                                       MediumBody(
                                         text: group.daysLeft,
                                         textAlign: TextAlign.center,
-                                        color: kPrimaryColor,
+                                        color: GPColors.primaryColor,
                                       ),
                                     ],
                                   )
@@ -205,7 +206,7 @@ class StatsGroup extends StatelessWidget {
                               MediumBody(
                                 text: group.daysGone,
                                 textAlign: TextAlign.center,
-                                color: Colors.red,
+                                color: GPColors.red,
                               ),
                               const SizedBox(
                                 height: kDefaultPadding * 0.25,
@@ -213,7 +214,7 @@ class StatsGroup extends StatelessWidget {
                               MediumBody(
                                 text: group.daysLeft,
                                 textAlign: TextAlign.center,
-                                color: kPrimaryColor,
+                                color: GPColors.primaryColor,
                               ),
                             ],
                           ),

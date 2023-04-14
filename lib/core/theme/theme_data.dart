@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/design-system.dart';
 
 final themeData = ThemeData(
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle.dark,
   ),
-  splashColor: Colors.transparent,
+  splashColor: GPColors.transparent,
   colorScheme: ColorScheme.fromSwatch().copyWith(
-    secondary: kSecondaryColor,
+    secondary: GPColors.secondaryColor,
   ),
   pageTransitionsTheme: const PageTransitionsTheme(
     builders: {
@@ -25,7 +25,7 @@ final themeData = ThemeData(
         ),
       ),
       borderSide: BorderSide(
-        color: kSecondaryColor,
+        color: GPColors.secondaryColor,
       ),
     ),
     errorBorder: OutlineInputBorder(
@@ -35,7 +35,7 @@ final themeData = ThemeData(
         ),
       ),
       borderSide: BorderSide(
-        color: Colors.red,
+        color: GPColors.red,
       ),
     ),
     focusedBorder: OutlineInputBorder(
@@ -45,7 +45,7 @@ final themeData = ThemeData(
         ),
       ),
       borderSide: BorderSide(
-        color: kPrimaryColor,
+        color: GPColors.primaryColor,
       ),
     ),
     focusedErrorBorder: OutlineInputBorder(
@@ -55,7 +55,7 @@ final themeData = ThemeData(
         ),
       ),
       borderSide: BorderSide(
-        color: Colors.red,
+        color: GPColors.red,
       ),
     ),
   ),

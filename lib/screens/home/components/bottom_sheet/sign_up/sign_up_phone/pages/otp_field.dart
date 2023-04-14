@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:pinput/pinput.dart';
@@ -49,7 +49,7 @@ class OTPField extends StatelessWidget {
       focusedPinTheme: defaultPinTheme.copyWith(
         decoration: defaultPinTheme.decoration!.copyWith(
           border: const Border(
-            bottom: BorderSide(color: kPrimaryColor),
+            bottom: BorderSide(color: GPColors.primaryColor),
           ),
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/screens/groups/components/icon_bottom_navy_bar.dart';
 import 'package:provider/provider.dart';
 import '../../../constants.dart';
@@ -17,12 +18,12 @@ class _BottomNavyBarState extends State<BottomNavyBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.white,
+      backgroundColor: GPColors.white,
       selectedFontSize: 0,
       unselectedFontSize: 0,
       currentIndex: widget.pageController.page?.round() ?? 0,
-      selectedItemColor: kPrimaryColor,
-      unselectedItemColor: kSecondaryColor,
+      selectedItemColor: GPColors.primaryColor,
+      unselectedItemColor: GPColors.secondaryColor,
       onTap: (value) => setState(() {
         Provider.of<AuthProvider>(context, listen: false).getUser();
         widget.pageController.jumpToPage(value);

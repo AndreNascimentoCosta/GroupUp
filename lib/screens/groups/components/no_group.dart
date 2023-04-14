@@ -2,6 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -63,14 +64,14 @@ class NoGroup extends StatelessWidget {
                   children: [
                     DottedBorder(
                       borderType: BorderType.Circle,
-                      color: kSecondaryColor,
+                      color: GPColors.secondaryColor,
                       dashPattern: const [5, 5],
                       child: const SizedBox(
                         height: 70,
                         width: 70,
                         child: ImageIcon(
                           AssetImage('assets/icons/plus_picture.png'),
-                          color: kSecondaryColor,
+                          color: GPColors.secondaryColor,
                         ),
                       ),
                     ),
@@ -80,7 +81,7 @@ class NoGroup extends StatelessWidget {
                       ),
                       child: ExtraLargeBody(
                         text: AppLocalizations.of(context).newGroup,
-                        color: kSecondaryColor,
+                        color: GPColors.secondaryColor,
                       ),
                     ),
                     const Flexible(child: StatsNoGroup()),
@@ -92,7 +93,7 @@ class NoGroup extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: Insets.xl * 1.5),
                 child: StaticText(
                   text: AppLocalizations.of(context).createOrJoinAGroup,
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                   fontFamily: 'Montserrat-Medium',
                   fontSize: 20,
                 ),

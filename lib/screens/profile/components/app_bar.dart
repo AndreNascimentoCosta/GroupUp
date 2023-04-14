@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/profile/components/other_options.dart';
@@ -18,7 +19,7 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
     final appLocalizations = AppLocalizations.of(context);
     return AppBar(
       elevation: 0,
-      backgroundColor: Colors.white,
+      backgroundColor: GPColors.white,
       automaticallyImplyLeading: false,
       title: StaticText(
         text: appLocalizations.profile,
@@ -66,7 +67,7 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
                   width: Insets.xl,
                   child: SvgPicture.asset(
                     'assets/icons/ellipsis.svg',
-                    color: Colors.black,
+                    color: GPColors.black,
                   ),
                 ),
               )),

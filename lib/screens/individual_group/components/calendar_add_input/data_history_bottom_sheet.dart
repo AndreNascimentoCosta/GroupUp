@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -47,14 +48,14 @@ class DataHistoryBottomSheet extends StatelessWidget {
             LargeBody(
               text: appLocalizations.noData,
               textAlign: TextAlign.center,
-              color: kSecondaryColor,
+              color: GPColors.secondaryColor,
             ),
           Expanded(
             child: ListView.separated(
               separatorBuilder: (context, index) => const Divider(
                 height: 20,
                 thickness: 0.5,
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
               ),
               itemCount: userInputData.length,
               itemBuilder: ((context, index) {

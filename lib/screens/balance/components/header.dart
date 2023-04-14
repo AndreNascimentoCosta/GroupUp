@@ -5,6 +5,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/balance_auto_size.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
@@ -90,8 +91,8 @@ class HeaderBalance extends StatelessWidget {
                           }
                         },
                         text: appLocalizations.options,
-                        buttonColor: kPrimaryColor,
-                        textColor: Colors.white,
+                        buttonColor: GPColors.primaryColor,
+                        textColor: GPColors.white,
                       ),
                       const SizedBox(height: Insets.l * 2.25),
                     ],

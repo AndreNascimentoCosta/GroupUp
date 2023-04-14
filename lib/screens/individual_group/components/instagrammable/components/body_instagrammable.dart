@@ -5,6 +5,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/app_bar_instagrammable.dart';
@@ -78,7 +79,7 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
       Navigator.of(context).pop();
     }
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: GPColors.white,
       appBar: AppBarInstagrammable(
         isSharing: widget.isSharing,
       ),
@@ -133,8 +134,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: instagrammableProvider.picture1 == noPicture
-                          ? Colors.transparent
-                          : Colors.black,
+                          ? GPColors.transparent
+                          : GPColors.black,
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(
@@ -244,8 +245,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: instagrammableProvider.picture2 == noPicture
-                          ? Colors.transparent
-                          : Colors.black,
+                          ? GPColors.transparent
+                          : GPColors.black,
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(
@@ -355,8 +356,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: instagrammableProvider.picture3 == noPicture
-                          ? Colors.transparent
-                          : Colors.black,
+                          ? GPColors.transparent
+                          : GPColors.black,
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(
@@ -464,8 +465,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: instagrammableProvider.picture4 == noPicture
-                          ? Colors.transparent
-                          : Colors.black,
+                          ? GPColors.transparent
+                          : GPColors.black,
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(
@@ -549,8 +550,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: instagrammableProvider.picture5 == noPicture
-                          ? Colors.transparent
-                          : Colors.black,
+                          ? GPColors.transparent
+                          : GPColors.black,
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(widget.isSharing

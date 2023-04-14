@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/floating_buttons/add_input_group_button.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/calendar.dart';
@@ -103,7 +104,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
         Provider.of<IndividualGroupProvider>(context);
     if (individualGroupProvider.group == null) {
       return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: GPColors.white,
         appBar: AppBarIndividualGroup(
           homeViewModel: homeViewModel,
         ),
@@ -179,7 +180,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
           .sumData
           .value;
       return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: GPColors.white,
         appBar: AppBarIndividualGroup(
           homeViewModel: homeViewModel,
         ),

@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
@@ -47,7 +46,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
           );
         }
         return Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: GPColors.white,
           appBar: const AppBarOnboarding(),
           body: Column(
             children: [
@@ -69,7 +68,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
                   dotHeight: 12.5,
                   dotWidth: 12.5,
                   dotColor: GPColors.lightGray,
-                  activeDotColor: kPrimaryColor,
+                  activeDotColor: GPColors.primaryColor,
                   type: WormType.thin,
                 ),
               ),

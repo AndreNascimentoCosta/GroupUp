@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -63,7 +64,7 @@ class IndividualCreatedGroup extends StatelessWidget {
                         const SizedBox(height: Insets.s),
                         MediumBody(
                           text: appLocalizations.ended,
-                          color: kSecondaryColor,
+                          color: GPColors.secondaryColor,
                         ),
                       ],
                     )

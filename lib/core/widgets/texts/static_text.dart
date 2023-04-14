@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 
 class StaticText extends StatelessWidget {
   const StaticText({
@@ -9,7 +10,7 @@ class StaticText extends StatelessWidget {
     this.fontFamily = 'Montserrat-Medium',
     this.fontSize = 12,
     this.fontWeight,
-    this.color = Colors.black,
+    this.color = GPColors.black,
     this.maxLines = 1,
   });
 

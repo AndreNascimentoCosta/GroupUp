@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -32,9 +33,13 @@ class _HomeState extends State<Home> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator.adaptive());
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
           } else if (snapshot.hasData) {
-            return GroupsScreen(homeViewModel: HomeViewModel());
+            return GroupsScreen(
+              homeViewModel: HomeViewModel(),
+            );
           } else if (snapshot.hasError) {
             return Center(
               child: Header(text: AppLocalizations.of(context).generalError),
@@ -74,9 +79,8 @@ class _HomeState extends State<Home> {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                             style: TextStyle(
-                              color: Colors.black,
-                              fontSize:
-                                  context.screenHeight * 0.033,
+                              color: GPColors.black,
+                              fontSize: context.screenHeight * 0.033,
                               fontFamily: 'Montserrat-Medium',
                             ),
                             children: [
@@ -133,10 +137,8 @@ class _HomeState extends State<Home> {
                                         children: [
                                           SizedBox(
                                             height: Platform.isAndroid
-                                                ? context.screenHeight *
-                                                    0.25
-                                                : context.screenHeight *
-                                                    0.325,
+                                                ? context.screenHeight * 0.25
+                                                : context.screenHeight * 0.325,
                                             child: const FirsPageSignUp(),
                                           ),
                                         ],

@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
@@ -47,21 +48,21 @@ void createConnectedAccount(BuildContext context) {
         actions: [
           NextButton(
             text: appLocalizations.cancel,
-            textColor: Colors.red,
-            borderColor: Colors.transparent,
+            textColor: GPColors.red,
+            borderColor: GPColors.transparent,
             onPressed: () {
               Provider.of<MixPanelProvider>(context, listen: false)
                   .logEvent(eventName: 'Cancel Create connected account');
               Navigator.of(context).pop();
             },
-            color: Colors.transparent,
+            color: GPColors.transparent,
             height: 40,
             width: 100,
           ),
           NextButton(
             text: appLocalizations.createAccount,
-            borderColor: kPrimaryColor,
-            color: kPrimaryColor,
+            borderColor: GPColors.primaryColor,
+            color: GPColors.primaryColor,
             onPressed: () async {
               Provider.of<MixPanelProvider>(context, listen: false)
                   .logEvent(eventName: 'Create connected account');
@@ -101,7 +102,7 @@ void createConnectedAccount(BuildContext context) {
                 }
               }
             },
-            textColor: Colors.white,
+            textColor: GPColors.white,
             height: 40,
             width: 160,
           ),

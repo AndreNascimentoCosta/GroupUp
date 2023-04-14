@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -46,7 +47,7 @@ class SavedCard extends StatelessWidget {
             children: [
               const Icon(
                 Icons.credit_card,
-                color: kSecondaryColor,
+                color: GPColors.secondaryColor,
                 size: 30,
               ),
               const SizedBox(width: kDefaultPadding),
@@ -60,7 +61,7 @@ class SavedCard extends StatelessWidget {
                   const SizedBox(height: kDefaultPadding / 2),
                   StaticText(
                     text: '**** **** **** $last4Numbers',
-                    color: kSecondaryColor,
+                    color: GPColors.secondaryColor,
                     fontSize: TextSize.mBody,
                   ),
                 ],
@@ -76,7 +77,7 @@ class SavedCard extends StatelessWidget {
                   const SizedBox(height: kDefaultPadding / 2),
                   StaticText(
                     text: '$expMonth/$expYear',
-                    color: kSecondaryColor,
+                    color: GPColors.secondaryColor,
                     fontSize: TextSize.mBody,
                   ),
                 ],
@@ -96,7 +97,7 @@ class SavedCard extends StatelessWidget {
                   },
                   child: const Icon(
                     Icons.delete_outline_rounded,
-                    color: Colors.red,
+                    color: GPColors.red,
                     size: 30,
                   ),
                 ),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
@@ -39,28 +40,28 @@ void confirmDelete(BuildContext context) {
         actions: [
           NextButton(
             text: appLocalizations.yes,
-            borderColor: Colors.transparent,
-            color: Colors.transparent,
+            borderColor: GPColors.transparent,
+            color: GPColors.transparent,
             onPressed: () => {
               Provider.of<MixPanelProvider>(context, listen: false)
                   .logEvent(eventName: 'Delete Account'),
               authProvider.signOut(context),
               Navigator.of(context).pop(),
             },
-            textColor: kPrimaryColor,
+            textColor: GPColors.primaryColor,
             height: 40,
             width: 140,
           ),
           NextButton(
             text: appLocalizations.no,
-            textColor: Colors.white,
-            borderColor: Colors.red,
+            textColor: GPColors.white,
+            borderColor: GPColors.red,
             onPressed: () {
               Provider.of<MixPanelProvider>(context, listen: false)
                   .logEvent(eventName: 'Cancel Delete Account');
               Navigator.of(context).pop();
             },
-            color: Colors.red,
+            color: GPColors.red,
             height: 40,
             width: 140,
           ),

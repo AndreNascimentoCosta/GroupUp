@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
@@ -206,7 +207,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                     }
                     return SvgPicture.asset(
                       'assets/icons/profile_picture_add.svg',
-                      color: Colors.white,
+                      color: GPColors.white,
                       height: isVerySmallScreen
                           ? Insets.l * 1.5
                           : isSmallScreen
@@ -233,15 +234,15 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
               width: screenHeight * 0.04,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.transparent,
+                  color: GPColors.transparent,
                   width: 4,
                 ),
                 borderRadius: BorderRadius.circular(Insets.xl),
-                color: kPrimaryColor,
+                color: GPColors.primaryColor,
               ),
               child: Icon(
                 Icons.add_rounded,
-                color: Colors.white,
+                color: GPColors.white,
                 size: isVerySmallScreen
                     ? screenHeight * 0.025
                     : isSmallScreen

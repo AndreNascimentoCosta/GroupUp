@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -54,7 +55,7 @@ tiebreakerDialog(BuildContext context) async {
                 child: const StaticText(
                   text: 'OK',
                   fontSize: TextSize.mBody,
-                  color: kPrimaryColor,
+                  color: GPColors.primaryColor,
                 ),
               ),
             )

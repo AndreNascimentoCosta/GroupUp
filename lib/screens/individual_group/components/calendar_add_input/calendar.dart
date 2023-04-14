@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/bottom_calendar.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/bottom_calendar_text_style.dart';
@@ -52,7 +53,7 @@ class _CalendarState extends State<Calendar> {
                       ),
                     ),
                   ),
-                  color: Colors.white,
+                  color: GPColors.white,
                   child: Column(
                     children: [
                       TableCalendar(
@@ -67,14 +68,14 @@ class _CalendarState extends State<Calendar> {
                           weekendTextStyle: bottomCalendarTextStyle(context),
                           holidayTextStyle: bottomCalendarTextStyle(context),
                           rangeEndTextStyle: TextStyle(
-                            color: Colors.white,
+                            color: GPColors.white,
                             fontFamily: 'Montserrat-Medium',
                             fontSize: isVerySmallScreen
                                 ? TextSize.xsBody
                                 : TextSize.mBody,
                           ),
                           rangeStartTextStyle: TextStyle(
-                            color: Colors.white,
+                            color: GPColors.white,
                             fontFamily: 'Montserrat-Medium',
                             fontSize: isVerySmallScreen
                                 ? TextSize.xsBody
@@ -84,14 +85,14 @@ class _CalendarState extends State<Calendar> {
                           rangeStartDecoration: boxDecoration(),
                           rangeEndDecoration: boxDecoration(),
                           withinRangeTextStyle: TextStyle(
-                            color: Colors.white,
+                            color: GPColors.white,
                             fontFamily: 'Montserrat-Medium',
                             fontSize: isVerySmallScreen
                                 ? TextSize.sBody
                                 : TextSize.mBody,
                           ),
                           todayTextStyle: TextStyle(
-                            color: Colors.white,
+                            color: GPColors.white,
                             fontFamily: 'Montserrat-Medium',
                             fontSize: isVerySmallScreen
                                 ? TextSize.sBody
@@ -99,7 +100,7 @@ class _CalendarState extends State<Calendar> {
                           ),
                           todayDecoration: BoxDecoration(
                             border: Border.all(
-                              color: Colors.black,
+                              color: GPColors.black,
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(Insets.xs),

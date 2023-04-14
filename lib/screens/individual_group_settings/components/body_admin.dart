@@ -4,6 +4,7 @@ import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -167,7 +168,7 @@ class BodyAdminSettings extends StatelessWidget {
                               child: const StaticText(
                                 text: 'OK',
                                 fontSize: TextSize.mBody,
-                                color: kPrimaryColor,
+                                color: GPColors.primaryColor,
                               ),
                             ),
                           )
@@ -239,7 +240,7 @@ class BodyAdminSettings extends StatelessWidget {
                               child: const StaticText(
                                 text: 'OK',
                                 fontSize: TextSize.mBody,
-                                color: kPrimaryColor,
+                                color: GPColors.primaryColor,
                               ),
                             ),
                           )
@@ -315,7 +316,7 @@ class BodyAdminSettings extends StatelessWidget {
                 );
               },
               text: appLocalizations.exitGroup,
-              color: Colors.red,
+              color: GPColors.red,
             ),
             SizedBox(height: context.screenHeight * 0.05),
           ],

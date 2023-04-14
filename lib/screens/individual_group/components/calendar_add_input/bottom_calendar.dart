@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/screens/individual_group/components/chart/comparative_chart.dart';
 
@@ -15,7 +16,7 @@ class BottomCalendar extends StatelessWidget {
       alignment: Alignment.bottomRight,
       height: 120,
       width: 400,
-      color: Colors.white,
+      color: GPColors.white,
       child: Padding(
         padding: const EdgeInsets.only(
           top: kDefaultPadding,

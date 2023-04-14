@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/home_view.dart';
@@ -55,7 +56,7 @@ class IndividualValue extends StatelessWidget {
                             : 'assets/icons/arrow_down.png',
                       ),
                       size: kDefaultPadding * 2,
-                      color: Colors.black,
+                      color: GPColors.black,
                     );
                   }),
                 ),

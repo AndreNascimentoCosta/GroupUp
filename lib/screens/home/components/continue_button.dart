@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,11 +19,11 @@ class ContinueButton extends StatelessWidget {
       height: context.screenHeight * 0.085,
       width: context.screenWidth * 0.7,
       decoration: BoxDecoration(
-        color: kPrimaryColor,
+        color: GPColors.primaryColor,
         borderRadius: BorderRadius.circular(Insets.l),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.25),
+            color: GPColors.black.withOpacity(0.25),
             offset: const Offset(0, 4),
             blurRadius: 4,
           ),
@@ -33,7 +34,7 @@ class ContinueButton extends StatelessWidget {
         text: AppLocalizations.of(context).getStarted,
           fontFamily: 'Montserrat-SemiBold',
           fontSize: 22,
-          color: Colors.white,
+          color: GPColors.white,
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -60,7 +61,7 @@ class SavedCardJoinGroupBottomSheet extends StatelessWidget {
           children: [
             const Icon(
               Icons.credit_card,
-              color: kSecondaryColor,
+              color: GPColors.secondaryColor,
               size: 30,
             ),
             const SizedBox(width: kDefaultPadding),
@@ -74,7 +75,7 @@ class SavedCardJoinGroupBottomSheet extends StatelessWidget {
                 const SizedBox(height: kDefaultPadding / 2),
                 StaticText(
                   text: '**** **** **** $last4Numbers',
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                   fontSize: TextSize.mBody,
                 ),
               ],
@@ -90,7 +91,7 @@ class SavedCardJoinGroupBottomSheet extends StatelessWidget {
                 const SizedBox(height: kDefaultPadding / 2),
                 StaticText(
                   text: '$expMonth/$expYear',
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                   fontSize: TextSize.mBody,
                 ),
               ],
@@ -102,7 +103,7 @@ class SavedCardJoinGroupBottomSheet extends StatelessWidget {
                   'assets/icons/arrow_right.svg',
                   height: Insets.l * 1.25,
                   width: Insets.l * 1.25,
-                  color: kSecondaryColor,
+                  color: GPColors.secondaryColor,
                 ),
               ),
             ),

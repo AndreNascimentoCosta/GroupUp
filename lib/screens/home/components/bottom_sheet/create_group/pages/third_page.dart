@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
@@ -34,14 +35,14 @@ class ThirdPageCreate extends StatelessWidget {
             'assets/icons/completed.svg',
             height: context.screenHeight * 0.2,
             width: context.screenHeight * 0.2,
-            color: kPrimaryColor,
+            color: GPColors.primaryColor,
           ),
           const SizedBox(height: kDefaultPadding),
           StaticText(
             text: appLocalizations.completed,
             fontFamily: 'Montserrat-SemiBold',
             fontSize: 28,
-            color: kPrimaryColor,
+            color: GPColors.primaryColor,
           ),
           SizedBox(height: context.screenHeight * 0.035),
           Row(

@@ -2,6 +2,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/saved_cards/components/saved_card.dart';
 import 'package:provider/provider.dart';
@@ -52,7 +53,7 @@ class BodySavedCards extends StatelessWidget {
                             alignment: Alignment.topCenter,
                             child: StaticText(
                               text: appLocalizations.noSavedCards,
-                              color: kSecondaryColor,
+                              color: GPColors.secondaryColor,
                               textAlign: TextAlign.center,
                               fontSize: 20,
                             ),
@@ -71,7 +72,7 @@ class BodySavedCards extends StatelessWidget {
                     endIndent: kDefaultPadding,
                     height: 20,
                     thickness: 0.5,
-                    color: kSecondaryColor,
+                    color: GPColors.secondaryColor,
                   ),
                   itemCount: snapshot.data?.data['paymentMethods'].length,
                   itemBuilder: (context, index) => SavedCard(

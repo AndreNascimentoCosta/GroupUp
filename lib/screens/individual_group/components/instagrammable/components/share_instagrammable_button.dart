@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/body_instagrammable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
@@ -81,7 +81,7 @@ class ShareInstagrammableButton extends StatelessWidget {
               ],
             );
           },
-          backgroundColor: kPrimaryColor,
+          backgroundColor: GPColors.primaryColor,
           highlightElevation: 0,
           elevation: 0,
           child: const Icon(
