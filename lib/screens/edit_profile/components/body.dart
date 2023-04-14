@@ -104,7 +104,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(Insets.l * 6),
                                 ),
-                                color: Colors.black54,
+                                color: GPColors.black,
                               ),
                               child: const Center(
                                 child: CircularProgressIndicator.adaptive(),

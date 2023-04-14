@@ -140,7 +140,7 @@ class IndividualCardBalance extends StatelessWidget {
                           ? LargeBody(
                               text:
                                   'R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
-                              color: Colors.green,
+                              color: GPColors.green,
                             )
                           : LargeBody(
                               text:
@@ -162,7 +162,7 @@ class IndividualCardBalance extends StatelessWidget {
                           ? LargeBody(
                               text:
                                   'R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
-                              color: Colors.green,
+                              color: GPColors.green,
                             )
                           : LargeBody(
                               text:

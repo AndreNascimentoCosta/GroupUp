@@ -195,7 +195,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                                             : Insets.l * 6,
                                   ),
                                 ),
-                                color: Colors.black54,
+                                color: GPColors.black,
                               ),
                               child: const Center(
                                 child: CircularProgressIndicator.adaptive(),
