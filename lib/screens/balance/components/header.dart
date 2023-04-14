@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/balance_auto_size.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/design-system.dart';
@@ -51,7 +52,7 @@ class HeaderBalance extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
+                        width: context.screenWidth * 0.5,
                         child: BalanceAutoSize(
                           text: 'R\$ ${NumberFormat.decimalPattern(
                             Localizations.localeOf(context).toString(),
@@ -62,7 +63,7 @@ class HeaderBalance extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                      SizedBox(width: context.screenWidth * 0.1),
                       Button(
                         onPressed: () async {
                           if (isLoading) return;

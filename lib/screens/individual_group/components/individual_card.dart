@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -62,7 +63,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                         left: kDefaultPadding / 2,
                       ),
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.075,
+                        width: context.screenWidth * 0.075,
                         child: ExtraLargeBody(
                           text: widget.participant
                               .rank(individualGroupProvider.group),
@@ -74,7 +75,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                         ),
                       ),
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+                    SizedBox(width: context.screenWidth * 0.01),
                     ButtonCommonStyle(
                       onPressed: () {
                         Provider.of<MixPanelProvider>(context, listen: false)
@@ -167,10 +168,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                           widget.participant.uid
                                       ? Padding(
                                           padding: EdgeInsets.only(
-                                            left: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.02,
+                                            left: context.screenWidth * 0.02,
                                           ),
                                           child: StaticText(
                                             text: appLocalizations.me,
@@ -181,10 +179,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                         )
                                       : Padding(
                                           padding: EdgeInsets.only(
-                                            left: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.02,
+                                            left: context.screenWidth * 0.02,
                                           ),
                                           child: StaticText(
                                             text: Characters(
@@ -247,7 +242,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                         ),
                         const Spacer(),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.6,
+                          width: context.screenWidth * 0.6,
                           child: ComparativeChart(
                             userData1: widget.participant.inputData,
                           ),

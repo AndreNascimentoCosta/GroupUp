@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
@@ -21,8 +22,8 @@ class HeaderIndividualGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final appLocalizations = AppLocalizations.of(context);
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = context.screenHeight;
+    final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     if (group == null) {
@@ -94,7 +95,7 @@ class HeaderIndividualGroup extends StatelessWidget {
               bottom: kDefaultPadding,
             ),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
+              width: context.screenWidth * 0.8,
               child: GroupTitle(
                 text: group.projectName,
                 textAlign: TextAlign.center,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/models/switch.dart';
 
@@ -17,7 +18,7 @@ class _BodySwitchState extends State<BodySwitch> {
   final SwitchModel switchModel = SwitchModel();
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = context.screenWidth;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Row(

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
@@ -25,8 +26,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = context.screenHeight;
+    final screenWidth = context.screenWidth;
     final isAndroidScreen =
         screenHeight > 820 && screenHeight < 821 && screenWidth < 412;
     final isScreenSize0 = screenHeight < 620 && screenWidth < 350;

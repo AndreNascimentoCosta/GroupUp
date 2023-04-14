@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
@@ -59,15 +60,15 @@ class _HomeState extends State<Home> {
                           fontFamily: 'Montserrat-Bold',
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.1,
+                          height: context.screenHeight * 0.1,
                         ),
                         Image.asset(
                           'assets/images/target2.png',
-                          height: MediaQuery.of(context).size.height * 0.35,
+                          height: context.screenHeight * 0.35,
                           fit: BoxFit.fitHeight,
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
+                          height: context.screenHeight * 0.05,
                         ),
                         RichText(
                           textAlign: TextAlign.center,
@@ -75,7 +76,7 @@ class _HomeState extends State<Home> {
                             style: TextStyle(
                               color: Colors.black,
                               fontSize:
-                                  MediaQuery.of(context).size.height * 0.033,
+                                  context.screenHeight * 0.033,
                               fontFamily: 'Montserrat-Medium',
                             ),
                             children: [
@@ -107,7 +108,7 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.065,
+                          height: context.screenHeight * 0.065,
                         ),
                         ButtonCommonStyle(
                           onPressed: () {
@@ -124,7 +125,7 @@ class _HomeState extends State<Home> {
                               ),
                               builder: (context) {
                                 return Padding(
-                                  padding: MediaQuery.of(context).viewInsets,
+                                  padding: context.screenViewInsets,
                                   child: Wrap(
                                     children: <Widget>[
                                       Column(
@@ -132,13 +133,9 @@ class _HomeState extends State<Home> {
                                         children: [
                                           SizedBox(
                                             height: Platform.isAndroid
-                                                ? MediaQuery.of(context)
-                                                        .size
-                                                        .height *
+                                                ? context.screenHeight *
                                                     0.25
-                                                : MediaQuery.of(context)
-                                                        .size
-                                                        .height *
+                                                : context.screenHeight *
                                                     0.325,
                                             child: const FirsPageSignUp(),
                                           ),

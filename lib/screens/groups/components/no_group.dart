@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -22,7 +23,7 @@ class NoGroup extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
         child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.725,
+          height: context.screenHeight * 0.725,
           child: Column(
             children: [
               ButtonCommonStyle(
@@ -39,7 +40,7 @@ class NoGroup extends StatelessWidget {
                     ),
                     builder: (context) {
                       return Padding(
-                        padding: MediaQuery.of(context).viewInsets,
+                        padding: context.screenViewInsets,
                         child: Wrap(
                           children: <Widget>[
                             Column(
@@ -47,7 +48,7 @@ class NoGroup extends StatelessWidget {
                               children: [
                                 SizedBox(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.7,
+                                      context.screenHeight * 0.7,
                                   child: const CreatePageView(),
                                 ),
                               ],

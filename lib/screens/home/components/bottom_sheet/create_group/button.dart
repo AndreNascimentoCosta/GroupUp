@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
@@ -25,14 +26,14 @@ class CreateGroupButton extends StatelessWidget {
           ),
           builder: (context) {
             return Padding(
-              padding: MediaQuery.of(context).viewInsets,
+              padding: context.screenViewInsets,
               child: Wrap(
                 children: <Widget>[
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.7,
+                        height: context.screenHeight * 0.7,
                         child: const CreatePageView(),
                       ),
                     ],

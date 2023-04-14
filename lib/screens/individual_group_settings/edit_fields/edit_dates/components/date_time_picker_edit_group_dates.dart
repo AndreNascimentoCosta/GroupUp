@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:intl/intl.dart';
@@ -83,8 +84,8 @@ class _DateTimePickerEditGroupDatesState
     final editGroupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = context.screenHeight;
+    final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
     if (individualGroupProvider.group == null) {

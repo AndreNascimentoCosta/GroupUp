@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
@@ -28,11 +29,11 @@ class ThirdPageCreate extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(height: MediaQuery.of(context).size.height * 0.035),
+          SizedBox(height: context.screenHeight * 0.035),
           SvgPicture.asset(
             'assets/icons/completed.svg',
-            height: MediaQuery.of(context).size.height * 0.2,
-            width: MediaQuery.of(context).size.height * 0.2,
+            height: context.screenHeight * 0.2,
+            width: context.screenHeight * 0.2,
             color: kPrimaryColor,
           ),
           const SizedBox(height: kDefaultPadding),
@@ -42,7 +43,7 @@ class ThirdPageCreate extends StatelessWidget {
             fontSize: 28,
             color: kPrimaryColor,
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.035),
+          SizedBox(height: context.screenHeight * 0.035),
           Row(
             children: [
               SizedBox(

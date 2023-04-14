@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/models/group_model.dart';
@@ -24,8 +25,8 @@ class BodyNotAdminSettings extends StatelessWidget {
     final createGroupProvider =
         Provider.of<CreateGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context);
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = context.screenHeight;
+    final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     return Padding(
@@ -96,7 +97,7 @@ class BodyNotAdminSettings extends StatelessWidget {
               text: appLocalizations.exitGroup,
               color: Colors.red,
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            SizedBox(height: context.screenHeight * 0.05),
           ],
         ),
       ),

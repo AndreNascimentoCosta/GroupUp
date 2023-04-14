@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -121,7 +122,7 @@ class _FirsPageSignUpState extends State<FirsPageSignUp> {
                     ),
                     builder: (context) {
                       return Padding(
-                        padding: MediaQuery.of(context).viewInsets,
+                        padding: context.screenViewInsets,
                         child: Wrap(
                           children: <Widget>[
                             Column(

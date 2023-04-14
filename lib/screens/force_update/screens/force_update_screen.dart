@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,17 +21,17 @@ class ForceUpdateScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              SizedBox(height: context.screenHeight * 0.05),
               StaticText(
                 text: '${appLocalizations.update} GroupUp',
                 textAlign: TextAlign.center,
                 fontSize: 30,
                 fontFamily: 'Montserrat-SemiBold',
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+              SizedBox(height: context.screenHeight * 0.03),
               Image.asset(
                 'assets/icons/logo_circle.png',
-                height: MediaQuery.of(context).size.height * 0.15,
+                height: context.screenHeight * 0.15,
               ),
               const Spacer(),
               StaticText(
@@ -40,7 +41,7 @@ class ForceUpdateScreen extends StatelessWidget {
                 fontSize: 22,
                 fontFamily: 'Montserrat-Medium',
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              SizedBox(height: context.screenHeight * 0.05),
               NextButton(
                 text: appLocalizations.update,
                 onPressed: () async {
@@ -55,7 +56,7 @@ class ForceUpdateScreen extends StatelessWidget {
                   }
                 },
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.025)
+              SizedBox(height: context.screenHeight * 0.025)
             ],
           ),
         ),

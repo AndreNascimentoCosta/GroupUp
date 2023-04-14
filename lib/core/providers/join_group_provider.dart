@@ -163,7 +163,7 @@ class JoinGroupProvider extends ChangeNotifier {
         //         ),
         //         builder: (context) {
         //           return Padding(
-        //             padding: MediaQuery.of(context).viewInsets,
+        //             padding: context.screenViewInsets,
         //             child: Wrap(
         //               children: <Widget>[
         //                 Column(

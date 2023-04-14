@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 
 class AppBarInstagrammable extends StatelessWidget with PreferredSizeWidget {
@@ -20,9 +21,9 @@ class AppBarInstagrammable extends StatelessWidget with PreferredSizeWidget {
             children: [
               Container(
                 width: isSharing
-                    ? MediaQuery.of(context).size.width -
-                        MediaQuery.of(context).size.width * 0.13
-                    : MediaQuery.of(context).size.width,
+                    ? context.screenWidth -
+                        context.screenWidth * 0.13
+                    : context.screenWidth,
                 height: 50,
                 alignment: AlignmentDirectional.center,
                 child: const Header(text: 'GroupUp'),

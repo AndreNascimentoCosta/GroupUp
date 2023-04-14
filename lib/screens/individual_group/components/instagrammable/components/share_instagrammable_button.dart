@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
@@ -16,8 +17,8 @@ class ShareInstagrammableButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = context.screenHeight;
+    final screenWidth = context.screenWidth;
     final isAndroidScreen =
         screenHeight > 820 && screenHeight < 821 && screenWidth < 412;
     final individualGroupProvider =
@@ -37,7 +38,7 @@ class ShareInstagrammableButton extends StatelessWidget {
             final screenshotController =
                 Provider.of<InstagrammableProvider>(context, listen: false)
                     .screenshotController;
-            final size = MediaQuery.of(context).size;
+            final size = context.screenSize;
             final imageFile = await screenshotController.captureFromWidget(
               MultiProvider(
                 providers: [

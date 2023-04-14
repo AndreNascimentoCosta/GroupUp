@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 
 class ProfilePictureShow extends StatelessWidget {
@@ -19,7 +20,7 @@ class ProfilePictureShow extends StatelessWidget {
         alignment: AlignmentDirectional.topCenter,
         children: [
           CircleAvatar(
-            radius: MediaQuery.of(context).size.height * 0.06,
+            radius: context.screenHeight * 0.06,
             backgroundColor: const Color(0XFFE1E1E1),
             child: child,
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
@@ -16,8 +17,8 @@ class BodyContentSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = context.screenHeight;
+    final screenWidth = context.screenWidth;
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     final group = Provider.of<IndividualGroupProvider>(context).group;

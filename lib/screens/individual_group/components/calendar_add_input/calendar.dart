@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/bottom_calendar.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/bottom_calendar_text_style.dart';
@@ -24,8 +25,8 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final user = Provider.of<AuthProvider>(context).user;
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = context.screenHeight;
+    final screenWidth = context.screenWidth;
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
     if (group == null) {
       return const CircularProgressIndicator.adaptive();

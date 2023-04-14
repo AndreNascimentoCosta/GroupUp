@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -40,7 +41,7 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
                   ),
                   builder: (context) {
                     return Padding(
-                      padding: MediaQuery.of(context).viewInsets,
+                      padding: context.screenViewInsets,
                       child: Wrap(
                         children: <Widget>[
                           Column(

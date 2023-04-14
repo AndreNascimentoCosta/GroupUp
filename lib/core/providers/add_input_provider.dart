@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -94,7 +95,7 @@ class AddInputProvider extends ChangeNotifier {
                   ),
                   builder: (context) {
                     return Padding(
-                      padding: MediaQuery.of(context).viewInsets,
+                      padding: context.screenViewInsets,
                       child: Wrap(
                         children: <Widget>[
                           Column(
@@ -102,7 +103,7 @@ class AddInputProvider extends ChangeNotifier {
                             children: [
                               SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.185,
+                                    context.screenHeight * 0.185,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       vertical: kDefaultPadding * 1.75),

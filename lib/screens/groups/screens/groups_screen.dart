@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
@@ -59,7 +60,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
             ),
             builder: (context) {
               return Padding(
-                padding: MediaQuery.of(context).viewInsets,
+                padding: context.screenViewInsets,
                 child: Wrap(
                   children: <Widget>[
                     Column(
@@ -109,7 +110,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.095,
+        height: context.screenHeight * 0.095,
         child: ValueListenableBuilder(
           valueListenable: homeViewModel.isEditing,
           builder: (context, value, child) {

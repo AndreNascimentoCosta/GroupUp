@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -66,7 +67,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
                     type: WormType.thin,
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: context.screenHeight * 0.05),
                 ButtonCommonStyle(
                   onPressed: () {
                     if (_pageController.page == 3) {
@@ -93,7 +94,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
                     ),
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.075),
+                SizedBox(height: context.screenHeight * 0.075),
               ],
             ),
           );

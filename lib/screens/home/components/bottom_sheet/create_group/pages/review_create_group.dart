@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -33,7 +34,7 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                SizedBox(height: context.screenHeight * 0.04),
                 const StaticText(
                   text: 'Review group info',
                   fontSize: TextSize.lBody,
@@ -58,7 +59,7 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                     ),
                   ],
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                SizedBox(height: context.screenHeight * 0.025),
                 Row(
                   children: [
                     StaticText(
@@ -76,7 +77,7 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                     ),
                   ],
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                SizedBox(height: context.screenHeight * 0.025),
                 Row(
                   children: [
                     StaticText(
@@ -95,7 +96,7 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                     ),
                   ],
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                SizedBox(height: context.screenHeight * 0.025),
                 Row(
                   children: [
                     StaticText(
@@ -114,7 +115,7 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                     ),
                   ],
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                SizedBox(height: context.screenHeight * 0.025),
                 Row(
                   children: [
                     StaticText(
@@ -130,7 +131,7 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                     ),
                   ],
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                SizedBox(height: context.screenHeight * 0.025),
                 Row(
                   children: [
                     StaticText(

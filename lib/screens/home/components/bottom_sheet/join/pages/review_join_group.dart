@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -60,7 +61,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                   child: Column(
                     children: [
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04),
+                          height: context.screenHeight * 0.04),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -80,7 +81,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02),
+                          height: context.screenHeight * 0.02),
                       Row(
                         children: [
                           StaticText(
@@ -99,7 +100,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02),
+                          height: context.screenHeight * 0.02),
                       Row(
                         children: [
                           StaticText(
@@ -119,7 +120,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02),
+                          height: context.screenHeight * 0.02),
                       Row(
                         children: [
                           StaticText(
@@ -139,7 +140,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02),
+                          height: context.screenHeight * 0.02),
                       Row(
                         children: [
                           StaticText(
@@ -161,7 +162,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02),
+                          height: context.screenHeight * 0.02),
                       Row(
                         children: [
                           StaticText(

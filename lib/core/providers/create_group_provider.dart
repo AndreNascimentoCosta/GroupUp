@@ -9,6 +9,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
@@ -202,8 +203,8 @@ class CreateGroupProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext newContext) {
-        final screenHeight = MediaQuery.of(context).size.height;
-        final screenWidth = MediaQuery.of(context).size.width;
+        final screenHeight = context.screenHeight;
+        final screenWidth = context.screenWidth;
         final isSmallScreen = screenHeight < 800 || screenWidth < 350;
         final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
         return AlertDialog(
@@ -305,7 +306,7 @@ class CreateGroupProvider extends ChangeNotifier {
             //             ),
             //             builder: (context) {
             //               return Padding(
-            //                 padding: MediaQuery.of(context).viewInsets,
+            //                 padding: context.screenViewInsets,
             //                 child: Wrap(
             //                   children: <Widget>[
             //                     Column(

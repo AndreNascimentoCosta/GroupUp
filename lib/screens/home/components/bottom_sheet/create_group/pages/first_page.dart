@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
@@ -183,7 +184,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.035),
+            SizedBox(height: context.screenHeight * 0.035),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
@@ -202,7 +203,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                 ],
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: context.screenHeight * 0.02),
             TextFieldModelHome(
               focusNode: node1,
               controller: createGroupProvider.controllerProjectName,
@@ -232,7 +233,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                   )
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.035),
+            SizedBox(height: context.screenHeight * 0.035),
             TextFieldModelHome(
               focusNode: node2,
               controller: createGroupProvider.controllerObjective,
@@ -262,7 +263,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
                   )
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.035),
+            SizedBox(height: context.screenHeight * 0.035),
             Padding(
               padding: const EdgeInsets.only(), //only(left: kDefaultPadding)
               child: Row(

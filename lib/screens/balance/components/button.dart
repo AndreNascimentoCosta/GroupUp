@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -22,8 +23,8 @@ class Button extends StatelessWidget {
       onPressed: onPressed,
       child: Container(
         alignment: AlignmentDirectional.center,
-        height: MediaQuery.of(context).size.height * 0.05,
-        width: MediaQuery.of(context).size.width * 0.275,
+        height: context.screenHeight * 0.05,
+        width: context.screenWidth * 0.275,
         decoration: BoxDecoration(
           border: Border.all(color: buttonColor),
           borderRadius: BorderRadius.circular(Insets.l),

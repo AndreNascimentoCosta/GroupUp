@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 
 class BuilderBottomSheet extends StatelessWidget {
   const BuilderBottomSheet({required this.height, required this.child});
@@ -9,7 +10,7 @@ class BuilderBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-          padding: MediaQuery.of(context).viewInsets,
+          padding: context.screenViewInsets,
           child: Wrap(
             children: <Widget>[
               Column(

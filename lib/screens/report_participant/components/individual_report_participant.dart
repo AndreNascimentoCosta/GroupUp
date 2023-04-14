@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -79,7 +80,7 @@ class IndividualParticipant extends StatelessWidget {
               ),
             const SizedBox(width: kDefaultPadding),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.4,
+              width: context.screenWidth * 0.4,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: StaticText(

@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
@@ -97,7 +98,7 @@ groupEndedDialog(BuildContext context) {
           // else
           SizedBox(
             width: currentUserRank == '1º'
-                ? MediaQuery.of(context).size.width * 0.2
+                ? context.screenWidth * 0.2
                 : double.infinity,
             child: ButtonCommonStyle(
               onPressed: () {
@@ -122,7 +123,7 @@ groupEndedDialog(BuildContext context) {
           //   const SizedBox()
           // else if (currentUserRank == '1º')
           //   SizedBox(
-          //     width: MediaQuery.of(context).size.width * 0.5,
+          //     width: context.screenWidth * 0.5,
           //     child: NextButton(
           //       onPressed: () async {
           //         late bool isAllClaimed;
@@ -160,7 +161,7 @@ groupEndedDialog(BuildContext context) {
           //         );
           //       },
           //       text: appLocalizations.claimReward,
-          //       width: MediaQuery.of(context).size.width * 0.4,
+          //       width: context.screenWidth * 0.4,
           //     ),
           //   )
           // else

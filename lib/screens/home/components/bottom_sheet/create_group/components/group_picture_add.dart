@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
@@ -49,8 +50,8 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context);
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = context.screenHeight;
+    final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
     final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
     return ButtonCommonStyle(
@@ -65,14 +66,14 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
           ),
           builder: (context) {
             return Padding(
-              padding: MediaQuery.of(context).viewInsets,
+              padding: context.screenViewInsets,
               child: Wrap(
                 children: <Widget>[
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.185,
+                        height: context.screenHeight * 0.185,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                             vertical: kDefaultPadding * 1.75,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
@@ -23,7 +24,7 @@ class AppBarSavedCards extends StatelessWidget with PreferredSizeWidget {
             alignment: AlignmentDirectional.centerStart,
             children: [
               Container(
-                width: MediaQuery.of(context).size.width,
+                width: context.screenWidth,
                 height: 50,
                 decoration: const BoxDecoration(
                   border: Border(

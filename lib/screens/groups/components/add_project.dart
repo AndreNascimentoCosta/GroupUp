@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/screens/groups/components/add_bottom_sheet.dart';
 import 'package:provider/provider.dart';
@@ -23,14 +24,14 @@ class AddProject extends StatelessWidget {
             ),
             builder: (context) {
               return Padding(
-                padding: MediaQuery.of(context).viewInsets,
+                padding: context.screenViewInsets,
                 child: Wrap(
                   children: <Widget>[
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.35,
+                          height: context.screenHeight * 0.35,
                           child: const AddBottomSheet(),
                         ),
                       ],
