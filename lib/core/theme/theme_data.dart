@@ -8,7 +8,9 @@ final themeData = ThemeData(
     systemOverlayStyle: SystemUiOverlayStyle.dark,
   ),
   splashColor: Colors.transparent,
-  colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kSecondaryColor),
+  colorScheme: ColorScheme.fromSwatch().copyWith(
+    secondary: kSecondaryColor,
+  ),
   pageTransitionsTheme: const PageTransitionsTheme(
     builders: {
       TargetPlatform.android: CupertinoPageTransitionsBuilder(),
@@ -17,20 +19,44 @@ final themeData = ThemeData(
   ),
   inputDecorationTheme: const InputDecorationTheme(
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
-      borderSide: BorderSide(color: kSecondaryColor),
+      borderRadius: BorderRadius.all(
+        Radius.circular(
+          Insets.s,
+        ),
+      ),
+      borderSide: BorderSide(
+        color: kSecondaryColor,
+      ),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
-      borderSide: BorderSide(color: Colors.red),
+      borderRadius: BorderRadius.all(
+        Radius.circular(
+          Insets.s,
+        ),
+      ),
+      borderSide: BorderSide(
+        color: Colors.red,
+      ),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
-      borderSide: BorderSide(color: kPrimaryColor),
+      borderRadius: BorderRadius.all(
+        Radius.circular(
+          Insets.s,
+        ),
+      ),
+      borderSide: BorderSide(
+        color: kPrimaryColor,
+      ),
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
-      borderSide: BorderSide(color: Colors.red),
+      borderRadius: BorderRadius.all(
+        Radius.circular(
+          Insets.s,
+        ),
+      ),
+      borderSide: BorderSide(
+        color: Colors.red,
+      ),
     ),
   ),
 );
