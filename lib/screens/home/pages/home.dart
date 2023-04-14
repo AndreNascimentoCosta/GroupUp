@@ -56,56 +56,54 @@ class _HomeState extends State<Home> {
                 right: kDefaultPadding * 1.5,
                 left: kDefaultPadding * 1.5,
               ),
-              child: ListView(
-                physics: const NeverScrollableScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const SizedBox(
-                        height: Insets.l * 2,
-                      ),
-                      const StaticText(
-                        text: 'GroupUp',
-                        textAlign: TextAlign.center,
-                        fontSize: 34,
-                        fontFamily: 'Montserrat-Bold',
-                      ),
-                      SizedBox(
-                        height: context.screenHeight * 0.1,
-                      ),
-                      Image.asset(
-                        'assets/images/target2.png',
-                        height: context.screenHeight * 0.35,
-                        fit: BoxFit.fitHeight,
-                      ),
-                      SizedBox(
-                        height: context.screenHeight * 0.05,
-                      ),
-                      const SubtitleHome(),
-                      SizedBox(
-                        height: context.screenHeight * 0.065,
-                      ),
-                      ButtonCommonStyle(
-                        onPressed: () {
-                          Provider.of<MixPanelProvider>(context, listen: false)
-                              .logEvent(
-                                  eventName:
-                                      'Home Screen - Get Started Button');
-                          gpModalBottomSheet(
-                            context,
-                            Platform.isAndroid
-                                ? context.screenHeight * 0.25
-                                : context.screenHeight * 0.325,
-                            const FirsPageSignUp(),
-                          );
-                        },
-                        child: Provider.of<AuthProvider>(context).loading
-                            ? const CircularProgressIndicator.adaptive()
-                            : const ContinueButton(),
-                      ),
-                      const SizedBox(height: Insets.l),
-                    ],
+                  const SizedBox(
+                    height: Insets.l * 2,
+                  ),
+                  const StaticText(
+                    text: 'GroupUp',
+                    textAlign: TextAlign.center,
+                    fontSize: 34,
+                    fontFamily: 'Montserrat-Bold',
+                  ),
+                  SizedBox(
+                    height: context.screenHeight * 0.1,
+                  ),
+                  Image.asset(
+                    'assets/images/target2.png',
+                    height: context.screenHeight * 0.35,
+                    fit: BoxFit.fitHeight,
+                  ),
+                  SizedBox(
+                    height: context.screenHeight * 0.05,
+                  ),
+                  const SubtitleHome(),
+                  SizedBox(
+                    height: context.screenHeight * 0.065,
+                  ),
+                  ButtonCommonStyle(
+                    onPressed: () {
+                      Provider.of<MixPanelProvider>(
+                        context,
+                        listen: false,
+                      ).logEvent(
+                          eventName: 'Home Screen - Get Started Button');
+                      gpModalBottomSheet(
+                        context,
+                        Platform.isAndroid
+                            ? context.screenHeight * 0.25
+                            : context.screenHeight * 0.325,
+                        const FirsPageSignUp(),
+                      );
+                    },
+                    child: Provider.of<AuthProvider>(context).loading
+                        ? const CircularProgressIndicator.adaptive()
+                        : const ContinueButton(),
+                  ),
+                  const SizedBox(
+                    height: Insets.l,
                   ),
                 ],
               ),

@@ -15,16 +15,25 @@ class CreateGroupButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonCommonStyle(
       onPressed: () {
-        Provider.of<CreateGroupProvider>(context, listen: false).clean();
-        Provider.of<MixPanelProvider>(context, listen: false)
-            .logEvent(eventName: 'Create Group Button');
+        Provider.of<CreateGroupProvider>(
+          context,
+          listen: false,
+        ).clean();
+        Provider.of<MixPanelProvider>(
+          context,
+          listen: false,
+        ).logEvent(
+          eventName: 'Create Group Button',
+        );
         gpModalBottomSheet(
           context,
           context.screenHeight * 0.7,
           const CreatePageView(),
         );
       },
-      child: const HomeButton(isGreen: false),
+      child: const HomeButton(
+        isJoinButton: false,
+      ),
     );
   }
 }

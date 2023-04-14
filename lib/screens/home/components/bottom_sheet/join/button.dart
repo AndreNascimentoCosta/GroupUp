@@ -14,16 +14,25 @@ class JoinGroupButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonCommonStyle(
       onPressed: () {
-        Provider.of<JoinGroupProvider>(context, listen: false).clean();
-        Provider.of<MixPanelProvider>(context, listen: false)
-            .logEvent(eventName: 'Join Group Button');
+        Provider.of<JoinGroupProvider>(
+          context,
+          listen: false,
+        ).clean();
+        Provider.of<MixPanelProvider>(
+          context,
+          listen: false,
+        ).logEvent(
+          eventName: 'Join Group Button',
+        );
         gpModalBottomSheet(
           context,
           420,
           const JoinPageView(),
         );
       },
-      child: const HomeButton(isGreen: true),
+      child: const HomeButton(
+        isJoinButton: true,
+      ),
     );
   }
 }

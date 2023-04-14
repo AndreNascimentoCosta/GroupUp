@@ -39,7 +39,10 @@ class NextButton extends StatelessWidget {
       child: ButtonCommonStyle(
         onPressed: onPressed,
         child: StaticText(
-          text: text ?? AppLocalizations.of(context).next,
+          text: text ??
+              AppLocalizations.of(
+                context,
+              ).next,
           fontFamily: 'Montserrat-SemiBold',
           fontSize: TextSize.lBody,
           color: textColor,
