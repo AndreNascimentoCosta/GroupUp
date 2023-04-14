@@ -20,21 +20,25 @@ class ContinueButton extends StatelessWidget {
       width: context.screenWidth * 0.7,
       decoration: BoxDecoration(
         color: GPColors.primaryColor,
-        borderRadius: BorderRadius.circular(Insets.l),
+        borderRadius: BorderRadius.circular(
+          Insets.l,
+        ),
         boxShadow: [
           BoxShadow(
-            color: GPColors.black.withOpacity(0.25),
+            color: GPColors.black.withOpacity(
+              0.25,
+            ),
             offset: const Offset(0, 4),
             blurRadius: 4,
           ),
-        ]
+        ],
       ),
       alignment: Alignment.center,
       child: StaticText(
         text: AppLocalizations.of(context).getStarted,
-          fontFamily: 'Montserrat-SemiBold',
-          fontSize: 22,
-          color: GPColors.white,
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 22,
+        color: GPColors.white,
       ),
     );
   }
