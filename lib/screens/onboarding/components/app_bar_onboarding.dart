@@ -4,7 +4,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/screens/home/screens/home.dart';
+import 'package:groupup/screens/home/pages/home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarOnboarding extends StatelessWidget with PreferredSizeWidget {
@@ -37,10 +37,11 @@ class AppBarOnboarding extends StatelessWidget with PreferredSizeWidget {
                   child: ButtonCommonStyle(
                     onPressed: () {
                       Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                            builder: (context) => const Home(),
-                          ),
-                          (route) => false);
+                        MaterialPageRoute(
+                          builder: (context) => const Home(),
+                        ),
+                        (route) => false,
+                      );
                     },
                     child: StaticText(
                       text: appLocalizations.skip,
