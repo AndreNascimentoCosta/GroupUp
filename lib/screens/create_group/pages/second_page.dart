@@ -11,7 +11,7 @@ import 'package:groupup/screens/create_group/components/date_time_picker_create_
 import 'package:groupup/screens/create_group/components/group_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/screens/home/components/text_field.dart';
+import 'package:groupup/screens/home/components/text_field_home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

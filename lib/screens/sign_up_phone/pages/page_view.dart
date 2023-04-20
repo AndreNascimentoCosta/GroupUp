@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/sign_up_phone/pages/first_page.dart';
 import 'package:groupup/screens/sign_up_phone/pages/second_page.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -100,7 +100,7 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
           Builder(builder: (context) {
             return Provider.of<PhoneAuthenProvider>(context).pageIndex != 0
                 ? const SizedBox()
-                : NextButton(
+                : GPButton(
                     onPressed: Provider.of<PhoneAuthenProvider>(context)
                         .nextPressedPhone(context),
                   );

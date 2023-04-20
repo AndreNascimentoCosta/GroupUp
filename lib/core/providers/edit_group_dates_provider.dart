@@ -6,7 +6,7 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -100,7 +100,7 @@ class EditGroupDatesProvider extends ChangeNotifier {
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
           actions: [
-            NextButton(
+            GPButton(
               text: appLocalizations.yesDiscard,
               textColor: GPColors.red,
               borderColor: GPColors.transparent,
@@ -113,7 +113,7 @@ class EditGroupDatesProvider extends ChangeNotifier {
               height: 40,
               width: 140,
             ),
-            NextButton(
+            GPButton(
               text: appLocalizations.noKeep,
               borderColor: GPColors.primaryColor,
               onPressed: () {

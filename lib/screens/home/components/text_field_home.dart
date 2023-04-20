@@ -91,12 +91,24 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
             onFieldSubmitted: widget.submitted,
             decoration: InputDecoration(
               enabledBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
-                borderSide: BorderSide(color: GPColors.secondaryColor),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(
+                    Insets.s,
+                  ),
+                ),
+                borderSide: BorderSide(
+                  color: GPColors.secondaryColor,
+                ),
               ),
               focusedBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(Insets.s)),
-                borderSide: BorderSide(color: GPColors.primaryColor),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(
+                    Insets.s,
+                  ),
+                ),
+                borderSide: BorderSide(
+                  color: GPColors.primaryColor,
+                ),
               ),
               prefixIcon: widget.prefixIcon,
               prefixIconConstraints: const BoxConstraints(
@@ -114,21 +126,30 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
                         color: GPColors.secondaryColor,
                       ),
                       onPressed: () {
-                        Provider.of<MixPanelProvider>(context, listen: false)
-                            .logEvent(eventName: 'Clear Text');
+                        Provider.of<MixPanelProvider>(
+                          context,
+                          listen: false,
+                        ).logEvent(
+                          eventName: 'Clear Text',
+                        );
                         widget.controller.clear();
                       },
                     ),
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: kDefaultPadding / 2,
+              ),
               hintText: widget.hint,
               hintStyle: const TextStyle(
                 fontFamily: 'Montserrat-Medium',
                 fontSize: TextSize.mBody,
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Insets.m),
-                borderSide: const BorderSide(color: GPColors.secondaryColor),
+                borderRadius: BorderRadius.circular(
+                  Insets.m,
+                ),
+                borderSide: const BorderSide(
+                  color: GPColors.secondaryColor,
+                ),
               ),
             ),
           ),

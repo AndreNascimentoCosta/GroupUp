@@ -20,7 +20,7 @@ import 'package:groupup/models/participant.dart';
 import 'package:groupup/models/user_data.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -230,7 +230,7 @@ class CreateGroupProvider extends ChangeNotifier {
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
           actions: [
-            NextButton(
+            GPButton(
               text: appLocalizations.no,
               textColor: GPColors.red,
               borderColor: GPColors.transparent,
@@ -247,7 +247,7 @@ class CreateGroupProvider extends ChangeNotifier {
                       ? 120
                       : 140,
             ),
-            // NextButton(
+            // GPButton(
             //   text: appLocalizations.yes,
             //   borderColor: GPColors.primaryColor,
             //   onPressed: () async {
@@ -347,7 +347,7 @@ class CreateGroupProvider extends ChangeNotifier {
             //           ? 120
             //           : 140,
             // ),
-            NextButton(
+            GPButton(
               text: appLocalizations.yes,
               borderColor: GPColors.primaryColor,
               onPressed: () async {
@@ -623,7 +623,7 @@ class CreateGroupProvider extends ChangeNotifier {
             actionsAlignment: MainAxisAlignment.center,
             contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
             actions: [
-              NextButton(
+              GPButton(
                 text: appLocalizations.no,
                 textColor: GPColors.red,
                 borderColor: GPColors.transparent,
@@ -637,7 +637,7 @@ class CreateGroupProvider extends ChangeNotifier {
                 height: 40,
                 width: 140,
               ),
-              NextButton(
+              GPButton(
                 text: appLocalizations.yes,
                 borderColor: GPColors.primaryColor,
                 onPressed: () {

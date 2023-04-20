@@ -15,7 +15,7 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
 import 'package:ntp/ntp.dart';
 import 'package:provider/provider.dart';
@@ -68,7 +68,7 @@ class AddInputProvider extends ChangeNotifier {
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
           actions: [
-            NextButton(
+            GPButton(
               text: appLocalizations.cancel,
               textColor: GPColors.red,
               borderColor: GPColors.transparent,
@@ -81,7 +81,7 @@ class AddInputProvider extends ChangeNotifier {
               height: 40,
               width: 140,
             ),
-            NextButton(
+            GPButton(
               text: appLocalizations.add,
               borderColor: GPColors.primaryColor,
               onPressed: () {

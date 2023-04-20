@@ -7,7 +7,7 @@ import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/join/pages/first_page.dart';
 import 'package:groupup/screens/join/pages/review_join_group.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -82,7 +82,7 @@ class _JoinPageViewState extends State<JoinPageView> {
               child: CircularProgressIndicator.adaptive(),
             )
           else
-            NextButton(
+            GPButton(
               onPressed: joinGroupProvider.nextPressedJoin(
                 context,
                 userId,

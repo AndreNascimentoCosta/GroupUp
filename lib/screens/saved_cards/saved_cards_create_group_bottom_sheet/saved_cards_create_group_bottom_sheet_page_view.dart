@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/screens/saved_cards/saved_cards_create_group_bottom_sheet/saved_cards_create_group_bottom_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +46,7 @@ class SavedCardsCreateGroupBottomSheetPageView extends StatelessWidget {
           if (stripePaymentProvider.isPaying == true)
             const CircularProgressIndicator.adaptive()
           else
-            NextButton(
+            GPButton(
               onPressed: () async {
                 Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                     eventName: 'Create Group Paying with Stripe Bottom Sheet');

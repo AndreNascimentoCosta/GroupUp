@@ -5,8 +5,8 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class NextButton extends StatelessWidget {
-  const NextButton({
+class GPButton extends StatelessWidget {
+  const GPButton({
     this.onPressed,
     this.text,
     this.borderColor = GPColors.primaryColor,

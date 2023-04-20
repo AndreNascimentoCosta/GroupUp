@@ -75,7 +75,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
               SizedBox(
                 height: context.screenHeight * 0.05,
               ),
-              NextButtonOnboarding(
+              GPButtonOnboarding(
                 controller: _pageController,
               ),
               SizedBox(

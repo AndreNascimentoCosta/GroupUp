@@ -7,8 +7,8 @@ import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/core/constants/design-system.dart';
 
-class NextButtonOnboarding extends StatelessWidget {
-  const NextButtonOnboarding({
+class GPButtonOnboarding extends StatelessWidget {
+  const GPButtonOnboarding({
     required this.controller,
     super.key,
   });

@@ -7,7 +7,7 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -40,7 +40,7 @@ void confirmLoginToAccountDialog(BuildContext context) {
         actionsAlignment: MainAxisAlignment.center,
         contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
         actions: [
-          NextButton(
+          GPButton(
             text: appLocalizations.no,
             textColor: GPColors.red,
             borderColor: GPColors.transparent,
@@ -53,7 +53,7 @@ void confirmLoginToAccountDialog(BuildContext context) {
             height: 40,
             width: 140,
           ),
-          NextButton(
+          GPButton(
             text: appLocalizations.yes,
             borderColor: GPColors.primaryColor,
             onPressed: () async {

@@ -6,7 +6,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -38,7 +38,7 @@ void confirmDelete(BuildContext context) {
         actionsAlignment: MainAxisAlignment.center,
         contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
         actions: [
-          NextButton(
+          GPButton(
             text: appLocalizations.yes,
             borderColor: GPColors.transparent,
             color: GPColors.transparent,
@@ -52,7 +52,7 @@ void confirmDelete(BuildContext context) {
             height: 40,
             width: 140,
           ),
-          NextButton(
+          GPButton(
             text: appLocalizations.no,
             textColor: GPColors.white,
             borderColor: GPColors.red,

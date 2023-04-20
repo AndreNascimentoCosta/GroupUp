@@ -8,7 +8,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -46,7 +46,7 @@ void createConnectedAccount(BuildContext context) {
           bottom: 20,
         ),
         actions: [
-          NextButton(
+          GPButton(
             text: appLocalizations.cancel,
             textColor: GPColors.red,
             borderColor: GPColors.transparent,
@@ -59,7 +59,7 @@ void createConnectedAccount(BuildContext context) {
             height: 40,
             width: 100,
           ),
-          NextButton(
+          GPButton(
             text: appLocalizations.createAccount,
             borderColor: GPColors.primaryColor,
             color: GPColors.primaryColor,

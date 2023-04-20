@@ -9,7 +9,7 @@ import 'package:groupup/screens/create_group/pages/first_page.dart';
 import 'package:groupup/screens/create_group/pages/review_create_group.dart';
 import 'package:groupup/screens/create_group/pages/second_page.dart';
 import 'package:groupup/screens/create_group/pages/third_page.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -115,7 +115,7 @@ class _CreatePageViewState extends State<CreatePageView> {
               ? const CircularProgressIndicator.adaptive()
               : createGroupProvider.isCreatingGroup
                   ? const SizedBox()
-                  : NextButton(
+                  : GPButton(
                       onPressed: createGroupProvider.nextPressedCreate(context),
                     ),
           const SizedBox(height: kDefaultPadding / 4),

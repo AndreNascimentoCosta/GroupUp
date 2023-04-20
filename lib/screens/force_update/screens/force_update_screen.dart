@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -42,7 +42,7 @@ class ForceUpdateScreen extends StatelessWidget {
                 fontFamily: 'Montserrat-Medium',
               ),
               SizedBox(height: context.screenHeight * 0.05),
-              NextButton(
+              GPButton(
                 text: appLocalizations.update,
                 onPressed: () async {
                   final url = store();

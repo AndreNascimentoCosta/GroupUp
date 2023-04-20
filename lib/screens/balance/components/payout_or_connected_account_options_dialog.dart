@@ -9,7 +9,7 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/balance/components/confirm_delete_account_dialog.dart';
 import 'package:groupup/screens/balance/components/confirm_login_to_account_dialog.dart';
 import 'package:groupup/screens/balance/components/confirm_request_payout_dialog.dart';
-import 'package:groupup/screens/home/components/next_button.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -131,7 +131,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
               bottom: 5,
             ),
             actions: [
-              NextButton(
+              GPButton(
                 text: appLocalizations.cancel,
                 textColor: GPColors.red,
                 borderColor: GPColors.transparent,

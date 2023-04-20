@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../constants/design-system.dart';
-import '../../screens/home/components/next_button.dart';
+import '../widgets/buttons/gp_button.dart';
 import '../widgets/texts/static_text.dart';
 import 'create_group_provider.dart';
 import 'mix_panel_provider.dart';
@@ -258,7 +258,7 @@ class StripePaymentProvider extends ChangeNotifier {
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
           actions: [
-            NextButton(
+            GPButton(
               text: appLocalizations.no,
               textColor: GPColors.red,
               borderColor: GPColors.transparent,
@@ -271,7 +271,7 @@ class StripePaymentProvider extends ChangeNotifier {
               height: 40,
               width: 140,
             ),
-            NextButton(
+            GPButton(
               text: appLocalizations.yes,
               borderColor: GPColors.primaryColor,
               onPressed: () async {
@@ -352,7 +352,7 @@ class StripePaymentProvider extends ChangeNotifier {
           actionsAlignment: MainAxisAlignment.center,
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
           actions: [
-            NextButton(
+            GPButton(
               text: appLocalizations.no,
               textColor: GPColors.red,
               borderColor: GPColors.transparent,
@@ -365,7 +365,7 @@ class StripePaymentProvider extends ChangeNotifier {
               height: 40,
               width: 140,
             ),
-            NextButton(
+            GPButton(
               text: appLocalizations.yes,
               borderColor: GPColors.primaryColor,
               onPressed: () async {

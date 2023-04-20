@@ -125,7 +125,7 @@ groupEndedDialog(BuildContext context) {
           // else if (currentUserRank == '1º')
           //   SizedBox(
           //     width: context.screenWidth * 0.5,
-          //     child: NextButton(
+          //     child: GPButton(
           //       onPressed: () async {
           //         late bool isAllClaimed;
           //         for (var i = 0; i < group.paymentIntentIds.length; i++) {
