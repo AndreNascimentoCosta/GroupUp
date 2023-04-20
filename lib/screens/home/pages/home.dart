@@ -89,7 +89,8 @@ class _HomeState extends State<Home> {
                         context,
                         listen: false,
                       ).logEvent(
-                          eventName: 'Home Screen - Get Started Button');
+                        eventName: 'Home Screen - Get Started Button',
+                      );
                       gpModalBottomSheet(
                         context,
                         Platform.isAndroid
