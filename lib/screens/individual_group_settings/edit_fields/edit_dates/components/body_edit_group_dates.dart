@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/edit_group_dates_provider.dart';
 import 'package:groupup/screens/individual_group_settings/edit_fields/edit_dates/components/date_time_picker_edit_group_dates.dart';
 import 'package:provider/provider.dart';

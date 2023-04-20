@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/groups/components/add_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import '../../../core/providers/mix_panel_provider.dart';

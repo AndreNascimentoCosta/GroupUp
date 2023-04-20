@@ -1,10 +1,10 @@
 import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/models/group_model.dart';
 import '../../../models/home_view.dart';

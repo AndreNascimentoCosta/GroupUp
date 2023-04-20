@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:intl/intl.dart';

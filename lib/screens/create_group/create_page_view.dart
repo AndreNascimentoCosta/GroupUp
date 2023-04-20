@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/create_group/pages/first_page.dart';
 import 'package:groupup/screens/create_group/pages/review_create_group.dart';

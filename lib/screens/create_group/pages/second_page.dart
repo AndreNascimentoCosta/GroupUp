@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/switch.dart';
 import 'package:groupup/screens/create_group/components/body_switch.dart';
 import 'package:groupup/screens/create_group/components/date_time_picker_create_group.dart';

@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/switch.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/sign_up_phone/components/login_button_style.dart';

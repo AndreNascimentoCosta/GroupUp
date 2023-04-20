@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 
 class BodyContentArrow extends StatelessWidget {
   const BodyContentArrow({required this.name, this.maxLine = 1});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/screens/home/components/text_field.dart';
 import 'package:provider/provider.dart';

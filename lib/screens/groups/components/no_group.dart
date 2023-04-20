@@ -1,13 +1,13 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/groups/components/stats_no_group.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/create_group/create_page_view.dart';

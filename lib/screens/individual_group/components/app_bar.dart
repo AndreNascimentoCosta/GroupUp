@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/group_picture_edit.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';

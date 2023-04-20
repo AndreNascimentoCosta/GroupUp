@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 
 Future<void> gpModalBottomSheet(
   BuildContext context,

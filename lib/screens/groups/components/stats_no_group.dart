@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
-import 'package:groupup/design-system.dart';
-import '../../../constants.dart';
+import 'package:groupup/core/constants/design-system.dart';
+import '../../../core/constants/constants.dart';
 
 class StatsNoGroup extends StatelessWidget {
   const StatsNoGroup({super.key});

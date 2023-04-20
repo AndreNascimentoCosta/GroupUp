@@ -3,7 +3,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/screens/groups/components/icon_bottom_navy_bar.dart';
 import 'package:provider/provider.dart';
-import '../../../constants.dart';
+import '../../../core/constants/constants.dart';
 
 class BottomNavyBar extends StatefulWidget {
   const BottomNavyBar({required this.pageController});

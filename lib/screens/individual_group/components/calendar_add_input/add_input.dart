@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';

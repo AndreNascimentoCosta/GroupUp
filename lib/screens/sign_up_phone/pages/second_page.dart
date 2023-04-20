@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/sign_up_phone/pages/otp_field.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';

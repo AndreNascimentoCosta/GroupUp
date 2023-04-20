@@ -3,11 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:provider/provider.dart';
-import '../../../constants.dart';
+import '../../../core/constants/constants.dart';
 
 class StatsGroup extends StatelessWidget {
   const StatsGroup({

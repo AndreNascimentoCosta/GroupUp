@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';

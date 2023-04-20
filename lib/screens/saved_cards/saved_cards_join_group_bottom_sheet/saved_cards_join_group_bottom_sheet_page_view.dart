@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';

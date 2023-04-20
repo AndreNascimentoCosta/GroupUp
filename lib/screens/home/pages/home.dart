@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';

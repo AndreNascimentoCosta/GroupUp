@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/individual_group/components/floating_buttons/add_input_group_button.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/calendar.dart';
 import 'package:groupup/screens/individual_group/components/floating_buttons/calendar_screen_button.dart';

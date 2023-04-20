@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/balance/components/confirm_delete_account_dialog.dart';
 import 'package:groupup/screens/balance/components/confirm_login_to_account_dialog.dart';
 import 'package:groupup/screens/balance/components/confirm_request_payout_dialog.dart';

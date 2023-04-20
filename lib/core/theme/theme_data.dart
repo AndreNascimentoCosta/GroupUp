@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 
 final themeData = ThemeData(
   appBarTheme: const AppBarTheme(

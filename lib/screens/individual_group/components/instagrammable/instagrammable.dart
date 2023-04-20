@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/body_instagrammable.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/share_instagrammable_button.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:groupup/design-system.dart';
+import 'package:groupup/core/constants/design-system.dart';
 
 class IconBottonNavyBarModel extends StatelessWidget {
   const IconBottonNavyBarModel({required this.imageIcon});

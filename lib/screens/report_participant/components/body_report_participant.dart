@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';

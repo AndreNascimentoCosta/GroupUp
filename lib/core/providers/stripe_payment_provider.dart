@@ -5,7 +5,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:groupup/constants.dart';
+import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
@@ -13,7 +13,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../design-system.dart';
+import '../constants/design-system.dart';
 import '../../screens/home/components/next_button.dart';
 import '../widgets/texts/static_text.dart';
 import 'create_group_provider.dart';
