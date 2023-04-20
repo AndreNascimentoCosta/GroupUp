@@ -26,8 +26,12 @@ class SecondPageSignUp extends StatefulWidget {
 class _SecondPageSignUpState extends State<SecondPageSignUp> {
   @override
   Widget build(BuildContext context) {
-    final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
-    final authProvider = Provider.of<AuthProvider>(context);
+    final phoneProvider = Provider.of<PhoneAuthenProvider>(
+      context,
+    );
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+    );
     final phoneControllerText = phoneProvider.phoneController;
     return GestureDetector(
       onTap: () {
@@ -38,50 +42,79 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
       },
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+          padding: const EdgeInsets.symmetric(
+            horizontal: kDefaultPadding,
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: Insets.l * 2),
+              const SizedBox(
+                height: Insets.l * 2,
+              ),
               StaticText(
-                  text: AppLocalizations.of(context)
-                      .codeSent(phoneControllerText),
-                  fontSize: TextSize.mBody,
-                  color: GPColors.secondaryColor),
-              const SizedBox(height: Insets.l * 2),
+                text: AppLocalizations.of(
+                  context,
+                ).codeSent(
+                  phoneControllerText,
+                ),
+                fontSize: TextSize.mBody,
+                color: GPColors.secondaryColor,
+              ),
+              const SizedBox(
+                height: Insets.l * 2,
+              ),
               OTPField(
                 controller: phoneProvider.otpCode1,
               ),
-              const SizedBox(height: Insets.l * 2),
+              const SizedBox(
+                height: Insets.l * 2,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   StaticText(
-                      text: AppLocalizations.of(context).codeNotReceived,
-                      fontSize: TextSize.mBody,
-                      color: GPColors.secondaryColor),
-                  const SizedBox(width: Insets.xs),
+                    text: AppLocalizations.of(
+                      context,
+                    ).codeNotReceived,
+                    fontSize: TextSize.mBody,
+                    color: GPColors.secondaryColor,
+                  ),
+                  const SizedBox(
+                    width: Insets.xs,
+                  ),
                   ButtonCommonStyle(
                     onPressed: () {
                       if (phoneProvider.start != 0) {
                         return;
                       } else {
-                        Provider.of<MixPanelProvider>(context, listen: false)
-                            .logEvent(eventName: 'Request Code Again');
+                        Provider.of<MixPanelProvider>(
+                          context,
+                          listen: false,
+                        ).logEvent(
+                          eventName: 'Request Code Again',
+                        );
                         phoneProvider.startTimer();
-                        authProvider.phoneLogin(context);
+                        authProvider.phoneLogin(
+                          context,
+                        );
                       }
                     },
                     child: StaticText(
-                        text: phoneProvider.start != 0
-                            ? AppLocalizations.of(context)
-                                .waitingRequestAgain(phoneProvider.start)
-                            : AppLocalizations.of(context).requestAgain,
-                        fontSize: TextSize.mBody,
-                        fontFamily: 'Montserrat-SemiBold',
-                        color: phoneProvider.start != 0
-                            ? GPColors.secondaryColor
-                            : GPColors.black),
+                      text: phoneProvider.start != 0
+                          ? AppLocalizations.of(
+                              context,
+                            ).waitingRequestAgain(
+                              phoneProvider.start,
+                            )
+                          : AppLocalizations.of(
+                              context,
+                            ).requestAgain,
+                      fontSize: TextSize.mBody,
+                      fontFamily: 'Montserrat-SemiBold',
+                      color: phoneProvider.start != 0
+                          ? GPColors.secondaryColor
+                          : GPColors.black,
+                    ),
                   ),
                 ],
               ),
