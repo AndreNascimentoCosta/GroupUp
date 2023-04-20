@@ -3,14 +3,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/screens/sign_up/sign_up_phone/pages/first_page.dart';
-import 'package:groupup/screens/sign_up/sign_up_phone/pages/second_page.dart';
+import 'package:groupup/screens/sign_up_phone/pages/first_page.dart';
+import 'package:groupup/screens/sign_up_phone/pages/second_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/providers/mix_panel_provider.dart';
+import '../../../core/providers/mix_panel_provider.dart';
 
 class SignUpPhonePageView extends StatefulWidget {
   const SignUpPhonePageView({Key? key}) : super(key: key);
