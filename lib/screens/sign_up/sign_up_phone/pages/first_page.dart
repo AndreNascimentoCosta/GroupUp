@@ -43,35 +43,54 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     StaticText(
-                      text: AppLocalizations.of(context).phoneNumber,
+                      text: AppLocalizations.of(
+                        context,
+                      ).phoneNumber,
                       fontSize: TextSize.lBody,
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(
+                      height: Insets.xs,
+                    ),
                     IntlPhoneField(
                       focusNode: nodePhone,
                       pickerDialogStyle: PickerDialogStyle(
                         searchFieldInputDecoration: InputDecoration(
-                          labelText: AppLocalizations.of(context).searchCountry,
+                          labelText: AppLocalizations.of(
+                            context,
+                          ).searchCountry,
                         ),
                       ),
-                      invalidNumberMessage:
-                          AppLocalizations.of(context).invalidPhoneNumber,
+                      invalidNumberMessage: AppLocalizations.of(
+                        context,
+                      ).invalidPhoneNumber,
                       decoration: InputDecoration(
-                        labelText: AppLocalizations.of(context).phoneNumber,
+                        labelText: AppLocalizations.of(
+                          context,
+                        ).phoneNumber,
                         border: const OutlineInputBorder(
                           borderSide: BorderSide(),
                         ),
                       ),
-                      initialCountryCode: Platform.localeName.split('_').last,
+                      initialCountryCode: Platform.localeName
+                          .split(
+                            '_',
+                          )
+                          .last,
                       onChanged: (phone) {
-                        Provider.of<PhoneAuthenProvider>(context, listen: false)
-                            .setPhone(phone.completeNumber);
+                        Provider.of<PhoneAuthenProvider>(
+                          context,
+                          listen: false,
+                        ).setPhone(
+                          phone.completeNumber,
+                        );
                       },
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: Insets.l),
+              const SizedBox(
+                height: Insets.l,
+              ),
             ],
           ),
         ),

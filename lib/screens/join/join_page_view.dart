@@ -5,14 +5,14 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/join/pages/first_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/join/pages/review_join_group.dart';
+import 'package:groupup/screens/join/pages/first_page.dart';
+import 'package:groupup/screens/join/pages/review_join_group.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../../core/providers/mix_panel_provider.dart';
+import '../../core/providers/mix_panel_provider.dart';
 
 class JoinPageView extends StatefulWidget {
   const JoinPageView({super.key});

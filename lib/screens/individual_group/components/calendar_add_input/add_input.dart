@@ -17,7 +17,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../core/providers/mix_panel_provider.dart';
-import '../../../home/components/bottom_sheet/create_group/pages/first_page.dart';
+import '../../../create_group/pages/first_page.dart';
 
 class AddInput extends StatefulWidget {
   const AddInput({super.key});

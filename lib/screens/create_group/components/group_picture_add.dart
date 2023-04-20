@@ -17,7 +17,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../../../core/providers/mix_panel_provider.dart';
+import '../../../core/providers/mix_panel_provider.dart';
 
 class GroupPictureAdd extends StatefulWidget {
   const GroupPictureAdd({super.key});

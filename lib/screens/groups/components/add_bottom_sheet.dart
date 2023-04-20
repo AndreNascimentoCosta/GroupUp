@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create_group/button.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/join/button.dart';
+import 'package:groupup/screens/create_group/button.dart';
+import 'package:groupup/screens/join/button.dart';
 
 class AddBottomSheet extends StatelessWidget {
   const AddBottomSheet({super.key});

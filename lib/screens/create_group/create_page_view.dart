@@ -5,17 +5,17 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/first_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/review_create_group.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/second_page.dart';
-import 'package:groupup/screens/home/components/bottom_sheet/create_group/pages/third_page.dart';
+import 'package:groupup/screens/create_group/pages/first_page.dart';
+import 'package:groupup/screens/create_group/pages/review_create_group.dart';
+import 'package:groupup/screens/create_group/pages/second_page.dart';
+import 'package:groupup/screens/create_group/pages/third_page.dart';
 import 'package:groupup/screens/home/components/next_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../../core/providers/mix_panel_provider.dart';
+import '../../core/providers/mix_panel_provider.dart';
 
 class CreatePageView extends StatefulWidget {
   const CreatePageView({super.key});
