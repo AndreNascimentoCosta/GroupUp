@@ -13,7 +13,7 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/screens/sign_up/first_page.dart';
+import 'package:groupup/screens/sign_up/pages/sign_up_page.dart';
 import 'package:groupup/screens/home/components/continue_button.dart';
 import 'package:groupup/screens/home/components/subtitle_home.dart';
 import 'package:provider/provider.dart';

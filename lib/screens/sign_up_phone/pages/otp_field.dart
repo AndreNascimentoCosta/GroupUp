@@ -23,7 +23,6 @@ class OTPField extends StatelessWidget {
         fontSize: TextSize.subTitle,
       ),
       decoration: BoxDecoration(
-        // color: Color(0XFFE1E1E1),
         border: Border(
           bottom: BorderSide(
             color: Color(
@@ -38,8 +37,12 @@ class OTPField extends StatelessWidget {
       length: 6,
       animationCurve: Curves.fastOutSlowIn,
       pinAnimationType: PinAnimationType.none,
-      autofillHints: const [AutofillHints.oneTimeCode],
-      animationDuration: const Duration(milliseconds: 10),
+      autofillHints: const [
+        AutofillHints.oneTimeCode,
+      ],
+      animationDuration: const Duration(
+        milliseconds: 10,
+      ),
       onChanged: (value) {
         if (value.length == 6) {
           authProvider.verifyOTP(context);
@@ -49,11 +52,15 @@ class OTPField extends StatelessWidget {
       focusedPinTheme: defaultPinTheme.copyWith(
         decoration: defaultPinTheme.decoration!.copyWith(
           border: const Border(
-            bottom: BorderSide(color: GPColors.primaryColor),
+            bottom: BorderSide(
+              color: GPColors.primaryColor,
+            ),
           ),
         ),
       ),
-      separator: const SizedBox(width: Insets.s),
+      separator: const SizedBox(
+        width: Insets.s,
+      ),
       defaultPinTheme: defaultPinTheme,
     );
   }
