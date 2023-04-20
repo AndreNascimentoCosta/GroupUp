@@ -18,11 +18,13 @@ class TitleSignUpPhone extends StatelessWidget {
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(
+          Padding(
+            padding: const EdgeInsets.only(
               left: kDefaultPadding,
             ),
-            child: BackButtonSignUpPhone(),
+            child: Provider.of<PhoneAuthenProvider>(context).pageIndex == 0
+                ? const SizedBox()
+                : const BackButtonSignUpPhone(),
           ),
           StaticText(
             textAlign: TextAlign.center,

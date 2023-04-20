@@ -6,6 +6,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
+import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -13,9 +14,9 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/screens/sign_up/pages/sign_up_page.dart';
 import 'package:groupup/screens/home/components/continue_button.dart';
 import 'package:groupup/screens/home/components/subtitle_home.dart';
+import 'package:groupup/screens/sign_up_phone/pages/page_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -29,6 +30,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    final phoneProvider = Provider.of<PhoneAuthenProvider>(
+      context,
+      listen: false,
+    );
     return Scaffold(
       body: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
@@ -91,12 +96,12 @@ class _HomeState extends State<Home> {
                       ).logEvent(
                         eventName: 'Home Screen - Get Started Button',
                       );
+                      phoneProvider.start = 30;
+                      phoneProvider.clean();
                       gpModalBottomSheet(
                         context,
-                        Platform.isAndroid
-                            ? context.screenHeight * 0.25
-                            : context.screenHeight * 0.325,
-                        const FirsPageSignUp(),
+                        400,
+                        const SignUpPhonePageView(),
                       );
                     },
                     child: Provider.of<AuthProvider>(context).loading
