@@ -11,7 +11,7 @@ import 'package:groupup/screens/groups/components/name_add.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:provider/provider.dart';
 import '../../profile/components/body.dart';
-import '../components/body.dart';
+import '../components/body_group.dart';
 
 class GroupsScreen extends StatefulWidget {
   const GroupsScreen({

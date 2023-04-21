@@ -28,7 +28,10 @@ class BodyGroup extends StatelessWidget {
         child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
           stream: FirebaseFirestore.instance
               .collection('groups')
-              .orderBy('createdAt', descending: true)
+              .orderBy(
+                'createdAt',
+                descending: true,
+              )
               .where(
                 'participants',
                 arrayContains: userId,
@@ -41,17 +44,30 @@ class BodyGroup extends StatelessWidget {
               );
             }
             if (snapshot.data!.docs.isEmpty) {
-              return Column(children: const [NoGroup()]);
+              return Column(
+                children: const [
+                  NoGroup(),
+                ],
+              );
             } else {
               final groups = snapshot.data!.docs
-                  .map((e) => GroupModel.fromMap(e.id, e.data()))
+                  .map(
+                    (e) => GroupModel.fromMap(
+                      e.id,
+                      e.data(),
+                    ),
+                  )
                   .toList();
               return ListView.separated(
                 padding: const EdgeInsets.only(
                   top: kDefaultPadding / 2,
                   bottom: kDefaultPadding,
                 ),
-                separatorBuilder: (context, index) => const Divider(
+                separatorBuilder: (
+                  context,
+                  index,
+                ) =>
+                    const Divider(
                   indent: kDefaultPadding,
                   endIndent: kDefaultPadding,
                   height: kDefaultPadding,
@@ -59,7 +75,11 @@ class BodyGroup extends StatelessWidget {
                   color: GPColors.secondaryColor,
                 ),
                 itemCount: groups.length,
-                itemBuilder: (context, index) => GroupsCard(
+                itemBuilder: (
+                  context,
+                  index,
+                ) =>
+                    GroupsCard(
                   homeViewModel: homeViewModel,
                   group: groups[index],
                 ),
