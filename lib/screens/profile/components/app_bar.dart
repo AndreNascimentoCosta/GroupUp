@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/profile/components/other_options.dart';
@@ -40,13 +41,13 @@ class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
                   const OtherOptionsProfile(),
                 );
               },
-              child: Padding(
-                padding: const EdgeInsets.only(right: kDefaultPadding),
+              child: const Padding(
+                padding: EdgeInsets.only(right: kDefaultPadding),
                 child: SizedBox(
                   height: Insets.xl,
                   width: Insets.xl,
-                  child: SvgPicture.asset(
-                    'assets/icons/ellipsis.svg',
+                  child: GPIcon(
+                    GPIcons.ellipsis,
                     color: GPColors.black,
                   ),
                 ),

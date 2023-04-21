@@ -4,6 +4,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
@@ -38,42 +40,59 @@ class _GroupsCardState extends State<GroupsCard> {
 
   @override
   Widget build(BuildContext context) {
-    final individualGroupProvider =
-        Provider.of<IndividualGroupProvider>(context, listen: false);
-    final participantsSumValue = widget.group.participantsData.map((element) {
+    final individualGroupProvider = Provider.of<IndividualGroupProvider>(
+      context,
+      listen: false,
+    );
+    final participantsSumValue = widget.group.participantsData.map((
+      element,
+    ) {
       return element.sumData.value;
     }).toList();
-    participantsSumValue.sort((a, b) => b.compareTo(a));
+    participantsSumValue.sort(
+      (a, b) => b.compareTo(a),
+    );
     return ButtonCommonStyle(
       onPressed: () async {
-        if (widget.homeViewModel.isEditing.value) {
-          setState(
-            () {
-              isChecked = !isChecked;
+        // if (widget.homeViewModel.isEditing.value) {
+        //   setState(
+        //     () {
+        //       isChecked = !isChecked;
+        //     },
+        //   );
+        // } else {
+        Provider.of<MixPanelProvider>(
+          context,
+          listen: false,
+        ).logEvent(
+          eventName: 'Individual Group Screen',
+        );
+        individualGroupProvider.getGroup(
+          widget.group.id,
+        );
+        Provider.of<AuthProvider>(
+          context,
+          listen: false,
+        ).getUser();
+        individualGroupProvider.isClaimingReward = false;
+        individualGroupProvider.updateIndex(0);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const IndividualGroupScreen();
             },
-          );
-        } else {
-          Provider.of<MixPanelProvider>(context, listen: false)
-              .logEvent(eventName: 'Individual Group Screen');
-          individualGroupProvider.getGroup(
-            widget.group.id,
-          );
-          Provider.of<AuthProvider>(context, listen: false).getUser();
-          individualGroupProvider.isClaimingReward = false;
-          individualGroupProvider.updateIndex(0);
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return const IndividualGroupScreen();
-              },
-              settings: const RouteSettings(name: 'Individual_Group'),
+            settings: const RouteSettings(
+              name: 'Individual_Group',
             ),
-          );
-        }
+          ),
+        );
+        // }
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+        padding: const EdgeInsets.symmetric(
+          horizontal: kDefaultPadding,
+        ),
         child: Row(
           children: [
             ValueListenableBuilder(
@@ -81,7 +100,9 @@ class _GroupsCardState extends State<GroupsCard> {
               builder: (context, value, child) {
                 return AnimatedContainer(
                   width: value ? 50 : 0,
-                  duration: const Duration(milliseconds: 50),
+                  duration: const Duration(
+                    milliseconds: 50,
+                  ),
                   child: Visibility(
                     visible: value,
                     child: CheckBoxGroup(
@@ -92,7 +113,9 @@ class _GroupsCardState extends State<GroupsCard> {
               },
             ),
             ClipRRect(
-              borderRadius: BorderRadius.circular(37.5),
+              borderRadius: BorderRadius.circular(
+                37.5,
+              ),
               child: widget.group.image.isNotEmpty
                   ? Container(
                       height: Insets.l * 3.75,
@@ -106,10 +129,10 @@ class _GroupsCardState extends State<GroupsCard> {
                         ),
                       ),
                     )
-                  : Image.asset(
-                      'assets/icons/profile2.png',
-                      height: 75,
-                      width: 75,
+                  : const GPIcon(
+                      GPIcons.profile2,
+                      height: Insets.xl * 3,
+                      width: Insets.xl * 3,
                     ),
             ),
             if (widget.group.endDate != null)
@@ -120,8 +143,10 @@ class _GroupsCardState extends State<GroupsCard> {
                   ),
                   child: participantsSumValue.length > 1 &&
                           participantsSumValue
-                                  .where((element) =>
-                                      element == participantsSumValue.first)
+                                  .where(
+                                    (element) =>
+                                        element == participantsSumValue.first,
+                                  )
                                   .length >
                               1
                       ? widget.group.endDate!.isBefore(
@@ -133,23 +158,33 @@ class _GroupsCardState extends State<GroupsCard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 LargeBody(
-                                  text: Characters(widget.group.projectName)
+                                  text: Characters(
+                                    widget.group.projectName,
+                                  )
                                       .replaceAll(
                                         Characters(''),
-                                        Characters('\u{200B}'),
+                                        Characters(
+                                          '\u{200B}',
+                                        ),
                                       )
                                       .toString(),
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                const SizedBox(height: Insets.s),
+                                const SizedBox(
+                                  height: Insets.s,
+                                ),
                                 MediumBody(
-                                  text: AppLocalizations.of(context).ended,
+                                  text: AppLocalizations.of(
+                                    context,
+                                  ).ended,
                                   color: GPColors.secondaryColor,
                                 ),
                               ],
                             )
                           : LargeBody(
-                              text: Characters(widget.group.projectName)
+                              text: Characters(
+                                widget.group.projectName,
+                              )
                                   .replaceAll(
                                     Characters(''),
                                     Characters('\u{200B}'),
@@ -166,26 +201,38 @@ class _GroupsCardState extends State<GroupsCard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 LargeBody(
-                                  text: Characters(widget.group.projectName)
+                                  text: Characters(
+                                    widget.group.projectName,
+                                  )
                                       .replaceAll(
                                         Characters(''),
-                                        Characters('\u{200B}'),
+                                        Characters(
+                                          '\u{200B}',
+                                        ),
                                       )
                                       .toString(),
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                const SizedBox(height: Insets.s),
+                                const SizedBox(
+                                  height: Insets.s,
+                                ),
                                 MediumBody(
-                                  text: AppLocalizations.of(context).ended,
+                                  text: AppLocalizations.of(
+                                    context,
+                                  ).ended,
                                   color: GPColors.secondaryColor,
                                 ),
                               ],
                             )
                           : LargeBody(
-                              text: Characters(widget.group.projectName)
+                              text: Characters(
+                                widget.group.projectName,
+                              )
                                   .replaceAll(
                                     Characters(''),
-                                    Characters('\u{200B}'),
+                                    Characters(
+                                      '\u{200B}',
+                                    ),
                                   )
                                   .toString(),
                               overflow: TextOverflow.ellipsis,

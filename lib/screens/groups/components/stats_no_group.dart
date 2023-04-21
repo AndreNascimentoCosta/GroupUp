@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import '../../../core/constants/constants.dart';
@@ -20,30 +21,30 @@ class StatsNoGroup extends StatelessWidget {
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset(
-                  'assets/icons/rank.svg',
+              children: const [
+                GPIcon(
+                  GPIcons.rank,
+                  color: GPColors.secondaryColor,
                   height: Insets.l,
                   width: Insets.l,
-                  color: GPColors.secondaryColor,
                 ),
-                const SizedBox(
+                SizedBox(
                   height: kDefaultPadding * 0.25,
                 ),
-                SvgPicture.asset(
-                  'assets/icons/daysgone.svg',
+                GPIcon(
+                  GPIcons.daysGone,
+                  color: GPColors.secondaryColor,
                   height: Insets.l,
                   width: Insets.l,
-                  color: GPColors.secondaryColor,
                 ),
-                const SizedBox(
+                SizedBox(
                   height: kDefaultPadding * 0.25,
                 ),
-                SvgPicture.asset(
-                  'assets/icons/daysleft.svg',
+                GPIcon(
+                  GPIcons.daysLeft,
+                  color: GPColors.secondaryColor,
                   height: Insets.l,
                   width: Insets.l,
-                  color: GPColors.secondaryColor,
                 ),
               ],
             ),

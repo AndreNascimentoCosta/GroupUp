@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
@@ -73,12 +74,12 @@ class AppBarEditGroupDates extends StatelessWidget with PreferredSizeWidget {
                       width: Insets.l * 3,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SvgPicture.asset(
-                            'assets/icons/arrow_left.svg',
+                        children: const [
+                          GPIcon(
+                            GPIcons.arrowLeft,
+                            color: GPColors.black,
                             height: Insets.l * 1.25,
                             width: Insets.l * 1.25,
-                            color: GPColors.black,
                           ),
                         ],
                       ),

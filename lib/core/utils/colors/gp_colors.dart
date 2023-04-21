@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class GPColors {
   const GPColors._();
 
-  /// It's a static constant variable of type Color black.
+  /// It's a static constant variable of type Color gray.
   static const lightGray = Color(0xFFD9D9D9);
 
   /// It's a static constant variable of type Color black.

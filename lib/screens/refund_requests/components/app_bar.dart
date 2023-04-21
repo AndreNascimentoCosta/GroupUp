@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
@@ -39,11 +40,11 @@ class AppBarRefundRequests extends StatelessWidget with PreferredSizeWidget {
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
-                  child: SvgPicture.asset(
-                    'assets/icons/arrow_left.svg',
+                  child: const GPIcon(
+                    GPIcons.arrowLeft,
+                    color: GPColors.black,
                     height: Insets.l * 1.25,
                     width: Insets.l * 1.25,
-                    color: GPColors.black,
                   ),
                   onPressed: () {
                     Provider.of<MixPanelProvider>(context, listen: false).logEvent(
@@ -53,8 +54,7 @@ class AppBarRefundRequests extends StatelessWidget with PreferredSizeWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const EditProfileScreen(),
-                        settings:
-                            const RouteSettings(name: 'Edit_Profile'),
+                        settings: const RouteSettings(name: 'Edit_Profile'),
                       ),
                     );
                   },

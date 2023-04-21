@@ -6,7 +6,9 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/app_bar_instagrammable.dart';
 import 'package:provider/provider.dart';
@@ -605,9 +607,7 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                       : screenHeight * 0.445,
               right:
                   widget.isSharing ? screenWidth * 0.4425 : screenWidth * 0.435,
-              child: SvgPicture.asset(
-                'assets/icons/crown.svg',
-              ),
+              child: const GPIcon(GPIcons.crown),
             ),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/home_view.dart';
@@ -45,15 +46,17 @@ class IndividualValue extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                const SizedBox(width: kDefaultPadding / 5),
+                const SizedBox(
+                  width: kDefaultPadding / 5,
+                ),
                 ValueListenableBuilder(
                   valueListenable: dropDownModel.isOpened,
                   builder: ((context, value, child) {
                     return ImageIcon(
                       AssetImage(
                         dropDownModel.isOpened.value
-                            ? 'assets/icons/minus.png'
-                            : 'assets/icons/arrow_down.png',
+                            ? GPIcons.minus
+                            : GPIcons.arrowDown,
                       ),
                       size: kDefaultPadding * 2,
                       color: GPColors.black,

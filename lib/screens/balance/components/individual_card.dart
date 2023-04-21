@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
@@ -68,10 +70,10 @@ class IndividualCardBalance extends StatelessWidget {
                     width: 50,
                     fit: BoxFit.cover,
                   )
-                : Image.asset(
-                    'assets/icons/profile2.png',
-                    height: 50,
-                    width: 50,
+                : const GPIcon(
+                    GPIcons.profile2,
+                    height: Insets.l * 2.5,
+                    width: Insets.l * 2.5,
                   ),
           ),
         ),

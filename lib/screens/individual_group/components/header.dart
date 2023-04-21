@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/widgets/texts/title.dart';
@@ -54,7 +55,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                   ButtonCommonStyle(
                     onPressed: () {},
                     child: const ObjectiveRewardModel(
-                      icon: 'assets/icons/objective.svg',
+                      icon: GPIcons.objective,
                       text: '',
                     ),
                   ),
@@ -64,7 +65,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                     color: GPColors.secondaryColor,
                   ),
                   const ObjectiveRewardModel(
-                    icon: 'assets/icons/reward.svg',
+                    icon: GPIcons.reward,
                     text: '',
                   ),
                   const VerticalDivider(
@@ -107,11 +108,17 @@ class HeaderIndividualGroup extends StatelessWidget {
           IntrinsicHeight(
             child: Row(
               children: [
-                SizedBox(width: screenWidth * 0.075),
+                SizedBox(
+                  width: screenWidth * 0.075,
+                ),
                 ButtonCommonStyle(
                   onPressed: () {
-                    Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Open Objective Dialog');
+                    Provider.of<MixPanelProvider>(
+                      context,
+                      listen: false,
+                    ).logEvent(
+                      eventName: 'Open Objective Dialog',
+                    );
                     showCupertinoDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -123,11 +130,14 @@ class HeaderIndividualGroup extends StatelessWidget {
                             fontSize: TextSize.lBody,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(
+                              10,
+                            ),
                           ),
                           content: Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: kDefaultPadding),
+                              horizontal: kDefaultPadding,
+                            ),
                             child: StaticText(
                               text: group.objective,
                               maxLines: 4,
@@ -136,18 +146,24 @@ class HeaderIndividualGroup extends StatelessWidget {
                             ),
                           ),
                           actionsAlignment: MainAxisAlignment.center,
-                          contentPadding:
-                              const EdgeInsets.only(top: 20, bottom: 20),
+                          contentPadding: const EdgeInsets.only(
+                            top: 20,
+                            bottom: 20,
+                          ),
                           actions: [
                             SizedBox(
                               width: double.infinity,
                               child: ButtonCommonStyle(
                                 onPressed: () {
-                                  Provider.of<MixPanelProvider>(context,
-                                          listen: false)
-                                      .logEvent(
-                                          eventName: 'Close Objective Dialog');
-                                  Navigator.pop(context);
+                                  Provider.of<MixPanelProvider>(
+                                    context,
+                                    listen: false,
+                                  ).logEvent(
+                                    eventName: 'Close Objective Dialog',
+                                  );
+                                  Navigator.pop(
+                                    context,
+                                  );
                                 },
                                 child: const StaticText(
                                   text: 'OK',
@@ -162,7 +178,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                     );
                   },
                   child: ObjectiveRewardModel(
-                    icon: 'assets/icons/objective.svg',
+                    icon: GPIcons.objective,
                     text: group.objective,
                   ),
                 ),
@@ -177,8 +193,12 @@ class HeaderIndividualGroup extends StatelessWidget {
                 ),
                 ButtonCommonStyle(
                   onPressed: () {
-                    Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Open Reward Dialog');
+                    Provider.of<MixPanelProvider>(
+                      context,
+                      listen: false,
+                    ).logEvent(
+                      eventName: 'Open Reward Dialog',
+                    );
                     showCupertinoDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -190,30 +210,38 @@ class HeaderIndividualGroup extends StatelessWidget {
                             fontSize: TextSize.lBody,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(
+                              10,
+                            ),
                           ),
                           content: Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: kDefaultPadding),
+                              horizontal: kDefaultPadding,
+                            ),
                             child: StaticText(
-                              text:
-                                  group.reward, //'$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}'
+                              text: group
+                                  .reward, //'$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}'
                               maxLines: 4,
                               textAlign: TextAlign.center,
                               fontSize: TextSize.mBody,
                             ),
                           ),
                           actionsAlignment: MainAxisAlignment.center,
-                          contentPadding:
-                              const EdgeInsets.only(top: 20, bottom: 20),
+                          contentPadding: const EdgeInsets.only(
+                            top: 20,
+                            bottom: 20,
+                          ),
                           actions: [
                             SizedBox(
                               width: double.infinity,
                               child: ButtonCommonStyle(
                                 onPressed: () {
-                                  Provider.of<MixPanelProvider>(context,
-                                          listen: false)
-                                      .logEvent(eventName: 'Close Reward Dialog');
+                                  Provider.of<MixPanelProvider>(
+                                    context,
+                                    listen: false,
+                                  ).logEvent(
+                                    eventName: 'Close Reward Dialog',
+                                  );
                                   Navigator.pop(context);
                                 },
                                 child: const StaticText(
@@ -229,9 +257,9 @@ class HeaderIndividualGroup extends StatelessWidget {
                     );
                   },
                   child: ObjectiveRewardModel(
-                    icon: 'assets/icons/reward.svg',
-                    text:
-                        group.reward, //'$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}'
+                    icon: GPIcons.reward,
+                    text: group
+                        .reward, //'$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}'
                   ),
                 ),
                 VerticalDivider(
@@ -243,7 +271,9 @@ class HeaderIndividualGroup extends StatelessWidget {
                   thickness: 1,
                   color: GPColors.secondaryColor,
                 ),
-                StartEndDateButton(groups: group),
+                StartEndDateButton(
+                  groups: group,
+                ),
                 const SizedBox(
                   width: kDefaultPadding * 1.5,
                 ),

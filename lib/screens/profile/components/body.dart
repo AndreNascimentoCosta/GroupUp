@@ -4,12 +4,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -140,8 +141,8 @@ class _BodyProfileState extends State<BodyProfile> {
                             ),
                           );
                         }
-                        return SvgPicture.asset(
-                          'assets/icons/profile_picture_add.svg',
+                        return GPIcon(
+                          GPIcons.profilePictureAdd,
                           color: GPColors.white,
                           height: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                           width: isSmallScreen ? Insets.l * 2 : Insets.l * 3,

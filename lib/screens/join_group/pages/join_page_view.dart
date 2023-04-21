@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/screens/join_group/components/first_page.dart';
 import 'package:groupup/screens/join_group/components/review_join_group.dart';
@@ -49,10 +51,11 @@ class _JoinPageViewState extends State<JoinPageView> {
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.ease);
                             },
-                            child: SvgPicture.asset(
-                              'assets/icons/arrow_left.svg',
-                              color: const Color(0xFF868686),
-                            ))
+                            child: const GPIcon(
+                              GPIcons.arrowLeft,
+                              color: GPColors.secondaryColor,
+                            ),
+                          )
                         : null,
                   ),
                 ),

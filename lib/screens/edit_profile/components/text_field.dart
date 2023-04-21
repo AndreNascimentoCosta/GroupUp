@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/providers/mix_panel_provider.dart';
@@ -69,11 +71,11 @@ class TextFieldModel extends StatelessWidget {
             suffixIcon: controller.text.isEmpty
                 ? null
                 : IconButton(
-                    icon: SvgPicture.asset(
-                      'assets/icons/clear.svg',
-                      height: 20,
-                      width: 20,
+                    icon: const GPIcon(
+                      GPIcons.clear,
                       color: GPColors.secondaryColor,
+                      height: Insets.l,
+                      width: Insets.l,
                     ),
                     onPressed: () {
                       Provider.of<MixPanelProvider>(context, listen: false)

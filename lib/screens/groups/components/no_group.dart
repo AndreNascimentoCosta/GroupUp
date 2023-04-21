@@ -4,6 +4,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
@@ -50,7 +51,9 @@ class NoGroup extends StatelessWidget {
                         height: 70,
                         width: 70,
                         child: ImageIcon(
-                          AssetImage('assets/icons/plus_picture.png'),
+                          AssetImage(
+                            GPIcons.plusPicture,
+                          ),
                           color: GPColors.secondaryColor,
                         ),
                       ),

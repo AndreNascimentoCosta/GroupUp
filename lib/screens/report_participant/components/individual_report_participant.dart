@@ -1,12 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/participant.dart';
@@ -50,11 +51,11 @@ class IndividualParticipant extends StatelessWidget {
             if (participant.profilePicture.isEmpty)
               Container(
                 padding: const EdgeInsets.all(3),
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   radius: Insets.l * 1.425,
-                  backgroundColor: const Color(0XFFE1E1E1),
-                  child: SvgPicture.asset(
-                    'assets/icons/profile_picture_add.svg',
+                  backgroundColor: Color(0XFFE1E1E1),
+                  child: GPIcon(
+                    GPIcons.profilePictureAdd,
                     color: GPColors.white,
                     height: Insets.l * 1.425,
                     width: Insets.l * 1.425,
@@ -94,13 +95,13 @@ class IndividualParticipant extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            SizedBox(
+            const SizedBox(
               width: 60,
-              child: SvgPicture.asset(
-                'assets/icons/arrow_right.svg',
+              child: GPIcon(
+                GPIcons.arrowLeft,
                 color: GPColors.black,
-                height: 20,
-                width: 20,
+                height: Insets.l,
+                width: Insets.l,
               ),
             ),
           ],

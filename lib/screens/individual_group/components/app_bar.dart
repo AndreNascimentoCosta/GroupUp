@@ -7,6 +7,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/group_picture_edit.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
@@ -83,11 +85,11 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                     eventName: 'Leave Individual Group Screen - Back Button');
                 Navigator.pop(context);
               },
-              child: SvgPicture.asset(
-                'assets/icons/arrow_left.svg',
+              child: const GPIcon(
+                GPIcons.arrowLeft,
+                color: GPColors.black,
                 height: Insets.l * 1.25,
                 width: Insets.l * 1.25,
-                color: GPColors.black,
               ),
             ),
             const Spacer(),
@@ -96,11 +98,11 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
               elevation: 0,
               backgroundColor: GPColors.white,
               onPressed: () {},
-              child: SvgPicture.asset(
-                'assets/icons/settings.svg',
+              child: const GPIcon(
+                GPIcons.settings,
+                color: GPColors.black,
                 height: Insets.l * 1.25,
                 width: Insets.l * 1.25,
-                color: GPColors.black,
               ),
             )
           ],
@@ -162,11 +164,11 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                             curve: Curves.ease,
                           );
                         },
-                  child: SvgPicture.asset(
-                    'assets/icons/arrow_left.svg',
+                  child: const GPIcon(
+                    GPIcons.arrowLeft,
+                    color: GPColors.black,
                     height: Insets.l * 1.25,
                     width: Insets.l * 1.25,
-                    color: GPColors.black,
                   ),
                 ),
               ),
@@ -197,11 +199,11 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                                   ),
                                 );
                               },
-                              child: SvgPicture.asset(
-                                'assets/icons/settings.svg',
+                              child: const GPIcon(
+                                GPIcons.settings,
+                                color: GPColors.black,
                                 height: Insets.l * 1.25,
                                 width: Insets.l * 1.25,
-                                color: GPColors.black,
                               ),
                             )
                           : GroupPictureEdit(
@@ -221,16 +223,16 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                                             'Take Photo to Change Group Image');
                                 pickImage(ImageSource.camera);
                               },
-                              child: FloatingActionButton(
+                              child: const FloatingActionButton(
                                 heroTag: 'btn2',
                                 elevation: 0,
                                 backgroundColor: GPColors.white,
                                 onPressed: null,
-                                child: SvgPicture.asset(
-                                  'assets/icons/edit.svg',
+                                child: GPIcon(
+                                  GPIcons.edit,
+                                  color: GPColors.black,
                                   height: Insets.l * 1.25,
                                   width: Insets.l * 1.25,
-                                  color: GPColors.black,
                                 ),
                               ),
                             )
@@ -257,11 +259,11 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                               ),
                             );
                           },
-                          child: SvgPicture.asset(
-                            'assets/icons/settings.svg',
+                          child: const GPIcon(
+                            GPIcons.settings,
+                            color: GPColors.black,
                             height: Insets.l * 1.25,
                             width: Insets.l * 1.25,
-                            color: GPColors.black,
                           ),
                         )
                   : !value
@@ -288,11 +290,11 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                               ),
                             );
                           },
-                          child: SvgPicture.asset(
-                            'assets/icons/settings.svg',
+                          child: const GPIcon(
+                            GPIcons.settings,
+                            color: GPColors.black,
                             height: Insets.l * 1.25,
                             width: Insets.l * 1.25,
-                            color: GPColors.black,
                           ),
                         )
                       : GroupPictureEdit(
@@ -312,16 +314,16 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
                                         'Take Photo to Change Group Image');
                             pickImage(ImageSource.camera);
                           },
-                          child: FloatingActionButton(
+                          child: const FloatingActionButton(
                             heroTag: 'btn2',
                             elevation: 0,
                             backgroundColor: GPColors.white,
                             onPressed: null,
-                            child: SvgPicture.asset(
-                              'assets/icons/edit.svg',
+                            child: GPIcon(
+                              GPIcons.edit,
+                              color: GPColors.black,
                               height: Insets.l * 1.25,
                               width: Insets.l * 1.25,
-                              color: GPColors.black,
                             ),
                           ),
                         ),

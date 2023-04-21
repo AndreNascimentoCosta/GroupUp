@@ -1,11 +1,12 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -112,11 +113,11 @@ class SavedCardCreateGroupBottomSheet extends StatelessWidget {
                 Expanded(
                   child: Container(
                     alignment: Alignment.centerRight,
-                    child: SvgPicture.asset(
-                      'assets/icons/arrow_right.svg',
+                    child: const GPIcon(
+                      GPIcons.arrowLeft,
+                      color: GPColors.secondaryColor,
                       height: Insets.l * 1.25,
                       width: Insets.l * 1.25,
-                      color: GPColors.secondaryColor,
                     ),
                   ),
                 ),

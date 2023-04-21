@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -44,30 +45,30 @@ class StatsGroup extends StatelessWidget {
                       horizontal: kDefaultPadding,
                     ),
                     child: Column(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/rank.svg',
+                      children: const [
+                        GPIcon(
+                          GPIcons.rank,
+                          color: GPColors.black,
                           height: Insets.l,
                           width: Insets.l,
-                          color: GPColors.black,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: kDefaultPadding * 0.25,
                         ),
-                        SvgPicture.asset(
-                          'assets/icons/daysgone.svg',
+                        GPIcon(
+                          GPIcons.daysGone,
+                          color: GPColors.black,
                           height: Insets.l,
                           width: Insets.l,
-                          color: GPColors.black,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: kDefaultPadding * 0.25,
                         ),
-                        SvgPicture.asset(
-                          'assets/icons/daysleft.svg',
+                        GPIcon(
+                          GPIcons.daysLeft,
+                          color: GPColors.black,
                           height: Insets.l,
                           width: Insets.l,
-                          color: GPColors.black,
                         ),
                       ],
                     ),

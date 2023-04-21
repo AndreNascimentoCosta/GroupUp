@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/screens/individual_group/components/dialog_deny_add_input.dart';
@@ -15,7 +16,7 @@ class AddInputGroupButton extends StatefulWidget {
   const AddInputGroupButton({
     required this.homeViewModel,
     this.backgroundColor = GPColors.primaryColor,
-    this.icon = 'assets/icons/plus.svg',
+    this.icon = GPIcons.plus,
   });
 
   final HomeViewModel homeViewModel;

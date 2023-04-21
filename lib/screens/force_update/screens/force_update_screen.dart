@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -29,8 +31,8 @@ class ForceUpdateScreen extends StatelessWidget {
                 fontFamily: 'Montserrat-SemiBold',
               ),
               SizedBox(height: context.screenHeight * 0.03),
-              Image.asset(
-                'assets/icons/logo_circle.png',
+              GPIcon(
+                GPIcons.logoCircle,
                 height: context.screenHeight * 0.15,
               ),
               const Spacer(),

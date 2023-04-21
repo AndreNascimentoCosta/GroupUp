@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -25,10 +26,12 @@ class BodyButtonModel extends StatelessWidget {
           const Spacer(),
           Padding(
             padding: const EdgeInsets.only(right: kDefaultPadding),
-            child: LargeBody(text: secondaryText),            // StandardTextStyle(text: secondaryText, fontSize: 18),
+            child: LargeBody(
+                text:
+                    secondaryText), // StandardTextStyle(text: secondaryText, fontSize: 18),
           ),
-          SvgPicture.asset(
-            'assets/icons/arrow_right.svg',
+          const GPIcon(
+            GPIcons.arrowRight,
             height: Insets.l,
             width: Insets.l,
           ),

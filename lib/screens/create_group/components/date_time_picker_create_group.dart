@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class DateTimePickerCreateGroup extends StatefulWidget {
   const DateTimePickerCreateGroup({required this.onChanged});
 
@@ -45,7 +47,8 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
               ),
             ),
             primaryColor: GPColors.primaryColor,
-            colorScheme: const ColorScheme.light(primary: GPColors.primaryColor),
+            colorScheme:
+                const ColorScheme.light(primary: GPColors.primaryColor),
             buttonTheme:
                 const ButtonThemeData(textTheme: ButtonTextTheme.primary),
           ),
@@ -106,8 +109,8 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
                   width: Insets.l,
                   alignment: Alignment.center,
                   color: GPColors.transparent,
-                  child: SvgPicture.asset(
-                    'assets/icons/date_switch.svg',
+                  child: const GPIcon(
+                    GPIcons.dateSwitch,
                     color: GPColors.secondaryColor,
                     height: Insets.l,
                     width: Insets.l,
@@ -144,7 +147,8 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
           SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),
           const Padding(
             padding: EdgeInsets.only(top: Insets.s),
-            child: StaticText(text: '-', fontSize: 24, color: GPColors.secondaryColor),
+            child: StaticText(
+                text: '-', fontSize: 24, color: GPColors.secondaryColor),
           ),
           SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),
           SizedBox(
@@ -162,8 +166,8 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
                   width: Insets.l,
                   alignment: Alignment.center,
                   color: GPColors.transparent,
-                  child: SvgPicture.asset(
-                    'assets/icons/date_switch.svg',
+                  child: const GPIcon(
+                    GPIcons.dateSwitch,
                     color: GPColors.secondaryColor,
                     height: Insets.l,
                     width: Insets.l,

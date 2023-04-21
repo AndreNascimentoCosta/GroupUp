@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/bottom_calendar.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/bottom_calendar_text_style.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/box_decoration.dart';
@@ -32,8 +33,9 @@ class _CalendarState extends State<Calendar> {
     if (group == null) {
       return const CircularProgressIndicator.adaptive();
     }
-    final participant =
-        group.participantsData.firstWhere((element) => element.uid == user?.id);
+    final participant = group.participantsData.firstWhere(
+      (element) => element.uid == user?.id,
+    );
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -57,16 +59,24 @@ class _CalendarState extends State<Calendar> {
                   child: Column(
                     children: [
                       TableCalendar(
-                        locale: Localizations.localeOf(context).toLanguageTag(),
+                        locale: Localizations.localeOf(
+                          context,
+                        ).toLanguageTag(),
                         rowHeight: 40,
                         rangeStartDay: group.startDate,
                         rangeEndDay: group.endDate,
                         calendarStyle: CalendarStyle(
                           tablePadding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding),
-                          defaultTextStyle: bottomCalendarTextStyle(context),
-                          weekendTextStyle: bottomCalendarTextStyle(context),
-                          holidayTextStyle: bottomCalendarTextStyle(context),
+                          defaultTextStyle: bottomCalendarTextStyle(
+                            context,
+                          ),
+                          weekendTextStyle: bottomCalendarTextStyle(
+                            context,
+                          ),
+                          holidayTextStyle: bottomCalendarTextStyle(
+                            context,
+                          ),
                           rangeEndTextStyle: TextStyle(
                             color: GPColors.white,
                             fontFamily: 'Montserrat-Medium',
@@ -81,7 +91,8 @@ class _CalendarState extends State<Calendar> {
                                 ? TextSize.xsBody
                                 : TextSize.mBody,
                           ),
-                          rangeHighlightColor: const Color(0X9946E297),
+                          rangeHighlightColor:
+                              GPColors.primaryColor.withOpacity(0.6),
                           rangeStartDecoration: boxDecoration(),
                           rangeEndDecoration: boxDecoration(),
                           withinRangeTextStyle: TextStyle(
@@ -104,25 +115,25 @@ class _CalendarState extends State<Calendar> {
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(Insets.xs),
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
-                                color: Color(0X9946E297),
+                                color: GPColors.primaryColor.withOpacity(0.6),
                                 spreadRadius: 1,
                                 blurRadius: 2,
                               ),
                             ],
                           ),
                         ),
-                        headerStyle: HeaderStyle(
+                        headerStyle: const HeaderStyle(
                           formatButtonVisible: false,
                           titleCentered: true,
-                          leftChevronIcon: SvgPicture.asset(
-                            'assets/icons/arrow_left.svg',
+                          leftChevronIcon: GPIcon(
+                            GPIcons.arrowLeft,
                             height: Insets.l,
                             width: Insets.l,
                           ),
-                          rightChevronIcon: SvgPicture.asset(
-                            'assets/icons/arrow_right.svg',
+                          rightChevronIcon: GPIcon(
+                            GPIcons.arrowRight,
                             height: Insets.l,
                             width: Insets.l,
                           ),
@@ -131,14 +142,18 @@ class _CalendarState extends State<Calendar> {
                         firstDay: DateTime(2022),
                         lastDay: DateTime(2100),
                       ),
-                      const SizedBox(height: Insets.s),
+                      const SizedBox(
+                        height: Insets.s,
+                      ),
                       BottomCalendar(
                         participant: participant,
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: Insets.l * 10),
+                const SizedBox(
+                  height: Insets.l * 10,
+                ),
               ],
             ),
           ),

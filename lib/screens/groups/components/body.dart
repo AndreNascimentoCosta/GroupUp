@@ -9,14 +9,12 @@ import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/components/group_card.dart';
 import 'package:groupup/screens/groups/components/no_group.dart';
 
-class Body extends StatelessWidget {
-  const Body({
+class BodyGroup extends StatelessWidget {
+  const BodyGroup({
     required this.homeViewModel,
-    required this.groups,
   });
 
   final HomeViewModel homeViewModel;
-  final List<GroupModel> groups;
 
   @override
   Widget build(BuildContext context) {

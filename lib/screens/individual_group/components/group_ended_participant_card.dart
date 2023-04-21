@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/medium_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
@@ -72,11 +73,11 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                       ),
                     ),
                   )
-                : CircleAvatar(
+                : const CircleAvatar(
                     radius: Insets.l,
-                    backgroundColor: const Color(0XFFE1E1E1),
-                    child: SvgPicture.asset(
-                      'assets/icons/profile_picture_add.svg',
+                    backgroundColor: GPColors.lightGray,
+                    child: GPIcon(
+                      GPIcons.profilePictureAdd,
                       color: GPColors.white,
                       height: Insets.l,
                       width: Insets.l,

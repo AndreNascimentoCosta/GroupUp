@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
 import 'package:groupup/screens/groups/components/edit_bottom_navy_bar.dart';
@@ -29,21 +28,30 @@ class GroupsScreen extends StatefulWidget {
 class _GroupsScreenState extends State<GroupsScreen> {
   final HomeViewModel homeViewModel = HomeViewModel();
   final pageController = PageController();
-  final List<GroupModel> showGroup = [];
+
   var willShowNameBottomSheet = false;
 
   @override
   void initState() {
     super.initState();
-    Provider.of<AuthProvider>(context, listen: false)
-        .addListener(askNameIfNeeded);
+    Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).addListener(
+      askNameIfNeeded,
+    );
   }
 
   void askNameIfNeeded() {
     if (!mounted) return;
-    final user = Provider.of<AuthProvider>(context, listen: false).user;
-    final phoneProvider =
-        Provider.of<PhoneAuthenProvider>(context, listen: false);
+    final user = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).user;
+    final phoneProvider = Provider.of<PhoneAuthenProvider>(
+      context,
+      listen: false,
+    );
     if (user?.name.isEmpty ?? true) {
       if (willShowNameBottomSheet) return;
       willShowNameBottomSheet = true;
@@ -74,16 +82,19 @@ class _GroupsScreenState extends State<GroupsScreen> {
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          Body(
+          BodyGroup(
             homeViewModel: homeViewModel,
-            groups: showGroup,
           ),
           const BodyProfile(),
         ],
       ),
       floatingActionButton: ValueListenableBuilder(
         valueListenable: homeViewModel.isEditing,
-        builder: (context, value, child) {
+        builder: (
+          context,
+          value,
+          child,
+        ) {
           return homeViewModel.isEditing.value
               ? const SizedBox()
               : const AddProject();
@@ -94,7 +105,11 @@ class _GroupsScreenState extends State<GroupsScreen> {
         height: context.screenHeight * 0.095,
         child: ValueListenableBuilder(
           valueListenable: homeViewModel.isEditing,
-          builder: (context, value, child) {
+          builder: (
+            context,
+            value,
+            child,
+          ) {
             return homeViewModel.isEditing.value
                 ? const BottomNavyBarEdit()
                 : BottomNavyBar(

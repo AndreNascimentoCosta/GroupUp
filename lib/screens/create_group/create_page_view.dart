@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
@@ -55,12 +57,12 @@ class _CreatePageViewState extends State<CreatePageView> {
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.ease);
                             },
-                            child: SizedBox(
+                            child: const SizedBox(
                               height: Insets.xl,
                               width: Insets.xl,
-                              child: SvgPicture.asset(
-                                'assets/icons/arrow_left.svg',
-                                color: const Color(0xFF868686),
+                              child: GPIcon(
+                                GPIcons.arrowLeft,
+                                color: GPColors.secondaryColor,
                               ),
                             ),
                           )

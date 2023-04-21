@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
+import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:provider/provider.dart';
 
 class BackButtonSignUpPhone extends StatelessWidget {
@@ -36,11 +38,9 @@ class BackButtonSignUpPhone extends StatelessWidget {
                   listen: false,
                 ).cleanOtp();
               },
-              child: SvgPicture.asset(
-                'assets/icons/arrow_left.svg',
-                color: const Color(
-                  0xFF868686,
-                ),
+              child: const GPIcon(
+                GPIcons.arrowLeft,
+                color: GPColors.secondaryColor,
               ),
             )
           : null,

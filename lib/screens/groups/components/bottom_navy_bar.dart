@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/screens/groups/components/icon_bottom_navy_bar.dart';
 import 'package:provider/provider.dart';
 import '../../../core/constants/constants.dart';
@@ -24,37 +25,52 @@ class _BottomNavyBarState extends State<BottomNavyBar> {
       currentIndex: widget.pageController.page?.round() ?? 0,
       selectedItemColor: GPColors.primaryColor,
       unselectedItemColor: GPColors.secondaryColor,
-      onTap: (value) => setState(() {
-        Provider.of<AuthProvider>(context, listen: false).getUser();
-        widget.pageController.jumpToPage(value);
-      },),
+      onTap: (value) => setState(
+        () {
+          Provider.of<AuthProvider>(
+            context,
+            listen: false,
+          ).getUser();
+          widget.pageController.jumpToPage(
+            value,
+          );
+        },
+      ),
       items: const [
         BottomNavigationBarItem(
           icon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+            padding: EdgeInsets.only(
+              top: kDefaultPadding * 0.5,
+            ),
             child: IconBottonNavyBarModel(
-              imageIcon: 'assets/icons/home.svg',
+              imageIcon: GPIcons.home,
             ),
           ),
           activeIcon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+            padding: EdgeInsets.only(
+              top: kDefaultPadding * 0.5,
+            ),
             child: IconBottonNavyBarModel(
-              imageIcon: 'assets/icons/home_selected.svg',
+              imageIcon: GPIcons.homeSelected,
             ),
           ),
           label: '',
         ),
         BottomNavigationBarItem(
           icon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+            padding: EdgeInsets.only(
+              top: kDefaultPadding * 0.5,
+            ),
             child: IconBottonNavyBarModel(
-              imageIcon: 'assets/icons/profile.svg',
+              imageIcon: GPIcons.profile,
             ),
           ),
           activeIcon: Padding(
-            padding: EdgeInsets.only(top: kDefaultPadding * 0.5),
+            padding: EdgeInsets.only(
+              top: kDefaultPadding * 0.5,
+            ),
             child: IconBottonNavyBarModel(
-              imageIcon: 'assets/icons/profile_selected.svg',
+              imageIcon: GPIcons.profileSelected,
             ),
           ),
           label: '',

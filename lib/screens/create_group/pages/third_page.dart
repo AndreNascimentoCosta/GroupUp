@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
@@ -31,8 +32,8 @@ class ThirdPageCreate extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(height: context.screenHeight * 0.035),
-          SvgPicture.asset(
-            'assets/icons/completed.svg',
+          GPIcon(
+            GPIcons.completed,
             height: context.screenHeight * 0.2,
             width: context.screenHeight * 0.2,
             color: GPColors.primaryColor,

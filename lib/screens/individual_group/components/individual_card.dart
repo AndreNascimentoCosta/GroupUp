@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/extra_large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
@@ -66,23 +67,29 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                       child: SizedBox(
                         width: context.screenWidth * 0.075,
                         child: ExtraLargeBody(
-                          text: widget.participant
-                              .rank(individualGroupProvider.group),
-                          textAlign: widget.participant
-                                      .rank(individualGroupProvider.group) ==
+                          text: widget.participant.rank(
+                            individualGroupProvider.group,
+                          ),
+                          textAlign: widget.participant.rank(
+                                    individualGroupProvider.group,
+                                  ) ==
                                   '-'
                               ? TextAlign.center
                               : TextAlign.start,
                         ),
                       ),
                     ),
-                    SizedBox(width: context.screenWidth * 0.01),
+                    SizedBox(
+                      width: context.screenWidth * 0.01,
+                    ),
                     ButtonCommonStyle(
                       onPressed: () {
-                        Provider.of<MixPanelProvider>(context, listen: false)
-                            .logEvent(
-                                eventName:
-                                    'Individual Group - Profile Picture');
+                        Provider.of<MixPanelProvider>(
+                          context,
+                          listen: false,
+                        ).logEvent(
+                          eventName: 'Individual Group - Profile Picture',
+                        );
                         if (widget.participant.hasStory) {
                           Navigator.of(context).push(
                             CupertinoPageRoute(
@@ -98,8 +105,9 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                       child: widget.participant.profilePicture.isNotEmpty
                           ? Container(
                               decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.circular(Insets.l * 6),
+                                borderRadius: BorderRadius.circular(
+                                  Insets.l * 6,
+                                ),
                                 color: widget.participant.hasStory
                                     ? GPColors.primaryColor
                                     : GPColors.transparent,
@@ -133,8 +141,9 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                             )
                           : Container(
                               decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.circular(Insets.l * 6),
+                                borderRadius: BorderRadius.circular(
+                                  Insets.l * 6,
+                                ),
                                 color: widget.participant.hasStory
                                     ? GPColors.primaryColor
                                     : GPColors.transparent,
@@ -144,9 +153,11 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                 radius: widget.participant.hasStory
                                     ? Insets.l * 1.50
                                     : Insets.l * 1.65,
-                                backgroundColor: const Color(0XFFE1E1E1),
-                                child: SvgPicture.asset(
-                                  'assets/icons/profile_picture_add.svg',
+                                backgroundColor: const Color(
+                                  0XFFE1E1E1,
+                                ),
+                                child: GPIcon(
+                                  GPIcons.profilePictureAdd,
                                   color: GPColors.white,
                                   height: widget.participant.hasStory
                                       ? Insets.l * 1.50
@@ -184,7 +195,8 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                           ),
                                           child: StaticText(
                                             text: Characters(
-                                                    widget.participant.name)
+                                              widget.participant.name,
+                                            )
                                                 .replaceAll(
                                                   Characters(''),
                                                   Characters('\u{200B}'),
@@ -196,7 +208,9 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                         )
                                   : const StaticText(text: ''),
                             ),
-                            const SizedBox(width: kDefaultPadding / 4),
+                            const SizedBox(
+                              width: kDefaultPadding / 4,
+                            ),
                             IndividualValue(
                               homeViewModel: widget.homeViewModel,
                               userInputData: widget.participant.sumData,
@@ -215,7 +229,9 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
               builder: (context, value, child) {
                 return AnimatedContainer(
                   height: value ? kDefaultPadding : 0,
-                  duration: const Duration(milliseconds: 150),
+                  duration: const Duration(
+                    milliseconds: 150,
+                  ),
                   child: Visibility(
                     visible: value,
                     child: const SizedBox(
@@ -230,7 +246,9 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
               builder: (context, value, child) {
                 return AnimatedContainer(
                   height: value ? 100 : 0,
-                  duration: const Duration(milliseconds: 70),
+                  duration: const Duration(
+                    milliseconds: 70,
+                  ),
                   child: Visibility(
                     visible: value,
                     child: Row(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
@@ -42,14 +43,14 @@ class AppBarEditProfile extends StatelessWidget with PreferredSizeWidget {
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
-                    Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Back Button from Edit Profile Screen to Profile Screen'); 
+                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                        eventName:
+                            'Back Button from Edit Profile Screen to Profile Screen');
                     Navigator.pop(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const EditProfileScreen(),
-                        settings:
-                            const RouteSettings(name: 'Edit_Profile'),
+                        settings: const RouteSettings(name: 'Edit_Profile'),
                       ),
                     );
                   },
@@ -58,9 +59,9 @@ class AppBarEditProfile extends StatelessWidget with PreferredSizeWidget {
                       color: GPColors.transparent,
                       width: Insets.l * 3,
                       child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/icons/arrow_left.svg',
+                        children: const [
+                          GPIcon(
+                            GPIcons.arrowLeft,
                             height: Insets.l * 1.25,
                             width: Insets.l * 1.25,
                             color: GPColors.black,
