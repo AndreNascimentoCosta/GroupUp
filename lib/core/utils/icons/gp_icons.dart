@@ -12,7 +12,7 @@ class GPIcons {
   static const profilePicture = 'assets/icons/profile_picture.svg';
   static const plusProfile = 'assets/icons/plus_profile.png';
   static const plusProfile2 = 'assets/icons/plus_profile_2.png';
-  static const plusPicture = 'assets/icons/plus_picture.svg';
+  static const plusPicture = 'assets/icons/plus_picture.png';
   static const dateSwitch = 'assets/icons/date_switch.svg';
   static const completed = 'assets/icons/completed.svg';
   static const clear = 'assets/icons/clear.svg';
