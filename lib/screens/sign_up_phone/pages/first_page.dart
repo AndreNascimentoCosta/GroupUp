@@ -64,7 +64,7 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                         context,
                       ).invalidPhoneNumber,
                       decoration: InputDecoration(
-                        labelText: AppLocalizations.of(
+                        hintText: AppLocalizations.of(
                           context,
                         ).phoneNumber,
                         border: const OutlineInputBorder(
