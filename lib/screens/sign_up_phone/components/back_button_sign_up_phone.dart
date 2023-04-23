@@ -36,7 +36,7 @@ class BackButtonSignUpPhone extends StatelessWidget {
                 Provider.of<PhoneAuthenProvider>(
                   context,
                   listen: false,
-                ).cleanOtp();
+                ).clean();
               },
               child: const GPIcon(
                 GPIcons.arrowLeft,
