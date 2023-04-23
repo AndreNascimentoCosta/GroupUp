@@ -310,11 +310,9 @@ class AuthProvider extends ChangeNotifier {
   Future<void> signOut(BuildContext context) async {
     final mixPanelProvider =
         Provider.of<MixPanelProvider>(context, listen: false);
-    final navigatorState = Navigator.of(context);
     await FirebaseAuth.instance.signOut();
-    navigatorState.pushAndRemoveUntil(
-      MaterialPageRoute(builder: (context) => const Home()),
-      (route) => false,
+    await mixPanelProvider.logEvent(
+      eventName: 'Sign Out',
     );
     mixPanelProvider.removeUser();
   }
