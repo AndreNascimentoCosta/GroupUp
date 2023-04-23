@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/core/extensions/gp_navigator_extension.dart';
-import 'package:groupup/core/routes/gp_named_routes.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/screens/home/pages/home.dart';
 
 class GPButtonOnboarding extends StatelessWidget {
   const GPButtonOnboarding({
@@ -20,12 +19,17 @@ class GPButtonOnboarding extends StatelessWidget {
     return ButtonCommonStyle(
       onPressed: () {
         if (controller.page == 3) {
-          context.pushNamed(
-            GPNamedRoutes.home,
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const Home(),
+            ),
+            (route) => false,
           );
         } else {
           controller.nextPage(
-            duration: const Duration(milliseconds: 300),
+            duration: const Duration(
+              milliseconds: 300,
+            ),
             curve: Curves.ease,
           );
         }
