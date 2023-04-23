@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/screens/groups/components/add_project.dart';
 import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
@@ -39,6 +40,12 @@ class _GroupsScreenState extends State<GroupsScreen> {
       listen: false,
     ).addListener(
       askNameIfNeeded,
+    );
+    Provider.of<MixPanelProvider>(
+      context,
+      listen: false,
+    ).logEvent(
+      eventName: 'Groups Screen',
     );
   }
 
