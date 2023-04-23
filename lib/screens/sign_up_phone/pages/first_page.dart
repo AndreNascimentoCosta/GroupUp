@@ -23,76 +23,69 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
   @override
   Widget build(BuildContext context) {
     final nodePhone = FocusNode();
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
-      },
-      child: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kDefaultPadding,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    StaticText(
-                      text: AppLocalizations.of(
+    return Center(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: kDefaultPadding,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  StaticText(
+                    text: AppLocalizations.of(
+                      context,
+                    ).phoneNumber,
+                    fontSize: TextSize.lBody,
+                  ),
+                  const SizedBox(
+                    height: Insets.xs,
+                  ),
+                  IntlPhoneField(
+                    focusNode: nodePhone,
+                    autofocus: true,
+                    pickerDialogStyle: PickerDialogStyle(
+                      searchFieldInputDecoration: InputDecoration(
+                        labelText: AppLocalizations.of(
+                          context,
+                        ).searchCountry,
+                      ),
+                    ),
+                    invalidNumberMessage: AppLocalizations.of(
+                      context,
+                    ).invalidPhoneNumber,
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(
                         context,
                       ).phoneNumber,
-                      fontSize: TextSize.lBody,
-                    ),
-                    const SizedBox(
-                      height: Insets.xs,
-                    ),
-                    IntlPhoneField(
-                      focusNode: nodePhone,
-                      pickerDialogStyle: PickerDialogStyle(
-                        searchFieldInputDecoration: InputDecoration(
-                          labelText: AppLocalizations.of(
-                            context,
-                          ).searchCountry,
-                        ),
+                      border: const OutlineInputBorder(
+                        borderSide: BorderSide(),
                       ),
-                      invalidNumberMessage: AppLocalizations.of(
+                    ),
+                    initialCountryCode: Platform.localeName
+                        .split(
+                          '_',
+                        )
+                        .last,
+                    onChanged: (phone) {
+                      Provider.of<PhoneAuthenProvider>(
                         context,
-                      ).invalidPhoneNumber,
-                      decoration: InputDecoration(
-                        hintText: AppLocalizations.of(
-                          context,
-                        ).phoneNumber,
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide(),
-                        ),
-                      ),
-                      initialCountryCode: Platform.localeName
-                          .split(
-                            '_',
-                          )
-                          .last,
-                      onChanged: (phone) {
-                        Provider.of<PhoneAuthenProvider>(
-                          context,
-                          listen: false,
-                        ).setPhone(
-                          phone.completeNumber,
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                        listen: false,
+                      ).setPhone(
+                        phone.completeNumber,
+                      );
+                    },
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: Insets.l,
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: Insets.l,
+            ),
+          ],
         ),
       ),
     );
