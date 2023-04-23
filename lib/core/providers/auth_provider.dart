@@ -11,7 +11,6 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_data.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
-import 'package:groupup/screens/home/pages/home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
