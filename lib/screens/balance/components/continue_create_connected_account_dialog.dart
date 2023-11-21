@@ -17,7 +17,7 @@ import '../../../core/providers/mix_panel_provider.dart';
 
 void continueCreateConnectedAccountDialog(BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
-  final appLocalizations = AppLocalizations.of(context);
+  final appLocalizations = AppLocalizations.of(context)!;
   if (authProvider.user == null) {
     return;
   }

@@ -15,14 +15,14 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarEditGroupObjective extends StatelessWidget
-    with PreferredSizeWidget {
+    implements PreferredSizeWidget {
   const AppBarEditGroupObjective({super.key});
 
   @override
   Widget build(BuildContext context) {
     final editGroupObjectiveProvider =
         Provider.of<EditGroupObjectiveProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
       return const SizedBox();
@@ -69,9 +69,9 @@ class AppBarEditGroupObjective extends StatelessWidget
                     child: Container(
                       color: GPColors.transparent,
                       width: Insets.l * 3,
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
+                        children: [
                           GPIcon(
                             GPIcons.arrowDown,
                             color: GPColors.black,

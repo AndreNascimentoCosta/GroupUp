@@ -9,7 +9,7 @@ class ValidateDataOnboarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: kDefaultPadding,

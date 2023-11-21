@@ -27,7 +27,7 @@ class _NameAddState extends State<NameAdd> {
           Padding(
             padding: const EdgeInsets.only(top: kDefaultPadding * 2),
             child: StaticText(
-              text: AppLocalizations.of(context).name,
+              text: AppLocalizations.of(context)!.name,
               textAlign: TextAlign.center,
               fontFamily: 'Montserrat-SemiBold',
               fontSize: 28,
@@ -48,14 +48,14 @@ class _NameAddState extends State<NameAdd> {
                     autoFocus: true,
                     validator: (value) {
                       if (value!.isNotEmpty && value.length < 3) {
-                        return AppLocalizations.of(context)
+                        return AppLocalizations.of(context)!
                             .nameValidatorAtLeast3Chars;
                       } else {
                         return null;
                       }
                     },
-                    header: AppLocalizations.of(context).name,
-                    hint: AppLocalizations.of(context).enterName,
+                    header: AppLocalizations.of(context)!.name,
+                    hint: AppLocalizations.of(context)!.enterName,
                     autoFillHints: const [AutofillHints.name],
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.next,

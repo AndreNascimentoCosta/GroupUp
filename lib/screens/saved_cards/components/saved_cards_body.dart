@@ -20,7 +20,7 @@ class BodySavedCards extends StatelessWidget {
       );
     }
     final userId = currentUser.id;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Expanded(
       child: Scrollbar(
         child: FutureBuilder(

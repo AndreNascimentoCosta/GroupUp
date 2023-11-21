@@ -17,7 +17,7 @@ import '../../../core/providers/mix_panel_provider.dart';
 
 void createConnectedAccount(BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
-  final appLocalizations = AppLocalizations.of(context);
+  final appLocalizations = AppLocalizations.of(context)!;
   showCupertinoDialog(
     context: context,
     builder: (BuildContext context) {

@@ -36,7 +36,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
   Widget build(BuildContext context) {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     if (individualGroupProvider.group == null) {
       return const CircularProgressIndicator.adaptive();
     } else {

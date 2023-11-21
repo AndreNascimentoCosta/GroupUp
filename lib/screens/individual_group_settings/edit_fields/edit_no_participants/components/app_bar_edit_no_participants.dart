@@ -16,7 +16,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/providers/mix_panel_provider.dart';
 
 class AppBarEditGroupNoParticipats extends StatelessWidget
-    with PreferredSizeWidget {
+    implements PreferredSizeWidget {
   const AppBarEditGroupNoParticipats({super.key});
 
   @override
@@ -27,7 +27,7 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
     if (group == null) {
       return const SizedBox();
     }
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [
@@ -70,9 +70,9 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
                     child: Container(
                       color: GPColors.transparent,
                       width: Insets.l * 3,
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
+                        children: [
                           GPIcon(
                             GPIcons.arrowLeft,
                             color: GPColors.black,

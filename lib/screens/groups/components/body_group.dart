@@ -44,8 +44,8 @@ class BodyGroup extends StatelessWidget {
               );
             }
             if (snapshot.data!.docs.isEmpty) {
-              return Column(
-                children: const [
+              return const Column(
+                children: [
                   NoGroup(),
                 ],
               );

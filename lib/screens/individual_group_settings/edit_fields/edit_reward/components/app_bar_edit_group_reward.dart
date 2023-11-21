@@ -15,14 +15,14 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarEditGroupReward extends StatelessWidget
-    with PreferredSizeWidget {
+    implements PreferredSizeWidget {
   const AppBarEditGroupReward({super.key});
 
   @override
   Widget build(BuildContext context) {
     final editGroupRewardProvider =
         Provider.of<EditGroupRewardProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
       return const SizedBox();
@@ -69,9 +69,9 @@ class AppBarEditGroupReward extends StatelessWidget
                     child: Container(
                       color: GPColors.transparent,
                       width: Insets.l * 3,
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
+                        children: [
                           GPIcon(
                             GPIcons.arrowLeft,
                             color: GPColors.black,

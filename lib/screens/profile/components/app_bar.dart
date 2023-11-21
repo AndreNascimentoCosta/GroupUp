@@ -12,12 +12,12 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class AppBarProfile extends StatelessWidget with PreferredSizeWidget {
+class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
   const AppBarProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return AppBar(
       elevation: 0,
       backgroundColor: GPColors.white,

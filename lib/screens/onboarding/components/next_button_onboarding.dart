@@ -37,7 +37,7 @@ class GPButtonOnboarding extends StatelessWidget {
       child: SizedBox(
         width: 150,
         child: StaticText(
-          text: AppLocalizations.of(context).next,
+          text: AppLocalizations.of(context)!.next,
           fontFamily: 'Montserrat-SemiBold',
           fontSize: TextSize.lBody * 1.1,
           textAlign: TextAlign.center,

@@ -124,8 +124,8 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                 )
               ],
             ),
-            Column(
-              children: const [
+            const Column(
+              children: [
                 Calendar(),
               ],
             ),
@@ -200,8 +200,8 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
                 )
               ],
             ),
-            Column(
-              children: const [
+            const Column(
+              children: [
                 Calendar(),
               ],
             ),

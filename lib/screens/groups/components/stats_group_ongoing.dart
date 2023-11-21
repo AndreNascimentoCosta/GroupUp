@@ -39,13 +39,13 @@ class StatsGroup extends StatelessWidget {
             visible: !value,
             child: Row(
               children: [
-                Flexible(
+                const Flexible(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       horizontal: kDefaultPadding,
                     ),
                     child: Column(
-                      children: const [
+                      children: [
                         GPIcon(
                           GPIcons.rank,
                           color: GPColors.black,

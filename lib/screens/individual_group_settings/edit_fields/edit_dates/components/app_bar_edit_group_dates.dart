@@ -15,13 +15,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../core/providers/individual_group_provider.dart';
 
-class AppBarEditGroupDates extends StatelessWidget with PreferredSizeWidget {
+class AppBarEditGroupDates extends StatelessWidget implements PreferredSizeWidget {
   const AppBarEditGroupDates({super.key});
 
   @override
   Widget build(BuildContext context) {
     final editGroupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
       return const Scaffold();
@@ -72,9 +72,9 @@ class AppBarEditGroupDates extends StatelessWidget with PreferredSizeWidget {
                     child: Container(
                       color: GPColors.transparent,
                       width: Insets.l * 3,
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
+                        children: [
                           GPIcon(
                             GPIcons.arrowLeft,
                             color: GPColors.black,

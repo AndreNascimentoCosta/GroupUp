@@ -28,7 +28,7 @@ class SecondPageCreate extends StatelessWidget {
   Widget build(BuildContext context) {
     final scrollController = ScrollController();
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;

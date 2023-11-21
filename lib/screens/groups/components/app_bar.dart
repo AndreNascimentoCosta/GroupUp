@@ -10,8 +10,8 @@ import 'package:groupup/models/group_model.dart';
 import '../../../models/home_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AppBarGroup extends StatefulWidget with PreferredSizeWidget {
-  AppBarGroup({required this.homeViewModel});
+class AppBarGroup extends StatefulWidget implements PreferredSizeWidget {
+  const AppBarGroup({required this.homeViewModel});
 
   final HomeViewModel homeViewModel;
 
@@ -36,7 +36,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
       backgroundColor: GPColors.white,
       automaticallyImplyLeading: false,
       title: StaticText(
-        text: AppLocalizations.of(context).groups,
+        text: AppLocalizations.of(context)!.groups,
         fontFamily: 'Montserrat-Bold',
         fontSize: TextSize.title,
       ),
@@ -79,7 +79,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
                                   bottom: kDefaultPadding / 2,
                                   right: kDefaultPadding * 4),
                               child: StaticText(
-                                text: AppLocalizations.of(context).selectAll,
+                                text: AppLocalizations.of(context)!.selectAll,
                                 fontSize: TextSize.lBody,
                               ),
                             ),

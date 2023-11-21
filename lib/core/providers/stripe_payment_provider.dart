@@ -232,7 +232,7 @@ class StripePaymentProvider extends ChangeNotifier {
     String paymentMethodId,
     String groupCode,
   ) async {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     await showCupertinoDialog(
       context: context,
       builder: (BuildContext newContext) {
@@ -326,7 +326,7 @@ class StripePaymentProvider extends ChangeNotifier {
     String groupCode,
     String paymentMethodId,
   ) async {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     await showCupertinoDialog(
       context: context,
       builder: (BuildContext newContext) {

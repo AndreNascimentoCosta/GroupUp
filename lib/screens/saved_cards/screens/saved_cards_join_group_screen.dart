@@ -8,11 +8,11 @@ class SavedCardsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: GPColors.white,
-      appBar: const AppBarSavedCards(),
+      appBar: AppBarSavedCards(),
       body: Column(
-        children: const [
+        children: [
           BodySavedCards(),
         ],
       ),

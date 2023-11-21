@@ -35,12 +35,12 @@ class _FirstPageJoinState extends State<FirstPageJoin> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return AppLocalizations.of(context).pleaseEnterGroupCode;
+                      return AppLocalizations.of(context)!.pleaseEnterGroupCode;
                     }
                     return null;
                   },
-                  header: AppLocalizations.of(context).groupCode,
-                  hint: AppLocalizations.of(context).enterGroupCode,
+                  header: AppLocalizations.of(context)!.groupCode,
+                  hint: AppLocalizations.of(context)!.enterGroupCode,
                   padding: const EdgeInsets.symmetric(
                     horizontal: kDefaultPadding,
                   ),
@@ -49,7 +49,7 @@ class _FirstPageJoinState extends State<FirstPageJoin> {
                   ]),
               // const SizedBox(height: kDefaultPadding / 2),
               // StaticText(
-              //   text: AppLocalizations.of(context).feeNotRefundable,
+              //   text: AppLocalizations.of(context)!.feeNotRefundable,
               //   maxLines: 2,
               //   textAlign: TextAlign.center,
               // ),

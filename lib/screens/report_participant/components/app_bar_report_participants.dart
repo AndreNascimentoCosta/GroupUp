@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/providers/mix_panel_provider.dart';
 
-class AppBarReportParticipant extends StatelessWidget with PreferredSizeWidget {
+class AppBarReportParticipant extends StatelessWidget implements PreferredSizeWidget {
   const AppBarReportParticipant({super.key});
 
   @override
@@ -36,7 +36,7 @@ class AppBarReportParticipant extends StatelessWidget with PreferredSizeWidget {
                 ),
                 alignment: AlignmentDirectional.center,
                 child: Header(
-                    text: AppLocalizations.of(context).reportParticipant),
+                    text: AppLocalizations.of(context)!.reportParticipant),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),
@@ -51,8 +51,8 @@ class AppBarReportParticipant extends StatelessWidget with PreferredSizeWidget {
                     child: Container(
                       color: GPColors.transparent,
                       width: Insets.l * 3,
-                      child: Row(
-                        children: const [
+                      child: const Row(
+                        children: [
                           GPIcon(
                             GPIcons.arrowLeft,
                             color: GPColors.black,

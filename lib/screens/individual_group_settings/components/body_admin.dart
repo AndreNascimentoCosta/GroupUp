@@ -38,7 +38,7 @@ class BodyAdminSettings extends StatelessWidget {
     final participantsData = group.participantsData;
     final createGroupProvider =
         Provider.of<CreateGroupProvider>(context, listen: false);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;

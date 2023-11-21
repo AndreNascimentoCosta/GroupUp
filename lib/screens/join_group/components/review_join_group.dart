@@ -22,7 +22,7 @@ class ReviewJoinGroup extends StatefulWidget {
 class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final joinGroupProvider = Provider.of<JoinGroupProvider>(context);
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
       stream: FirebaseFirestore.instance

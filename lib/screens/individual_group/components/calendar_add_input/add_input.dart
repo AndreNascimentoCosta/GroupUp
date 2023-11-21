@@ -29,7 +29,7 @@ class AddInput extends StatefulWidget {
 class _AddInputState extends State<AddInput> {
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final String currentDate = DateFormat.yMd(
       Localizations.localeOf(context).toLanguageTag(),
     ).format(

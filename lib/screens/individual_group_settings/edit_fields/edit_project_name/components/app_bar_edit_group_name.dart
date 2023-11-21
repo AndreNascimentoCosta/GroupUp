@@ -14,13 +14,13 @@ import 'package:groupup/core/providers/edit_group_name_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
+class AppBarEditGroupName extends StatelessWidget implements PreferredSizeWidget {
   const AppBarEditGroupName({super.key});
 
   @override
   Widget build(BuildContext context) {
     final editGroupNameProvider = Provider.of<EditGroupNameProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
       return const SizedBox();
@@ -67,9 +67,9 @@ class AppBarEditGroupName extends StatelessWidget with PreferredSizeWidget {
                     child: Container(
                       color: GPColors.transparent,
                       width: Insets.l * 3,
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
+                        children: [
                           GPIcon(
                             GPIcons.arrowLeft,
                             color: GPColors.black,

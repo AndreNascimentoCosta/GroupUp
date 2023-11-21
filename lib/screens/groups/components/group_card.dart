@@ -176,7 +176,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                 MediumBody(
                                   text: AppLocalizations.of(
                                     context,
-                                  ).ended,
+                                  )!.ended,
                                   color: GPColors.secondaryColor,
                                 ),
                               ],
@@ -219,7 +219,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                 MediumBody(
                                   text: AppLocalizations.of(
                                     context,
-                                  ).ended,
+                                  )!.ended,
                                   color: GPColors.secondaryColor,
                                 ),
                               ],

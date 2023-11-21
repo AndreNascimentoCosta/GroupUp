@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
           if (snapshot.hasError) {
             return Center(
               child: Header(
-                text: AppLocalizations.of(context).generalError,
+                text: AppLocalizations.of(context)!.generalError,
               ),
             );
           }

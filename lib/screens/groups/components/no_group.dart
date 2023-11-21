@@ -63,7 +63,7 @@ class NoGroup extends StatelessWidget {
                         left: kDefaultPadding,
                       ),
                       child: ExtraLargeBody(
-                        text: AppLocalizations.of(context).newGroup,
+                        text: AppLocalizations.of(context)!.newGroup,
                         color: GPColors.secondaryColor,
                       ),
                     ),
@@ -75,7 +75,7 @@ class NoGroup extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: Insets.xl * 1.5),
                 child: StaticText(
-                  text: AppLocalizations.of(context).createOrJoinAGroup,
+                  text: AppLocalizations.of(context)!.createOrJoinAGroup,
                   color: GPColors.secondaryColor,
                   fontFamily: 'Montserrat-Medium',
                   fontSize: 20,

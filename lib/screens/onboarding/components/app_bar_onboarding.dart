@@ -8,12 +8,12 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/screens/home/pages/home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AppBarOnboarding extends StatelessWidget with PreferredSizeWidget {
+class AppBarOnboarding extends StatelessWidget implements PreferredSizeWidget {
   const AppBarOnboarding({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [

@@ -6,7 +6,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/header.dart';
 
-class AppBarInstagrammable extends StatelessWidget with PreferredSizeWidget {
+class AppBarInstagrammable extends StatelessWidget implements PreferredSizeWidget {
   const AppBarInstagrammable({
     super.key,
     this.isSharing = false,

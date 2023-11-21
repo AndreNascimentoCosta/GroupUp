@@ -19,7 +19,7 @@ import 'package:provider/provider.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/providers/mix_panel_provider.dart';
 
-class AppBarIndividualGroup extends StatefulWidget with PreferredSizeWidget {
+class AppBarIndividualGroup extends StatefulWidget implements PreferredSizeWidget {
   const AppBarIndividualGroup({
     required this.homeViewModel,
   });

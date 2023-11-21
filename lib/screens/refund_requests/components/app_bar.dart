@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/providers/mix_panel_provider.dart';
 
-class AppBarRefundRequests extends StatelessWidget with PreferredSizeWidget {
+class AppBarRefundRequests extends StatelessWidget implements PreferredSizeWidget {
   const AppBarRefundRequests({super.key});
 
   @override

@@ -14,7 +14,7 @@ class EditProfileNameBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var editProfileNameController =
         Provider.of<EditProfileNameProvider>(context).profileNameController;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,

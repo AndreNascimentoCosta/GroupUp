@@ -11,12 +11,12 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
+class AppBarGroupSettings extends StatelessWidget implements PreferredSizeWidget {
   const AppBarGroupSettings({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [
@@ -50,8 +50,8 @@ class AppBarGroupSettings extends StatelessWidget with PreferredSizeWidget {
                     child: Container(
                       color: GPColors.transparent,
                       width: Insets.l * 3,
-                      child: Row(
-                        children: const [
+                      child: const Row(
+                        children: [
                           GPIcon(
                             GPIcons.arrowLeft,
                             color: GPColors.black,

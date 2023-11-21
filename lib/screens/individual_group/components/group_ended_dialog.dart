@@ -23,7 +23,7 @@ groupEndedDialog(BuildContext context) {
           Provider.of<IndividualGroupProvider>(context);
       final group = individualGroupProvider.group;
       final currentUser = Provider.of<AuthProvider>(context).user;
-      final appLocalizations = AppLocalizations.of(context);
+      final appLocalizations = AppLocalizations.of(context)!;
       bool isClaimingReward = false;
       // String groupCurrencySymbol =
       //     NumberFormat.simpleCurrency(name: group?.groupCurrencyCode)

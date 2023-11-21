@@ -13,12 +13,12 @@ import 'package:provider/provider.dart';
 
 import '../../../core/providers/mix_panel_provider.dart';
 
-class AppBarEditProfile extends StatelessWidget with PreferredSizeWidget {
+class AppBarEditProfile extends StatelessWidget implements PreferredSizeWidget {
   const AppBarEditProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [
@@ -58,8 +58,8 @@ class AppBarEditProfile extends StatelessWidget with PreferredSizeWidget {
                     child: Container(
                       color: GPColors.transparent,
                       width: Insets.l * 3,
-                      child: Row(
-                        children: const [
+                      child: const Row(
+                        children: [
                           GPIcon(
                             GPIcons.arrowLeft,
                             height: Insets.l * 1.25,

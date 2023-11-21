@@ -13,7 +13,7 @@ class EditGroupDatesBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final groupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,

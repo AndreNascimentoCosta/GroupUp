@@ -37,7 +37,7 @@ class IndividualParticipant extends StatelessWidget {
           final Uri emailLaunchUri = Uri(
             scheme: 'mailto',
             path: 'groupupapp@outlook.com',
-            query: AppLocalizations.of(context).mailReportParticipant(
+            query: AppLocalizations.of(context)!.mailReportParticipant(
               participant.name,
               participant.uid,
               group.projectName,

@@ -8,11 +8,11 @@ class CreatedGroupsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: GPColors.white,
-      appBar: const AppBarCreatedGroups(),
+      appBar: AppBarCreatedGroups(),
       body: Column(
-        children: const [
+        children: [
           BodyCreatedGroup(),
         ],
       ),

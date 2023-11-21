@@ -15,7 +15,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
   final authProvider = Provider.of<AuthProvider>(rootContext, listen: false);
-  final appLocalizations = AppLocalizations.of(rootContext);
+  final appLocalizations = AppLocalizations.of(rootContext)!;
   if (authProvider.user == null) {
     return;
   }

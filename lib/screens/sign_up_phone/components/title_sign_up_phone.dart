@@ -35,10 +35,10 @@ class TitleSignUpPhone extends StatelessWidget {
                     2
                 ? AppLocalizations.of(
                     context,
-                  ).continuePN
+                  )!.continuePN
                 : AppLocalizations.of(
                     context,
-                  ).verificationCode,
+                  )!.verificationCode,
             fontFamily: 'Montserrat-SemiBold',
             fontSize: 28,
           ),

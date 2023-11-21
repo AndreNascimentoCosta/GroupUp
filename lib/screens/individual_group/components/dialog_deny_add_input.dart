@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import '../../../core/widgets/texts/static_text.dart';
 
 void denyAddInputDialog(BuildContext context, String bodyText) {
-  final appLocalizations = AppLocalizations.of(context);
+  final appLocalizations = AppLocalizations.of(context)!;
   showCupertinoDialog(
     context: context,
     builder: (BuildContext context) {

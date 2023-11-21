@@ -15,13 +15,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/providers/edit_profile_name_provider.dart';
 import '../../../../../core/providers/mix_panel_provider.dart';
 
-class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
+class AppBarEditProfileName extends StatelessWidget implements PreferredSizeWidget {
   const AppBarEditProfileName({super.key});
 
   @override
   Widget build(BuildContext context) {
     final nameProvider = Provider.of<EditProfileNameProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [
@@ -62,8 +62,8 @@ class AppBarEditProfileName extends StatelessWidget with PreferredSizeWidget {
                     child: Container(
                       color: GPColors.transparent,
                       width: Insets.l * 3,
-                      child: Row(
-                        children: const [
+                      child: const Row(
+                        children: [
                           GPIcon(
                             GPIcons.arrowLeft,
                             color: GPColors.black,

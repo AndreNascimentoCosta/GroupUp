@@ -41,7 +41,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
         if (snapshot.hasError) {
           return Center(
             child: Header(
-              text: AppLocalizations.of(context).generalError,
+              text: AppLocalizations.of(context)!.generalError,
             ),
           );
         }

@@ -23,7 +23,7 @@ class HeaderIndividualGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;

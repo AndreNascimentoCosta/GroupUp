@@ -43,7 +43,7 @@ class _ChooseParticipantProfilePictureState
         'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-bcf2-89b5e5b93bad';
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;

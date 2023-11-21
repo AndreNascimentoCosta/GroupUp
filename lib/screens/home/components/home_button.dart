@@ -35,8 +35,8 @@ class HomeButton extends StatelessWidget {
         children: [
           Text(
             isJoinButton
-                ? AppLocalizations.of(context).joinAGroup
-                : AppLocalizations.of(context).createNewGroup,
+                ? AppLocalizations.of(context)!.joinAGroup
+                : AppLocalizations.of(context)!.createNewGroup,
             style: TextStyle(
               fontFamily: 'Montserrat-SemiBold',
               fontSize: 20,

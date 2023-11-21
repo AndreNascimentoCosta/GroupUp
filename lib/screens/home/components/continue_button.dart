@@ -35,7 +35,7 @@ class ContinueButton extends StatelessWidget {
       ),
       alignment: Alignment.center,
       child: StaticText(
-        text: AppLocalizations.of(context).getStarted,
+        text: AppLocalizations.of(context)!.getStarted,
         fontFamily: 'Montserrat-SemiBold',
         fontSize: 22,
         color: GPColors.white,

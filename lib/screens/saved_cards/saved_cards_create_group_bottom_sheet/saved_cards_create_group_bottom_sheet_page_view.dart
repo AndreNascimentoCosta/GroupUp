@@ -23,7 +23,7 @@ class SavedCardsCreateGroupBottomSheetPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final stripePaymentProvider = Provider.of<StripePaymentProvider>(context);
     return SafeArea(
       child: Column(

@@ -43,7 +43,7 @@ class BodyReportParticipant extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: StaticText(
-                          text: AppLocalizations.of(context).noParticipants,
+                          text: AppLocalizations.of(context)!.noParticipants,
                           color: GPColors.secondaryColor,
                           textAlign: TextAlign.center,
                           fontSize: 20,

@@ -11,17 +11,17 @@ class StatsNoGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Flexible(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: kDefaultPadding,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              children: const [
+              children: [
                 GPIcon(
                   GPIcons.rank,
                   color: GPColors.secondaryColor,
@@ -54,7 +54,7 @@ class StatsNoGroup extends StatelessWidget {
           width: Insets.l,
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: const [
+            children: [
               MediumBody(
                 text: '-',
                 textAlign: TextAlign.center,
