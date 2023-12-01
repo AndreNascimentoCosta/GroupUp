@@ -1099,7 +1099,7 @@ SPEC CHECKSUMS:
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
-  rive_common: 60ae7896ab40f9513974f36f015de33f70d2c5c5
+  rive_common: 3a4c254c6e4db7e4b9e05daeb3d1f47ae4f7bf76
   Sentry: 4c9babff9034785067c896fd580b1f7de44da020
   sentry_flutter: 1346a880b24c0240807b53b10cf50ddad40f504e
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
@@ -1119,6 +1119,6 @@ SPEC CHECKSUMS:
   uni_links: d97da20c7701486ba192624d99bffaaffcfc298a
   url_launcher_ios: bf5ce03e0e2088bad9cc378ea97fa0ed5b49673b
 
-PODFILE CHECKSUM: 1a86e7654bb8611f38728384d250276ef708ee5f
+PODFILE CHECKSUM: abd3071c3798147190079d32cd7c9d7d9f0df55a
 
 COCOAPODS: 1.14.3
