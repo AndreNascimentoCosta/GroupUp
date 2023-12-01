@@ -18,25 +18,25 @@ class SubtitleHome extends StatelessWidget {
         ),
         children: [
           TextSpan(
-            text: AppLocalizations.of(context)!.createHS,
+            text: AppLocalizations.of(context).createHS,
             style: const TextStyle(
               fontFamily: 'Montserrat-Bold',
             ),
           ),
           TextSpan(
-            text: AppLocalizations.of(context)!.orHS,
+            text: AppLocalizations.of(context).orHS,
           ),
           TextSpan(
-            text: AppLocalizations.of(context)!.joinHS,
+            text: AppLocalizations.of(context).joinHS,
             style: const TextStyle(
               fontFamily: 'Montserrat-Bold',
             ),
           ),
           TextSpan(
-            text: AppLocalizations.of(context)!.groupHS,
+            text: AppLocalizations.of(context).groupHS,
           ),
           TextSpan(
-            text: AppLocalizations.of(context)!.challengeHS,
+            text: AppLocalizations.of(context).challengeHS,
             style: const TextStyle(
               fontFamily: 'Montserrat-Bold',
             ),

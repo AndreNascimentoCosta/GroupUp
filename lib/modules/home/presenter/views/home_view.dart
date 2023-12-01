@@ -6,28 +6,24 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/header.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/home_view.dart';
+import 'package:groupup/modules/home/presenter/widgets/continue_button.dart';
+import 'package:groupup/modules/home/presenter/widgets/subtitle_home.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/screens/home/components/continue_button.dart';
-import 'package:groupup/screens/home/components/subtitle_home.dart';
 import 'package:groupup/screens/sign_up_phone/pages/page_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context);
     final phoneProvider = Provider.of<PhoneAuthenProvider>(
       context,
       listen: false,
@@ -48,8 +44,8 @@ class _HomeState extends State<Home> {
           }
           if (snapshot.hasError) {
             return Center(
-              child: Header(
-                text: AppLocalizations.of(context)!.generalError,
+              child: GUTextHeader(
+                text: AppLocalizations.of(context).generalError,
               ),
             );
           }
@@ -66,8 +62,8 @@ class _HomeState extends State<Home> {
                     const SizedBox(
                       height: Insets.l * 2,
                     ),
-                    const StaticText(
-                      text: 'GroupUp',
+                    StaticText(
+                      text: appLocalizations.groupUp,
                       textAlign: TextAlign.center,
                       fontSize: 34,
                       fontFamily: 'Montserrat-Bold',
