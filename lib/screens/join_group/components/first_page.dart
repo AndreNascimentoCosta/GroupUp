@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
-import 'package:groupup/screens/home/components/text_field_home.dart';
+import 'package:groupup/modules/home/presenter/widgets/text_field_home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -35,21 +35,21 @@ class _FirstPageJoinState extends State<FirstPageJoin> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return AppLocalizations.of(context)!.pleaseEnterGroupCode;
+                      return AppLocalizations.of(context).pleaseEnterGroupCode;
                     }
                     return null;
                   },
-                  header: AppLocalizations.of(context)!.groupCode,
-                  hint: AppLocalizations.of(context)!.enterGroupCode,
+                  header: AppLocalizations.of(context).groupCode,
+                  hint: AppLocalizations.of(context).enterGroupCode,
                   padding: const EdgeInsets.symmetric(
                     horizontal: kDefaultPadding,
                   ),
                   inputFormatters: [
-                      UpperCaseTextFormatter(),
+                    UpperCaseTextFormatter(),
                   ]),
               // const SizedBox(height: kDefaultPadding / 2),
               // StaticText(
-              //   text: AppLocalizations.of(context)!.feeNotRefundable,
+              //   text: AppLocalizations.of(context).feeNotRefundable,
               //   maxLines: 2,
               //   textAlign: TextAlign.center,
               // ),
@@ -63,7 +63,8 @@ class _FirstPageJoinState extends State<FirstPageJoin> {
 
 class UpperCaseTextFormatter extends TextInputFormatter {
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     return TextEditingValue(
       text: newValue.text.toUpperCase(),
       selection: newValue.selection,

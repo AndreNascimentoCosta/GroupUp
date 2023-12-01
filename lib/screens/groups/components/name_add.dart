@@ -4,7 +4,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
-import 'package:groupup/screens/home/components/text_field_home.dart';
+import 'package:groupup/modules/home/presenter/widgets/text_field_home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -27,7 +27,7 @@ class _NameAddState extends State<NameAdd> {
           Padding(
             padding: const EdgeInsets.only(top: kDefaultPadding * 2),
             child: StaticText(
-              text: AppLocalizations.of(context)!.name,
+              text: AppLocalizations.of(context).name,
               textAlign: TextAlign.center,
               fontFamily: 'Montserrat-SemiBold',
               fontSize: 28,
@@ -48,14 +48,14 @@ class _NameAddState extends State<NameAdd> {
                     autoFocus: true,
                     validator: (value) {
                       if (value!.isNotEmpty && value.length < 3) {
-                        return AppLocalizations.of(context)!
+                        return AppLocalizations.of(context)
                             .nameValidatorAtLeast3Chars;
                       } else {
                         return null;
                       }
                     },
-                    header: AppLocalizations.of(context)!.name,
-                    hint: AppLocalizations.of(context)!.enterName,
+                    header: AppLocalizations.of(context).name,
+                    hint: AppLocalizations.of(context).enterName,
                     autoFillHints: const [AutofillHints.name],
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.next,

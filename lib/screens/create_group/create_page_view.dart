@@ -70,7 +70,7 @@ class _CreatePageViewState extends State<CreatePageView> {
                   ),
                 ),
                 StaticText(
-                  text: AppLocalizations.of(context)!.createGroup,
+                  text: AppLocalizations.of(context).createGroup,
                   fontFamily: 'Montserrat-SemiBold',
                   fontSize: isVerySmallScreen ? 24 : 28,
                 ),

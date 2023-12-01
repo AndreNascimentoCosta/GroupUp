@@ -16,7 +16,7 @@ class ChartLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.only(
         top: kDefaultPadding,

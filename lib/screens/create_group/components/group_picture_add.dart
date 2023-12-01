@@ -52,7 +52,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;

@@ -6,7 +6,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/header.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -27,7 +27,7 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
     if (group == null) {
       return const SizedBox();
     }
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
         children: [
@@ -46,7 +46,7 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: Header(text: appLocalizations.participants),
+                child: GUTextHeader(text: appLocalizations.participants),
               ),
               ButtonCommonStyle(
                 onPressed: () {

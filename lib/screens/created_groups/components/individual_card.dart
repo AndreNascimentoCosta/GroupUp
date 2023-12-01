@@ -4,7 +4,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/medium_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -20,7 +20,7 @@ class IndividualCreatedGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Row(
@@ -64,7 +64,7 @@ class IndividualCreatedGroup extends StatelessWidget {
                           fontSize: 20,
                         ),
                         const SizedBox(height: Insets.s),
-                        MediumBody(
+                        GUTextBody(
                           text: appLocalizations.ended,
                           color: GPColors.secondaryColor,
                         ),

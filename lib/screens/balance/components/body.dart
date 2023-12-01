@@ -17,7 +17,7 @@ class GroupsBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     return Expanded(
       child: Scrollbar(
         child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(

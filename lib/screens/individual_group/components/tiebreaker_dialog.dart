@@ -16,7 +16,7 @@ tiebreakerDialog(BuildContext context) async {
   const keyIsFirstOpened = 'is_first_opened';
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool? isFirstLoaded = prefs.getBool(keyIsFirstOpened);
-  final appLocalizations = AppLocalizations.of(context)!;
+  final appLocalizations = AppLocalizations.of(context);
   if (isFirstLoaded == null) {
     showCupertinoDialog(
       context: context,

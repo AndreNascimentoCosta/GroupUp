@@ -23,7 +23,7 @@ class GroupPictureEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     return ButtonCommonStyle(
       onPressed: () {
         Provider.of<MixPanelProvider>(context, listen: false)

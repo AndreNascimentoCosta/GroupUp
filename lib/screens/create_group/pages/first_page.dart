@@ -7,7 +7,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/screens/home/components/text_field_home.dart';
+import 'package:groupup/modules/home/presenter/widgets/text_field_home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -171,7 +171,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
   final node3 = FocusNode();
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return GestureDetector(
       onTap: () {

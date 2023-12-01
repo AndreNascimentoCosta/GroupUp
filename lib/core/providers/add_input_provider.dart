@@ -45,7 +45,7 @@ class AddInputProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
-        final appLocalizations = AppLocalizations.of(context)!;
+        final appLocalizations = AppLocalizations.of(context);
         return AlertDialog(
           title: StaticText(
             text: appLocalizations.addMedia,

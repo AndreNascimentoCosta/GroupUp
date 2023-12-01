@@ -5,7 +5,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/screens/home/pages/home.dart';
+import 'package:groupup/modules/home/presenter/views/home_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarOnboarding extends StatelessWidget implements PreferredSizeWidget {
@@ -13,7 +13,7 @@ class AppBarOnboarding extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     return SafeArea(
       child: Row(
         children: [

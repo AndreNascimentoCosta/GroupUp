@@ -15,7 +15,7 @@ class SavedCardsJoinGroupBottomSheetBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final currentUser = Provider.of<AuthProvider>(context).user;
     if (currentUser == null) {
       return const Center(

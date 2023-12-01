@@ -38,7 +38,7 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                   StaticText(
                     text: AppLocalizations.of(
                       context,
-                    )!.phoneNumber,
+                    ).phoneNumber,
                     fontSize: TextSize.lBody,
                   ),
                   const SizedBox(
@@ -51,16 +51,16 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                       searchFieldInputDecoration: InputDecoration(
                         labelText: AppLocalizations.of(
                           context,
-                        )!.searchCountry,
+                        ).searchCountry,
                       ),
                     ),
                     invalidNumberMessage: AppLocalizations.of(
                       context,
-                    )!.invalidPhoneNumber,
+                    ).invalidPhoneNumber,
                     decoration: InputDecoration(
                       hintText: AppLocalizations.of(
                         context,
-                      )!.phoneNumber,
+                      ).phoneNumber,
                       border: const OutlineInputBorder(
                         borderSide: BorderSide(),
                       ),

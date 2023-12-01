@@ -60,7 +60,7 @@ class _JoinPageViewState extends State<JoinPageView> {
                   ),
                 ),
                 StaticText(
-                  text: AppLocalizations.of(context)!.joinAGroup,
+                  text: AppLocalizations.of(context).joinAGroup,
                   fontFamily: 'Montserrat-SemiBold',
                   fontSize: 28,
                 ),

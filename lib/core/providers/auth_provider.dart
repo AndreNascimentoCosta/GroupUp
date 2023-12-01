@@ -188,7 +188,7 @@ class AuthProvider extends ChangeNotifier {
       builder: (BuildContext context) {
         return AlertDialog(
           title: StaticText(
-            text: AppLocalizations.of(context)!.error,
+            text: AppLocalizations.of(context).error,
             textAlign: TextAlign.center,
             fontFamily: 'Montserrat-SemiBold',
             fontSize: TextSize.lBody,
@@ -242,19 +242,19 @@ class AuthProvider extends ChangeNotifier {
             eventName: 'Phone Login Error',
             properties: {'error': e.message},
           );
-          _error(context, AppLocalizations.of(context)!.invalidPhoneNumber);
+          _error(context, AppLocalizations.of(context).invalidPhoneNumber);
         } else if (e.code == 'too-many-requests') {
           mixPanelProvider.logEvent(
             eventName: 'Phone Login Error',
             properties: {'error': e.message},
           );
-          _error(context, AppLocalizations.of(context)!.tooManyRequests);
+          _error(context, AppLocalizations.of(context).tooManyRequests);
         } else {
           mixPanelProvider.logEvent(
             eventName: 'Phone Login Error',
             properties: {'error': e.message},
           );
-          _error(context, AppLocalizations.of(context)!.error);
+          _error(context, AppLocalizations.of(context).error);
         }
       },
       codeSent: (String verificationId, int? resendToken) async {
@@ -286,7 +286,7 @@ class AuthProvider extends ChangeNotifier {
       await _auth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-verification-code') {
-        _error(context, AppLocalizations.of(context)!.invalidVerificationCode);
+        _error(context, AppLocalizations.of(context).invalidVerificationCode);
         return;
       } else {
         return;

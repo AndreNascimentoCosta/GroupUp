@@ -6,12 +6,12 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/switch.dart';
+import 'package:groupup/modules/home/presenter/widgets/text_field_home.dart';
 import 'package:groupup/screens/create_group/components/body_switch.dart';
 import 'package:groupup/screens/create_group/components/date_time_picker_create_group.dart';
 import 'package:groupup/screens/create_group/components/group_picture_add.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/screens/home/components/text_field_home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -28,7 +28,7 @@ class SecondPageCreate extends StatelessWidget {
   Widget build(BuildContext context) {
     final scrollController = ScrollController();
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;

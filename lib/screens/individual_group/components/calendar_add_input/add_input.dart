@@ -6,7 +6,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/header.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
@@ -29,7 +29,7 @@ class AddInput extends StatefulWidget {
 class _AddInputState extends State<AddInput> {
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final String currentDate = DateFormat.yMd(
       Localizations.localeOf(context).toLanguageTag(),
     ).format(
@@ -103,7 +103,7 @@ class _AddInputState extends State<AddInput> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: Insets.l),
-              Header(
+              GUTextHeader(
                 text: appLocalizations.data,
                 textAlign: TextAlign.center,
                 fontFamily: 'MontSerrat-Medium',

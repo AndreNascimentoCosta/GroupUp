@@ -36,7 +36,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
       backgroundColor: GPColors.white,
       automaticallyImplyLeading: false,
       title: StaticText(
-        text: AppLocalizations.of(context)!.groups,
+        text: AppLocalizations.of(context).groups,
         fontFamily: 'Montserrat-Bold',
         fontSize: TextSize.title,
       ),
@@ -79,7 +79,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
                                   bottom: kDefaultPadding / 2,
                                   right: kDefaultPadding * 4),
                               child: StaticText(
-                                text: AppLocalizations.of(context)!.selectAll,
+                                text: AppLocalizations.of(context).selectAll,
                                 fontSize: TextSize.lBody,
                               ),
                             ),

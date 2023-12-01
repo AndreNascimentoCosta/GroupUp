@@ -41,7 +41,7 @@ class EditProfileNameProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext newContext) {
-        final appLocalizations = AppLocalizations.of(context)!;
+        final appLocalizations = AppLocalizations.of(context);
         FocusScope.of(context).unfocus();
         return AlertDialog(
           title: StaticText(

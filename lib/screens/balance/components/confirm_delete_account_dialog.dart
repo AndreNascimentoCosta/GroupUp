@@ -15,7 +15,7 @@ import '../../../core/providers/mix_panel_provider.dart';
 
 void confirmDeleteAccountDialog(BuildContext rootContext) {
   final authProvider = Provider.of<AuthProvider>(rootContext, listen: false);
-  final appLocalizations = AppLocalizations.of(rootContext)!;
+  final appLocalizations = AppLocalizations.of(rootContext);
   showCupertinoDialog(
     context: rootContext,
     builder: (BuildContext newContext) {

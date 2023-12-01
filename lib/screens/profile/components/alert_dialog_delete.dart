@@ -12,7 +12,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void confirmDelete(BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
-  final appLocalizations = AppLocalizations.of(context)!;
+  final appLocalizations = AppLocalizations.of(context);
   showCupertinoDialog(
     context: context,
     builder: (BuildContext context) {

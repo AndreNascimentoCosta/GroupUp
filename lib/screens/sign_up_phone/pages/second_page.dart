@@ -54,7 +54,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
               StaticText(
                 text: AppLocalizations.of(
                   context,
-                )!.codeSent(
+                ).codeSent(
                   phoneControllerText,
                 ),
                 fontSize: TextSize.mBody,
@@ -75,7 +75,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                   StaticText(
                     text: AppLocalizations.of(
                       context,
-                    )!.codeNotReceived,
+                    ).codeNotReceived,
                     fontSize: TextSize.mBody,
                     color: GPColors.secondaryColor,
                   ),
@@ -103,12 +103,12 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                       text: phoneProvider.start != 0
                           ? AppLocalizations.of(
                               context,
-                            )!.waitingRequestAgain(
+                            ).waitingRequestAgain(
                               phoneProvider.start,
                             )
                           : AppLocalizations.of(
                               context,
-                            )!.requestAgain,
+                            ).requestAgain,
                       fontSize: TextSize.mBody,
                       fontFamily: 'Montserrat-SemiBold',
                       color: phoneProvider.start != 0

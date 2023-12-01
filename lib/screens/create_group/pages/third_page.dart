@@ -19,7 +19,7 @@ class ThirdPageCreate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     if (createGroupProvider.isCreatingGroup) {
       return const Center(

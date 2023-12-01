@@ -17,7 +17,7 @@ class EditGroupObjectiveBody extends StatelessWidget {
     final groupObjectiveController =
         Provider.of<EditGroupObjectiveProvider>(context)
             .groupObjectiveController;
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,

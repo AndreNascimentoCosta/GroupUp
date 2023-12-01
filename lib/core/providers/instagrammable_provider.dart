@@ -75,7 +75,7 @@ class InstagrammableProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
-        final appLocalizations = AppLocalizations.of(context)!;
+        final appLocalizations = AppLocalizations.of(context);
         final group = Provider.of<IndividualGroupProvider>(context).group;
         if (group == null) return const SizedBox();
         return AlertDialog(

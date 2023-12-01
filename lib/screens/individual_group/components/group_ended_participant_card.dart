@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/medium_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
@@ -36,7 +36,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
   Widget build(BuildContext context) {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     if (individualGroupProvider.group == null) {
       return const CircularProgressIndicator.adaptive();
     } else {
@@ -51,7 +51,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
               ),
               child: SizedBox(
                 width: 25,
-                child: MediumBody(
+                child: GUTextBody(
                   text: widget.participant.rank(individualGroupProvider.group),
                 ),
               ),

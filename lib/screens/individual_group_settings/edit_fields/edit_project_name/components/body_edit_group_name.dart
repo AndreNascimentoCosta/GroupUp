@@ -14,7 +14,7 @@ class EditGroupNameBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final groupNameProvider =
         Provider.of<EditGroupNameProvider>(context).groupNameController;
     return Padding(

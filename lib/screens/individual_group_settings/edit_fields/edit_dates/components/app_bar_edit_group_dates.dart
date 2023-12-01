@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/header.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -21,7 +21,7 @@ class AppBarEditGroupDates extends StatelessWidget implements PreferredSizeWidge
   @override
   Widget build(BuildContext context) {
     final editGroupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
       return const Scaffold();
@@ -44,7 +44,7 @@ class AppBarEditGroupDates extends StatelessWidget implements PreferredSizeWidge
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: Header(text: appLocalizations.dates),
+                child: GUTextHeader(text: appLocalizations.dates),
               ),
               ButtonCommonStyle(
                 onPressed: () {

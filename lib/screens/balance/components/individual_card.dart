@@ -6,7 +6,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/large_body.dart';
-import 'package:groupup/core/widgets/texts/medium_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,7 +20,7 @@ class IndividualCardBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final currentUser = Provider.of<AuthProvider>(context).user;
     if (currentUser == null) {
       return const SizedBox();
@@ -86,7 +86,7 @@ class IndividualCardBalance extends StatelessWidget {
               fontFamily: 'Montserrat-SemiBold',
             ),
             const SizedBox(height: Insets.s),
-            MediumBody(
+            GUTextBody(
               text: group.endDate!.isBefore(DateTime.now())
                   ? participantsSumValue.length > 1 &&
                           participantsSumValue

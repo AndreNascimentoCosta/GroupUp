@@ -26,7 +26,7 @@ class HeaderBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     bool isLoading = false;
     if (user == null) return const SizedBox();
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(

@@ -21,7 +21,7 @@ class EditProfile extends StatelessWidget {
       ),
       alignment: Alignment.center,
       child: LargeBody(
-        text: AppLocalizations.of(context)!.editProfile,
+        text: AppLocalizations.of(context).editProfile,
         fontFamily: 'Montserrat-Semibold',
       ),
     );

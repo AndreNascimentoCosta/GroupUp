@@ -40,7 +40,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                   child: LargeBody(
-                    text: AppLocalizations.of(context)!.pin,
+                    text: AppLocalizations.of(context).pin,
                     color: GPColors.groupEditColor,
                   ),
                 ),
@@ -48,7 +48,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
               activeIcon: Padding(
                 padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                 child: LargeBody(
-                  text: AppLocalizations.of(context)!.pin,
+                  text: AppLocalizations.of(context).pin,
                   color: GPColors.primaryColor,
                 ),
               ),
@@ -60,7 +60,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                   child: LargeBody(
-                    text: AppLocalizations.of(context)!.delete,
+                    text: AppLocalizations.of(context).delete,
                     color: GPColors.groupEditColor,
                   ),
                 ),
@@ -68,7 +68,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
               activeIcon: Padding(
                 padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                 child: LargeBody(
-                  text: AppLocalizations.of(context)!.delete,
+                  text: AppLocalizations.of(context).delete,
                   color: GPColors.primaryColor,
                 ),
               ),
