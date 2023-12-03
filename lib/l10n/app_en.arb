@@ -794,5 +794,9 @@
     "skip": "Skip",
     "@skip": {
         "description": "Skip"
+    },
+    "groupUp": "GroupUp",
+    "@groupUp": {
+        "description": "GroupUp"
     }
 }

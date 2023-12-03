@@ -185,5 +185,6 @@
     "validateDataOnboardingText": "Revise seus dados e determine se a foto fornecida é ou não uma boa representação dos dados enviados",
     "winRewardOnboarding": "Ganhe a recompensa",
     "winRewardOnboardingText": "O participante com o maior valor ao final do desafio será o vencedor e receberá a recompensa",
-    "skip": "Pular"
+    "skip": "Pular",
+    "groupUp": "GroupUp"
 }
