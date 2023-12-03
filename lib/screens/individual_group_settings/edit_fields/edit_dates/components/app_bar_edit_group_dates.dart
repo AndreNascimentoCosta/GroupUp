@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gu_text_header.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/providers/edit_group_dates_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../../../../core/providers/individual_group_provider.dart';
 
 class AppBarEditGroupDates extends StatelessWidget implements PreferredSizeWidget {
   const AppBarEditGroupDates({super.key});
@@ -94,9 +92,8 @@ class AppBarEditGroupDates extends StatelessWidget implements PreferredSizeWidge
                   child: ButtonCommonStyle(
                     onPressed: editGroupDatesProvider.done(
                         context, group.startDate, group.endDate, group.id),
-                    child: StaticText(
+                    child: GUTextHeader(
                       text: appLocalizations.done,
-                      fontSize: TextSize.lBody,
                       fontFamily: 'Montserrat-SemiBold',
                       color: editGroupDatesProvider.done(context,
                                   group.startDate, group.endDate, group.id) ==

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_data.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
@@ -187,22 +187,19 @@ class AuthProvider extends ChangeNotifier {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: StaticText(
+          title: GUTextHeader(
             text: AppLocalizations.of(context).error,
             textAlign: TextAlign.center,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: TextSize.lBody,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: StaticText(
+            child: GUTextBody(
               text: e,
               maxLines: 2,
               textAlign: TextAlign.center,
-              fontSize: TextSize.mBody,
             ),
           ),
           actionsAlignment: MainAxisAlignment.center,

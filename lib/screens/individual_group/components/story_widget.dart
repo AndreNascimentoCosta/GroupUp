@@ -4,8 +4,8 @@ import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:provider/provider.dart';
@@ -136,12 +136,13 @@ class StoryWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        child: StaticText(
+                        child: GUTextBody(
                           text: participant.name == currentUser.name
                               ? appLocalizations.me
                               : participant.name,
-                          fontSize: TextSize.lBody,
                           color: GPColors.white,
+                          minFontSize: 18,
+                          maxFontSize: 18,
                         ),
                       ),
                     ],
@@ -202,10 +203,9 @@ class StoryWidget extends StatelessWidget {
                         Navigator.of(context).pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: StaticText(
+                            content: GUTextBody(
                               text: appLocalizations.dataInvalidated,
                               textAlign: TextAlign.center,
-                              fontSize: TextSize.mBody,
                               color: GPColors.white,
                             ),
                             duration: const Duration(seconds: 2),
@@ -238,10 +238,11 @@ class StoryWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: Insets.s),
                   child: Material(
                     type: MaterialType.transparency,
-                    child: StaticText(
+                    child: GUTextBody(
                       text: inputData.value.toString(),
-                      fontSize: TextSize.title,
                       color: GPColors.white,
+                      minFontSize: 36,
+                      maxFontSize: 36,
                     ),
                   ),
                 ),
@@ -281,10 +282,9 @@ class StoryWidget extends StatelessWidget {
                         Navigator.of(context).pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: StaticText(
+                            content: GUTextBody(
                               text: appLocalizations.dataValidated,
                               textAlign: TextAlign.center,
-                              fontSize: TextSize.mBody,
                               color: GPColors.white,
                             ),
                             duration: const Duration(seconds: 2),

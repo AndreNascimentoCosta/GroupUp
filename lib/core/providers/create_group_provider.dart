@@ -12,8 +12,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/models/participant.dart';
@@ -209,22 +209,19 @@ class CreateGroupProvider extends ChangeNotifier {
         final isSmallScreen = screenHeight < 800 || screenWidth < 350;
         final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
         return AlertDialog(
-          title: StaticText(
+          title: GUTextHeader(
             text: appLocalizations.confirm,
             textAlign: TextAlign.center,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: TextSize.lBody,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: StaticText(
+            child: GUTextBody(
               text: appLocalizations.confirmCreateGroup,
               maxLines: 2,
               textAlign: TextAlign.center,
-              fontSize: TextSize.mBody,
             ),
           ),
           actionsAlignment: MainAxisAlignment.center,
@@ -600,11 +597,9 @@ class CreateGroupProvider extends ChangeNotifier {
         return SizedBox(
           width: double.infinity,
           child: AlertDialog(
-            title: StaticText(
+            title: GUTextHeader(
               text: appLocalizations.confirm,
               textAlign: TextAlign.center,
-              fontFamily: 'Montserrat-SemiBold',
-              fontSize: TextSize.lBody,
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -612,11 +607,10 @@ class CreateGroupProvider extends ChangeNotifier {
             content: Padding(
               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
               child: SingleChildScrollView(
-                child: StaticText(
+                child: GUTextBody(
                   text: appLocalizations.confirmExitGroup,
                   maxLines: 2,
                   textAlign: TextAlign.center,
-                  fontSize: TextSize.mBody,
                 ),
               ),
             ),

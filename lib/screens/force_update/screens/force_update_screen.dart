@@ -4,9 +4,10 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ForceUpdateScreen extends StatelessWidget {
@@ -24,11 +25,11 @@ class ForceUpdateScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(height: context.screenHeight * 0.05),
-              StaticText(
-                text: '${appLocalizations.update} GroupUp',
+              GUTextHeader(
+                text: appLocalizations.update + appLocalizations.groupUp,
                 textAlign: TextAlign.center,
-                fontSize: 30,
-                fontFamily: 'Montserrat-SemiBold',
+                minFontSize: 30,
+                maxFontSize: 30,
               ),
               SizedBox(height: context.screenHeight * 0.03),
               GPIcon(
@@ -36,12 +37,13 @@ class ForceUpdateScreen extends StatelessWidget {
                 height: context.screenHeight * 0.15,
               ),
               const Spacer(),
-              StaticText(
+              GUTextBody(
                 text: appLocalizations.updateText,
                 maxLines: 8,
                 textAlign: TextAlign.center,
-                fontSize: 22,
                 fontFamily: 'Montserrat-Medium',
+                minFontSize: 22,
+                maxFontSize: 22,
               ),
               SizedBox(height: context.screenHeight * 0.05),
               GPButton(

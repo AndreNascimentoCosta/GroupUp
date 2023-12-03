@@ -10,8 +10,8 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:provider/provider.dart';
@@ -105,10 +105,9 @@ class _ChooseParticipantProfilePictureState
                             padding: const EdgeInsets.only(
                               left: kDefaultPadding,
                             ),
-                            child: StaticText(
+                            child: GUTextBody(
                               text: appLocalizations.me,
                               overflow: TextOverflow.ellipsis,
-                              fontSize: TextSize.mBody,
                               fontFamily: 'Montserrat-SemiBold',
                             ),
                           )
@@ -116,7 +115,7 @@ class _ChooseParticipantProfilePictureState
                             padding: const EdgeInsets.only(
                               left: kDefaultPadding,
                             ),
-                            child: StaticText(
+                            child: GUTextBody(
                               text: Characters(widget.participant.name)
                                   .replaceAll(
                                     Characters(''),
@@ -124,10 +123,9 @@ class _ChooseParticipantProfilePictureState
                                   )
                                   .toString(),
                               overflow: TextOverflow.ellipsis,
-                              fontSize: TextSize.mBody,
                             ),
                           )
-                    : const StaticText(text: ''),
+                    : const GUTextBody(text: ''),
               ),
             ],
           ),

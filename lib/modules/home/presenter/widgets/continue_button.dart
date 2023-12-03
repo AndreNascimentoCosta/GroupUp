@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 
 class ContinueButton extends StatelessWidget {
   const ContinueButton({Key? key}) : super(key: key);
@@ -34,10 +34,8 @@ class ContinueButton extends StatelessWidget {
         ],
       ),
       alignment: Alignment.center,
-      child: StaticText(
+      child: GUTextHeader(
         text: AppLocalizations.of(context).getStarted,
-        fontFamily: 'Montserrat-SemiBold',
-        fontSize: 22,
         color: GPColors.white,
       ),
     );

@@ -2,16 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/choose_participant_profile_picture.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../widgets/texts/static_text.dart';
-import 'mix_panel_provider.dart';
 
 enum SetPictureType {
   picture1,
@@ -79,11 +78,9 @@ class InstagrammableProvider extends ChangeNotifier {
         final group = Provider.of<IndividualGroupProvider>(context).group;
         if (group == null) return const SizedBox();
         return AlertDialog(
-          title: StaticText(
+          title: GUTextHeader(
             text: appLocalizations.choosePicture,
             textAlign: TextAlign.center,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: TextSize.lBody,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -114,7 +111,8 @@ class InstagrammableProvider extends ChangeNotifier {
                 ButtonCommonStyle(
                   onPressed: () {
                     Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Choose Picture Instagrammable - None');
+                        .logEvent(
+                            eventName: 'Choose Picture Instagrammable - None');
                     setPicture(picture6, pictureType);
                     Navigator.of(context).pop();
                   },
@@ -138,10 +136,7 @@ class InstagrammableProvider extends ChangeNotifier {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          StaticText(
-                            text: appLocalizations.none,
-                            fontSize: TextSize.mBody,
-                          ),
+                          GUTextBody(text: appLocalizations.none),
                         ],
                       ),
                     ),
@@ -159,13 +154,12 @@ class InstagrammableProvider extends ChangeNotifier {
               child: ButtonCommonStyle(
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Choose Picture Instagrammable - OK');
+                      .logEvent(
+                          eventName: 'Choose Picture Instagrammable - OK');
                   Navigator.of(context).pop();
                 },
-                child: const StaticText(
+                child: const GUTextHeader(
                   text: 'OK',
-                  fontSize: TextSize.mBody,
-                  fontFamily: 'Montserrat-SemiBold',
                   color: GPColors.primaryColor,
                 ),
               ),

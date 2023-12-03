@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/models/switch.dart';
 import 'package:groupup/modules/home/presenter/widgets/text_field_home.dart';
 import 'package:groupup/screens/create_group/components/body_switch.dart';
@@ -108,10 +108,7 @@ class SecondPageCreate extends StatelessWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                  child: StaticText(
-                    text: appLocalizations.dates,
-                    fontSize: 14,
-                  ),
+                  child: GUTextBody(text: appLocalizations.dates),
                 ),
               ),
               const SizedBox(height: Insets.s),

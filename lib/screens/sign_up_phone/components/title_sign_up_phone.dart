@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/screens/sign_up_phone/components/back_button_sign_up_phone.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -26,7 +26,7 @@ class TitleSignUpPhone extends StatelessWidget {
                 ? const SizedBox()
                 : const BackButtonSignUpPhone(),
           ),
-          StaticText(
+          GUTextHeader(
             textAlign: TextAlign.center,
             text: Provider.of<PhoneAuthenProvider>(
                       context,
@@ -39,8 +39,8 @@ class TitleSignUpPhone extends StatelessWidget {
                 : AppLocalizations.of(
                     context,
                   ).verificationCode,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: 28,
+            minFontSize: 28,
+            maxFontSize: 28,
           ),
         ],
       ),

@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,17 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/widgets/buttons/gp_button.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../constants/design-system.dart';
-import '../widgets/buttons/gp_button.dart';
-import '../widgets/texts/static_text.dart';
-import 'create_group_provider.dart';
-import 'mix_panel_provider.dart';
 
 enum PaymentStatus { initial, loading, success, error }
 
@@ -237,22 +234,19 @@ class StripePaymentProvider extends ChangeNotifier {
       context: context,
       builder: (BuildContext newContext) {
         return AlertDialog(
-          title: StaticText(
+          title: GUTextHeader(
             text: appLocalizations.confirm,
             textAlign: TextAlign.center,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: TextSize.lBody,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: StaticText(
+            child: GUTextBody(
               text: appLocalizations.confirmCard,
               maxLines: 2,
               textAlign: TextAlign.center,
-              fontSize: TextSize.mBody,
             ),
           ),
           actionsAlignment: MainAxisAlignment.center,
@@ -331,22 +325,19 @@ class StripePaymentProvider extends ChangeNotifier {
       context: context,
       builder: (BuildContext newContext) {
         return AlertDialog(
-          title: StaticText(
+          title: GUTextHeader(
             text: appLocalizations.confirm,
             textAlign: TextAlign.center,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: TextSize.lBody,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: StaticText(
+            child: GUTextBody(
               text: appLocalizations.confirmCard,
               maxLines: 2,
               textAlign: TextAlign.center,
-              fontSize: TextSize.mBody,
             ),
           ),
           actionsAlignment: MainAxisAlignment.center,

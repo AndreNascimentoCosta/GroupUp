@@ -4,8 +4,8 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -37,10 +37,10 @@ class AppBarBalance extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: StaticText(
+                child: GUTextHeader(
                   text: appLocalizations.balance,
-                  fontFamily: 'Montserrat-Bold',
-                  fontSize: TextSize.subTitle,
+                  minFontSize: 24,
+                  maxFontSize: 24,
                 ),
               ),
               Padding(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 
 class ShareButton extends StatelessWidget {
   const ShareButton({
@@ -50,10 +50,11 @@ class ShareButton extends StatelessWidget {
                 width: isVerySmallScreen
                     ? screenWidth * 0.275
                     : screenWidth * 0.25,
-                child: StaticText(
+                child: GUTextBody(
                   text: text,
                   textAlign: TextAlign.center,
-                  fontSize: TextSize.lBody,
+                  minFontSize: 18,
+                  maxFontSize: 20,
                 ),
               ),
             ),

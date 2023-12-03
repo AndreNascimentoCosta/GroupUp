@@ -3,9 +3,9 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/providers/mix_panel_provider.dart';
@@ -41,9 +41,11 @@ class GroupPictureEdit extends StatelessWidget {
               children: [
                 ButtonCommonStyle(
                   onPressed: onPressedGallery,
-                  child: LargeBody(
+                  child: GUTextBody(
                     text: appLocalizations.chooseFromGallery,
                     textAlign: TextAlign.center,
+                    minFontSize: 16,
+                    maxFontSize: 18,
                   ),
                 ),
                 const SizedBox(
@@ -51,9 +53,11 @@ class GroupPictureEdit extends StatelessWidget {
                 ),
                 ButtonCommonStyle(
                   onPressed: onPressedCamera,
-                  child: LargeBody(
+                  child: GUTextBody(
                     text: appLocalizations.takePhoto,
                     textAlign: TextAlign.center,
+                    minFontSize: 16,
+                    maxFontSize: 18,
                   ),
                 )
               ],

@@ -7,7 +7,6 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gu_text_header.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/providers/edit_group_objective_provider.dart';
@@ -91,10 +90,8 @@ class AppBarEditGroupObjective extends StatelessWidget
                   child: ButtonCommonStyle(
                     onPressed: editGroupObjectiveProvider.done(
                         context, group.objective, group.id),
-                    child: StaticText(
+                    child: GUTextHeader(
                       text: appLocalizations.done,
-                      fontSize: TextSize.lBody,
-                      fontFamily: 'Montserrat-SemiBold',
                       color: editGroupObjectiveProvider.done(
                                   context, group.objective, group.id) ==
                               null

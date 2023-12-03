@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/medium_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import '../../../core/constants/constants.dart';
 
@@ -55,7 +55,7 @@ class StatsNoGroup extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              MediumBody(
+              GUTextBody(
                 text: '-',
                 textAlign: TextAlign.center,
                 color: GPColors.secondaryColor,
@@ -63,7 +63,7 @@ class StatsNoGroup extends StatelessWidget {
               SizedBox(
                 height: kDefaultPadding * 0.25,
               ),
-              MediumBody(
+              GUTextBody(
                 text: '-',
                 textAlign: TextAlign.center,
                 color: GPColors.secondaryColor,
@@ -71,7 +71,7 @@ class StatsNoGroup extends StatelessWidget {
               SizedBox(
                 height: kDefaultPadding * 0.25,
               ),
-              MediumBody(
+              GUTextBody(
                 text: '-',
                 textAlign: TextAlign.center,
                 color: GPColors.secondaryColor,

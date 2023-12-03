@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:groupup/core/providers/edit_group_name_provider.dart';
 import 'package:provider/provider.dart';
@@ -34,15 +34,14 @@ class EditGroupNameBody extends StatelessWidget {
                 hint: '',
                 maxLength: 30,
                 validator: (value) {
-                if (value!.isNotEmpty && value.length < 3) {
-                  return appLocalizations.projectNameValidatorMinChars;
-                } else if (value.length >= 20) {
-                  return appLocalizations.projectNameValidatorMaxChars;
-                } else {
-                  return null;
-                }
-              },
-              
+                  if (value!.isNotEmpty && value.length < 3) {
+                    return appLocalizations.projectNameValidatorMinChars;
+                  } else if (value.length >= 20) {
+                    return appLocalizations.projectNameValidatorMaxChars;
+                  } else {
+                    return null;
+                  }
+                },
                 border: const UnderlineInputBorder(
                   borderSide: BorderSide(
                     color: GPColors.secondaryColor,
@@ -58,10 +57,7 @@ class EditGroupNameBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: Insets.l),
-            StaticText(
-              text: appLocalizations.changeGroupName,
-              fontSize: TextSize.mBody,
-            ),
+            GUTextBody(text: appLocalizations.changeGroupName),
           ],
         ),
       ),

@@ -2,15 +2,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../../core/providers/mix_panel_provider.dart';
 
 tiebreakerDialog(BuildContext context) async {
   const keyIsFirstOpened = 'is_first_opened';
@@ -22,22 +21,19 @@ tiebreakerDialog(BuildContext context) async {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: StaticText(
+          title: GUTextHeader(
             text: appLocalizations.tieBreaker,
             textAlign: TextAlign.center,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: TextSize.lBody,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: StaticText(
+            child: GUTextBody(
               text: appLocalizations.tieBreakerText,
               maxLines: 8,
               textAlign: TextAlign.center,
-              fontSize: TextSize.mBody,
             ),
           ),
           actionsAlignment: MainAxisAlignment.center,
@@ -52,9 +48,8 @@ tiebreakerDialog(BuildContext context) async {
                   Navigator.of(context).pop();
                   prefs.setBool(keyIsFirstOpened, false);
                 },
-                child: const StaticText(
+                child: const GUTextBody(
                   text: 'OK',
-                  fontSize: TextSize.mBody,
                   color: GPColors.primaryColor,
                 ),
               ),

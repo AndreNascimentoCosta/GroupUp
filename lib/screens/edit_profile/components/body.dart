@@ -10,8 +10,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/edit_profile/components/profile_picture_add.dart';
 import 'package:groupup/screens/edit_profile/edit_fields/edit_name/edit_profile_name.dart';
@@ -210,7 +209,11 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     child: Padding(
                       padding:
                           const EdgeInsets.only(left: kDefaultPadding * 0.5),
-                      child: LargeBody(text: appLocalizations.name),
+                      child: GUTextBody(
+                        text: appLocalizations.name,
+                        minFontSize: 16,
+                        maxFontSize: 18,
+                      ),
                     ),
                   ),
                   const SizedBox(width: Insets.l * 2),
@@ -218,12 +221,13 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     width: isSmallScreen
                         ? context.screenWidth * 0.4
                         : context.screenWidth * 0.5,
-                    child: StaticText(
+                    child: GUTextBody(
                       text: Characters(user?.name ?? appLocalizations.name)
                           .replaceAll(Characters(''), Characters('\u{200B}'))
                           .toString(),
                       overflow: TextOverflow.ellipsis,
-                      fontSize: TextSize.lBody,
+                      minFontSize: 18,
+                      maxFontSize: 18,
                     ),
                   ),
                 ],

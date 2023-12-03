@@ -5,7 +5,6 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
@@ -81,9 +80,11 @@ class IndividualCardBalance extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LargeBody(
+            GUTextBody(
               text: group.projectName.replaceAll(RegExp('#'), ''),
               fontFamily: 'Montserrat-SemiBold',
+              minFontSize: 16,
+              maxFontSize: 18,
             ),
             const SizedBox(height: Insets.s),
             GUTextBody(
@@ -134,20 +135,26 @@ class IndividualCardBalance extends StatelessWidget {
                         ),
                       ),
                     )
-                      ? const LargeBody(
+                      ? const GUTextBody(
                           text: 'R\$ -',
                           color: GPColors.secondaryColor,
+                          minFontSize: 16,
+                          maxFontSize: 18,
                         )
                       : currentUserRank == '1º'
-                          ? LargeBody(
+                          ? GUTextBody(
                               text:
                                   'R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.green,
+                              minFontSize: 16,
+                              maxFontSize: 18,
                             )
-                          : LargeBody(
+                          : GUTextBody(
                               text:
                                   '-R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.red,
+                              minFontSize: 16,
+                              maxFontSize: 18,
                             )
                   : group.endDate!.isAfter(
                       DateTime.now().subtract(
@@ -156,24 +163,32 @@ class IndividualCardBalance extends StatelessWidget {
                         ),
                       ),
                     )
-                      ? const LargeBody(
+                      ? const GUTextBody(
                           text: 'R\$ -',
                           color: GPColors.secondaryColor,
+                          minFontSize: 16,
+                          maxFontSize: 18,
                         )
                       : currentUserRank == '1º'
-                          ? LargeBody(
+                          ? GUTextBody(
                               text:
                                   'R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.green,
+                              minFontSize: 16,
+                              maxFontSize: 18,
                             )
-                          : LargeBody(
+                          : GUTextBody(
                               text:
                                   '-R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.red,
+                              minFontSize: 16,
+                              maxFontSize: 18,
                             )
-              : const LargeBody(
+              : const GUTextBody(
                   text: 'R\$ -',
                   color: GPColors.secondaryColor,
+                  minFontSize: 16,
+                  maxFontSize: 18,
                 ),
         ),
       ],

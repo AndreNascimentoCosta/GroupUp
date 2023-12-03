@@ -5,11 +5,10 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/screens/individual_group_settings/components/body_content_arrow.dart';
 import 'package:groupup/screens/individual_group_settings/components/body_content_switch.dart';
 import 'package:groupup/screens/individual_group_settings/components/other_options.dart';
@@ -132,11 +131,9 @@ class BodyAdminSettings extends StatelessWidget {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: StaticText(
+                        title: GUTextHeader(
                           text: appLocalizations.youCantDoThis,
                           textAlign: TextAlign.center,
-                          fontFamily: 'Montserrat-SemiBold',
-                          fontSize: TextSize.lBody,
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -144,12 +141,11 @@ class BodyAdminSettings extends StatelessWidget {
                         content: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding),
-                          child: StaticText(
+                          child: GUTextBody(
                             text: appLocalizations
                                 .cantChangeDatesWhenParticipantAddedData,
                             maxLines: 5,
                             textAlign: TextAlign.center,
-                            fontSize: TextSize.mBody,
                           ),
                         ),
                         actionsAlignment: MainAxisAlignment.center,
@@ -165,9 +161,8 @@ class BodyAdminSettings extends StatelessWidget {
                                     .logEvent(eventName: "Can't Change Dates");
                                 Navigator.of(context).pop();
                               },
-                              child: const StaticText(
+                              child: const GUTextBody(
                                 text: 'OK',
-                                fontSize: TextSize.mBody,
                                 color: GPColors.primaryColor,
                               ),
                             ),
@@ -202,11 +197,9 @@ class BodyAdminSettings extends StatelessWidget {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: StaticText(
+                        title: GUTextHeader(
                           text: appLocalizations.youCantDoThis,
                           textAlign: TextAlign.center,
-                          fontFamily: 'Montserrat-SemiBold',
-                          fontSize: TextSize.lBody,
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -214,12 +207,11 @@ class BodyAdminSettings extends StatelessWidget {
                         content: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding),
-                          child: StaticText(
+                          child: GUTextBody(
                             text: appLocalizations
                                 .cantChangeNumberParticipantsWhenParticipantAddedData,
                             maxLines: 5,
                             textAlign: TextAlign.center,
-                            fontSize: TextSize.mBody,
                           ),
                         ),
                         actionsAlignment: MainAxisAlignment.center,
@@ -237,9 +229,8 @@ class BodyAdminSettings extends StatelessWidget {
                                     eventName: "Can't Edit No Participants");
                                 Navigator.of(context).pop();
                               },
-                              child: const StaticText(
+                              child: const GUTextBody(
                                 text: 'OK',
-                                fontSize: TextSize.mBody,
                                 color: GPColors.primaryColor,
                               ),
                             ),
@@ -284,7 +275,11 @@ class BodyAdminSettings extends StatelessWidget {
                   width: isVerySmallScreen
                       ? screenWidth * 0.4
                       : screenWidth * 0.35,
-                  child: LargeBody(text: appLocalizations.groupCode),
+                  child: GUTextBody(
+                    text: appLocalizations.groupCode,
+                    minFontSize: 16,
+                    maxFontSize: 18,
+                  ),
                 ),
                 const Spacer(),
                 ShareButton(

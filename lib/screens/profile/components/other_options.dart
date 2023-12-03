@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/screens/profile/components/alert_dialog_delete.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -34,9 +34,11 @@ class OtherOptionsProfile extends StatelessWidget {
               );
               launchUrl(emailLaunchUri);
             },
-            child: LargeBody(
+            child: GUTextBody(
               text: appLocalizations.reportProblem,
               textAlign: TextAlign.center,
+              minFontSize: 16,
+              maxFontSize: 18,
             ),
           ),
           const SizedBox(height: Insets.l * 1.5),
@@ -55,9 +57,11 @@ class OtherOptionsProfile extends StatelessWidget {
                 throw 'Could not launch $url';
               }
             },
-            child: LargeBody(
+            child: GUTextBody(
               text: appLocalizations.privacyPolicy,
               textAlign: TextAlign.center,
+              minFontSize: 16,
+              maxFontSize: 18,
             ),
           ),
           const SizedBox(height: Insets.l * 1.5),
@@ -68,10 +72,12 @@ class OtherOptionsProfile extends StatelessWidget {
               Navigator.pop(context);
               confirmDelete(context);
             },
-            child: LargeBody(
+            child: GUTextBody(
               text: appLocalizations.deleteAccount,
               textAlign: TextAlign.center,
               color: GPColors.black,
+              minFontSize: 16,
+              maxFontSize: 18,
             ),
           ),
           const SizedBox(height: Insets.l * 1.5),
@@ -82,10 +88,12 @@ class OtherOptionsProfile extends StatelessWidget {
               Navigator.pop(context);
               authProvider.signOut(context);
             },
-            child: LargeBody(
+            child: GUTextBody(
               text: appLocalizations.logout,
               textAlign: TextAlign.center,
               color: GPColors.red,
+              minFontSize: 16,
+              maxFontSize: 18,
             ),
           ),
         ],

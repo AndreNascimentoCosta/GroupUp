@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/modules/home/presenter/views/home_view.dart';
 
 class GPButtonOnboarding extends StatelessWidget {
@@ -36,10 +35,8 @@ class GPButtonOnboarding extends StatelessWidget {
       },
       child: SizedBox(
         width: 150,
-        child: StaticText(
+        child: GUTextHeader(
           text: AppLocalizations.of(context).next,
-          fontFamily: 'Montserrat-SemiBold',
-          fontSize: TextSize.lBody * 1.1,
           textAlign: TextAlign.center,
           color: GPColors.primaryColor,
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 
 class OnboardingTitle extends StatelessWidget {
   const OnboardingTitle({
@@ -12,12 +12,13 @@ class OnboardingTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StaticText(
+    return GUTextHeader(
       text: text,
       maxLines: 2,
       textAlign: TextAlign.center,
-      fontSize: context.screenHeight * 0.0285,
       fontFamily: 'MontSerrat-Bold',
+      minFontSize: context.screenHeight * 0.0285,
+      maxFontSize: context.screenHeight * 0.0285,
     );
   }
 }

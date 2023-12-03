@@ -2,24 +2,22 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 
-class LargeBody extends StatelessWidget {
-  const LargeBody({
+class GUTextTitle extends StatelessWidget {
+  const GUTextTitle({
     required this.text,
-    this.fontFamily = 'Montserrat-Medium',
+    this.fontFamily = 'Montserrat-Bold',
     this.color = GPColors.black,
+    this.maxLines = 1,
     this.overflow,
     this.textAlign,
-    this.maxLines = 1,
-    this.letterSpacing,
   });
 
   final String text;
   final String fontFamily;
   final Color color;
+  final int maxLines;
   final TextOverflow? overflow;
   final TextAlign? textAlign;
-  final int maxLines;
-  final double? letterSpacing;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +26,10 @@ class LargeBody extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       textAlign: textAlign,
-      minFontSize: 16,
-      maxFontSize: 18,
+      minFontSize: 25,
+      maxFontSize: 30,
       style: TextStyle(
-        letterSpacing: letterSpacing,
-        fontSize: 18,
+        fontSize: 30,
         fontFamily: fontFamily,
         color: color,
       ),

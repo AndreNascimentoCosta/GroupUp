@@ -11,8 +11,8 @@ import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/created_groups/screens/created_groups_screen.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
@@ -158,15 +158,15 @@ class _BodyProfileState extends State<BodyProfile> {
                     children: [
                       SizedBox(
                         width: 250,
-                        child: StaticText(
+                        child: GUTextHeader(
                           text: Characters(user.name)
                               .replaceAll(
                                   Characters(''), Characters('\u{200B}'))
                               .toString(),
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
-                          fontSize: TextSize.subTitle,
-                          fontFamily: 'Montserrat-SemiBold',
+                          minFontSize: 24,
+                          maxFontSize: 24,
                         ),
                       ),
                     ],

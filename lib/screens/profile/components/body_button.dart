@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 
 class BodyButtonModel extends StatelessWidget {
   const BodyButtonModel(
@@ -22,13 +22,19 @@ class BodyButtonModel extends StatelessWidget {
       onPressed: onPressed,
       child: Row(
         children: [
-          LargeBody(text: text),
+          GUTextBody(
+            text: text,
+            minFontSize: 16,
+            maxFontSize: 18,
+          ),
           const Spacer(),
           Padding(
             padding: const EdgeInsets.only(right: kDefaultPadding),
-            child: LargeBody(
-                text:
-                    secondaryText), // StandardTextStyle(text: secondaryText, fontSize: 18),
+            child: GUTextBody(
+              text: secondaryText,
+              minFontSize: 16,
+              maxFontSize: 18,
+            ),
           ),
           const GPIcon(
             GPIcons.arrowRight,

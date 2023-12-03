@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:provider/provider.dart';
 
 class BodyContentSwitch extends StatelessWidget {
@@ -27,9 +27,11 @@ class BodyContentSwitch extends StatelessWidget {
       children: [
         SizedBox(
           width: isVerySmallScreen ? screenWidth * 0.675 : screenWidth * 0.65,
-          child: LargeBody(
+          child: GUTextBody(
             text: text,
             maxLines: 2,
+            minFontSize: 16,
+            maxFontSize: 18,
           ),
         ),
         const Spacer(),

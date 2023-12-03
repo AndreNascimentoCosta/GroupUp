@@ -6,8 +6,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
-import 'package:groupup/core/widgets/texts/medium_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
@@ -157,7 +156,7 @@ class _GroupsCardState extends State<GroupsCard> {
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                LargeBody(
+                                GUTextBody(
                                   text: Characters(
                                     widget.group.projectName,
                                   )
@@ -169,19 +168,21 @@ class _GroupsCardState extends State<GroupsCard> {
                                       )
                                       .toString(),
                                   overflow: TextOverflow.ellipsis,
+                                  minFontSize: 16,
+                                  maxFontSize: 18,
                                 ),
                                 const SizedBox(
                                   height: Insets.s,
                                 ),
-                                MediumBody(
+                                GUTextBody(
                                   text: AppLocalizations.of(
                                     context,
-                                  )!.ended,
+                                  ).ended,
                                   color: GPColors.secondaryColor,
                                 ),
                               ],
                             )
-                          : LargeBody(
+                          : GUTextBody(
                               text: Characters(
                                 widget.group.projectName,
                               )
@@ -191,6 +192,8 @@ class _GroupsCardState extends State<GroupsCard> {
                                   )
                                   .toString(),
                               overflow: TextOverflow.ellipsis,
+                              minFontSize: 16,
+                              maxFontSize: 18,
                             )
                       : widget.group.endDate!.isBefore(
                           DateTime.now().subtract(
@@ -200,7 +203,7 @@ class _GroupsCardState extends State<GroupsCard> {
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                LargeBody(
+                                GUTextBody(
                                   text: Characters(
                                     widget.group.projectName,
                                   )
@@ -212,19 +215,21 @@ class _GroupsCardState extends State<GroupsCard> {
                                       )
                                       .toString(),
                                   overflow: TextOverflow.ellipsis,
+                                  minFontSize: 16,
+                                  maxFontSize: 18,
                                 ),
                                 const SizedBox(
                                   height: Insets.s,
                                 ),
-                                MediumBody(
+                                GUTextBody(
                                   text: AppLocalizations.of(
                                     context,
-                                  )!.ended,
+                                  ).ended,
                                   color: GPColors.secondaryColor,
                                 ),
                               ],
                             )
-                          : LargeBody(
+                          : GUTextBody(
                               text: Characters(
                                 widget.group.projectName,
                               )
@@ -236,6 +241,8 @@ class _GroupsCardState extends State<GroupsCard> {
                                   )
                                   .toString(),
                               overflow: TextOverflow.ellipsis,
+                              minFontSize: 16,
+                              maxFontSize: 18,
                             ),
                 ),
               ),

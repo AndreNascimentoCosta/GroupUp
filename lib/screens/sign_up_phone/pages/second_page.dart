@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/screens/sign_up_phone/pages/otp_field.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -51,13 +51,12 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
               const SizedBox(
                 height: Insets.l * 2,
               ),
-              StaticText(
+              GUTextBody(
                 text: AppLocalizations.of(
                   context,
                 ).codeSent(
                   phoneControllerText,
                 ),
-                fontSize: TextSize.mBody,
                 color: GPColors.secondaryColor,
               ),
               const SizedBox(
@@ -72,11 +71,10 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  StaticText(
+                  GUTextBody(
                     text: AppLocalizations.of(
                       context,
                     ).codeNotReceived,
-                    fontSize: TextSize.mBody,
                     color: GPColors.secondaryColor,
                   ),
                   const SizedBox(
@@ -99,7 +97,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                         );
                       }
                     },
-                    child: StaticText(
+                    child: GUTextBody(
                       text: phoneProvider.start != 0
                           ? AppLocalizations.of(
                               context,
@@ -109,7 +107,6 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                           : AppLocalizations.of(
                               context,
                             ).requestAgain,
-                      fontSize: TextSize.mBody,
                       fontFamily: 'Montserrat-SemiBold',
                       color: phoneProvider.start != 0
                           ? GPColors.secondaryColor

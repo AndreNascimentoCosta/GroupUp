@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/screens/join_group/components/first_page.dart';
 import 'package:groupup/screens/join_group/components/review_join_group.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../../core/providers/mix_panel_provider.dart';
 
 class JoinPageView extends StatefulWidget {
   const JoinPageView({super.key});
@@ -59,10 +58,10 @@ class _JoinPageViewState extends State<JoinPageView> {
                         : null,
                   ),
                 ),
-                StaticText(
+                GUTextHeader(
                   text: AppLocalizations.of(context).joinAGroup,
-                  fontFamily: 'Montserrat-SemiBold',
-                  fontSize: 28,
+                  minFontSize: 28,
+                  maxFontSize: 28,
                 ),
               ],
             ),

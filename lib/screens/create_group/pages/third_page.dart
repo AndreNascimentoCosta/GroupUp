@@ -4,10 +4,10 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -39,20 +39,21 @@ class ThirdPageCreate extends StatelessWidget {
             color: GPColors.primaryColor,
           ),
           const SizedBox(height: kDefaultPadding),
-          StaticText(
+          GUTextHeader(
             text: appLocalizations.completed,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: 28,
             color: GPColors.primaryColor,
+            minFontSize: 28,
+            maxFontSize: 28,
           ),
           SizedBox(height: context.screenHeight * 0.035),
           Row(
             children: [
               SizedBox(
                 width: 180,
-                child: StaticText(
+                child: GUTextBody(
                   text: appLocalizations.groupCode,
-                  fontSize: TextSize.lBody,
+                  minFontSize: 18,
+                  maxFontSize: 18,
                 ),
               ),
               const Spacer(),

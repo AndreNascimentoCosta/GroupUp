@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,16 +20,16 @@ class ShowDates extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            StaticText(text: appLocalizations.start),
+            GUTextBody(text: appLocalizations.start),
             const SizedBox(height: kDefaultPadding / 2),
-            StaticText(text: appLocalizations.end),
+            GUTextBody(text: appLocalizations.end),
           ],
         ),
         const SizedBox(width: kDefaultPadding / 1.75),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            StaticText(
+            GUTextBody(
               text: DateFormat.yMd(
                 Localizations.localeOf(context).toLanguageTag(),
               ).format(
@@ -37,7 +37,7 @@ class ShowDates extends StatelessWidget {
               ),
             ),
             const SizedBox(height: kDefaultPadding / 2),
-            StaticText(
+            GUTextBody(
               text: DateFormat.yMd(
                 Localizations.localeOf(context).toLanguageTag(),
               ).format(

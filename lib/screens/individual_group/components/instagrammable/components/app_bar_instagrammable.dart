@@ -4,7 +4,7 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/header.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 
 class AppBarInstagrammable extends StatelessWidget implements PreferredSizeWidget {
   const AppBarInstagrammable({
@@ -28,7 +28,7 @@ class AppBarInstagrammable extends StatelessWidget implements PreferredSizeWidge
                     : context.screenWidth,
                 height: 50,
                 alignment: AlignmentDirectional.center,
-                child: const Header(text: 'GroupUp'),
+                child: const GUTextHeader(text: 'GroupUp'),
               ),
               Positioned(
                 right: isSharing ? kDefaultPadding * 2.5 : kDefaultPadding * 2,

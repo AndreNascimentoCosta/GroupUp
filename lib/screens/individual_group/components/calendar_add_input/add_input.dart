@@ -6,9 +6,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/widgets/texts/gu_text_header.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:image_picker/image_picker.dart';
@@ -111,18 +110,28 @@ class _AddInputState extends State<AddInput> {
               const SizedBox(height: Insets.l),
               Row(
                 children: [
-                  LargeBody(text: appLocalizations.dateAddData),
+                  GUTextBody(
+                    text: appLocalizations.dateAddData,
+                    minFontSize: 16,
+                    maxFontSize: 18,
+                  ),
                   const SizedBox(width: Insets.l),
-                  LargeBody(
+                  GUTextBody(
                     text: currentDate,
                     color: GPColors.secondaryColor,
+                    minFontSize: 16,
+                    maxFontSize: 18,
                   ),
                 ],
               ),
               const SizedBox(height: Insets.l),
               Row(
                 children: [
-                  LargeBody(text: appLocalizations.dataAddData),
+                  GUTextBody(
+                    text: appLocalizations.dataAddData,
+                    minFontSize: 16,
+                    maxFontSize: 18,
+                  ),
                   const SizedBox(width: Insets.l),
                   SizedBox(
                     width: 200,
@@ -199,10 +208,9 @@ class _AddInputState extends State<AddInput> {
                   },
                   child: addInputProvider.isLoading
                       ? const CircularProgressIndicator.adaptive()
-                      : StaticText(
+                      : GUTextBody(
                           text: 'OK',
                           textAlign: TextAlign.center,
-                          fontSize: TextSize.mBody,
                           color:
                               addInputProvider.inputController.text.isEmpty ||
                                       int.tryParse(addInputProvider

@@ -4,8 +4,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -40,7 +39,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
         }
         if (snapshot.data!.docs.isEmpty) {
           return Center(
-            child: StaticText(
+            child: GUTextBody(
               text: appLocalizations.noCreatedGroups,
               maxLines: 2,
               textAlign: TextAlign.center,
@@ -61,95 +60,73 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(
-                          height: context.screenHeight * 0.04),
+                      SizedBox(height: context.screenHeight * 0.04),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          StaticText(
-                            text: '${appLocalizations.projectName}:',
-                            fontSize: TextSize.mBody,
-                          ),
+                          GUTextBody(text: '${appLocalizations.projectName}:'),
                           const SizedBox(width: kDefaultPadding / 2),
                           Expanded(
-                            child: StaticText(
+                            child: GUTextBody(
                               text: group[0].data()['projectName'],
                               maxLines: 2,
-                              fontSize: TextSize.mBody,
                               color: GPColors.secondaryColor,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(
-                          height: context.screenHeight * 0.02),
+                      SizedBox(height: context.screenHeight * 0.02),
                       Row(
                         children: [
-                          StaticText(
+                          GUTextBody(
                             text: '${appLocalizations.objective}:',
-                            fontSize: TextSize.mBody,
                           ),
                           const SizedBox(width: kDefaultPadding / 2),
                           Expanded(
-                            child: StaticText(
+                            child: GUTextBody(
                               text: group[0].data()['objective'],
                               maxLines: 2,
-                              fontSize: TextSize.mBody,
                               color: GPColors.secondaryColor,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(
-                          height: context.screenHeight * 0.02),
+                      SizedBox(height: context.screenHeight * 0.02),
                       Row(
                         children: [
-                          StaticText(
-                            text: '${appLocalizations.reward}:', //groupFee
-                            fontSize: TextSize.mBody,
-                          ),
+                          GUTextBody(text: '${appLocalizations.reward}:'),
                           const SizedBox(width: kDefaultPadding / 2),
                           Expanded(
-                            child: StaticText(
-                              text:
-                                  group[0].data()['reward'], //'${NumberFormat.simpleCurrency(name: group[0].data()['groupCurrencyCode']).currencySymbol} ${group[0].data()['reward']}'
+                            child: GUTextBody(
+                              text: group[0].data()['reward'],
                               maxLines: 2,
-                              fontSize: TextSize.mBody,
                               color: GPColors.secondaryColor,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(
-                          height: context.screenHeight * 0.02),
+                      SizedBox(height: context.screenHeight * 0.02),
                       Row(
                         children: [
-                          StaticText(
-                            text: '${appLocalizations.numberParticipants}:',
-                            fontSize: TextSize.mBody,
-                          ),
+                          GUTextBody(
+                              text: '${appLocalizations.numberParticipants}:'),
                           const SizedBox(width: kDefaultPadding / 2),
                           Expanded(
-                            child: StaticText(
+                            child: GUTextBody(
                               text:
                                   group[0].data()['noParticipants'].toString(),
                               maxLines: 2,
-                              fontSize: TextSize.mBody,
                               color: GPColors.secondaryColor,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(
-                          height: context.screenHeight * 0.02),
+                      SizedBox(height: context.screenHeight * 0.02),
                       Row(
                         children: [
-                          StaticText(
-                            text: '${appLocalizations.startDate}:',
-                            fontSize: TextSize.mBody,
-                          ),
+                          GUTextBody(text: '${appLocalizations.startDate}:'),
                           const SizedBox(width: kDefaultPadding / 2),
-                          StaticText(
+                          GUTextBody(
                             text: DateFormat.yMd(
                               Localizations.localeOf(context).toLanguageTag(),
                             ).format(
@@ -157,21 +134,16 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                                   DateTime.now(),
                             ),
                             maxLines: 2,
-                            fontSize: TextSize.mBody,
                             color: GPColors.secondaryColor,
                           ),
                         ],
                       ),
-                      SizedBox(
-                          height: context.screenHeight * 0.02),
+                      SizedBox(height: context.screenHeight * 0.02),
                       Row(
                         children: [
-                          StaticText(
-                            text: '${appLocalizations.endDate}:',
-                            fontSize: TextSize.mBody,
-                          ),
+                          GUTextBody(text: '${appLocalizations.endDate}:'),
                           const SizedBox(width: kDefaultPadding / 2),
-                          StaticText(
+                          GUTextBody(
                             text: DateFormat.yMd(
                               Localizations.localeOf(context).toLanguageTag(),
                             ).format(
@@ -179,7 +151,6 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                                   DateTime.now(),
                             ),
                             maxLines: 2,
-                            fontSize: TextSize.mBody,
                             color: GPColors.secondaryColor,
                           ),
                         ],

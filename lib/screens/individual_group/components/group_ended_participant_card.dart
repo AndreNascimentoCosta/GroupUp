@@ -1,19 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../../core/providers/auth_provider.dart';
 
 class GroupEndedParticipantCard extends StatefulWidget {
   const GroupEndedParticipantCard({
@@ -91,10 +89,9 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                           padding: const EdgeInsets.only(
                             left: kDefaultPadding,
                           ),
-                          child: StaticText(
+                          child: GUTextBody(
                             text: appLocalizations.me,
                             overflow: TextOverflow.ellipsis,
-                            fontSize: TextSize.mBody,
                             fontFamily: 'Montserrat-SemiBold',
                           ),
                         )
@@ -102,7 +99,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                           padding: const EdgeInsets.only(
                             left: kDefaultPadding,
                           ),
-                          child: StaticText(
+                          child: GUTextBody(
                             text: Characters(widget.participant.name)
                                 .replaceAll(
                                   Characters(''),
@@ -110,10 +107,9 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                                 )
                                 .toString(),
                             overflow: TextOverflow.ellipsis,
-                            fontSize: TextSize.mBody,
                           ),
                         )
-                  : const StaticText(text: ''),
+                  : const GUTextBody(text: ''),
             ),
           ],
         ),

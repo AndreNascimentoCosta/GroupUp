@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/modules/home/presenter/widgets/text_field_home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -26,11 +26,11 @@ class _NameAddState extends State<NameAdd> {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: kDefaultPadding * 2),
-            child: StaticText(
+            child: GUTextHeader(
               text: AppLocalizations.of(context).name,
               textAlign: TextAlign.center,
-              fontFamily: 'Montserrat-SemiBold',
-              fontSize: 28,
+              minFontSize: 28,
+              maxFontSize: 28,
             ),
           ),
           Expanded(

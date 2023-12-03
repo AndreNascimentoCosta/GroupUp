@@ -6,9 +6,9 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -32,11 +32,9 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
         ),
         title: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          child: StaticText(
+          child: GUTextHeader(
             text: appLocalizations.chooseOption,
             textAlign: TextAlign.center,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: TextSize.lBody,
           ),
         ),
         shape: RoundedRectangleBorder(
@@ -82,11 +80,12 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                     debugPrint(e.message);
                   }
                 },
-                child: StaticText(
+                child: GUTextBody(
                   text: appLocalizations.resumeAccountCreation,
                   textAlign: TextAlign.center,
-                  fontSize: TextSize.lBody,
                   maxLines: 2,
+                  minFontSize: 18,
+                  maxFontSize: 18,
                 ),
               ),
             ),
@@ -106,11 +105,9 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                     context: context,
                     builder: (BuildContext newContext) {
                       return AlertDialog(
-                        title: StaticText(
+                        title: GUTextHeader(
                           text: appLocalizations.confirm,
                           textAlign: TextAlign.center,
-                          fontFamily: 'Montserrat-SemiBold',
-                          fontSize: TextSize.lBody,
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -118,11 +115,10 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                         content: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding),
-                          child: StaticText(
+                          child: GUTextBody(
                             text: appLocalizations.deleteConnectedAccountText,
                             maxLines: 2,
                             textAlign: TextAlign.center,
-                            fontSize: TextSize.mBody,
                           ),
                         ),
                         actionsAlignment: MainAxisAlignment.center,
@@ -189,10 +185,11 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                     },
                   );
                 },
-                child: StaticText(
+                child: GUTextBody(
                   text: appLocalizations.deleteConnectedAccount,
                   textAlign: TextAlign.center,
-                  fontSize: TextSize.lBody,
+                  minFontSize: 18,
+                  maxFontSize: 18,
                 ),
               ),
             ),

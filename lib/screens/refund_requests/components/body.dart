@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/refund_requests/components/individual_card.dart';
 
@@ -18,11 +18,12 @@ class BodyRefundRequests extends StatelessWidget {
           padding: EdgeInsets.only(top: kDefaultPadding),
           child: Align(
             alignment: Alignment.topCenter,
-            child: StaticText(
+            child: GUTextBody(
               text: 'No refund requests',
               color: GPColors.secondaryColor,
               textAlign: TextAlign.center,
-              fontSize: 20,
+              minFontSize: 20,
+              maxFontSize: 20,
             ),
           ),
         ),

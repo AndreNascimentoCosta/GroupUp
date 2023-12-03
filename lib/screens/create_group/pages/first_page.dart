@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/modules/home/presenter/widgets/text_field_home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -191,12 +191,12 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
               ),
               child: Column(
                 children: [
-                  StaticText(
+                  GUTextBody(
                     text: appLocalizations.important.toUpperCase(),
                     fontFamily: 'Montserrat-SemiBold',
                   ),
                   const SizedBox(height: 10),
-                  StaticText(
+                  GUTextBody(
                     text: appLocalizations.groupDescription,
                     maxLines: 15,
                   ),

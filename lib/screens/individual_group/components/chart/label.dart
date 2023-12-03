@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -39,12 +39,11 @@ class ChartLabel extends StatelessWidget {
                       const SizedBox(
                         width: Insets.s,
                       ),
-                      StaticText(
+                      GUTextBody(
                         text: participant.name.isNotEmpty
                             ? "${participant.name.trim().split(RegExp(' +')).map((s) => s[0]).take(2).join(". ")}."
                             : '',
                         color: GPColors.primaryColor,
-                        fontSize: TextSize.sBody,
                       ),
                     ],
                   ),
@@ -72,12 +71,11 @@ class ChartLabel extends StatelessWidget {
                 const SizedBox(
                   width: Insets.s,
                 ),
-                StaticText(
+                GUTextBody(
                   text: appLocalizations.me,
                   color: participant.uid != user?.id
                       ? GPColors.secondaryColor
                       : GPColors.primaryColor,
-                  fontSize: TextSize.sBody,
                 ),
               ],
             ),

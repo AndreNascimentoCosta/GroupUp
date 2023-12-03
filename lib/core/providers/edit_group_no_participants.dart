@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../widgets/texts/static_text.dart';
 
 class EditGroupNoParticipantsProvider extends ChangeNotifier {
   final groupMaxParticipantsController = TextEditingController();
@@ -78,22 +77,19 @@ class EditGroupNoParticipantsProvider extends ChangeNotifier {
         final appLocalizations = AppLocalizations.of(context);
         FocusScope.of(context).unfocus();
         return AlertDialog(
-          title: StaticText(
+          title: GUTextHeader(
             text: appLocalizations.discardChangesQuestion,
             textAlign: TextAlign.center,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: TextSize.lBody,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: StaticText(
+            child: GUTextBody(
               text: appLocalizations.areYouSureToDiscardChanges,
               maxLines: 2,
               textAlign: TextAlign.center,
-              fontSize: TextSize.mBody,
             ),
           ),
           actionsAlignment: MainAxisAlignment.center,

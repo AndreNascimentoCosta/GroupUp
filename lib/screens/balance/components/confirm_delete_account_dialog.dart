@@ -5,9 +5,9 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -20,22 +20,19 @@ void confirmDeleteAccountDialog(BuildContext rootContext) {
     context: rootContext,
     builder: (BuildContext newContext) {
       return AlertDialog(
-        title: StaticText(
+        title: GUTextHeader(
           text: appLocalizations.confirm,
           textAlign: TextAlign.center,
-          fontFamily: 'Montserrat-SemiBold',
-          fontSize: TextSize.lBody,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          child: StaticText(
+          child: GUTextBody(
             text: appLocalizations.deleteConnectedAccountText,
             maxLines: 2,
             textAlign: TextAlign.center,
-            fontSize: TextSize.mBody,
           ),
         ),
         actionsAlignment: MainAxisAlignment.center,

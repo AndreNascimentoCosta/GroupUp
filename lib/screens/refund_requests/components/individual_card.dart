@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
-import 'package:groupup/core/widgets/texts/medium_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 
@@ -36,20 +35,31 @@ class IndividualRefundRequest extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LargeBody(
-              text: Characters(groupModel.projectName.replaceAll(RegExp('#'), '')).
-                      replaceAll(Characters(''), Characters('\u{200B}')).toString(),
+            GUTextBody(
+              text:
+                  Characters(groupModel.projectName.replaceAll(RegExp('#'), ''))
+                      .replaceAll(Characters(''), Characters('\u{200B}'))
+                      .toString(),
               overflow: TextOverflow.ellipsis,
               fontFamily: 'Montserrat-SemiBold',
+              minFontSize: 16,
+              maxFontSize: 18,
             ),
             const SizedBox(height: Insets.s),
-            const MediumBody(text: 'Request denied', color: GPColors.secondaryColor,)
+            const GUTextBody(
+              text: 'Request denied',
+              color: GPColors.secondaryColor,
+            )
           ],
         ),
         const Spacer(),
         const Padding(
           padding: EdgeInsets.only(right: kDefaultPadding),
-          child: LargeBody(text: '-'),
+          child: GUTextBody(
+            text: '-',
+            minFontSize: 16,
+            maxFontSize: 18,
+          ),
         ),
       ],
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 
 class ObjectiveRewardModel extends StatelessWidget {
   const ObjectiveRewardModel({
@@ -24,7 +24,7 @@ class ObjectiveRewardModel extends StatelessWidget {
         const SizedBox(height: kDefaultPadding / 2),
         SizedBox(
           width: 65,
-          child: StaticText(
+          child: GUTextBody(
             text: Characters(text)
                 .replaceAll(
                   Characters(''),

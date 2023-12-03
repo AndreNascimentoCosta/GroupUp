@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/edit_group_reward_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -15,8 +15,7 @@ class EditGroupRewardBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final groupRewardController =
-        Provider.of<EditGroupRewardProvider>(context)
-            .groupRewardController;
+        Provider.of<EditGroupRewardProvider>(context).groupRewardController;
     final appLocalizations = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -57,10 +56,7 @@ class EditGroupRewardBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: Insets.l),
-          StaticText(
-            text: appLocalizations.changeGroupReward,
-            fontSize: TextSize.mBody,
-          ),
+          GUTextBody(text: appLocalizations.changeGroupReward),
         ],
       ),
     );

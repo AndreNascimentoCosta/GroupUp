@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:intl/intl.dart';
 
 class CaseChart extends StatelessWidget {
@@ -19,7 +18,7 @@ class CaseChart extends StatelessWidget {
           const SizedBox(
             height: kDefaultPadding * 0.25,
           ),
-          StaticText(
+          GUTextBody(
             text: DateFormat.E(
               Localizations.localeOf(context).toLanguageTag(),
             )
@@ -32,7 +31,8 @@ class CaseChart extends StatelessWidget {
                 )[0]
                 .toUpperCase(),
             color: GPColors.secondaryColor,
-            fontSize: TextSize.xsBody,
+            minFontSize: 12,
+            maxFontSize: 12,
           ),
         ],
       ),

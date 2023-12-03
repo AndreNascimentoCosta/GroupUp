@@ -5,8 +5,8 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/screens/profile/components/other_options.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -22,10 +22,10 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       backgroundColor: GPColors.white,
       automaticallyImplyLeading: false,
-      title: StaticText(
+      title: GUTextHeader(
         text: appLocalizations.profile,
-        fontFamily: 'Montserrat-SemiBold',
-        fontSize: TextSize.subTitle,
+        minFontSize: 24,
+        maxFontSize: 24,
       ),
       centerTitle: false,
       actions: [

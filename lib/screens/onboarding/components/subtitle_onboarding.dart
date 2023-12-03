@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 
 class OnboardingSubtitle extends StatelessWidget {
   const OnboardingSubtitle({
@@ -15,12 +15,13 @@ class OnboardingSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 300,
-      child: StaticText(
+      child: GUTextBody(
         text: text,
-        fontSize: context.screenHeight * 0.0215,
         maxLines: 3,
         textAlign: TextAlign.center,
         color: GPColors.secondaryColor,
+        minFontSize: context.screenHeight * 0.0215,
+        maxFontSize: context.screenHeight * 0.0215,
       ),
     );
   }

@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
@@ -9,8 +7,8 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/screens/individual_group/components/group_ended_participant_card.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -43,11 +41,9 @@ groupEndedDialog(BuildContext context) {
         },
       ).rank(group);
       return AlertDialog(
-        title: StaticText(
+        title: GUTextHeader(
           text: appLocalizations.groupEnded,
           textAlign: TextAlign.center,
-          fontFamily: 'Montserrat-SemiBold',
-          fontSize: TextSize.lBody,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -62,10 +58,8 @@ groupEndedDialog(BuildContext context) {
               // else
               Padding(
                 padding: const EdgeInsets.only(bottom: kDefaultPadding),
-                child: StaticText(
-                  text: appLocalizations.winnerWon(group
-                      .reward), //appLocalizations.winnerWon(groupCurrencySymbol, NumberFormat.decimalPattern(Localizations.localeOf(context).toString(),).format(double.parse(group.reward),), //),
-                  fontSize: TextSize.mBody,
+                child: GUTextBody(
+                  text: appLocalizations.winnerWon(group.reward),
                   textAlign: TextAlign.center,
                   maxLines: 3,
                 ),
@@ -108,9 +102,8 @@ groupEndedDialog(BuildContext context) {
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
               },
-              child: const StaticText(
+              child: const GUTextBody(
                 text: 'OK',
-                fontSize: TextSize.mBody,
                 fontFamily: 'Montserrat-SemiBold',
                 color: GPColors.primaryColor,
               ),

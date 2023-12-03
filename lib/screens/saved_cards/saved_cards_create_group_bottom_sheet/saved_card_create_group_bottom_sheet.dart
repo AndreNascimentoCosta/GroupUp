@@ -7,9 +7,9 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/providers/stripe_payment_provider.dart';
@@ -82,15 +82,11 @@ class SavedCardCreateGroupBottomSheet extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    StaticText(
-                      text: brand,
-                      fontSize: TextSize.mBody,
-                    ),
+                    GUTextBody(text: brand),
                     const SizedBox(height: kDefaultPadding / 2),
-                    StaticText(
+                    GUTextBody(
                       text: '**** **** **** $last4Numbers',
                       color: GPColors.secondaryColor,
-                      fontSize: TextSize.mBody,
                     ),
                   ],
                 ),
@@ -98,15 +94,11 @@ class SavedCardCreateGroupBottomSheet extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    StaticText(
-                      text: appLocalizations.expDate,
-                      fontSize: TextSize.mBody,
-                    ),
+                    GUTextBody(text: appLocalizations.expDate),
                     const SizedBox(height: kDefaultPadding / 2),
-                    StaticText(
+                    GUTextBody(
                       text: '$expMonth/$expYear',
                       color: GPColors.secondaryColor,
-                      fontSize: TextSize.mBody,
                     ),
                   ],
                 ),

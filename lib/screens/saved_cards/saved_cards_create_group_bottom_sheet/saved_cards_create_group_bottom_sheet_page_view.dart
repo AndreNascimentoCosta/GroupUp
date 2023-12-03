@@ -4,8 +4,8 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
 import 'package:groupup/screens/saved_cards/saved_cards_create_group_bottom_sheet/saved_cards_create_group_bottom_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -30,10 +30,10 @@ class SavedCardsCreateGroupBottomSheetPageView extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: kDefaultPadding * 2),
-            child: StaticText(
+            child: GUTextHeader(
               text: appLocalizations.savedCards,
-              fontFamily: 'Montserrat-SemiBold',
-              fontSize: 28,
+              minFontSize: 28,
+              maxFontSize: 28,
             ),
           ),
           const SizedBox(height: kDefaultPadding / 2),

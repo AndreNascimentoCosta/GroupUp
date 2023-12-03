@@ -9,8 +9,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/large_body.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_input_data.dart';
@@ -47,22 +46,22 @@ class AddInputProvider extends ChangeNotifier {
       builder: (BuildContext context) {
         final appLocalizations = AppLocalizations.of(context);
         return AlertDialog(
-          title: StaticText(
+          title: GUTextBody(
             text: appLocalizations.addMedia,
             textAlign: TextAlign.center,
             fontFamily: 'Montserrat-SemiBold',
-            fontSize: TextSize.lBody,
+            minFontSize: 18,
+            maxFontSize: 18,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: StaticText(
+            child: GUTextBody(
               text: appLocalizations.validateMediaText,
               maxLines: 4,
               textAlign: TextAlign.center,
-              fontSize: TextSize.mBody,
             ),
           ),
           actionsAlignment: MainAxisAlignment.center,
@@ -101,9 +100,11 @@ class AddInputProvider extends ChangeNotifier {
                       children: [
                         ButtonCommonStyle(
                           onPressed: onPressedGallery,
-                          child: LargeBody(
+                          child: GUTextBody(
                             text: appLocalizations.chooseFromGallery,
                             textAlign: TextAlign.center,
+                            minFontSize: 16,
+                            maxFontSize: 18,
                           ),
                         ),
                         const SizedBox(
@@ -111,9 +112,11 @@ class AddInputProvider extends ChangeNotifier {
                         ),
                         ButtonCommonStyle(
                           onPressed: onPressedCamera,
-                          child: LargeBody(
+                          child: GUTextBody(
                             text: appLocalizations.takePhoto,
                             textAlign: TextAlign.center,
+                            minFontSize: 16,
+                            maxFontSize: 18,
                           ),
                         )
                       ],

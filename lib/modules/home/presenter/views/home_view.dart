@@ -7,7 +7,6 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/gu_text_header.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/modules/home/presenter/widgets/continue_button.dart';
@@ -62,11 +61,11 @@ class Home extends StatelessWidget {
                     const SizedBox(
                       height: Insets.l * 2,
                     ),
-                    StaticText(
+                    GUTextHeader(
                       text: appLocalizations.groupUp,
                       textAlign: TextAlign.center,
-                      fontSize: 34,
-                      fontFamily: 'Montserrat-Bold',
+                      minFontSize: 34,
+                      maxFontSize: 34,
                     ),
                     SizedBox(
                       height: context.screenHeight * 0.1,

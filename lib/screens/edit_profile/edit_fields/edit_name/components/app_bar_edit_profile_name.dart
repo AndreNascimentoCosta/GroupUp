@@ -6,7 +6,6 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gu_text_header.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
@@ -82,10 +81,8 @@ class AppBarEditProfileName extends StatelessWidget implements PreferredSizeWidg
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: ButtonCommonStyle(
                     onPressed: nameProvider.done(context),
-                    child: StaticText(
+                    child: GUTextHeader(
                       text: appLocalizations.done,
-                      fontSize: TextSize.lBody,
-                      fontFamily: 'Montserrat-SemiBold',
                       color: nameProvider.done(context) == null
                           ? GPColors.secondaryColor
                           : GPColors.black,

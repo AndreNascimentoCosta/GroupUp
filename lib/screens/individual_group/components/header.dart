@@ -5,10 +5,10 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/static_text.dart';
-import 'package:groupup/core/widgets/texts/title.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gu_text_title.dart';
 import 'package:groupup/screens/individual_group/components/objective_reward.dart';
 import 'package:groupup/screens/individual_group/components/start_end_date.dart';
 // import 'package:intl/intl.dart';
@@ -41,7 +41,7 @@ class HeaderIndividualGroup extends StatelessWidget {
               ),
               child: SizedBox(
                 width: 300,
-                child: GroupTitle(
+                child: GUTextTitle(
                   text: appLocalizations.name,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
@@ -98,7 +98,7 @@ class HeaderIndividualGroup extends StatelessWidget {
             ),
             child: SizedBox(
               width: context.screenWidth * 0.8,
-              child: GroupTitle(
+              child: GUTextTitle(
                 text: group.projectName,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
@@ -123,11 +123,12 @@ class HeaderIndividualGroup extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: StaticText(
+                          title: GUTextBody(
                             text: appLocalizations.objective,
                             textAlign: TextAlign.center,
                             fontFamily: 'Montserrat-SemiBold',
-                            fontSize: TextSize.lBody,
+                            minFontSize: 18,
+                            maxFontSize: 18,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
@@ -138,11 +139,10 @@ class HeaderIndividualGroup extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding,
                             ),
-                            child: StaticText(
+                            child: GUTextTitle(
                               text: group.objective,
                               maxLines: 4,
                               textAlign: TextAlign.center,
-                              fontSize: TextSize.mBody,
                             ),
                           ),
                           actionsAlignment: MainAxisAlignment.center,
@@ -165,10 +165,9 @@ class HeaderIndividualGroup extends StatelessWidget {
                                     context,
                                   );
                                 },
-                                child: const StaticText(
+                                child: const GUTextTitle(
                                   text: 'OK',
                                   color: GPColors.primaryColor,
-                                  fontSize: TextSize.mBody,
                                 ),
                               ),
                             ),
@@ -203,11 +202,10 @@ class HeaderIndividualGroup extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: StaticText(
+                          title: GUTextHeader(
                             text: appLocalizations.reward,
                             textAlign: TextAlign.center,
                             fontFamily: 'Montserrat-SemiBold',
-                            fontSize: TextSize.lBody,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
@@ -218,12 +216,11 @@ class HeaderIndividualGroup extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding,
                             ),
-                            child: StaticText(
+                            child: GUTextBody(
                               text: group
                                   .reward, //'$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}'
                               maxLines: 4,
                               textAlign: TextAlign.center,
-                              fontSize: TextSize.mBody,
                             ),
                           ),
                           actionsAlignment: MainAxisAlignment.center,
@@ -244,10 +241,9 @@ class HeaderIndividualGroup extends StatelessWidget {
                                   );
                                   Navigator.pop(context);
                                 },
-                                child: const StaticText(
+                                child: const GUTextBody(
                                   text: 'OK',
                                   color: GPColors.primaryColor,
-                                  fontSize: TextSize.mBody,
                                 ),
                               ),
                             ),
