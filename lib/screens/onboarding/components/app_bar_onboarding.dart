@@ -24,8 +24,8 @@ class AppBarOnboarding extends StatelessWidget implements PreferredSizeWidget {
                 width: context.screenWidth,
                 height: 50,
                 alignment: AlignmentDirectional.center,
-                child: const GPTextHeader(
-                  text: 'GroupUp',
+                child: GPTextHeader(
+                  text: appLocalizations.groupUp,
                   minFontSize: 28,
                   maxFontSize: 28,
                 ),
