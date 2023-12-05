@@ -2,5 +2,9 @@
 class GPImages {
   const GPImages._();
 
-  static const target = 'assets/images/target.svg';
+  static const target = 'assets/images/target.png';
+
+  static const instagrammable = 'assets/images/instagrammable.svg';
+
+  static const groupupPlaceholder = 'assets/images/groupup_placeholder.svg';
 }

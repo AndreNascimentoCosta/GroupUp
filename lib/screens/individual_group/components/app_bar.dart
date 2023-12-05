@@ -8,6 +8,7 @@ import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/utils/images/gp_images.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/individual_group/components/group_picture_edit.dart';
@@ -19,7 +20,8 @@ import 'package:provider/provider.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/providers/mix_panel_provider.dart';
 
-class AppBarIndividualGroup extends StatefulWidget implements PreferredSizeWidget {
+class AppBarIndividualGroup extends StatefulWidget
+    implements PreferredSizeWidget {
   const AppBarIndividualGroup({
     required this.homeViewModel,
   });
@@ -70,7 +72,7 @@ class _AppBarIndividualGroupState extends State<AppBarIndividualGroup> {
         centerTitle: true,
         flexibleSpace: ClipRect(
           child: SvgPicture.asset(
-            'assets/images/groupup_placeholder.svg',
+            GPImages.groupupPlaceholder,
             fit: BoxFit.cover,
           ),
         ),
