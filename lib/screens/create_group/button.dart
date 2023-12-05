@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/create_group/create_page_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/screens/home/components/home_button.dart';
+import 'package:groupup/core/widgets/buttons/group_action_button.dart';
 import 'package:provider/provider.dart';
 
 class CreateGroupButton extends StatelessWidget {
@@ -31,9 +31,7 @@ class CreateGroupButton extends StatelessWidget {
           const CreatePageView(),
         );
       },
-      child: const HomeButton(
-        isJoinButton: false,
-      ),
+      child: const GroupActionButton(),
     );
   }
 }

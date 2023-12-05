@@ -5,9 +5,10 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 
-class HomeButton extends StatelessWidget {
-  const HomeButton({required this.isJoinButton});
+class GroupActionButton extends StatelessWidget {
+  const GroupActionButton({this.isJoinButton = false});
 
   final bool isJoinButton;
 
@@ -33,15 +34,13 @@ class HomeButton extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Row(
         children: [
-          Text(
-            isJoinButton
+          GPTextHeader(
+            text: isJoinButton
                 ? AppLocalizations.of(context).joinAGroup
                 : AppLocalizations.of(context).createNewGroup,
-            style: TextStyle(
-              fontFamily: 'Montserrat-SemiBold',
-              fontSize: 20,
-              color: isJoinButton ? GPColors.black : GPColors.white,
-            ),
+            minFontSize: 20,
+            maxFontSize: 20,
+            color: isJoinButton ? GPColors.black : GPColors.white,
           ),
           const Spacer(),
           GPIcon(
