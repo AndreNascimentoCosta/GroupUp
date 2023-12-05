@@ -6,6 +6,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/core/widgets/page_indicator/gp_page_indicator.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/screens/create_group/pages/first_page.dart';
 import 'package:groupup/screens/create_group/pages/review_create_group.dart';
@@ -14,7 +15,6 @@ import 'package:groupup/screens/create_group/pages/third_page.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../core/providers/mix_panel_provider.dart';
@@ -84,16 +84,13 @@ class _CreatePageViewState extends State<CreatePageView> {
                     padding: const EdgeInsets.only(right: kDefaultPadding),
                     child: Align(
                       alignment: AlignmentDirectional.centerEnd,
-                      child: SmoothPageIndicator(
+                      child: GPPageIndicator(
                         controller: createGroupProvider.controller,
                         count: createGroupProvider.itemCount,
-                        effect: const WormEffect(
-                          dotHeight: 10,
-                          dotWidth: 10,
-                          dotColor: Color(0xFFD9D9D9),
-                          activeDotColor: Color(0xFF868686),
-                          type: WormType.thin,
-                        ),
+                        dotHeight: 10,
+                        dotWidth: 10,
+                        dotColor: const Color(0xFFD9D9D9),
+                        activeDotColor: const Color(0xFF868686),
                       ),
                     ),
                   )
