@@ -4,7 +4,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/screens/home/screens/home.dart';
+import 'package:groupup/screens/home/screens/home_screen.dart';
 
 class GPButtonOnboarding extends StatelessWidget {
   const GPButtonOnboarding({
@@ -21,7 +21,7 @@ class GPButtonOnboarding extends StatelessWidget {
         if (controller.page == 3) {
           context.pushAndRemoveUntil(
             MaterialPageRoute(
-              builder: (context) => const Home(),
+              builder: (context) => const HomeScreen(),
             ),
           );
         } else {

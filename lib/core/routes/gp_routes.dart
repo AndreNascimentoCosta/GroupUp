@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/routes/gp_named_routes.dart';
-import 'package:groupup/screens/home/screens/home.dart';
+import 'package:groupup/screens/home/screens/home_screen.dart';
 
 class GPRoute {
   const GPRoute._();
@@ -14,7 +14,7 @@ class GPRoute {
     switch (routeName) {
       case GPNamedRoutes.home:
         return MaterialPageRoute(
-          builder: (context) => const Home(),
+          builder: (context) => const HomeScreen(),
         );
     }
     return null;

@@ -5,7 +5,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/screens/home/screens/home.dart';
+import 'package:groupup/screens/home/screens/home_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarOnboarding extends StatelessWidget implements PreferredSizeWidget {
@@ -39,7 +39,7 @@ class AppBarOnboarding extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: () {
                       context.pushAndRemoveUntil(
                         MaterialPageRoute(
-                          builder: (context) => const Home(),
+                          builder: (context) => const HomeScreen(),
                         ),
                       );
                     },

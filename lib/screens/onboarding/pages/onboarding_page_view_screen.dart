@@ -13,14 +13,14 @@ import 'package:groupup/screens/onboarding/components/next_button_onboarding.dar
 import 'package:groupup/screens/onboarding/components/onboarding_body.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class PageViewOnboarding extends StatefulWidget {
-  const PageViewOnboarding({super.key});
+class OnboardingPageViewScreen extends StatefulWidget {
+  const OnboardingPageViewScreen({super.key});
 
   @override
-  State<PageViewOnboarding> createState() => _PageViewOnboardingState();
+  State<OnboardingPageViewScreen> createState() => _OnboardingPageViewScreenState();
 }
 
-class _PageViewOnboardingState extends State<PageViewOnboarding> {
+class _OnboardingPageViewScreenState extends State<OnboardingPageViewScreen> {
   final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {

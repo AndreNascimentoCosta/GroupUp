@@ -15,12 +15,12 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/continue_button.dart';
 import 'package:groupup/screens/home/components/home_event.dart';
 import 'package:groupup/screens/home/components/subtitle_home.dart';
-import 'package:groupup/screens/sign_up_phone/pages/page_view.dart';
+import 'package:groupup/screens/sign_up/pages/sign_up_page_view_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class Home extends StatelessWidget {
                         gpModalBottomSheet(
                           context,
                           400,
-                          const SignUpPhonePageView(),
+                          const SignUpPhonePageViewScreen(),
                         );
                       },
                       child: Provider.of<AuthProvider>(context).loading
