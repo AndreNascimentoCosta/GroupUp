@@ -3,7 +3,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/modules/home/presenter/views/home_view.dart';
+import 'package:groupup/screens/home/screens/home.dart';
 
 class GPButtonOnboarding extends StatelessWidget {
   const GPButtonOnboarding({
