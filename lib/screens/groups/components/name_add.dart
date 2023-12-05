@@ -4,7 +4,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/modules/home/presenter/widgets/text_field_home.dart';
+import 'package:groupup/screens/home/components/text_field_home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
