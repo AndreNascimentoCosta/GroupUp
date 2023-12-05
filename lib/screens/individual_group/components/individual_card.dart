@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
@@ -93,7 +94,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                           eventName: 'Individual Group - Profile Picture',
                         );
                         if (widget.participant.hasStory) {
-                          Navigator.of(context).push(
+                          context.push(
                             CupertinoPageRoute(
                               builder: (context) => StoryPage(
                                 inputDatas: widget.participant.inputData,

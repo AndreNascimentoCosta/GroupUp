@@ -4,6 +4,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
@@ -50,7 +51,7 @@ void createConnectedAccount(BuildContext context) {
             onPressed: () {
               Provider.of<MixPanelProvider>(context, listen: false)
                   .logEvent(eventName: 'Cancel Create connected account');
-              Navigator.of(context).pop();
+              context.pop();
             },
             color: GPColors.transparent,
             height: 40,
@@ -64,7 +65,7 @@ void createConnectedAccount(BuildContext context) {
               Provider.of<MixPanelProvider>(context, listen: false)
                   .logEvent(eventName: 'Create connected account');
               {
-                final navigatorState = Navigator.of(context);
+                final navigatorState = context;
                 try {
                   final scaffoldMessengerState = ScaffoldMessenger.of(context);
                   navigatorState.pop();

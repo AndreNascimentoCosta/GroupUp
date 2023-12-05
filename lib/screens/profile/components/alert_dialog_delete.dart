@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
@@ -43,7 +44,7 @@ void confirmDelete(BuildContext context) {
               Provider.of<MixPanelProvider>(context, listen: false)
                   .logEvent(eventName: 'Delete Account'),
               authProvider.signOut(context),
-              Navigator.of(context).pop(),
+              context.pop(),
             },
             textColor: GPColors.primaryColor,
             height: 40,
@@ -56,7 +57,7 @@ void confirmDelete(BuildContext context) {
             onPressed: () {
               Provider.of<MixPanelProvider>(context, listen: false)
                   .logEvent(eventName: 'Cancel Delete Account');
-              Navigator.of(context).pop();
+              context.pop();
             },
             color: GPColors.red,
             height: 40,

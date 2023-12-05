@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -39,7 +40,7 @@ void denyAddInputDialog(BuildContext context, String bodyText) {
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Add Input');
-                Navigator.of(context).pop();
+                context.pop();
               },
               child: const GPTextBody(
                 text: 'OK',

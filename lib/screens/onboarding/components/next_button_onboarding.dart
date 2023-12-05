@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,11 +19,10 @@ class GPButtonOnboarding extends StatelessWidget {
     return ButtonCommonStyle(
       onPressed: () {
         if (controller.page == 3) {
-          Navigator.of(context).pushAndRemoveUntil(
+          context.pushAndRemoveUntil(
             MaterialPageRoute(
               builder: (context) => const Home(),
             ),
-            (route) => false,
           );
         } else {
           controller.nextPage(

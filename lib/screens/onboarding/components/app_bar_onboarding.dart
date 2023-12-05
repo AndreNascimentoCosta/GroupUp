@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -36,11 +37,10 @@ class AppBarOnboarding extends StatelessWidget implements PreferredSizeWidget {
                   width: 100,
                   child: ButtonCommonStyle(
                     onPressed: () {
-                      Navigator.of(context).pushAndRemoveUntil(
+                      context.pushAndRemoveUntil(
                         MaterialPageRoute(
                           builder: (context) => const Home(),
                         ),
-                        (route) => false,
                       );
                     },
                     child: GPTextHeader(

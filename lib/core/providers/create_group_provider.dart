@@ -9,6 +9,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
@@ -209,19 +210,23 @@ class CreateGroupProvider extends ChangeNotifier {
         final isSmallScreen = screenHeight < 800 || screenWidth < 350;
         final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
         return AlertDialog(
-          title: GPTextHeader(
-            text: appLocalizations.confirm,
+          title: Text(
+            appLocalizations.confirm,
             textAlign: TextAlign.center,
+            style: const TextStyle(fontFamily: 'Montserrat-SemiBold'),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: GPTextBody(
-              text: appLocalizations.confirmCreateGroup,
+            child: Text(
+              appLocalizations.confirmCreateGroup,
               maxLines: 2,
               textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontFamily: 'Montserrat-Medium',
+              ),
             ),
           ),
           actionsAlignment: MainAxisAlignment.center,
@@ -234,7 +239,7 @@ class CreateGroupProvider extends ChangeNotifier {
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Create Group Cancel Dialog');
-                Navigator.of(context).pop();
+                context.pop();
               },
               color: GPColors.transparent,
               height: 40,
@@ -263,7 +268,7 @@ class CreateGroupProvider extends ChangeNotifier {
             //     if (int.tryParse(controllerReward.text) != 0) {
             //       isPaying = true;
             //       notifyListeners();
-            //       final navigatorState = Navigator.of(context);
+            //       final navigatorState = context;
             //       FocusScope.of(context).unfocus();
             //       navigatorState.pop();
             //       try {
@@ -333,7 +338,7 @@ class CreateGroupProvider extends ChangeNotifier {
             //       isPaying = false;
             //       notifyListeners();
             //     } else {
-            //       Navigator.of(context).pop();
+            //       context.pop();
             //       await createGroup(user);
             //     }
             //   },
@@ -352,7 +357,7 @@ class CreateGroupProvider extends ChangeNotifier {
                     Provider.of<AuthProvider>(context, listen: false).user;
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Create Group Confirm Dialog');
-                Navigator.of(context).pop();
+                context.pop();
                 await createGroup(user);
               },
               height: 40,
@@ -413,7 +418,7 @@ class CreateGroupProvider extends ChangeNotifier {
       return () {
         Provider.of<MixPanelProvider>(context, listen: false)
             .logEvent(eventName: 'Create Group Success');
-        Navigator.of(context).pushAndRemoveUntil(
+        context.pushAndRemoveUntil(
           PageRouteBuilder(
             pageBuilder: (context, animation1, animation2) => GroupsScreen(
               homeViewModel: HomeViewModel(),
@@ -421,7 +426,6 @@ class CreateGroupProvider extends ChangeNotifier {
             transitionDuration: Duration.zero,
             reverseTransitionDuration: Duration.zero,
           ),
-          (route) => false,
         );
       };
     } else {
@@ -625,7 +629,7 @@ class CreateGroupProvider extends ChangeNotifier {
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(eventName: 'Cancel Leave Group');
                   isRefundRequested = true;
-                  Navigator.of(context).pop();
+                  context.pop();
                 },
                 color: GPColors.transparent,
                 height: 40,

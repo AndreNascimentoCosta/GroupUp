@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -35,7 +36,7 @@ class _AddInputState extends State<AddInput> {
       DateTime.now(),
     );
     Future pickImage(ImageSource source) async {
-      final navigatorState = Navigator.of(context);
+      final navigatorState = context;
       final addInputProvider =
           Provider.of<AddInputProvider>(context, listen: false);
       try {
@@ -79,7 +80,7 @@ class _AddInputState extends State<AddInput> {
           );
         }
         addInputProvider.isLoading = false;
-        Navigator.of(context).pop();
+        context.pop();
         debugPrint('Failed to pick image: ${e.message}');
       }
     }
@@ -195,14 +196,14 @@ class _AddInputState extends State<AddInput> {
                         .logEvent(eventName: 'Add Media');
                     try {
                       addInputProvider.confirm(context, () {
-                        Navigator.of(context).pop();
+                        context.pop();
                         pickImage(ImageSource.gallery);
                       }, () {
-                        Navigator.of(context).pop();
+                        context.pop();
                         pickImage(ImageSource.camera);
                       }, group.id);
                     } catch (e) {
-                      Navigator.of(context).pop();
+                      context.pop();
                       addInputProvider.isLoading = false;
                     }
                   },

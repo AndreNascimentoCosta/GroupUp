@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
@@ -99,8 +100,8 @@ groupEndedDialog(BuildContext context) {
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Group Ended Dialog OK');
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
+                context.pop();
+                context.pop();
               },
               child: const GPTextBody(
                 text: 'OK',
@@ -132,8 +133,8 @@ groupEndedDialog(BuildContext context) {
           //           }
           //         }
           //         if (isAllClaimed == true) {
-          //           Navigator.of(context).pop();
-          //           Navigator.of(context).pop();
+          //           context.pop();
+          //           context.pop();
           //           ScaffoldMessenger.of(context).showSnackBar(
           //             SnackBar(
           //               content: Text(appLocalizations.rewardAlreadyClaimed),

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
@@ -62,7 +63,7 @@ class _ChooseParticipantProfilePictureState
                       ? placholderImage
                       : widget.participant.profilePicture,
                   widget.pictureType);
-          Navigator.of(context).pop();
+          context.pop();
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),

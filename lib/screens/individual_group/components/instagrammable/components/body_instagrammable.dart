@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
@@ -78,7 +79,7 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
     final noPicture = instagrammableProvider.picture6;
     final currentUser = Provider.of<AuthProvider>(context).user;
     if (currentUser == null) {
-      Navigator.of(context).pop();
+      context.pop();
     }
     return Scaffold(
       backgroundColor: GPColors.white,

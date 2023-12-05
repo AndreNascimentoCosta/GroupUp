@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
-import 'package:groupup/screens/home/components/text_field_home.dart';
+import 'package:groupup/core/widgets/text_field/gp_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -30,7 +30,7 @@ class _FirstPageJoinState extends State<FirstPageJoin> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              TextFieldModelHome(
+              GPTextField(
                   controller: joinGroupProvider.controllerGroupCode,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {

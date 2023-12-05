@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
@@ -114,7 +115,7 @@ class InstagrammableProvider extends ChangeNotifier {
                         .logEvent(
                             eventName: 'Choose Picture Instagrammable - None');
                     setPicture(picture6, pictureType);
-                    Navigator.of(context).pop();
+                    context.pop();
                   },
                   child: Padding(
                     padding:
@@ -156,7 +157,7 @@ class InstagrammableProvider extends ChangeNotifier {
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(
                           eventName: 'Choose Picture Instagrammable - OK');
-                  Navigator.of(context).pop();
+                  context.pop();
                 },
                 child: const GPTextHeader(
                   text: 'OK',

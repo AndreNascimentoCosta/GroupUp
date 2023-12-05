@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
@@ -200,7 +201,7 @@ class StoryWidget extends StatelessWidget {
                           inputData.image!,
                           participant.uid,
                         );
-                        Navigator.of(context).pop(context);
+                        context.pop();
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: GPTextBody(
@@ -279,7 +280,7 @@ class StoryWidget extends StatelessWidget {
                           inputData.image!,
                           participant.uid,
                         );
-                        Navigator.of(context).pop(context);
+                        context.pop();
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: GPTextBody(

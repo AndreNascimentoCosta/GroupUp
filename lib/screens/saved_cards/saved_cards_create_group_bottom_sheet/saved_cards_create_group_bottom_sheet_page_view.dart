@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
@@ -50,7 +51,7 @@ class SavedCardsCreateGroupBottomSheetPageView extends StatelessWidget {
               onPressed: () async {
                 Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                     eventName: 'Create Group Paying with Stripe Bottom Sheet');
-                final navigatorState = Navigator.of(context);
+                final navigatorState = context;
                 final createGroupProvider = Provider.of<CreateGroupProvider>(
                   context,
                   listen: false,

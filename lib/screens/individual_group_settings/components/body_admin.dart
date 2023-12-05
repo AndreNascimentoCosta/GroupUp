@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
@@ -159,7 +160,7 @@ class BodyAdminSettings extends StatelessWidget {
                                 Provider.of<MixPanelProvider>(context,
                                         listen: false)
                                     .logEvent(eventName: "Can't Change Dates");
-                                Navigator.of(context).pop();
+                                context.pop();
                               },
                               child: const GPTextBody(
                                 text: 'OK',
@@ -227,7 +228,7 @@ class BodyAdminSettings extends StatelessWidget {
                                   listen: false,
                                 ).logEvent(
                                     eventName: "Can't Edit No Participants");
-                                Navigator.of(context).pop();
+                                context.pop();
                               },
                               child: const GPTextBody(
                                 text: 'OK',

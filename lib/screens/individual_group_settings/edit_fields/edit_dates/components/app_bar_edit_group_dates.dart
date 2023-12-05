@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
@@ -53,7 +54,7 @@ class AppBarEditGroupDates extends StatelessWidget implements PreferredSizeWidge
                           .logEvent(
                               eventName:
                                   'Back to Edit Profile Screen from Edit Group Dates Screen');
-                      Navigator.of(context).pop();
+                      context.pop();
                     } else {
                       editGroupDatesProvider.confirmDiscard(context);
                     }

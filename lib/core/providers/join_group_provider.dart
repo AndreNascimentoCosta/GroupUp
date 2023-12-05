@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/participant.dart';
@@ -101,7 +102,7 @@ class JoinGroupProvider extends ChangeNotifier {
       return () async {
         Provider.of<MixPanelProvider>(context, listen: false)
             .logEvent(eventName: 'Join group button');
-        final navigatorState = Navigator.of(context);
+        final navigatorState = context;
         final user = Provider.of<AuthProvider>(context, listen: false).user;
         // final stripePaymentProvider =
         //     Provider.of<StripePaymentProvider>(context, listen: false);
@@ -139,10 +140,10 @@ class JoinGroupProvider extends ChangeNotifier {
         //           paymentIntentId,
         //           controllerGroupCode.text,
         //         );
-        //         Navigator.of(context).popUntil((route) => route.isFirst);
+        //         context.popUntil((route) => route.isFirst);
         //       } catch (e) {
         //         final appLocalizations = AppLocalizations.of(context);
-        //         Navigator.of(context).popUntil((route) => route.isFirst);
+        //         context.popUntil((route) => route.isFirst);
         //         debugPrint(e.toString());
         //         ScaffoldMessenger.of(context).showSnackBar(
         //           SnackBar(
@@ -198,7 +199,7 @@ class JoinGroupProvider extends ChangeNotifier {
 
   Future<JoinGroupErrorType?> validateJoinGroup(BuildContext context) async {
     final userId = FirebaseAuth.instance.currentUser!.uid;
-    final navigatorState = Navigator.of(context);
+    final navigatorState = context;
     final groups = await FirebaseFirestore.instance
         .collection('groups')
         .where('groupCode', isEqualTo: controllerGroupCode.text.toUpperCase())

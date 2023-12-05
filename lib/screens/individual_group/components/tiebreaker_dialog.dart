@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -45,7 +46,7 @@ tiebreakerDialog(BuildContext context) async {
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(eventName: 'Tie Breaker OK');
-                  Navigator.of(context).pop();
+                  context.pop();
                   prefs.setBool(keyIsFirstOpened, false);
                 },
                 child: const GPTextBody(

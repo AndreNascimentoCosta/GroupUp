@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
@@ -211,7 +212,7 @@ class AuthProvider extends ChangeNotifier {
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Error', properties: {'Error': e});
-                Navigator.of(context).pop();
+                context.pop();
               },
               height: 40,
               width: 140,
@@ -278,7 +279,7 @@ class AuthProvider extends ChangeNotifier {
         Provider.of<PhoneAuthenProvider>(context, listen: false);
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId, smsCode: phoneProvider.otpCode);
-    final navigatorState = Navigator.of(context);
+    final navigatorState = context;
     try {
       await _auth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {

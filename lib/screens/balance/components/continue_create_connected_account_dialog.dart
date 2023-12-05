@@ -2,6 +2,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
@@ -54,7 +55,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                 onPressed: () async {
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(eventName: 'Resume Account Creation');
-                  Navigator.of(context).pop();
+                  context.pop();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(appLocalizations.redirecting),
@@ -100,7 +101,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(eventName: 'Confirm Delete Connected Account');
-                  Navigator.of(context).pop();
+                  context.pop();
                   showCupertinoDialog(
                     context: context,
                     builder: (BuildContext newContext) {
@@ -135,7 +136,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                                   .logEvent(
                                       eventName:
                                           'Cancel Delete Connected Account');
-                              Navigator.of(context).pop();
+                              context.pop();
                             },
                             color: GPColors.transparent,
                             height: 40,
@@ -217,7 +218,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
             onPressed: () {
               Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                   eventName: 'Cancel Continue Create Connected Account');
-              Navigator.of(context).pop();
+              context.pop();
             },
             color: GPColors.transparent,
             height: 40,

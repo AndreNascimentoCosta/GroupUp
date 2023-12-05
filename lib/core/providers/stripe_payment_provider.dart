@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
@@ -259,7 +260,7 @@ class StripePaymentProvider extends ChangeNotifier {
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                     eventName: 'Cancel Create Group Paying with Saved Card');
-                Navigator.of(context).pop();
+                context.pop();
               },
               color: GPColors.transparent,
               height: 40,
@@ -270,7 +271,7 @@ class StripePaymentProvider extends ChangeNotifier {
               borderColor: GPColors.primaryColor,
               onPressed: () async {
                 Navigator.of(newContext).pop();
-                final navigatorState = Navigator.of(context);
+                final navigatorState = context;
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Create Group Paying with Saved Card');
                 final user =
@@ -350,7 +351,7 @@ class StripePaymentProvider extends ChangeNotifier {
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false).logEvent(
                     eventName: 'Cancel Join Group Paying with Saved Card');
-                Navigator.of(context).pop();
+                context.pop();
               },
               color: GPColors.transparent,
               height: 40,
@@ -361,7 +362,7 @@ class StripePaymentProvider extends ChangeNotifier {
               borderColor: GPColors.primaryColor,
               onPressed: () async {
                 Navigator.of(newContext).pop();
-                final navigatorState = Navigator.of(context);
+                final navigatorState = context;
                 Provider.of<MixPanelProvider>(context, listen: false)
                     .logEvent(eventName: 'Join Group Paying with Saved Card');
                 final user =
