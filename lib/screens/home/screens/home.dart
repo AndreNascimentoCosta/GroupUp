@@ -5,6 +5,7 @@ import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
+import 'package:groupup/core/utils/images/gp_images.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
@@ -12,6 +13,7 @@ import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/screens/home/components/continue_button.dart';
+import 'package:groupup/screens/home/components/home_event.dart';
 import 'package:groupup/screens/home/components/subtitle_home.dart';
 import 'package:groupup/screens/sign_up_phone/pages/page_view.dart';
 import 'package:provider/provider.dart';
@@ -71,7 +73,7 @@ class Home extends StatelessWidget {
                       height: context.screenHeight * 0.1,
                     ),
                     Image.asset(
-                      'assets/images/target2.png',
+                      GPImages.target,
                       height: context.screenHeight * 0.35,
                       fit: BoxFit.fitHeight,
                     ),
@@ -88,9 +90,8 @@ class Home extends StatelessWidget {
                           context,
                           listen: false,
                         ).logEvent(
-                          eventName: 'Home Screen - Get Started Button',
+                          eventName: HomeEvent.getStartedButton.value,
                         );
-                        phoneProvider.start = 30;
                         phoneProvider.clean();
                         gpModalBottomSheet(
                           context,
