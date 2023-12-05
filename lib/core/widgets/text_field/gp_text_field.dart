@@ -9,12 +9,11 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:provider/provider.dart';
 
-class TextFieldModelHome extends StatefulWidget {
-  const TextFieldModelHome({
+class GPTextField extends StatelessWidget {
+  const GPTextField({
     required this.controller,
     required this.header,
     required this.padding,
-    this.keyUnique,
     this.hint,
     this.focusNode,
     this.keyboardType,
@@ -30,7 +29,6 @@ class TextFieldModelHome extends StatefulWidget {
     this.autovalidateMode = AutovalidateMode.always,
   });
 
-  final Key? keyUnique;
   final FocusNode? focusNode;
   final TextEditingController controller;
   final String header;
@@ -49,45 +47,29 @@ class TextFieldModelHome extends StatefulWidget {
   final AutovalidateMode autovalidateMode;
 
   @override
-  State<TextFieldModelHome> createState() => _TextFieldModelHomeState();
-}
-
-class _TextFieldModelHomeState extends State<TextFieldModelHome> {
-  @override
-  void initState() {
-    super.initState();
-
-    widget.controller.addListener(() {
-      if (!mounted) return;
-      setState(() {});
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: widget.padding,
+      padding: padding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GPTextBody(
-            text: widget.header,
+            text: header,
           ),
           const SizedBox(height: Insets.s),
           TextFormField(
-            key: widget.keyUnique,
-            focusNode: widget.focusNode,
-            controller: widget.controller,
-            initialValue: widget.initialValue,
-            keyboardType: widget.keyboardType,
-            textInputAction: widget.textInputAction,
-            inputFormatters: widget.inputFormatters,
-            autofillHints: widget.autoFillHints,
-            autofocus: widget.autoFocus,
-            autovalidateMode: widget.autovalidateMode,
-            validator: widget.validator,
-            maxLength: widget.maxLength,
-            onFieldSubmitted: widget.submitted,
+            focusNode: focusNode,
+            controller: controller,
+            initialValue: initialValue,
+            keyboardType: keyboardType,
+            textInputAction: textInputAction,
+            inputFormatters: inputFormatters,
+            autofillHints: autoFillHints,
+            autofocus: autoFocus,
+            autovalidateMode: autovalidateMode,
+            validator: validator,
+            maxLength: maxLength,
+            onFieldSubmitted: submitted,
             decoration: InputDecoration(
               enabledBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(
@@ -109,13 +91,13 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
                   color: GPColors.primaryColor,
                 ),
               ),
-              prefixIcon: widget.prefixIcon,
+              prefixIcon: prefixIcon,
               prefixIconConstraints: const BoxConstraints(
                 minWidth: 40,
                 minHeight: 40,
               ),
               counterText: '',
-              suffixIcon: widget.controller.text.isEmpty
+              suffixIcon: controller.text.isEmpty
                   ? null
                   : IconButton(
                       icon: const GPIcon(
@@ -131,13 +113,13 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
                         ).logEvent(
                           eventName: 'Clear Text',
                         );
-                        widget.controller.clear();
+                        controller.clear();
                       },
                     ),
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding / 2,
               ),
-              hintText: widget.hint,
+              hintText: hint,
               hintStyle: const TextStyle(
                 fontFamily: 'Montserrat-Medium',
                 fontSize: TextSize.mBody,
