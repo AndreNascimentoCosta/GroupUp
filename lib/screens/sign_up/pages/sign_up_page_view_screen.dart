@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
-import 'package:groupup/screens/sign_up_phone/components/title_sign_up_phone.dart';
-import 'package:groupup/screens/sign_up_phone/pages/first_page.dart';
-import 'package:groupup/screens/sign_up_phone/pages/second_page.dart';
+import 'package:groupup/screens/sign_up/components/title_sign_up_phone.dart';
+import 'package:groupup/screens/sign_up/components/phone_number_sign_up.dart';
+import 'package:groupup/screens/sign_up/components/code_verification_sign_up.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';
 
-class SignUpPhonePageView extends StatefulWidget {
-  const SignUpPhonePageView({Key? key}) : super(key: key);
+class SignUpPhonePageViewScreen extends StatefulWidget {
+  const SignUpPhonePageViewScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignUpPhonePageView> createState() => _SignUpPhonePageViewState();
+  State<SignUpPhonePageViewScreen> createState() => _SignUpPhonePageViewScreenState();
 }
 
-class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
+class _SignUpPhonePageViewScreenState extends State<SignUpPhonePageViewScreen> {
   @override
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(
@@ -31,10 +31,10 @@ class _SignUpPhonePageViewState extends State<SignUpPhonePageView> {
               onPageChanged: phoneProvider.updateIndex,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                FirstPageSignUp(
+                PhoneNumberSignUp(
                   controller: phoneProvider.controller,
                 ),
-                SecondPageSignUp(
+                CodeVerificationSignUp(
                   controller: phoneProvider.controller,
                 ),
               ],

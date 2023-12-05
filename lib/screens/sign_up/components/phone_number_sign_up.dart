@@ -10,19 +10,20 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class FirstPageSignUp extends StatefulWidget {
-  const FirstPageSignUp({required this.controller});
+class PhoneNumberSignUp extends StatefulWidget {
+  const PhoneNumberSignUp({required this.controller});
 
   final PageController controller;
 
   @override
-  State<FirstPageSignUp> createState() => _FirstPageSignUpState();
+  State<PhoneNumberSignUp> createState() => _PhoneNumberSignUpState();
 }
 
-class _FirstPageSignUpState extends State<FirstPageSignUp> {
+class _PhoneNumberSignUpState extends State<PhoneNumberSignUp> {
   @override
   Widget build(BuildContext context) {
     final nodePhone = FocusNode();
+    final appLocalizations = AppLocalizations.of(context);
     return Center(
       child: SingleChildScrollView(
         child: Column(
@@ -36,9 +37,7 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GPTextBody(
-                    text: AppLocalizations.of(
-                      context,
-                    ).phoneNumber,
+                    text: appLocalizations.phoneNumber,
                     minFontSize: 18,
                     maxFontSize: 18,
                   ),
@@ -50,18 +49,12 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
                     autofocus: true,
                     pickerDialogStyle: PickerDialogStyle(
                       searchFieldInputDecoration: InputDecoration(
-                        labelText: AppLocalizations.of(
-                          context,
-                        ).searchCountry,
+                        labelText: appLocalizations.searchCountry,
                       ),
                     ),
-                    invalidNumberMessage: AppLocalizations.of(
-                      context,
-                    ).invalidPhoneNumber,
+                    invalidNumberMessage: appLocalizations.invalidPhoneNumber,
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(
-                        context,
-                      ).phoneNumber,
+                      hintText: appLocalizations.phoneNumber,
                       border: const OutlineInputBorder(
                         borderSide: BorderSide(),
                       ),
