@@ -6,8 +6,8 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ForceUpdateScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class ForceUpdateScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(height: context.screenHeight * 0.05),
-              GUTextHeader(
+              GPTextHeader(
                 text: appLocalizations.update + appLocalizations.groupUp,
                 textAlign: TextAlign.center,
                 minFontSize: 30,
@@ -37,7 +37,7 @@ class ForceUpdateScreen extends StatelessWidget {
                 height: context.screenHeight * 0.15,
               ),
               const Spacer(),
-              GUTextBody(
+              GPTextBody(
                 text: appLocalizations.updateText,
                 maxLines: 8,
                 textAlign: TextAlign.center,

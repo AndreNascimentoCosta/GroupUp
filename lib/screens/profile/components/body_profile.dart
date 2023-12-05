@@ -12,7 +12,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/created_groups/screens/created_groups_screen.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
@@ -158,7 +158,7 @@ class _BodyProfileState extends State<BodyProfile> {
                     children: [
                       SizedBox(
                         width: 250,
-                        child: GUTextHeader(
+                        child: GPTextHeader(
                           text: Characters(user.name)
                               .replaceAll(
                                   Characters(''), Characters('\u{200B}'))

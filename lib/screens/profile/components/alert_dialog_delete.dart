@@ -5,8 +5,8 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -17,7 +17,7 @@ void confirmDelete(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: GUTextHeader(
+        title: GPTextHeader(
           text: appLocalizations.confirm,
           textAlign: TextAlign.center,
         ),
@@ -26,7 +26,7 @@ void confirmDelete(BuildContext context) {
         ),
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          child: GUTextBody(
+          child: GPTextBody(
             text: appLocalizations.confirmDeleteAccount,
             maxLines: 2,
             textAlign: TextAlign.center,

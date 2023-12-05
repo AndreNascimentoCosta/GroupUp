@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/screens/groups/screens/groups_screen.dart';
 import 'package:groupup/screens/onboarding/components/app_bar_onboarding.dart';
@@ -40,7 +40,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
         }
         if (snapshot.hasError) {
           return Center(
-            child: GUTextHeader(
+            child: GPTextHeader(
               text: AppLocalizations.of(context).generalError,
             ),
           );

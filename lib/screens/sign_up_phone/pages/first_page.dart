@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +35,7 @@ class _FirstPageSignUpState extends State<FirstPageSignUp> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GUTextBody(
+                  GPTextBody(
                     text: AppLocalizations.of(
                       context,
                     ).phoneNumber,

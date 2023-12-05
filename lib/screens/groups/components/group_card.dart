@@ -6,7 +6,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
@@ -156,7 +156,7 @@ class _GroupsCardState extends State<GroupsCard> {
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                GUTextBody(
+                                GPTextBody(
                                   text: Characters(
                                     widget.group.projectName,
                                   )
@@ -174,7 +174,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                 const SizedBox(
                                   height: Insets.s,
                                 ),
-                                GUTextBody(
+                                GPTextBody(
                                   text: AppLocalizations.of(
                                     context,
                                   ).ended,
@@ -182,7 +182,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                 ),
                               ],
                             )
-                          : GUTextBody(
+                          : GPTextBody(
                               text: Characters(
                                 widget.group.projectName,
                               )
@@ -203,7 +203,7 @@ class _GroupsCardState extends State<GroupsCard> {
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                GUTextBody(
+                                GPTextBody(
                                   text: Characters(
                                     widget.group.projectName,
                                   )
@@ -221,7 +221,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                 const SizedBox(
                                   height: Insets.s,
                                 ),
-                                GUTextBody(
+                                GPTextBody(
                                   text: AppLocalizations.of(
                                     context,
                                   ).ended,
@@ -229,7 +229,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                 ),
                               ],
                             )
-                          : GUTextBody(
+                          : GPTextBody(
                               text: Characters(
                                 widget.group.projectName,
                               )

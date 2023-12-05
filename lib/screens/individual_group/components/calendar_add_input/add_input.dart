@@ -6,8 +6,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:image_picker/image_picker.dart';
@@ -102,7 +102,7 @@ class _AddInputState extends State<AddInput> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: Insets.l),
-              GUTextHeader(
+              GPTextHeader(
                 text: appLocalizations.data,
                 textAlign: TextAlign.center,
                 fontFamily: 'MontSerrat-Medium',
@@ -110,13 +110,13 @@ class _AddInputState extends State<AddInput> {
               const SizedBox(height: Insets.l),
               Row(
                 children: [
-                  GUTextBody(
+                  GPTextBody(
                     text: appLocalizations.dateAddData,
                     minFontSize: 16,
                     maxFontSize: 18,
                   ),
                   const SizedBox(width: Insets.l),
-                  GUTextBody(
+                  GPTextBody(
                     text: currentDate,
                     color: GPColors.secondaryColor,
                     minFontSize: 16,
@@ -127,7 +127,7 @@ class _AddInputState extends State<AddInput> {
               const SizedBox(height: Insets.l),
               Row(
                 children: [
-                  GUTextBody(
+                  GPTextBody(
                     text: appLocalizations.dataAddData,
                     minFontSize: 16,
                     maxFontSize: 18,
@@ -208,7 +208,7 @@ class _AddInputState extends State<AddInput> {
                   },
                   child: addInputProvider.isLoading
                       ? const CircularProgressIndicator.adaptive()
-                      : GUTextBody(
+                      : GPTextBody(
                           text: 'OK',
                           textAlign: TextAlign.center,
                           color:

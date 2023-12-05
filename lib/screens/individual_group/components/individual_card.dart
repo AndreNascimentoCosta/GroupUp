@@ -8,8 +8,8 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/screens/individual_group/components/chart/comparative_chart.dart';
@@ -66,7 +66,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                       ),
                       child: SizedBox(
                         width: context.screenWidth * 0.075,
-                        child: GUTextBody(
+                        child: GPTextBody(
                           text: widget.participant.rank(
                             individualGroupProvider.group,
                           ),
@@ -184,7 +184,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                           padding: EdgeInsets.only(
                                             left: context.screenWidth * 0.02,
                                           ),
-                                          child: GUTextHeader(
+                                          child: GPTextHeader(
                                             text: appLocalizations.me,
                                             overflow: TextOverflow.ellipsis,
                                           ),
@@ -193,7 +193,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                           padding: EdgeInsets.only(
                                             left: context.screenWidth * 0.02,
                                           ),
-                                          child: GUTextHeader(
+                                          child: GPTextHeader(
                                             text: Characters(
                                               widget.participant.name,
                                             )
@@ -205,7 +205,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                         )
-                                  : const GUTextHeader(text: ''),
+                                  : const GPTextHeader(text: ''),
                             ),
                             const SizedBox(
                               width: kDefaultPadding / 4,

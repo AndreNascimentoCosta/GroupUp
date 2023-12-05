@@ -6,7 +6,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/participant.dart';
@@ -49,7 +49,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
               ),
               child: SizedBox(
                 width: 25,
-                child: GUTextBody(
+                child: GPTextBody(
                   text: widget.participant.rank(individualGroupProvider.group),
                 ),
               ),
@@ -89,7 +89,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                           padding: const EdgeInsets.only(
                             left: kDefaultPadding,
                           ),
-                          child: GUTextBody(
+                          child: GPTextBody(
                             text: appLocalizations.me,
                             overflow: TextOverflow.ellipsis,
                             fontFamily: 'Montserrat-SemiBold',
@@ -99,7 +99,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                           padding: const EdgeInsets.only(
                             left: kDefaultPadding,
                           ),
-                          child: GUTextBody(
+                          child: GPTextBody(
                             text: Characters(widget.participant.name)
                                 .replaceAll(
                                   Characters(''),
@@ -109,7 +109,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                             overflow: TextOverflow.ellipsis,
                           ),
                         )
-                  : const GUTextBody(text: ''),
+                  : const GPTextBody(text: ''),
             ),
           ],
         ),

@@ -9,7 +9,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_input_data.dart';
@@ -46,7 +46,7 @@ class AddInputProvider extends ChangeNotifier {
       builder: (BuildContext context) {
         final appLocalizations = AppLocalizations.of(context);
         return AlertDialog(
-          title: GUTextBody(
+          title: GPTextBody(
             text: appLocalizations.addMedia,
             textAlign: TextAlign.center,
             fontFamily: 'Montserrat-SemiBold',
@@ -58,7 +58,7 @@ class AddInputProvider extends ChangeNotifier {
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: GUTextBody(
+            child: GPTextBody(
               text: appLocalizations.validateMediaText,
               maxLines: 4,
               textAlign: TextAlign.center,
@@ -100,7 +100,7 @@ class AddInputProvider extends ChangeNotifier {
                       children: [
                         ButtonCommonStyle(
                           onPressed: onPressedGallery,
-                          child: GUTextBody(
+                          child: GPTextBody(
                             text: appLocalizations.chooseFromGallery,
                             textAlign: TextAlign.center,
                             minFontSize: 16,
@@ -112,7 +112,7 @@ class AddInputProvider extends ChangeNotifier {
                         ),
                         ButtonCommonStyle(
                           onPressed: onPressedCamera,
-                          child: GUTextBody(
+                          child: GPTextBody(
                             text: appLocalizations.takePhoto,
                             textAlign: TextAlign.center,
                             minFontSize: 16,

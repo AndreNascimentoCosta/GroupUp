@@ -3,8 +3,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -36,19 +36,19 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
             child: Column(
               children: [
                 SizedBox(height: context.screenHeight * 0.04),
-                const GUTextHeader(
+                const GPTextHeader(
                   text: 'Review group info',
                 ),
                 const SizedBox(height: kDefaultPadding),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GUTextBody(
+                    GPTextBody(
                       text: '${appLocalizations.projectName}:',
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
                     Expanded(
-                      child: GUTextBody(
+                      child: GPTextBody(
                         text: createGroupProvider.controllerProjectName.text,
                         maxLines: 2,
                         color: GPColors.secondaryColor,
@@ -59,12 +59,12 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                 SizedBox(height: context.screenHeight * 0.025),
                 Row(
                   children: [
-                    GUTextBody(
+                    GPTextBody(
                       text: '${appLocalizations.objective}:',
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
                     Expanded(
-                      child: GUTextBody(
+                      child: GPTextBody(
                         text: createGroupProvider.controllerObjective.text,
                         maxLines: 2,
                         color: GPColors.secondaryColor,
@@ -75,12 +75,12 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                 SizedBox(height: context.screenHeight * 0.025),
                 Row(
                   children: [
-                    GUTextBody(
+                    GPTextBody(
                       text: '${appLocalizations.reward}:', //groupFee
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
                     Expanded(
-                      child: GUTextBody(
+                      child: GPTextBody(
                         text: createGroupProvider.controllerReward
                             .text, //'${NumberFormat.simpleCurrency(name: createGroupProvider.groupCurrencyCode).currencySymbol} ${createGroupProvider.controllerReward.text}'
                         maxLines: 2,
@@ -92,12 +92,12 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                 SizedBox(height: context.screenHeight * 0.025),
                 Row(
                   children: [
-                    GUTextBody(
+                    GPTextBody(
                       text: '${appLocalizations.numberParticipants}:',
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
                     Expanded(
-                      child: GUTextBody(
+                      child: GPTextBody(
                         text: createGroupProvider
                             .controllerNumberParticipants.text,
                         maxLines: 2,
@@ -109,11 +109,11 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                 SizedBox(height: context.screenHeight * 0.025),
                 Row(
                   children: [
-                    GUTextBody(
+                    GPTextBody(
                       text: '${appLocalizations.startDate}:',
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
-                    GUTextBody(
+                    GPTextBody(
                       text: createGroupProvider.controllerStartDate.text,
                       maxLines: 2,
                       color: GPColors.secondaryColor,
@@ -123,11 +123,11 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                 SizedBox(height: context.screenHeight * 0.025),
                 Row(
                   children: [
-                    GUTextBody(
+                    GPTextBody(
                       text: '${appLocalizations.endDate}:',
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
-                    GUTextBody(
+                    GPTextBody(
                       text: createGroupProvider.controllerEndDate.text,
                       maxLines: 2,
                       color: GPColors.secondaryColor,

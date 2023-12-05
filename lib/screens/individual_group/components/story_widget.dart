@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:provider/provider.dart';
@@ -136,7 +136,7 @@ class StoryWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        child: GUTextBody(
+                        child: GPTextBody(
                           text: participant.name == currentUser.name
                               ? appLocalizations.me
                               : participant.name,
@@ -203,7 +203,7 @@ class StoryWidget extends StatelessWidget {
                         Navigator.of(context).pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: GUTextBody(
+                            content: GPTextBody(
                               text: appLocalizations.dataInvalidated,
                               textAlign: TextAlign.center,
                               color: GPColors.white,
@@ -238,7 +238,7 @@ class StoryWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: Insets.s),
                   child: Material(
                     type: MaterialType.transparency,
-                    child: GUTextBody(
+                    child: GPTextBody(
                       text: inputData.value.toString(),
                       color: GPColors.white,
                       minFontSize: 36,
@@ -282,7 +282,7 @@ class StoryWidget extends StatelessWidget {
                         Navigator.of(context).pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: GUTextBody(
+                            content: GPTextBody(
                               text: appLocalizations.dataValidated,
                               textAlign: TextAlign.center,
                               color: GPColors.white,

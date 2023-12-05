@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 
 class OtherOptions extends StatelessWidget {
   const OtherOptions({
@@ -18,7 +18,7 @@ class OtherOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonCommonStyle(
       onPressed: onPressed,
-      child: GUTextBody(
+      child: GPTextBody(
         text: text,
         color: color,
         minFontSize: 16,

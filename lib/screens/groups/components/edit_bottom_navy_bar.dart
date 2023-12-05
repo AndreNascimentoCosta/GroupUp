@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import '../../../core/constants/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -39,7 +39,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                 onPressed: () {},
                 child: Padding(
                   padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
-                  child: GUTextBody(
+                  child: GPTextBody(
                     text: AppLocalizations.of(context).pin,
                     color: GPColors.groupEditColor,
                     minFontSize: 16,
@@ -49,7 +49,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
               ),
               activeIcon: Padding(
                 padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
-                child: GUTextBody(
+                child: GPTextBody(
                   text: AppLocalizations.of(context).pin,
                   color: GPColors.primaryColor,
                   minFontSize: 16,
@@ -63,7 +63,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                 onPressed: () {},
                 child: Padding(
                   padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
-                  child: GUTextBody(
+                  child: GPTextBody(
                     text: AppLocalizations.of(context).delete,
                     color: GPColors.groupEditColor,
                     minFontSize: 16,
@@ -73,7 +73,7 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
               ),
               activeIcon: Padding(
                 padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
-                child: GUTextBody(
+                child: GPTextBody(
                   text: AppLocalizations.of(context).delete,
                   color: GPColors.primaryColor,
                   minFontSize: 16,

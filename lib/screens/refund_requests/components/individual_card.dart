@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 
@@ -35,7 +35,7 @@ class IndividualRefundRequest extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            GUTextBody(
+            GPTextBody(
               text:
                   Characters(groupModel.projectName.replaceAll(RegExp('#'), ''))
                       .replaceAll(Characters(''), Characters('\u{200B}'))
@@ -46,7 +46,7 @@ class IndividualRefundRequest extends StatelessWidget {
               maxFontSize: 18,
             ),
             const SizedBox(height: Insets.s),
-            const GUTextBody(
+            const GPTextBody(
               text: 'Request denied',
               color: GPColors.secondaryColor,
             )
@@ -55,7 +55,7 @@ class IndividualRefundRequest extends StatelessWidget {
         const Spacer(),
         const Padding(
           padding: EdgeInsets.only(right: kDefaultPadding),
-          child: GUTextBody(
+          child: GPTextBody(
             text: '-',
             minFontSize: 16,
             maxFontSize: 18,

@@ -7,7 +7,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/screens/groups/components/stats_no_group.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/screens/create_group/create_page_view.dart';
@@ -61,7 +61,7 @@ class NoGroup extends StatelessWidget {
                       padding: const EdgeInsets.only(
                         left: kDefaultPadding,
                       ),
-                      child: GUTextBody(
+                      child: GPTextBody(
                         text: AppLocalizations.of(context).newGroup,
                         color: GPColors.secondaryColor,
                         minFontSize: 18,
@@ -75,7 +75,7 @@ class NoGroup extends StatelessWidget {
               const Spacer(),
               Padding(
                 padding: const EdgeInsets.only(bottom: Insets.xl * 1.5),
-                child: GUTextBody(
+                child: GPTextBody(
                   text: AppLocalizations.of(context).createOrJoinAGroup,
                   color: GPColors.secondaryColor,
                   fontFamily: 'Montserrat-Medium',

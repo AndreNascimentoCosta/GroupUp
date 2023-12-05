@@ -3,7 +3,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
@@ -67,7 +67,7 @@ class BodyNotAdminSettings extends StatelessWidget {
               children: [
                 SizedBox(
                   width: 150,
-                  child: GUTextBody(
+                  child: GPTextBody(
                     text: appLocalizations.groupCode,
                     minFontSize: 16,
                     maxFontSize: 18,

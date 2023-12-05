@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +39,7 @@ class AppBarEditProfileName extends StatelessWidget implements PreferredSizeWidg
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: GUTextHeader(text: appLocalizations.name),
+                child: GPTextHeader(text: appLocalizations.name),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),
@@ -81,7 +81,7 @@ class AppBarEditProfileName extends StatelessWidget implements PreferredSizeWidg
                   padding: const EdgeInsets.only(left: kDefaultPadding),
                   child: ButtonCommonStyle(
                     onPressed: nameProvider.done(context),
-                    child: GUTextHeader(
+                    child: GPTextHeader(
                       text: appLocalizations.done,
                       color: nameProvider.done(context) == null
                           ? GPColors.secondaryColor

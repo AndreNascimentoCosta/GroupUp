@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:groupup/screens/individual_group/components/chart/case.dart';
@@ -75,7 +75,7 @@ SideTitles leftTitles(
                         ? 80
                         : 30,
     getTitlesWidget: (value, meta) {
-      return GUTextBody(
+      return GPTextBody(
         text: greater < 1
             ? value.toStringAsFixed(3)
             : greater < 5
@@ -101,7 +101,7 @@ SideTitles leftTitlesInputDataNull(List<UserInputData> userData) {
     showTitles: true,
     reservedSize: 30,
     getTitlesWidget: (value, meta) {
-      return GUTextBody(
+      return GPTextBody(
         text: value.round().toString(),
         color: GPColors.secondaryColor,
         minFontSize: 12,

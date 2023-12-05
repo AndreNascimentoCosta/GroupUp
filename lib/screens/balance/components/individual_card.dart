@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -80,14 +80,14 @@ class IndividualCardBalance extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            GUTextBody(
+            GPTextBody(
               text: group.projectName.replaceAll(RegExp('#'), ''),
               fontFamily: 'Montserrat-SemiBold',
               minFontSize: 16,
               maxFontSize: 18,
             ),
             const SizedBox(height: Insets.s),
-            GUTextBody(
+            GPTextBody(
               text: group.endDate!.isBefore(DateTime.now())
                   ? participantsSumValue.length > 1 &&
                           participantsSumValue
@@ -135,21 +135,21 @@ class IndividualCardBalance extends StatelessWidget {
                         ),
                       ),
                     )
-                      ? const GUTextBody(
+                      ? const GPTextBody(
                           text: 'R\$ -',
                           color: GPColors.secondaryColor,
                           minFontSize: 16,
                           maxFontSize: 18,
                         )
                       : currentUserRank == '1º'
-                          ? GUTextBody(
+                          ? GPTextBody(
                               text:
                                   'R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.green,
                               minFontSize: 16,
                               maxFontSize: 18,
                             )
-                          : GUTextBody(
+                          : GPTextBody(
                               text:
                                   '-R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.red,
@@ -163,28 +163,28 @@ class IndividualCardBalance extends StatelessWidget {
                         ),
                       ),
                     )
-                      ? const GUTextBody(
+                      ? const GPTextBody(
                           text: 'R\$ -',
                           color: GPColors.secondaryColor,
                           minFontSize: 16,
                           maxFontSize: 18,
                         )
                       : currentUserRank == '1º'
-                          ? GUTextBody(
+                          ? GPTextBody(
                               text:
                                   'R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.green,
                               minFontSize: 16,
                               maxFontSize: 18,
                             )
-                          : GUTextBody(
+                          : GPTextBody(
                               text:
                                   '-R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.red,
                               minFontSize: 16,
                               maxFontSize: 18,
                             )
-              : const GUTextBody(
+              : const GPTextBody(
                   text: 'R\$ -',
                   color: GPColors.secondaryColor,
                   minFontSize: 16,

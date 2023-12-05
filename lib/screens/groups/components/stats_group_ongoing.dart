@@ -3,7 +3,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
@@ -94,14 +94,14 @@ class StatsGroup extends StatelessWidget {
                               )
                                 ? Column(
                                     children: [
-                                      GUTextBody(
+                                      GPTextBody(
                                         text: currentUserRank,
                                         textAlign: TextAlign.center,
                                       ),
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
                                       ),
-                                      const GUTextBody(
+                                      const GPTextBody(
                                         text: '-',
                                         textAlign: TextAlign.center,
                                         color: GPColors.red,
@@ -109,7 +109,7 @@ class StatsGroup extends StatelessWidget {
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
                                       ),
-                                      const GUTextBody(
+                                      const GPTextBody(
                                         text: '-',
                                         textAlign: TextAlign.center,
                                         color: GPColors.primaryColor,
@@ -118,14 +118,14 @@ class StatsGroup extends StatelessWidget {
                                   )
                                 : Column(
                                     children: [
-                                      GUTextBody(
+                                      GPTextBody(
                                         text: currentUserRank,
                                         textAlign: TextAlign.center,
                                       ),
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
                                       ),
-                                      GUTextBody(
+                                      GPTextBody(
                                         text: group.daysGone,
                                         textAlign: TextAlign.center,
                                         color: GPColors.red,
@@ -133,7 +133,7 @@ class StatsGroup extends StatelessWidget {
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
                                       ),
-                                      GUTextBody(
+                                      GPTextBody(
                                         text: group.daysLeft,
                                         textAlign: TextAlign.center,
                                         color: GPColors.primaryColor,
@@ -149,14 +149,14 @@ class StatsGroup extends StatelessWidget {
                               )
                                 ? Column(
                                     children: [
-                                      GUTextBody(
+                                      GPTextBody(
                                         text: currentUserRank,
                                         textAlign: TextAlign.center,
                                       ),
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
                                       ),
-                                      const GUTextBody(
+                                      const GPTextBody(
                                         text: '-',
                                         textAlign: TextAlign.center,
                                         color: GPColors.red,
@@ -164,7 +164,7 @@ class StatsGroup extends StatelessWidget {
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
                                       ),
-                                      const GUTextBody(
+                                      const GPTextBody(
                                         text: '-',
                                         textAlign: TextAlign.center,
                                         color: GPColors.primaryColor,
@@ -173,14 +173,14 @@ class StatsGroup extends StatelessWidget {
                                   )
                                 : Column(
                                     children: [
-                                      GUTextBody(
+                                      GPTextBody(
                                         text: currentUserRank,
                                         textAlign: TextAlign.center,
                                       ),
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
                                       ),
-                                      GUTextBody(
+                                      GPTextBody(
                                         text: group.daysGone,
                                         textAlign: TextAlign.center,
                                         color: GPColors.red,
@@ -188,7 +188,7 @@ class StatsGroup extends StatelessWidget {
                                       const SizedBox(
                                         height: kDefaultPadding * 0.25,
                                       ),
-                                      GUTextBody(
+                                      GPTextBody(
                                         text: group.daysLeft,
                                         textAlign: TextAlign.center,
                                         color: GPColors.primaryColor,
@@ -197,14 +197,14 @@ class StatsGroup extends StatelessWidget {
                                   )
                         : Column(
                             children: [
-                              GUTextBody(
+                              GPTextBody(
                                 text: currentUserRank,
                                 textAlign: TextAlign.center,
                               ),
                               const SizedBox(
                                 height: kDefaultPadding * 0.25,
                               ),
-                              GUTextBody(
+                              GPTextBody(
                                 text: group.daysGone,
                                 textAlign: TextAlign.center,
                                 color: GPColors.red,
@@ -212,7 +212,7 @@ class StatsGroup extends StatelessWidget {
                               const SizedBox(
                                 height: kDefaultPadding * 0.25,
                               ),
-                              GUTextBody(
+                              GPTextBody(
                                 text: group.daysLeft,
                                 textAlign: TextAlign.center,
                                 color: GPColors.primaryColor,

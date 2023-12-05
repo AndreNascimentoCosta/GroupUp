@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/created_groups/components/individual_card.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
@@ -51,7 +51,7 @@ class BodyCreatedGroup extends StatelessWidget {
                       padding: const EdgeInsets.only(top: kDefaultPadding),
                       child: Align(
                         alignment: Alignment.topCenter,
-                        child: GUTextBody(
+                        child: GPTextBody(
                           text: appLocalizations.noCreatedGroups,
                           color: GPColors.secondaryColor,
                           textAlign: TextAlign.center,

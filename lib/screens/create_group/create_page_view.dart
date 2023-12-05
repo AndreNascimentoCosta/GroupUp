@@ -6,7 +6,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/screens/create_group/pages/first_page.dart';
 import 'package:groupup/screens/create_group/pages/review_create_group.dart';
 import 'package:groupup/screens/create_group/pages/second_page.dart';
@@ -69,7 +69,7 @@ class _CreatePageViewState extends State<CreatePageView> {
                         : null,
                   ),
                 ),
-                GUTextHeader(
+                GPTextHeader(
                   text: AppLocalizations.of(context).createGroup,
                   fontFamily: 'Montserrat-SemiBold',
                   minFontSize: isVerySmallScreen ? 24 : 28,

@@ -4,7 +4,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 
 class BodyContentArrow extends StatelessWidget {
   const BodyContentArrow({required this.name, this.maxLine = 1});
@@ -22,7 +22,7 @@ class BodyContentArrow extends StatelessWidget {
       children: [
         SizedBox(
           width: isVerySmallScreen ? screenWidth * 0.675 : screenWidth * 0.65,
-          child: GUTextBody(
+          child: GPTextBody(
             text: name,
             maxLines: maxLine,
             minFontSize: 20,

@@ -5,8 +5,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,7 +21,7 @@ tiebreakerDialog(BuildContext context) async {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: GUTextHeader(
+          title: GPTextHeader(
             text: appLocalizations.tieBreaker,
             textAlign: TextAlign.center,
           ),
@@ -30,7 +30,7 @@ tiebreakerDialog(BuildContext context) async {
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: GUTextBody(
+            child: GPTextBody(
               text: appLocalizations.tieBreakerText,
               maxLines: 8,
               textAlign: TextAlign.center,
@@ -48,7 +48,7 @@ tiebreakerDialog(BuildContext context) async {
                   Navigator.of(context).pop();
                   prefs.setBool(keyIsFirstOpened, false);
                 },
-                child: const GUTextBody(
+                child: const GPTextBody(
                   text: 'OK',
                   color: GPColors.primaryColor,
                 ),

@@ -7,7 +7,7 @@ import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/screens/join_group/components/first_page.dart';
 import 'package:groupup/screens/join_group/components/review_join_group.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
@@ -58,7 +58,7 @@ class _JoinPageViewState extends State<JoinPageView> {
                         : null,
                   ),
                 ),
-                GUTextHeader(
+                GPTextHeader(
                   text: AppLocalizations.of(context).joinAGroup,
                   minFontSize: 28,
                   maxFontSize: 28,

@@ -9,7 +9,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -85,7 +85,7 @@ class IndividualParticipant extends StatelessWidget {
               width: context.screenWidth * 0.4,
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: GUTextBody(
+                child: GPTextBody(
                   text: Characters(participant.name)
                       .replaceAll(Characters(''), Characters('\u{200B}'))
                       .toString(),

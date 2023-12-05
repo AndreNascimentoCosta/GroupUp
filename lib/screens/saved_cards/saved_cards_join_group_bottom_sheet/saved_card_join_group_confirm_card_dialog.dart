@@ -8,8 +8,8 @@ import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/providers/stripe_payment_provider.dart';
@@ -24,7 +24,7 @@ void savedCardConfirmCardJoinGroup(
     context: context,
     builder: (BuildContext newContext) {
       return AlertDialog(
-        title: GUTextHeader(
+        title: GPTextHeader(
           text: appLocalizations.confirm,
           textAlign: TextAlign.center,
         ),
@@ -33,7 +33,7 @@ void savedCardConfirmCardJoinGroup(
         ),
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          child: GUTextBody(
+          child: GPTextBody(
             text: appLocalizations.confirmCard,
             maxLines: 2,
             textAlign: TextAlign.center,

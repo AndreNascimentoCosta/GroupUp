@@ -7,8 +7,8 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/screens/individual_group/components/group_ended_participant_card.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -41,7 +41,7 @@ groupEndedDialog(BuildContext context) {
         },
       ).rank(group);
       return AlertDialog(
-        title: GUTextHeader(
+        title: GPTextHeader(
           text: appLocalizations.groupEnded,
           textAlign: TextAlign.center,
         ),
@@ -58,7 +58,7 @@ groupEndedDialog(BuildContext context) {
               // else
               Padding(
                 padding: const EdgeInsets.only(bottom: kDefaultPadding),
-                child: GUTextBody(
+                child: GPTextBody(
                   text: appLocalizations.winnerWon(group.reward),
                   textAlign: TextAlign.center,
                   maxLines: 3,
@@ -102,7 +102,7 @@ groupEndedDialog(BuildContext context) {
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
               },
-              child: const GUTextBody(
+              child: const GPTextBody(
                 text: 'OK',
                 fontFamily: 'Montserrat-SemiBold',
                 color: GPColors.primaryColor,

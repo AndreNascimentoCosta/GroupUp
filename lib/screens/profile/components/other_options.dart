@@ -5,7 +5,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/screens/profile/components/alert_dialog_delete.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -34,7 +34,7 @@ class OtherOptionsProfile extends StatelessWidget {
               );
               launchUrl(emailLaunchUri);
             },
-            child: GUTextBody(
+            child: GPTextBody(
               text: appLocalizations.reportProblem,
               textAlign: TextAlign.center,
               minFontSize: 16,
@@ -57,7 +57,7 @@ class OtherOptionsProfile extends StatelessWidget {
                 throw 'Could not launch $url';
               }
             },
-            child: GUTextBody(
+            child: GPTextBody(
               text: appLocalizations.privacyPolicy,
               textAlign: TextAlign.center,
               minFontSize: 16,
@@ -72,7 +72,7 @@ class OtherOptionsProfile extends StatelessWidget {
               Navigator.pop(context);
               confirmDelete(context);
             },
-            child: GUTextBody(
+            child: GPTextBody(
               text: appLocalizations.deleteAccount,
               textAlign: TextAlign.center,
               color: GPColors.black,
@@ -88,7 +88,7 @@ class OtherOptionsProfile extends StatelessWidget {
               Navigator.pop(context);
               authProvider.signOut(context);
             },
-            child: GUTextBody(
+            child: GPTextBody(
               text: appLocalizations.logout,
               textAlign: TextAlign.center,
               color: GPColors.red,

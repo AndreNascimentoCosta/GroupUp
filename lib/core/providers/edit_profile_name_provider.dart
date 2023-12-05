@@ -4,8 +4,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -44,7 +44,7 @@ class EditProfileNameProvider extends ChangeNotifier {
         final appLocalizations = AppLocalizations.of(context);
         FocusScope.of(context).unfocus();
         return AlertDialog(
-          title: GUTextHeader(
+          title: GPTextHeader(
             text: appLocalizations.discardChangesQuestion,
             textAlign: TextAlign.center,
           ),
@@ -53,7 +53,7 @@ class EditProfileNameProvider extends ChangeNotifier {
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: GUTextBody(
+            child: GPTextBody(
               text: appLocalizations.areYouSureToDiscardChanges,
               maxLines: 2,
               textAlign: TextAlign.center,

@@ -6,7 +6,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/modules/home/presenter/widgets/continue_button.dart';
@@ -43,7 +43,7 @@ class Home extends StatelessWidget {
           }
           if (snapshot.hasError) {
             return Center(
-              child: GUTextHeader(
+              child: GPTextHeader(
                 text: AppLocalizations.of(context).generalError,
               ),
             );
@@ -61,7 +61,7 @@ class Home extends StatelessWidget {
                     const SizedBox(
                       height: Insets.l * 2,
                     ),
-                    GUTextHeader(
+                    GPTextHeader(
                       text: appLocalizations.groupUp,
                       textAlign: TextAlign.center,
                       minFontSize: 34,

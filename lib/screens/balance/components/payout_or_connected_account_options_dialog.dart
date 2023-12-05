@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/screens/balance/components/confirm_delete_account_dialog.dart';
 import 'package:groupup/screens/balance/components/confirm_login_to_account_dialog.dart';
 import 'package:groupup/screens/balance/components/confirm_request_payout_dialog.dart';
@@ -35,7 +35,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
               left: 10,
               right: 10,
             ),
-            title: GUTextHeader(
+            title: GPTextHeader(
               text: appLocalizations.chooseOption,
               textAlign: TextAlign.center,
             ),
@@ -66,7 +66,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
                         confirmRequestPayoutDialog(rootContext);
                       }
                     },
-                    child: GUTextBody(
+                    child: GPTextBody(
                       text: appLocalizations.requestPayout,
                       textAlign: TextAlign.center,
                       minFontSize: 18,
@@ -86,7 +86,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
                       Navigator.of(newContext).pop();
                       confirmLoginToAccountDialog(context);
                     },
-                    child: GUTextBody(
+                    child: GPTextBody(
                       text: appLocalizations.loginToYourConnectedAccount,
                       textAlign: TextAlign.center,
                       maxLines: 2,
@@ -107,7 +107,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
                       Navigator.of(newContext).pop();
                       confirmDeleteAccountDialog(rootContext);
                     },
-                    child: GUTextBody(
+                    child: GPTextBody(
                       text: appLocalizations.deleteConnectedAccount,
                       textAlign: TextAlign.center,
                       minFontSize: 18,

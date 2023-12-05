@@ -5,8 +5,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_title.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_title.dart';
 import 'package:groupup/models/group_model.dart';
 import '../../../models/home_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -36,7 +36,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
       elevation: 0,
       backgroundColor: GPColors.white,
       automaticallyImplyLeading: false,
-      title: GUTextTitle(
+      title: GPTextTitle(
         text: AppLocalizations.of(context).groups,
       ),
       centerTitle: false,
@@ -77,7 +77,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
                               padding: const EdgeInsets.only(
                                   bottom: kDefaultPadding / 2,
                                   right: kDefaultPadding * 4),
-                              child: GUTextBody(
+                              child: GPTextBody(
                                 text: AppLocalizations.of(context).selectAll,
                                 minFontSize: 18,
                                 maxFontSize: 18,

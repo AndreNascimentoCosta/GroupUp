@@ -4,7 +4,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -39,7 +39,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
         }
         if (snapshot.data!.docs.isEmpty) {
           return Center(
-            child: GUTextBody(
+            child: GPTextBody(
               text: appLocalizations.noCreatedGroups,
               maxLines: 2,
               textAlign: TextAlign.center,
@@ -64,10 +64,10 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          GUTextBody(text: '${appLocalizations.projectName}:'),
+                          GPTextBody(text: '${appLocalizations.projectName}:'),
                           const SizedBox(width: kDefaultPadding / 2),
                           Expanded(
-                            child: GUTextBody(
+                            child: GPTextBody(
                               text: group[0].data()['projectName'],
                               maxLines: 2,
                               color: GPColors.secondaryColor,
@@ -78,12 +78,12 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                       SizedBox(height: context.screenHeight * 0.02),
                       Row(
                         children: [
-                          GUTextBody(
+                          GPTextBody(
                             text: '${appLocalizations.objective}:',
                           ),
                           const SizedBox(width: kDefaultPadding / 2),
                           Expanded(
-                            child: GUTextBody(
+                            child: GPTextBody(
                               text: group[0].data()['objective'],
                               maxLines: 2,
                               color: GPColors.secondaryColor,
@@ -94,10 +94,10 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                       SizedBox(height: context.screenHeight * 0.02),
                       Row(
                         children: [
-                          GUTextBody(text: '${appLocalizations.reward}:'),
+                          GPTextBody(text: '${appLocalizations.reward}:'),
                           const SizedBox(width: kDefaultPadding / 2),
                           Expanded(
-                            child: GUTextBody(
+                            child: GPTextBody(
                               text: group[0].data()['reward'],
                               maxLines: 2,
                               color: GPColors.secondaryColor,
@@ -108,11 +108,11 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                       SizedBox(height: context.screenHeight * 0.02),
                       Row(
                         children: [
-                          GUTextBody(
+                          GPTextBody(
                               text: '${appLocalizations.numberParticipants}:'),
                           const SizedBox(width: kDefaultPadding / 2),
                           Expanded(
-                            child: GUTextBody(
+                            child: GPTextBody(
                               text:
                                   group[0].data()['noParticipants'].toString(),
                               maxLines: 2,
@@ -124,9 +124,9 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                       SizedBox(height: context.screenHeight * 0.02),
                       Row(
                         children: [
-                          GUTextBody(text: '${appLocalizations.startDate}:'),
+                          GPTextBody(text: '${appLocalizations.startDate}:'),
                           const SizedBox(width: kDefaultPadding / 2),
-                          GUTextBody(
+                          GPTextBody(
                             text: DateFormat.yMd(
                               Localizations.localeOf(context).toLanguageTag(),
                             ).format(
@@ -141,9 +141,9 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
                       SizedBox(height: context.screenHeight * 0.02),
                       Row(
                         children: [
-                          GUTextBody(text: '${appLocalizations.endDate}:'),
+                          GPTextBody(text: '${appLocalizations.endDate}:'),
                           const SizedBox(width: kDefaultPadding / 2),
-                          GUTextBody(
+                          GPTextBody(
                             text: DateFormat.yMd(
                               Localizations.localeOf(context).toLanguageTag(),
                             ).format(

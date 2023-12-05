@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
@@ -73,7 +73,7 @@ class EditGroupNameProvider extends ChangeNotifier {
         final appLocalizations = AppLocalizations.of(context);
         FocusScope.of(context).unfocus();
         return AlertDialog(
-          title: GUTextHeader(
+          title: GPTextHeader(
             text: appLocalizations.discardChangesQuestion,
             textAlign: TextAlign.center,
           ),
@@ -82,7 +82,7 @@ class EditGroupNameProvider extends ChangeNotifier {
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: GUTextBody(
+            child: GPTextBody(
               text: appLocalizations.areYouSureToDiscardChanges,
               maxLines: 2,
               textAlign: TextAlign.center,

@@ -4,7 +4,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -35,7 +35,7 @@ class AppBarRefundRequests extends StatelessWidget implements PreferredSizeWidge
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: const GUTextHeader(text: 'Refund requests'),
+                child: const GPTextHeader(text: 'Refund requests'),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),

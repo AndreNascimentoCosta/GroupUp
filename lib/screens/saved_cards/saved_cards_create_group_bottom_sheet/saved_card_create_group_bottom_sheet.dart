@@ -9,7 +9,7 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/providers/stripe_payment_provider.dart';
@@ -82,9 +82,9 @@ class SavedCardCreateGroupBottomSheet extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GUTextBody(text: brand),
+                    GPTextBody(text: brand),
                     const SizedBox(height: kDefaultPadding / 2),
-                    GUTextBody(
+                    GPTextBody(
                       text: '**** **** **** $last4Numbers',
                       color: GPColors.secondaryColor,
                     ),
@@ -94,9 +94,9 @@ class SavedCardCreateGroupBottomSheet extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GUTextBody(text: appLocalizations.expDate),
+                    GPTextBody(text: appLocalizations.expDate),
                     const SizedBox(height: kDefaultPadding / 2),
-                    GUTextBody(
+                    GPTextBody(
                       text: '$expMonth/$expYear',
                       color: GPColors.secondaryColor,
                     ),

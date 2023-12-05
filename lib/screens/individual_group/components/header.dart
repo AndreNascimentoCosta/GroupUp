@@ -6,9 +6,9 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
-import 'package:groupup/core/widgets/texts/gu_text_title.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_title.dart';
 import 'package:groupup/screens/individual_group/components/objective_reward.dart';
 import 'package:groupup/screens/individual_group/components/start_end_date.dart';
 // import 'package:intl/intl.dart';
@@ -41,7 +41,7 @@ class HeaderIndividualGroup extends StatelessWidget {
               ),
               child: SizedBox(
                 width: 300,
-                child: GUTextTitle(
+                child: GPTextTitle(
                   text: appLocalizations.name,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
@@ -98,7 +98,7 @@ class HeaderIndividualGroup extends StatelessWidget {
             ),
             child: SizedBox(
               width: context.screenWidth * 0.8,
-              child: GUTextTitle(
+              child: GPTextTitle(
                 text: group.projectName,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
@@ -123,7 +123,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: GUTextBody(
+                          title: GPTextBody(
                             text: appLocalizations.objective,
                             textAlign: TextAlign.center,
                             fontFamily: 'Montserrat-SemiBold',
@@ -139,7 +139,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding,
                             ),
-                            child: GUTextTitle(
+                            child: GPTextTitle(
                               text: group.objective,
                               maxLines: 4,
                               textAlign: TextAlign.center,
@@ -165,7 +165,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                                     context,
                                   );
                                 },
-                                child: const GUTextTitle(
+                                child: const GPTextTitle(
                                   text: 'OK',
                                   color: GPColors.primaryColor,
                                 ),
@@ -202,7 +202,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: GUTextHeader(
+                          title: GPTextHeader(
                             text: appLocalizations.reward,
                             textAlign: TextAlign.center,
                             fontFamily: 'Montserrat-SemiBold',
@@ -216,7 +216,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding,
                             ),
-                            child: GUTextBody(
+                            child: GPTextBody(
                               text: group
                                   .reward, //'$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}'
                               maxLines: 4,
@@ -241,7 +241,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                                   );
                                   Navigator.pop(context);
                                 },
-                                child: const GUTextBody(
+                                child: const GPTextBody(
                                   text: 'OK',
                                   color: GPColors.primaryColor,
                                 ),

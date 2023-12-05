@@ -4,7 +4,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 
 class BodyButtonModel extends StatelessWidget {
   const BodyButtonModel(
@@ -22,7 +22,7 @@ class BodyButtonModel extends StatelessWidget {
       onPressed: onPressed,
       child: Row(
         children: [
-          GUTextBody(
+          GPTextBody(
             text: text,
             minFontSize: 16,
             maxFontSize: 18,
@@ -30,7 +30,7 @@ class BodyButtonModel extends StatelessWidget {
           const Spacer(),
           Padding(
             padding: const EdgeInsets.only(right: kDefaultPadding),
-            child: GUTextBody(
+            child: GPTextBody(
               text: secondaryText,
               minFontSize: 16,
               maxFontSize: 18,

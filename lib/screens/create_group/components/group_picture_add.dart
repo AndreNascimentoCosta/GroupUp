@@ -10,7 +10,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/edit_profile/components/profile_picture_add.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
@@ -79,7 +79,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                             eventName: 'Create Group - Choose From Gallery');
                     pickImage(ImageSource.gallery);
                   },
-                  child: GUTextBody(
+                  child: GPTextBody(
                     text: appLocalizations.chooseFromGallery,
                     textAlign: TextAlign.center,
                     minFontSize: 16,
@@ -93,7 +93,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                         .logEvent(eventName: 'Create Group - Take Photo');
                     pickImage(ImageSource.camera);
                   },
-                  child: GUTextBody(
+                  child: GPTextBody(
                     text: appLocalizations.takePhoto,
                     textAlign: TextAlign.center,
                     minFontSize: 16,

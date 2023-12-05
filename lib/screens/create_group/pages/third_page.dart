@@ -6,8 +6,8 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -39,7 +39,7 @@ class ThirdPageCreate extends StatelessWidget {
             color: GPColors.primaryColor,
           ),
           const SizedBox(height: kDefaultPadding),
-          GUTextHeader(
+          GPTextHeader(
             text: appLocalizations.completed,
             color: GPColors.primaryColor,
             minFontSize: 28,
@@ -50,7 +50,7 @@ class ThirdPageCreate extends StatelessWidget {
             children: [
               SizedBox(
                 width: 180,
-                child: GUTextBody(
+                child: GPTextBody(
                   text: appLocalizations.groupCode,
                   minFontSize: 18,
                   maxFontSize: 18,

@@ -5,8 +5,8 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/screens/individual_group/components/instagrammable/components/choose_participant_profile_picture.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
@@ -78,7 +78,7 @@ class InstagrammableProvider extends ChangeNotifier {
         final group = Provider.of<IndividualGroupProvider>(context).group;
         if (group == null) return const SizedBox();
         return AlertDialog(
-          title: GUTextHeader(
+          title: GPTextHeader(
             text: appLocalizations.choosePicture,
             textAlign: TextAlign.center,
           ),
@@ -136,7 +136,7 @@ class InstagrammableProvider extends ChangeNotifier {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          GUTextBody(text: appLocalizations.none),
+                          GPTextBody(text: appLocalizations.none),
                         ],
                       ),
                     ),
@@ -158,7 +158,7 @@ class InstagrammableProvider extends ChangeNotifier {
                           eventName: 'Choose Picture Instagrammable - OK');
                   Navigator.of(context).pop();
                 },
-                child: const GUTextHeader(
+                child: const GPTextHeader(
                   text: 'OK',
                   color: GPColors.primaryColor,
                 ),

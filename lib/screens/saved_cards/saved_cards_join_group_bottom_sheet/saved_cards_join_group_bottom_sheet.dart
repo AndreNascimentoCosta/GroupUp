@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/screens/saved_cards/saved_cards_join_group_bottom_sheet/saved_card_join_group_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -47,7 +47,7 @@ class SavedCardsJoinGroupBottomSheetBody extends StatelessWidget {
                 }
                 if (snapshot.data!.data.isEmpty) {
                   return Center(
-                    child: GUTextBody(text: appLocalizations.noSavedCards),
+                    child: GPTextBody(text: appLocalizations.noSavedCards),
                   );
                 }
                 return ListView.separated(

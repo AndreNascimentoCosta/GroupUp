@@ -5,7 +5,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/providers/mix_panel_provider.dart';
@@ -40,7 +40,7 @@ class ProfilePictureAdd extends StatelessWidget {
               children: [
                 ButtonCommonStyle(
                   onPressed: onPressedGallery,
-                  child: GUTextBody(
+                  child: GPTextBody(
                     text: appLocalizations.chooseFromGallery,
                     textAlign: TextAlign.center,
                     minFontSize: 16,
@@ -52,7 +52,7 @@ class ProfilePictureAdd extends StatelessWidget {
                 ),
                 ButtonCommonStyle(
                   onPressed: onPressedCamera,
-                  child: GUTextBody(
+                  child: GPTextBody(
                     text: appLocalizations.takePhoto,
                     textAlign: TextAlign.center,
                     minFontSize: 16,

@@ -6,7 +6,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +45,7 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: GUTextHeader(text: appLocalizations.participants),
+                child: GPTextHeader(text: appLocalizations.participants),
               ),
               ButtonCommonStyle(
                 onPressed: () {
@@ -95,7 +95,7 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
                       group.id,
                       group.participants.length,
                     ),
-                    child: GUTextHeader(
+                    child: GPTextHeader(
                       text: appLocalizations.done,
                       color: editGroupMaxParticipantsProvider.done(
                                 context,

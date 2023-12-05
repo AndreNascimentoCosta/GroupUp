@@ -6,7 +6,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/screens/profile/components/other_options.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -22,7 +22,7 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       backgroundColor: GPColors.white,
       automaticallyImplyLeading: false,
-      title: GUTextHeader(
+      title: GPTextHeader(
         text: appLocalizations.profile,
         minFontSize: 24,
         maxFontSize: 24,

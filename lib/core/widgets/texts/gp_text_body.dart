@@ -2,16 +2,16 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 
-class GUTextHeader extends StatelessWidget {
-  const GUTextHeader({
+class GPTextBody extends StatelessWidget {
+  const GPTextBody({
     required this.text,
-    this.fontFamily = 'Montserrat-SemiBold',
+    this.fontFamily = 'Montserrat-Medium',
     this.color = GPColors.black,
     this.overflow,
     this.textAlign,
     this.maxLines = 1,
-    this.minFontSize = 20,
-    this.maxFontSize = 24,
+    this.minFontSize = 14,
+    this.maxFontSize = 16,
   });
 
   final String text;
@@ -33,7 +33,7 @@ class GUTextHeader extends StatelessWidget {
       minFontSize: minFontSize,
       maxFontSize: maxFontSize,
       style: TextStyle(
-        fontSize: 24,
+        fontSize: 16,
         fontFamily: fontFamily,
         color: color,
       ),

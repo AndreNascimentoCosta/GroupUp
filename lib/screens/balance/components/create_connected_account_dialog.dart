@@ -7,8 +7,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,7 +22,7 @@ void createConnectedAccount(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: GUTextHeader(
+        title: GPTextHeader(
           text: appLocalizations.connectedAccount,
           textAlign: TextAlign.center,
         ),
@@ -31,7 +31,7 @@ void createConnectedAccount(BuildContext context) {
         ),
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          child: GUTextBody(
+          child: GPTextBody(
             text: appLocalizations.createConnectedAccountText,
             maxLines: 4,
             textAlign: TextAlign.center,

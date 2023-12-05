@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:groupup/screens/individual_group/components/calendar_add_input/single_data.dart';
@@ -21,7 +21,7 @@ class DataHistoryBottomSheet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: Insets.l),
-          GUTextBody(
+          GPTextBody(
             text: appLocalizations.dataHistory,
             textAlign: TextAlign.center,
             minFontSize: 24,
@@ -32,7 +32,7 @@ class DataHistoryBottomSheet extends StatelessWidget {
             children: [
               SizedBox(
                 width: 100,
-                child: GUTextBody(
+                child: GPTextBody(
                   text: appLocalizations.dates,
                   minFontSize: 16,
                   maxFontSize: 18,
@@ -40,7 +40,7 @@ class DataHistoryBottomSheet extends StatelessWidget {
               ),
               const SizedBox(width: Insets.l),
               Expanded(
-                child: GUTextBody(
+                child: GPTextBody(
                   text: appLocalizations.values,
                   textAlign: TextAlign.center,
                   minFontSize: 16,
@@ -51,7 +51,7 @@ class DataHistoryBottomSheet extends StatelessWidget {
           ),
           const SizedBox(height: Insets.l),
           if (userInputData.isEmpty)
-            GUTextBody(
+            GPTextBody(
               text: appLocalizations.noData,
               textAlign: TextAlign.center,
               color: GPColors.secondaryColor,

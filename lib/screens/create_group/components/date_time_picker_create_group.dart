@@ -6,7 +6,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -147,7 +147,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
           SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),
           const Padding(
             padding: EdgeInsets.only(top: Insets.s),
-            child: GUTextBody(
+            child: GPTextBody(
               text: '-',
               color: GPColors.secondaryColor,
               minFontSize: 24,

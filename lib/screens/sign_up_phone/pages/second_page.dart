@@ -4,7 +4,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/screens/sign_up_phone/pages/otp_field.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -51,7 +51,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
               const SizedBox(
                 height: Insets.l * 2,
               ),
-              GUTextBody(
+              GPTextBody(
                 text: AppLocalizations.of(
                   context,
                 ).codeSent(
@@ -71,7 +71,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GUTextBody(
+                  GPTextBody(
                     text: AppLocalizations.of(
                       context,
                     ).codeNotReceived,
@@ -97,7 +97,7 @@ class _SecondPageSignUpState extends State<SecondPageSignUp> {
                         );
                       }
                     },
-                    child: GUTextBody(
+                    child: GPTextBody(
                       text: phoneProvider.start != 0
                           ? AppLocalizations.of(
                               context,

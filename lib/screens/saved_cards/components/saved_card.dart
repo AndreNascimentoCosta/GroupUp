@@ -6,7 +6,7 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:provider/provider.dart';
 
 class SavedCard extends StatelessWidget {
@@ -53,9 +53,9 @@ class SavedCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GUTextBody(text: brand),
+                  GPTextBody(text: brand),
                   const SizedBox(height: kDefaultPadding / 2),
-                  GUTextBody(
+                  GPTextBody(
                     text: '**** **** **** $last4Numbers',
                     color: GPColors.secondaryColor,
                   ),
@@ -65,9 +65,9 @@ class SavedCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GUTextBody(text: appLocalizations.expDate),
+                  GPTextBody(text: appLocalizations.expDate),
                   const SizedBox(height: kDefaultPadding / 2),
-                  GUTextBody(
+                  GPTextBody(
                     text: '$expMonth/$expYear',
                     color: GPColors.secondaryColor,
                   ),

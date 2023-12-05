@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/models/user_input_data.dart';
@@ -32,7 +32,7 @@ class IndividualValue extends StatelessWidget {
                 const Spacer(),
                 SizedBox(
                   width: 65,
-                  child: GUTextBody(
+                  child: GPTextBody(
                     text: userInputData.value == 0
                         ? userInputData.value.toString()
                         : userInputData.value < 1

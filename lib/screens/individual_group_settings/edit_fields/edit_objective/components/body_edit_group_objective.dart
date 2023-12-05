@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:groupup/core/providers/edit_group_objective_provider.dart';
 import 'package:provider/provider.dart';
@@ -57,7 +57,7 @@ class EditGroupObjectiveBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: Insets.l),
-          GUTextBody(text: appLocalizations.changeGroupObjective),
+          GPTextBody(text: appLocalizations.changeGroupObjective),
         ],
       ),
     );

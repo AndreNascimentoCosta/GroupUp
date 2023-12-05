@@ -4,7 +4,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/screens/created_groups/components/dates.dart';
@@ -54,7 +54,7 @@ class IndividualCreatedGroup extends StatelessWidget {
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        GUTextBody(
+                        GPTextBody(
                           text: Characters(group.projectName)
                               .replaceAll(
                                   Characters(''), Characters('\u{200B}'))
@@ -64,13 +64,13 @@ class IndividualCreatedGroup extends StatelessWidget {
                           maxFontSize: 20,
                         ),
                         const SizedBox(height: Insets.s),
-                        GUTextBody(
+                        GPTextBody(
                           text: appLocalizations.ended,
                           color: GPColors.secondaryColor,
                         ),
                       ],
                     )
-                  : GUTextBody(
+                  : GPTextBody(
                       text: Characters(group.projectName)
                           .replaceAll(Characters(''), Characters('\u{200B}'))
                           .toString(),

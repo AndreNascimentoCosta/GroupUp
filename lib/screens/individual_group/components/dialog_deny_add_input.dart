@@ -5,8 +5,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
 
 void denyAddInputDialog(BuildContext context, String bodyText) {
@@ -15,7 +15,7 @@ void denyAddInputDialog(BuildContext context, String bodyText) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: GUTextHeader(
+        title: GPTextHeader(
           text: appLocalizations.youCantDoThis,
           textAlign: TextAlign.center,
         ),
@@ -24,7 +24,7 @@ void denyAddInputDialog(BuildContext context, String bodyText) {
         ),
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          child: GUTextBody(
+          child: GPTextBody(
             text: bodyText,
             maxLines: 5,
             textAlign: TextAlign.center,
@@ -41,7 +41,7 @@ void denyAddInputDialog(BuildContext context, String bodyText) {
                     .logEvent(eventName: 'Add Input');
                 Navigator.of(context).pop();
               },
-              child: const GUTextBody(
+              child: const GPTextBody(
                 text: 'OK',
                 color: GPColors.primaryColor,
               ),

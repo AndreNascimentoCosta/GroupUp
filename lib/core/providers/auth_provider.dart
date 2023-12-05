@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_data.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
@@ -187,7 +187,7 @@ class AuthProvider extends ChangeNotifier {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: GUTextHeader(
+          title: GPTextHeader(
             text: AppLocalizations.of(context).error,
             textAlign: TextAlign.center,
           ),
@@ -196,7 +196,7 @@ class AuthProvider extends ChangeNotifier {
           ),
           content: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: GUTextBody(
+            child: GPTextBody(
               text: e,
               maxLines: 2,
               textAlign: TextAlign.center,

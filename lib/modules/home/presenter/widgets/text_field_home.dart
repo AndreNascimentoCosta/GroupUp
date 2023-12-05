@@ -6,7 +6,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:provider/provider.dart';
 
 class TextFieldModelHome extends StatefulWidget {
@@ -70,7 +70,7 @@ class _TextFieldModelHomeState extends State<TextFieldModelHome> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          GUTextBody(
+          GPTextBody(
             text: widget.header,
           ),
           const SizedBox(height: Insets.s),

@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/edit_group_no_participants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/screens/edit_profile/components/text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -65,7 +65,7 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: Insets.l),
-          GUTextBody(
+          GPTextBody(
             text: appLocalizations.changeNumberParticipants,
             maxLines: 2,
           ),

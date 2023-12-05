@@ -5,10 +5,10 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/widgets/texts/gu_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
-import 'package:groupup/core/widgets/texts/gu_text_header.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/screens/individual_group_settings/components/body_content_arrow.dart';
 import 'package:groupup/screens/individual_group_settings/components/body_content_switch.dart';
 import 'package:groupup/screens/individual_group_settings/components/other_options.dart';
@@ -131,7 +131,7 @@ class BodyAdminSettings extends StatelessWidget {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: GUTextHeader(
+                        title: GPTextHeader(
                           text: appLocalizations.youCantDoThis,
                           textAlign: TextAlign.center,
                         ),
@@ -141,7 +141,7 @@ class BodyAdminSettings extends StatelessWidget {
                         content: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding),
-                          child: GUTextBody(
+                          child: GPTextBody(
                             text: appLocalizations
                                 .cantChangeDatesWhenParticipantAddedData,
                             maxLines: 5,
@@ -161,7 +161,7 @@ class BodyAdminSettings extends StatelessWidget {
                                     .logEvent(eventName: "Can't Change Dates");
                                 Navigator.of(context).pop();
                               },
-                              child: const GUTextBody(
+                              child: const GPTextBody(
                                 text: 'OK',
                                 color: GPColors.primaryColor,
                               ),
@@ -197,7 +197,7 @@ class BodyAdminSettings extends StatelessWidget {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: GUTextHeader(
+                        title: GPTextHeader(
                           text: appLocalizations.youCantDoThis,
                           textAlign: TextAlign.center,
                         ),
@@ -207,7 +207,7 @@ class BodyAdminSettings extends StatelessWidget {
                         content: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding),
-                          child: GUTextBody(
+                          child: GPTextBody(
                             text: appLocalizations
                                 .cantChangeNumberParticipantsWhenParticipantAddedData,
                             maxLines: 5,
@@ -229,7 +229,7 @@ class BodyAdminSettings extends StatelessWidget {
                                     eventName: "Can't Edit No Participants");
                                 Navigator.of(context).pop();
                               },
-                              child: const GUTextBody(
+                              child: const GPTextBody(
                                 text: 'OK',
                                 color: GPColors.primaryColor,
                               ),
@@ -275,7 +275,7 @@ class BodyAdminSettings extends StatelessWidget {
                   width: isVerySmallScreen
                       ? screenWidth * 0.4
                       : screenWidth * 0.35,
-                  child: GUTextBody(
+                  child: GPTextBody(
                     text: appLocalizations.groupCode,
                     minFontSize: 16,
                     maxFontSize: 18,
