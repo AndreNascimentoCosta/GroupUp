@@ -6,7 +6,6 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/screens/groups/components/dropdown.dart';
 import 'package:groupup/models/participant.dart';
@@ -34,7 +33,7 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
   Widget build(BuildContext context) {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     if (individualGroupProvider.group == null) {
       return const CircularProgressIndicator.adaptive();
     } else {
@@ -49,8 +48,16 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
               ),
               child: SizedBox(
                 width: 25,
-                child: GPTextBody(
-                  text: widget.participant.rank(individualGroupProvider.group),
+                child: Text(
+                  widget.participant
+                      .rank(individualGroupProvider.group)
+                      .toString(),
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontFamily: 'Montserrat-SemiBold',
+                    color: GPColors.black,
+                  ),
                 ),
               ),
             ),
@@ -81,36 +88,50 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                       width: Insets.l,
                     ),
                   ),
-            SizedBox(
-              width: 180,
-              child: authProvider.user != null
-                  ? authProvider.user!.id == widget.participant.uid
-                      ? Padding(
-                          padding: const EdgeInsets.only(
-                            left: kDefaultPadding,
-                          ),
-                          child: GPTextBody(
-                            text: appLocalizations.me,
-                            overflow: TextOverflow.ellipsis,
+            authProvider.user != null
+                ? authProvider.user!.id == widget.participant.uid
+                    ? Padding(
+                        padding: const EdgeInsets.only(
+                          left: kDefaultPadding,
+                        ),
+                        child: Text(
+                          appLocalizations.me,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 14,
                             fontFamily: 'Montserrat-SemiBold',
+                            color: GPColors.black,
                           ),
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.only(
-                            left: kDefaultPadding,
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(
+                          left: kDefaultPadding,
+                        ),
+                        child: Text(
+                          Characters(widget.participant.name)
+                              .replaceAll(
+                                Characters(''),
+                                Characters('\u{200B}'),
+                              )
+                              .toString(),
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontFamily: 'Montserrat-SemiBold',
+                            color: GPColors.black,
                           ),
-                          child: GPTextBody(
-                            text: Characters(widget.participant.name)
-                                .replaceAll(
-                                  Characters(''),
-                                  Characters('\u{200B}'),
-                                )
-                                .toString(),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        )
-                  : const GPTextBody(text: ''),
-            ),
+                        ),
+                      )
+                : const Text(
+                    '',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'Montserrat-SemiBold',
+                      color: GPColors.black,
+                    ),
+                  ),
           ],
         ),
       );
