@@ -31,16 +31,14 @@ Future<void> main() async {
   await FirebaseAppCheck.instance.activate(
     webRecaptchaSiteKey: 'recaptcha-v3-site-key',
   );
-  // Stripe.publishableKey = stripePublishableKey;
-  // Stripe.merchantIdentifier = 'merchant.com.andrecosta.groupup';
-  // await Stripe.instance.applySettings();
+
   await SentryFlutter.init(
     (options) => {
       options.dsn =
           'https://0aa61fd755844cc1bdac24bceebd7124@o4504561838522368.ingest.sentry.io/4504561860345856',
       options.tracesSampleRate = 1.0,
       options.attachScreenshot = true,
-      options.enableAutoPerformanceTracking = true,
+      options.enableAutoSessionTracking = true,
     },
     appRunner: () => runApp(
       SentryScreenshotWidget(
@@ -133,7 +131,8 @@ Future<void> main() async {
                       );
                     }
                     bool needsUpdate() {
-                      final List<int>? currentVersion = snapshotPlatform.data?.version
+                      final List<int>? currentVersion = snapshotPlatform
+                          .data?.version
                           .split('.')
                           .map((String number) => (int.tryParse(number)) ?? 0)
                           .toList();
@@ -150,6 +149,7 @@ Future<void> main() async {
                       }
                       return false;
                     }
+
                     if (needsUpdate() == true) {
                       return const ForceUpdateScreen();
                     } else {
