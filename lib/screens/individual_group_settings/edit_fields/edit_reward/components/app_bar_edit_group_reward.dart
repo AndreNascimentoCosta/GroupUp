@@ -21,7 +21,7 @@ class AppBarEditGroupReward extends StatelessWidget
   Widget build(BuildContext context) {
     final editGroupRewardProvider =
         Provider.of<EditGroupRewardProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
       return const SizedBox();

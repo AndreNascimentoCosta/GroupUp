@@ -36,10 +36,9 @@ class GroupActionButton extends StatelessWidget {
         children: [
           GPTextHeader(
             text: isJoinButton
-                ? AppLocalizations.of(context).joinAGroup
-                : AppLocalizations.of(context).createNewGroup,
-            minFontSize: 20,
-            maxFontSize: 20,
+                ? AppLocalizations.of(context)!.joinAGroup
+                : AppLocalizations.of(context)!.createNewGroup,
+            fontSize: 20,
             color: isJoinButton ? GPColors.black : GPColors.white,
           ),
           const Spacer(),

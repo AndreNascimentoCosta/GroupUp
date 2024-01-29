@@ -42,8 +42,7 @@ class IndividualRefundRequest extends StatelessWidget {
                       .toString(),
               overflow: TextOverflow.ellipsis,
               fontFamily: 'Montserrat-SemiBold',
-              minFontSize: 16,
-              maxFontSize: 18,
+              fontSize: 16,
             ),
             const SizedBox(height: Insets.s),
             const GPTextBody(
@@ -57,8 +56,7 @@ class IndividualRefundRequest extends StatelessWidget {
           padding: EdgeInsets.only(right: kDefaultPadding),
           child: GPTextBody(
             text: '-',
-            minFontSize: 16,
-            maxFontSize: 18,
+              fontSize: 16,
           ),
         ),
       ],

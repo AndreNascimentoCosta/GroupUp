@@ -11,7 +11,7 @@ import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
 
 void denyAddInputDialog(BuildContext context, String bodyText) {
-  final appLocalizations = AppLocalizations.of(context);
+  final appLocalizations = AppLocalizations.of(context)!;
   showCupertinoDialog(
     context: context,
     builder: (BuildContext context) {

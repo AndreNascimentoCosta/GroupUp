@@ -54,7 +54,7 @@ class _CodeVerificationSignUpState extends State<CodeVerificationSignUp> {
               GPTextBody(
                 text: AppLocalizations.of(
                   context,
-                ).codeSent(
+                )!.codeSent(
                   phoneControllerText,
                 ),
                 color: GPColors.secondaryColor,
@@ -74,7 +74,7 @@ class _CodeVerificationSignUpState extends State<CodeVerificationSignUp> {
                   GPTextBody(
                     text: AppLocalizations.of(
                       context,
-                    ).codeNotReceived,
+                    )!.codeNotReceived,
                     color: GPColors.secondaryColor,
                   ),
                   const SizedBox(
@@ -101,12 +101,12 @@ class _CodeVerificationSignUpState extends State<CodeVerificationSignUp> {
                       text: phoneProvider.start != 0
                           ? AppLocalizations.of(
                               context,
-                            ).waitingRequestAgain(
+                            )!.waitingRequestAgain(
                               phoneProvider.start,
                             )
                           : AppLocalizations.of(
                               context,
-                            ).requestAgain,
+                            )!.requestAgain,
                       fontFamily: 'Montserrat-SemiBold',
                       color: phoneProvider.start != 0
                           ? GPColors.secondaryColor

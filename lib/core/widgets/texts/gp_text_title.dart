@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 
@@ -21,15 +20,13 @@ class GPTextTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AutoSizeText(
+    return Text(
       text,
       maxLines: maxLines,
       overflow: overflow,
       textAlign: textAlign,
-      minFontSize: 25,
-      maxFontSize: 30,
       style: TextStyle(
-        fontSize: 30,
+        fontSize: 25,
         fontFamily: fontFamily,
         color: color,
       ),

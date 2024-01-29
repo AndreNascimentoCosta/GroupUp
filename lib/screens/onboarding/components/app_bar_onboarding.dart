@@ -13,7 +13,7 @@ class AppBarOnboarding extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [
@@ -26,8 +26,7 @@ class AppBarOnboarding extends StatelessWidget implements PreferredSizeWidget {
                 alignment: AlignmentDirectional.center,
                 child: GPTextHeader(
                   text: appLocalizations.groupUp,
-                  minFontSize: 28,
-                  maxFontSize: 28,
+                  fontSize: 28,
                 ),
               ),
               Positioned(

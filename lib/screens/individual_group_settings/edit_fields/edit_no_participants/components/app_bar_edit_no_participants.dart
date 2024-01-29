@@ -26,7 +26,7 @@ class AppBarEditGroupNoParticipats extends StatelessWidget
     if (group == null) {
       return const SizedBox();
     }
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [

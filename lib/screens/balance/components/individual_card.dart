@@ -19,7 +19,7 @@ class IndividualCardBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final currentUser = Provider.of<AuthProvider>(context).user;
     if (currentUser == null) {
       return const SizedBox();
@@ -83,8 +83,7 @@ class IndividualCardBalance extends StatelessWidget {
             GPTextBody(
               text: group.projectName.replaceAll(RegExp('#'), ''),
               fontFamily: 'Montserrat-SemiBold',
-              minFontSize: 16,
-              maxFontSize: 18,
+              fontSize: 16,
             ),
             const SizedBox(height: Insets.s),
             GPTextBody(
@@ -138,23 +137,20 @@ class IndividualCardBalance extends StatelessWidget {
                       ? const GPTextBody(
                           text: 'R\$ -',
                           color: GPColors.secondaryColor,
-                          minFontSize: 16,
-                          maxFontSize: 18,
+                          fontSize: 16,
                         )
                       : currentUserRank == '1º'
                           ? GPTextBody(
                               text:
                                   'R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.green,
-                              minFontSize: 16,
-                              maxFontSize: 18,
+                              fontSize: 16,
                             )
                           : GPTextBody(
                               text:
                                   '-R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.red,
-                              minFontSize: 16,
-                              maxFontSize: 18,
+                              fontSize: 16,
                             )
                   : group.endDate!.isAfter(
                       DateTime.now().subtract(
@@ -166,29 +162,25 @@ class IndividualCardBalance extends StatelessWidget {
                       ? const GPTextBody(
                           text: 'R\$ -',
                           color: GPColors.secondaryColor,
-                          minFontSize: 16,
-                          maxFontSize: 18,
+                          fontSize: 16,
                         )
                       : currentUserRank == '1º'
                           ? GPTextBody(
                               text:
                                   'R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.green,
-                              minFontSize: 16,
-                              maxFontSize: 18,
+                              fontSize: 16,
                             )
                           : GPTextBody(
                               text:
                                   '-R\$${NumberFormat.decimalPattern(Localizations.localeOf(context).toString()).format((double.parse(group.reward) * group.participants.length))}',
                               color: GPColors.red,
-                              minFontSize: 16,
-                              maxFontSize: 18,
+                              fontSize: 16,
                             )
               : const GPTextBody(
                   text: 'R\$ -',
                   color: GPColors.secondaryColor,
-                  minFontSize: 16,
-                  maxFontSize: 18,
+                  fontSize: 16,
                 ),
         ),
       ],

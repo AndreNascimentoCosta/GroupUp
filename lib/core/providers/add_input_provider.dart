@@ -45,14 +45,13 @@ class AddInputProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
-        final appLocalizations = AppLocalizations.of(context);
+        final appLocalizations = AppLocalizations.of(context)!;
         return AlertDialog(
           title: GPTextBody(
             text: appLocalizations.addMedia,
             textAlign: TextAlign.center,
             fontFamily: 'Montserrat-SemiBold',
-            minFontSize: 18,
-            maxFontSize: 18,
+            fontSize: 18,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -104,8 +103,7 @@ class AddInputProvider extends ChangeNotifier {
                           child: GPTextBody(
                             text: appLocalizations.chooseFromGallery,
                             textAlign: TextAlign.center,
-                            minFontSize: 16,
-                            maxFontSize: 18,
+                            fontSize: 16,
                           ),
                         ),
                         const SizedBox(
@@ -116,8 +114,7 @@ class AddInputProvider extends ChangeNotifier {
                           child: GPTextBody(
                             text: appLocalizations.takePhoto,
                             textAlign: TextAlign.center,
-                            minFontSize: 16,
-                            maxFontSize: 18,
+                            fontSize: 16,
                           ),
                         )
                       ],

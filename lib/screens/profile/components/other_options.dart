@@ -17,7 +17,7 @@ class OtherOptionsProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: kDefaultPadding * 1.5),
       child: Column(
@@ -37,8 +37,7 @@ class OtherOptionsProfile extends StatelessWidget {
             child: GPTextBody(
               text: appLocalizations.reportProblem,
               textAlign: TextAlign.center,
-              minFontSize: 16,
-              maxFontSize: 18,
+              fontSize: 16,
             ),
           ),
           const SizedBox(height: Insets.l * 1.5),
@@ -60,8 +59,7 @@ class OtherOptionsProfile extends StatelessWidget {
             child: GPTextBody(
               text: appLocalizations.privacyPolicy,
               textAlign: TextAlign.center,
-              minFontSize: 16,
-              maxFontSize: 18,
+              fontSize: 16,
             ),
           ),
           const SizedBox(height: Insets.l * 1.5),
@@ -76,8 +74,7 @@ class OtherOptionsProfile extends StatelessWidget {
               text: appLocalizations.deleteAccount,
               textAlign: TextAlign.center,
               color: GPColors.black,
-              minFontSize: 16,
-              maxFontSize: 18,
+              fontSize: 16,
             ),
           ),
           const SizedBox(height: Insets.l * 1.5),
@@ -92,8 +89,7 @@ class OtherOptionsProfile extends StatelessWidget {
               text: appLocalizations.logout,
               textAlign: TextAlign.center,
               color: GPColors.red,
-              minFontSize: 16,
-              maxFontSize: 18,
+              fontSize: 16,
             ),
           ),
         ],

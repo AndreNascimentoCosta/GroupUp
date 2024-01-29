@@ -31,8 +31,7 @@ class CaseChart extends StatelessWidget {
                 )[0]
                 .toUpperCase(),
             color: GPColors.secondaryColor,
-            minFontSize: 12,
-            maxFontSize: 12,
+            fontSize: 12,
           ),
         ],
       ),

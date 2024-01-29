@@ -35,7 +35,7 @@ class ContinueButton extends StatelessWidget {
       ),
       alignment: Alignment.center,
       child: GPTextHeader(
-        text: AppLocalizations.of(context).getStarted,
+        text: AppLocalizations.of(context)!.getStarted,
         color: GPColors.white,
       ),
     );

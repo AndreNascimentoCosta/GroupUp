@@ -24,7 +24,7 @@ class _OnboardingPageViewScreenState extends State<OnboardingPageViewScreen> {
   final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return StreamBuilder(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {

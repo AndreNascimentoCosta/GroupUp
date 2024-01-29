@@ -53,8 +53,7 @@ class ShareButton extends StatelessWidget {
                 child: GPTextBody(
                   text: text,
                   textAlign: TextAlign.center,
-                  minFontSize: 18,
-                  maxFontSize: 20,
+                  fontSize: 18,
                 ),
               ),
             ),

@@ -20,7 +20,7 @@ class ReviewCreateGroup extends StatefulWidget {
 class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return GestureDetector(
       onTap: () {

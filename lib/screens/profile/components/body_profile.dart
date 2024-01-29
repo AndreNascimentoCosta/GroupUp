@@ -56,7 +56,7 @@ class _BodyProfileState extends State<BodyProfile> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
@@ -165,8 +165,7 @@ class _BodyProfileState extends State<BodyProfile> {
                               .toString(),
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
-                          minFontSize: 24,
-                          maxFontSize: 24,
+                          fontSize: 24,
                         ),
                       ),
                     ],

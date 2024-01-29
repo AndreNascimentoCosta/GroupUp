@@ -24,16 +24,14 @@ class BodyButtonModel extends StatelessWidget {
         children: [
           GPTextBody(
             text: text,
-            minFontSize: 16,
-            maxFontSize: 18,
+            fontSize: 16,
           ),
           const Spacer(),
           Padding(
             padding: const EdgeInsets.only(right: kDefaultPadding),
             child: GPTextBody(
               text: secondaryText,
-              minFontSize: 16,
-              maxFontSize: 18,
+              fontSize: 16,
             ),
           ),
           const GPIcon(

@@ -25,8 +25,7 @@ class BodyContentArrow extends StatelessWidget {
           child: GPTextBody(
             text: name,
             maxLines: maxLine,
-            minFontSize: 20,
-            maxFontSize: 20,
+            fontSize: 20,
           ),
         ),
         const Spacer(),

@@ -14,12 +14,13 @@ class StartEndDateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Row(
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
           children: [
             GPTextBody(text: '${appLocalizations.start}:'),
             const SizedBox(height: kDefaultPadding / 2),
@@ -28,6 +29,7 @@ class StartEndDateButton extends StatelessWidget {
         ),
         const SizedBox(width: kDefaultPadding / 1.75),
         Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GPTextBody(

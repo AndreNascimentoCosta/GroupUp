@@ -23,7 +23,7 @@ class ProfilePictureAdd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return ButtonCommonStyle(
       onPressed: () {
         Provider.of<MixPanelProvider>(context, listen: false)
@@ -43,8 +43,7 @@ class ProfilePictureAdd extends StatelessWidget {
                   child: GPTextBody(
                     text: appLocalizations.chooseFromGallery,
                     textAlign: TextAlign.center,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
                 const SizedBox(
@@ -55,8 +54,7 @@ class ProfilePictureAdd extends StatelessWidget {
                   child: GPTextBody(
                     text: appLocalizations.takePhoto,
                     textAlign: TextAlign.center,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                 )
               ],

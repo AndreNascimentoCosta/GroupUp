@@ -62,10 +62,9 @@ class NoGroup extends StatelessWidget {
                         left: kDefaultPadding,
                       ),
                       child: GPTextBody(
-                        text: AppLocalizations.of(context).newGroup,
+                        text: AppLocalizations.of(context)!.newGroup,
                         color: GPColors.secondaryColor,
-                        minFontSize: 18,
-                        maxFontSize: 18,
+                        fontSize: 18,
                       ),
                     ),
                     const Flexible(child: StatsNoGroup()),
@@ -76,11 +75,10 @@ class NoGroup extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: Insets.xl * 1.5),
                 child: GPTextBody(
-                  text: AppLocalizations.of(context).createOrJoinAGroup,
+                  text: AppLocalizations.of(context)!.createOrJoinAGroup,
                   color: GPColors.secondaryColor,
                   fontFamily: 'Montserrat-Medium',
-                  minFontSize: 20,
-                  maxFontSize: 20,
+                  fontSize: 20,
                 ),
               ),
             ],

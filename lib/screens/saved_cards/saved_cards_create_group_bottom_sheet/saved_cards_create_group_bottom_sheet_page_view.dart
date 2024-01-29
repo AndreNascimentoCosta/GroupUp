@@ -24,7 +24,7 @@ class SavedCardsCreateGroupBottomSheetPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final stripePaymentProvider = Provider.of<StripePaymentProvider>(context);
     return SafeArea(
       child: Column(
@@ -33,8 +33,7 @@ class SavedCardsCreateGroupBottomSheetPageView extends StatelessWidget {
             padding: const EdgeInsets.only(top: kDefaultPadding * 2),
             child: GPTextHeader(
               text: appLocalizations.savedCards,
-              minFontSize: 28,
-              maxFontSize: 28,
+              fontSize: 28,
             ),
           ),
           const SizedBox(height: kDefaultPadding / 2),

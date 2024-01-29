@@ -15,7 +15,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
   final authProvider = Provider.of<AuthProvider>(rootContext, listen: false);
-  final appLocalizations = AppLocalizations.of(rootContext);
+  final appLocalizations = AppLocalizations.of(rootContext)!;
   if (authProvider.user == null) {
     return;
   }
@@ -69,8 +69,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
                     child: GPTextBody(
                       text: appLocalizations.requestPayout,
                       textAlign: TextAlign.center,
-                      minFontSize: 18,
-                      maxFontSize: 18,
+                      fontSize: 18,
                     ),
                   ),
                 ),
@@ -90,8 +89,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
                       text: appLocalizations.loginToYourConnectedAccount,
                       textAlign: TextAlign.center,
                       maxLines: 2,
-                      minFontSize: 18,
-                      maxFontSize: 18,
+                      fontSize: 18,
                     ),
                   ),
                 ),
@@ -110,8 +108,7 @@ void payoutOrConnectedAccountOptionsDialog(BuildContext rootContext) {
                     child: GPTextBody(
                       text: appLocalizations.deleteConnectedAccount,
                       textAlign: TextAlign.center,
-                      minFontSize: 18,
-                      maxFontSize: 18,
+                      fontSize: 18,
                     ),
                   ),
                 ),

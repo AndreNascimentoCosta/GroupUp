@@ -36,7 +36,7 @@ class AppBarReportParticipant extends StatelessWidget implements PreferredSizeWi
                 ),
                 alignment: AlignmentDirectional.center,
                 child: GPTextHeader(
-                    text: AppLocalizations.of(context).reportParticipant),
+                    text: AppLocalizations.of(context)!.reportParticipant),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),

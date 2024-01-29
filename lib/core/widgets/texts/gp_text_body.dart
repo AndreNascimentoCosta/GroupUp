@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 
@@ -10,8 +9,7 @@ class GPTextBody extends StatelessWidget {
     this.overflow,
     this.textAlign,
     this.maxLines = 1,
-    this.minFontSize = 14,
-    this.maxFontSize = 16,
+    this.fontSize = 14,
   });
 
   final String text;
@@ -20,20 +18,17 @@ class GPTextBody extends StatelessWidget {
   final TextOverflow? overflow;
   final TextAlign? textAlign;
   final int maxLines;
-  final double minFontSize;
-  final double maxFontSize;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
-    return AutoSizeText(
+    return Text(
       text,
       maxLines: maxLines,
       overflow: overflow,
       textAlign: textAlign,
-      minFontSize: minFontSize,
-      maxFontSize: maxFontSize,
       style: TextStyle(
-        fontSize: 16,
+        fontSize: fontSize,
         fontFamily: fontFamily,
         color: color,
       ),

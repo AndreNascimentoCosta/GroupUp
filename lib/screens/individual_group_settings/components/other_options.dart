@@ -21,8 +21,7 @@ class OtherOptions extends StatelessWidget {
       child: GPTextBody(
         text: text,
         color: color,
-        minFontSize: 16,
-        maxFontSize: 18,
+        fontSize: 16,
       ),
     );
   }

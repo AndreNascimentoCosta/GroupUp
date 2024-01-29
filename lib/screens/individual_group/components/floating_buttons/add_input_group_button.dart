@@ -30,7 +30,7 @@ class AddInputGroupButton extends StatefulWidget {
 class _AddInputGroupButtonState extends State<AddInputGroupButton> {
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SizedBox(
       height: 75,
       width: 75,

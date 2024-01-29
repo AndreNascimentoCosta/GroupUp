@@ -15,7 +15,7 @@ class ForceUpdateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -28,8 +28,7 @@ class ForceUpdateScreen extends StatelessWidget {
               GPTextHeader(
                 text: appLocalizations.update + appLocalizations.groupUp,
                 textAlign: TextAlign.center,
-                minFontSize: 30,
-                maxFontSize: 30,
+                fontSize: 30,
               ),
               SizedBox(height: context.screenHeight * 0.03),
               GPIcon(
@@ -42,8 +41,7 @@ class ForceUpdateScreen extends StatelessWidget {
                 maxLines: 8,
                 textAlign: TextAlign.center,
                 fontFamily: 'Montserrat-Medium',
-                minFontSize: 22,
-                maxFontSize: 22,
+                fontSize: 22,
               ),
               SizedBox(height: context.screenHeight * 0.05),
               GPButton(

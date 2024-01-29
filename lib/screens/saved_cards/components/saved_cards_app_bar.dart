@@ -18,7 +18,7 @@ class AppBarSavedCards extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [
@@ -40,8 +40,7 @@ class AppBarSavedCards extends StatelessWidget implements PreferredSizeWidget {
                 child: GPTextHeader(
                   text: appLocalizations.savedCards,
                   fontFamily: 'Montserrat-Bold',
-                  minFontSize: 24,
-                  maxFontSize: 24,
+                  fontSize: 24,
                 ),
               ),
               Padding(

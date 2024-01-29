@@ -10,12 +10,13 @@ import 'package:groupup/screens/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AppBarCreatedGroups extends StatelessWidget implements PreferredSizeWidget {
+class AppBarCreatedGroups extends StatelessWidget
+    implements PreferredSizeWidget {
   const AppBarCreatedGroups({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [
@@ -37,8 +38,7 @@ class AppBarCreatedGroups extends StatelessWidget implements PreferredSizeWidget
                 child: GPTextHeader(
                   text: appLocalizations.createdGroups,
                   fontFamily: 'Montserrat-Bold',
-                  minFontSize: 24,
-                  maxFontSize: 24,
+                  fontSize: 24,
                 ),
               ),
               Padding(

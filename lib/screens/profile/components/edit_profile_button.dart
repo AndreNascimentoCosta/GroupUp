@@ -21,10 +21,9 @@ class EditProfile extends StatelessWidget {
       ),
       alignment: Alignment.center,
       child: GPTextBody(
-        text: AppLocalizations.of(context).editProfile,
+        text: AppLocalizations.of(context)!.editProfile,
         fontFamily: 'Montserrat-Semibold',
-        minFontSize: 16,
-        maxFontSize: 18,
+        fontSize: 16,
       ),
     );
   }

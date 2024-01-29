@@ -44,8 +44,7 @@ class IndividualValue extends StatelessWidget {
                                     .toStringAsFixed(1),
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                    minFontSize: 18,
-                    maxFontSize: 20,
+                    fontSize: 18,
                   ),
                 ),
                 const SizedBox(

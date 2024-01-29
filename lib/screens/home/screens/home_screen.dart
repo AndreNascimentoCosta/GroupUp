@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final phoneProvider = Provider.of<PhoneAuthenProvider>(
       context,
       listen: false,
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
           if (snapshot.hasError) {
             return Center(
               child: GPTextHeader(
-                text: AppLocalizations.of(context).generalError,
+                text: AppLocalizations.of(context)!.generalError,
               ),
             );
           }
@@ -66,8 +66,7 @@ class HomeScreen extends StatelessWidget {
                     GPTextHeader(
                       text: appLocalizations.groupUp,
                       textAlign: TextAlign.center,
-                      minFontSize: 34,
-                      maxFontSize: 34,
+                      fontSize: 34,
                     ),
                     SizedBox(
                       height: context.screenHeight * 0.1,

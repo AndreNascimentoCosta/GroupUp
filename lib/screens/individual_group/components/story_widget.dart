@@ -27,7 +27,7 @@ class StoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentUser = Provider.of<AuthProvider>(context).user;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     const placeholderProfilePicture =
         'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-9b0e-8c8c0c8c0c8c';
     if (currentUser == null) {
@@ -142,8 +142,7 @@ class StoryWidget extends StatelessWidget {
                               ? appLocalizations.me
                               : participant.name,
                           color: GPColors.white,
-                          minFontSize: 18,
-                          maxFontSize: 18,
+                          fontSize: 18,
                         ),
                       ),
                     ],
@@ -242,8 +241,7 @@ class StoryWidget extends StatelessWidget {
                     child: GPTextBody(
                       text: inputData.value.toString(),
                       color: GPColors.white,
-                      minFontSize: 36,
-                      maxFontSize: 36,
+                      fontSize: 36,
                     ),
                   ),
                 ),

@@ -21,7 +21,7 @@ class AppBarEditGroupObjective extends StatelessWidget
   Widget build(BuildContext context) {
     final editGroupObjectiveProvider =
         Provider.of<EditGroupObjectiveProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
       return const SizedBox();

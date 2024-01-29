@@ -50,7 +50,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
@@ -211,8 +211,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                           const EdgeInsets.only(left: kDefaultPadding * 0.5),
                       child: GPTextBody(
                         text: appLocalizations.name,
-                        minFontSize: 16,
-                        maxFontSize: 18,
+                        fontSize: 16,
                       ),
                     ),
                   ),
@@ -226,8 +225,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                           .replaceAll(Characters(''), Characters('\u{200B}'))
                           .toString(),
                       overflow: TextOverflow.ellipsis,
-                      minFontSize: 18,
-                      maxFontSize: 18,
+                      fontSize: 18,
                     ),
                   ),
                 ],

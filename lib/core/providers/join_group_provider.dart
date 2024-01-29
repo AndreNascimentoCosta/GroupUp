@@ -45,7 +45,7 @@ class JoinGroupProvider extends ChangeNotifier {
             eventName: 'Check if group code is valid and next button');
         FocusScope.of(context).unfocus();
         final scaffoldMessengerState = ScaffoldMessenger.of(context);
-        final appLocalizations = AppLocalizations.of(context);
+        final appLocalizations = AppLocalizations.of(context)!;
         final error = await validateJoinGroup(context);
         if (error != null) {
           switch (error) {
@@ -142,7 +142,7 @@ class JoinGroupProvider extends ChangeNotifier {
         //         );
         //         context.popUntil((route) => route.isFirst);
         //       } catch (e) {
-        //         final appLocalizations = AppLocalizations.of(context);
+        //         final appLocalizations = AppLocalizations.of(context)!;
         //         context.popUntil((route) => route.isFirst);
         //         debugPrint(e.toString());
         //         ScaffoldMessenger.of(context).showSnackBar(

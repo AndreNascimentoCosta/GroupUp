@@ -20,7 +20,7 @@ class AppBarEditGroupDates extends StatelessWidget implements PreferredSizeWidge
   @override
   Widget build(BuildContext context) {
     final editGroupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
       return const Scaffold();

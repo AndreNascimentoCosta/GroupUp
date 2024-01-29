@@ -23,7 +23,7 @@ class _PhoneNumberSignUpState extends State<PhoneNumberSignUp> {
   @override
   Widget build(BuildContext context) {
     final nodePhone = FocusNode();
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Center(
       child: SingleChildScrollView(
         child: Column(
@@ -38,8 +38,7 @@ class _PhoneNumberSignUpState extends State<PhoneNumberSignUp> {
                 children: [
                   GPTextBody(
                     text: appLocalizations.phoneNumber,
-                    minFontSize: 18,
-                    maxFontSize: 18,
+                    fontSize: 18,
                   ),
                   const SizedBox(
                     height: Insets.xs,

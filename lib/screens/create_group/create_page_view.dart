@@ -70,10 +70,9 @@ class _CreatePageViewState extends State<CreatePageView> {
                   ),
                 ),
                 GPTextHeader(
-                  text: AppLocalizations.of(context).createGroup,
+                  text: AppLocalizations.of(context)!.createGroup,
                   fontFamily: 'Montserrat-SemiBold',
-                  minFontSize: isVerySmallScreen ? 24 : 28,
-                  maxFontSize: isVerySmallScreen ? 24 : 28,
+                  fontSize: isVerySmallScreen ? 24 : 28,
                 ),
                 if (Provider.of<CreateGroupProvider>(context, listen: false)
                         .pageIndex ==

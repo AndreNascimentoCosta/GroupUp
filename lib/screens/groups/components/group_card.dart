@@ -53,13 +53,6 @@ class _GroupsCardState extends State<GroupsCard> {
     );
     return ButtonCommonStyle(
       onPressed: () async {
-        // if (widget.homeViewModel.isEditing.value) {
-        //   setState(
-        //     () {
-        //       isChecked = !isChecked;
-        //     },
-        //   );
-        // } else {
         Provider.of<MixPanelProvider>(
           context,
           listen: false,
@@ -168,8 +161,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                       )
                                       .toString(),
                                   overflow: TextOverflow.ellipsis,
-                                  minFontSize: 16,
-                                  maxFontSize: 18,
+                                  fontSize: 16,
                                 ),
                                 const SizedBox(
                                   height: Insets.s,
@@ -177,7 +169,8 @@ class _GroupsCardState extends State<GroupsCard> {
                                 GPTextBody(
                                   text: AppLocalizations.of(
                                     context,
-                                  ).ended,
+                                  )!
+                                      .ended,
                                   color: GPColors.secondaryColor,
                                 ),
                               ],
@@ -192,8 +185,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                   )
                                   .toString(),
                               overflow: TextOverflow.ellipsis,
-                              minFontSize: 16,
-                              maxFontSize: 18,
+                              fontSize: 16,
                             )
                       : widget.group.endDate!.isBefore(
                           DateTime.now().subtract(
@@ -215,8 +207,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                       )
                                       .toString(),
                                   overflow: TextOverflow.ellipsis,
-                                  minFontSize: 16,
-                                  maxFontSize: 18,
+                                  fontSize: 16,
                                 ),
                                 const SizedBox(
                                   height: Insets.s,
@@ -224,7 +215,8 @@ class _GroupsCardState extends State<GroupsCard> {
                                 GPTextBody(
                                   text: AppLocalizations.of(
                                     context,
-                                  ).ended,
+                                  )!
+                                      .ended,
                                   color: GPColors.secondaryColor,
                                 ),
                               ],
@@ -241,8 +233,7 @@ class _GroupsCardState extends State<GroupsCard> {
                                   )
                                   .toString(),
                               overflow: TextOverflow.ellipsis,
-                              minFontSize: 16,
-                              maxFontSize: 18,
+                              fontSize: 16,
                             ),
                 ),
               ),

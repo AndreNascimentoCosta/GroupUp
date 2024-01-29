@@ -59,9 +59,8 @@ class _JoinPageViewState extends State<JoinPageView> {
                   ),
                 ),
                 GPTextHeader(
-                  text: AppLocalizations.of(context).joinAGroup,
-                  minFontSize: 28,
-                  maxFontSize: 28,
+                  text: AppLocalizations.of(context)!.joinAGroup,
+                  fontSize: 28,
                 ),
               ],
             ),

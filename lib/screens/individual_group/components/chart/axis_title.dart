@@ -82,8 +82,7 @@ SideTitles leftTitles(
                 ? value.toStringAsFixed(2)
                 : value.round().toString(),
         color: GPColors.secondaryColor,
-        minFontSize: 12,
-        maxFontSize: 12,
+        fontSize: 12,
       );
     },
   );
@@ -104,8 +103,7 @@ SideTitles leftTitlesInputDataNull(List<UserInputData> userData) {
       return GPTextBody(
         text: value.round().toString(),
         color: GPColors.secondaryColor,
-        minFontSize: 12,
-        maxFontSize: 12,
+        fontSize: 12,
       );
     },
   );

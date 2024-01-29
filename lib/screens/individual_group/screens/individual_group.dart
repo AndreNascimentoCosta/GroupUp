@@ -88,7 +88,7 @@ class _IndividualGroupScreenState extends State<IndividualGroupScreen> {
           WidgetsBinding.instance.addPostFrameCallback(
             (_) async {
               if (!mounted) return;
-              return groupEndedDialog(context);
+              return groupEndedDialog2(context);
             },
           );
         }

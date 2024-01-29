@@ -171,7 +171,7 @@ class _FirsPageCreateState extends State<FirsPageCreate> {
   final node3 = FocusNode();
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     return GestureDetector(
       onTap: () {

@@ -37,7 +37,7 @@ class _AppBarGroupState extends State<AppBarGroup> {
       backgroundColor: GPColors.white,
       automaticallyImplyLeading: false,
       title: GPTextTitle(
-        text: AppLocalizations.of(context).groups,
+        text: AppLocalizations.of(context)!.groups,
       ),
       centerTitle: false,
       actions: [
@@ -78,9 +78,8 @@ class _AppBarGroupState extends State<AppBarGroup> {
                                   bottom: kDefaultPadding / 2,
                                   right: kDefaultPadding * 4),
                               child: GPTextBody(
-                                text: AppLocalizations.of(context).selectAll,
-                                minFontSize: 18,
-                                maxFontSize: 18,
+                                text: AppLocalizations.of(context)!.selectAll,
+                                fontSize: 18,
                               ),
                             ),
                           );

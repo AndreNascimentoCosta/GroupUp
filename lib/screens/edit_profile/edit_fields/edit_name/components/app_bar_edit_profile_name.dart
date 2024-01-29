@@ -20,7 +20,7 @@ class AppBarEditProfileName extends StatelessWidget implements PreferredSizeWidg
   @override
   Widget build(BuildContext context) {
     final nameProvider = Provider.of<EditProfileNameProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [

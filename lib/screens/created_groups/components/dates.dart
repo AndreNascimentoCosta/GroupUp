@@ -14,7 +14,7 @@ class ShowDates extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Row(
       children: [
         Column(

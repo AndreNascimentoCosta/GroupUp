@@ -19,8 +19,7 @@ class SingleData extends StatelessWidget {
             text: DateFormat.yMd(
               Localizations.localeOf(context).toLanguageTag(),
             ).format(userInputData.date),
-            minFontSize: 16,
-            maxFontSize: 18,
+            fontSize: 16,
           ),
         ),
         const SizedBox(width: Insets.l),
@@ -28,8 +27,7 @@ class SingleData extends StatelessWidget {
           child: GPTextBody(
             text: userInputData.value.toString(),
             textAlign: TextAlign.center,
-            minFontSize: 16,
-            maxFontSize: 18,
+            fontSize: 16,
           ),
         ),
       ],

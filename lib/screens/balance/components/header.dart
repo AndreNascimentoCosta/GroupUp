@@ -26,7 +26,7 @@ class HeaderBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     bool isLoading = false;
     if (user == null) return const SizedBox();
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -51,8 +51,7 @@ class HeaderBalance extends StatelessWidget {
                   ),
                   GPTextBody(
                     text: appLocalizations.balance,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                   Row(
                     children: [
@@ -65,8 +64,7 @@ class HeaderBalance extends StatelessWidget {
                             double.parse('${(data / 100)}'),
                           )}',
                           overflow: TextOverflow.ellipsis,
-                          minFontSize: 25,
-                          maxFontSize: 35,
+                          fontSize: 25,
                         ),
                       ),
                       SizedBox(width: context.screenWidth * 0.1),

@@ -201,7 +201,7 @@ class CreateGroupProvider extends ChangeNotifier {
   }
 
   void _confirm(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     showCupertinoDialog(
       context: context,
       builder: (BuildContext newContext) {
@@ -594,7 +594,7 @@ class CreateGroupProvider extends ChangeNotifier {
   }
 
   void confirmExitGroup(BuildContext context, String groupId) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {

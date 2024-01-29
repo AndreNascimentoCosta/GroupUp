@@ -14,7 +14,7 @@ class DataHistoryBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
@@ -24,8 +24,7 @@ class DataHistoryBottomSheet extends StatelessWidget {
           GPTextBody(
             text: appLocalizations.dataHistory,
             textAlign: TextAlign.center,
-            minFontSize: 24,
-            maxFontSize: 24,
+            fontSize: 24,
           ),
           const SizedBox(height: Insets.l),
           Row(
@@ -34,8 +33,7 @@ class DataHistoryBottomSheet extends StatelessWidget {
                 width: 100,
                 child: GPTextBody(
                   text: appLocalizations.dates,
-                  minFontSize: 16,
-                  maxFontSize: 18,
+                  fontSize: 16,
                 ),
               ),
               const SizedBox(width: Insets.l),
@@ -43,8 +41,7 @@ class DataHistoryBottomSheet extends StatelessWidget {
                 child: GPTextBody(
                   text: appLocalizations.values,
                   textAlign: TextAlign.center,
-                  minFontSize: 16,
-                  maxFontSize: 18,
+                  fontSize: 16,
                 ),
               ),
             ],
@@ -55,8 +52,7 @@ class DataHistoryBottomSheet extends StatelessWidget {
               text: appLocalizations.noData,
               textAlign: TextAlign.center,
               color: GPColors.secondaryColor,
-              minFontSize: 16,
-              maxFontSize: 18,
+              fontSize: 16,
             ),
           Expanded(
             child: ListView.separated(

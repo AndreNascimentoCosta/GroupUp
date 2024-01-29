@@ -25,7 +25,7 @@ class BodyNotAdminSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     final createGroupProvider =
         Provider.of<CreateGroupProvider>(context, listen: false);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
@@ -69,8 +69,7 @@ class BodyNotAdminSettings extends StatelessWidget {
                   width: 150,
                   child: GPTextBody(
                     text: appLocalizations.groupCode,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
                 const Spacer(),

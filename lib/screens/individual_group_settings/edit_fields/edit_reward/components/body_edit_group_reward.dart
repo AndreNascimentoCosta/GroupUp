@@ -16,7 +16,7 @@ class EditGroupRewardBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final groupRewardController =
         Provider.of<EditGroupRewardProvider>(context).groupRewardController;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kDefaultPadding,

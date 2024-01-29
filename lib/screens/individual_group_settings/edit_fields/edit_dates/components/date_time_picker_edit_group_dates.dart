@@ -31,7 +31,7 @@ class _DateTimePickerEditGroupDatesState
       return DateFormat.yMd(Localizations.localeOf(context).toLanguageTag())
           .format(date);
     } else {
-      return AppLocalizations.of(context).selectDate;
+      return AppLocalizations.of(context)!.selectDate;
     }
   }
 
@@ -64,12 +64,12 @@ class _DateTimePickerEditGroupDatesState
   }
 
   String? startDateValidator(value) {
-    if (startDate == null) return AppLocalizations.of(context).selectDate;
+    if (startDate == null) return AppLocalizations.of(context)!.selectDate;
     return null;
   }
 
   String? endDateValidator(value) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     if (startDate != null && endDate == null) {
       return appLocalizations.selectBothDates;
     }
@@ -159,8 +159,7 @@ class _DateTimePickerEditGroupDatesState
             child: GPTextBody(
               text: '-',
               color: GPColors.secondaryColor,
-              minFontSize: 24,
-              maxFontSize: 24,
+              fontSize: 24,
             ),
           ),
           SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),

@@ -42,7 +42,7 @@ class GPButton extends StatelessWidget {
           text: text ??
               AppLocalizations.of(
                 context,
-              ).next,
+              )!.next,
           color: textColor,
         ),
       ),

@@ -19,7 +19,7 @@ class ThirdPageCreate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     if (createGroupProvider.isCreatingGroup) {
       return const Center(
@@ -42,8 +42,7 @@ class ThirdPageCreate extends StatelessWidget {
           GPTextHeader(
             text: appLocalizations.completed,
             color: GPColors.primaryColor,
-            minFontSize: 28,
-            maxFontSize: 28,
+            fontSize: 28,
           ),
           SizedBox(height: context.screenHeight * 0.035),
           Row(
@@ -52,8 +51,7 @@ class ThirdPageCreate extends StatelessWidget {
                 width: 180,
                 child: GPTextBody(
                   text: appLocalizations.groupCode,
-                  minFontSize: 18,
-                  maxFontSize: 18,
+                  fontSize: 18,
                 ),
               ),
               const Spacer(),

@@ -20,7 +20,7 @@ class BodySavedCards extends StatelessWidget {
       );
     }
     final userId = currentUser.id;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Expanded(
       child: Scrollbar(
         child: FutureBuilder(
@@ -55,8 +55,7 @@ class BodySavedCards extends StatelessWidget {
                               text: appLocalizations.noSavedCards,
                               color: GPColors.secondaryColor,
                               textAlign: TextAlign.center,
-                              minFontSize: 20,
-                              maxFontSize: 20,
+                              fontSize: 20,
                             ),
                           ),
                         ),

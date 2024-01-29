@@ -30,8 +30,7 @@ class BodyContentSwitch extends StatelessWidget {
           child: GPTextBody(
             text: text,
             maxLines: 2,
-            minFontSize: 16,
-            maxFontSize: 18,
+            fontSize: 16,
           ),
         ),
         const Spacer(),

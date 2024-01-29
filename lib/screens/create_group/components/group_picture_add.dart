@@ -52,7 +52,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
@@ -82,8 +82,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                   child: GPTextBody(
                     text: appLocalizations.chooseFromGallery,
                     textAlign: TextAlign.center,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
                 const SizedBox(height: Insets.l * 1.75),
@@ -96,8 +95,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                   child: GPTextBody(
                     text: appLocalizations.takePhoto,
                     textAlign: TextAlign.center,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                 )
               ],

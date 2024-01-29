@@ -29,7 +29,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
       return DateFormat.yMd(Localizations.localeOf(context).toLanguageTag())
           .format(date);
     } else {
-      return AppLocalizations.of(context).selectDate;
+      return AppLocalizations.of(context)!.selectDate;
     }
   }
 
@@ -62,12 +62,12 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
   }
 
   String? startDateValidator(value) {
-    if (startDate == null) return AppLocalizations.of(context).selectDate;
+    if (startDate == null) return AppLocalizations.of(context)!.selectDate;
     return null;
   }
 
   String? endDateValidator(value) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     if (startDate != null && endDate == null) {
       return appLocalizations.selectBothDates;
     }
@@ -82,7 +82,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
@@ -150,8 +150,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
             child: GPTextBody(
               text: '-',
               color: GPColors.secondaryColor,
-              minFontSize: 24,
-              maxFontSize: 24,
+              fontSize: 24,
             ),
           ),
           SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),

@@ -18,7 +18,7 @@ import '../../../core/providers/mix_panel_provider.dart';
 
 void continueCreateConnectedAccountDialog(BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
-  final appLocalizations = AppLocalizations.of(context);
+  final appLocalizations = AppLocalizations.of(context)!;
   if (authProvider.user == null) {
     return;
   }
@@ -85,8 +85,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                   text: appLocalizations.resumeAccountCreation,
                   textAlign: TextAlign.center,
                   maxLines: 2,
-                  minFontSize: 18,
-                  maxFontSize: 18,
+                  fontSize: 18,
                 ),
               ),
             ),
@@ -189,8 +188,7 @@ void continueCreateConnectedAccountDialog(BuildContext context) {
                 child: GPTextBody(
                   text: appLocalizations.deleteConnectedAccount,
                   textAlign: TextAlign.center,
-                  minFontSize: 18,
-                  maxFontSize: 18,
+                  fontSize: 18,
                 ),
               ),
             ),

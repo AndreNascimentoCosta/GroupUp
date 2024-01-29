@@ -8,16 +8,11 @@ import 'package:groupup/core/widgets/text_field/gp_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class NameAdd extends StatefulWidget {
-  const NameAdd({required this.controller});
+class AddUsername extends StatelessWidget {
+  const AddUsername({required this.controller});
 
   final PageController controller;
 
-  @override
-  State<NameAdd> createState() => _NameAddState();
-}
-
-class _NameAddState extends State<NameAdd> {
   @override
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
@@ -27,10 +22,9 @@ class _NameAddState extends State<NameAdd> {
           Padding(
             padding: const EdgeInsets.only(top: kDefaultPadding * 2),
             child: GPTextHeader(
-              text: AppLocalizations.of(context).name,
+              text: AppLocalizations.of(context)!.name,
               textAlign: TextAlign.center,
-              minFontSize: 28,
-              maxFontSize: 28,
+              fontSize: 28,
             ),
           ),
           Expanded(
@@ -48,14 +42,14 @@ class _NameAddState extends State<NameAdd> {
                     autoFocus: true,
                     validator: (value) {
                       if (value!.isNotEmpty && value.length < 3) {
-                        return AppLocalizations.of(context)
+                        return AppLocalizations.of(context)!
                             .nameValidatorAtLeast3Chars;
                       } else {
                         return null;
                       }
                     },
-                    header: AppLocalizations.of(context).name,
-                    hint: AppLocalizations.of(context).enterName,
+                    header: AppLocalizations.of(context)!.name,
+                    hint: AppLocalizations.of(context)!.enterName,
                     autoFillHints: const [AutofillHints.name],
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.next,

@@ -20,7 +20,7 @@ class AppBarEditGroupName extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     final editGroupNameProvider = Provider.of<EditGroupNameProvider>(context);
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
       return const SizedBox();

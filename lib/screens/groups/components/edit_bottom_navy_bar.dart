@@ -40,20 +40,18 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                   child: GPTextBody(
-                    text: AppLocalizations.of(context).pin,
+                    text: AppLocalizations.of(context)!.pin,
                     color: GPColors.groupEditColor,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
               ),
               activeIcon: Padding(
                 padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                 child: GPTextBody(
-                  text: AppLocalizations.of(context).pin,
+                  text: AppLocalizations.of(context)!.pin,
                   color: GPColors.primaryColor,
-                  minFontSize: 16,
-                  maxFontSize: 18,
+                  fontSize: 16,
                 ),
               ),
               label: '',
@@ -64,20 +62,18 @@ class _BottomNavyBarEditState extends State<BottomNavyBarEdit> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                   child: GPTextBody(
-                    text: AppLocalizations.of(context).delete,
+                    text: AppLocalizations.of(context)!.delete,
                     color: GPColors.groupEditColor,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
               ),
               activeIcon: Padding(
                 padding: const EdgeInsets.only(top: kDefaultPadding * 0.5),
                 child: GPTextBody(
-                  text: AppLocalizations.of(context).delete,
+                  text: AppLocalizations.of(context)!.delete,
                   color: GPColors.primaryColor,
-                  minFontSize: 16,
-                  maxFontSize: 18,
+                  fontSize: 16,
                 ),
               ),
               label: '',

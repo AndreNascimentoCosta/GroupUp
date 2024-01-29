@@ -14,7 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 void confirmLoginToAccountDialog(BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
-  final appLocalizations = AppLocalizations.of(context);
+  final appLocalizations = AppLocalizations.of(context)!;
   showCupertinoDialog(
     context: context,
     builder: (BuildContext newContext) {

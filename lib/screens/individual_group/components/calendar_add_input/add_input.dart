@@ -29,7 +29,7 @@ class AddInput extends StatefulWidget {
 class _AddInputState extends State<AddInput> {
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final String currentDate = DateFormat.yMd(
       Localizations.localeOf(context).toLanguageTag(),
     ).format(
@@ -113,15 +113,13 @@ class _AddInputState extends State<AddInput> {
                 children: [
                   GPTextBody(
                     text: appLocalizations.dateAddData,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                   const SizedBox(width: Insets.l),
                   GPTextBody(
                     text: currentDate,
                     color: GPColors.secondaryColor,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                 ],
               ),
@@ -130,8 +128,7 @@ class _AddInputState extends State<AddInput> {
                 children: [
                   GPTextBody(
                     text: appLocalizations.dataAddData,
-                    minFontSize: 16,
-                    maxFontSize: 18,
+                    fontSize: 16,
                   ),
                   const SizedBox(width: Insets.l),
                   SizedBox(

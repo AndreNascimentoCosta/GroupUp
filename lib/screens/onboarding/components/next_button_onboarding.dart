@@ -36,7 +36,7 @@ class GPButtonOnboarding extends StatelessWidget {
       child: SizedBox(
         width: 150,
         child: GPTextHeader(
-          text: AppLocalizations.of(context).next,
+          text: AppLocalizations.of(context)!.next,
           textAlign: TextAlign.center,
           color: GPColors.primaryColor,
         ),

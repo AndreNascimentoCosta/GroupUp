@@ -19,7 +19,7 @@ class IndividualCreatedGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Row(
@@ -60,8 +60,7 @@ class IndividualCreatedGroup extends StatelessWidget {
                                   Characters(''), Characters('\u{200B}'))
                               .toString(),
                           overflow: TextOverflow.ellipsis,
-                          minFontSize: 20,
-                          maxFontSize: 20,
+                          fontSize: 20,
                         ),
                         const SizedBox(height: Insets.s),
                         GPTextBody(
@@ -75,8 +74,7 @@ class IndividualCreatedGroup extends StatelessWidget {
                           .replaceAll(Characters(''), Characters('\u{200B}'))
                           .toString(),
                       overflow: TextOverflow.ellipsis,
-                      minFontSize: 20,
-                      maxFontSize: 20,
+                      fontSize: 20,
                     ),
             ),
           ),

@@ -11,7 +11,6 @@ import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/widgets/texts/gp_text_title.dart';
 import 'package:groupup/screens/individual_group/components/objective_reward.dart';
 import 'package:groupup/screens/individual_group/components/start_end_date.dart';
-// import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -23,7 +22,7 @@ class HeaderIndividualGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     final screenHeight = context.screenHeight;
     final screenWidth = context.screenWidth;
     final isSmallScreen = screenHeight < 800 || screenWidth < 350;
@@ -48,44 +47,39 @@ class HeaderIndividualGroup extends StatelessWidget {
                 ),
               ),
             ),
-            IntrinsicHeight(
-              child: Row(
-                children: [
-                  SizedBox(width: screenWidth * 0.075),
-                  ButtonCommonStyle(
-                    onPressed: () {},
-                    child: const ObjectiveRewardModel(
-                      icon: GPIcons.objective,
-                      text: '',
-                    ),
-                  ),
-                  VerticalDivider(
-                    width: screenWidth * 0.115,
-                    thickness: 1,
-                    color: GPColors.secondaryColor,
-                  ),
-                  const ObjectiveRewardModel(
-                    icon: GPIcons.reward,
+            Row(
+              children: [
+                SizedBox(width: screenWidth * 0.075),
+                ButtonCommonStyle(
+                  onPressed: () {},
+                  child: const ObjectiveRewardModel(
+                    icon: GPIcons.objective,
                     text: '',
                   ),
-                  const VerticalDivider(
-                    width: kDefaultPadding * 2.25,
-                    thickness: 1,
-                    color: GPColors.secondaryColor,
-                  ),
-                  const SizedBox(
-                    width: kDefaultPadding * 1.5,
-                  ),
-                ],
-              ),
+                ),
+                VerticalDivider(
+                  width: screenWidth * 0.115,
+                  thickness: 1,
+                  color: GPColors.secondaryColor,
+                ),
+                const ObjectiveRewardModel(
+                  icon: GPIcons.reward,
+                  text: '',
+                ),
+                const VerticalDivider(
+                  width: kDefaultPadding * 2.25,
+                  thickness: 1,
+                  color: GPColors.secondaryColor,
+                ),
+                const SizedBox(
+                  width: kDefaultPadding * 1.5,
+                ),
+              ],
             ),
           ],
         ),
       );
     }
-    // String groupCurrencySymbol =
-    //     NumberFormat.simpleCurrency(name: group.groupCurrencyCode)
-    //         .currencySymbol;
     return Container(
       color: GPColors.white,
       height: 125,
@@ -105,13 +99,14 @@ class HeaderIndividualGroup extends StatelessWidget {
               ),
             ),
           ),
-          IntrinsicHeight(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: screenWidth * 0.075,
-                ),
-                ButtonCommonStyle(
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                width: screenWidth * 0.075,
+              ),
+              Expanded(
+                child: ButtonCommonStyle(
                   onPressed: () {
                     Provider.of<MixPanelProvider>(
                       context,
@@ -127,8 +122,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                             text: appLocalizations.objective,
                             textAlign: TextAlign.center,
                             fontFamily: 'Montserrat-SemiBold',
-                            minFontSize: 18,
-                            maxFontSize: 18,
+                            fontSize: 18,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
@@ -181,16 +175,18 @@ class HeaderIndividualGroup extends StatelessWidget {
                     text: group.objective,
                   ),
                 ),
-                VerticalDivider(
-                  width: isVerySmallScreen
-                      ? screenWidth * 0.05
-                      : isSmallScreen
-                          ? screenWidth * 0.075
-                          : screenWidth * 0.11,
-                  thickness: 1,
-                  color: GPColors.secondaryColor,
-                ),
-                ButtonCommonStyle(
+              ),
+              VerticalDivider(
+                width: isVerySmallScreen
+                    ? screenWidth * 0.05
+                    : isSmallScreen
+                        ? screenWidth * 0.075
+                        : screenWidth * 0.11,
+                thickness: 1,
+                color: GPColors.secondaryColor,
+              ),
+              Expanded(
+                child: ButtonCommonStyle(
                   onPressed: () {
                     Provider.of<MixPanelProvider>(
                       context,
@@ -217,8 +213,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                               horizontal: kDefaultPadding,
                             ),
                             child: GPTextBody(
-                              text: group
-                                  .reward, //'$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}'
+                              text: group.reward,
                               maxLines: 4,
                               textAlign: TextAlign.center,
                             ),
@@ -254,27 +249,26 @@ class HeaderIndividualGroup extends StatelessWidget {
                   },
                   child: ObjectiveRewardModel(
                     icon: GPIcons.reward,
-                    text: group
-                        .reward, //'$groupCurrencySymbol ${(double.parse(group.reward) * group.participants.length).toStringAsFixed(2)}'
+                    text: group.reward,
                   ),
                 ),
-                VerticalDivider(
-                  width: isVerySmallScreen
-                      ? screenWidth * 0.06
-                      : isSmallScreen
-                          ? screenWidth * 0.075
-                          : screenWidth * 0.11,
-                  thickness: 1,
-                  color: GPColors.secondaryColor,
-                ),
-                StartEndDateButton(
-                  groups: group,
-                ),
-                const SizedBox(
-                  width: kDefaultPadding * 1.5,
-                ),
-              ],
-            ),
+              ),
+              VerticalDivider(
+                width: isVerySmallScreen
+                    ? screenWidth * 0.06
+                    : isSmallScreen
+                        ? screenWidth * 0.075
+                        : screenWidth * 0.11,
+                thickness: 1,
+                color: GPColors.secondaryColor,
+              ),
+              StartEndDateButton(
+                groups: group,
+              ),
+              const SizedBox(
+                width: kDefaultPadding * 1.5,
+              ),
+            ],
           ),
         ],
       ),

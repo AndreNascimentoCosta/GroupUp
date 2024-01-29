@@ -19,7 +19,7 @@ class ReportParticipant extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: GPTextBody(
-              text: AppLocalizations.of(context).infoReportParticipant,
+              text: AppLocalizations.of(context)!.infoReportParticipant,
               maxLines: 7,
             ),
           ),

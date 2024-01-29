@@ -17,15 +17,14 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return AppBar(
       elevation: 0,
       backgroundColor: GPColors.white,
       automaticallyImplyLeading: false,
       title: GPTextHeader(
         text: appLocalizations.profile,
-        minFontSize: 24,
-        maxFontSize: 24,
+        fontSize: 24,
       ),
       centerTitle: false,
       actions: [

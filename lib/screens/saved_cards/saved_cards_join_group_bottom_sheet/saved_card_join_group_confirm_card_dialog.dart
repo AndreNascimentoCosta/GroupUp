@@ -20,7 +20,7 @@ void savedCardConfirmCardJoinGroup(
   String groupCode,
   String paymentMethodId,
 ) {
-  final appLocalizations = AppLocalizations.of(context);
+  final appLocalizations = AppLocalizations.of(context)!;
   showCupertinoDialog(
     context: context,
     builder: (BuildContext newContext) {

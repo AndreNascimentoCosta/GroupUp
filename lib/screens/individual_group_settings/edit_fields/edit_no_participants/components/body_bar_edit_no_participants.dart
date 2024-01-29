@@ -19,7 +19,7 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
         Provider.of<EditGroupNoParticipantsProvider>(context)
             .groupMaxParticipantsController;
     final group = Provider.of<IndividualGroupProvider>(context).group;
-    final appLocalizations = AppLocalizations.of(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     if (group == null) {
       return const SizedBox();
     }

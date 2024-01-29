@@ -42,11 +42,10 @@ class BodyReportParticipant extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: GPTextBody(
-                          text: AppLocalizations.of(context).noParticipants,
+                          text: AppLocalizations.of(context)!.noParticipants,
                           color: GPColors.secondaryColor,
                           textAlign: TextAlign.center,
-                          minFontSize: 20,
-                          maxFontSize: 20,
+                          fontSize: 20,
                         ),
                       ),
                     ),
