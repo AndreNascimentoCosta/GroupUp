@@ -8,7 +8,7 @@ import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
 import 'package:groupup/screens/groups/components/edit_bottom_navy_bar.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/screens/groups/components/name_add.dart';
+import 'package:groupup/screens/groups/components/add_username.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:provider/provider.dart';
 import '../../profile/components/body_profile.dart';
@@ -69,7 +69,7 @@ class _GroupsScreenState extends State<GroupsScreen> {
           return gpModalBottomSheet(
             context,
             280,
-            NameAdd(
+            AddUsername(
               controller: phoneProvider.controller,
             ),
             isDismissible: false,
@@ -84,7 +84,6 @@ class _GroupsScreenState extends State<GroupsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: GPColors.white,
-      // appBar: AppBarGroup(homeViewModel: homeViewModel),
       body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
