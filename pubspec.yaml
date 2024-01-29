@@ -18,7 +18,6 @@ dependencies:
   share_plus: ^6.3.0
   sign_in_with_apple: ^4.3.0
   flutter_svg: ^1.1.6
-  auto_size_text: ^3.0.0
   cloud_firestore: ^4.2.0
   firebase_auth: ^4.2.5
   firebase_core: ^2.4.0
@@ -34,7 +33,7 @@ dependencies:
   url_launcher: ^6.1.8
   ntp: ^2.0.0
   story: ^1.0.0+1
-  sentry_flutter: ^6.18.3
+  sentry_flutter: ^7.15.0
   intl_phone_field: ^3.1.0
   screenshot: ^2.1.0
   path_provider: ^2.0.12
