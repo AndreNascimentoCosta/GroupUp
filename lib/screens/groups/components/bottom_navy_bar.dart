@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
-import 'package:groupup/screens/groups/components/icon_bottom_navy_bar.dart';
+import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:provider/provider.dart';
 import '../../../core/constants/constants.dart';
 
@@ -42,16 +43,20 @@ class _BottomNavyBarState extends State<BottomNavyBar> {
             padding: EdgeInsets.only(
               top: kDefaultPadding * 0.5,
             ),
-            child: IconBottonNavyBarModel(
-              imageIcon: GPIcons.home,
+            child: GPIcon(
+              GPIcons.home,
+              height: Insets.l * 1.5,
+              width: Insets.l * 1.5,
             ),
           ),
           activeIcon: Padding(
             padding: EdgeInsets.only(
               top: kDefaultPadding * 0.5,
             ),
-            child: IconBottonNavyBarModel(
-              imageIcon: GPIcons.homeSelected,
+            child: GPIcon(
+              GPIcons.homeSelected,
+              height: Insets.l * 1.5,
+              width: Insets.l * 1.5,
             ),
           ),
           label: '',
@@ -61,16 +66,20 @@ class _BottomNavyBarState extends State<BottomNavyBar> {
             padding: EdgeInsets.only(
               top: kDefaultPadding * 0.5,
             ),
-            child: IconBottonNavyBarModel(
-              imageIcon: GPIcons.profile,
+            child: GPIcon(
+              GPIcons.profile,
+              height: Insets.l * 1.5,
+              width: Insets.l * 1.5,
             ),
           ),
           activeIcon: Padding(
             padding: EdgeInsets.only(
               top: kDefaultPadding * 0.5,
             ),
-            child: IconBottonNavyBarModel(
-              imageIcon: GPIcons.profileSelected,
+            child: GPIcon(
+              GPIcons.profileSelected,
+              height: Insets.l * 1.5,
+              width: Insets.l * 1.5,
             ),
           ),
           label: '',
