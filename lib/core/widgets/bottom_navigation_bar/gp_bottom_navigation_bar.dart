@@ -7,16 +7,16 @@ import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:provider/provider.dart';
 import '../../../core/constants/constants.dart';
 
-class BottomNavyBar extends StatefulWidget {
-  const BottomNavyBar({required this.pageController});
+class GPBottomNavigationBar extends StatefulWidget {
+  const GPBottomNavigationBar({required this.pageController});
 
   final PageController pageController;
 
   @override
-  State<BottomNavyBar> createState() => _BottomNavyBarState();
+  State<GPBottomNavigationBar> createState() => _GPBottomNavigationBarState();
 }
 
-class _BottomNavyBarState extends State<BottomNavyBar> {
+class _GPBottomNavigationBarState extends State<GPBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(

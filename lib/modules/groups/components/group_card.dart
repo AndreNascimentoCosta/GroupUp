@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
@@ -11,13 +12,10 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/modules/groups/components/checkbox.dart';
 import 'package:groupup/modules/groups/components/stats_group_ongoing.dart';
 import 'package:groupup/modules/individual_group/screens/individual_group.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../../core/providers/mix_panel_provider.dart';
 
 class GroupsCard extends StatefulWidget {
   const GroupsCard({
@@ -35,7 +33,6 @@ class GroupsCard extends StatefulWidget {
 
 class _GroupsCardState extends State<GroupsCard> {
   bool isChecked = false;
-  final CheckBoxGroup checkBoxGroup = CheckBoxGroup();
 
   @override
   Widget build(BuildContext context) {
@@ -97,8 +94,15 @@ class _GroupsCardState extends State<GroupsCard> {
                   ),
                   child: Visibility(
                     visible: value,
-                    child: CheckBoxGroup(
-                      isChecked: isChecked,
+                    child: Checkbox(
+                      value: isChecked,
+                      activeColor: GPColors.primaryColor,
+                      shape: const CircleBorder(),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isChecked = value!;
+                        });
+                      },
                     ),
                   ),
                 );

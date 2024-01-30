@@ -25,7 +25,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'edit_profile_button.dart';
+import '../components/edit_profile_button.dart';
 
 class BodyProfile extends StatefulWidget {
   const BodyProfile({super.key});

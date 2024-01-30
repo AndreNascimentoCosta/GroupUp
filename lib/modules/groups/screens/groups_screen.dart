@@ -3,11 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/widgets/texts/gp_text_title.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/modules/groups/components/app_bar.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/modules/groups/components/group_card.dart';
 import 'package:groupup/modules/groups/components/no_group.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GroupsScreen extends StatelessWidget {
   const GroupsScreen({
@@ -21,8 +22,14 @@ class GroupsScreen extends StatelessWidget {
     final userId = FirebaseAuth.instance.currentUser!.uid;
     return Scaffold(
       backgroundColor: GPColors.white,
-      appBar: AppBarGroup(
-        homeViewModel: homeViewModel,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: GPColors.white,
+        automaticallyImplyLeading: false,
+        title: GPTextTitle(
+          text: AppLocalizations.of(context)!.groups,
+        ),
+        centerTitle: false,
       ),
       body: Scrollbar(
         child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(

@@ -11,7 +11,7 @@ import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/modules/groups/components/dropdown.dart';
+import 'package:groupup/models/dropdown_model.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/modules/individual_group/components/chart/comparative_chart.dart';
 import 'package:groupup/modules/individual_group/components/chart/label.dart';
