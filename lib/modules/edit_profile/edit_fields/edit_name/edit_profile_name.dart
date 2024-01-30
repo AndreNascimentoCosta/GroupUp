@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/screens/edit_profile/edit_fields/edit_name/components/app_bar_edit_profile_name.dart';
-import 'package:groupup/screens/edit_profile/edit_fields/edit_name/components/body_edit_profile_name.dart';
+import 'package:groupup/modules/edit_profile/edit_fields/edit_name/components/app_bar_edit_profile_name.dart';
+import 'package:groupup/modules/edit_profile/edit_fields/edit_name/components/body_edit_profile_name.dart';
 import 'package:groupup/core/providers/edit_profile_name_provider.dart';
 import 'package:provider/provider.dart';
 

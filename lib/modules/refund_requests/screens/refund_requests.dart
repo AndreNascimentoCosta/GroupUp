@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/screens/refund_requests/components/app_bar.dart';
-import 'package:groupup/screens/refund_requests/components/body.dart';
+import 'package:groupup/modules/refund_requests/components/app_bar.dart';
+import 'package:groupup/modules/refund_requests/components/body.dart';
 
 class RefundRequestsScreen extends StatelessWidget {
   const RefundRequestsScreen({required this.groupsData});

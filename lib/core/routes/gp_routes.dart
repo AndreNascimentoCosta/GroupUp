@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/routes/gp_named_routes.dart';
-import 'package:groupup/screens/home/screens/home_screen.dart';
+import 'package:groupup/modules/home/screens/home_screen.dart';
 
 class GPRoute {
   const GPRoute._();

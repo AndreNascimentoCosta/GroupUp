@@ -6,7 +6,7 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/screens/profile/components/alert_dialog_delete.dart';
+import 'package:groupup/modules/profile/components/alert_dialog_delete.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

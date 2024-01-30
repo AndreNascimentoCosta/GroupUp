@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/screens/groups/components/add_project.dart';
-import 'package:groupup/screens/groups/components/bottom_navy_bar.dart';
-import 'package:groupup/screens/profile/components/body_profile.dart';
+import 'package:groupup/modules/groups/components/add_project.dart';
+import 'package:groupup/modules/groups/components/bottom_navy_bar.dart';
+import 'package:groupup/modules/profile/components/body_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({required this.pageController});

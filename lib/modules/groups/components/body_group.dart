@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/screens/groups/components/app_bar.dart';
+import 'package:groupup/modules/groups/components/app_bar.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/groups/components/group_card.dart';
-import 'package:groupup/screens/groups/components/no_group.dart';
+import 'package:groupup/modules/groups/components/group_card.dart';
+import 'package:groupup/modules/groups/components/no_group.dart';
 
 class BodyGroup extends StatelessWidget {
   const BodyGroup({

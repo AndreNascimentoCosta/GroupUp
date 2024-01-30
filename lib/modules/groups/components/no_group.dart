@@ -8,9 +8,9 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/screens/groups/components/stats_no_group.dart';
+import 'package:groupup/modules/groups/components/stats_no_group.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/screens/create_group/create_page_view.dart';
+import 'package:groupup/modules/create_group/create_page_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

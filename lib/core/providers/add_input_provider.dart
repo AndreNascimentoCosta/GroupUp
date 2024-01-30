@@ -16,7 +16,7 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_input_data.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
-import 'package:groupup/screens/individual_group/components/calendar_add_input/add_input.dart';
+import 'package:groupup/modules/individual_group/components/calendar_add_input/add_input.dart';
 import 'package:ntp/ntp.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

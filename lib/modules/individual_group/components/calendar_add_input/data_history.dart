@@ -3,7 +3,7 @@ import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
-import 'package:groupup/screens/individual_group/components/calendar_add_input/data_history_bottom_sheet.dart';
+import 'package:groupup/modules/individual_group/components/calendar_add_input/data_history_bottom_sheet.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/providers/mix_panel_provider.dart';

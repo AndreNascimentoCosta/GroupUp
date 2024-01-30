@@ -7,10 +7,10 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/page_indicator/gp_page_indicator.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/groups/screens/groups_screen.dart';
-import 'package:groupup/screens/onboarding/components/app_bar_onboarding.dart';
-import 'package:groupup/screens/onboarding/components/next_button_onboarding.dart';
-import 'package:groupup/screens/onboarding/components/onboarding_body.dart';
+import 'package:groupup/modules/groups/screens/groups_screen.dart';
+import 'package:groupup/modules/onboarding/components/app_bar_onboarding.dart';
+import 'package:groupup/modules/onboarding/components/next_button_onboarding.dart';
+import 'package:groupup/modules/onboarding/components/onboarding_body.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnboardingPageViewScreen extends StatefulWidget {

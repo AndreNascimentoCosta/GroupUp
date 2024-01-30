@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/models/participant.dart';
-import 'package:groupup/screens/individual_group/components/chart/comparative_chart.dart';
+import 'package:groupup/modules/individual_group/components/chart/comparative_chart.dart';
 
 class BottomCalendar extends StatelessWidget {
   const BottomCalendar({required this.participant});

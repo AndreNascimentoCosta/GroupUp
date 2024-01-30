@@ -3,18 +3,18 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/screens/individual_group/components/floating_buttons/add_input_group_button.dart';
-import 'package:groupup/screens/individual_group/components/calendar_add_input/calendar.dart';
-import 'package:groupup/screens/individual_group/components/floating_buttons/calendar_screen_button.dart';
-import 'package:groupup/screens/individual_group/components/app_bar.dart';
-import 'package:groupup/screens/individual_group/components/body.dart';
-import 'package:groupup/screens/individual_group/components/floating_buttons/edit_group.dart';
-import 'package:groupup/screens/individual_group/components/floating_buttons/instagrammable_button.dart';
-import 'package:groupup/screens/individual_group/components/group_ended_dialog.dart';
-import 'package:groupup/screens/individual_group/components/header.dart';
+import 'package:groupup/modules/individual_group/components/floating_buttons/add_input_group_button.dart';
+import 'package:groupup/modules/individual_group/components/calendar_add_input/calendar.dart';
+import 'package:groupup/modules/individual_group/components/floating_buttons/calendar_screen_button.dart';
+import 'package:groupup/modules/individual_group/components/app_bar.dart';
+import 'package:groupup/modules/individual_group/components/body.dart';
+import 'package:groupup/modules/individual_group/components/floating_buttons/edit_group.dart';
+import 'package:groupup/modules/individual_group/components/floating_buttons/instagrammable_button.dart';
+import 'package:groupup/modules/individual_group/components/group_ended_dialog.dart';
+import 'package:groupup/modules/individual_group/components/header.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/screens/individual_group/components/tiebreaker_dialog.dart';
+import 'package:groupup/modules/individual_group/components/tiebreaker_dialog.dart';
 import 'package:provider/provider.dart';
 
 class IndividualGroupScreen extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/screens/edit_profile/components/text_field.dart';
+import 'package:groupup/modules/edit_profile/components/text_field.dart';
 import 'package:groupup/core/providers/edit_profile_name_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

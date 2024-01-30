@@ -4,7 +4,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/screens/individual_group/components/instagrammable/instagrammable.dart';
+import 'package:groupup/modules/individual_group/components/instagrammable/instagrammable.dart';
 import 'package:provider/provider.dart';
 
 class InstagrammableButton extends StatelessWidget {

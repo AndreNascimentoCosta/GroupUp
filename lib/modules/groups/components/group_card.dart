@@ -11,9 +11,9 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/screens/groups/components/checkbox.dart';
-import 'package:groupup/screens/groups/components/stats_group_ongoing.dart';
-import 'package:groupup/screens/individual_group/screens/individual_group.dart';
+import 'package:groupup/modules/groups/components/checkbox.dart';
+import 'package:groupup/modules/groups/components/stats_group_ongoing.dart';
+import 'package:groupup/modules/individual_group/screens/individual_group.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

@@ -4,7 +4,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/user_input_data.dart';
-import 'package:groupup/screens/individual_group/components/calendar_add_input/single_data.dart';
+import 'package:groupup/modules/individual_group/components/calendar_add_input/single_data.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DataHistoryBottomSheet extends StatelessWidget {

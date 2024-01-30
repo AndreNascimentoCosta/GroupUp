@@ -11,9 +11,9 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/utils/images/gp_images.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/individual_group/components/group_picture_edit.dart';
+import 'package:groupup/modules/individual_group/components/group_picture_edit.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/screens/individual_group_settings/screens/group_settings.dart';
+import 'package:groupup/modules/individual_group_settings/screens/group_settings.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 

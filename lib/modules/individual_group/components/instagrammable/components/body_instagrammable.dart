@@ -12,7 +12,7 @@ import 'package:groupup/core/utils/images/gp_images.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/screens/individual_group/components/instagrammable/components/app_bar_instagrammable.dart';
+import 'package:groupup/modules/individual_group/components/instagrammable/components/app_bar_instagrammable.dart';
 import 'package:provider/provider.dart';
 
 class BodyInstagrammable extends StatefulWidget {

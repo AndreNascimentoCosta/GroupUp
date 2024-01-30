@@ -9,8 +9,8 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/widgets/texts/gp_text_title.dart';
-import 'package:groupup/screens/individual_group/components/objective_reward.dart';
-import 'package:groupup/screens/individual_group/components/start_end_date.dart';
+import 'package:groupup/modules/individual_group/components/objective_reward.dart';
+import 'package:groupup/modules/individual_group/components/start_end_date.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

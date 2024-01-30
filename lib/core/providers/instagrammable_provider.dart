@@ -8,7 +8,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/screens/individual_group/components/instagrammable/components/choose_participant_profile_picture.dart';
+import 'package:groupup/modules/individual_group/components/instagrammable/components/choose_participant_profile_picture.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

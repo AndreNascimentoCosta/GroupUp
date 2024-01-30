@@ -19,7 +19,7 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/models/user_data.dart';
-import 'package:groupup/screens/groups/screens/groups_screen.dart';
+import 'package:groupup/modules/groups/screens/groups_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';

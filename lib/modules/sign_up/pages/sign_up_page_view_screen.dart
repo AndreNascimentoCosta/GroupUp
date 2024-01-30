@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
-import 'package:groupup/screens/sign_up/components/title_sign_up_phone.dart';
-import 'package:groupup/screens/sign_up/components/phone_number_sign_up.dart';
-import 'package:groupup/screens/sign_up/components/code_verification_sign_up.dart';
+import 'package:groupup/modules/sign_up/components/title_sign_up_phone.dart';
+import 'package:groupup/modules/sign_up/components/phone_number_sign_up.dart';
+import 'package:groupup/modules/sign_up/components/code_verification_sign_up.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';
 

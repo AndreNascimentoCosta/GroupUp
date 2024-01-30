@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/screens/edit_profile/components/app_bar.dart';
-import 'package:groupup/screens/edit_profile/components/body.dart';
+import 'package:groupup/modules/edit_profile/components/app_bar.dart';
+import 'package:groupup/modules/edit_profile/components/body.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
