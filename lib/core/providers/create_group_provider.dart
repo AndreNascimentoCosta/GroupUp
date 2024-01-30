@@ -19,7 +19,7 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/models/user_data.dart';
-import 'package:groupup/modules/groups/screens/groups_screen.dart';
+import 'package:groupup/modules/main_page_view/screens/main_page_view_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';
@@ -420,7 +420,7 @@ class CreateGroupProvider extends ChangeNotifier {
             .logEvent(eventName: 'Create Group Success');
         context.pushAndRemoveUntil(
           PageRouteBuilder(
-            pageBuilder: (context, animation1, animation2) => GroupsScreen(
+            pageBuilder: (context, animation1, animation2) => MainPageViewScreen(
               homeViewModel: HomeViewModel(),
             ),
             transitionDuration: Duration.zero,

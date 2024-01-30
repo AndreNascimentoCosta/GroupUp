@@ -7,7 +7,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/page_indicator/gp_page_indicator.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/modules/groups/screens/groups_screen.dart';
+import 'package:groupup/modules/main_page_view/screens/main_page_view_screen.dart';
 import 'package:groupup/modules/onboarding/components/app_bar_onboarding.dart';
 import 'package:groupup/modules/onboarding/components/next_button_onboarding.dart';
 import 'package:groupup/modules/onboarding/components/onboarding_body.dart';
@@ -34,7 +34,7 @@ class _OnboardingPageViewScreenState extends State<OnboardingPageViewScreen> {
           );
         }
         if (snapshot.hasData) {
-          return GroupsScreen(
+          return MainPageViewScreen(
             homeViewModel: HomeViewModel(),
           );
         }

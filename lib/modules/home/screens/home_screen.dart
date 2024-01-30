@@ -10,7 +10,7 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/home_view.dart';
-import 'package:groupup/modules/groups/screens/groups_screen.dart';
+import 'package:groupup/modules/main_page_view/screens/main_page_view_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/modules/home/components/continue_button.dart';
 import 'package:groupup/modules/home/components/home_event.dart';
@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             );
           }
           if (snapshot.hasData) {
-            return GroupsScreen(
+            return MainPageViewScreen(
               homeViewModel: HomeViewModel(),
             );
           }
