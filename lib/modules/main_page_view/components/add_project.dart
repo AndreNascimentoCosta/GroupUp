@@ -8,6 +8,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/modules/create_group/button.dart';
 import 'package:groupup/modules/join_group/components/button.dart';
+import 'package:groupup/modules/main_page_view/components/main_page_view_events.dart';
 import 'package:provider/provider.dart';
 import '../../../core/providers/mix_panel_provider.dart';
 
@@ -22,7 +23,7 @@ class AddProject extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () {
         Provider.of<MixPanelProvider>(context, listen: false)
-            .logEvent(eventName: 'Add Project Button');
+            .logEvent(eventName: MainPageViewEvents.addProjectButton.value);
         gpModalBottomSheet(
           context,
           context.screenHeight * 0.35,
@@ -31,14 +32,16 @@ class AddProject extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                    height: isSmallScreen
-                        ? screenHeight * 0.05
-                        : screenHeight * 0.055),
+                  height: isSmallScreen
+                      ? screenHeight * 0.05
+                      : screenHeight * 0.055,
+                ),
                 const JoinGroupButton(),
                 SizedBox(
-                    height: isSmallScreen
-                        ? screenHeight * 0.025
-                        : screenHeight * 0.035),
+                  height: isSmallScreen
+                      ? screenHeight * 0.025
+                      : screenHeight * 0.035,
+                ),
                 const CreateGroupButton(),
               ],
             ),

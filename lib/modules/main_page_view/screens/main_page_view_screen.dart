@@ -9,6 +9,7 @@ import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/modules/main_page_view/components/add_username.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
+import 'package:groupup/modules/main_page_view/components/main_page_view_events.dart';
 import 'package:provider/provider.dart';
 import '../../profile/screens/profile_screen.dart';
 import '../../groups/screens/groups_screen.dart';
@@ -44,7 +45,7 @@ class _MainPageViewScreenState extends State<MainPageViewScreen> {
       context,
       listen: false,
     ).logEvent(
-      eventName: 'Groups Screen',
+      eventName: MainPageViewEvents.mainPageViewScreen.value,
     );
   }
 
