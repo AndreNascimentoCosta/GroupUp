@@ -51,9 +51,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
     final appLocalizations = AppLocalizations.of(context)!;
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
@@ -144,10 +142,10 @@ class _EditProfileBodyState extends State<EditProfileBody> {
               Padding(
                 padding: EdgeInsets.only(
                   top: isSmallScreen
-                      ? screenHeight * 0.085
-                      : screenHeight * 0.085,
+                      ? context.screenHeight * 0.085
+                      : context.screenHeight * 0.085,
                   left:
-                      isSmallScreen ? screenWidth * 0.15 : screenWidth * 0.175,
+                      isSmallScreen ? context.screenWidth * 0.15 : context.screenWidth * 0.175,
                 ),
                 child: Container(
                   height: isSmallScreen ? 22.5 : 30,

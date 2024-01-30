@@ -53,10 +53,8 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
-    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
+    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
+    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
     return ButtonCommonStyle(
       onPressed: () {
         Provider.of<MixPanelProvider>(context, listen: false)
@@ -205,12 +203,12 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: screenHeight * 0.081,
-              left: screenHeight * 0.081,
+              top: context.screenHeight * 0.081,
+              left: context.screenHeight * 0.081,
             ),
             child: Container(
-              height: screenHeight * 0.04,
-              width: screenHeight * 0.04,
+              height: context.screenHeight * 0.04,
+              width: context.screenHeight * 0.04,
               decoration: BoxDecoration(
                 border: Border.all(
                   color: GPColors.transparent,
@@ -223,10 +221,10 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                 Icons.add_rounded,
                 color: GPColors.white,
                 size: isVerySmallScreen
-                    ? screenHeight * 0.025
+                    ? context.screenHeight * 0.025
                     : isSmallScreen
-                        ? screenHeight * 0.027
-                        : screenHeight * 0.031,
+                        ? context.screenHeight * 0.027
+                        : context.screenHeight * 0.031,
               ),
             ),
           ),

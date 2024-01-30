@@ -39,10 +39,8 @@ class BodyAdminSettings extends StatelessWidget {
     final createGroupProvider =
         Provider.of<CreateGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context)!;
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
-    final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
+    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
+    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
     return Padding(
       padding: const EdgeInsets.only(
         top: kDefaultPadding,
@@ -69,7 +67,7 @@ class BodyAdminSettings extends StatelessWidget {
               },
               child: BodyContentArrow(name: appLocalizations.reportParticipant),
             ),
-            SizedBox(height: screenHeight * 0.035),
+            SizedBox(height: context.screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
@@ -86,7 +84,7 @@ class BodyAdminSettings extends StatelessWidget {
               },
               child: BodyContentArrow(name: appLocalizations.projectName),
             ),
-            SizedBox(height: screenHeight * 0.035),
+            SizedBox(height: context.screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
@@ -103,7 +101,7 @@ class BodyAdminSettings extends StatelessWidget {
               },
               child: BodyContentArrow(name: appLocalizations.objective),
             ),
-            SizedBox(height: screenHeight * 0.035),
+            SizedBox(height: context.screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
@@ -120,7 +118,7 @@ class BodyAdminSettings extends StatelessWidget {
               },
               child: BodyContentArrow(name: appLocalizations.reward),
             ),
-            SizedBox(height: screenHeight * 0.035),
+            SizedBox(height: context.screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
@@ -186,7 +184,7 @@ class BodyAdminSettings extends StatelessWidget {
               },
               child: BodyContentArrow(name: appLocalizations.dates),
             ),
-            SizedBox(height: screenHeight * 0.035),
+            SizedBox(height: context.screenHeight * 0.035),
             ButtonCommonStyle(
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false)
@@ -258,24 +256,24 @@ class BodyAdminSettings extends StatelessWidget {
                 maxLine: 2,
               ),
             ),
-            SizedBox(height: screenHeight * 0.035),
+            SizedBox(height: context.screenHeight * 0.035),
             BodyContentSwitch(
               text: appLocalizations.everyoneCanEditGroupPic,
               boolValue: group.allowEditImage,
             ),
             SizedBox(
               height: isVerySmallScreen
-                  ? screenHeight * 0.17
+                  ? context.screenHeight * 0.17
                   : isSmallScreen
-                      ? screenHeight * 0.25
-                      : screenHeight * 0.26,
+                      ? context.screenHeight * 0.25
+                      : context.screenHeight * 0.26,
             ),
             Row(
               children: [
                 SizedBox(
                   width: isVerySmallScreen
-                      ? screenWidth * 0.4
-                      : screenWidth * 0.35,
+                      ? context.screenWidth * 0.4
+                      : context.screenWidth * 0.35,
                   child: GPTextBody(
                     text: appLocalizations.groupCode,
                     fontSize: 16,
@@ -299,7 +297,7 @@ class BodyAdminSettings extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: screenHeight * 0.05,
+              height: context.screenHeight * 0.05,
             ),
             OtherOptions(
               onPressed: () {

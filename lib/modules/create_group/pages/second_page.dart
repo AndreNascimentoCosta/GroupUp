@@ -29,10 +29,8 @@ class SecondPageCreate extends StatelessWidget {
     final scrollController = ScrollController();
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     final appLocalizations = AppLocalizations.of(context)!;
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
-    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
+    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
+    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -70,7 +68,7 @@ class SecondPageCreate extends StatelessWidget {
                       child: Icon(
                         Icons.info,
                         color: GPColors.secondaryColor,
-                        size: screenHeight * 0.035,
+                        size: context.screenHeight * 0.035,
                       ),
                     ),
                   ),

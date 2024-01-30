@@ -17,16 +17,14 @@ class BodyContentSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
+    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) return const SizedBox();
     return Row(
       children: [
         SizedBox(
-          width: isVerySmallScreen ? screenWidth * 0.675 : screenWidth * 0.65,
+          width: isVerySmallScreen ? context.screenWidth * 0.675 : context.screenWidth * 0.65,
           child: GPTextBody(
             text: text,
             maxLines: 2,

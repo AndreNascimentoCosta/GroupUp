@@ -57,9 +57,7 @@ class _BodyProfileState extends State<BodyProfile> {
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
     final appLocalizations = AppLocalizations.of(context)!;
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
     if (user == null) return const SizedBox();
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
       stream: FirebaseFirestore.instance

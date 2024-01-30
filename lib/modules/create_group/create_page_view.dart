@@ -30,9 +30,7 @@ class _CreatePageViewState extends State<CreatePageView> {
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
+    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
     return SafeArea(
       child: Column(
         children: [

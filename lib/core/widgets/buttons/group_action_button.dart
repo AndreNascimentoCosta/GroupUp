@@ -14,15 +14,13 @@ class GroupActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
+    final isSmallScreen = context.screenHeight < 800 ||context.screenWidth < 350;
     return Container(
       padding: EdgeInsets.only(
         right: isJoinButton ? kDefaultPadding * 1.25 : kDefaultPadding * 0.75,
         left: kDefaultPadding,
       ),
-      height: isSmallScreen ? screenHeight * 0.125 : screenHeight * 0.105,
+      height: isSmallScreen ? context.screenHeight * 0.125 : context.screenHeight * 0.105,
       decoration: BoxDecoration(
         color: isJoinButton
             ? const Color(0xFFEBEBEB)

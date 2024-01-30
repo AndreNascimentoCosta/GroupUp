@@ -14,14 +14,12 @@ class BodyContentArrow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
+    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
-          width: isVerySmallScreen ? screenWidth * 0.675 : screenWidth * 0.65,
+          width: isVerySmallScreen ? context.screenWidth * 0.675 : context.screenWidth * 0.65,
           child: GPTextBody(
             text: name,
             maxLines: maxLine,

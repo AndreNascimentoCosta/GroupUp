@@ -31,51 +31,49 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
     final isAndroidScreen =
-        screenHeight > 820 && screenHeight < 821 && screenWidth < 412;
-    final isScreenSize0 = screenHeight < 620 && screenWidth < 350;
-    final isScreenSize1 = screenHeight > 650 &&
-        screenHeight < 680 &&
-        screenWidth > 350 &&
-        screenWidth < 380;
-    final isScreenSize2 = screenHeight > 820 &&
-        screenHeight < 830 &&
-        screenWidth > 385 &&
-        screenWidth < 395;
-    final isScreenSize3 = screenHeight > 835 &&
-        screenHeight < 845 &&
-        screenWidth > 405 &&
-        screenWidth < 415;
-    final isScreenSize4 = screenHeight > 800 &&
-        screenHeight < 810 &&
-        screenWidth > 380 &&
-        screenWidth < 400;
-    final isScreenSize5 = screenHeight > 770 &&
-        screenHeight < 790 &&
-        screenWidth > 380 &&
-        screenWidth < 400;
-    // final isScreenSize2a = screenHeight > 720 &&
-    //     screenHeight < 750 &&
-    //     screenWidth > 400 &&
-    //     screenWidth < 425;
-    // final isScreenSize3a = screenHeight > 790 &&
-    //     screenHeight < 830 &&
-    //     screenWidth > 360 &&
-    //     screenWidth < 390;
-    // final isScreenSize4a = screenHeight > 830 &&
-    //     screenHeight < 860 &&
-    //     screenWidth > 380 &&
-    //     screenWidth < 400;
-    // final isScreenSize5a = screenHeight > 880 &&
-    //     screenHeight < 910 &&
-    //     screenWidth > 405 &&
-    //     screenWidth < 425;
-    // final isScreenSize6 = screenHeight > 910 &&
-    //     screenHeight < 940 &&
-    //     screenWidth > 415 &&
-    //     screenWidth < 440;
+        context.screenHeight > 820 && context.screenHeight < 821 && context.screenWidth < 412;
+    final isScreenSize0 = context.screenHeight < 620 && context.screenWidth < 350;
+    final isScreenSize1 = context.screenHeight > 650 &&
+        context.screenHeight < 680 &&
+        context.screenWidth > 350 &&
+        context.screenWidth < 380;
+    final isScreenSize2 = context.screenHeight > 820 &&
+        context.screenHeight < 830 &&
+        context.screenWidth > 385 &&
+        context.screenWidth < 395;
+    final isScreenSize3 = context.screenHeight > 835 &&
+        context.screenHeight < 845 &&
+        context.screenWidth > 405 &&
+        context.screenWidth < 415;
+    final isScreenSize4 = context.screenHeight > 800 &&
+        context.screenHeight < 810 &&
+        context.screenWidth > 380 &&
+        context.screenWidth < 400;
+    final isScreenSize5 = context.screenHeight > 770 &&
+        context.screenHeight < 790 &&
+        context.screenWidth > 380 &&
+        context.screenWidth < 400;
+    // final isScreenSize2a = context.screenHeight > 720 &&
+    //     context.screenHeight < 750 &&
+    //     context.screenWidth > 400 &&
+    //     context.screenWidth < 425;
+    // final isScreenSize3a = context.screenHeight > 790 &&
+    //     context.screenHeight < 830 &&
+    //     context.screenWidth > 360 &&
+    //     context.screenWidth < 390;
+    // final isScreenSize4a = context.screenHeight > 830 &&
+    //     context.screenHeight < 860 &&
+    //     context.screenWidth > 380 &&
+    //     context.screenWidth < 400;
+    // final isScreenSize5a = context.screenHeight > 880 &&
+    //     context.screenHeight < 910 &&
+    //     context.screenWidth > 405 &&
+    //     context.screenWidth < 425;
+    // final isScreenSize6 = context.screenHeight > 910 &&
+    //     context.screenHeight < 940 &&
+    //     context.screenWidth > 415 &&
+    //     context.screenWidth < 440;
     final instagrammableProvider = Provider.of<InstagrammableProvider>(context);
     final noPicture = instagrammableProvider.picture6;
     final currentUser = Provider.of<AuthProvider>(context).user;
@@ -88,8 +86,8 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
         isSharing: widget.isSharing,
       ),
       body: SizedBox(
-        height: screenHeight * 0.8,
-        width: screenWidth,
+        height: context.screenHeight * 0.8,
+        width: context.screenWidth,
         child: Stack(
           children: [
             SvgPicture.asset(
@@ -97,36 +95,36 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
             ),
             Positioned(
               width: widget.isSharing
-                  ? screenWidth * 0.115
+                  ? context.screenWidth * 0.115
                   : isScreenSize0
-                      ? screenWidth * 0.12
+                      ? context.screenWidth * 0.12
                       : isScreenSize1
-                          ? screenWidth * 0.135
+                          ? context.screenWidth * 0.135
                           : isScreenSize4
-                              ? screenWidth * 0.1375
+                              ? context.screenWidth * 0.1375
                               : isScreenSize5
-                                  ? screenWidth * 0.1325
-                                  : screenWidth * 0.145,
+                                  ? context.screenWidth * 0.1325
+                                  : context.screenWidth * 0.145,
               bottom: widget.isSharing
-                  ? screenHeight * 0.47
-                  : screenHeight * 0.585,
+                  ? context.screenHeight * 0.47
+                  : context.screenHeight * 0.585,
               left: isAndroidScreen
-                  ? screenWidth * 0.185
+                  ? context.screenWidth * 0.185
                   : widget.isSharing
-                      ? screenWidth * 0.2325
+                      ? context.screenWidth * 0.2325
                       : isScreenSize0
-                          ? screenWidth * 0.225
+                          ? context.screenWidth * 0.225
                           : isScreenSize1
-                              ? screenWidth * 0.21
+                              ? context.screenWidth * 0.21
                               : isScreenSize2
-                                  ? screenWidth * 0.175
+                                  ? context.screenWidth * 0.175
                                   : isScreenSize3
-                                      ? screenWidth * 0.18
+                                      ? context.screenWidth * 0.18
                                       : isScreenSize4
-                                          ? screenWidth * 0.1835
+                                          ? context.screenWidth * 0.1835
                                           : isScreenSize5
-                                              ? screenWidth * 0.1925
-                                              : screenWidth * 0.165,
+                                              ? context.screenWidth * 0.1925
+                                              : context.screenWidth * 0.165,
               child: ButtonCommonStyle(
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
@@ -144,55 +142,55 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                     ),
                     borderRadius: BorderRadius.circular(
                       widget.isSharing
-                          ? screenWidth * 0.115
+                          ? context.screenWidth * 0.115
                           : isScreenSize0
-                              ? screenWidth * 0.12
+                              ? context.screenWidth * 0.12
                               : isScreenSize1
-                                  ? screenWidth * 0.135
+                                  ? context.screenWidth * 0.135
                                   : isScreenSize4
-                                      ? screenWidth * 0.1375
+                                      ? context.screenWidth * 0.1375
                                       : isScreenSize5
-                                          ? screenWidth * 0.1325
-                                          : screenWidth * 0.145,
+                                          ? context.screenWidth * 0.1325
+                                          : context.screenWidth * 0.145,
                     ),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(
                       widget.isSharing
-                          ? screenWidth * 0.115
+                          ? context.screenWidth * 0.115
                           : isScreenSize0
-                              ? screenWidth * 0.12
+                              ? context.screenWidth * 0.12
                               : isScreenSize1
-                                  ? screenWidth * 0.135
+                                  ? context.screenWidth * 0.135
                                   : isScreenSize4
-                                      ? screenWidth * 0.1375
+                                      ? context.screenWidth * 0.1375
                                       : isScreenSize5
-                                          ? screenWidth * 0.1325
-                                          : screenWidth * 0.145,
+                                          ? context.screenWidth * 0.1325
+                                          : context.screenWidth * 0.145,
                     ),
                     child: Container(
                       height: widget.isSharing
-                          ? screenWidth * 0.115
+                          ? context.screenWidth * 0.115
                           : isScreenSize0
-                              ? screenWidth * 0.12
+                              ? context.screenWidth * 0.12
                               : isScreenSize1
-                                  ? screenWidth * 0.135
+                                  ? context.screenWidth * 0.135
                                   : isScreenSize4
-                                      ? screenWidth * 0.1375
+                                      ? context.screenWidth * 0.1375
                                       : isScreenSize5
-                                          ? screenWidth * 0.1325
-                                          : screenWidth * 0.145,
+                                          ? context.screenWidth * 0.1325
+                                          : context.screenWidth * 0.145,
                       width: widget.isSharing
-                          ? screenWidth * 0.115
+                          ? context.screenWidth * 0.115
                           : isScreenSize0
-                              ? screenWidth * 0.12
+                              ? context.screenWidth * 0.12
                               : isScreenSize1
-                                  ? screenWidth * 0.135
+                                  ? context.screenWidth * 0.135
                                   : isScreenSize4
-                                      ? screenWidth * 0.1375
+                                      ? context.screenWidth * 0.1375
                                       : isScreenSize5
-                                          ? screenWidth * 0.1325
-                                          : screenWidth * 0.145,
+                                          ? context.screenWidth * 0.1325
+                                          : context.screenWidth * 0.145,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: CachedNetworkImageProvider(
@@ -208,36 +206,36 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
             ),
             Positioned(
               width: widget.isSharing
-                  ? screenWidth * 0.099
+                  ? context.screenWidth * 0.099
                   : isScreenSize0
-                      ? screenWidth * 0.105
+                      ? context.screenWidth * 0.105
                       : isScreenSize1
-                          ? screenWidth * 0.107
+                          ? context.screenWidth * 0.107
                           : isScreenSize4
-                              ? screenWidth * 0.1185
+                              ? context.screenWidth * 0.1185
                               : isScreenSize5
-                                  ? screenWidth * 0.1175
-                                  : screenWidth * 0.127,
+                                  ? context.screenWidth * 0.1175
+                                  : context.screenWidth * 0.127,
               bottom: widget.isSharing
-                  ? screenHeight * 0.465
-                  : screenHeight * 0.575,
+                  ? context.screenHeight * 0.465
+                  : context.screenHeight * 0.575,
               right: isAndroidScreen
-                  ? screenWidth * 0.1625
+                  ? context.screenWidth * 0.1625
                   : widget.isSharing
-                      ? screenWidth * 0.22
+                      ? context.screenWidth * 0.22
                       : isScreenSize0
-                          ? screenWidth * 0.205
+                          ? context.screenWidth * 0.205
                           : isScreenSize1
-                              ? screenWidth * 0.2025
+                              ? context.screenWidth * 0.2025
                               : isScreenSize2
-                                  ? screenWidth * 0.15
+                                  ? context.screenWidth * 0.15
                                   : isScreenSize3
-                                      ? screenWidth * 0.155
+                                      ? context.screenWidth * 0.155
                                       : isScreenSize4
-                                          ? screenWidth * 0.16
+                                          ? context.screenWidth * 0.16
                                           : isScreenSize5
-                                              ? screenWidth * 0.1675
-                                              : screenWidth * 0.1415,
+                                              ? context.screenWidth * 0.1675
+                                              : context.screenWidth * 0.1415,
               child: ButtonCommonStyle(
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
@@ -255,55 +253,55 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                     ),
                     borderRadius: BorderRadius.circular(
                       widget.isSharing
-                          ? screenWidth * 0.099
+                          ? context.screenWidth * 0.099
                           : isScreenSize0
-                              ? screenWidth * 0.105
+                              ? context.screenWidth * 0.105
                               : isScreenSize1
-                                  ? screenWidth * 0.107
+                                  ? context.screenWidth * 0.107
                                   : isScreenSize4
-                                      ? screenWidth * 0.1185
+                                      ? context.screenWidth * 0.1185
                                       : isScreenSize5
-                                          ? screenWidth * 0.1175
-                                          : screenWidth * 0.127,
+                                          ? context.screenWidth * 0.1175
+                                          : context.screenWidth * 0.127,
                     ),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(
                       widget.isSharing
-                          ? screenWidth * 0.099
+                          ? context.screenWidth * 0.099
                           : isScreenSize0
-                              ? screenWidth * 0.105
+                              ? context.screenWidth * 0.105
                               : isScreenSize1
-                                  ? screenWidth * 0.107
+                                  ? context.screenWidth * 0.107
                                   : isScreenSize4
-                                      ? screenWidth * 0.1185
+                                      ? context.screenWidth * 0.1185
                                       : isScreenSize5
-                                          ? screenWidth * 0.1175
-                                          : screenWidth * 0.127,
+                                          ? context.screenWidth * 0.1175
+                                          : context.screenWidth * 0.127,
                     ),
                     child: Container(
                       height: widget.isSharing
-                          ? screenWidth * 0.099
+                          ? context.screenWidth * 0.099
                           : isScreenSize0
-                              ? screenWidth * 0.105
+                              ? context.screenWidth * 0.105
                               : isScreenSize1
-                                  ? screenWidth * 0.107
+                                  ? context.screenWidth * 0.107
                                   : isScreenSize4
-                                      ? screenWidth * 0.1185
+                                      ? context.screenWidth * 0.1185
                                       : isScreenSize5
-                                          ? screenWidth * 0.1175
-                                          : screenWidth * 0.127,
+                                          ? context.screenWidth * 0.1175
+                                          : context.screenWidth * 0.127,
                       width: widget.isSharing
-                          ? screenWidth * 0.099
+                          ? context.screenWidth * 0.099
                           : isScreenSize0
-                              ? screenWidth * 0.105
+                              ? context.screenWidth * 0.105
                               : isScreenSize1
-                                  ? screenWidth * 0.107
+                                  ? context.screenWidth * 0.107
                                   : isScreenSize4
-                                      ? screenWidth * 0.1185
+                                      ? context.screenWidth * 0.1185
                                       : isScreenSize5
-                                          ? screenWidth * 0.1175
-                                          : screenWidth * 0.127,
+                                          ? context.screenWidth * 0.1175
+                                          : context.screenWidth * 0.127,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: CachedNetworkImageProvider(
@@ -319,36 +317,36 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
             ),
             Positioned(
               width: widget.isSharing
-                  ? screenWidth * 0.125
+                  ? context.screenWidth * 0.125
                   : isScreenSize0
-                      ? screenWidth * 0.14
+                      ? context.screenWidth * 0.14
                       : isScreenSize1
-                          ? screenWidth * 0.15
+                          ? context.screenWidth * 0.15
                           : isScreenSize4
-                              ? screenWidth * 0.155
+                              ? context.screenWidth * 0.155
                               : isScreenSize5
-                                  ? screenWidth * 0.1525
-                                  : screenWidth * 0.165,
+                                  ? context.screenWidth * 0.1525
+                                  : context.screenWidth * 0.165,
               bottom: widget.isSharing
-                  ? screenHeight * 0.21575
-                  : screenHeight * 0.267,
+                  ? context.screenHeight * 0.21575
+                  : context.screenHeight * 0.267,
               right: isAndroidScreen
-                  ? screenWidth * 0.1325
+                  ? context.screenWidth * 0.1325
                   : widget.isSharing
-                      ? screenWidth * 0.1925
+                      ? context.screenWidth * 0.1925
                       : isScreenSize0
-                          ? screenWidth * 0.1775
+                          ? context.screenWidth * 0.1775
                           : isScreenSize1
-                              ? screenWidth * 0.17
+                              ? context.screenWidth * 0.17
                               : isScreenSize2
-                                  ? screenWidth * 0.12
+                                  ? context.screenWidth * 0.12
                                   : isScreenSize3
-                                      ? screenWidth * 0.125
+                                      ? context.screenWidth * 0.125
                                       : isScreenSize4
-                                          ? screenWidth * 0.1325
+                                          ? context.screenWidth * 0.1325
                                           : isScreenSize5
-                                              ? screenWidth * 0.1425
-                                              : screenWidth * 0.1125,
+                                              ? context.screenWidth * 0.1425
+                                              : context.screenWidth * 0.1125,
               child: ButtonCommonStyle(
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
@@ -366,55 +364,55 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                     ),
                     borderRadius: BorderRadius.circular(
                       widget.isSharing
-                          ? screenWidth * 0.125
+                          ? context.screenWidth * 0.125
                           : isScreenSize0
-                              ? screenWidth * 0.14
+                              ? context.screenWidth * 0.14
                               : isScreenSize1
-                                  ? screenWidth * 0.15
+                                  ? context.screenWidth * 0.15
                                   : isScreenSize4
-                                      ? screenWidth * 0.155
+                                      ? context.screenWidth * 0.155
                                       : isScreenSize5
-                                          ? screenWidth * 0.1525
-                                          : screenWidth * 0.165,
+                                          ? context.screenWidth * 0.1525
+                                          : context.screenWidth * 0.165,
                     ),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(
                       widget.isSharing
-                          ? screenWidth * 0.125
+                          ? context.screenWidth * 0.125
                           : isScreenSize0
-                              ? screenWidth * 0.14
+                              ? context.screenWidth * 0.14
                               : isScreenSize1
-                                  ? screenWidth * 0.15
+                                  ? context.screenWidth * 0.15
                                   : isScreenSize4
-                                      ? screenWidth * 0.155
+                                      ? context.screenWidth * 0.155
                                       : isScreenSize5
-                                          ? screenWidth * 0.1525
-                                          : screenWidth * 0.165,
+                                          ? context.screenWidth * 0.1525
+                                          : context.screenWidth * 0.165,
                     ),
                     child: Container(
                       height: widget.isSharing
-                          ? screenWidth * 0.125
+                          ? context.screenWidth * 0.125
                           : isScreenSize0
-                              ? screenWidth * 0.14
+                              ? context.screenWidth * 0.14
                               : isScreenSize1
-                                  ? screenWidth * 0.15
+                                  ? context.screenWidth * 0.15
                                   : isScreenSize4
-                                      ? screenWidth * 0.155
+                                      ? context.screenWidth * 0.155
                                       : isScreenSize5
-                                          ? screenWidth * 0.1525
-                                          : screenWidth * 0.165,
+                                          ? context.screenWidth * 0.1525
+                                          : context.screenWidth * 0.165,
                       width: widget.isSharing
-                          ? screenWidth * 0.125
+                          ? context.screenWidth * 0.125
                           : isScreenSize0
-                              ? screenWidth * 0.14
+                              ? context.screenWidth * 0.14
                               : isScreenSize1
-                                  ? screenWidth * 0.15
+                                  ? context.screenWidth * 0.15
                                   : isScreenSize4
-                                      ? screenWidth * 0.155
+                                      ? context.screenWidth * 0.155
                                       : isScreenSize5
-                                          ? screenWidth * 0.1525
-                                          : screenWidth * 0.165,
+                                          ? context.screenWidth * 0.1525
+                                          : context.screenWidth * 0.165,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: CachedNetworkImageProvider(
@@ -430,34 +428,34 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
             ),
             Positioned(
               width: widget.isSharing
-                  ? screenWidth * 0.127
+                  ? context.screenWidth * 0.127
                   : isScreenSize0
-                      ? screenWidth * 0.13
+                      ? context.screenWidth * 0.13
                       : isScreenSize1
-                          ? screenWidth * 0.1325
+                          ? context.screenWidth * 0.1325
                           : isScreenSize5
-                              ? screenWidth * 0.1475
-                              : screenWidth * 0.1575,
+                              ? context.screenWidth * 0.1475
+                              : context.screenWidth * 0.1575,
               bottom: widget.isSharing
-                  ? screenHeight * 0.246
-                  : screenHeight * 0.305,
+                  ? context.screenHeight * 0.246
+                  : context.screenHeight * 0.305,
               left: isAndroidScreen
-                  ? screenWidth * 0.1275
+                  ? context.screenWidth * 0.1275
                   : widget.isSharing
-                      ? screenWidth * 0.181
+                      ? context.screenWidth * 0.181
                       : isScreenSize0
-                          ? screenWidth * 0.1725
+                          ? context.screenWidth * 0.1725
                           : isScreenSize1
-                              ? screenWidth * 0.1715
+                              ? context.screenWidth * 0.1715
                               : isScreenSize2
-                                  ? screenWidth * 0.1125
+                                  ? context.screenWidth * 0.1125
                                   : isScreenSize3
-                                      ? screenWidth * 0.12
+                                      ? context.screenWidth * 0.12
                                       : isScreenSize4
-                                          ? screenWidth * 0.12
+                                          ? context.screenWidth * 0.12
                                           : isScreenSize5
-                                              ? screenWidth * 0.1325
-                                              : screenWidth * 0.103,
+                                              ? context.screenWidth * 0.1325
+                                              : context.screenWidth * 0.103,
               child: ButtonCommonStyle(
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
@@ -475,47 +473,47 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                     ),
                     borderRadius: BorderRadius.circular(
                       widget.isSharing
-                          ? screenWidth * 0.127
+                          ? context.screenWidth * 0.127
                           : isScreenSize0
-                              ? screenWidth * 0.13
+                              ? context.screenWidth * 0.13
                               : isScreenSize1
-                                  ? screenWidth * 0.1325
+                                  ? context.screenWidth * 0.1325
                                   : isScreenSize5
-                                      ? screenWidth * 0.1475
-                                      : screenWidth * 0.1575,
+                                      ? context.screenWidth * 0.1475
+                                      : context.screenWidth * 0.1575,
                     ),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(
                       widget.isSharing
-                          ? screenWidth * 0.127
+                          ? context.screenWidth * 0.127
                           : isScreenSize0
-                              ? screenWidth * 0.13
+                              ? context.screenWidth * 0.13
                               : isScreenSize1
-                                  ? screenWidth * 0.1325
+                                  ? context.screenWidth * 0.1325
                                   : isScreenSize5
-                                      ? screenWidth * 0.1475
-                                      : screenWidth * 0.1575,
+                                      ? context.screenWidth * 0.1475
+                                      : context.screenWidth * 0.1575,
                     ),
                     child: Container(
                       height: widget.isSharing
-                          ? screenWidth * 0.127
+                          ? context.screenWidth * 0.127
                           : isScreenSize0
-                              ? screenWidth * 0.13
+                              ? context.screenWidth * 0.13
                               : isScreenSize1
-                                  ? screenWidth * 0.1325
+                                  ? context.screenWidth * 0.1325
                                   : isScreenSize5
-                                      ? screenWidth * 0.1475
-                                      : screenWidth * 0.1575,
+                                      ? context.screenWidth * 0.1475
+                                      : context.screenWidth * 0.1575,
                       width: widget.isSharing
-                          ? screenWidth * 0.127
+                          ? context.screenWidth * 0.127
                           : isScreenSize0
-                              ? screenWidth * 0.13
+                              ? context.screenWidth * 0.13
                               : isScreenSize1
-                                  ? screenWidth * 0.1325
+                                  ? context.screenWidth * 0.1325
                                   : isScreenSize5
-                                      ? screenWidth * 0.1475
-                                      : screenWidth * 0.1575,
+                                      ? context.screenWidth * 0.1475
+                                      : context.screenWidth * 0.1575,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: CachedNetworkImageProvider(
@@ -531,18 +529,18 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
             ),
             Positioned(
               width: widget.isSharing
-                  ? screenWidth * 0.145
+                  ? context.screenWidth * 0.145
                   : isScreenSize0
-                      ? screenWidth * 0.145
-                      : screenWidth * 0.18,
+                      ? context.screenWidth * 0.145
+                      : context.screenWidth * 0.18,
               bottom: widget.isSharing
-                  ? screenHeight * 0.3025
-                  : screenHeight * 0.375,
+                  ? context.screenHeight * 0.3025
+                  : context.screenHeight * 0.375,
               right: widget.isSharing
-                  ? screenWidth * 0.4425
+                  ? context.screenWidth * 0.4425
                   : isScreenSize0
-                      ? screenWidth * 0.445
-                      : screenWidth * 0.43,
+                      ? context.screenWidth * 0.445
+                      : context.screenWidth * 0.43,
               child: ButtonCommonStyle(
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
@@ -559,30 +557,30 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(widget.isSharing
-                        ? screenWidth * 0.145
+                        ? context.screenWidth * 0.145
                         : isScreenSize0
-                            ? screenWidth * 0.145
-                            : screenWidth * 0.18),
+                            ? context.screenWidth * 0.145
+                            : context.screenWidth * 0.18),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(
                       widget.isSharing
-                          ? screenWidth * 0.145
+                          ? context.screenWidth * 0.145
                           : isScreenSize0
-                              ? screenWidth * 0.145
-                              : screenWidth * 0.18,
+                              ? context.screenWidth * 0.145
+                              : context.screenWidth * 0.18,
                     ),
                     child: Container(
                       height: widget.isSharing
-                          ? screenWidth * 0.145
+                          ? context.screenWidth * 0.145
                           : isScreenSize0
-                              ? screenWidth * 0.145
-                              : screenWidth * 0.18,
+                              ? context.screenWidth * 0.145
+                              : context.screenWidth * 0.18,
                       width: widget.isSharing
-                          ? screenWidth * 0.145
+                          ? context.screenWidth * 0.145
                           : isScreenSize0
-                              ? screenWidth * 0.145
-                              : screenWidth * 0.18,
+                              ? context.screenWidth * 0.145
+                              : context.screenWidth * 0.18,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: CachedNetworkImageProvider(
@@ -598,17 +596,17 @@ class _BodyInstagrammableState extends State<BodyInstagrammable> {
             ),
             Positioned(
               width: widget.isSharing
-                  ? screenWidth * 0.14
+                  ? context.screenWidth * 0.14
                   : isScreenSize0
-                      ? screenWidth * 0.155
-                      : screenWidth * 0.17,
+                      ? context.screenWidth * 0.155
+                      : context.screenWidth * 0.17,
               bottom: widget.isSharing
-                  ? screenHeight * 0.3525
+                  ? context.screenHeight * 0.3525
                   : isScreenSize0
-                      ? screenHeight * 0.43
-                      : screenHeight * 0.445,
+                      ? context.screenHeight * 0.43
+                      : context.screenHeight * 0.445,
               right:
-                  widget.isSharing ? screenWidth * 0.4425 : screenWidth * 0.435,
+                  widget.isSharing ? context.screenWidth * 0.4425 : context.screenWidth * 0.435,
               child: const GPIcon(GPIcons.crown),
             ),
           ],

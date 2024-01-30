@@ -27,9 +27,7 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final user = Provider.of<AuthProvider>(context).user;
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
+    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
     if (group == null) {
       return const CircularProgressIndicator.adaptive();
     }

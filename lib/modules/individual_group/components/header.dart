@@ -23,10 +23,8 @@ class HeaderIndividualGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final appLocalizations = AppLocalizations.of(context)!;
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
-    final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
+    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
+    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
     if (group == null) {
       return Container(
         color: GPColors.white,
@@ -49,7 +47,7 @@ class HeaderIndividualGroup extends StatelessWidget {
             ),
             Row(
               children: [
-                SizedBox(width: screenWidth * 0.075),
+                SizedBox(width: context.screenWidth * 0.075),
                 ButtonCommonStyle(
                   onPressed: () {},
                   child: const ObjectiveRewardModel(
@@ -58,7 +56,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                   ),
                 ),
                 VerticalDivider(
-                  width: screenWidth * 0.115,
+                  width: context.screenWidth * 0.115,
                   thickness: 1,
                   color: GPColors.secondaryColor,
                 ),
@@ -103,7 +101,7 @@ class HeaderIndividualGroup extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                width: screenWidth * 0.075,
+                width: context.screenWidth * 0.075,
               ),
               Expanded(
                 child: ButtonCommonStyle(
@@ -178,10 +176,10 @@ class HeaderIndividualGroup extends StatelessWidget {
               ),
               VerticalDivider(
                 width: isVerySmallScreen
-                    ? screenWidth * 0.05
+                    ? context.screenWidth * 0.05
                     : isSmallScreen
-                        ? screenWidth * 0.075
-                        : screenWidth * 0.11,
+                        ? context.screenWidth * 0.075
+                        : context.screenWidth * 0.11,
                 thickness: 1,
                 color: GPColors.secondaryColor,
               ),
@@ -255,10 +253,10 @@ class HeaderIndividualGroup extends StatelessWidget {
               ),
               VerticalDivider(
                 width: isVerySmallScreen
-                    ? screenWidth * 0.06
+                    ? context.screenWidth * 0.06
                     : isSmallScreen
-                        ? screenWidth * 0.075
-                        : screenWidth * 0.11,
+                        ? context.screenWidth * 0.075
+                        : context.screenWidth * 0.11,
                 thickness: 1,
                 color: GPColors.secondaryColor,
               ),

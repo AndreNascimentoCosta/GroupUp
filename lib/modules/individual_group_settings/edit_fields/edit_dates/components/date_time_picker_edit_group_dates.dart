@@ -86,10 +86,8 @@ class _DateTimePickerEditGroupDatesState
     final editGroupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
-    final isVerySmallScreen = screenHeight < 600 || screenWidth < 350;
+    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
+    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
     if (individualGroupProvider.group == null) {
       return const SizedBox();
     }

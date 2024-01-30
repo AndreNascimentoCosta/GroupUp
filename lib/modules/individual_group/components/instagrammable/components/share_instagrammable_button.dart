@@ -17,10 +17,8 @@ class ShareInstagrammableButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
     final isAndroidScreen =
-        screenHeight > 820 && screenHeight < 821 && screenWidth < 412;
+        context.screenHeight > 820 && context.screenHeight < 821 && context.screenWidth < 412;
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
     if (individualGroupProvider.group == null) {

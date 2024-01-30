@@ -45,10 +45,8 @@ class _ChooseParticipantProfilePictureState
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context)!;
-    final screenHeight = context.screenHeight;
-    final screenWidth = context.screenWidth;
-    final isSmallScreen = screenHeight < 800 || screenWidth < 350;
-    final isVerySmallScreen = screenHeight < 600 || screenWidth < 300;
+    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
+    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
     if (individualGroupProvider.group == null) {
       return const CircularProgressIndicator.adaptive();
     } else {

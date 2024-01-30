@@ -18,13 +18,12 @@ class _BodySwitchState extends State<BodySwitch> {
   final SwitchModel switchModel = SwitchModel();
   @override
   Widget build(BuildContext context) {
-    final screenWidth = context.screenWidth;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Row(
         children: [
           SizedBox(
-            width: screenWidth * 0.6,
+            width: context.screenWidth * 0.6,
             child: GPTextBody(
               text: widget.text,
               maxLines: 5,
