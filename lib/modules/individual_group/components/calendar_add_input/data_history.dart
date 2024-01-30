@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/modules/individual_group/components/calendar_add_input/data_history_bottom_sheet.dart';
@@ -27,7 +28,7 @@ class _DataHistoryButtonState extends State<DataHistoryButton> {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final user = Provider.of<AuthProvider>(context).user;
     if (group == null) {
-      return const CircularProgressIndicator.adaptive();
+      return const GPLoading();
     }
     return SizedBox(
       height: 75,

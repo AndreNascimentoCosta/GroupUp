@@ -9,6 +9,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/dropdown_model.dart';
@@ -49,7 +50,7 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
         Provider.of<IndividualGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context)!;
     if (individualGroupProvider.group == null) {
-      return const CircularProgressIndicator.adaptive();
+      return const GPLoading();
     } else {
       final authProvider = Provider.of<AuthProvider>(context);
       return Padding(

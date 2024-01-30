@@ -12,6 +12,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/modules/created_groups/screens/created_groups_screen.dart';
@@ -67,9 +68,7 @@ class _BodyProfileState extends State<BodyProfile> {
       builder: (context, snapshot) {
         // final data = snapshot.data?.docs.first.data()['balance'];
         if (snapshot.hasData == false || snapshot.data == null) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
+          return const GPLoading();
         } else {
           return Scaffold(
             backgroundColor: GPColors.white,
@@ -114,9 +113,7 @@ class _BodyProfileState extends State<BodyProfile> {
                                     ),
                                     color: GPColors.black,
                                   ),
-                                  child: const Center(
-                                    child: CircularProgressIndicator.adaptive(),
-                                  ),
+                                  child: const GPLoading(),
                                 ),
                               ),
                             ],

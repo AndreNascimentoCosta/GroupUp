@@ -6,6 +6,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:groupup/models/user_input_data.dart';
@@ -65,9 +66,7 @@ class StoryWidget extends StatelessWidget {
                   }
                   return Container(
                     color: GPColors.black,
-                    child: const Center(
-                      child: CircularProgressIndicator.adaptive(),
-                    ),
+                    child: const GPLoading(),
                   );
                 },
                 imageProvider: NetworkImage(

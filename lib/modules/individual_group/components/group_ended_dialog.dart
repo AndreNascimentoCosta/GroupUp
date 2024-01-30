@@ -7,6 +7,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/modules/individual_group/components/group_ended_participant_card.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -24,9 +25,7 @@ groupEndedDialog(BuildContext context) {
       if (currentUser == null) return const SizedBox();
       if (group == null) return const SizedBox();
       if (isClaimingReward == true) {
-        return const Center(
-          child: CircularProgressIndicator.adaptive(),
-        );
+        return const GPLoading();
       }
       final currentUserRank = group.participantsData.firstWhere(
         (element) {

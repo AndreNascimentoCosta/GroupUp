@@ -7,6 +7,7 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/utils/images/gp_images.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/home_view.dart';
@@ -34,9 +35,7 @@ class HomeScreen extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator.adaptive(),
-            );
+            return const GPLoading();
           }
           if (snapshot.hasData) {
             return MainPageViewScreen(
@@ -99,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                         );
                       },
                       child: Provider.of<AuthProvider>(context).loading
-                          ? const CircularProgressIndicator.adaptive()
+                          ? const GPLoading()
                           : const ContinueButton(),
                     ),
                     const SizedBox(

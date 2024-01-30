@@ -4,6 +4,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -33,9 +34,7 @@ class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData == false) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
+          return const GPLoading();
         }
         if (snapshot.data!.docs.isEmpty) {
           return Center(

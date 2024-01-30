@@ -4,6 +4,7 @@ import 'package:groupup/core/animations/rive_animations.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/page_indicator/gp_page_indicator.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/home_view.dart';
@@ -29,9 +30,7 @@ class _OnboardingPageViewScreenState extends State<OnboardingPageViewScreen> {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
+          return const GPLoading();
         }
         if (snapshot.hasData) {
           return MainPageViewScreen(

@@ -6,6 +6,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
@@ -22,9 +23,7 @@ class ThirdPageCreate extends StatelessWidget {
     final appLocalizations = AppLocalizations.of(context)!;
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     if (createGroupProvider.isCreatingGroup) {
-      return const Center(
-        child: CircularProgressIndicator.adaptive(),
-      );
+      return const GPLoading();
     }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),

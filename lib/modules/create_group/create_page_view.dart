@@ -6,6 +6,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/page_indicator/gp_page_indicator.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/modules/create_group/pages/first_page.dart';
@@ -109,7 +110,7 @@ class _CreatePageViewState extends State<CreatePageView> {
           ),
           const SizedBox(height: kDefaultPadding / 2),
           createGroupProvider.isPaying
-              ? const CircularProgressIndicator.adaptive()
+              ? const GPLoading()
               : createGroupProvider.isCreatingGroup
                   ? const SizedBox()
                   : GPButton(

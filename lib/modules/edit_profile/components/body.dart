@@ -10,6 +10,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/modules/edit_profile/components/profile_picture_add.dart';
@@ -51,7 +52,8 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
     final appLocalizations = AppLocalizations.of(context)!;
-    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
+    final isSmallScreen =
+        context.screenHeight < 800 || context.screenWidth < 350;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
@@ -104,9 +106,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                                 ),
                                 color: GPColors.black,
                               ),
-                              child: const Center(
-                                child: CircularProgressIndicator.adaptive(),
-                              ),
+                              child: const GPLoading(),
                             ),
                           ),
                         ],
@@ -144,8 +144,9 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                   top: isSmallScreen
                       ? context.screenHeight * 0.085
                       : context.screenHeight * 0.085,
-                  left:
-                      isSmallScreen ? context.screenWidth * 0.15 : context.screenWidth * 0.175,
+                  left: isSmallScreen
+                      ? context.screenWidth * 0.15
+                      : context.screenWidth * 0.175,
                 ),
                 child: Container(
                   height: isSmallScreen ? 22.5 : 30,

@@ -6,6 +6,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
@@ -31,9 +32,7 @@ class BodyAdminSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     if (group == null) {
-      return const Center(
-        child: CircularProgressIndicator.adaptive(),
-      );
+      return const GPLoading();
     }
     final participantsData = group.participantsData;
     final createGroupProvider =

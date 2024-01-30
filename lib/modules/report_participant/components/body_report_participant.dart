@@ -3,6 +3,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/modules/report_participant/components/individual_report_participant.dart';
 import 'package:provider/provider.dart';
@@ -19,9 +20,7 @@ class BodyReportParticipant extends StatelessWidget {
           builder: (context) {
             final currentUser = Provider.of<AuthProvider>(context).user;
             if (currentUser == null) {
-              return const Center(
-                child: CircularProgressIndicator.adaptive(),
-              );
+              return const GPLoading();
             }
             final participants = Provider.of<IndividualGroupProvider>(context)
                 .group
@@ -29,9 +28,7 @@ class BodyReportParticipant extends StatelessWidget {
                 .where((element) => element.uid != currentUser.id)
                 .toList();
             if (participants == null) {
-              return const Center(
-                child: CircularProgressIndicator.adaptive(),
-              );
+              return const GPLoading();
             }
             if (participants.isEmpty) {
               return Column(

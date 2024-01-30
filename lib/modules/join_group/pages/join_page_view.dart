@@ -7,6 +7,7 @@ import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/modules/join_group/components/first_page.dart';
 import 'package:groupup/modules/join_group/components/review_join_group.dart';
@@ -79,9 +80,7 @@ class _JoinPageViewState extends State<JoinPageView> {
           const SizedBox(height: kDefaultPadding / 2),
           if (stripePaymentProvider.isPaying ||
               joinGroupProvider.isOpeningSavedCards)
-            const Center(
-              child: CircularProgressIndicator.adaptive(),
-            )
+            const GPLoading()
           else
             GPButton(
               onPressed: joinGroupProvider.nextPressedJoin(

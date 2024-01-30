@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/modules/saved_cards/saved_cards_create_group_bottom_sheet/saved_card_create_group_bottom_sheet.dart';
 import 'package:provider/provider.dart';
@@ -24,9 +25,7 @@ class SavedCardsCreateGroupBottomSheetBody extends StatelessWidget {
     final appLocalizations = AppLocalizations.of(context)!;
     final currentUser = Provider.of<AuthProvider>(context).user;
     if (currentUser == null) {
-      return const Center(
-        child: CircularProgressIndicator.adaptive(),
-      );
+      return const GPLoading();
     }
     final userId = currentUser.id;
     return Expanded(
@@ -47,9 +46,7 @@ class SavedCardsCreateGroupBottomSheetBody extends StatelessWidget {
                 );
               } else {
                 if (snapshot.hasData == false) {
-                  return const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  );
+                  return const GPLoading();
                 }
                 if (snapshot.data!.data.isEmpty) {
                   return Center(
@@ -89,9 +86,7 @@ class SavedCardsCreateGroupBottomSheetBody extends StatelessWidget {
                 );
               }
             } else {
-              return const Center(
-                child: CircularProgressIndicator.adaptive(),
-              );
+              return const GPLoading();
             }
           },
         ),

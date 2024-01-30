@@ -12,6 +12,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/dropdown_model.dart';
 import 'package:groupup/models/participant.dart';
@@ -48,7 +49,7 @@ class _ChooseParticipantProfilePictureState
     final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
     final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
     if (individualGroupProvider.group == null) {
-      return const CircularProgressIndicator.adaptive();
+      return const GPLoading();
     } else {
       final authProvider = Provider.of<AuthProvider>(context);
       return ButtonCommonStyle(

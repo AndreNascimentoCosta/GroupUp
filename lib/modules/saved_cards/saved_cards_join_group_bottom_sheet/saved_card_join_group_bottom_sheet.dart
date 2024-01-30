@@ -8,6 +8,7 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:provider/provider.dart';
 
@@ -35,9 +36,7 @@ class SavedCardJoinGroupBottomSheet extends StatelessWidget {
     final appLocalizations = AppLocalizations.of(context)!;
     final user = Provider.of<AuthProvider>(context).user;
     if (user == null) {
-      return const Center(
-        child: CircularProgressIndicator.adaptive(),
-      );
+      return const GPLoading();
     }
     return ButtonCommonStyle(
       onPressed: () {

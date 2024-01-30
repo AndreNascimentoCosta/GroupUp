@@ -7,6 +7,7 @@ import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
@@ -205,7 +206,7 @@ class _AddInputState extends State<AddInput> {
                     }
                   },
                   child: addInputProvider.isLoading
-                      ? const CircularProgressIndicator.adaptive()
+                      ? const GPLoading()
                       : GPTextBody(
                           text: 'OK',
                           textAlign: TextAlign.center,

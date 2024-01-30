@@ -7,6 +7,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/modules/individual_group/components/instagrammable/components/body_instagrammable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +23,7 @@ class ShareInstagrammableButton extends StatelessWidget {
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
     if (individualGroupProvider.group == null) {
-      return const CircularProgressIndicator.adaptive();
+      return const GPLoading();
     }
     return SizedBox(
       height: 75,

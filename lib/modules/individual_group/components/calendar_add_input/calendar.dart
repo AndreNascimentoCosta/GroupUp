@@ -5,6 +5,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/modules/individual_group/components/calendar_add_input/bottom_calendar.dart';
 import 'package:groupup/modules/individual_group/components/calendar_add_input/bottom_calendar_text_style.dart';
 import 'package:groupup/modules/individual_group/components/calendar_add_input/box_decoration.dart';
@@ -29,7 +30,7 @@ class _CalendarState extends State<Calendar> {
     final user = Provider.of<AuthProvider>(context).user;
     final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
     if (group == null) {
-      return const CircularProgressIndicator.adaptive();
+      return const GPLoading();
     }
     final participant = group.participantsData.firstWhere(
       (element) => element.uid == user?.id,

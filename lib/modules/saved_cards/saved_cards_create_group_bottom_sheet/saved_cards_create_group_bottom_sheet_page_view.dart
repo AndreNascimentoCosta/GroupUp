@@ -6,6 +6,7 @@ import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/modules/saved_cards/saved_cards_create_group_bottom_sheet/saved_cards_create_group_bottom_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -44,7 +45,7 @@ class SavedCardsCreateGroupBottomSheetPageView extends StatelessWidget {
           ),
           const SizedBox(height: kDefaultPadding / 2),
           if (stripePaymentProvider.isPaying == true)
-            const CircularProgressIndicator.adaptive()
+            const GPLoading()
           else
             GPButton(
               onPressed: () async {

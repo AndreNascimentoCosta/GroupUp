@@ -4,6 +4,7 @@ import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/modules/individual_group/components/calendar_add_input/add_input.dart';
 import 'package:provider/provider.dart';
@@ -32,9 +33,7 @@ class _CalendarScreenButtonState extends State<CalendarScreenButton> {
     return Builder(
       builder: (context) {
         if (group == null) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
+          return const GPLoading();
         }
         return SizedBox(
           height: 75,
