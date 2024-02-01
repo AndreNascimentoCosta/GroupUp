@@ -85,7 +85,7 @@ class GroupsScreen extends StatelessWidget {
                   context,
                   index,
                 ) =>
-                    GroupsCard(
+                    GroupCard(
                   homeViewModel: homeViewModel,
                   group: groups[index],
                 ),

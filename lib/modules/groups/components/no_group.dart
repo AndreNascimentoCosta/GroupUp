@@ -9,6 +9,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/modules/groups/components/groups_events.dart';
 import 'package:groupup/modules/groups/components/stats_no_group.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/modules/create_group/create_page_view.dart';
@@ -20,6 +21,7 @@ class NoGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -32,7 +34,9 @@ class NoGroup extends StatelessWidget {
                   Provider.of<CreateGroupProvider>(context, listen: false)
                       .clean();
                   Provider.of<MixPanelProvider>(context, listen: false)
-                      .logEvent(eventName: 'Create Group Bottom Sheet');
+                      .logEvent(
+                    eventName: GroupsEvents.pressCreateGroupBottomSheet.value,
+                  );
                   gpModalBottomSheet(
                     context,
                     context.screenHeight * 0.7,
@@ -61,7 +65,7 @@ class NoGroup extends StatelessWidget {
                         left: kDefaultPadding,
                       ),
                       child: GPTextBody(
-                        text: AppLocalizations.of(context)!.newGroup,
+                        text: appLocalizations.newGroup,
                         color: GPColors.secondaryColor,
                         fontSize: 18,
                       ),
@@ -74,9 +78,8 @@ class NoGroup extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: Insets.xl * 1.5),
                 child: GPTextBody(
-                  text: AppLocalizations.of(context)!.createOrJoinAGroup,
+                  text: appLocalizations.createOrJoinAGroup,
                   color: GPColors.secondaryColor,
-                  fontFamily: 'Montserrat-Medium',
                   fontSize: 20,
                 ),
               ),

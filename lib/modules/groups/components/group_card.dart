@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
@@ -12,13 +13,14 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/modules/groups/components/groups_events.dart';
 import 'package:groupup/modules/groups/components/stats_group_ongoing.dart';
 import 'package:groupup/modules/individual_group/screens/individual_group.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class GroupsCard extends StatefulWidget {
-  const GroupsCard({
+class GroupCard extends StatefulWidget {
+  const GroupCard({
     Key? key,
     required this.group,
     required this.homeViewModel,
@@ -28,10 +30,10 @@ class GroupsCard extends StatefulWidget {
   final HomeViewModel homeViewModel;
 
   @override
-  State<GroupsCard> createState() => _GroupsCardState();
+  State<GroupCard> createState() => _GroupCardState();
 }
 
-class _GroupsCardState extends State<GroupsCard> {
+class _GroupCardState extends State<GroupCard> {
   bool isChecked = false;
 
   @override
@@ -54,7 +56,7 @@ class _GroupsCardState extends State<GroupsCard> {
           context,
           listen: false,
         ).logEvent(
-          eventName: 'Individual Group Screen',
+          eventName: GroupsEvents.pressGroupCard.value,
         );
         individualGroupProvider.getGroup(
           widget.group.id,
@@ -65,8 +67,7 @@ class _GroupsCardState extends State<GroupsCard> {
         ).getUser();
         individualGroupProvider.isClaimingReward = false;
         individualGroupProvider.updateIndex(0);
-        Navigator.push(
-          context,
+        context.push(
           MaterialPageRoute(
             builder: (context) {
               return const IndividualGroupScreen();
@@ -76,7 +77,6 @@ class _GroupsCardState extends State<GroupsCard> {
             ),
           ),
         );
-        // }
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -84,30 +84,6 @@ class _GroupsCardState extends State<GroupsCard> {
         ),
         child: Row(
           children: [
-            ValueListenableBuilder(
-              valueListenable: widget.homeViewModel.isEditing,
-              builder: (context, value, child) {
-                return AnimatedContainer(
-                  width: value ? 50 : 0,
-                  duration: const Duration(
-                    milliseconds: 50,
-                  ),
-                  child: Visibility(
-                    visible: value,
-                    child: Checkbox(
-                      value: isChecked,
-                      activeColor: GPColors.primaryColor,
-                      shape: const CircleBorder(),
-                      onChanged: (bool? value) {
-                        setState(() {
-                          isChecked = value!;
-                        });
-                      },
-                    ),
-                  ),
-                );
-              },
-            ),
             ClipRRect(
               borderRadius: BorderRadius.circular(
                 37.5,
@@ -132,70 +108,20 @@ class _GroupsCardState extends State<GroupsCard> {
                     ),
             ),
             if (widget.group.endDate != null)
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: kDefaultPadding,
-                  ),
-                  child: participantsSumValue.length > 1 &&
-                          participantsSumValue
-                                  .where(
-                                    (element) =>
-                                        element == participantsSumValue.first,
-                                  )
-                                  .length >
-                              1
-                      ? widget.group.endDate!.isBefore(
-                          DateTime.now().subtract(
-                            const Duration(days: 3),
-                          ),
-                        )
-                          ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                GPTextBody(
-                                  text: Characters(
-                                    widget.group.projectName,
-                                  )
-                                      .replaceAll(
-                                        Characters(''),
-                                        Characters(
-                                          '\u{200B}',
-                                        ),
-                                      )
-                                      .toString(),
-                                  overflow: TextOverflow.ellipsis,
-                                  fontSize: 16,
-                                ),
-                                const SizedBox(
-                                  height: Insets.s,
-                                ),
-                                GPTextBody(
-                                  text: AppLocalizations.of(
-                                    context,
-                                  )!
-                                      .ended,
-                                  color: GPColors.secondaryColor,
-                                ),
-                              ],
-                            )
-                          : GPTextBody(
-                              text: Characters(
-                                widget.group.projectName,
-                              )
-                                  .replaceAll(
-                                    Characters(''),
-                                    Characters('\u{200B}'),
-                                  )
-                                  .toString(),
-                              overflow: TextOverflow.ellipsis,
-                              fontSize: 16,
-                            )
-                      : widget.group.endDate!.isBefore(
-                          DateTime.now().subtract(
-                            const Duration(days: 1),
-                          ),
-                        )
+              Builder(
+                builder: (context) {
+                  bool groupEndedMoreThan1DayAgo =
+                      widget.group.endDate!.isBefore(
+                    DateTime.now().subtract(
+                      const Duration(days: 1),
+                    ),
+                  );
+                  return Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: kDefaultPadding,
+                      ),
+                      child: groupEndedMoreThan1DayAgo
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -239,7 +165,9 @@ class _GroupsCardState extends State<GroupsCard> {
                               overflow: TextOverflow.ellipsis,
                               fontSize: 16,
                             ),
-                ),
+                    ),
+                  );
+                },
               ),
             StatsGroup(
               group: widget.group,

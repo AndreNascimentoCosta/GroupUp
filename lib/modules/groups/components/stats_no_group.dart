@@ -14,40 +14,38 @@ class StatsNoGroup extends StatelessWidget {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Flexible(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: kDefaultPadding,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                GPIcon(
-                  GPIcons.rank,
-                  color: GPColors.secondaryColor,
-                  height: Insets.l,
-                  width: Insets.l,
-                ),
-                SizedBox(
-                  height: kDefaultPadding * 0.25,
-                ),
-                GPIcon(
-                  GPIcons.daysGone,
-                  color: GPColors.secondaryColor,
-                  height: Insets.l,
-                  width: Insets.l,
-                ),
-                SizedBox(
-                  height: kDefaultPadding * 0.25,
-                ),
-                GPIcon(
-                  GPIcons.daysLeft,
-                  color: GPColors.secondaryColor,
-                  height: Insets.l,
-                  width: Insets.l,
-                ),
-              ],
-            ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: kDefaultPadding,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              GPIcon(
+                GPIcons.rank,
+                color: GPColors.secondaryColor,
+                height: Insets.l,
+                width: Insets.l,
+              ),
+              SizedBox(
+                height: kDefaultPadding * 0.25,
+              ),
+              GPIcon(
+                GPIcons.daysGone,
+                color: GPColors.secondaryColor,
+                height: Insets.l,
+                width: Insets.l,
+              ),
+              SizedBox(
+                height: kDefaultPadding * 0.25,
+              ),
+              GPIcon(
+                GPIcons.daysLeft,
+                color: GPColors.secondaryColor,
+                height: Insets.l,
+                width: Insets.l,
+              ),
+            ],
           ),
         ),
         SizedBox(
