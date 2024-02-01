@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/modules/edit_profile/screens/edit_profile.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/providers/mix_panel_provider.dart';
+class GPAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const GPAppBar({
+    required this.headerText,
+    required this.eventName,
+    required this.route,
+    super.key,
+  });
 
-class AppBarEditProfile extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarEditProfile({super.key});
+  final String headerText;
+  final String eventName;
+  final Widget route;
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [
@@ -37,22 +43,15 @@ class AppBarEditProfile extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 alignment: AlignmentDirectional.center,
-                child: GPTextHeader(text: appLocalizations.editProfile),
+                child: GPTextHeader(text: headerText),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
-                    Provider.of<MixPanelProvider>(context, listen: false).logEvent(
-                        eventName:
-                            'Back Button from Edit Profile Screen to Profile Screen');
-                    Navigator.pop(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const EditProfileScreen(),
-                        settings: const RouteSettings(name: 'Edit_Profile'),
-                      ),
-                    );
+                    Provider.of<MixPanelProvider>(context, listen: false)
+                        .logEvent(eventName: eventName);
+                    context.pop();
                   },
                   child: GestureDetector(
                     child: Container(

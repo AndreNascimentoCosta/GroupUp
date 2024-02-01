@@ -8,12 +8,12 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/buttons/add_picture_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
-import 'package:groupup/modules/edit_profile/components/profile_picture_add.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -106,7 +106,7 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
           Stack(
             alignment: Alignment.topCenter,
             children: [
-              ProfilePictureAdd(
+              AddPicture(
                 onPressedGallery: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(

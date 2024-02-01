@@ -8,14 +8,16 @@ import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/modules/edit_profile/edit_fields/edit_name/components/edit_profile_name_events.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../core/providers/edit_profile_name_provider.dart';
 import '../../../../../core/providers/mix_panel_provider.dart';
 
-class AppBarEditProfileName extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarEditProfileName({super.key});
+class EditProfileNameAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  const EditProfileNameAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +51,16 @@ class AppBarEditProfileName extends StatelessWidget implements PreferredSizeWidg
                         Provider.of<AuthProvider>(context, listen: false).user;
                     if (nameProvider.profileNameController.text == user?.name) {
                       Provider.of<MixPanelProvider>(context, listen: false)
-                          .logEvent(eventName: 'Back Button Edit Name');
+                          .logEvent(
+                        eventName:
+                            EditProfileNameEvents.pressBackButtonEditName.value,
+                      );
                       Navigator.pop(context);
                     } else {
                       Provider.of<MixPanelProvider>(context, listen: false)
-                          .logEvent(eventName: 'Discard Edit Name');
+                          .logEvent(
+                        eventName: EditProfileNameEvents.discardEditName.value,
+                      );
                       nameProvider.confirmDiscard(context);
                     }
                   },
