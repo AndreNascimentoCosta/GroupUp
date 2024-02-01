@@ -4,8 +4,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/edit_group_reward_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/text_field/gp_edit_text_field.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/modules/edit_profile/components/text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -28,7 +28,7 @@ class EditGroupRewardBody extends StatelessWidget {
           SizedBox(
             height: 70,
             width: 400,
-            child: TextFieldModel(
+            child: GPEditTextField(
               controller: groupRewardController,
               hint: '',
               validator: (value) {

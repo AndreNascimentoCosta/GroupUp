@@ -91,6 +91,12 @@ class GPTextField extends StatelessWidget {
                   color: GPColors.primaryColor,
                 ),
               ),
+              errorBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: GPColors.red),
+              ),
+              focusedErrorBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: GPColors.red),
+              ),
               prefixIcon: prefixIcon,
               prefixIconConstraints: const BoxConstraints(
                 minWidth: 40,

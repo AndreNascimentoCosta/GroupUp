@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/providers/mix_panel_provider.dart';
-
-class TextFieldModel extends StatelessWidget {
-  const TextFieldModel({
+class GPEditTextField extends StatelessWidget {
+  const GPEditTextField({
     required this.hint,
     required this.maxLength,
     required this.controller,
@@ -61,11 +60,14 @@ class TextFieldModel extends StatelessWidget {
           decoration: InputDecoration(
             enabledBorder: border,
             focusedBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: GPColors.primaryColor)),
+              borderSide: BorderSide(color: GPColors.primaryColor),
+            ),
             errorBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: GPColors.red)),
+              borderSide: BorderSide(color: GPColors.red),
+            ),
             focusedErrorBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: GPColors.red)),
+              borderSide: BorderSide(color: GPColors.red),
+            ),
             hintText: hint,
             counterText: "",
             suffixIcon: controller.text.isEmpty

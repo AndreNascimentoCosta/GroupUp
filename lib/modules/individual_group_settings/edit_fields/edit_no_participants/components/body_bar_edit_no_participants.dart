@@ -5,8 +5,8 @@ import 'package:groupup/core/providers/edit_group_no_participants.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/widgets/text_field/gp_edit_text_field.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/modules/edit_profile/components/text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -34,7 +34,7 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
           SizedBox(
             height: 70,
             width: 400,
-            child: TextFieldModel(
+            child: GPEditTextField(
               controller: groupMaxParticipantsController,
               hint: '',
               validator: (value) {
