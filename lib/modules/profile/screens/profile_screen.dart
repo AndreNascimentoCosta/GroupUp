@@ -108,8 +108,10 @@ class _BodyProfileState extends State<BodyProfile> {
                       return GPIcon(
                         GPIcons.profilePictureAdd,
                         color: GPColors.white,
-                        height: context.isSmallScreen ? Insets.l * 2 : Insets.l * 3,
-                        width: context.isSmallScreen ? Insets.l * 2 : Insets.l * 3,
+                        height:
+                            context.isSmallScreen ? Insets.l * 2 : Insets.l * 3,
+                        width:
+                            context.isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                       );
                     },
                   ),
@@ -144,9 +146,7 @@ class _BodyProfileState extends State<BodyProfile> {
                   eventName: ProfileEvents.pressEditProfileButton.value,
                 );
                 context.push(
-                  MaterialPageRoute(
-                    builder: (context) => const EditProfileScreen(),
-                  ),
+                  const EditProfileScreen(),
                 );
               },
               child: const EditProfile(),
@@ -160,9 +160,7 @@ class _BodyProfileState extends State<BodyProfile> {
                   eventName: ProfileEvents.pressCreatedGroupsButton.value,
                 );
                 context.push(
-                  MaterialPageRoute(
-                    builder: (context) => const CreatedGroupsScreen(),
-                  ),
+                  const CreatedGroupsScreen(),
                 );
               },
               child: Row(

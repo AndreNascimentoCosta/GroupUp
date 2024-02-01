@@ -68,14 +68,7 @@ class _GroupCardState extends State<GroupCard> {
         individualGroupProvider.isClaimingReward = false;
         individualGroupProvider.updateIndex(0);
         context.push(
-          MaterialPageRoute(
-            builder: (context) {
-              return const IndividualGroupScreen();
-            },
-            settings: const RouteSettings(
-              name: 'Individual_Group',
-            ),
-          ),
+          const IndividualGroupScreen(),
         );
       },
       child: Padding(

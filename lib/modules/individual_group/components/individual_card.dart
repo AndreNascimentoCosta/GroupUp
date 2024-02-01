@@ -94,13 +94,10 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                           eventName: 'Individual Group - Profile Picture',
                         );
                         if (widget.participant.hasStory) {
-                          context.push(
-                            CupertinoPageRoute(
-                              builder: (context) => StoryPage(
-                                inputDatas: widget.participant.inputData,
-                                participant: widget.participant,
-                              ),
-                              fullscreenDialog: true,
+                          context.pushCupertino(
+                            StoryPage(
+                              inputDatas: widget.participant.inputData,
+                              participant: widget.participant,
                             ),
                           );
                         }

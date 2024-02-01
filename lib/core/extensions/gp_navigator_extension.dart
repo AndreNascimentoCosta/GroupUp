@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 extension GPNavigatiorExtension on BuildContext {
@@ -9,8 +10,21 @@ extension GPNavigatiorExtension on BuildContext {
     Navigator.of(this).popUntil(predicate);
   }
 
-  Future<T?> push<T extends Object?>(Route<T> newRoute) async {
-    return await Navigator.of(this).push(newRoute);
+  Future<T?> push<T extends Object?>(Widget newRoute) async {
+    return await Navigator.of(this).push(
+      MaterialPageRoute(
+        builder: (context) => newRoute,
+      ),
+    );
+  }
+
+  Future<T?> pushCupertino<T extends Object?>(Widget newRoute) async {
+    return await Navigator.of(this).push(
+      CupertinoPageRoute(
+        builder: (context) => newRoute,
+        fullscreenDialog: true,
+      ),
+    );
   }
 
   Future<T?> pushAndRemoveUntil<T extends Object?>(Route<T> newRoute) async {
