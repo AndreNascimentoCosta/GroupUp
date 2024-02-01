@@ -1,18 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/constants/url_launcher_constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/utils/url_launcher/gp_url_launcher.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/participant.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IndividualParticipant extends StatelessWidget {
@@ -22,6 +23,7 @@ class IndividualParticipant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: ButtonCommonStyle(
@@ -34,17 +36,17 @@ class IndividualParticipant extends StatelessWidget {
           if (group == null) {
             return;
           }
-          final Uri emailLaunchUri = Uri(
-            scheme: 'mailto',
-            path: 'groupupapp@outlook.com',
-            query: AppLocalizations.of(context)!.mailReportParticipant(
-              participant.name,
-              participant.uid,
-              group.projectName,
-              group.id,
+          gpUrlLauncher.launch(
+            uri: UrlLauncherConstants.emailAddress(
+              subject: appLocalizations.reportParticipant,
+              body: appLocalizations.mailReportParticipant(
+                participant.name,
+                participant.uid,
+                group.projectName,
+                group.id,
+              ),
             ),
           );
-          launchUrl(emailLaunchUri);
         },
         child: Row(
           children: [
