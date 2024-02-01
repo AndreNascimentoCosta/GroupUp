@@ -39,7 +39,7 @@ class ProfilePicture extends StatelessWidget {
             ),
             child: const ImageIcon(
               AssetImage(
-                GPIcons.plusProfile2,
+                GPIcons.plusProfile,
               ),
               color: GPColors.white,
               size: 30,
