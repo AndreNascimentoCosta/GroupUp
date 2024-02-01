@@ -16,13 +16,14 @@ class AddUsername extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final phoneProvider = Provider.of<PhoneAuthenProvider>(context);
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.only(top: kDefaultPadding * 2),
             child: GPTextHeader(
-              text: AppLocalizations.of(context)!.name,
+              text: appLocalizations.name,
               textAlign: TextAlign.center,
               fontSize: 28,
             ),
@@ -42,14 +43,13 @@ class AddUsername extends StatelessWidget {
                     autoFocus: true,
                     validator: (value) {
                       if (value!.isNotEmpty && value.length < 3) {
-                        return AppLocalizations.of(context)!
-                            .nameValidatorAtLeast3Chars;
+                        return appLocalizations.nameValidatorAtLeast3Chars;
                       } else {
                         return null;
                       }
                     },
-                    header: AppLocalizations.of(context)!.name,
-                    hint: AppLocalizations.of(context)!.enterName,
+                    header: appLocalizations.name,
+                    hint: appLocalizations.enterName,
                     autoFillHints: const [AutofillHints.name],
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.next,
