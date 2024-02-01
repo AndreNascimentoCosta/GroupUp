@@ -23,8 +23,6 @@ class HeaderIndividualGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final appLocalizations = AppLocalizations.of(context)!;
-    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
-    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
     if (group == null) {
       return Container(
         color: GPColors.white,
@@ -175,9 +173,9 @@ class HeaderIndividualGroup extends StatelessWidget {
                 ),
               ),
               VerticalDivider(
-                width: isVerySmallScreen
+                width: context.isVerySmallScreen
                     ? context.screenWidth * 0.05
-                    : isSmallScreen
+                    : context.isSmallScreen
                         ? context.screenWidth * 0.075
                         : context.screenWidth * 0.11,
                 thickness: 1,
@@ -252,9 +250,9 @@ class HeaderIndividualGroup extends StatelessWidget {
                 ),
               ),
               VerticalDivider(
-                width: isVerySmallScreen
+                width: context.isVerySmallScreen
                     ? context.screenWidth * 0.06
-                    : isSmallScreen
+                    : context.isSmallScreen
                         ? context.screenWidth * 0.075
                         : context.screenWidth * 0.11,
                 thickness: 1,

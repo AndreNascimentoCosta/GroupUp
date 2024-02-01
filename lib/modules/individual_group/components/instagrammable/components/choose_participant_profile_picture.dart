@@ -46,8 +46,6 @@ class _ChooseParticipantProfilePictureState
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context)!;
-    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
-    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
     if (individualGroupProvider.group == null) {
       return const GPLoading();
     } else {
@@ -94,9 +92,9 @@ class _ChooseParticipantProfilePictureState
                       ),
                     ),
               SizedBox(
-                width: isVerySmallScreen
+                width: context.isVerySmallScreen
                     ? Insets.l * 6
-                    : isSmallScreen
+                    : context.isSmallScreen
                         ? Insets.l * 8
                         : Insets.l * 10,
                 child: authProvider.user != null

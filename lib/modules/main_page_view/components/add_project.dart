@@ -17,7 +17,6 @@ class AddProject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
     return FloatingActionButton(
       onPressed: () {
         Provider.of<MixPanelProvider>(context, listen: false)
@@ -30,13 +29,13 @@ class AddProject extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: isSmallScreen
+                  height: context.isSmallScreen
                       ? context.screenHeight * 0.05
                       : context.screenHeight * 0.055,
                 ),
                 const JoinGroupButton(),
                 SizedBox(
-                  height: isSmallScreen
+                  height: context.isSmallScreen
                       ? context.screenHeight * 0.025
                       : context.screenHeight * 0.035,
                 ),

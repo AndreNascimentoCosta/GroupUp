@@ -83,8 +83,6 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     final appLocalizations = AppLocalizations.of(context)!;
-    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
-    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Row(
@@ -93,9 +91,9 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
         children: [
           SizedBox(
             height: 70,
-            width: isVerySmallScreen
+            width: context.isVerySmallScreen
                 ? 130
-                : isSmallScreen
+                : context.isSmallScreen
                     ? 150
                     : 160,
             child: TextFormField(
@@ -120,7 +118,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
                 hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize:
-                        isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
+                        context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                     color: GPColors.secondaryColor),
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: kDefaultPadding / 2,
@@ -137,12 +135,12 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
               validator: startDateValidator,
               style: TextStyle(
                 fontFamily: 'Montserrat-Medium',
-                fontSize: isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
+                fontSize: context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                 color: GPColors.secondaryColor,
               ),
             ),
           ),
-          SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),
+          SizedBox(width: context.isSmallScreen ? Insets.xs : Insets.s),
           const Padding(
             padding: EdgeInsets.only(top: Insets.s),
             child: GPTextBody(
@@ -151,11 +149,11 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
               fontSize: 24,
             ),
           ),
-          SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),
+          SizedBox(width: context.isSmallScreen ? Insets.xs : Insets.s),
           SizedBox(
-            width: isVerySmallScreen
+            width: context.isVerySmallScreen
                 ? 130
-                : isSmallScreen
+                : context.isSmallScreen
                     ? 150
                     : 160,
             child: TextFormField(
@@ -180,7 +178,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
                 hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize:
-                        isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
+                        context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                     color: GPColors.secondaryColor),
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
@@ -197,7 +195,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
               validator: endDateValidator,
               style: TextStyle(
                 fontFamily: 'Montserrat-Medium',
-                fontSize: isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
+                fontSize: context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                 color: GPColors.secondaryColor,
               ),
             ),

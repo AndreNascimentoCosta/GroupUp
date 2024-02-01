@@ -26,8 +26,6 @@ class BodyNotAdminSettings extends StatelessWidget {
     final createGroupProvider =
         Provider.of<CreateGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context)!;
-    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
-    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
     return Padding(
       padding: const EdgeInsets.only(
         top: kDefaultPadding,
@@ -55,9 +53,9 @@ class BodyNotAdminSettings extends StatelessWidget {
               child: BodyContentArrow(name: appLocalizations.reportParticipant),
             ),
             SizedBox(
-              height: isVerySmallScreen
+              height: context.isVerySmallScreen
                   ? context.screenHeight * 0.575
-                  : isSmallScreen
+                  : context.isSmallScreen
                       ? context.screenHeight * 0.625
                       : context.screenHeight * 0.66,
             ),

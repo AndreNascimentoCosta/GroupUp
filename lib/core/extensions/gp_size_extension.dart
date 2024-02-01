@@ -15,4 +15,8 @@ extension GPSizeExtension on BuildContext {
 
 
   double get screenHeight => MediaQuery.of(this).size.height;
+
+  bool get isSmallScreen => screenHeight < 800 || screenWidth < 350;
+
+  bool get isVerySmallScreen => screenHeight < 600 || screenWidth < 350;
 }

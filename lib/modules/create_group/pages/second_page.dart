@@ -29,8 +29,6 @@ class SecondPageCreate extends StatelessWidget {
     final scrollController = ScrollController();
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
     final appLocalizations = AppLocalizations.of(context)!;
-    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
-    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -54,9 +52,9 @@ class SecondPageCreate extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(
                       top: kDefaultPadding * 1.25,
-                      left: isVerySmallScreen
+                      left: context.isVerySmallScreen
                           ? 160
-                          : isSmallScreen
+                          : context.isSmallScreen
                               ? 220
                               : 260,
                     ),
@@ -100,7 +98,7 @@ class SecondPageCreate extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: isSmallScreen ? Insets.m : Insets.xl),
+              SizedBox(height: context.isSmallScreen ? Insets.m : Insets.xl),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(

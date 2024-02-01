@@ -86,8 +86,6 @@ class _DateTimePickerEditGroupDatesState
     final editGroupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
-    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
-    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
     if (individualGroupProvider.group == null) {
       return const SizedBox();
     }
@@ -99,9 +97,9 @@ class _DateTimePickerEditGroupDatesState
         children: [
           SizedBox(
             height: 70,
-            width: isVerySmallScreen
+            width: context.isVerySmallScreen
                 ? 130
-                : isSmallScreen
+                : context.isSmallScreen
                     ? 150
                     : 160,
             child: TextFormField(
@@ -128,7 +126,7 @@ class _DateTimePickerEditGroupDatesState
                 hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize:
-                        isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
+                        context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                     color: GPColors.secondaryColor),
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: kDefaultPadding / 2,
@@ -146,12 +144,12 @@ class _DateTimePickerEditGroupDatesState
               validator: startDateValidator,
               style: TextStyle(
                 fontFamily: 'Montserrat-Medium',
-                fontSize: isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
+                fontSize: context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                 color: GPColors.secondaryColor,
               ),
             ),
           ),
-          SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),
+          SizedBox(width: context.isSmallScreen ? Insets.xs : Insets.s),
           const Padding(
             padding: EdgeInsets.only(top: Insets.s),
             child: GPTextBody(
@@ -160,11 +158,11 @@ class _DateTimePickerEditGroupDatesState
               fontSize: 24,
             ),
           ),
-          SizedBox(width: isSmallScreen ? Insets.xs : Insets.s),
+          SizedBox(width: context.isSmallScreen ? Insets.xs : Insets.s),
           SizedBox(
-            width: isVerySmallScreen
+            width: context.isVerySmallScreen
                 ? 130
-                : isSmallScreen
+                : context.isSmallScreen
                     ? 150
                     : 160,
             child: TextFormField(
@@ -191,7 +189,7 @@ class _DateTimePickerEditGroupDatesState
                 hintStyle: TextStyle(
                     fontFamily: 'Montserrat-Medium',
                     fontSize:
-                        isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
+                        context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                     color: GPColors.secondaryColor),
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
@@ -211,7 +209,7 @@ class _DateTimePickerEditGroupDatesState
               validator: endDateValidator,
               style: TextStyle(
                 fontFamily: 'Montserrat-Medium',
-                fontSize: isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
+                fontSize: context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
                 color: GPColors.secondaryColor,
               ),
             ),

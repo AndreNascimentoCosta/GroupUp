@@ -205,8 +205,6 @@ class CreateGroupProvider extends ChangeNotifier {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext newContext) {
-        final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
-        final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
         return AlertDialog(
           title: Text(
             appLocalizations.confirm,
@@ -241,9 +239,9 @@ class CreateGroupProvider extends ChangeNotifier {
               },
               color: GPColors.transparent,
               height: 40,
-              width: isVerySmallScreen
+              width: context.isVerySmallScreen
                   ? 100
-                  : isSmallScreen
+                  : context.isSmallScreen
                       ? 120
                       : 140,
             ),
@@ -341,9 +339,9 @@ class CreateGroupProvider extends ChangeNotifier {
             //     }
             //   },
             //   height: 40,
-            //   width: isVerySmallScreen
+            //   width: context.isVerySmallScreen
             //       ? 100
-            //       : isSmallScreen
+            //       : context.isSmallScreen
             //           ? 120
             //           : 140,
             // ),
@@ -359,9 +357,9 @@ class CreateGroupProvider extends ChangeNotifier {
                 await createGroup(user);
               },
               height: 40,
-              width: isVerySmallScreen
+              width: context.isVerySmallScreen
                   ? 100
-                  : isSmallScreen
+                  : context.isSmallScreen
                       ? 120
                       : 140,
             ),

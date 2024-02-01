@@ -54,10 +54,6 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
-    final isSmallScreen =
-        context.screenHeight < 800 || context.screenWidth < 350;
-    final isVerySmallScreen =
-        context.screenHeight < 600 || context.screenWidth < 350;
     return ButtonCommonStyle(
       onPressed: () {
         Provider.of<MixPanelProvider>(context, listen: false)
@@ -131,22 +127,22 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(
-                              isVerySmallScreen
+                              context.isVerySmallScreen
                                   ? Insets.l * 8
-                                  : isSmallScreen
+                                  : context.isSmallScreen
                                       ? Insets.l * 7
                                       : Insets.l * 6,
                             ),
                             child: Image.file(
                               image!,
-                              height: isVerySmallScreen
+                              height: context.isVerySmallScreen
                                   ? Insets.l * 8
-                                  : isSmallScreen
+                                  : context.isSmallScreen
                                       ? Insets.l * 7
                                       : Insets.l * 6,
-                              width: isVerySmallScreen
+                              width: context.isVerySmallScreen
                                   ? Insets.l * 8
-                                  : isSmallScreen
+                                  : context.isSmallScreen
                                       ? Insets.l * 7
                                       : Insets.l * 6,
                               fit: BoxFit.cover,
@@ -155,22 +151,22 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                           Visibility(
                             visible: storage.isLoading,
                             child: Container(
-                              height: isVerySmallScreen
+                              height: context.isVerySmallScreen
                                   ? Insets.l * 8
-                                  : isSmallScreen
+                                  : context.isSmallScreen
                                       ? Insets.l * 7
                                       : Insets.l * 6,
-                              width: isVerySmallScreen
+                              width: context.isVerySmallScreen
                                   ? Insets.l * 8
-                                  : isSmallScreen
+                                  : context.isSmallScreen
                                       ? Insets.l * 7
                                       : Insets.l * 6,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(
-                                    isVerySmallScreen
+                                    context.isVerySmallScreen
                                         ? Insets.l * 8
-                                        : isSmallScreen
+                                        : context.isSmallScreen
                                             ? Insets.l * 7
                                             : Insets.l * 6,
                                   ),
@@ -186,14 +182,14 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                     return GPIcon(
                       GPIcons.profilePictureAdd,
                       color: GPColors.white,
-                      height: isVerySmallScreen
+                      height: context.isVerySmallScreen
                           ? Insets.l * 1.5
-                          : isSmallScreen
+                          : context.isSmallScreen
                               ? Insets.l * 2
                               : Insets.l * 2.5,
-                      width: isVerySmallScreen
+                      width: context.isVerySmallScreen
                           ? Insets.l * 1.5
-                          : isSmallScreen
+                          : context.isSmallScreen
                               ? Insets.l * 1.75
                               : Insets.l * 2.5,
                     );
@@ -221,9 +217,9 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
               child: Icon(
                 Icons.add_rounded,
                 color: GPColors.white,
-                size: isVerySmallScreen
+                size: context.isVerySmallScreen
                     ? context.screenHeight * 0.025
-                    : isSmallScreen
+                    : context.isSmallScreen
                         ? context.screenHeight * 0.027
                         : context.screenHeight * 0.031,
               ),

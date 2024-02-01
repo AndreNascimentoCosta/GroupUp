@@ -52,8 +52,6 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   Widget build(BuildContext context) {
     final user = Provider.of<AuthProvider>(context).user;
     final appLocalizations = AppLocalizations.of(context)!;
-    final isSmallScreen =
-        context.screenHeight < 800 || context.screenWidth < 350;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Column(
@@ -133,24 +131,24 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     return GPIcon(
                       GPIcons.profilePictureAdd,
                       color: GPColors.white,
-                      height: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
-                      width: isSmallScreen ? Insets.l * 2 : Insets.l * 3,
+                      height: context.isSmallScreen ? Insets.l * 2 : Insets.l * 3,
+                      width: context.isSmallScreen ? Insets.l * 2 : Insets.l * 3,
                     );
                   },
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  top: isSmallScreen
+                  top: context.isSmallScreen
                       ? context.screenHeight * 0.085
                       : context.screenHeight * 0.085,
-                  left: isSmallScreen
+                  left: context.isSmallScreen
                       ? context.screenWidth * 0.15
                       : context.screenWidth * 0.175,
                 ),
                 child: Container(
-                  height: isSmallScreen ? 22.5 : 30,
-                  width: isSmallScreen ? 22.5 : 30,
+                  height: context.isSmallScreen ? 22.5 : 30,
+                  width: context.isSmallScreen ? 22.5 : 30,
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: GPColors.transparent,
@@ -160,12 +158,12 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     color: GPColors.primaryColor,
                   ),
                   child: SizedBox(
-                    height: isSmallScreen ? 22.5 : 30,
-                    width: isSmallScreen ? 22.5 : 30,
+                    height: context.isSmallScreen ? 22.5 : 30,
+                    width: context.isSmallScreen ? 22.5 : 30,
                     child: Icon(
                       Icons.edit_rounded,
                       color: GPColors.white,
-                      size: isSmallScreen ? 10 : 18,
+                      size: context.isSmallScreen ? 10 : 18,
                     ),
                   ),
                 ),
@@ -216,7 +214,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                   ),
                   const SizedBox(width: Insets.l * 2),
                   SizedBox(
-                    width: isSmallScreen
+                    width: context.isSmallScreen
                         ? context.screenWidth * 0.4
                         : context.screenWidth * 0.5,
                     child: GPTextBody(

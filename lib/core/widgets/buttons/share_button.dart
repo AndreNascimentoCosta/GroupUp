@@ -16,17 +16,15 @@ class ShareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSmallScreen = context.screenHeight < 800 || context.screenWidth < 350;
-    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
     return ButtonCommonStyle(
       onPressed: onPressed,
       child: Container(
-        height: isVerySmallScreen
+        height: context.isVerySmallScreen
             ? context.screenHeight * 0.09
-            : isSmallScreen
+            : context.isSmallScreen
                 ? context.screenHeight * 0.08
                 : context.screenHeight * 0.06,
-        width: isVerySmallScreen ? context.screenWidth * 0.45 : context.screenWidth * 0.4,
+        width: context.isVerySmallScreen ? context.screenWidth * 0.45 : context.screenWidth * 0.4,
         decoration: BoxDecoration(
           border: Border.all(color: GPColors.white),
           borderRadius: BorderRadius.circular(Insets.m),
@@ -45,7 +43,7 @@ class ShareButton extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: Insets.s),
               child: SizedBox(
-                width: isVerySmallScreen
+                width: context.isVerySmallScreen
                     ? context.screenWidth * 0.275
                     : context.screenWidth * 0.25,
                 child: GPTextBody(
