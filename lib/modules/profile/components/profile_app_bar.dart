@@ -7,13 +7,14 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/modules/profile/components/other_options.dart';
+import 'package:groupup/modules/profile/components/profile_events.dart';
+import 'package:groupup/modules/profile/components/profile_other_options.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarProfile({super.key});
+class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const ProfileAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +33,13 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
           alignment: Alignment.center,
           child: ButtonCommonStyle(
               onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Other Options Profile');
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName: ProfileEvents.pressOtherOptionsProfileButton.value,
+                );
                 gpModalBottomSheet(
                   context,
                   240,
-                  const OtherOptionsProfile(),
+                  const ProfileOtherOptions(),
                 );
               },
               child: const Padding(

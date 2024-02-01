@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/constants/url_launcher_constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/utils/url_launcher/gp_url_launcher.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/modules/profile/components/alert_dialog_delete.dart';
+import 'package:groupup/modules/profile/components/profile_events.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class OtherOptionsProfile extends StatelessWidget {
-  const OtherOptionsProfile({super.key});
+class ProfileOtherOptions extends StatelessWidget {
+  const ProfileOtherOptions({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +29,14 @@ class OtherOptionsProfile extends StatelessWidget {
         children: [
           ButtonCommonStyle(
             onPressed: () async {
-              Provider.of<MixPanelProvider>(context, listen: false)
-                  .logEvent(eventName: 'Report a Problem');
-              final Uri emailLaunchUri = Uri(
-                scheme: 'mailto',
-                path: 'groupupapp@outlook.com',
+              Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                eventName: ProfileEvents.reportProblem.value,
               );
-              launchUrl(emailLaunchUri);
+              gpUrlLauncher.launch(
+                uri: UrlLauncherConstants.emailAddress(
+                  subject: appLocalizations.reportProblem,
+                ),
+              );
             },
             child: GPTextBody(
               text: appLocalizations.reportProblem,
@@ -43,18 +47,14 @@ class OtherOptionsProfile extends StatelessWidget {
           const SizedBox(height: Insets.l * 1.5),
           ButtonCommonStyle(
             onPressed: () async {
-              Provider.of<MixPanelProvider>(context, listen: false)
-                  .logEvent(eventName: 'Privacy Policy');
+              Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                eventName: ProfileEvents.pressPrivacyPolicyButton.value,
+              );
               Navigator.pop(context);
-              final url = Uri.parse('http://groupup.rf.gd/privacy-policy.html');
-              if (await canLaunchUrl(url)) {
-                await launchUrl(
-                  url,
-                  mode: LaunchMode.inAppWebView,
-                );
-              } else {
-                throw 'Could not launch $url';
-              }
+              gpUrlLauncher.launch(
+                uri: UrlLauncherConstants.privacyPolicy,
+                mode: LaunchMode.inAppWebView,
+              );
             },
             child: GPTextBody(
               text: appLocalizations.privacyPolicy,
@@ -65,8 +65,9 @@ class OtherOptionsProfile extends StatelessWidget {
           const SizedBox(height: Insets.l * 1.5),
           ButtonCommonStyle(
             onPressed: () {
-              Provider.of<MixPanelProvider>(context, listen: false)
-                  .logEvent(eventName: 'Confirm Delete Account');
+              Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                eventName: ProfileEvents.confirmDeleteAccount.value,
+              );
               Navigator.pop(context);
               confirmDelete(context);
             },
@@ -80,8 +81,9 @@ class OtherOptionsProfile extends StatelessWidget {
           const SizedBox(height: Insets.l * 1.5),
           ButtonCommonStyle(
             onPressed: () {
-              Provider.of<MixPanelProvider>(context, listen: false)
-                  .logEvent(eventName: 'Logout');
+              Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                eventName: ProfileEvents.logout.value,
+              );
               Navigator.pop(context);
               authProvider.signOut(context);
             },

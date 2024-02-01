@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 
 class EditProfile extends StatelessWidget {
   const EditProfile({super.key});
@@ -20,9 +20,8 @@ class EditProfile extends StatelessWidget {
         borderRadius: BorderRadius.circular(kDefaultPadding * 0.25),
       ),
       alignment: Alignment.center,
-      child: GPTextBody(
+      child: GPTextHeader(
         text: AppLocalizations.of(context)!.editProfile,
-        fontFamily: 'Montserrat-Semibold',
         fontSize: 16,
       ),
     );

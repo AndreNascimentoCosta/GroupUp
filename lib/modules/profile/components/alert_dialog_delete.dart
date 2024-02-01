@@ -8,6 +8,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
+import 'package:groupup/modules/profile/components/profile_events.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -41,8 +42,9 @@ void confirmDelete(BuildContext context) {
             borderColor: GPColors.transparent,
             color: GPColors.transparent,
             onPressed: () => {
-              Provider.of<MixPanelProvider>(context, listen: false)
-                  .logEvent(eventName: 'Delete Account'),
+              Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                eventName: ProfileEvents.pressDeleteAccountButton.value,
+              ),
               authProvider.signOut(context),
               context.pop(),
             },
@@ -55,8 +57,9 @@ void confirmDelete(BuildContext context) {
             textColor: GPColors.white,
             borderColor: GPColors.red,
             onPressed: () {
-              Provider.of<MixPanelProvider>(context, listen: false)
-                  .logEvent(eventName: 'Cancel Delete Account');
+              Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                eventName: ProfileEvents.cancelDeleteAccount.value,
+              );
               context.pop();
             },
             color: GPColors.red,
