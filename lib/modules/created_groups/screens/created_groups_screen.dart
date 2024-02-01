@@ -11,11 +11,7 @@ class CreatedGroupsScreen extends StatelessWidget {
     return const Scaffold(
       backgroundColor: GPColors.white,
       appBar: AppBarCreatedGroups(),
-      body: Column(
-        children: [
-          BodyCreatedGroup(),
-        ],
-      ),
+      body: BodyCreatedGroup(),
     );
   }
 }

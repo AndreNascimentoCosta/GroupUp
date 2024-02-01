@@ -7,11 +7,11 @@ import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/modules/created_groups/components/dates.dart';
+import 'package:groupup/modules/created_groups/components/created_group_date_details.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class IndividualCreatedGroup extends StatelessWidget {
-  const IndividualCreatedGroup({
+class CreatedGroupCard extends StatelessWidget {
+  const CreatedGroupCard({
     required this.group,
   });
 
@@ -79,7 +79,7 @@ class IndividualCreatedGroup extends StatelessWidget {
             ),
           ),
           const SizedBox(width: Insets.s),
-          ShowDates(
+          CreatedGroupDateDetails(
             group: group,
           )
         ],

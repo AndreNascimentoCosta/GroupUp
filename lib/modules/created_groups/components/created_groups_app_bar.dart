@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
@@ -45,12 +46,8 @@ class AppBarCreatedGroups extends StatelessWidget
                 padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: ButtonCommonStyle(
                   onPressed: () {
-                    Navigator.pop(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const EditProfileScreen(),
-                        settings: const RouteSettings(name: 'Edit_Profile'),
-                      ),
+                    context.push(
+                      const EditProfileScreen(),
                     );
                   },
                   child: GestureDetector(

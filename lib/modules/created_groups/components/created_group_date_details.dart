@@ -5,8 +5,8 @@ import 'package:groupup/models/group_model.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ShowDates extends StatelessWidget {
-  const ShowDates({
+class CreatedGroupDateDetails extends StatelessWidget {
+  const CreatedGroupDateDetails({
     required this.group,
   });
 
