@@ -5,7 +5,7 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/models/switch.dart';
+import 'package:groupup/models/switch_model.dart';
 import 'package:groupup/modules/create_group/components/body_switch.dart';
 import 'package:groupup/modules/create_group/components/date_time_picker_create_group.dart';
 import 'package:groupup/modules/create_group/components/group_picture_add.dart';

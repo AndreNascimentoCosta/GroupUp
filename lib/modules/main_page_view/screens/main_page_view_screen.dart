@@ -5,7 +5,7 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/bottom_navigation_bar/gp_bottom_navigation_bar.dart';
 import 'package:groupup/modules/main_page_view/components/add_project.dart';
-import 'package:groupup/models/home_view.dart';
+import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/modules/main_page_view/components/add_username.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';

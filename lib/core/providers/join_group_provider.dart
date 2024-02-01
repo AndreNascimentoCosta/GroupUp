@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/models/participant.dart';
+import 'package:groupup/models/participant_model.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

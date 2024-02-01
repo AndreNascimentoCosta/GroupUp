@@ -11,7 +11,7 @@ import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/models/home_view.dart';
+import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/modules/groups/components/groups_events.dart';
 import 'package:groupup/modules/groups/components/stats_group_ongoing.dart';

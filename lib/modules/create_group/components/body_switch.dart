@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/models/switch.dart';
+import 'package:groupup/models/switch_model.dart';
 
 class BodySwitch extends StatefulWidget {
   const BodySwitch({required this.text, required this.switchType});

@@ -13,7 +13,7 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/models/user_input_data.dart';
+import 'package:groupup/models/user_input_data_model.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/modules/individual_group/components/calendar_add_input/add_input.dart';

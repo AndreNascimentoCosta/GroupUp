@@ -4,7 +4,7 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
-import 'package:groupup/models/home_view.dart';
+import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/modules/individual_group/components/dialog_deny_add_input.dart';
 import 'package:provider/provider.dart';

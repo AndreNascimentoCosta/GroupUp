@@ -12,7 +12,7 @@ import 'package:groupup/modules/individual_group/components/floating_buttons/edi
 import 'package:groupup/modules/individual_group/components/floating_buttons/instagrammable_button.dart';
 import 'package:groupup/modules/individual_group/components/group_ended_dialog.dart';
 import 'package:groupup/modules/individual_group/components/header.dart';
-import 'package:groupup/models/home_view.dart';
+import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/modules/individual_group/components/tiebreaker_dialog.dart';
 import 'package:provider/provider.dart';

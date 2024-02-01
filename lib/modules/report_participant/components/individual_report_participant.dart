@@ -12,7 +12,7 @@ import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/models/participant.dart';
+import 'package:groupup/models/participant_model.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

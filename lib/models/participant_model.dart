@@ -1,5 +1,5 @@
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/models/user_input_data.dart';
+import 'package:groupup/models/user_input_data_model.dart';
 
 class Participant {
   String name, profilePicture, uid;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/models/participant.dart';
+import 'package:groupup/models/participant_model.dart';
 import 'package:groupup/modules/individual_group/components/story_widget.dart';
 
-import '../../../models/user_input_data.dart';
+import '../../../models/user_input_data_model.dart';
 
 class StoryPage extends StatelessWidget {
   const StoryPage({

@@ -9,7 +9,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/group_model.dart';
-import 'package:groupup/models/user_data.dart';
+import 'package:groupup/models/user_data_model.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';

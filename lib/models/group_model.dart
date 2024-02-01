@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:groupup/models/participant.dart';
+import 'package:groupup/models/participant_model.dart';
 
 class GroupModel {
   String id;

@@ -15,7 +15,7 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/dropdown_model.dart';
-import 'package:groupup/models/participant.dart';
+import 'package:groupup/models/participant_model.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

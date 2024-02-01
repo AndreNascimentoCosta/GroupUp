@@ -5,7 +5,7 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
-import 'package:groupup/models/home_view.dart';
+import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/modules/individual_group/components/calendar_add_input/data_history.dart';
 import 'package:groupup/modules/individual_group/components/calendar_add_input/data_history_bottom_sheet.dart';
 import 'package:groupup/core/providers/auth_provider.dart';

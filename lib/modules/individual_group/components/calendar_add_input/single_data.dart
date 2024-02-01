@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/models/user_input_data.dart';
+import 'package:groupup/models/user_input_data_model.dart';
 import 'package:intl/intl.dart';
 
 class SingleData extends StatelessWidget {
