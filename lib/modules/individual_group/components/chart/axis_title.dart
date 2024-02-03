@@ -63,17 +63,7 @@ SideTitles leftTitles(
   return SideTitles(
     interval: value,
     showTitles: true,
-    reservedSize: greater < 1
-        ? 50
-        : greater < 5
-            ? 40
-            : greater > 999
-                ? 40
-                : greater > 9999
-                    ? 50
-                    : greater > 99999
-                        ? 80
-                        : 30,
+    reservedSize: getReservedSize(greater),
     getTitlesWidget: (value, meta) {
       return GPTextBody(
         text: greater < 1
@@ -86,6 +76,24 @@ SideTitles leftTitles(
       );
     },
   );
+}
+
+double getReservedSize(num greater) {
+  double reservedSize;
+  if (greater < 1) {
+    reservedSize = 50;
+  } else if (greater < 5) {
+    reservedSize = 40;
+  } else if (greater > 999) {
+    reservedSize = 40;
+  } else if (greater > 9999) {
+    reservedSize = 50;
+  } else if (greater > 99999) {
+    reservedSize = 80;
+  } else {
+    reservedSize = 30;
+  }
+  return reservedSize;
 }
 
 SideTitles leftTitlesInputDataNull(List<UserInputData> userData) {

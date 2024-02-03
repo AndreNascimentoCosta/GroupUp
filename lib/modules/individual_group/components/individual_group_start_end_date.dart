@@ -5,8 +5,8 @@ import 'package:groupup/models/group_model.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class StartEndDateButton extends StatelessWidget {
-  const StartEndDateButton({
+class IndividualGroupStartEndDate extends StatelessWidget {
+  const IndividualGroupStartEndDate({
     required this.groups,
   });
 

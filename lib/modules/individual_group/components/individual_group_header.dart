@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -9,15 +11,14 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/widgets/texts/gp_text_title.dart';
-import 'package:groupup/modules/individual_group/components/objective_reward.dart';
-import 'package:groupup/modules/individual_group/components/start_end_date.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
+import 'package:groupup/modules/individual_group/components/objective_reward_details.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_start_end_date.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../core/providers/mix_panel_provider.dart';
-
-class HeaderIndividualGroup extends StatelessWidget {
-  const HeaderIndividualGroup({super.key});
+class IndividualGroupHeader extends StatelessWidget {
+  const IndividualGroupHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                 SizedBox(width: context.screenWidth * 0.075),
                 ButtonCommonStyle(
                   onPressed: () {},
-                  child: const ObjectiveRewardModel(
+                  child: const ObjectiveRewardDetails(
                     icon: GPIcons.objective,
                     text: '',
                   ),
@@ -58,7 +59,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                   thickness: 1,
                   color: GPColors.secondaryColor,
                 ),
-                const ObjectiveRewardModel(
+                const ObjectiveRewardDetails(
                   icon: GPIcons.reward,
                   text: '',
                 ),
@@ -108,16 +109,16 @@ class HeaderIndividualGroup extends StatelessWidget {
                       context,
                       listen: false,
                     ).logEvent(
-                      eventName: 'Open Objective Dialog',
+                      eventName:
+                          IndividualGroupEvents.pressObjectiveDialog.value,
                     );
                     showCupertinoDialog(
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: GPTextBody(
+                          title: GPTextHeader(
                             text: appLocalizations.objective,
                             textAlign: TextAlign.center,
-                            fontFamily: 'Montserrat-SemiBold',
                             fontSize: 18,
                           ),
                           shape: RoundedRectangleBorder(
@@ -129,7 +130,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding,
                             ),
-                            child: GPTextTitle(
+                            child: GPTextBody(
                               text: group.objective,
                               maxLines: 4,
                               textAlign: TextAlign.center,
@@ -149,14 +150,13 @@ class HeaderIndividualGroup extends StatelessWidget {
                                     context,
                                     listen: false,
                                   ).logEvent(
-                                    eventName: 'Close Objective Dialog',
+                                    eventName: IndividualGroupEvents
+                                        .dismissObjectiveDialog.value,
                                   );
-                                  Navigator.pop(
-                                    context,
-                                  );
+                                  context.pop();
                                 },
-                                child: const GPTextTitle(
-                                  text: 'OK',
+                                child: GPTextBody(
+                                  text: appLocalizations.ok,
                                   color: GPColors.primaryColor,
                                 ),
                               ),
@@ -166,7 +166,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                       },
                     );
                   },
-                  child: ObjectiveRewardModel(
+                  child: ObjectiveRewardDetails(
                     icon: GPIcons.objective,
                     text: group.objective,
                   ),
@@ -188,7 +188,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                       context,
                       listen: false,
                     ).logEvent(
-                      eventName: 'Open Reward Dialog',
+                      eventName: IndividualGroupEvents.pressRewardDialog.value,
                     );
                     showCupertinoDialog(
                       context: context,
@@ -197,7 +197,6 @@ class HeaderIndividualGroup extends StatelessWidget {
                           title: GPTextHeader(
                             text: appLocalizations.reward,
                             textAlign: TextAlign.center,
-                            fontFamily: 'Montserrat-SemiBold',
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
@@ -228,12 +227,13 @@ class HeaderIndividualGroup extends StatelessWidget {
                                     context,
                                     listen: false,
                                   ).logEvent(
-                                    eventName: 'Close Reward Dialog',
+                                    eventName: IndividualGroupEvents
+                                        .dismissRewardDialog.value,
                                   );
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
-                                child: const GPTextBody(
-                                  text: 'OK',
+                                child: GPTextBody(
+                                  text: appLocalizations.ok,
                                   color: GPColors.primaryColor,
                                 ),
                               ),
@@ -243,7 +243,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                       },
                     );
                   },
-                  child: ObjectiveRewardModel(
+                  child: ObjectiveRewardDetails(
                     icon: GPIcons.reward,
                     text: group.reward,
                   ),
@@ -258,7 +258,7 @@ class HeaderIndividualGroup extends StatelessWidget {
                 thickness: 1,
                 color: GPColors.secondaryColor,
               ),
-              StartEndDateButton(
+              IndividualGroupStartEndDate(
                 groups: group,
               ),
               const SizedBox(

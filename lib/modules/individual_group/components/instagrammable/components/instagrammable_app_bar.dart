@@ -5,9 +5,10 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AppBarInstagrammable extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarInstagrammable({
+class InstagrammableAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const InstagrammableAppBar({
     super.key,
     this.isSharing = false,
   });
@@ -16,6 +17,7 @@ class AppBarInstagrammable extends StatelessWidget implements PreferredSizeWidge
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
     return SafeArea(
       child: Row(
         children: [
@@ -28,7 +30,7 @@ class AppBarInstagrammable extends StatelessWidget implements PreferredSizeWidge
                     : context.screenWidth,
                 height: 50,
                 alignment: AlignmentDirectional.center,
-                child: const GPTextHeader(text: 'GroupUp'),
+                child: GPTextHeader(text: appLocalizations.groupUp),
               ),
               Positioned(
                 right: isSharing ? kDefaultPadding * 2.5 : kDefaultPadding * 2,

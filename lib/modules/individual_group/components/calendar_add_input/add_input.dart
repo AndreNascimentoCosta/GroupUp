@@ -5,20 +5,19 @@ import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
+import 'package:groupup/modules/create_group/pages/first_page.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../../../core/providers/mix_panel_provider.dart';
-import '../../../create_group/pages/first_page.dart';
 
 class AddInput extends StatefulWidget {
   const AddInput({super.key});
@@ -37,7 +36,6 @@ class _AddInputState extends State<AddInput> {
       DateTime.now(),
     );
     Future pickImage(ImageSource source) async {
-      final navigatorState = context;
       final addInputProvider =
           Provider.of<AddInputProvider>(context, listen: false);
       try {
@@ -62,26 +60,30 @@ class _AddInputState extends State<AddInput> {
         if (addInputProvider.isClosed == true) {
           return;
         } else {
-          navigatorState.pop();
+          mounted ? context.pop() : null;
         }
       } on PlatformException catch (e) {
         if (e.message == 'The user did not allow photo access.') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(appLocalizations.allowPhotoAccess),
-              duration: const Duration(seconds: 2),
-            ),
-          );
+          mounted
+              ? ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(appLocalizations.allowPhotoAccess),
+                    duration: const Duration(seconds: 2),
+                  ),
+                )
+              : null;
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(appLocalizations.failedPickImage),
-              duration: const Duration(seconds: 2),
-            ),
-          );
+          mounted
+              ? ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(appLocalizations.failedPickImage),
+                    duration: const Duration(seconds: 2),
+                  ),
+                )
+              : null;
         }
         addInputProvider.isLoading = false;
-        context.pop();
+        mounted ? context.pop() : null;
         debugPrint('Failed to pick image: ${e.message}');
       }
     }
@@ -104,10 +106,10 @@ class _AddInputState extends State<AddInput> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: Insets.l),
-              GPTextHeader(
+              GPTextBody(
                 text: appLocalizations.data,
                 textAlign: TextAlign.center,
-                fontFamily: 'MontSerrat-Medium',
+                fontSize: 20,
               ),
               const SizedBox(height: Insets.l),
               Row(
@@ -148,21 +150,24 @@ class _AddInputState extends State<AddInput> {
                         errorBorder: InputBorder.none,
                         focusedErrorBorder: InputBorder.none,
                         hintText: appLocalizations.enterData,
-                        suffixIcon: addInputProvider
-                                .inputController.text.isEmpty
-                            ? null
-                            : IconButton(
-                                icon: const Icon(
-                                  Icons.close,
-                                  color: GPColors.black,
-                                ),
-                                onPressed: () {
-                                  Provider.of<MixPanelProvider>(context,
-                                          listen: false)
-                                      .logEvent(eventName: 'Clear input field');
-                                  addInputProvider.inputController.clear();
-                                },
-                              ),
+                        suffixIcon:
+                            addInputProvider.inputController.text.isEmpty
+                                ? null
+                                : IconButton(
+                                    icon: const Icon(
+                                      Icons.close,
+                                      color: GPColors.black,
+                                    ),
+                                    onPressed: () {
+                                      Provider.of<MixPanelProvider>(context,
+                                              listen: false)
+                                          .logEvent(
+                                        eventName: IndividualGroupEvents
+                                            .clearInputOfAddInput.value,
+                                      );
+                                      addInputProvider.inputController.clear();
+                                    },
+                                  ),
                         hintStyle: const TextStyle(
                           fontFamily: 'Montserrat-Regular',
                           fontSize: TextSize.lBody,
@@ -191,7 +196,9 @@ class _AddInputState extends State<AddInput> {
                 child: ButtonCommonStyle(
                   onPressed: () {
                     Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Add Media');
+                        .logEvent(
+                      eventName: IndividualGroupEvents.addMediaAddInput.value,
+                    );
                     try {
                       addInputProvider.confirm(context, () {
                         context.pop();
@@ -208,7 +215,7 @@ class _AddInputState extends State<AddInput> {
                   child: addInputProvider.isLoading
                       ? const GPLoading()
                       : GPTextBody(
-                          text: 'OK',
+                          text: appLocalizations.ok,
                           textAlign: TextAlign.center,
                           color:
                               addInputProvider.inputController.text.isEmpty ||

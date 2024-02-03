@@ -798,5 +798,13 @@
     "groupUp": "GroupUp",
     "@groupUp": {
         "description": "GroupUp"
+    },
+    "ok" : "OK",
+    "@ok": {
+        "description": "OK"
+    },
+    "first": "1º",
+    "@first": {
+        "description": "1º"
     }
 }

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
-import 'package:groupup/modules/individual_group/components/individual_card.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_card.dart';
 import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:provider/provider.dart';
 
-class BodyIndividualGroup extends StatelessWidget {
-  const BodyIndividualGroup({
+class IndividualGroupBody extends StatelessWidget {
+  const IndividualGroupBody({
     required this.homeViewModel,
   });
 

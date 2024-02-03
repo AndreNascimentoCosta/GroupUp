@@ -8,6 +8,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
 import 'package:provider/provider.dart';
 
 void denyAddInputDialog(BuildContext context, String bodyText) {
@@ -38,12 +39,13 @@ void denyAddInputDialog(BuildContext context, String bodyText) {
             width: double.infinity,
             child: ButtonCommonStyle(
               onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Add Input');
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName: IndividualGroupEvents.addInput.value,
+                );
                 context.pop();
               },
-              child: const GPTextBody(
-                text: 'OK',
+              child: GPTextBody(
+                text: appLocalizations.ok,
                 color: GPColors.primaryColor,
               ),
             ),

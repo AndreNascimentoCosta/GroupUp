@@ -6,7 +6,7 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
-import 'package:groupup/modules/individual_group/components/dialog_deny_add_input.dart';
+import 'package:groupup/modules/individual_group/components/deny_add_input_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

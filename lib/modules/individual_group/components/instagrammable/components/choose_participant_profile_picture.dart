@@ -9,11 +9,13 @@ import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/utils/images/gp_images.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/dropdown_model.dart';
 import 'package:groupup/models/participant_model.dart';
 import 'package:provider/provider.dart';
@@ -41,8 +43,6 @@ class _ChooseParticipantProfilePictureState
 
   @override
   Widget build(BuildContext context) {
-    const placholderImage =
-        'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-bcf2-89b5e5b93bad';
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context, listen: false);
     final appLocalizations = AppLocalizations.of(context)!;
@@ -57,7 +57,7 @@ class _ChooseParticipantProfilePictureState
           Provider.of<InstagrammableProvider>(context, listen: false)
               .setPicture(
                   widget.participant.profilePicture.isEmpty
-                      ? placholderImage
+                      ? GPImages.profilePicturePlaceHolder
                       : widget.participant.profilePicture,
                   widget.pictureType);
           context.pop();
@@ -103,10 +103,10 @@ class _ChooseParticipantProfilePictureState
                             padding: const EdgeInsets.only(
                               left: kDefaultPadding,
                             ),
-                            child: GPTextBody(
+                            child: GPTextHeader(
                               text: appLocalizations.me,
                               overflow: TextOverflow.ellipsis,
-                              fontFamily: 'Montserrat-SemiBold',
+                              fontSize: 14,
                             ),
                           )
                         : Padding(

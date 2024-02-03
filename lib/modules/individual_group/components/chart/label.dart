@@ -41,7 +41,11 @@ class ChartLabel extends StatelessWidget {
                       ),
                       GPTextBody(
                         text: participant.name.isNotEmpty
-                            ? "${participant.name.trim().split(RegExp(' +')).map((s) => s[0]).take(2).join(". ")}."
+                            ? "${participant.name.trim().split(
+                                  RegExp(' +'),
+                                ).map(
+                                  (s) => s[0],
+                                ).take(2).join(". ")}."
                             : '',
                         color: GPColors.primaryColor,
                       ),

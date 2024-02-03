@@ -6,11 +6,9 @@ import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
-import 'package:groupup/modules/individual_group/components/calendar_add_input/bottom_calendar.dart';
-import 'package:groupup/modules/individual_group/components/calendar_add_input/bottom_calendar_text_style.dart';
-import 'package:groupup/modules/individual_group/components/calendar_add_input/box_decoration.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/modules/individual_group/components/chart/comparative_chart.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -28,7 +26,8 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final user = Provider.of<AuthProvider>(context).user;
-    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 300;
+    final isVerySmallScreen =
+        context.screenHeight < 600 || context.screenWidth < 300;
     if (group == null) {
       return const GPLoading();
     }
@@ -144,8 +143,22 @@ class _CalendarState extends State<Calendar> {
                       const SizedBox(
                         height: Insets.s,
                       ),
-                      BottomCalendar(
-                        participant: participant,
+                      Container(
+                        padding: const EdgeInsets.only(right: kDefaultPadding),
+                        alignment: Alignment.bottomRight,
+                        height: 120,
+                        width: 400,
+                        color: GPColors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            top: kDefaultPadding,
+                            left: kDefaultPadding,
+                            right: kDefaultPadding / 2,
+                            bottom: kDefaultPadding / 2,
+                          ),
+                          child: ComparativeChart(
+                              userData1: participant.inputData),
+                        ),
                       ),
                     ],
                   ),
@@ -158,6 +171,29 @@ class _CalendarState extends State<Calendar> {
           ),
         ),
       ),
+    );
+  }
+
+  BoxDecoration boxDecoration() {
+    return BoxDecoration(
+      border: Border.all(color: GPColors.primaryColor),
+      borderRadius: BorderRadius.circular(Insets.xs),
+      color: GPColors.primaryColor,
+      boxShadow: const [
+        BoxShadow(
+          color: GPColors.secondaryColor,
+          spreadRadius: 1,
+          blurRadius: 2,
+        ),
+      ],
+    );
+  }
+
+  TextStyle bottomCalendarTextStyle(BuildContext context) {
+    return TextStyle(
+      fontFamily: 'Montserrat-Medium',
+      fontSize: context.isVerySmallScreen ? 14 : 16,
+      color: const Color(0xFF7A7A7A),
     );
   }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_navigator_extension.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/modules/individual_group/components/instagrammable/components/body_instagrammable.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
+import 'package:groupup/modules/individual_group/components/instagrammable/components/instagrammable_body.dart';
 import 'package:groupup/modules/individual_group/components/instagrammable/components/share_instagrammable_button.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../core/providers/mix_panel_provider.dart';
 
 class InstagrammableScreen extends StatefulWidget {
   const InstagrammableScreen({super.key});
@@ -20,7 +20,7 @@ class _InstagrammableScreenState extends State<InstagrammableScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: GPColors.white,
-      body: const BodyInstagrammable(),
+      body: const InstagrammableBody(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -39,7 +39,10 @@ class _InstagrammableScreenState extends State<InstagrammableScreen> {
                       heroTag: 'btn11',
                       onPressed: () async {
                         Provider.of<MixPanelProvider>(context, listen: false)
-                            .logEvent(eventName: 'Close Instagrammable');
+                            .logEvent(
+                          eventName:
+                              IndividualGroupEvents.dismissInstagrammable.value,
+                        );
                         context.pop();
                       },
                       backgroundColor: GPColors.primaryColor,

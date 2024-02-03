@@ -8,12 +8,12 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 tiebreakerDialog(BuildContext context) async {
-  const keyIsFirstOpened = 'is_first_opened';
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool? isFirstLoaded = prefs.getBool(keyIsFirstOpened);
   final appLocalizations = AppLocalizations.of(context)!;
@@ -45,12 +45,15 @@ tiebreakerDialog(BuildContext context) async {
               child: ButtonCommonStyle(
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
-                      .logEvent(eventName: 'Tie Breaker OK');
+                      .logEvent(
+                    eventName:
+                        IndividualGroupEvents.pressOkTieBreakerDialog.value,
+                  );
                   context.pop();
                   prefs.setBool(keyIsFirstOpened, false);
                 },
-                child: const GPTextBody(
-                  text: 'OK',
+                child: GPTextBody(
+                  text: appLocalizations.ok,
                   color: GPColors.primaryColor,
                 ),
               ),

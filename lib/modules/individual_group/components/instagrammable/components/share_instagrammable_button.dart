@@ -8,7 +8,8 @@ import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
-import 'package:groupup/modules/individual_group/components/instagrammable/components/body_instagrammable.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
+import 'package:groupup/modules/individual_group/components/instagrammable/components/instagrammable_body.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -18,8 +19,9 @@ class ShareInstagrammableButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isAndroidScreen =
-        context.screenHeight > 820 && context.screenHeight < 821 && context.screenWidth < 412;
+    final isAndroidScreen = context.screenHeight > 820 &&
+        context.screenHeight < 821 &&
+        context.screenWidth < 412;
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
     if (individualGroupProvider.group == null) {
@@ -32,8 +34,9 @@ class ShareInstagrammableButton extends StatelessWidget {
         child: FloatingActionButton(
           heroTag: 'btn10',
           onPressed: () async {
-            Provider.of<MixPanelProvider>(context, listen: false)
-                .logEvent(eventName: 'Share Instagrammable');
+            Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+              eventName: IndividualGroupEvents.shareInstagrammable.value,
+            );
             final screenshotController =
                 Provider.of<InstagrammableProvider>(context, listen: false)
                     .screenshotController;
@@ -54,7 +57,7 @@ class ShareInstagrammableButton extends StatelessWidget {
                     ),
                   ),
                 ],
-                child: const BodyInstagrammable(
+                child: const InstagrammableBody(
                   isSharing: true,
                 ),
               ),

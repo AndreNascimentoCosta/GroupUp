@@ -4,8 +4,8 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 
-class ObjectiveRewardModel extends StatelessWidget {
-  const ObjectiveRewardModel({
+class ObjectiveRewardDetails extends StatelessWidget {
+  const ObjectiveRewardDetails({
     required this.icon,
     required this.text,
   });

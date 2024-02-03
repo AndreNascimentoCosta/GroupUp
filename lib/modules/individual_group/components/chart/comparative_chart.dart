@@ -28,9 +28,15 @@ class ComparativeChart extends StatelessWidget {
         .firstWhere((element) => element.uid == currentUserId);
     final greater = max(
       currentUserData.inputData.isNotEmpty
-          ? currentUserData.inputData.map((e) => e.value).reduce(max)
+          ? currentUserData.inputData.map((e) => e.value).reduce(
+                max,
+              )
           : 0,
-      userData1.isNotEmpty ? userData1.map((e) => e.value).reduce(max) : 0,
+      userData1.isNotEmpty
+          ? userData1.map((e) => e.value).reduce(
+                max,
+              )
+          : 0,
     );
     if (currentUserData.inputData.isEmpty) {
       return LineChart(
@@ -39,11 +45,18 @@ class ComparativeChart extends StatelessWidget {
           maxX: 6,
           minY: 0,
           maxY: userData1.isNotEmpty
-              ? userData1
-                  .map((e) => e.value)
-                  .reduce((value, element) => value > element ? value : element)
+              ? userData1.map((e) => e.value).reduce(
+                    (
+                      value,
+                      element,
+                    ) =>
+                        value > element ? value : element,
+                  )
               : 5,
-          titlesData: LineTitles.getTitleData(currentUserData, userData1),
+          titlesData: LineTitles.getTitleData(
+            currentUserData,
+            userData1,
+          ),
           borderData: FlBorderData(
             border: const Border(
               bottom: BorderSide(
@@ -83,8 +96,8 @@ class ComparativeChart extends StatelessWidget {
                 7,
                 (index) {
                   final dateTimeResult = DateTime.now().subtract(
-                        Duration(days: 6 - index),
-                      );
+                    Duration(days: 6 - index),
+                  );
                   final userInputData = userData1.firstWhere(
                     (element) => element.date.day == dateTimeResult.day,
                     orElse: () {
@@ -124,7 +137,12 @@ class ComparativeChart extends StatelessWidget {
             drawVerticalLine: false,
             horizontalInterval: userData1.isNotEmpty
                 ? userData1.map((e) => e.value).reduce(
-                        (value, element) => value > element ? value : element) /
+                          (
+                            value,
+                            element,
+                          ) =>
+                              value > element ? value : element,
+                        ) /
                     5
                 : 1,
           ),
@@ -159,8 +177,8 @@ class ComparativeChart extends StatelessWidget {
                 7,
                 (index) {
                   final dateTimeResult = DateTime.now().subtract(
-                        Duration(days: 6 - index),
-                      );
+                    Duration(days: 6 - index),
+                  );
                   final currentUserInputData =
                       currentUserData.inputData.firstWhere(
                     (element) => element.date.day == dateTimeResult.day,
@@ -194,8 +212,8 @@ class ComparativeChart extends StatelessWidget {
                 7,
                 (index) {
                   final dateTimeResult = DateTime.now().subtract(
-                        Duration(days: 6 - index),
-                      );
+                    Duration(days: 6 - index),
+                  );
                   final userInputData = userData1.firstWhere(
                     (element) => element.date.day == dateTimeResult.day,
                     orElse: () {

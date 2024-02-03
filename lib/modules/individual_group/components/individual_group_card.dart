@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
@@ -16,15 +17,13 @@ import 'package:groupup/models/dropdown_model.dart';
 import 'package:groupup/models/participant_model.dart';
 import 'package:groupup/modules/individual_group/components/chart/comparative_chart.dart';
 import 'package:groupup/modules/individual_group/components/chart/label.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
 import 'package:groupup/modules/individual_group/components/individual_value.dart';
 import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/modules/individual_group/components/story_page.dart';
+import 'package:groupup/modules/individual_group/components/story_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../../core/providers/auth_provider.dart';
-import '../../../core/providers/mix_panel_provider.dart';
 
 class IndividualGroupCard extends StatefulWidget {
   const IndividualGroupCard({
@@ -87,16 +86,27 @@ class _IndividualGroupCardState extends State<IndividualGroupCard> {
                     ),
                     ButtonCommonStyle(
                       onPressed: () {
-                        Provider.of<MixPanelProvider>(
-                          context,
-                          listen: false,
-                        ).logEvent(
-                          eventName: 'Individual Group - Profile Picture',
-                        );
                         if (widget.participant.hasStory) {
+                          Provider.of<MixPanelProvider>(
+                            context,
+                            listen: false,
+                          ).logEvent(
+                            eventName: IndividualGroupEvents
+                                .pressParticipantStory.value,
+                          );
                           context.pushCupertino(
-                            StoryPage(
-                              inputDatas: widget.participant.inputData,
+                            StoryWidget(
+                              inputDatas: widget.participant.inputData
+                                  .where(
+                                    (element) =>
+                                        element.image != null &&
+                                        (element.date).isAfter(
+                                          DateTime.now().subtract(
+                                            const Duration(days: 1),
+                                          ),
+                                        ),
+                                  )
+                                  .toList(),
                               participant: widget.participant,
                             ),
                           );

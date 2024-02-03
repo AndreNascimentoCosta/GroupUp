@@ -4,17 +4,18 @@ import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/utils/images/gp_images.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/participant_model.dart';
 import 'package:groupup/models/user_input_data_model.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
 import 'package:provider/provider.dart';
 import 'package:story/story.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../../core/providers/mix_panel_provider.dart';
 
 class StoryWidget extends StatelessWidget {
   const StoryWidget({
@@ -29,8 +30,6 @@ class StoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final currentUser = Provider.of<AuthProvider>(context).user;
     final appLocalizations = AppLocalizations.of(context)!;
-    const placeholderProfilePicture =
-        'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/picture.png?alt=media&token=7707d961-1680-4575-9b0e-8c8c0c8c0c8c';
     if (currentUser == null) {
       return const SizedBox();
     }
@@ -102,7 +101,7 @@ class StoryWidget extends StatelessWidget {
                             decoration: const BoxDecoration(
                               image: DecorationImage(
                                 image: CachedNetworkImageProvider(
-                                  placeholderProfilePicture,
+                                  GPImages.profilePicturePlaceHolder,
                                 ),
                                 fit: BoxFit.cover,
                               ),
@@ -187,7 +186,10 @@ class StoryWidget extends StatelessWidget {
                       highlightElevation: 0,
                       onPressed: () {
                         Provider.of<MixPanelProvider>(context, listen: false)
-                            .logEvent(eventName: 'Data invalidated');
+                            .logEvent(
+                          eventName:
+                              IndividualGroupEvents.dataInvalidated.value,
+                        );
                         Provider.of<AddInputProvider>(
                           context,
                           listen: false,
@@ -265,7 +267,9 @@ class StoryWidget extends StatelessWidget {
                       highlightElevation: 0,
                       onPressed: () {
                         Provider.of<MixPanelProvider>(context, listen: false)
-                            .logEvent(eventName: 'Data validated');
+                            .logEvent(
+                          eventName: IndividualGroupEvents.dataValidated.value,
+                        );
                         Provider.of<AddInputProvider>(
                           context,
                           listen: false,

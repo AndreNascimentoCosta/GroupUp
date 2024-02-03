@@ -8,6 +8,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/dropdown_model.dart';
 import 'package:groupup/models/participant_model.dart';
 import 'package:provider/provider.dart';
@@ -49,16 +50,12 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
               ),
               child: SizedBox(
                 width: 25,
-                child: Text(
-                  widget.participant
+                child: GPTextHeader(
+                  text: widget.participant
                       .rank(individualGroupProvider.group)
                       .toString(),
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontFamily: 'Montserrat-SemiBold',
-                    color: GPColors.black,
-                  ),
+                  fontSize: 14,
                 ),
               ),
             ),
@@ -95,43 +92,31 @@ class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
                         padding: const EdgeInsets.only(
                           left: kDefaultPadding,
                         ),
-                        child: Text(
-                          appLocalizations.me,
+                        child: GPTextHeader(
+                          text: appLocalizations.me,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'Montserrat-SemiBold',
-                            color: GPColors.black,
-                          ),
+                          fontSize: 14,
                         ),
                       )
                     : Padding(
                         padding: const EdgeInsets.only(
                           left: kDefaultPadding,
                         ),
-                        child: Text(
-                          Characters(widget.participant.name)
+                        child: GPTextHeader(
+                          text: Characters(widget.participant.name)
                               .replaceAll(
                                 Characters(''),
                                 Characters('\u{200B}'),
                               )
                               .toString(),
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'Montserrat-SemiBold',
-                            color: GPColors.black,
-                          ),
+                          fontSize: 14,
                         ),
                       )
-                : const Text(
-                    '',
+                : const GPTextHeader(
+                    text: '',
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Montserrat-SemiBold',
-                      color: GPColors.black,
-                    ),
+                    fontSize: 14,
                   ),
           ],
         ),

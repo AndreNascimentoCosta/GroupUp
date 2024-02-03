@@ -186,5 +186,7 @@
     "winRewardOnboarding": "Ganhe a recompensa",
     "winRewardOnboardingText": "O participante com o maior valor ao final do desafio será o vencedor e receberá a recompensa",
     "skip": "Pular",
-    "groupUp": "GroupUp"
+    "groupUp": "GroupUp",
+    "ok": "OK",
+    "first": "1º"
 }
