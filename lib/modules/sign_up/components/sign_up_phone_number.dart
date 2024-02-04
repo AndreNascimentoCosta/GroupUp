@@ -10,16 +10,16 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class PhoneNumberSignUp extends StatefulWidget {
-  const PhoneNumberSignUp({required this.controller});
+class SignUpPhoneNumber extends StatefulWidget {
+  const SignUpPhoneNumber({required this.controller});
 
   final PageController controller;
 
   @override
-  State<PhoneNumberSignUp> createState() => _PhoneNumberSignUpState();
+  State<SignUpPhoneNumber> createState() => _SignUpPhoneNumberState();
 }
 
-class _PhoneNumberSignUpState extends State<PhoneNumberSignUp> {
+class _SignUpPhoneNumberState extends State<SignUpPhoneNumber> {
   @override
   Widget build(BuildContext context) {
     final nodePhone = FocusNode();

@@ -5,8 +5,8 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 
-class OTPField extends StatelessWidget {
-  const OTPField({
+class SignUpOTPField extends StatelessWidget {
+  const SignUpOTPField({
     required this.controller,
   });
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/modules/sign_up/components/title_sign_up_phone.dart';
-import 'package:groupup/modules/sign_up/components/phone_number_sign_up.dart';
-import 'package:groupup/modules/sign_up/components/code_verification_sign_up.dart';
+import 'package:groupup/modules/sign_up/components/sign_up_phone_number.dart';
+import 'package:groupup/modules/sign_up/components/sign_up_code_verification.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:provider/provider.dart';
 
@@ -24,17 +24,17 @@ class _SignUpPhonePageViewScreenState extends State<SignUpPhonePageViewScreen> {
     return SafeArea(
       child: Column(
         children: [
-          const TitleSignUpPhone(),
+          const SignUpTitle(),
           Expanded(
             child: PageView(
               controller: phoneProvider.controller,
               onPageChanged: phoneProvider.updateIndex,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                PhoneNumberSignUp(
+                SignUpPhoneNumber(
                   controller: phoneProvider.controller,
                 ),
-                CodeVerificationSignUp(
+                SignUpCodeVerification(
                   controller: phoneProvider.controller,
                 ),
               ],

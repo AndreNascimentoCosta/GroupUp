@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/modules/sign_up/components/otp_field.dart';
+import 'package:groupup/modules/sign_up/components/sign_up_events.dart';
+import 'package:groupup/modules/sign_up/components/sign_up_otp_field.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../core/providers/mix_panel_provider.dart';
-
-class CodeVerificationSignUp extends StatefulWidget {
-  const CodeVerificationSignUp({
+class SignUpCodeVerification extends StatefulWidget {
+  const SignUpCodeVerification({
     required this.controller,
   });
 
   final PageController controller;
 
   @override
-  State<CodeVerificationSignUp> createState() => _CodeVerificationSignUpState();
+  State<SignUpCodeVerification> createState() => _SignUpCodeVerificationState();
 }
 
-class _CodeVerificationSignUpState extends State<CodeVerificationSignUp> {
+class _SignUpCodeVerificationState extends State<SignUpCodeVerification> {
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
     final phoneProvider = Provider.of<PhoneAuthenProvider>(
       context,
     );
@@ -52,9 +53,7 @@ class _CodeVerificationSignUpState extends State<CodeVerificationSignUp> {
                 height: Insets.l * 2,
               ),
               GPTextBody(
-                text: AppLocalizations.of(
-                  context,
-                )!.codeSent(
+                text: appLocalizations.codeSent(
                   phoneControllerText,
                 ),
                 color: GPColors.secondaryColor,
@@ -62,7 +61,7 @@ class _CodeVerificationSignUpState extends State<CodeVerificationSignUp> {
               const SizedBox(
                 height: Insets.l * 2,
               ),
-              OTPField(
+              SignUpOTPField(
                 controller: phoneProvider.otpCode1,
               ),
               const SizedBox(
@@ -72,9 +71,7 @@ class _CodeVerificationSignUpState extends State<CodeVerificationSignUp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GPTextBody(
-                    text: AppLocalizations.of(
-                      context,
-                    )!.codeNotReceived,
+                    text: appLocalizations.codeNotReceived,
                     color: GPColors.secondaryColor,
                   ),
                   const SizedBox(
@@ -89,7 +86,7 @@ class _CodeVerificationSignUpState extends State<CodeVerificationSignUp> {
                           context,
                           listen: false,
                         ).logEvent(
-                          eventName: 'Request Code Again',
+                          eventName: SignUpEvents.pressRequestCodeAgain.value,
                         );
                         phoneProvider.startTimer();
                         authProvider.phoneLogin(
@@ -99,14 +96,10 @@ class _CodeVerificationSignUpState extends State<CodeVerificationSignUp> {
                     },
                     child: GPTextBody(
                       text: phoneProvider.start != 0
-                          ? AppLocalizations.of(
-                              context,
-                            )!.waitingRequestAgain(
+                          ? appLocalizations.waitingRequestAgain(
                               phoneProvider.start,
                             )
-                          : AppLocalizations.of(
-                              context,
-                            )!.requestAgain,
+                          : appLocalizations.requestAgain,
                       fontFamily: 'Montserrat-SemiBold',
                       color: phoneProvider.start != 0
                           ? GPColors.secondaryColor
