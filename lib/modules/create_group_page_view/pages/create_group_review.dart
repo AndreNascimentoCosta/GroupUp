@@ -8,16 +8,16 @@ import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ReviewCreateGroup extends StatefulWidget {
-  const ReviewCreateGroup({required this.controller});
+class CreateGroupReview extends StatefulWidget {
+  const CreateGroupReview({required this.controller});
 
   final PageController controller;
 
   @override
-  State<ReviewCreateGroup> createState() => _ReviewCreateGroupJoinState();
+  State<CreateGroupReview> createState() => _CreateGroupReviewJoinState();
 }
 
-class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
+class _CreateGroupReviewJoinState extends State<CreateGroupReview> {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
@@ -36,8 +36,8 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
             child: Column(
               children: [
                 SizedBox(height: context.screenHeight * 0.04),
-                const GPTextHeader(
-                  text: 'Review group info',
+                GPTextHeader(
+                  text: appLocalizations.reviewGroupInfo,
                 ),
                 const SizedBox(height: kDefaultPadding),
                 Row(
@@ -76,13 +76,13 @@ class _ReviewCreateGroupJoinState extends State<ReviewCreateGroup> {
                 Row(
                   children: [
                     GPTextBody(
-                      text: '${appLocalizations.reward}:', //groupFee
+                      text: '${appLocalizations.reward}:',
                     ),
                     const SizedBox(width: kDefaultPadding / 2),
                     Expanded(
                       child: GPTextBody(
                         text: createGroupProvider.controllerReward
-                            .text, //'${NumberFormat.simpleCurrency(name: createGroupProvider.groupCurrencyCode).currencySymbol} ${createGroupProvider.controllerReward.text}'
+                            .text,
                         maxLines: 2,
                         color: GPColors.secondaryColor,
                       ),

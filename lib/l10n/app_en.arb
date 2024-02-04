@@ -806,5 +806,9 @@
     "first": "1º",
     "@first": {
         "description": "1º"
+    },
+    "reviewGroupInfo": "Review group info",
+    "@reviewGroupInfo": {
+        "description": "Review group info"
     }
 }

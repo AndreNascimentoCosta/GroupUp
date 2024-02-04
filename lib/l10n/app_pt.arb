@@ -188,5 +188,6 @@
     "skip": "Pular",
     "groupUp": "GroupUp",
     "ok": "OK",
-    "first": "1º"
+    "first": "1º",
+    "reviewGroupInfo": "Revise as info do grupo"
 }

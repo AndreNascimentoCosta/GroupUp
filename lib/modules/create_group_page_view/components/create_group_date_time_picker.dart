@@ -11,17 +11,17 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class DateTimePickerCreateGroup extends StatefulWidget {
-  const DateTimePickerCreateGroup({required this.onChanged});
+class CreateGroupDateTimePicker extends StatefulWidget {
+  const CreateGroupDateTimePicker({required this.onChanged});
 
   final void Function(DateTime?, DateTime?) onChanged;
 
   @override
-  State<DateTimePickerCreateGroup> createState() =>
-      _DateTimePickerCreateGroupState();
+  State<CreateGroupDateTimePicker> createState() =>
+      _CreateGroupDateTimePickerState();
 }
 
-class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
+class _CreateGroupDateTimePickerState extends State<CreateGroupDateTimePicker> {
   DateTime? startDate, endDate;
 
   String _displayText(DateTime? date) {
@@ -33,7 +33,7 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
     }
   }
 
-  Future<DateTime?> pickDate() async {
+  Future<DateTime?> _pickDate() async {
     return await showDatePicker(
       context: context,
       builder: (context, child) {
@@ -61,12 +61,12 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
     );
   }
 
-  String? startDateValidator(value) {
+  String? _startDateValidator(value) {
     if (startDate == null) return AppLocalizations.of(context)!.selectDate;
     return null;
   }
 
-  String? endDateValidator(value) {
+  String? _endDateValidator(value) {
     final appLocalizations = AppLocalizations.of(context)!;
     if (startDate != null && endDate == null) {
       return appLocalizations.selectBothDates;
@@ -116,26 +116,30 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
                     ? appLocalizations.startDate
                     : _displayText(startDate),
                 hintStyle: TextStyle(
-                    fontFamily: 'Montserrat-Medium',
-                    fontSize:
-                        context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
-                    color: GPColors.secondaryColor),
+                  fontFamily: 'Montserrat-Medium',
+                  fontSize: context.isVerySmallScreen
+                      ? TextSize.xsBody
+                      : TextSize.mBody,
+                  color: GPColors.secondaryColor,
+                ),
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: kDefaultPadding / 2,
                 ),
               ),
               onTap: () async {
-                startDate = await pickDate();
+                startDate = await _pickDate();
                 widget.onChanged(startDate, endDate);
                 createGroupProvider.controllerStartDate.text =
                     _displayText(startDate);
                 setState(() {});
               },
               readOnly: true,
-              validator: startDateValidator,
+              validator: _startDateValidator,
               style: TextStyle(
                 fontFamily: 'Montserrat-Medium',
-                fontSize: context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
+                fontSize: context.isVerySmallScreen
+                    ? TextSize.xsBody
+                    : TextSize.mBody,
                 color: GPColors.secondaryColor,
               ),
             ),
@@ -176,15 +180,17 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
                     ? appLocalizations.endDate
                     : _displayText(endDate),
                 hintStyle: TextStyle(
-                    fontFamily: 'Montserrat-Medium',
-                    fontSize:
-                        context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
-                    color: GPColors.secondaryColor),
+                  fontFamily: 'Montserrat-Medium',
+                  fontSize: context.isVerySmallScreen
+                      ? TextSize.xsBody
+                      : TextSize.mBody,
+                  color: GPColors.secondaryColor,
+                ),
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
               ),
               onTap: () async {
-                endDate = await pickDate();
+                endDate = await _pickDate();
                 widget.onChanged(startDate, endDate);
                 createGroupProvider.controllerEndDate.text = _displayText(
                   endDate,
@@ -192,10 +198,12 @@ class _DateTimePickerCreateGroupState extends State<DateTimePickerCreateGroup> {
                 setState(() {});
               },
               readOnly: true,
-              validator: endDateValidator,
+              validator: _endDateValidator,
               style: TextStyle(
                 fontFamily: 'Montserrat-Medium',
-                fontSize: context.isVerySmallScreen ? TextSize.xsBody : TextSize.mBody,
+                fontSize: context.isVerySmallScreen
+                    ? TextSize.xsBody
+                    : TextSize.mBody,
                 color: GPColors.secondaryColor,
               ),
             ),

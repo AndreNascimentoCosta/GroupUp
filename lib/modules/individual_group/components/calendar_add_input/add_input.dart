@@ -12,7 +12,7 @@ import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
-import 'package:groupup/modules/create_group/pages/first_page.dart';
+import 'package:groupup/modules/create_group_page_view/pages/create_group_first_page.dart';
 import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';

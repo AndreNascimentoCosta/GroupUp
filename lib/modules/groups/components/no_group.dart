@@ -12,7 +12,7 @@ import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/modules/groups/components/groups_events.dart';
 import 'package:groupup/modules/groups/components/stats_no_group.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
-import 'package:groupup/modules/create_group/create_page_view.dart';
+import 'package:groupup/modules/create_group_page_view/screens/create_group_page_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -40,7 +40,7 @@ class NoGroup extends StatelessWidget {
                   gpModalBottomSheet(
                     context,
                     context.screenHeight * 0.7,
-                    const CreatePageView(),
+                    const CreateGroupPageView(),
                   );
                 },
                 child: Row(

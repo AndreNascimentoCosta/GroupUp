@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
@@ -9,14 +10,13 @@ import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
+import 'package:groupup/modules/create_group_page_view/components/create_group_events.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../core/providers/mix_panel_provider.dart';
-
-class ThirdPageCreate extends StatelessWidget {
-  const ThirdPageCreate({super.key});
+class CreateGroupThirdPage extends StatelessWidget {
+  const CreateGroupThirdPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,9 @@ class ThirdPageCreate extends StatelessWidget {
                 text: createGroupProvider.newGroup.groupCode,
                 onPressed: () async {
                   Provider.of<MixPanelProvider>(context, listen: false)
-                      .logEvent(eventName: 'Share Group Code');
+                      .logEvent(
+                    eventName: CreateGroupEvents.shareGroupCode.value,
+                  );
                   await Share.share(
                     appLocalizations.shareGroupCodeText(
                       createGroupProvider.newGroup.projectName,

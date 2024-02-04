@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
@@ -9,29 +10,27 @@ import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/page_indicator/gp_page_indicator.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/modules/create_group/pages/first_page.dart';
-import 'package:groupup/modules/create_group/pages/review_create_group.dart';
-import 'package:groupup/modules/create_group/pages/second_page.dart';
-import 'package:groupup/modules/create_group/pages/third_page.dart';
+import 'package:groupup/modules/create_group_page_view/components/create_group_events.dart';
+import 'package:groupup/modules/create_group_page_view/pages/create_group_first_page.dart';
+import 'package:groupup/modules/create_group_page_view/pages/create_group_review.dart';
+import 'package:groupup/modules/create_group_page_view/pages/create_group_second_page.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/modules/create_group_page_view/pages/create_group_third_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../core/providers/mix_panel_provider.dart';
-
-class CreatePageView extends StatefulWidget {
-  const CreatePageView({super.key});
+class CreateGroupPageView extends StatefulWidget {
+  const CreateGroupPageView({super.key});
 
   @override
-  State<CreatePageView> createState() => _CreatePageViewState();
+  State<CreateGroupPageView> createState() => _CreateGroupPageViewState();
 }
 
-class _CreatePageViewState extends State<CreatePageView> {
+class _CreateGroupPageViewState extends State<CreateGroupPageView> {
   @override
   Widget build(BuildContext context) {
     final createGroupProvider = Provider.of<CreateGroupProvider>(context);
-    final isVerySmallScreen = context.screenHeight < 600 || context.screenWidth < 350;
     return SafeArea(
       child: Column(
         children: [
@@ -51,10 +50,13 @@ class _CreatePageViewState extends State<CreatePageView> {
                               Provider.of<MixPanelProvider>(context,
                                       listen: false)
                                   .logEvent(
-                                      eventName: 'Back Button Create Group');
+                                eventName: CreateGroupEvents
+                                    .pressBackButtonCreateGroup.value,
+                              );
                               createGroupProvider.controller.previousPage(
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.ease);
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.ease,
+                              );
                             },
                             child: const SizedBox(
                               height: Insets.xl,
@@ -70,11 +72,12 @@ class _CreatePageViewState extends State<CreatePageView> {
                 ),
                 GPTextHeader(
                   text: AppLocalizations.of(context)!.createGroup,
-                  fontFamily: 'Montserrat-SemiBold',
-                  fontSize: isVerySmallScreen ? 24 : 28,
+                  fontSize: context.isVerySmallScreen ? 24 : 28,
                 ),
-                if (Provider.of<CreateGroupProvider>(context, listen: false)
-                        .pageIndex ==
+                if (Provider.of<CreateGroupProvider>(
+                      context,
+                      listen: false,
+                    ).pageIndex ==
                     3)
                   const SizedBox()
                 else
@@ -101,10 +104,10 @@ class _CreatePageViewState extends State<CreatePageView> {
               controller: createGroupProvider.controller,
               onPageChanged: createGroupProvider.updateIndex,
               children: [
-                FirsPageCreate(controller: createGroupProvider.controller),
-                SecondPageCreate(controller: createGroupProvider.controller),
-                ReviewCreateGroup(controller: createGroupProvider.controller),
-                const ThirdPageCreate(),
+                CreateGroupFirsPage(controller: createGroupProvider.controller),
+                CreateGroupSecondPage(controller: createGroupProvider.controller),
+                CreateGroupReview(controller: createGroupProvider.controller),
+                const CreateGroupThirdPage(),
               ],
             ),
           ),
@@ -114,7 +117,9 @@ class _CreatePageViewState extends State<CreatePageView> {
               : createGroupProvider.isCreatingGroup
                   ? const SizedBox()
                   : GPButton(
-                      onPressed: createGroupProvider.nextPressedCreate(context),
+                      onPressed: createGroupProvider.nextPressedCreate(
+                        context,
+                      ),
                     ),
           const SizedBox(height: kDefaultPadding / 4),
         ],

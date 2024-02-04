@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
+import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
@@ -15,49 +17,29 @@ import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/modules/create_group_page_view/components/create_group_events.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../core/providers/mix_panel_provider.dart';
-
-class GroupPictureAdd extends StatefulWidget {
-  const GroupPictureAdd({super.key});
+class CreateGroupAddPicture extends StatefulWidget {
+  const CreateGroupAddPicture({super.key});
 
   @override
-  State<GroupPictureAdd> createState() => _GroupPictureAddState();
+  State<CreateGroupAddPicture> createState() => _CreateGroupAddPictureState();
 }
 
-class _GroupPictureAddState extends State<GroupPictureAdd> {
+class _CreateGroupAddPictureState extends State<CreateGroupAddPicture> {
   File? image;
-
-  Future pickImage(ImageSource source) async {
-    Navigator.pop(context);
-    try {
-      final image =
-          await ImagePicker().pickImage(source: source, imageQuality: 60);
-      if (image == null) return;
-
-      final imageTemporary = File(image.path);
-
-      if (!mounted) return;
-      Provider.of<CreateGroupProvider>(context, listen: false).image =
-          imageTemporary;
-      setState(() {
-        this.image = imageTemporary;
-      });
-    } on PlatformException catch (e) {
-      debugPrint('Failed to pick image: $e');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
     return ButtonCommonStyle(
       onPressed: () {
-        Provider.of<MixPanelProvider>(context, listen: false)
-            .logEvent(eventName: 'Create Group - Add Picture');
+        Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+          eventName: CreateGroupEvents.pressAddGroupPicture.value,
+        );
         gpModalBottomSheet(
           context,
           context.screenHeight * 0.185,
@@ -73,7 +55,9 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                   onPressed: () {
                     Provider.of<MixPanelProvider>(context, listen: false)
                         .logEvent(
-                            eventName: 'Create Group - Choose From Gallery');
+                      eventName: CreateGroupEvents
+                          .pressChooseFromGalleryAddPicture.value,
+                    );
                     pickImage(ImageSource.gallery);
                   },
                   child: GPTextBody(
@@ -86,7 +70,10 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                 ButtonCommonStyle(
                   onPressed: () {
                     Provider.of<MixPanelProvider>(context, listen: false)
-                        .logEvent(eventName: 'Create Group - Take Photo');
+                        .logEvent(
+                      eventName:
+                          CreateGroupEvents.pressTakePhotoAddPicture.value,
+                    );
                     pickImage(ImageSource.camera);
                   },
                   child: GPTextBody(
@@ -110,65 +97,49 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
                 onPressedGallery: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(
-                          eventName: 'Create Group - Choose From Gallery');
+                    eventName: CreateGroupEvents
+                        .pressChooseFromGalleryAddPicture.value,
+                  );
                   pickImage(ImageSource.gallery);
                 },
                 onPressedCamera: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
-                      .logEvent(eventName: 'Create Group - Take Photo');
+                      .logEvent(
+                    eventName: CreateGroupEvents.pressTakePhotoAddPicture.value,
+                  );
                   pickImage(ImageSource.camera);
                 },
                 child: Builder(
                   builder: (context) {
                     final storage = Provider.of<StorageProvider>(context);
-
+                    final avatarCommonSize = context.isVerySmallScreen
+                        ? Insets.l * 8
+                        : context.isSmallScreen
+                            ? Insets.l * 7
+                            : Insets.l * 6;
                     if (image != null) {
                       return Stack(
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(
-                              context.isVerySmallScreen
-                                  ? Insets.l * 8
-                                  : context.isSmallScreen
-                                      ? Insets.l * 7
-                                      : Insets.l * 6,
+                              avatarCommonSize,
                             ),
                             child: Image.file(
                               image!,
-                              height: context.isVerySmallScreen
-                                  ? Insets.l * 8
-                                  : context.isSmallScreen
-                                      ? Insets.l * 7
-                                      : Insets.l * 6,
-                              width: context.isVerySmallScreen
-                                  ? Insets.l * 8
-                                  : context.isSmallScreen
-                                      ? Insets.l * 7
-                                      : Insets.l * 6,
+                              height: avatarCommonSize,
+                              width: avatarCommonSize,
                               fit: BoxFit.cover,
                             ),
                           ),
                           Visibility(
                             visible: storage.isLoading,
                             child: Container(
-                              height: context.isVerySmallScreen
-                                  ? Insets.l * 8
-                                  : context.isSmallScreen
-                                      ? Insets.l * 7
-                                      : Insets.l * 6,
-                              width: context.isVerySmallScreen
-                                  ? Insets.l * 8
-                                  : context.isSmallScreen
-                                      ? Insets.l * 7
-                                      : Insets.l * 6,
+                              height: avatarCommonSize,
+                              width: avatarCommonSize,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(
-                                    context.isVerySmallScreen
-                                        ? Insets.l * 8
-                                        : context.isSmallScreen
-                                            ? Insets.l * 7
-                                            : Insets.l * 6,
+                                    avatarCommonSize,
                                   ),
                                 ),
                                 color: GPColors.black,
@@ -228,5 +199,25 @@ class _GroupPictureAddState extends State<GroupPictureAdd> {
         ],
       ),
     );
+  }
+
+  Future pickImage(ImageSource source) async {
+    context.pop();
+    try {
+      final image =
+          await ImagePicker().pickImage(source: source, imageQuality: 60);
+      if (image == null) return;
+
+      final imageTemporary = File(image.path);
+
+      if (!mounted) return;
+      Provider.of<CreateGroupProvider>(context, listen: false).image =
+          imageTemporary;
+      setState(() {
+        this.image = imageTemporary;
+      });
+    } on PlatformException catch (e) {
+      debugPrint('Failed to pick image: $e');
+    }
   }
 }

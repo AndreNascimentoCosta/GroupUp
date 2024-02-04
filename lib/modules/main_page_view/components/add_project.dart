@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
+import 'package:groupup/core/providers/create_group_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
+import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/buttons/group_action_button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/modules/create_group/button.dart';
+import 'package:groupup/modules/create_group_page_view/screens/create_group_page_view.dart';
 import 'package:groupup/modules/join_group/components/button.dart';
 import 'package:groupup/modules/main_page_view/components/main_page_view_events.dart';
 import 'package:provider/provider.dart';
-import '../../../core/providers/mix_panel_provider.dart';
 
 class AddProject extends StatelessWidget {
   const AddProject({super.key});
@@ -39,7 +42,26 @@ class AddProject extends StatelessWidget {
                       ? context.screenHeight * 0.025
                       : context.screenHeight * 0.035,
                 ),
-                const CreateGroupButton(),
+                ButtonCommonStyle(
+                  onPressed: () {
+                    Provider.of<CreateGroupProvider>(
+                      context,
+                      listen: false,
+                    ).clean();
+                    Provider.of<MixPanelProvider>(
+                      context,
+                      listen: false,
+                    ).logEvent(
+                      eventName: 'Create Group Button',
+                    );
+                    gpModalBottomSheet(
+                      context,
+                      context.screenHeight * 0.7,
+                      const CreateGroupPageView(),
+                    );
+                  },
+                  child: const GroupActionButton(),
+                ),
               ],
             ),
           ),

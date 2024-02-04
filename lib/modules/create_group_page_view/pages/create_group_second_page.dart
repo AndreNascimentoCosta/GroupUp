@@ -6,17 +6,16 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/switch_model.dart';
-import 'package:groupup/modules/create_group/components/body_switch.dart';
-import 'package:groupup/modules/create_group/components/date_time_picker_create_group.dart';
-import 'package:groupup/modules/create_group/components/group_picture_add.dart';
+import 'package:groupup/modules/create_group_page_view/components/create_group_date_time_picker.dart';
+import 'package:groupup/modules/create_group_page_view/components/created_group_add_picture.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/text_field/gp_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SecondPageCreate extends StatelessWidget {
-  SecondPageCreate({
+class CreateGroupSecondPage extends StatelessWidget {
+  CreateGroupSecondPage({
     required this.controller,
   });
 
@@ -44,7 +43,7 @@ class SecondPageCreate extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: Insets.l),
-              const GroupPictureAdd(),
+              const CreateGroupAddPicture(),
               const SizedBox(height: Insets.s),
               Stack(
                 alignment: AlignmentDirectional.center,
@@ -90,8 +89,9 @@ class SecondPageCreate extends StatelessWidget {
                       left: kDefaultPadding,
                       right: kDefaultPadding * 5,
                     ),
-                    keyboardType:
-                        const TextInputType.numberWithOptions(signed: true),
+                    keyboardType: const TextInputType.numberWithOptions(
+                      signed: true,
+                    ),
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
                     ],
@@ -102,29 +102,49 @@ class SecondPageCreate extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                  child: GPTextBody(text: appLocalizations.dates),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: kDefaultPadding,
+                  ),
+                  child: GPTextBody(
+                    text: appLocalizations.dates,
+                  ),
                 ),
               ),
               const SizedBox(height: Insets.s),
-              DateTimePickerCreateGroup(
+              CreateGroupDateTimePicker(
                 onChanged: (startDate, endDate) {
-                  final createGroupProvider =
-                      Provider.of<CreateGroupProvider>(context, listen: false);
+                  final createGroupProvider = Provider.of<CreateGroupProvider>(
+                    context,
+                    listen: false,
+                  );
                   createGroupProvider.newGroup.startDate = startDate;
                   createGroupProvider.newGroup.endDate = endDate;
                 },
               ),
-              BodySwitch(
-                text: appLocalizations.everyoneCanEditGroupPic,
-                switchType: SwitchButton(
-                  onChanged: (value) {
-                    final createGroupProvider =
-                        Provider.of<CreateGroupProvider>(context,
-                            listen: false);
-                    createGroupProvider.newGroup.allowEditImage = value;
-                  },
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: context.screenWidth * 0.6,
+                      child: GPTextBody(
+                        text: appLocalizations.everyoneCanEditGroupPic,
+                        maxLines: 5,
+                      ),
+                    ),
+                    const Spacer(),
+                    SwitchButton(
+                      onChanged: (value) {
+                        final createGroupProvider =
+                            Provider.of<CreateGroupProvider>(
+                          context,
+                          listen: false,
+                        );
+                        createGroupProvider.newGroup.allowEditImage = value;
+                      },
+                    ),
+                  ],
                 ),
               ),
             ],
