@@ -15,13 +15,11 @@ class GPAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GPAppBar({
     required this.headerText,
     required this.eventName,
-    required this.route,
     super.key,
   });
 
   final String headerText;
   final String eventName;
-  final Widget route;
 
   @override
   Widget build(BuildContext context) {

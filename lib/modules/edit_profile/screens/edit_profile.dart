@@ -14,7 +14,6 @@ class EditProfileScreen extends StatelessWidget {
       appBar: GPAppBar(
         headerText: appLocalizations.editProfile,
         eventName: EditProfileEvents.pressBackButtonEditProfile.value,
-        route: const EditProfileScreen(),
       ),
       body: const EditProfileBody(),
     );

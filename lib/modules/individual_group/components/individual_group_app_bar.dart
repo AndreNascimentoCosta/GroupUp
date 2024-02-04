@@ -17,7 +17,7 @@ import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/modules/individual_group/components/edit_group_picture_button.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
-import 'package:groupup/modules/individual_group_settings/screens/group_settings.dart';
+import 'package:groupup/modules/individual_group_settings/screens/individual_group_settings_screen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -199,7 +199,7 @@ class _IndividualGroupAppBarState extends State<IndividualGroupAppBar> {
                             .pressIndividualGroupSettingsButton.value,
                       );
                       context.push(
-                        GroupSettings(
+                        IndividualGroupSettingsScreen(
                           homeViewModel: widget.homeViewModel,
                           groups: group,
                         ),

@@ -12,18 +12,18 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class DateTimePickerEditGroupDates extends StatefulWidget {
-  const DateTimePickerEditGroupDates({required this.onChanged});
+class EditGroupDatesDateTimePicker extends StatefulWidget {
+  const EditGroupDatesDateTimePicker({required this.onChanged});
 
   final void Function(DateTime?, DateTime?) onChanged;
 
   @override
-  State<DateTimePickerEditGroupDates> createState() =>
-      _DateTimePickerEditGroupDatesState();
+  State<EditGroupDatesDateTimePicker> createState() =>
+      _EditGroupDatesDateTimePickerState();
 }
 
-class _DateTimePickerEditGroupDatesState
-    extends State<DateTimePickerEditGroupDates> {
+class _EditGroupDatesDateTimePickerState
+    extends State<EditGroupDatesDateTimePicker> {
   DateTime? startDate, endDate;
 
   String _displayText(DateTime? date) {
