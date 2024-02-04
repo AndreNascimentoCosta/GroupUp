@@ -5,12 +5,12 @@ import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/modules/report_participant/components/individual_report_participant.dart';
+import 'package:groupup/modules/report_participant/components/report_participant_card.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class BodyReportParticipant extends StatelessWidget {
-  const BodyReportParticipant({super.key});
+class ReportParticipantBody extends StatelessWidget {
+  const ReportParticipantBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,9 @@ class BodyReportParticipant extends StatelessWidget {
             final participants = Provider.of<IndividualGroupProvider>(context)
                 .group
                 ?.participantsData
-                .where((element) => element.uid != currentUser.id)
+                .where(
+                  (element) => element.uid != currentUser.id,
+                )
                 .toList();
             if (participants == null) {
               return const GPLoading();
@@ -63,7 +65,7 @@ class BodyReportParticipant extends StatelessWidget {
               ),
               shrinkWrap: true,
               itemCount: participants.length,
-              itemBuilder: (context, index) => IndividualParticipant(
+              itemBuilder: (context, index) => ReportParticipantCard(
                 participant: participants[index],
               ),
             );

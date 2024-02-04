@@ -13,11 +13,12 @@ import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/participant_model.dart';
+import 'package:groupup/modules/report_participant/components/report_participant_events.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class IndividualParticipant extends StatelessWidget {
-  const IndividualParticipant({required this.participant});
+class ReportParticipantCard extends StatelessWidget {
+  const ReportParticipantCard({required this.participant});
 
   final Participant participant;
 
@@ -28,8 +29,9 @@ class IndividualParticipant extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: ButtonCommonStyle(
         onPressed: () {
-          Provider.of<MixPanelProvider>(context, listen: false)
-              .logEvent(eventName: 'Report Participant');
+          Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+            eventName: ReportParticipantEvents.reportParticipant.value,
+          );
           final group =
               Provider.of<IndividualGroupProvider>(context, listen: false)
                   .group;
@@ -100,7 +102,7 @@ class IndividualParticipant extends StatelessWidget {
             const SizedBox(
               width: 60,
               child: GPIcon(
-                GPIcons.arrowLeft,
+                GPIcons.arrowRight,
                 color: GPColors.black,
                 height: Insets.l,
                 width: Insets.l,

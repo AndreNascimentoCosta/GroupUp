@@ -20,7 +20,7 @@ import 'package:groupup/modules/individual_group_settings/edit_fields/edit_no_pa
 import 'package:groupup/modules/individual_group_settings/edit_fields/edit_objective/edit_group_objective.dart';
 import 'package:groupup/modules/individual_group_settings/edit_fields/edit_project_name/edit_group_name.dart';
 import 'package:groupup/modules/individual_group_settings/edit_fields/edit_reward/edit_group_reward.dart';
-import 'package:groupup/modules/report_participant/screens/report_participant.dart';
+import 'package:groupup/modules/report_participant/screens/report_participant_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -55,7 +55,7 @@ class IndividualGroupSettingBodyAdmin extends StatelessWidget {
                       .pressReportParticipantScreen.value,
                 );
                 context.push(
-                  const ReportParticipant(),
+                  const ReportParticipantScreen(),
                 );
               },
               child: IndividualGroupSettingCommonButton(
