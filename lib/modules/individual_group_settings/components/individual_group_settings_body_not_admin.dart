@@ -10,7 +10,7 @@ import 'package:groupup/core/providers/create_group_provider.dart';
 import 'package:groupup/core/widgets/buttons/share_button.dart';
 import 'package:groupup/modules/individual_group_settings/components/individual_group_settings_common_button.dart';
 import 'package:groupup/modules/individual_group_settings/components/individual_group_settings_events.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/buttons/button_common_style.dart';
 import 'package:groupup/modules/report_participant/screens/report_participant_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';

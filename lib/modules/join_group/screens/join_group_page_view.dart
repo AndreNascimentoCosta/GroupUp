@@ -8,7 +8,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/buttons/button_common_style.dart';
 import 'package:groupup/modules/join_group/components/join_group_events.dart';
 import 'package:groupup/modules/join_group/pages/join_group_first_page.dart';
 import 'package:groupup/modules/join_group/pages/join_group_review_page.dart';

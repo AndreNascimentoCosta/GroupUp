@@ -12,7 +12,7 @@ import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view_model.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/buttons/button_common_style.dart';
 import 'package:groupup/modules/groups/components/groups_events.dart';
 import 'package:groupup/modules/groups/components/stats_group_ongoing.dart';
 import 'package:groupup/modules/individual_group/screens/individual_group.dart';

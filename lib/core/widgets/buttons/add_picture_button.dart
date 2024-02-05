@@ -3,10 +3,11 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/buttons/button_common_style.dart';
 import 'package:groupup/core/constants/design_system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
+import 'package:groupup/modules/create_group_page_view/components/create_group_events.dart';
 import 'package:provider/provider.dart';
 
 class AddPicture extends StatelessWidget {
@@ -25,8 +26,9 @@ class AddPicture extends StatelessWidget {
     final appLocalizations = AppLocalizations.of(context)!;
     return ButtonCommonStyle(
       onPressed: () {
-        Provider.of<MixPanelProvider>(context, listen: false)
-            .logEvent(eventName: 'Add Profile Picture');
+        Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+          eventName: CreateGroupEvents.addProfilePicture.value,
+        );
         gpModalBottomSheet(
           context,
           context.screenHeight * 0.185,
@@ -65,9 +67,10 @@ class AddPicture extends StatelessWidget {
         alignment: AlignmentDirectional.topCenter,
         children: [
           CircleAvatar(
-              radius: context.screenHeight * 0.06,
-              backgroundColor: const Color(0XFFE1E1E1),
-              child: child),
+            radius: context.screenHeight * 0.06,
+            backgroundColor: const Color(0XFFE1E1E1),
+            child: child,
+          ),
         ],
       ),
     );

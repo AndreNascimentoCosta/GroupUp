@@ -19,7 +19,9 @@ enum CreateGroupEvents {
 
   pressCancelLeaveGroupDialog('press_cancel_leave_group_dialog'),
 
-  pressLeaveGroup('press_leave_group');
+  pressLeaveGroup('press_leave_group'),
+
+  addProfilePicture('add_profile_picture'),;
     
   final String value;
   

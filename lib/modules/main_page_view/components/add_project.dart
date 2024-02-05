@@ -8,7 +8,7 @@ import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/buttons/button_common_style.dart';
 import 'package:groupup/core/widgets/buttons/group_action_button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/modules/create_group_page_view/screens/create_group_page_view.dart';

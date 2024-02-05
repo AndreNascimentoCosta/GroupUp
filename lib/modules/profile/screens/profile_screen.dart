@@ -20,7 +20,7 @@ import 'package:groupup/modules/edit_profile/screens/edit_profile.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/modules/profile/components/edit_profile_button.dart';
 import 'package:groupup/modules/profile/components/profile_events.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/buttons/button_common_style.dart';
 import 'package:groupup/modules/profile/components/profile_app_bar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';

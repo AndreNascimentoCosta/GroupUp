@@ -14,7 +14,7 @@ import 'package:groupup/core/widgets/buttons/share_button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/modules/individual_group_settings/components/individual_group_settings_common_button.dart';
 import 'package:groupup/modules/individual_group_settings/components/individual_group_settings_events.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/buttons/button_common_style.dart';
 import 'package:groupup/modules/individual_group_settings/edit_fields/edit_dates/edit_group_dates.dart';
 import 'package:groupup/modules/individual_group_settings/edit_fields/edit_no_participants/edit_no_participants_screen.dart';
 import 'package:groupup/modules/individual_group_settings/edit_fields/edit_objective/edit_group_objective.dart';

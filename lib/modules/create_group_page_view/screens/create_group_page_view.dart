@@ -15,7 +15,7 @@ import 'package:groupup/modules/create_group_page_view/pages/create_group_first_
 import 'package:groupup/modules/create_group_page_view/pages/create_group_review.dart';
 import 'package:groupup/modules/create_group_page_view/pages/create_group_second_page.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/buttons/button_common_style.dart';
 import 'package:groupup/modules/create_group_page_view/pages/create_group_third_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

@@ -3,7 +3,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
-import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/core/widgets/buttons/button_common_style.dart';
 import 'package:groupup/core/constants/design_system.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
