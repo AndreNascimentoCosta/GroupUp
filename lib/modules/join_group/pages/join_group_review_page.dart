@@ -10,16 +10,16 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ReviewJoinGroup extends StatefulWidget {
-  const ReviewJoinGroup({required this.controller});
+class JoinGroupReviewPage extends StatefulWidget {
+  const JoinGroupReviewPage({required this.controller});
 
   final PageController controller;
 
   @override
-  State<ReviewJoinGroup> createState() => _ReviewJoinGroupJoinState();
+  State<JoinGroupReviewPage> createState() => _JoinGroupReviewPageJoinState();
 }
 
-class _ReviewJoinGroupJoinState extends State<ReviewJoinGroup> {
+class _JoinGroupReviewPageJoinState extends State<JoinGroupReviewPage> {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;

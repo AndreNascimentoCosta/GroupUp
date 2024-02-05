@@ -9,21 +9,22 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/modules/join_group/components/first_page.dart';
-import 'package:groupup/modules/join_group/components/review_join_group.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
+import 'package:groupup/modules/join_group/components/join_group_events.dart';
+import 'package:groupup/modules/join_group/pages/join_group_first_page.dart';
+import 'package:groupup/modules/join_group/pages/join_group_review_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class JoinPageView extends StatefulWidget {
-  const JoinPageView({super.key});
+class JoinGroupPageView extends StatefulWidget {
+  const JoinGroupPageView({super.key});
 
   @override
-  State<JoinPageView> createState() => _JoinPageViewState();
+  State<JoinGroupPageView> createState() => _JoinGroupPageViewState();
 }
 
-class _JoinPageViewState extends State<JoinPageView> {
+class _JoinGroupPageViewState extends State<JoinGroupPageView> {
   @override
   Widget build(BuildContext context) {
     final joinGroupProvider = Provider.of<JoinGroupProvider>(context);
@@ -46,10 +47,14 @@ class _JoinPageViewState extends State<JoinPageView> {
                             onPressed: () {
                               Provider.of<MixPanelProvider>(context,
                                       listen: false)
-                                  .logEvent(eventName: 'Back Button Join');
+                                  .logEvent(
+                                eventName: JoinGroupEvents
+                                    .pressBackButtonJoinGroup.value,
+                              );
                               joinGroupProvider.controller.previousPage(
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.ease);
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.ease,
+                              );
                             },
                             child: const GPIcon(
                               GPIcons.arrowLeft,
@@ -72,8 +77,8 @@ class _JoinPageViewState extends State<JoinPageView> {
               controller: joinGroupProvider.controller,
               onPageChanged: joinGroupProvider.updateIndex,
               children: [
-                FirstPageJoin(controller: joinGroupProvider.controller),
-                ReviewJoinGroup(controller: joinGroupProvider.controller),
+                JoinGroupFirstPage(controller: joinGroupProvider.controller),
+                JoinGroupReviewPage(controller: joinGroupProvider.controller),
               ],
             ),
           ),

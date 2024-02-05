@@ -6,18 +6,19 @@ import 'package:groupup/core/widgets/text_field/gp_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class FirstPageJoin extends StatefulWidget {
-  const FirstPageJoin({required this.controller});
+class JoinGroupFirstPage extends StatefulWidget {
+  const JoinGroupFirstPage({required this.controller});
 
   final PageController controller;
 
   @override
-  State<FirstPageJoin> createState() => _FirstPageJoinState();
+  State<JoinGroupFirstPage> createState() => _JoinGroupFirstPageState();
 }
 
-class _FirstPageJoinState extends State<FirstPageJoin> {
+class _JoinGroupFirstPageState extends State<JoinGroupFirstPage> {
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
     final joinGroupProvider = Provider.of<JoinGroupProvider>(context);
     return GestureDetector(
       onTap: () {
@@ -31,28 +32,23 @@ class _FirstPageJoinState extends State<FirstPageJoin> {
           child: Column(
             children: [
               GPTextField(
-                  controller: joinGroupProvider.controllerGroupCode,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return AppLocalizations.of(context)!.pleaseEnterGroupCode;
-                    }
-                    return null;
-                  },
-                  header: AppLocalizations.of(context)!.groupCode,
-                  hint: AppLocalizations.of(context)!.enterGroupCode,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: kDefaultPadding,
-                  ),
-                  inputFormatters: [
-                    UpperCaseTextFormatter(),
-                  ]),
-              // const SizedBox(height: kDefaultPadding / 2),
-              // StaticText(
-              //   text: AppLocalizations.of(context)!.feeNotRefundable,
-              //   maxLines: 2,
-              //   textAlign: TextAlign.center,
-              // ),
+                controller: joinGroupProvider.controllerGroupCode,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return appLocalizations.pleaseEnterGroupCode;
+                  }
+                  return null;
+                },
+                header: appLocalizations.groupCode,
+                hint: appLocalizations.enterGroupCode,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: kDefaultPadding,
+                ),
+                inputFormatters: [
+                  UpperCaseTextFormatter(),
+                ],
+              ),
             ],
           ),
         ),
