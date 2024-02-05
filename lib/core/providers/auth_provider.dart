@@ -129,9 +129,6 @@ class AuthProvider extends ChangeNotifier {
       email: user.email ?? '',
       profilePicture: user.photoURL ?? '',
       phoneNumber: '',
-      balance: 0.0,
-      stripeAccountId: '',
-      paymentIntentIds: [],
     );
     await FirebaseFirestore.instance
         .collection('users')
@@ -159,9 +156,6 @@ class AuthProvider extends ChangeNotifier {
       email: '',
       profilePicture: user.photoURL ?? '',
       phoneNumber: phoneNumber,
-      balance: 0.0,
-      stripeAccountId: '',
-      paymentIntentIds: [],
     );
     await FirebaseFirestore.instance
         .collection('users')

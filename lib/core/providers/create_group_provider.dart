@@ -513,28 +513,6 @@ class CreateGroupProvider extends ChangeNotifier {
     return false;
   }
 
-  Future<bool> updateAllowRefundRequest(bool value, String groupId) async {
-    final group = await FirebaseFirestore.instance
-        .collection('groups')
-        .doc(groupId)
-        .get();
-    if (group.exists) {
-      final groupData = group.data();
-      if (groupData != null) {
-        final allowRefundRequest = groupData['allowRefundRequest'] as bool;
-        newGroup.allowRefundRequest = value;
-        if (allowRefundRequest != value) {
-          await FirebaseFirestore.instance
-              .collection('groups')
-              .doc(groupId)
-              .update({'allowRefundRequest': value});
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
   Future<void> createGroup(UserDataModel? user) async {
     controller.jumpToPage(3);
     isCreatingGroup = true;
@@ -563,7 +541,6 @@ class CreateGroupProvider extends ChangeNotifier {
     newGroup.creator = userId;
     newGroup.participants.add(userId);
     newGroup.participantsData.add(userParticipant);
-    newGroup.paymentIntentIds = [];
 
     final image = this.image;
     if (image != null) {
@@ -730,7 +707,6 @@ class CreateGroupProvider extends ChangeNotifier {
     image = null;
     newGroup.maxParticipants = 0;
     newGroup.allowEditImage = false;
-    newGroup.allowRefundRequest = false;
     newGroup.startDate = null;
     newGroup.endDate = null;
     groupCurrencyCode = 'BRL';

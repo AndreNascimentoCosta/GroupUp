@@ -12,8 +12,8 @@ class GroupModel {
       creator;
   int maxParticipants;
   DateTime? startDate, endDate;
-  bool allowEditImage, allowRefundRequest;
-  List<String> participants, paymentIntentIds;
+  bool allowEditImage;
+  List<String> participants;
   List<Participant> participantsData;
 
   Participant currentParticipant(String userId) {
@@ -49,13 +49,11 @@ class GroupModel {
     required this.groupCode,
     required this.maxParticipants,
     required this.allowEditImage,
-    required this.allowRefundRequest,
     required this.image,
     required this.groupCurrencyCode,
     required this.creator,
     required this.participants,
     required this.participantsData,
-    required this.paymentIntentIds,
     this.startDate,
     this.endDate,
   });
@@ -72,10 +70,8 @@ class GroupModel {
       creator: '',
       participants: [],
       participantsData: [],
-      paymentIntentIds: [],
       maxParticipants: 0,
       allowEditImage: false,
-      allowRefundRequest: false,
     );
   }
 
@@ -103,10 +99,8 @@ class GroupModel {
           (e) => Participant.fromMap(e),
         ),
       ),
-      paymentIntentIds: List<String>.from(map['paymentIntentIds'] ?? []),
       maxParticipants: map['noParticipants'] ?? 0,
       allowEditImage: map['allowEditImage'] ?? false,
-      allowRefundRequest: map['allowRefundRequest'] ?? false,
       startDate: startDate,
       endDate: endDate,
     );
@@ -123,11 +117,9 @@ class GroupModel {
       'creator': creator,
       'noParticipants': maxParticipants,
       'allowEditImage': allowEditImage,
-      'allowRefundRequest': allowRefundRequest,
       'createdAt': FieldValue.serverTimestamp(),
       'participants': participants,
       'participantsData': participantsData.map((e) => e.toMap()).toList(),
-      'paymentIntentIds': paymentIntentIds,
       'startDate': startDate,
       'endDate': endDate,
     };

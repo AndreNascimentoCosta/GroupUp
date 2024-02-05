@@ -5,7 +5,6 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/models/switch_model.dart';
 import 'package:groupup/modules/create_group_page_view/components/create_group_date_time_picker.dart';
 import 'package:groupup/modules/create_group_page_view/components/created_group_add_picture.dart';
 import 'package:groupup/core/widgets/buttons/switch_button.dart';
@@ -15,13 +14,12 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CreateGroupSecondPage extends StatelessWidget {
-  CreateGroupSecondPage({
+  const CreateGroupSecondPage({
     required this.controller,
+    super.key,
   });
 
   final PageController controller;
-
-  final SwitchModel switchModel = SwitchModel();
 
   @override
   Widget build(BuildContext context) {

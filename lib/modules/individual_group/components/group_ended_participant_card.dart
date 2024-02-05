@@ -9,7 +9,6 @@ import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/constants/design-system.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/models/dropdown_model.dart';
 import 'package:groupup/models/participant_model.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -29,7 +28,6 @@ class GroupEndedParticipantCard extends StatefulWidget {
 
 class _GroupEndedParticipantCardState extends State<GroupEndedParticipantCard> {
   bool isChecked = false;
-  final DropDownModel dropDownModel = DropDownModel();
 
   @override
   Widget build(BuildContext context) {
