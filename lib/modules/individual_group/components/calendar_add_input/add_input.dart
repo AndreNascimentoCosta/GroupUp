@@ -10,7 +10,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
 import 'package:groupup/modules/create_group_page_view/pages/create_group_first_page.dart';
 import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
@@ -200,7 +200,7 @@ class _AddInputState extends State<AddInput> {
                       eventName: IndividualGroupEvents.addMediaAddInput.value,
                     );
                     try {
-                      addInputProvider.confirm(context, () {
+                      addInputProvider.confirmAddInput(context, () {
                         context.pop();
                         pickImage(ImageSource.gallery);
                       }, () {

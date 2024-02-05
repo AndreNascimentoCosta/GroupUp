@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
-import 'package:groupup/core/providers/edit_group_reward_provider.dart';
+import 'package:groupup/core/providers/edit_group_fields_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/widgets/text_field/gp_edit_text_field.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +15,7 @@ class EditGroupRewardBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final groupRewardController =
-        Provider.of<EditGroupRewardProvider>(context).groupRewardController;
+        Provider.of<EditGroupFieldsProvider>(context).groupRewardController;
     final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(

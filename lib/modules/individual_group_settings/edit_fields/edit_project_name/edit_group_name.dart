@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:groupup/core/providers/edit_group_fields_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/modules/individual_group_settings/components/individual_group_settings_events.dart';
 import 'package:groupup/modules/individual_group_settings/edit_fields/edit_fields_app_bar.dart';
 import 'package:groupup/modules/individual_group_settings/edit_fields/edit_project_name/components/edit_group_name_body.dart';
-import 'package:groupup/core/providers/edit_group_name_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -19,18 +19,18 @@ class EditGroupNameScreen extends StatelessWidget {
       return const Scaffold();
     }
     return ChangeNotifierProvider(
-      create: (context) => EditGroupNameProvider(group.projectName),
+      create: (context) => EditGroupFieldsProvider.groupName(group.projectName),
       child: PopScope(
         canPop: false,
         child: Builder(builder: (context) {
           final appLocalizations = AppLocalizations.of(context)!;
-          final editGroupNameProvider =
-              Provider.of<EditGroupNameProvider>(context);
+          final editGroupFieldsProvider =
+              Provider.of<EditGroupFieldsProvider>(context);
           return Scaffold(
             appBar: EditFieldsAppBar(
               headerText: appLocalizations.groupName,
               onPressedLeftButton: () {
-                if (editGroupNameProvider.groupNameController.text ==
+                if (editGroupFieldsProvider.groupNameController.text ==
                     group.projectName) {
                   Provider.of<MixPanelProvider>(context, listen: false)
                       .logEvent(
@@ -44,12 +44,17 @@ class EditGroupNameScreen extends StatelessWidget {
                     eventName: IndividualGroupSettingsEvents
                         .pressDiscardChangesEditGroupName.value,
                   );
-                  editGroupNameProvider.confirmDiscard(context);
+                  editGroupFieldsProvider.confirmDiscard(
+                    context,
+                    IndividualGroupSettingsEvents.pressEditGroupName.value,
+                    IndividualGroupSettingsEvents
+                        .keepChangesEditGroupName.value,
+                  );
                 }
               },
-              onPressedRightButton: editGroupNameProvider.done(
+              onPressedRightButton: editGroupFieldsProvider.doneEditGroupName(
                   context, group.projectName, group.id),
-              colorRightButton: editGroupNameProvider.done(
+              colorRightButton: editGroupFieldsProvider.doneEditGroupName(
                           context, group.projectName, group.id) ==
                       null
                   ? GPColors.secondaryColor

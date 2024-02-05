@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/models/home_view_model.dart';

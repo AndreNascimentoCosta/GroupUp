@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/modules/sign_up/components/sign_up_events.dart';
 import 'package:provider/provider.dart';
 
 import 'mix_panel_provider.dart';
@@ -56,7 +57,7 @@ class PhoneAuthenProvider extends ChangeNotifier {
     nameController.addListener(notifyListeners);
   }
 
-  void startTimer() {
+  void startTimerOTPCode() {
     const onesec = Duration(seconds: 1);
     start = 30;
     timer?.cancel();
@@ -74,32 +75,32 @@ class PhoneAuthenProvider extends ChangeNotifier {
     );
   }
 
-  void Function()? nextPressedPhone(BuildContext context) {
-    // Index 0
+  void Function()? nextButtonPhone(BuildContext context) {
     if (pageIndex == 0 && phoneController.isEmpty) {
       return null;
     } else {
       return () => {
-            Provider.of<MixPanelProvider>(context, listen: false)
-                .logEvent(eventName: 'Next Button Phone'),
+            Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+              eventName: SignUpEvents.pressNextButtonSignUp.value,
+            ),
             Provider.of<AuthProvider>(context, listen: false)
                 .phoneLogin(context),
             FocusScope.of(context).requestFocus(),
-            startTimer(),
+            startTimerOTPCode(),
           };
     }
   }
 
-  void Function()? nextPressedName(BuildContext context) {
+  void Function()? nextButtonName(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
-    // Index 0
     if (pageIndex == 0 && nameController.text.isEmpty) {
       return null;
     } else {
       return () => {
-            Provider.of<MixPanelProvider>(context, listen: false)
-                .logEvent(eventName: 'Update Name'),
-            authProvider.updateNameUserData(
+            Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+              eventName: SignUpEvents.setUserName.value,
+            ),
+            authProvider.setNameUserData(
               name: nameController.text,
             ),
             authProvider.getUser(),

@@ -6,7 +6,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/modules/edit_profile/edit_fields/edit_name/components/edit_profile_name_events.dart';
 import 'package:provider/provider.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 
 final themeData = ThemeData(
   useMaterial3: false,

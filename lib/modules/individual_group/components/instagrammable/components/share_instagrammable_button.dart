@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
@@ -12,6 +11,7 @@ import 'package:groupup/modules/individual_group/components/individual_group_eve
 import 'package:groupup/modules/individual_group/components/instagrammable/components/instagrammable_body.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
 class ShareInstagrammableButton extends StatelessWidget {
@@ -19,6 +19,7 @@ class ShareInstagrammableButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenshotController = ScreenshotController();
     final isAndroidScreen = context.screenHeight > 820 &&
         context.screenHeight < 821 &&
         context.screenWidth < 412;
@@ -37,26 +38,10 @@ class ShareInstagrammableButton extends StatelessWidget {
             Provider.of<MixPanelProvider>(context, listen: false).logEvent(
               eventName: IndividualGroupEvents.shareInstagrammable.value,
             );
-            final screenshotController =
-                Provider.of<InstagrammableProvider>(context, listen: false)
-                    .screenshotController;
             final size = context.screenSize;
             final imageFile = await screenshotController.captureFromWidget(
-              MultiProvider(
-                providers: [
-                  ListenableProvider(
-                    create: (_) => Provider.of<AuthProvider>(
-                      context,
-                      listen: false,
-                    ),
-                  ),
-                  ListenableProvider(
-                    create: (_) => Provider.of<InstagrammableProvider>(
-                      context,
-                      listen: false,
-                    ),
-                  ),
-                ],
+              ChangeNotifierProvider(
+                create: (context) => AuthProvider(),
                 child: const InstagrammableBody(
                   isSharing: true,
                 ),

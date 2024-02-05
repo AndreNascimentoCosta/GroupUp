@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/core/providers/edit_group_no_participants.dart';
+import 'package:groupup/core/providers/edit_group_fields_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
@@ -19,20 +19,20 @@ class EditGroupNoParticipantsScreen extends StatelessWidget {
       return const Scaffold();
     }
     return ChangeNotifierProvider(
-      create: (context) => EditGroupNoParticipantsProvider(
+      create: (context) => EditGroupFieldsProvider.groupMaxParticipants(
         group.maxParticipants.toString(),
       ),
       child: PopScope(
         canPop: false,
         child: Builder(builder: (context) {
           final appLocalizations = AppLocalizations.of(context)!;
-          final editGroupMaxParticipantsProvider =
-              Provider.of<EditGroupNoParticipantsProvider>(context);
+          final editGroupFieldsProvider =
+              Provider.of<EditGroupFieldsProvider>(context);
           return Scaffold(
             appBar: EditFieldsAppBar(
               headerText: appLocalizations.participants,
               onPressedLeftButton: () {
-                if (editGroupMaxParticipantsProvider
+                if (editGroupFieldsProvider
                         .groupMaxParticipantsController.text ==
                     group.maxParticipants.toString()) {
                   Provider.of<MixPanelProvider>(context, listen: false)
@@ -48,16 +48,23 @@ class EditGroupNoParticipantsScreen extends StatelessWidget {
                         .pressDiscardAndBackButtonEditNumberOfParticipants
                         .value,
                   );
-                  editGroupMaxParticipantsProvider.confirmDiscard(context);
+                  editGroupFieldsProvider.confirmDiscard(
+                    context,
+                    IndividualGroupSettingsEvents
+                        .pressEditNumberOfParticipants.value,
+                    IndividualGroupSettingsEvents
+                        .keepChangesEditNumberOfParticipants.value,
+                  );
                 }
               },
-              onPressedRightButton: editGroupMaxParticipantsProvider.done(
+              onPressedRightButton:
+                  editGroupFieldsProvider.doneEditNoParticipants(
                 context,
                 group.maxParticipants.toString(),
                 group.id,
                 group.participants.length,
               ),
-              colorRightButton: editGroupMaxParticipantsProvider.done(
+              colorRightButton: editGroupFieldsProvider.doneEditNoParticipants(
                         context,
                         group.maxParticipants.toString(),
                         group.id,

@@ -3,7 +3,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/modules/sign_up/components/sign_up_events.dart';
@@ -88,7 +88,7 @@ class _SignUpCodeVerificationState extends State<SignUpCodeVerification> {
                         ).logEvent(
                           eventName: SignUpEvents.pressRequestCodeAgain.value,
                         );
-                        phoneProvider.startTimer();
+                        phoneProvider.startTimerOTPCode();
                         authProvider.phoneLogin(
                           context,
                         );

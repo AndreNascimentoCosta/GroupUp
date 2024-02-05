@@ -40,7 +40,21 @@ enum IndividualGroupSettingsEvents {
 
   pressBackButtonEditGroupName('press_back_button_edit_group_name'),
 
-  pressDiscardChangesEditGroupName('press_discard_changes_edit_group_name');
+  pressDiscardChangesEditGroupName('press_discard_changes_edit_group_name'),
+
+  pressDiscardChangesEditGroupDates('press_discard_changes_edit_group_dates'),
+
+  editGroupDates('edit_group_dates'),
+
+  keepChangesEditGroupDates('keep_changes_edit_group_dates'),
+
+  keepChangesEditNumberOfParticipants('keep_changes_edit_number_of_participants'),
+
+  keepChangesEditGroupObjective('keep_changes_edit_group_objective'),
+
+  keepChangesEditGroupReward('keep_changes_edit_group_reward'),
+
+  keepChangesEditGroupName('keep_changes_edit_group_name');
 
   final String value;
   const IndividualGroupSettingsEvents(this.value);

@@ -10,7 +10,7 @@ import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/utils/url_launcher/gp_url_launcher.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/models/participant_model.dart';
 import 'package:groupup/modules/report_participant/components/report_participant_events.dart';

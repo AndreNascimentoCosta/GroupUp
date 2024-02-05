@@ -3,11 +3,9 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
-import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
@@ -28,7 +26,6 @@ class _JoinGroupPageViewState extends State<JoinGroupPageView> {
   @override
   Widget build(BuildContext context) {
     final joinGroupProvider = Provider.of<JoinGroupProvider>(context);
-    final stripePaymentProvider = Provider.of<StripePaymentProvider>(context);
     final userId = Provider.of<AuthProvider>(context).user?.id ?? '';
     return SafeArea(
       child: Column(
@@ -83,16 +80,12 @@ class _JoinGroupPageViewState extends State<JoinGroupPageView> {
             ),
           ),
           const SizedBox(height: kDefaultPadding / 2),
-          if (stripePaymentProvider.isPaying ||
-              joinGroupProvider.isOpeningSavedCards)
-            const GPLoading()
-          else
-            GPButton(
-              onPressed: joinGroupProvider.nextPressedJoin(
-                context,
-                userId,
-              ),
+          GPButton(
+            onPressed: joinGroupProvider.nextButtonJoin(
+              context,
+              userId,
             ),
+          ),
           const SizedBox(height: kDefaultPadding / 4)
         ],
       ),

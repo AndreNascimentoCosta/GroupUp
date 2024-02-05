@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -101,42 +103,7 @@ class AuthProvider extends ChangeNotifier {
     await getUser();
   }
 
-  Future<void> updateStripeAccountId(String accountId) async {
-    final user = _user;
-    if (user == null) return;
-
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.id)
-        .update({'stripeAccountId': accountId});
-    await getUser();
-  }
-
-  Future<void> updateSocialUserData() async {
-    final user = _auth.currentUser;
-    if (user == null) return;
-
-    final previousDoc = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.uid)
-        .get();
-
-    if (previousDoc.exists) return;
-
-    final userData = UserDataModel(
-      id: user.uid,
-      name: user.displayName ?? '',
-      email: user.email ?? '',
-      profilePicture: user.photoURL ?? '',
-      phoneNumber: '',
-    );
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.uid)
-        .set(userData.toMap());
-  }
-
-  Future<void> updatePhoneUserData({
+  Future<void> setPhoneUserData({
     required String name,
     required String phoneNumber,
   }) async {
@@ -163,7 +130,7 @@ class AuthProvider extends ChangeNotifier {
         .set(userData.toMap());
   }
 
-  Future<void> updateNameUserData({
+  Future<void> setNameUserData({
     required String name,
   }) async {
     final user = this.user;
@@ -178,12 +145,13 @@ class AuthProvider extends ChangeNotifier {
   }
 
   void _error(BuildContext context, String e) {
+    final appLocalizations = AppLocalizations.of(context)!;
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: GPTextHeader(
-            text: AppLocalizations.of(context)!.error,
+            text: appLocalizations.error,
             textAlign: TextAlign.center,
           ),
           shape: RoundedRectangleBorder(
@@ -201,11 +169,13 @@ class AuthProvider extends ChangeNotifier {
           contentPadding: const EdgeInsets.only(top: 20, bottom: 20),
           actions: [
             GPButton(
-              text: 'Ok',
+              text: appLocalizations.ok,
               borderColor: GPColors.primaryColor,
               onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Error', properties: {'Error': e});
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName: appLocalizations.error,
+                  properties: {'Error': e},
+                );
                 context.pop();
               },
               height: 40,
@@ -267,28 +237,29 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> verifyOTP(BuildContext context) async {
+    final appLocalizations = AppLocalizations.of(context)!;
     final mixPanelProvider =
         Provider.of<MixPanelProvider>(context, listen: false);
     final phoneProvider =
         Provider.of<PhoneAuthenProvider>(context, listen: false);
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId, smsCode: phoneProvider.otpCode);
-    final navigatorState = context;
     try {
       await _auth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-verification-code') {
-        _error(context, AppLocalizations.of(context)!.invalidVerificationCode);
+        if (context.mounted) return;
+        _error(context, appLocalizations.invalidVerificationCode);
         return;
       } else {
         return;
       }
     }
-    navigatorState.pop();
+    context.pop();
     if (_user == null) {
       return;
     } else {
-      await updatePhoneUserData(
+      await setPhoneUserData(
         name: phoneProvider.nameController.text,
         phoneNumber: phoneProvider.phoneController,
       );

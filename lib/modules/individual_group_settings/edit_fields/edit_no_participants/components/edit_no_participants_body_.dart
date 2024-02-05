@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
-import 'package:groupup/core/providers/edit_group_no_participants.dart';
+import 'package:groupup/core/providers/edit_group_fields_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/widgets/text_field/gp_edit_text_field.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:provider/provider.dart';
@@ -15,8 +15,8 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final groupMaxParticipantsController =
-        Provider.of<EditGroupNoParticipantsProvider>(context)
+    final groupFieldsController =
+        Provider.of<EditGroupFieldsProvider>(context)
             .groupMaxParticipantsController;
     final group = Provider.of<IndividualGroupProvider>(context).group;
     final appLocalizations = AppLocalizations.of(context)!;
@@ -35,7 +35,7 @@ class EditGroupNoParticipantsBody extends StatelessWidget {
             height: 70,
             width: 400,
             child: GPEditTextField(
-              controller: groupMaxParticipantsController,
+              controller: groupFieldsController,
               hint: '',
               validator: (value) {
                 if (value!.isNotEmpty && int.tryParse(value)! > 50) {

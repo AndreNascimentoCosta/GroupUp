@@ -11,12 +11,14 @@ import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
+import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/user_input_data_model.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/modules/individual_group/components/calendar_add_input/add_input.dart';
+import 'package:groupup/modules/individual_group/components/individual_group_events.dart';
 import 'package:ntp/ntp.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -34,7 +36,7 @@ class AddInputProvider extends ChangeNotifier {
     inputController.addListener(notifyListeners);
   }
 
-  void confirm(
+  void confirmAddInput(
     BuildContext context,
     void Function() onPressedGallery,
     void Function() onPressedCamera,
@@ -47,11 +49,10 @@ class AddInputProvider extends ChangeNotifier {
       builder: (BuildContext context) {
         final appLocalizations = AppLocalizations.of(context)!;
         return AlertDialog(
-          title: GPTextBody(
+          title: GPTextHeader(
             text: appLocalizations.addMedia,
             textAlign: TextAlign.center,
-            fontFamily: 'Montserrat-SemiBold',
-            fontSize: 18,
+            fontSize: 20,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -72,8 +73,9 @@ class AddInputProvider extends ChangeNotifier {
               textColor: GPColors.red,
               borderColor: GPColors.transparent,
               onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Cancel Media in Add Input');
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName: IndividualGroupEvents.cancelMediaInAddInput.value,
+                );
                 context.pop();
               },
               color: GPColors.transparent,
@@ -84,8 +86,9 @@ class AddInputProvider extends ChangeNotifier {
               text: appLocalizations.add,
               borderColor: GPColors.primaryColor,
               onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Add Media in Add Input');
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName: IndividualGroupEvents.addMediaAddInput.value,
+                );
                 Navigator.pop(context);
                 gpModalBottomSheet(
                   context,

@@ -2,6 +2,8 @@ enum IndividualGroupEvents {
 
   addInput('add_input'),
 
+  cancelMediaInAddInput('cancel_media_in_add_input'),
+
   editGroupPicture('edit_group_picture'),
 
   pressOkGroupEndedDialog('press_ok_group_ended_dialog'),

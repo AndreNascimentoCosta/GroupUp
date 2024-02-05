@@ -6,6 +6,7 @@ import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
+import 'package:groupup/modules/profile/components/profile_events.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -28,9 +29,12 @@ class EditProfileNameProvider extends ChangeNotifier {
     } else {
       return () {
         {
-          Provider.of<MixPanelProvider>(context, listen: false)
-              .logEvent(eventName: 'Update profile name');
-          authProvider.updateProfileName(profileNameController.text);
+          Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+            eventName: ProfileEvents.updateProfileName.value,
+          );
+          authProvider.updateProfileName(
+            profileNameController.text,
+          );
           Navigator.pop(context);
         }
       };
@@ -68,7 +72,9 @@ class EditProfileNameProvider extends ChangeNotifier {
               borderColor: GPColors.transparent,
               onPressed: () {
                 Provider.of<MixPanelProvider>(context, listen: false).logEvent(
-                    eventName: 'Discard changes in Edit Profile Name');
+                  eventName:
+                      ProfileEvents.pressDiscardChangesEditProfileName.value,
+                );
                 Navigator.pop(newContext);
                 Navigator.pop(context);
               },
@@ -80,8 +86,9 @@ class EditProfileNameProvider extends ChangeNotifier {
               text: appLocalizations.noKeep,
               borderColor: GPColors.primaryColor,
               onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Keep changes in Edit Profile Name');
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName: ProfileEvents.keepChangesEditProfileName.value,
+                );
                 Navigator.of(newContext).pop();
                 FocusScope.of(context).requestFocus();
               },

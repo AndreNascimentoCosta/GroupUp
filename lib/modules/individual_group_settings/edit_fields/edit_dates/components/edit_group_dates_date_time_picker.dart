@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
-import 'package:groupup/core/providers/edit_group_dates_provider.dart';
+import 'package:groupup/core/providers/edit_group_fields_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -83,7 +83,7 @@ class _EditGroupDatesDateTimePickerState
 
   @override
   Widget build(BuildContext context) {
-    final editGroupDatesProvider = Provider.of<EditGroupDatesProvider>(context);
+    final editGroupFieldsProvider = Provider.of<EditGroupFieldsProvider>(context);
     final individualGroupProvider =
         Provider.of<IndividualGroupProvider>(context);
     if (individualGroupProvider.group == null) {
@@ -103,7 +103,7 @@ class _EditGroupDatesDateTimePickerState
                     ? 150
                     : 160,
             child: TextFormField(
-              controller: editGroupDatesProvider.controllerStartDate,
+              controller: editGroupFieldsProvider.controllerStartDate,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
                 prefixIcon: Container(
@@ -134,7 +134,7 @@ class _EditGroupDatesDateTimePickerState
               ),
               onTap: () async {
                 startDate = await pickDate();
-                editGroupDatesProvider.controllerStartDate.text =
+                editGroupFieldsProvider.controllerStartDate.text =
                     _displayText(startDate);
                 setState(() {
                   widget.onChanged(startDate, endDate);
@@ -166,7 +166,7 @@ class _EditGroupDatesDateTimePickerState
                     ? 150
                     : 160,
             child: TextFormField(
-              controller: editGroupDatesProvider.controllerEndDate,
+              controller: editGroupFieldsProvider.controllerEndDate,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
                 prefixIcon: Container(
@@ -196,7 +196,7 @@ class _EditGroupDatesDateTimePickerState
               ),
               onTap: () async {
                 endDate = await pickDate();
-                editGroupDatesProvider.controllerEndDate.text = _displayText(
+                editGroupFieldsProvider.controllerEndDate.text = _displayText(
                   endDate,
                 );
                 setState(

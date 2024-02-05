@@ -1,5 +1,3 @@
-// ignore_for_file: constant_identifier_names, use_build_context_synchronously
-
 import 'dart:io';
 import 'dart:math';
 
@@ -19,6 +17,7 @@ import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/models/participant_model.dart';
 import 'package:groupup/models/user_data_model.dart';
+import 'package:groupup/modules/create_group_page_view/components/create_group_events.dart';
 import 'package:groupup/modules/main_page_view/screens/main_page_view_screen.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/buttons/gp_button.dart';
@@ -26,150 +25,6 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'mix_panel_provider.dart';
-
-enum Currencies {
-  AND(0.3),
-  AWG(0.3),
-  AZN(0.3),
-  BAM(0.3),
-  BBD(0.3),
-  BMD(0.3),
-  BND(0.3),
-  BSD(0.3),
-  BZD(0.3),
-  FKP(0.3),
-  GBP(0.3),
-  GIP(0.3),
-  KYD(0.3),
-  PAB(0.3),
-  USD(0.5),
-  AUD(0.5),
-  BRL(0.5),
-  BYN(0.5),
-  CAD(0.5),
-  CHF(0.5),
-  EUR(0.5),
-  FJD(0.5),
-  GEL(0.5),
-  HRK(0.5),
-  ILS(0.5),
-  INR(0.5),
-  NZD(0.5),
-  PEN(0.5),
-  PGK(0.5),
-  QAR(0.5),
-  SGD(0.5),
-  SAR(0.5),
-  TJS(0.5),
-  TOP(0.5),
-  WST(0.5),
-  XCD(0.5),
-  BGN(1),
-  BOB(1),
-  CNY(1),
-  GTQ(1),
-  MOP(1),
-  SBD(1),
-  SHP(1),
-  TTD(1),
-  BWP(1.5),
-  MAD(1.5),
-  AED(2),
-  LSL(2),
-  MYR(2),
-  PLN(2),
-  RON(2),
-  SCR(2),
-  SZL(2),
-  ZAR(2),
-  DKK(2.5),
-  MDL(2.5),
-  MVR(2.5),
-  NAD(2.5),
-  NOK(3),
-  SEK(3),
-  TRY(3),
-  ZMW(3),
-  EGP(5),
-  HKD(5),
-  HNL(5),
-  MRO(5),
-  NIO(5),
-  SRD(5),
-  TWD(5),
-  UAH(5),
-  UYU(5),
-  PHP(7.5),
-  DOP(10),
-  ETB(10),
-  GMD(10),
-  MKD(10),
-  MUR(10),
-  MXN(10),
-  MZN(10),
-  THB(10),
-  RUB(10),
-  AFN(12),
-  ALL(12),
-  BDT(15),
-  CZK(15),
-  CVE(15),
-  KES(15),
-  KGS(15),
-  NPR(15),
-  RSD(15),
-  XPF(15),
-  DZD(20),
-  ISK(20),
-  JMD(20),
-  HTG(20),
-  LRD(20),
-  VUV(20),
-  ARS(25),
-  DJF(25),
-  GYD(25),
-  SLE(25),
-  PKR(30),
-  YER(30),
-  AMD(45),
-  SLL(45),
-  JPY(50),
-  KMF(50),
-  KZT(50),
-  LKR(50),
-  AOA(55),
-  NGN(55),
-  CRC(75),
-  SOS(75),
-  XAF(75),
-  XOF(75),
-  CLP(100),
-  HUF(100),
-  KRW(150),
-  MWK(150),
-  RWF(150),
-  BIF(250),
-  CDF(250),
-  MMK(250),
-  TZS(250),
-  COP(475),
-  MNT(475),
-  UGX(475),
-  KHR(500),
-  MGA(500),
-  GNF(1000),
-  PYG(1000),
-  UZS(1250),
-  IDR(1750),
-  LBP(1750),
-  LAK(2000),
-  STD(2500),
-  VND(2500);
-
-  final double minValue;
-
-  const Currencies(this.minValue);
-}
 
 class CreateGroupProvider extends ChangeNotifier {
   final controllerProjectName = TextEditingController();
@@ -200,7 +55,7 @@ class CreateGroupProvider extends ChangeNotifier {
     controllerEndDate.addListener(notifyListeners);
   }
 
-  void _confirm(BuildContext context) {
+  void _confirmCreateGroup(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
     showCupertinoDialog(
       context: context,
@@ -233,8 +88,10 @@ class CreateGroupProvider extends ChangeNotifier {
               textColor: GPColors.red,
               borderColor: GPColors.transparent,
               onPressed: () {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Create Group Cancel Dialog');
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName:
+                      CreateGroupEvents.pressCancelCreateGroupDialog.value,
+                );
                 context.pop();
               },
               color: GPColors.transparent,
@@ -245,114 +102,15 @@ class CreateGroupProvider extends ChangeNotifier {
                       ? 120
                       : 140,
             ),
-            // GPButton(
-            //   text: appLocalizations.yes,
-            //   borderColor: GPColors.primaryColor,
-            //   onPressed: () async {
-            //     final user =
-            //         Provider.of<AuthProvider>(context, listen: false).user;
-            //     Provider.of<MixPanelProvider>(context, listen: false)
-            //         .logEvent(eventName: 'Create Group Confirm Dialog');
-            //     final userId = Provider.of<AuthProvider>(context, listen: false)
-            //             .user
-            //             ?.id ??
-            //         '';
-            //     final stripePayment = Provider.of<StripePaymentProvider>(
-            //       context,
-            //       listen: false,
-            //     );
-            //     if (int.tryParse(controllerReward.text) != 0) {
-            //       isPaying = true;
-            //       notifyListeners();
-            //       final navigatorState = context;
-            //       FocusScope.of(context).unfocus();
-            //       navigatorState.pop();
-            //       try {
-            //         final listPaymentMethods = await FirebaseFunctions.instance
-            //             .httpsCallable('ListPaymentMethods')
-            //             .call(
-            //           {
-            //             'userId': userId,
-            //           },
-            //         );
-            //         if (listPaymentMethods.data['paymentMethods'].length == 0) {
-            //           try {
-            //             final paymentIntentId =
-            //                 await stripePayment.initPaymentCreateGroup(
-            //               newContext,
-            //               userId,
-            //               controllerReward.text,
-            //               groupCurrencyCode,
-            //             );
-            //             await createGroup(user);
-            //             await stripePayment.addPaymentIntentId(
-            //               paymentIntentId,
-            //               newGroup.groupCode,
-            //             );
-            //             controller.nextPage(
-            //               duration: const Duration(milliseconds: 300),
-            //               curve: Curves.ease,
-            //             );
-            //           } catch (e) {
-            //             debugPrint(e.toString());
-            //           }
-            //         } else {
-            //           await showModalBottomSheet(
-            //             isScrollControlled: true,
-            //             context: context,
-            //             shape: RoundedRectangleBorder(
-            //               borderRadius: BorderRadius.circular(Insets.m),
-            //             ),
-            //             builder: (context) {
-            //               return Padding(
-            //                 padding: context.screenViewInsets,
-            //                 child: Wrap(
-            //                   children: <Widget>[
-            //                     Column(
-            //                       mainAxisSize: MainAxisSize.min,
-            //                       children: [
-            //                         SizedBox(
-            //                           height: 400,
-            //                           child:
-            //                               SavedCardsCreateGroupBottomSheetPageView(
-            //                             groupReward: controllerReward.text,
-            //                             groupCurrency: groupCurrencyCode,
-            //                             groupCode: newGroup.groupCode,
-            //                           ),
-            //                         ),
-            //                       ],
-            //                     )
-            //                   ],
-            //                 ),
-            //               );
-            //             },
-            //           );
-            //         }
-            //       } catch (e) {
-            //         debugPrint(e.toString());
-            //       }
-            //       isPaying = false;
-            //       notifyListeners();
-            //     } else {
-            //       context.pop();
-            //       await createGroup(user);
-            //     }
-            //   },
-            //   height: 40,
-            //   width: context.isVerySmallScreen
-            //       ? 100
-            //       : context.isSmallScreen
-            //           ? 120
-            //           : 140,
-            // ),
             GPButton(
               text: appLocalizations.yes,
               borderColor: GPColors.primaryColor,
               onPressed: () async {
                 final user =
                     Provider.of<AuthProvider>(context, listen: false).user;
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Create Group Confirm Dialog');
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName: CreateGroupEvents.confirmCreateGroup.value,
+                );
                 context.pop();
                 await createGroup(user);
               },
@@ -372,21 +130,13 @@ class CreateGroupProvider extends ChangeNotifier {
   void Function()? nextPressedCreate(
     BuildContext context,
   ) {
-    // Index 0
     final projectNameText = controllerProjectName.text;
     final objectiveText = controllerObjective.text;
     final rewardText = controllerReward.text;
     final startDateText = controllerStartDate.text;
     final endDateText = controllerEndDate.text;
 
-    // Index 1
     final noParticipantsText = controllerNumberParticipants.text;
-    // double minValueCurrencies = Currencies.values
-    //     .firstWhere(
-    //       (element) => element.name == groupCurrencyCode,
-    //       orElse: () => Currencies.BRL,
-    //     )
-    //     .minValue;
 
     if (pageIndex == 0 &&
         (projectNameText.length < 3 ||
@@ -394,9 +144,7 @@ class CreateGroupProvider extends ChangeNotifier {
             projectNameText.length >= 20 ||
             objectiveText.length >= 50 ||
             rewardText.length < 3 ||
-            rewardText.length >=
-                50 // || double.parse(rewardText) < minValueCurrencies && double.parse(rewardText) > 0
-        )) {
+            rewardText.length >= 50)) {
       return null;
     } else if (pageIndex == 1 &&
         (noParticipantsText.isEmpty ||
@@ -412,11 +160,13 @@ class CreateGroupProvider extends ChangeNotifier {
       return null;
     } else if (pageIndex == 3) {
       return () {
-        Provider.of<MixPanelProvider>(context, listen: false)
-            .logEvent(eventName: 'Create Group Success');
+        Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+          eventName: CreateGroupEvents.pressCreateGroupSuccessDialog.value,
+        );
         context.pushAndRemoveUntil(
           PageRouteBuilder(
-            pageBuilder: (context, animation1, animation2) => MainPageViewScreen(
+            pageBuilder: (context, animation1, animation2) =>
+                MainPageViewScreen(
               homeViewModel: HomeViewModel(),
             ),
             transitionDuration: Duration.zero,
@@ -426,8 +176,9 @@ class CreateGroupProvider extends ChangeNotifier {
       };
     } else {
       return () => {
-            Provider.of<MixPanelProvider>(context, listen: false)
-                .logEvent(eventName: 'Create Group Next'),
+            Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+              eventName: CreateGroupEvents.pressNextButtonCreateGroup.value,
+            ),
             FocusNode().unfocus(),
             if (pageIndex == 0 || pageIndex == 1)
               {
@@ -438,9 +189,10 @@ class CreateGroupProvider extends ChangeNotifier {
               }
             else
               {
-                Provider.of<MixPanelProvider>(context, listen: false)
-                    .logEvent(eventName: 'Confirm Create Group'),
-                _confirm(context),
+                Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+                  eventName: CreateGroupEvents.confirmCreateGroup.value,
+                ),
+                _confirmCreateGroup(context),
               }
           };
     }
@@ -470,8 +222,6 @@ class CreateGroupProvider extends ChangeNotifier {
     }
   }
 
-  /// Update group image
-
   Future<void> updateGroupImage(String imageFile, String groupId) async {
     final group = await FirebaseFirestore.instance
         .collection('groups')
@@ -490,6 +240,8 @@ class CreateGroupProvider extends ChangeNotifier {
 
   Future<bool> updateAllowEditImage(
       BuildContext context, bool value, String groupId) async {
+    final individualGroupProvider =
+        Provider.of<IndividualGroupProvider>(context);
     Provider.of<IndividualGroupProvider>(context, listen: false)
         .updateAllowGroupPicture(value);
     final group = await FirebaseFirestore.instance
@@ -505,7 +257,7 @@ class CreateGroupProvider extends ChangeNotifier {
               .collection('groups')
               .doc(groupId)
               .update({'allowEditImage': value});
-          await Provider.of<IndividualGroupProvider>(context).getGroup(groupId);
+          await individualGroupProvider.getGroup(groupId);
           return true;
         }
       }
@@ -555,7 +307,7 @@ class CreateGroupProvider extends ChangeNotifier {
         final url = await result.ref.getDownloadURL();
         newGroup.image = url;
       } on FirebaseException {
-        debugPrint("Deu ruim");
+        debugPrint('Error uploading image');
       }
     }
     await FirebaseFirestore.instance
@@ -600,7 +352,10 @@ class CreateGroupProvider extends ChangeNotifier {
                 borderColor: GPColors.transparent,
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
-                      .logEvent(eventName: 'Cancel Leave Group');
+                      .logEvent(
+                    eventName:
+                        CreateGroupEvents.pressCancelLeaveGroupDialog.value,
+                  );
                   isRefundRequested = true;
                   context.pop();
                 },
@@ -613,11 +368,13 @@ class CreateGroupProvider extends ChangeNotifier {
                 borderColor: GPColors.primaryColor,
                 onPressed: () {
                   Provider.of<MixPanelProvider>(context, listen: false)
-                      .logEvent(eventName: 'Leave Group');
+                      .logEvent(
+                    eventName: CreateGroupEvents.pressLeaveGroup.value,
+                  );
                   leaveGroup(context, groupId);
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                  Navigator.pop(context);
+                  context.pop();
+                  context.pop();
+                  context.pop();
                 },
                 height: 40,
                 width: 140,
@@ -690,7 +447,6 @@ class CreateGroupProvider extends ChangeNotifier {
     }
   }
 
-  /// Call this every time when openning bottom sheet for creating group
   void clean() {
     controllerProjectName.clear();
     controllerObjective.clear();
@@ -700,7 +456,7 @@ class CreateGroupProvider extends ChangeNotifier {
     controllerEndDate.clear();
     newGroup.projectName = '';
     newGroup.objective = '';
-    newGroup.reward = ''; //'0';
+    newGroup.reward = '';
     newGroup.image = '';
     newGroup.participants = [];
     newGroup.participantsData = [];

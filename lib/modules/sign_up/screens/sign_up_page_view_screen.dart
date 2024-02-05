@@ -50,7 +50,7 @@ class _SignUpPhonePageViewScreenState extends State<SignUpPhonePageViewScreen> {
                   : GPButton(
                       onPressed: Provider.of<PhoneAuthenProvider>(
                         context,
-                      ).nextPressedPhone(
+                      ).nextButtonPhone(
                         context,
                       ),
                     );

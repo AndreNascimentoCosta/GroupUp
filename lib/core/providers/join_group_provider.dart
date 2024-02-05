@@ -5,12 +5,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/extensions/gp_navigator_extension.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
+import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/models/participant_model.dart';
+import 'package:groupup/modules/join_group/components/join_group_events.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import 'mix_panel_provider.dart';
 
 enum JoinGroupErrorType {
   groupCodeEmpty,
@@ -30,19 +30,18 @@ class JoinGroupProvider extends ChangeNotifier {
     controllerGroupCode.addListener(notifyListeners);
   }
 
-  void Function()? nextPressedJoin(
+  void Function()? nextButtonJoin(
     BuildContext context,
     String userId,
   ) {
-    // Index 0
     final joinGroupText = controllerGroupCode.text;
-
     if ((joinGroupText.isEmpty)) {
       return null;
     } else if (pageIndex == 0) {
       return () async {
         Provider.of<MixPanelProvider>(context, listen: false).logEvent(
-            eventName: 'Check if group code is valid and next button');
+          eventName: JoinGroupEvents.pressNextButtonJoinGroup.value,
+        );
         FocusScope.of(context).unfocus();
         final scaffoldMessengerState = ScaffoldMessenger.of(context);
         final appLocalizations = AppLocalizations.of(context)!;
@@ -100,98 +99,15 @@ class JoinGroupProvider extends ChangeNotifier {
       };
     } else {
       return () async {
-        Provider.of<MixPanelProvider>(context, listen: false)
-            .logEvent(eventName: 'Join group button');
+        Provider.of<MixPanelProvider>(context, listen: false).logEvent(
+          eventName: JoinGroupEvents.pressJoinGroupButton.value,
+        );
         final navigatorState = context;
         final user = Provider.of<AuthProvider>(context, listen: false).user;
-        // final stripePaymentProvider =
-        //     Provider.of<StripePaymentProvider>(context, listen: false);
         FocusScope.of(context).unfocus();
-        // final groups = await FirebaseFirestore.instance
-        //     .collection('groups')
-        //     .where('groupCode', isEqualTo: controllerGroupCode.text)
-        //     .get();
-        // final groupsDocs = groups.docs;
-        // final group = groupsDocs[0].data();
-        // if (double.parse(group['reward']) == 0) {
-          await joinGroup(user);
-          navigatorState.pop();
-          navigatorState.pop();
-        //   clean();
-        // } else {
-        //   isOpeningSavedCards = true;
-        //   notifyListeners();
-        //   try {
-        //     final listPaymentMethods = await FirebaseFunctions.instance
-        //         .httpsCallable('ListPaymentMethods')
-        //         .call(
-        //       {
-        //         'userId': userId,
-        //       },
-        //     );
-        //     if (listPaymentMethods.data['paymentMethods'].length == 0) {
-        //       try {
-        //         final paymentIntentId = await stripePaymentProvider.initPaymentJoinGroup(
-        //           controllerGroupCode.text,
-        //           userId,
-        //         );
-        //         await joinGroup(context);
-        //         await stripePaymentProvider.addPaymentIntentId(
-        //           paymentIntentId,
-        //           controllerGroupCode.text,
-        //         );
-        //         context.popUntil((route) => route.isFirst);
-        //       } catch (e) {
-        //         final appLocalizations = AppLocalizations.of(context)!;
-        //         context.popUntil((route) => route.isFirst);
-        //         debugPrint(e.toString());
-        //         ScaffoldMessenger.of(context).showSnackBar(
-        //           SnackBar(
-        //             content: Text(appLocalizations.paymentInterrupted),
-        //             duration: const Duration(seconds: 2),
-        //           ),
-        //         );
-        //       }
-        //       isOpeningSavedCards = false;
-        //       notifyListeners();
-        //     } else {
-        //       navigatorState.pop();
-        //       await showModalBottomSheet(
-        //         isScrollControlled: true,
-        //         context: context,
-        //         shape: RoundedRectangleBorder(
-        //           borderRadius: BorderRadius.circular(Insets.m),
-        //         ),
-        //         builder: (context) {
-        //           return Padding(
-        //             padding: context.screenViewInsets,
-        //             child: Wrap(
-        //               children: <Widget>[
-        //                 Column(
-        //                   mainAxisSize: MainAxisSize.min,
-        //                   children: [
-        //                     SizedBox(
-        //                       height: 400,
-        //                       child: SavedCardsJoinGroupBottomSheetPageView(
-        //                         groupCode: controllerGroupCode.text,
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 )
-        //               ],
-        //             ),
-        //           );
-        //         },
-        //       );
-        //       isOpeningSavedCards = false;
-        //       notifyListeners();
-        //     }
-        //   } catch (e) {
-        //     isOpeningSavedCards = false;
-        //     notifyListeners();
-        //     debugPrint(e.toString());
-        //   }
-        // }
+        await joinGroup(user);
+        navigatorState.pop();
+        navigatorState.pop();
         clean();
       };
     }

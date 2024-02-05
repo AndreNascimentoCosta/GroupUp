@@ -3,7 +3,7 @@ import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/constants/url_launcher_constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/utils/url_launcher/gp_url_launcher.dart';
 import 'package:groupup/core/widgets/buttons/button.dart';
 import 'package:groupup/core/providers/auth_provider.dart';

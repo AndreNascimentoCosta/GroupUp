@@ -4,15 +4,15 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/bottom_navigation_bar/gp_bottom_navigation_bar.dart';
+import 'package:groupup/modules/groups/screens/groups_screen.dart';
 import 'package:groupup/modules/main_page_view/components/add_project.dart';
 import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/modules/main_page_view/components/add_username.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/modules/main_page_view/components/main_page_view_events.dart';
+import 'package:groupup/modules/profile/screens/profile_screen.dart';
 import 'package:provider/provider.dart';
-import '../../profile/screens/profile_screen.dart';
-import '../../groups/screens/groups_screen.dart';
 
 class MainPageViewScreen extends StatefulWidget {
   const MainPageViewScreen({

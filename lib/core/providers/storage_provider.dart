@@ -22,8 +22,12 @@ class StorageProvider extends ChangeNotifier {
     if (authProvider.user == null) return;
     final ref = FirebaseStorage.instance
         .ref()
-        .child(authProvider.user!.id)
-        .child('${authProvider.user!.id}.jpg');
+        .child(
+          authProvider.user!.id,
+        )
+        .child(
+          '${authProvider.user!.id}.jpg',
+        );
 
     final result = await ref.putFile(profilePicture);
 
@@ -46,11 +50,12 @@ class StorageProvider extends ChangeNotifier {
     final result = await ref.putFile(image);
 
     final url = await result.ref.getDownloadURL();
-    return url;    
+    return url;
   }
 
   Future<void> uploadGroupImage(BuildContext context, String groupId) async {
-    final createGroupProvider = Provider.of<CreateGroupProvider>(context, listen: false);
+    final createGroupProvider =
+        Provider.of<CreateGroupProvider>(context, listen: false);
     isLoading = true;
     notifyListeners();
     final image = this.image;

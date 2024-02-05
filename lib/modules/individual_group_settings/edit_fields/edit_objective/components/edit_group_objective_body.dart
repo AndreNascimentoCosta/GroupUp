@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
+import 'package:groupup/core/providers/edit_group_fields_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/widgets/text_field/gp_edit_text_field.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/core/providers/edit_group_objective_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -14,8 +14,8 @@ class EditGroupObjectiveBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final groupObjectiveController =
-        Provider.of<EditGroupObjectiveProvider>(context)
+    final groupFieldsController =
+        Provider.of<EditGroupFieldsProvider>(context)
             .groupObjectiveController;
     final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
@@ -30,7 +30,7 @@ class EditGroupObjectiveBody extends StatelessWidget {
             height: 70,
             width: 400,
             child: GPEditTextField(
-              controller: groupObjectiveController,
+              controller: groupFieldsController,
               hint: '',
               validator: (value) {
                 if (value!.isNotEmpty && value.length < 3) {
@@ -49,7 +49,7 @@ class EditGroupObjectiveBody extends StatelessWidget {
                 ),
               ),
               inputFormatters: [
-                if (groupObjectiveController.text.isEmpty)
+                if (groupFieldsController.text.isEmpty)
                   FilteringTextInputFormatter.deny(
                     RegExp(r' '),
                   )

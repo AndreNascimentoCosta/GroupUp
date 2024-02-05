@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:groupup/core/providers/add_input_provider.dart';
-import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/providers/storage_provider.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
@@ -13,7 +12,6 @@ import 'package:groupup/core/providers/join_group_provider.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/core/providers/stripe_payment_provider.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/l10n/l10n.dart';
 import 'package:groupup/modules/onboarding/screens/onboarding_page_view_screen.dart';
@@ -67,12 +65,6 @@ Future<void> main() async {
             ListenableProvider(
               create: (context) => AddInputProvider(),
               lazy: true,
-            ),
-            ListenableProvider(
-              create: (context) => InstagrammableProvider(),
-            ),
-            ListenableProvider(
-              create: (context) => StripePaymentProvider(),
             ),
             ListenableProvider(
               create: (context) => MixPanelProvider(

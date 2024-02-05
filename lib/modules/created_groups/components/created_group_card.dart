@@ -5,7 +5,7 @@ import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/utils/icons/gp_icons.dart';
 import 'package:groupup/core/widgets/icons/gp_icon.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/models/group_model.dart';
 import 'package:groupup/modules/created_groups/components/created_group_date_details.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

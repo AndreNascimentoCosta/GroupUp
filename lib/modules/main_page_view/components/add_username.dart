@@ -68,7 +68,7 @@ class AddUsername extends StatelessWidget {
             ),
           ),
           GPButton(
-            onPressed: phoneProvider.nextPressedName(context),
+            onPressed: phoneProvider.nextButtonName(context),
           ),
           const SizedBox(height: kDefaultPadding / 4)
         ],

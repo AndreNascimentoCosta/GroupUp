@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
-import 'package:groupup/core/constants/design-system.dart';
+import 'package:groupup/core/constants/design_system.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
 import 'package:groupup/modules/create_group_page_view/components/create_group_date_time_picker.dart';
 import 'package:groupup/modules/create_group_page_view/components/created_group_add_picture.dart';

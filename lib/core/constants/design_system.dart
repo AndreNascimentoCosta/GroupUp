@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 class Insets {
   static const double xs = 5.0;
   static const double s = 10.0;

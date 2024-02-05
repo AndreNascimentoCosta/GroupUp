@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
-import 'package:groupup/core/providers/instagrammable_provider.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
@@ -27,10 +26,6 @@ class InstagrammableButton extends StatelessWidget {
           onPressed: () {
             Provider.of<MixPanelProvider>(context, listen: false)
                 .logEvent(eventName: 'Instagrammable Screen');
-            Provider.of<InstagrammableProvider>(context, listen: false)
-                .setPlaceholderImages(
-              'https://firebasestorage.googleapis.com/v0/b/groupup-432b8.appspot.com/o/choosePicture.png?alt=media&token=25743fdd-a3b1-4439-9a2a-ae477238a640',
-            );
             Navigator.push(
               context,
               CupertinoPageRoute(
