@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
+import 'package:groupup/core/widgets/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/providers/mix_panel_provider.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';

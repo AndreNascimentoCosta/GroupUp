@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groupup/core/bottom_sheet/gp_modal_bottom_sheet.dart';
+import 'package:groupup/core/widgets/bottom_sheet/gp_modal_bottom_sheet.dart';
 import 'package:groupup/core/constants/constants.dart';
 import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/providers/create_group_provider.dart';
