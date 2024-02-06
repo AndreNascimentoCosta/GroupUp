@@ -8,7 +8,7 @@ import 'package:groupup/core/utils/url_launcher/gp_url_launcher.dart';
 import 'package:groupup/core/widgets/buttons/button_common_style.dart';
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/core/widgets/texts/gp_text_body.dart';
-import 'package:groupup/modules/profile/components/alert_dialog_delete.dart';
+import 'package:groupup/modules/profile/components/confirm_delete_account.dart';
 import 'package:groupup/modules/profile/components/profile_events.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -69,7 +69,7 @@ class ProfileOtherOptions extends StatelessWidget {
                 eventName: ProfileEvents.confirmDeleteAccount.value,
               );
               Navigator.pop(context);
-              confirmDelete(context);
+              confirmDeleteAccount(context);
             },
             child: GPTextBody(
               text: appLocalizations.deleteAccount,

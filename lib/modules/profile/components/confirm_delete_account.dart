@@ -12,7 +12,7 @@ import 'package:groupup/modules/profile/components/profile_events.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void confirmDelete(BuildContext context) {
+void confirmDeleteAccount(BuildContext context) {
   final authProvider = Provider.of<AuthProvider>(context, listen: false);
   final appLocalizations = AppLocalizations.of(context)!;
   showCupertinoDialog(
