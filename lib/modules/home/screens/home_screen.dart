@@ -15,7 +15,7 @@ import 'package:groupup/modules/main_page_view/screens/main_page_view_screen.dar
 import 'package:groupup/core/providers/auth_provider.dart';
 import 'package:groupup/modules/home/components/continue_button.dart';
 import 'package:groupup/modules/home/components/home_events.dart';
-import 'package:groupup/modules/home/components/subtitle_home.dart';
+import 'package:groupup/modules/home/components/home_subtitle.dart';
 import 'package:groupup/modules/sign_up/screens/sign_up_page_view_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: context.screenHeight * 0.05,
                     ),
-                    const SubtitleHome(),
+                    const HomeSubtitle(),
                     SizedBox(
                       height: context.screenHeight * 0.065,
                     ),

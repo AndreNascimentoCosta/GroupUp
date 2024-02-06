@@ -3,8 +3,8 @@ import 'package:groupup/core/extensions/gp_size_extension.dart';
 import 'package:groupup/core/utils/colors/gp_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SubtitleHome extends StatelessWidget {
-  const SubtitleHome({super.key});
+class HomeSubtitle extends StatelessWidget {
+  const HomeSubtitle({super.key});
 
   @override
   Widget build(BuildContext context) {
