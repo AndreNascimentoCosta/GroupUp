@@ -6,8 +6,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/modules/home/screens/home_screen.dart';
 
-class GPButtonOnboarding extends StatelessWidget {
-  const GPButtonOnboarding({
+class OnboardingNextButton extends StatelessWidget {
+  const OnboardingNextButton({
     required this.controller,
     super.key,
   });

@@ -14,7 +14,7 @@ import 'package:groupup/core/providers/phone_auth_provider.dart';
 import 'package:groupup/core/providers/individual_group_provider.dart';
 import 'package:groupup/core/widgets/loading/gp_loading.dart';
 import 'package:groupup/l10n/l10n.dart';
-import 'package:groupup/modules/onboarding/screens/onboarding_page_view_screen.dart';
+import 'package:groupup/modules/onboarding/screens/onboarding_screen.dart';
 import 'package:groupup/core/theme/theme_data.dart';
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -138,7 +138,7 @@ Future<void> main() async {
                     if (needsUpdate() == true) {
                       return const ForceUpdateScreen();
                     } else {
-                      return const OnboardingPageViewScreen();
+                      return const OnboardingScreen();
                     }
                   },
                 );

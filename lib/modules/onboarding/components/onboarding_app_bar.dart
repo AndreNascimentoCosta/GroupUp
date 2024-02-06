@@ -8,8 +8,8 @@ import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/modules/home/screens/home_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AppBarOnboarding extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarOnboarding({super.key});
+class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const OnboardingAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -9,19 +9,19 @@ import 'package:groupup/core/widgets/page_indicator/gp_page_indicator.dart';
 import 'package:groupup/core/widgets/texts/gp_text_header.dart';
 import 'package:groupup/models/home_view_model.dart';
 import 'package:groupup/modules/main_page_view/screens/main_page_view_screen.dart';
-import 'package:groupup/modules/onboarding/components/app_bar_onboarding.dart';
-import 'package:groupup/modules/onboarding/components/next_button_onboarding.dart';
+import 'package:groupup/modules/onboarding/components/onboarding_app_bar.dart';
+import 'package:groupup/modules/onboarding/components/onboarding_next_button.dart';
 import 'package:groupup/modules/onboarding/components/onboarding_body.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class OnboardingPageViewScreen extends StatefulWidget {
-  const OnboardingPageViewScreen({super.key});
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
 
   @override
-  State<OnboardingPageViewScreen> createState() => _OnboardingPageViewScreenState();
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingPageViewScreenState extends State<OnboardingPageViewScreen> {
+class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _OnboardingPageViewScreenState extends State<OnboardingPageViewScreen> {
         }
         return Scaffold(
           backgroundColor: GPColors.white,
-          appBar: const AppBarOnboarding(),
+          appBar: const OnboardingAppBar(),
           body: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: kDefaultPadding,
@@ -93,7 +93,7 @@ class _OnboardingPageViewScreenState extends State<OnboardingPageViewScreen> {
                 SizedBox(
                   height: context.screenHeight * 0.05,
                 ),
-                GPButtonOnboarding(
+                OnboardingNextButton(
                   controller: _pageController,
                 ),
                 SizedBox(
