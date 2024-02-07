@@ -32,7 +32,7 @@ Skip the endless chats and get straight to achieving. Download GroupUp now and t
 
 ## How to use the app
 
-![Alt text](400x800bb.png)
+<img src='assets/images/shop.png' width='25'>
 
 - Create or Join a Group:
 
