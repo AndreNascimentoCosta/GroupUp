@@ -37,23 +37,23 @@ Skip the endless chats and get straight to achieving. Download GroupUp now and t
     - Set objectives and rewards if you're creating a group.
     - Invite friends with a unique code.
 
-<img src='assets/images/store_screenshot_2.png' width='100'>
+<img src='assets/images/store_screenshot_2.png' width='150'>
 
 - Add Inputs with Proof:
 
     - Contribute data with photo proof for validation.
 
-<img src='assets/images/store_screenshot_4.png' width='100'>
+<img src='assets/images/store_screenshot_4.png' width='150'>
 
 - Review and Collaborate:
 
     - Evaluate and validate friends' contributions.
 
-<img src='assets/images/store_screenshot_5.png' width='100'>
+<img src='assets/images/store_screenshot_5.png' width='150'>
 
 - Achieve Your Goals:
 
     - Strive for goals with group support.
     - Highest value at the end claims the reward.
 
-<img src='assets/images/store_screenshot_1.png' width='100'>
+<img src='assets/images/store_screenshot_1.png' width='150'>
