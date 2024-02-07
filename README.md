@@ -32,14 +32,14 @@ Skip the endless chats and get straight to achieving. Download GroupUp now and t
 
 ## How to use the app
 
-<img src='assets/images/shop.png' width='25'>
+<img src='assets/images/store_screenshot_1.png' width='100'>
 
 - Create or Join a Group:
 
     - Set objectives and rewards if you're creating a group.
     - Invite friends with a unique code.
 
-![Alt text](<400x800bb (1).png>)
+<img src='assets/images/store_screenshot_2.png' width='100'>
 
 - Add Inputs with Proof:
 
