@@ -32,8 +32,6 @@ Skip the endless chats and get straight to achieving. Download GroupUp now and t
 
 ## How to use the app
 
-<img src='assets/images/store_screenshot_1.png' width='100'>
-
 - Create or Join a Group:
 
     - Set objectives and rewards if you're creating a group.
@@ -45,11 +43,17 @@ Skip the endless chats and get straight to achieving. Download GroupUp now and t
 
     - Contribute data with photo proof for validation.
 
+<img src='assets/images/store_screenshot_4.png' width='100'>
+
 - Review and Collaborate:
 
     - Evaluate and validate friends' contributions.
+
+<img src='assets/images/store_screenshot_5.png' width='100'>
 
 - Achieve Your Goals:
 
     - Strive for goals with group support.
     - Highest value at the end claims the reward.
+
+<img src='assets/images/store_screenshot_1.png' width='100'>
